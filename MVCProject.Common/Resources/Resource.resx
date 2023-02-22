@@ -858,4 +858,22 @@
   <data name="ConfigModuleName" xml:space="preserve">
     <value>Module Name</value>
   </data>
+  <data name="ApplicantAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ApplicantEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ApplicantName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ApplicantPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Applicant Registration</value>
+  </data>
+  <data name="ApplicantRegister" xml:space="preserve">
+    <value>Applicant Register</value>
+  </data>
 </root>
