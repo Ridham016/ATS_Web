@@ -40,3 +40,11 @@ D:\Fenil_Patel\Dev2(Designation_PC_Modified)\MVCProject.Common\obj\Debug\MVCProj
 D:\Fenil_Patel\Dev2(Designation_PC_Modified)\MVCProject.Common\obj\Debug\MVCProject.Common.csproj.CoreCompileInputs.cache
 D:\Fenil_Patel\Dev2(Designation_PC_Modified)\MVCProject.Common\obj\Debug\MVCProject.Common.dll
 D:\Fenil_Patel\Dev2(Designation_PC_Modified)\MVCProject.Common\obj\Debug\MVCProject.Common.pdb
+F:\Office Tasks\ATS_Web\MVCProject.Common\bin\Debug\MVCProject.Common.dll
+F:\Office Tasks\ATS_Web\MVCProject.Common\bin\Debug\MVCProject.Common.pdb
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.csproj.AssemblyReference.cache
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.Resources.Resource.resources
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.csproj.GenerateResource.cache
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.csproj.CoreCompileInputs.cache
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.dll
+F:\Office Tasks\ATS_Web\MVCProject.Common\obj\Debug\MVCProject.Common.pdb
