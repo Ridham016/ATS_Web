@@ -115,6 +115,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address is Required.
+        /// </summary>
+        public static string AddressRequired {
+            get {
+                return ResourceManager.GetString("AddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} already exists.
         /// </summary>
         public static string AlreadyExists {
@@ -723,6 +732,15 @@ namespace MVCProject.Common.Resources {
         public static string EmailInvalid {
             get {
                 return ResourceManager.GetString("EmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is Required.
+        /// </summary>
+        public static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
             }
         }
         
@@ -1402,6 +1420,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name is Required.
+        /// </summary>
+        public static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have sufficient privilege to access this application, please contact administrator. .
         /// </summary>
         public static string NoPageAccess {
@@ -1551,6 +1578,15 @@ namespace MVCProject.Common.Resources {
         public static string PDFFooterText {
             get {
                 return ResourceManager.GetString("PDFFooterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone is Required.
+        /// </summary>
+        public static string PhoneRequired {
+            get {
+                return ResourceManager.GetString("PhoneRequired", resourceCulture);
             }
         }
         

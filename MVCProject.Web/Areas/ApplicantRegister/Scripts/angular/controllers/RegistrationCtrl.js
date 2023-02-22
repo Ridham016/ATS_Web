@@ -6,42 +6,60 @@
     ]);
 
     function RegistrationCtrl($scope, RegistrationService) {
-        $scope.data = {
-            Id: 0,
+        $scope.applicantDetailScope = {
+            ApplicantId: 0,
             Name: '',
             Email: '',
             Phone: '',
             Address: '',
-            IsActive: true
+            IsActive: true,
+            EntryDate: new Date(),
+            UpdateDate: new Date()
         };
         $scope.getAllApplicants = function () {
             RegistrationService.GetAllApplicants().then(function (res) {
                 $scope.applicants = res.data;
             });
-        }
+        };
+
         $scope.ClearFormData = function (frmRegister) {
-            $scope.data = {
-                DesignationId: 0,
-                DesignationName: '',
-                IsActive: true
+            $scope.applicantDetailScope = {
+                ApplicantId: 0,
+                Name: '',
+                Email: '',
+                Phone: '',
+                Address: '',
+                IsActive: true,
+                EntryDate: new Date(),
+                UpdateDate: new Date()
             };
             frmRegister.$setPristine();
-            $("#txtName").focus();
+            $("Name").focus();
         };
-        $scope.SaveApplicantDetails = function (data) {
-            RegistrationService.Register(data).then(function (res) {
+        $scope.SaveApplicantDetails = function (applicantDetailScope) {
+            debugger
+            RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
+                    debugger
                     var applicants = res.data;
-                    if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
-                        toastr.success(data.Message, successTitle);
+                    if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
+                        toastr.success(applicants.Message, successTitle);
                         location.reload();
-                    } else if (data.MessageType == messageTypes.Error) {// Error
-                        toastr.error(data.Message, errorTitle);
-                    } else if (data.MessageType == messageTypes.Warning) {// Warning
-                        toastr.warning(data.Message, warningTitle);
+                    } else if (applicants.MessageType == messageTypes.Error) {// Error
+                        toastr.error(applicants.Message, errorTitle);
+                    } else if (applicants.MessageType == messageTypes.Warning) {// Warning
+                        toastr.warning(applicants.Message, warningTitle);
                     }
                 }
             });
+        }
+        $scope.EditApplicantDetails = function (ApplicantId) {
+            debugger
+            RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
+                if (res) {
+                    $scope.applicantDetailScope = res.data.Result;
+                }
+            })
         }
     }
 })();

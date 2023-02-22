@@ -876,4 +876,16 @@
   <data name="ApplicantRegister" xml:space="preserve">
     <value>Applicant Register</value>
   </data>
+  <data name="AddressRequired" xml:space="preserve">
+    <value>Address is Required</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email is Required</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Name is Required</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Phone is Required</value>
+  </data>
 </root>

@@ -7,7 +7,9 @@
 namespace MVCProject.Api.Controllers.ApplicantRegister
 {
     using MVCProject.Api.Models;
+    using MVCProject.Api.Utilities;
     using MVCProject.Common.Resources;
+    using NPOI.HSSF.Record;
     #region Namespaces
     using System;
     using System.Collections.Generic;
@@ -30,6 +32,29 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         {
             var applcantlist = entities.ApplicantRegisters.ToList();
             return Request.CreateResponse(HttpStatusCode.OK, applcantlist);
+        }
+
+        [HttpGet]
+        public ApiResponse GetApplicantById(int ApplicantId)
+        {
+            var applicantDetail = this.entities.ApplicantRegisters.Where(x => x.ApplicantId== ApplicantId)
+                .Select(g => new
+                {
+                    ApplicantId = g.ApplicantId,
+                    Name = g.Name,
+                    Email = g.Email,
+                    Phone = g.Phone,
+                    Address = g.Address,
+                    IsActive = g.IsActive
+                }).SingleOrDefault();
+            if (applicantDetail != null)
+            {
+                return this.Response(Utilities.MessageTypes.Success, string.Empty, applicantDetail);
+            }
+            else
+            {
+                return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
+            }
         }
 
         [HttpPost]
@@ -58,6 +83,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     applicantData.Email = data.Email;
                     applicantData.Phone = data.Phone;
                     applicantData.Address = data.Address;
+                    applicantData.UpdateDate= data.UpdateDate;
                     this.entities.ApplicantRegisters.ApplyCurrentValues(applicantData);
                     if (!(this.entities.SaveChanges() > 0))
                     {
