@@ -43,8 +43,9 @@ namespace System.Web.Mvc
 
                     menuString.Append(GetSubMenu(Resource.Designation, "ti-id-badge", "/Configuration/Designation"));
                     menuString.Append(GetSubMenu(Resource.ApplicantRegister, "ti-id-badge", "/ApplicantRegister/Registration"));
+                    menuString.Append(GetSubMenu(Resource.InterviewersReg, "ti-id-badge", "/InterviewerRegister/Interviewer"));
 
-                    menuString.Append("</ul></li>");
+            menuString.Append("</ul></li>");
 
             menuString.Append("</ul></div></div>");
 

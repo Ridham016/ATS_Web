@@ -96,6 +96,22 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<Designation> _Designations;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Interviewer> Interviewer
+        {
+            get
+            {
+                if ((_Interviewer == null))
+                {
+                    _Interviewer = base.CreateObjectSet<Interviewer>("Interviewer");
+                }
+                return _Interviewer;
+            }
+        }
+        private ObjectSet<Interviewer> _Interviewer;
 
         #endregion
 
@@ -115,6 +131,14 @@ namespace MVCProject.Api.Models
         public void AddToDesignations(Designation designation)
         {
             base.AddObject("Designations", designation);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Interviewer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToInterviewer(Interviewer interviewer)
+        {
+            base.AddObject("Interviewer", interviewer);
         }
 
         #endregion
@@ -809,6 +833,111 @@ namespace MVCProject.Api.Models
         private global::System.String _Remarks;
         partial void OnRemarksChanging(global::System.String value);
         partial void OnRemarksChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="Interviewer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Interviewer : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Interviewer object.
+        /// </summary>
+        /// <param name="interviewerId">Initial value of the InterviewerId property.</param>
+        public static Interviewer CreateInterviewer(global::System.Int32 interviewerId)
+        {
+            Interviewer interviewer = new Interviewer();
+            interviewer.InterviewerId = interviewerId;
+            return interviewer;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 InterviewerId
+        {
+            get
+            {
+                return _InterviewerId;
+            }
+            set
+            {
+                if (_InterviewerId != value)
+                {
+                    OnInterviewerIdChanging(value);
+                    ReportPropertyChanging("InterviewerId");
+                    _InterviewerId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("InterviewerId");
+                    OnInterviewerIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _InterviewerId;
+        partial void OnInterviewerIdChanging(global::System.Int32 value);
+        partial void OnInterviewerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerName
+        {
+            get
+            {
+                return _InterviewerName;
+            }
+            set
+            {
+                OnInterviewerNameChanging(value);
+                ReportPropertyChanging("InterviewerName");
+                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerName");
+                OnInterviewerNameChanged();
+            }
+        }
+        private global::System.String _InterviewerName;
+        partial void OnInterviewerNameChanging(global::System.String value);
+        partial void OnInterviewerNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerEmail
+        {
+            get
+            {
+                return _InterviewerEmail;
+            }
+            set
+            {
+                OnInterviewerEmailChanging(value);
+                ReportPropertyChanging("InterviewerEmail");
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerEmail");
+                OnInterviewerEmailChanged();
+            }
+        }
+        private global::System.String _InterviewerEmail;
+        partial void OnInterviewerEmailChanging(global::System.String value);
+        partial void OnInterviewerEmailChanged();
 
         #endregion
 

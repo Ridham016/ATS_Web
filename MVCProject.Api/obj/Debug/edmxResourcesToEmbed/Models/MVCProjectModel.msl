@@ -39,5 +39,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Interviewer">
+      <EntityTypeMapping TypeName="MVCProjectModel.Interviewer">
+        <MappingFragment StoreEntitySet="Interviewer">
+          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

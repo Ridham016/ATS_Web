@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = @Resource.Interviewer;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .colSrno {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+    }
+
+    .colPosition {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+
+    .colActive {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+
+    .colAction {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+</style>
+
+<div ng-controller="InterviewerCtrl" novalidate>
+    <div class="main-page-title title-icon relative l">
+        <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@Resource.InterviewersReg</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div class="card-box">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- start designation form -->
+                <form name="frmRegister" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
+                      novalidate>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.InterviewerName <span class="required-field">*</span>
+                                </label>
+                                <input type="text" class="form-control" ng-focus="true" name="InterviewerName" ng-model="interviewerDetailScope.InterviewerName" required placeholder="Enter Name" maxlength="250">
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerName.$dirty && frmRegister.InterviewerName.$invalid">
+                                    <span data-ng-show="frmRegister.InterviewerName.$error.required">@Resource.InterviewerNameRequired</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Remarks-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.InterviewerEmail<span class="required-field">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter Email" name="EmailId" ng-model="interviewerDetailScope.InterviewerEmail" required />
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerEmail.$dirty && frmRegister.InterviewerEmail.$invalid">
+                                    <span data-ng-show="frmRegister.InterviewerEmail.$error.required">@Resource.InterviewerEmailRequired</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.Name.$invalid">
+                                    {{interviewerDetailScope.InterviewerId > 0 ? '@Resource.Update' : '@Resource.Save'}}
+                                </button>
+                                <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
+                                        tabindex="4">
+                                    @Resource.Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- end designation form -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="table-title">
+                                    @Resource.InterviewersReg @Resource.Details
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-control-static">
+                                <scrollable-table scroll-height="427">
+                                    <table ng-init="getAllInterviewers()" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>SrNo</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="h in interviewers">
+                                                <td ng-class="'colSrno text-right'">
+                                                    {{$index+1}}
+                                                </td>
+                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.InterviewerName}}
+                                                </td>
+                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.InterviewerEmail}}
+                                                </td>
+                                                <td ng-class="'colAction text-center'">
+                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
+                                                       ng-click="EditInterviewersDetails(h.InterviewerId)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </scrollable-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Registration details list -->
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/InterviewerRegister/Interviewer")
+}

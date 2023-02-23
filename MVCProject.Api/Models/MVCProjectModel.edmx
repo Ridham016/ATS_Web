@@ -41,9 +41,18 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Interviewer">
+          <Key>
+            <PropertyRef Name="InterviewerId" />
+          </Key>
+          <Property Name="InterviewerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="MVCProjectModelStoreContainer">
           <EntitySet Name="ApplicantRegister" EntityType="Self.ApplicantRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interviewer" EntityType="Self.Interviewer" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -88,7 +97,16 @@
         <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
           <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Interviewer" EntityType="MVCProjectModel.Interviewer" />
         </EntityContainer>
+        <EntityType Name="Interviewer">
+          <Key>
+            <PropertyRef Name="InterviewerId" />
+          </Key>
+          <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -133,6 +151,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Interviewer">
+            <EntityTypeMapping TypeName="MVCProjectModel.Interviewer">
+              <MappingFragment StoreEntitySet="Interviewer">
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -158,6 +185,7 @@
       <Diagram DiagramId="0f149fb9556541b39462f06a12ea44d3" Name="Diagram1">
         <EntityTypeShape EntityType="MVCProjectModel.ApplicantRegister" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.Designation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCProjectModel.Interviewer" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </Diagrams>
   </Designer>
