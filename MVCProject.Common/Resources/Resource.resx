@@ -906,4 +906,16 @@
   <data name="CurrentDesignationRequired" xml:space="preserve">
     <value>Current Designation is Required</value>
   </data>
+  <data name="Interviewer" xml:space="preserve">
+    <value>Interviewer</value>
+  </data>
+  <data name="InterviewerEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="InterviewerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="InterviewersReg" xml:space="preserve">
+    <value>Interviewers</value>
+  </data>
 </root>
