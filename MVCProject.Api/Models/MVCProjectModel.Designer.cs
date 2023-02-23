@@ -392,6 +392,102 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ApplicantDate
+        {
+            get
+            {
+                return _ApplicantDate;
+            }
+            set
+            {
+                OnApplicantDateChanging(value);
+                ReportPropertyChanging("ApplicantDate");
+                _ApplicantDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantDate");
+                OnApplicantDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ApplicantDate;
+        partial void OnApplicantDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnApplicantDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DateOfBirth
+        {
+            get
+            {
+                return _DateOfBirth;
+            }
+            set
+            {
+                OnDateOfBirthChanging(value);
+                ReportPropertyChanging("DateOfBirth");
+                _DateOfBirth = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateOfBirth");
+                OnDateOfBirthChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DateOfBirth;
+        partial void OnDateOfBirthChanging(Nullable<global::System.DateTime> value);
+        partial void OnDateOfBirthChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CurrentCompany
+        {
+            get
+            {
+                return _CurrentCompany;
+            }
+            set
+            {
+                OnCurrentCompanyChanging(value);
+                ReportPropertyChanging("CurrentCompany");
+                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CurrentCompany");
+                OnCurrentCompanyChanged();
+            }
+        }
+        private global::System.String _CurrentCompany;
+        partial void OnCurrentCompanyChanging(global::System.String value);
+        partial void OnCurrentCompanyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CurrentDesignation
+        {
+            get
+            {
+                return _CurrentDesignation;
+            }
+            set
+            {
+                OnCurrentDesignationChanging(value);
+                ReportPropertyChanging("CurrentDesignation");
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CurrentDesignation");
+                OnCurrentDesignationChanged();
+            }
+        }
+        private global::System.String _CurrentDesignation;
+        partial void OnCurrentDesignationChanging(global::System.String value);
+        partial void OnCurrentDesignationChanged();
 
         #endregion
 

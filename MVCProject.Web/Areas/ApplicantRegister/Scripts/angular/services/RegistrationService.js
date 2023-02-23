@@ -19,5 +19,11 @@
             url: 'http://localhost:56562/api/Registrations/GetApplicantById?ApplicantId=' + ApplicantId
         })
     }
+    list.GetApplicantList = function (isGetAll) {
+        return $http({
+            method: 'GET',
+            url: 'http://localhost:56562/api/Registrations/GetApplicantList' + (angular.isDefined(isGetAll) ? '?isGetAll=' + isGetAll : '')
+        });
+    };
     return list;
 }])

@@ -888,4 +888,22 @@
   <data name="PhoneRequired" xml:space="preserve">
     <value>Phone is Required</value>
   </data>
+  <data name="Applicant" xml:space="preserve">
+    <value>Applicant</value>
+  </data>
+  <data name="ApplicantDOB" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="ApplicantDOBRequired" xml:space="preserve">
+    <value>Date of Birth is Required</value>
+  </data>
+  <data name="CurrentCompany" xml:space="preserve">
+    <value>Current Company</value>
+  </data>
+  <data name="CurrentDesignation" xml:space="preserve">
+    <value>Current Designation</value>
+  </data>
+  <data name="CurrentDesignationRequired" xml:space="preserve">
+    <value>Current Designation is Required</value>
+  </data>
 </root>

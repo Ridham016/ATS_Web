@@ -14,11 +14,15 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="CurrentCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentDesignation" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicantDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
           <Property Name="EntryDate" Type="date" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
-          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -51,6 +55,10 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ApplicantDate" Type="DateTime" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="CurrentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -74,6 +82,10 @@
           <EntitySetMapping Name="ApplicantRegisters">
             <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
               <MappingFragment StoreEntitySet="ApplicantRegister">
+                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+                <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
                 <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

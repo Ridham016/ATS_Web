@@ -2,25 +2,42 @@
     'use strict';
 
     angular.module("MVCApp").controller('RegistrationCtrl', [
-        '$scope', 'RegistrationService', RegistrationCtrl
+        '$scope','CommonFunctions', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, RegistrationService) {
+    function RegistrationCtrl($scope, CommonFunctions, RegistrationService) {
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             Name: '',
             Email: '',
             Phone: '',
             Address: '',
-            IsActive: true,
-            EntryDate: new Date(),
-            UpdateDate: new Date()
+            DateOfBirth: null,
+            CurrentCompany: '',
+            CurrentDesignations: '',
+            IsActive: true
         };
+
+        $scope.getApplicants = function (IsGetAll) {
+            if ($scope.IsGetAll == false) {
+                $scope.getAllApplicants();
+            }
+            else {
+                $scope.getApplicantList(IsGetAll);
+            }
+        }
+
         $scope.getAllApplicants = function () {
             RegistrationService.GetAllApplicants().then(function (res) {
-                $scope.applicants = res.data;
+                $scope.applicants = res.data.Result;
             });
         };
+
+        $scope.getApplicantList = function (isGetAll) {
+            RegistrationService.GetApplicantList(isGetAll).then(function (res) {
+                $scope.applicants = res.data.Result;
+            });
+        }
 
         $scope.ClearFormData = function (frmRegister) {
             $scope.applicantDetailScope = {
@@ -29,18 +46,17 @@
                 Email: '',
                 Phone: '',
                 Address: '',
-                IsActive: true,
-                EntryDate: new Date(),
-                UpdateDate: new Date()
+                DateOfBirth: null,
+                CurrentCompany: '',
+                CurrentDesignations: '',
+                IsActive: true
             };
             frmRegister.$setPristine();
             $("Name").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
-            debugger
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
-                    debugger
                     var applicants = res.data;
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                         toastr.success(applicants.Message, successTitle);
@@ -54,10 +70,12 @@
             });
         }
         $scope.EditApplicantDetails = function (ApplicantId) {
-            debugger
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
                 if (res) {
                     $scope.applicantDetailScope = res.data.Result;
+                    $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
+                    CommonFunctions.ScrollUpAndFocus("Name");
+
                 }
             })
         }

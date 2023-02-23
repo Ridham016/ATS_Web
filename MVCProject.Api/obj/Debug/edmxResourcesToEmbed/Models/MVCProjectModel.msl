@@ -4,6 +4,10 @@
     <EntitySetMapping Name="ApplicantRegisters">
       <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
         <MappingFragment StoreEntitySet="ApplicantRegister">
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
           <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />

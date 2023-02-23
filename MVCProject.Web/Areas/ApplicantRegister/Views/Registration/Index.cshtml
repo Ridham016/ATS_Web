@@ -29,7 +29,7 @@
     }
 </style>
 
-<div ng-controller="RegistrationCtrl" novalidate ng-init="getAllApplicants()">
+<div ng-controller="RegistrationCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.ApplicantRegister</h4>
@@ -56,13 +56,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--Remarks-->
-                    <div class="row">
+
+                        <!--Remarks-->
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>
-                                    @Resource.ApplicantEmail
+                                    @Resource.ApplicantEmail<span class="required-field">*</span>
                                 </label>
                                 <input type="text" class="form-control" placeholder="Enter Email" name="Email" ng-model="applicantDetailScope.Email" required />
                                 <div class="c">
@@ -72,12 +71,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>
-                                    @Resource.ApplicantPhone
+                                    @Resource.ApplicantPhone<span class="required-field">*</span>
                                 </label>
                                 <input type="text" class="form-control" placeholder="Enter Phone" name="Phone" ng-model="applicantDetailScope.Phone" required />
                                 <div class="c">
@@ -87,8 +84,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>
@@ -97,8 +92,57 @@
                                 <input type="text" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address" required />
                                 <div class="c">
                                 </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.Address.$dirty && frmRegister.Address.$invalid">
-                                    <span data-ng-show="frmRegister.Address.$error.required">@Resource.AddressRequired</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.ApplicantDOB<span class="required-field">*</span>
+                                </label>
+                                <input type="date" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.DOB.$dirty && frmRegister.DOB.$invalid">
+                                    <span data-ng-show="frmRegister.DOB.$error.required">@Resource.ApplicantDOBRequired</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.CurrentCompany
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter Current Company" name="CurrentCompany" ng-model="applicantDetailScope.CurrentCompany" required />
+                                <div class="c">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.CurrentDesignation<span class="required-field">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter Current Designation" name="CurrentDesignation" ng-model="applicantDetailScope.CurrentDesignation" required />
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.CurrentDesignation.$dirty && frmRegister.CurrentDesignation.$invalid">
+                                    <span data-ng-show="frmRegister.CurrentDesignation.$error.required">@Resource.CurrentDesignationRequired</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="form-control-static">
+                                    <label>
+
+                                    </label>
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="applicantDetailScope.IsActive"
+                                               tabindex="2" />
+                                        <label for="chkRegisterActive">
+                                            @Resource.IsActive
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,14 +165,20 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-3">
                                 <label class="table-title">
                                     @Resource.Registration @Resource.Details
                                 </label>
                             </div>
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="IsGetAll" name="IsGetAll" ng-change="getApplicants(IsGetAll)" ng-init="IsGetAll = 'true'">
+                                    <option value="true">View All List</option>
+                                    <option value="false">View Active List</option>
+                                </select>
+                            </div>
                             <div class="col-md-5">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format("{0} {1} {2}", Resource.Search, Resource.Designation, Resource.Details)" />
+                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format("{0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -140,7 +190,7 @@
                         <div class="form-group">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="427">
-                                    <table ng-table="tableParams" id="datatable" class="table table-striped table-bordered table-hover">
+                                    <table ng-init="getAllApplicants()" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th>SrNo</th>
@@ -148,12 +198,14 @@
                                                 <th>Email</th>
                                                 <th>Phone</th>
                                                 <th>Address</th>
+                                                <th>Date of Birth</th>
+                                                <th>Active</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="h in applicants">
-                                                <td data-title="'@Resource.SrNo'" ng-class="'colSrno text-right'">
+                                                <td ng-class="'colSrno text-right'">
                                                     {{$index+1}}
                                                 </td>
                                                 <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
@@ -167,6 +219,13 @@
                                                 </td>
                                                 <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Address}}
+                                                </td>
+                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.DateOfBirth | date}}
+                                                </td>
+                                                <td data-title="'@Resource.Active'" sortable="'IsActive'" header-class="'colActive'" ng-class="'colActive text-center'">
+                                                    <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
+                                                           ng-disabled="true" />
                                                 </td>
                                                 <td ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"

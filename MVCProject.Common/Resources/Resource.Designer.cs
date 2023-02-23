@@ -151,11 +151,38 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Applicant.
+        /// </summary>
+        public static string Applicant {
+            get {
+                return ResourceManager.GetString("Applicant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string ApplicantAddress {
             get {
                 return ResourceManager.GetString("ApplicantAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string ApplicantDOB {
+            get {
+                return ResourceManager.GetString("ApplicantDOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth is Required.
+        /// </summary>
+        public static string ApplicantDOBRequired {
+            get {
+                return ResourceManager.GetString("ApplicantDOBRequired", resourceCulture);
             }
         }
         
@@ -498,6 +525,33 @@ namespace MVCProject.Common.Resources {
         public static string CreateSOP {
             get {
                 return ResourceManager.GetString("CreateSOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Company.
+        /// </summary>
+        public static string CurrentCompany {
+            get {
+                return ResourceManager.GetString("CurrentCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Designation.
+        /// </summary>
+        public static string CurrentDesignation {
+            get {
+                return ResourceManager.GetString("CurrentDesignation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Designation is Required.
+        /// </summary>
+        public static string CurrentDesignationRequired {
+            get {
+                return ResourceManager.GetString("CurrentDesignationRequired", resourceCulture);
             }
         }
         
