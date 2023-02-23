@@ -488,6 +488,198 @@ namespace MVCProject.Api.Models
         private global::System.String _CurrentDesignation;
         partial void OnCurrentDesignationChanging(global::System.String value);
         partial void OnCurrentDesignationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TotalExperience
+        {
+            get
+            {
+                return _TotalExperience;
+            }
+            set
+            {
+                OnTotalExperienceChanging(value);
+                ReportPropertyChanging("TotalExperience");
+                _TotalExperience = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalExperience");
+                OnTotalExperienceChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TotalExperience;
+        partial void OnTotalExperienceChanging(Nullable<global::System.Int32> value);
+        partial void OnTotalExperienceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DetailedExperience
+        {
+            get
+            {
+                return _DetailedExperience;
+            }
+            set
+            {
+                OnDetailedExperienceChanging(value);
+                ReportPropertyChanging("DetailedExperience");
+                _DetailedExperience = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DetailedExperience");
+                OnDetailedExperienceChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DetailedExperience;
+        partial void OnDetailedExperienceChanging(Nullable<global::System.Int32> value);
+        partial void OnDetailedExperienceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> CurrentCTC
+        {
+            get
+            {
+                return _CurrentCTC;
+            }
+            set
+            {
+                OnCurrentCTCChanging(value);
+                ReportPropertyChanging("CurrentCTC");
+                _CurrentCTC = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CurrentCTC");
+                OnCurrentCTCChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _CurrentCTC;
+        partial void OnCurrentCTCChanging(Nullable<global::System.Decimal> value);
+        partial void OnCurrentCTCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ExpectedCTC
+        {
+            get
+            {
+                return _ExpectedCTC;
+            }
+            set
+            {
+                OnExpectedCTCChanging(value);
+                ReportPropertyChanging("ExpectedCTC");
+                _ExpectedCTC = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedCTC");
+                OnExpectedCTCChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ExpectedCTC;
+        partial void OnExpectedCTCChanging(Nullable<global::System.Decimal> value);
+        partial void OnExpectedCTCChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NoticePeriod
+        {
+            get
+            {
+                return _NoticePeriod;
+            }
+            set
+            {
+                OnNoticePeriodChanging(value);
+                ReportPropertyChanging("NoticePeriod");
+                _NoticePeriod = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NoticePeriod");
+                OnNoticePeriodChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NoticePeriod;
+        partial void OnNoticePeriodChanging(Nullable<global::System.Int32> value);
+        partial void OnNoticePeriodChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ReasonForChange
+        {
+            get
+            {
+                return _ReasonForChange;
+            }
+            set
+            {
+                OnReasonForChangeChanging(value);
+                ReportPropertyChanging("ReasonForChange");
+                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ReasonForChange");
+                OnReasonForChangeChanged();
+            }
+        }
+        private global::System.String _ReasonForChange;
+        partial void OnReasonForChangeChanging(global::System.String value);
+        partial void OnReasonForChangeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CurrentLocation
+        {
+            get
+            {
+                return _CurrentLocation;
+            }
+            set
+            {
+                OnCurrentLocationChanging(value);
+                ReportPropertyChanging("CurrentLocation");
+                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CurrentLocation");
+                OnCurrentLocationChanged();
+            }
+        }
+        private global::System.String _CurrentLocation;
+        partial void OnCurrentLocationChanging(global::System.String value);
+        partial void OnCurrentLocationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PreferedLocation
+        {
+            get
+            {
+                return _PreferedLocation;
+            }
+            set
+            {
+                OnPreferedLocationChanging(value);
+                ReportPropertyChanging("PreferedLocation");
+                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PreferedLocation");
+                OnPreferedLocationChanged();
+            }
+        }
+        private global::System.String _PreferedLocation;
+        partial void OnPreferedLocationChanging(global::System.String value);
+        partial void OnPreferedLocationChanged();
 
         #endregion
 

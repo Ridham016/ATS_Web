@@ -910,12 +910,60 @@
     <value>Interviewer</value>
   </data>
   <data name="InterviewerEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>InterviewerEmail</value>
   </data>
   <data name="InterviewerName" xml:space="preserve">
-    <value>Name</value>
+    <value>InterviewerName</value>
   </data>
   <data name="InterviewersReg" xml:space="preserve">
     <value>Interviewers</value>
+  </data>
+  <data name="CurrentCTC" xml:space="preserve">
+    <value>Current CTC</value>
+  </data>
+  <data name="CurrentCTCRequired" xml:space="preserve">
+    <value>Current CTC is Required</value>
+  </data>
+  <data name="CurrentLocation" xml:space="preserve">
+    <value>Current Location</value>
+  </data>
+  <data name="CurrentLocationRequired" xml:space="preserve">
+    <value>Current Location is Required</value>
+  </data>
+  <data name="DetailedExperience" xml:space="preserve">
+    <value>Detailed Experience</value>
+  </data>
+  <data name="DetailedExperienceRequired" xml:space="preserve">
+    <value>Detailed Experience is Required</value>
+  </data>
+  <data name="ExpectedCTC" xml:space="preserve">
+    <value>Expected CTC</value>
+  </data>
+  <data name="ExpectedCTCRequired" xml:space="preserve">
+    <value>Expected CTC is Required</value>
+  </data>
+  <data name="NoticePeriod" xml:space="preserve">
+    <value>Notice Period</value>
+  </data>
+  <data name="NoticePeriodRequired" xml:space="preserve">
+    <value>Notice Period is Required</value>
+  </data>
+  <data name="PreferedLocation" xml:space="preserve">
+    <value>Prefered Location</value>
+  </data>
+  <data name="PreferedLocationRequired" xml:space="preserve">
+    <value>Prefered Location is Required</value>
+  </data>
+  <data name="ReasonForChange" xml:space="preserve">
+    <value>Reason For Change</value>
+  </data>
+  <data name="ReasonForChangeRequired" xml:space="preserve">
+    <value>Reason For Change is Required</value>
+  </data>
+  <data name="TotalExperience" xml:space="preserve">
+    <value>Total Experience</value>
+  </data>
+  <data name="TotalExperienceRequired" xml:space="preserve">
+    <value>Total Experience is Required</value>
   </data>
 </root>

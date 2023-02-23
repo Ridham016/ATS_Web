@@ -538,6 +538,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current CTC.
+        /// </summary>
+        public static string CurrentCTC {
+            get {
+                return ResourceManager.GetString("CurrentCTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current CTC is Required.
+        /// </summary>
+        public static string CurrentCTCRequired {
+            get {
+                return ResourceManager.GetString("CurrentCTCRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Designation.
         /// </summary>
         public static string CurrentDesignation {
@@ -552,6 +570,24 @@ namespace MVCProject.Common.Resources {
         public static string CurrentDesignationRequired {
             get {
                 return ResourceManager.GetString("CurrentDesignationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Location.
+        /// </summary>
+        public static string CurrentLocation {
+            get {
+                return ResourceManager.GetString("CurrentLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Location is Required.
+        /// </summary>
+        public static string CurrentLocationRequired {
+            get {
+                return ResourceManager.GetString("CurrentLocationRequired", resourceCulture);
             }
         }
         
@@ -669,6 +705,24 @@ namespace MVCProject.Common.Resources {
         public static string DesignationRequired {
             get {
                 return ResourceManager.GetString("DesignationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detailed Experience.
+        /// </summary>
+        public static string DetailedExperience {
+            get {
+                return ResourceManager.GetString("DetailedExperience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detailed Experience is Required.
+        /// </summary>
+        public static string DetailedExperienceRequired {
+            get {
+                return ResourceManager.GetString("DetailedExperienceRequired", resourceCulture);
             }
         }
         
@@ -858,6 +912,24 @@ namespace MVCProject.Common.Resources {
         public static string ErrorOccurred {
             get {
                 return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected CTC.
+        /// </summary>
+        public static string ExpectedCTC {
+            get {
+                return ResourceManager.GetString("ExpectedCTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected CTC is Required.
+        /// </summary>
+        public static string ExpectedCTCRequired {
+            get {
+                return ResourceManager.GetString("ExpectedCTCRequired", resourceCulture);
             }
         }
         
@@ -1092,6 +1164,42 @@ namespace MVCProject.Common.Resources {
         public static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewer.
+        /// </summary>
+        public static string Interviewer {
+            get {
+                return ResourceManager.GetString("Interviewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InterviewerEmail.
+        /// </summary>
+        public static string InterviewerEmail {
+            get {
+                return ResourceManager.GetString("InterviewerEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InterviewerName.
+        /// </summary>
+        public static string InterviewerName {
+            get {
+                return ResourceManager.GetString("InterviewerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewers.
+        /// </summary>
+        public static string InterviewersReg {
+            get {
+                return ResourceManager.GetString("InterviewersReg", resourceCulture);
             }
         }
         
@@ -1537,6 +1645,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notice Period.
+        /// </summary>
+        public static string NoticePeriod {
+            get {
+                return ResourceManager.GetString("NoticePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notice Period is Required.
+        /// </summary>
+        public static string NoticePeriodRequired {
+            get {
+                return ResourceManager.GetString("NoticePeriodRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string November {
@@ -1645,6 +1771,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prefered Location.
+        /// </summary>
+        public static string PreferedLocation {
+            get {
+                return ResourceManager.GetString("PreferedLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefered Location is Required.
+        /// </summary>
+        public static string PreferedLocationRequired {
+            get {
+                return ResourceManager.GetString("PreferedLocationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string Price {
@@ -1695,6 +1839,24 @@ namespace MVCProject.Common.Resources {
         public static string Reached {
             get {
                 return ResourceManager.GetString("Reached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reason For Change.
+        /// </summary>
+        public static string ReasonForChange {
+            get {
+                return ResourceManager.GetString("ReasonForChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reason For Change is Required.
+        /// </summary>
+        public static string ReasonForChangeRequired {
+            get {
+                return ResourceManager.GetString("ReasonForChangeRequired", resourceCulture);
             }
         }
         
@@ -2181,6 +2343,24 @@ namespace MVCProject.Common.Resources {
         public static string TokenInvalid {
             get {
                 return ResourceManager.GetString("TokenInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Experience.
+        /// </summary>
+        public static string TotalExperience {
+            get {
+                return ResourceManager.GetString("TotalExperience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Experience is Required.
+        /// </summary>
+        public static string TotalExperienceRequired {
+            get {
+                return ResourceManager.GetString("TotalExperienceRequired", resourceCulture);
             }
         }
         

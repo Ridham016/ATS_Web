@@ -18,6 +18,14 @@
     <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
     <Property Name="CurrentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CurrentDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalExperience" Type="Int32" />
+    <Property Name="DetailedExperience" Type="Int32" />
+    <Property Name="CurrentCTC" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ExpectedCTC" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="NoticePeriod" Type="Int32" />
+    <Property Name="ReasonForChange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PreferedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Designation">
     <Key>

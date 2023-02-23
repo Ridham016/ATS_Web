@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module("MVCApp").controller('RegistrationCtrl', [
-        '$scope','CommonFunctions', 'RegistrationService', RegistrationCtrl
+        '$scope', 'CommonFunctions', 'RegistrationService', RegistrationCtrl
     ]);
 
     function RegistrationCtrl($scope, CommonFunctions, RegistrationService) {
@@ -15,15 +15,25 @@
             DateOfBirth: null,
             CurrentCompany: '',
             CurrentDesignations: '',
+            TotalExperience: null,
+            DetailedExperince: null,
+            CurrentCTC: null,
+            ExpectedCTC: null,
+            NoticePeriod: null,
+            CurrentLocation: '',
+            PreferedLocation: '',
+            ReasonForChange : '',
             IsActive: true
         };
 
         $scope.getApplicants = function (IsGetAll) {
-            if ($scope.IsGetAll == false) {
-                $scope.getAllApplicants();
+            if (IsGetAll) {
+                debugger
+                $scope.getApplicantList(IsGetAll);
             }
             else {
-                $scope.getApplicantList(IsGetAll);
+                debugger
+                $scope.getAllApplicants();
             }
         }
 

@@ -4,6 +4,14 @@
     <EntitySetMapping Name="ApplicantRegisters">
       <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
         <MappingFragment StoreEntitySet="ApplicantRegister">
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
           <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
           <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />

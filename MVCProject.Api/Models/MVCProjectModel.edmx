@@ -15,9 +15,17 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="DateOfBirth" Type="date" />
+          <Property Name="ApplicantDate" Type="date" />
           <Property Name="CurrentCompany" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentDesignation" Type="nvarchar" MaxLength="50" />
-          <Property Name="ApplicantDate" Type="date" />
+          <Property Name="TotalExperience" Type="int" />
+          <Property Name="DetailedExperience" Type="int" />
+          <Property Name="CurrentCTC" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ExpectedCTC" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="NoticePeriod" Type="int" />
+          <Property Name="ReasonForChange" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreferedLocation" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
           <Property Name="EntryDate" Type="date" />
@@ -59,6 +67,14 @@
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="CurrentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CurrentDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalExperience" Type="Int32" />
+          <Property Name="DetailedExperience" Type="Int32" />
+          <Property Name="CurrentCTC" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ExpectedCTC" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="NoticePeriod" Type="Int32" />
+          <Property Name="ReasonForChange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PreferedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -82,6 +98,14 @@
           <EntitySetMapping Name="ApplicantRegisters">
             <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
               <MappingFragment StoreEntitySet="ApplicantRegister">
+                <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+                <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+                <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+                <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+                <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
                 <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
                 <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />

@@ -41,6 +41,14 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentCompany = g.CurrentCompany,
                 CurrentDesignation = g.CurrentDesignation,
                 ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,  
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
                 IsActive = g.IsActive
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, applcantlist);
@@ -49,6 +57,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpGet]
         public ApiResponse GetApplicantList(bool isGetAll = false)
         {
+            isGetAll = false;
             var applcantlist = this.entities.ApplicantRegisters.Where(x => (isGetAll || x.IsActive.Value)).Select(g => new
             {
                 ApplicantId = g.ApplicantId,
@@ -60,6 +69,14 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentCompany = g.CurrentCompany,
                 CurrentDesignation = g.CurrentDesignation,
                 ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
                 IsActive = g.IsActive
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, applcantlist);
@@ -80,6 +97,14 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     CurrentCompany = g.CurrentCompany,
                     CurrentDesignation = g.CurrentDesignation,
                     ApplicantDate = g.ApplicantDate,
+                    TotalExperience = g.TotalExperience,
+                    DetailedExperience = g.DetailedExperience,
+                    CurrentCTC = g.CurrentCTC,
+                    ExpectedCTC = g.ExpectedCTC,
+                    NoticePeriod = g.NoticePeriod,
+                    CurrentLocation = g.CurrentLocation,
+                    PreferedLocation = g.PreferedLocation,
+                    ReasonForChange = g.ReasonForChange,
                     IsActive = g.IsActive
                 }).SingleOrDefault();
             if (applicantDetail != null)
@@ -118,6 +143,14 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.CurrentCompany = data.CurrentCompany;
                 applicantData.CurrentDesignation = data.CurrentDesignation;
                 applicantData.ApplicantDate = data.ApplicantDate;
+                applicantData.TotalExperience = data.TotalExperience;
+                applicantData.DetailedExperience = data.DetailedExperience;
+                applicantData.CurrentCTC = data.CurrentCTC;
+                applicantData.ExpectedCTC = data.ExpectedCTC;
+                applicantData.NoticePeriod = data.NoticePeriod;
+                applicantData.CurrentLocation = data.CurrentLocation;
+                applicantData.PreferedLocation = data.PreferedLocation;
+                applicantData.ReasonForChange = data.ReasonForChange;
                 applicantData.IsActive = data.IsActive;
                 applicantData.ApplicantDate = DateTime.Now;
                 applicantData.UpdateDate = DateTime.Now;

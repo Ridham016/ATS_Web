@@ -10,9 +10,17 @@
     <Property Name="Phone" Type="nvarchar" MaxLength="15" />
     <Property Name="Address" Type="nvarchar" MaxLength="100" />
     <Property Name="DateOfBirth" Type="date" />
+    <Property Name="ApplicantDate" Type="date" />
     <Property Name="CurrentCompany" Type="nvarchar" MaxLength="50" />
     <Property Name="CurrentDesignation" Type="nvarchar" MaxLength="50" />
-    <Property Name="ApplicantDate" Type="date" />
+    <Property Name="TotalExperience" Type="int" />
+    <Property Name="DetailedExperience" Type="int" />
+    <Property Name="CurrentCTC" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="ExpectedCTC" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="NoticePeriod" Type="int" />
+    <Property Name="ReasonForChange" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="PreferedLocation" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
     <Property Name="EntryDate" Type="date" />
