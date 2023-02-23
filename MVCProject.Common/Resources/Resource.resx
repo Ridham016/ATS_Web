@@ -910,10 +910,10 @@
     <value>Interviewer</value>
   </data>
   <data name="InterviewerEmail" xml:space="preserve">
-    <value>InterviewerEmail</value>
+    <value>Interviewer Email</value>
   </data>
   <data name="InterviewerName" xml:space="preserve">
-    <value>InterviewerName</value>
+    <value>Interviewer Name</value>
   </data>
   <data name="InterviewersReg" xml:space="preserve">
     <value>Interviewers</value>
@@ -965,5 +965,11 @@
   </data>
   <data name="TotalExperienceRequired" xml:space="preserve">
     <value>Total Experience is Required</value>
+  </data>
+  <data name="InterviewerEmailRequired" xml:space="preserve">
+    <value>Interviewer Email is Required</value>
+  </data>
+  <data name="InterviewerNameRequired" xml:space="preserve">
+    <value>Interviewer Name is Required</value>
   </data>
 </root>

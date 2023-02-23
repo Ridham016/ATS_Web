@@ -39,5 +39,14 @@
   <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
     <EntitySet Name="Designations" EntityType="Self.Designation" />
+    <EntitySet Name="Interviewer" EntityType="MVCProjectModel.Interviewer" />
   </EntityContainer>
+  <EntityType Name="Interviewer">
+    <Key>
+      <PropertyRef Name="InterviewerId" />
+    </Key>
+    <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

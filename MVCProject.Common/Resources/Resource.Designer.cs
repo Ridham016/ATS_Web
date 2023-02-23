@@ -1177,7 +1177,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InterviewerEmail.
+        ///   Looks up a localized string similar to Interviewer Email.
         /// </summary>
         public static string InterviewerEmail {
             get {
@@ -1186,11 +1186,29 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to InterviewerName.
+        ///   Looks up a localized string similar to Interviewer Email is Required.
+        /// </summary>
+        public static string InterviewerEmailRequired {
+            get {
+                return ResourceManager.GetString("InterviewerEmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewer Name.
         /// </summary>
         public static string InterviewerName {
             get {
                 return ResourceManager.GetString("InterviewerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewer Name is Required.
+        /// </summary>
+        public static string InterviewerNameRequired {
+            get {
+                return ResourceManager.GetString("InterviewerNameRequired", resourceCulture);
             }
         }
         

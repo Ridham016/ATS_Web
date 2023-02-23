@@ -36,8 +36,17 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="Remarks" Type="varchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="Interviewer">
+    <Key>
+      <PropertyRef Name="InterviewerId" />
+    </Key>
+    <Property Name="InterviewerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityContainer Name="MVCProjectModelStoreContainer">
     <EntitySet Name="ApplicantRegister" EntityType="Self.ApplicantRegister" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interviewer" EntityType="Self.Interviewer" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
