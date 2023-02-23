@@ -858,4 +858,64 @@
   <data name="ConfigModuleName" xml:space="preserve">
     <value>Module Name</value>
   </data>
+  <data name="ApplicantAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ApplicantEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ApplicantName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ApplicantPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Applicant Registration</value>
+  </data>
+  <data name="ApplicantRegister" xml:space="preserve">
+    <value>Applicant Register</value>
+  </data>
+  <data name="AddressRequired" xml:space="preserve">
+    <value>Address is Required</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email is Required</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Name is Required</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Phone is Required</value>
+  </data>
+  <data name="Applicant" xml:space="preserve">
+    <value>Applicant</value>
+  </data>
+  <data name="ApplicantDOB" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="ApplicantDOBRequired" xml:space="preserve">
+    <value>Date of Birth is Required</value>
+  </data>
+  <data name="CurrentCompany" xml:space="preserve">
+    <value>Current Company</value>
+  </data>
+  <data name="CurrentDesignation" xml:space="preserve">
+    <value>Current Designation</value>
+  </data>
+  <data name="CurrentDesignationRequired" xml:space="preserve">
+    <value>Current Designation is Required</value>
+  </data>
+  <data name="Interviewer" xml:space="preserve">
+    <value>Interviewer</value>
+  </data>
+  <data name="InterviewerEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="InterviewerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="InterviewersReg" xml:space="preserve">
+    <value>Interviewers</value>
+  </data>
 </root>

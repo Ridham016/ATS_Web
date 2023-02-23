@@ -1,35 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MVCProjectModelStoreContainer" CdmEntityContainer="MVCProjectEntities">
-    <EntitySetMapping Name="tblDepartment">
-      <EntityTypeMapping TypeName="MVCProjectModel.tblDepartment">
-        <MappingFragment StoreEntitySet="tblDepartment">
+    <EntitySetMapping Name="ApplicantRegisters">
+      <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
+        <MappingFragment StoreEntitySet="ApplicantRegister">
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblEmployee">
-      <EntityTypeMapping TypeName="MVCProjectModel.tblEmployee">
-        <MappingFragment StoreEntitySet="tblEmployee">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
-          <ScalarProperty Name="EmployeeMobile" ColumnName="EmployeeMobile" />
-          <ScalarProperty Name="EmployeeDeptId" ColumnName="EmployeeDeptId" />
-          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
-          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Designation">
+    <EntitySetMapping Name="Designations">
       <EntityTypeMapping TypeName="MVCProjectModel.Designation">
         <MappingFragment StoreEntitySet="Designation">
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
           <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

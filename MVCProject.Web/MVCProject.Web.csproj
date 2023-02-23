@@ -157,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Areas\ApplicantRegister\ApplicantAreaRegistration.cs" />
+    <Compile Include="Areas\ApplicantRegister\Controllers\RegistrationController.cs" />
     <Compile Include="Areas\Configuration\ConfigurationAreaRegistration.cs" />
     <Compile Include="Areas\Configuration\Controllers\ApplicationController.cs" />
     <Compile Include="Areas\Configuration\Controllers\DesignationController.cs" />
@@ -207,6 +209,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\WebApiConfig.cs" />
+    <Content Include="Areas\ApplicantRegister\Scripts\angular\controllers\RegistrationCtrl.js" />
+    <Content Include="Areas\ApplicantRegister\Scripts\angular\services\RegistrationService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ApplicationCtrl.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\DesignationCtrl.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ResetToLoginCtrl.js" />
@@ -453,6 +457,8 @@
     <Content Include="Content\fonts\arial.ttf" />
     <Content Include="Content\fonts\Calibri.ttf" />
     <Content Include="Areas\Configuration\Views\Designation\Index.cshtml" />
+    <Content Include="Areas\ApplicantRegister\Views\Registration\Index.cshtml" />
+    <Content Include="Areas\ApplicantRegister\Views\Web.config" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

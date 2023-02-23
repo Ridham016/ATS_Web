@@ -115,6 +115,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address is Required.
+        /// </summary>
+        public static string AddressRequired {
+            get {
+                return ResourceManager.GetString("AddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} already exists.
         /// </summary>
         public static string AlreadyExists {
@@ -138,6 +147,78 @@ namespace MVCProject.Common.Resources {
         public static string AnErrorHasOccurredUserAreas {
             get {
                 return ResourceManager.GetString("AnErrorHasOccurredUserAreas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicant.
+        /// </summary>
+        public static string Applicant {
+            get {
+                return ResourceManager.GetString("Applicant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string ApplicantAddress {
+            get {
+                return ResourceManager.GetString("ApplicantAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string ApplicantDOB {
+            get {
+                return ResourceManager.GetString("ApplicantDOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth is Required.
+        /// </summary>
+        public static string ApplicantDOBRequired {
+            get {
+                return ResourceManager.GetString("ApplicantDOBRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string ApplicantEmail {
+            get {
+                return ResourceManager.GetString("ApplicantEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ApplicantName {
+            get {
+                return ResourceManager.GetString("ApplicantName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string ApplicantPhone {
+            get {
+                return ResourceManager.GetString("ApplicantPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicant Register.
+        /// </summary>
+        public static string ApplicantRegister {
+            get {
+                return ResourceManager.GetString("ApplicantRegister", resourceCulture);
             }
         }
         
@@ -448,6 +529,33 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Company.
+        /// </summary>
+        public static string CurrentCompany {
+            get {
+                return ResourceManager.GetString("CurrentCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Designation.
+        /// </summary>
+        public static string CurrentDesignation {
+            get {
+                return ResourceManager.GetString("CurrentDesignation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Designation is Required.
+        /// </summary>
+        public static string CurrentDesignationRequired {
+            get {
+                return ResourceManager.GetString("CurrentDesignationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom Range.
         /// </summary>
         public static string CustomRange {
@@ -678,6 +786,15 @@ namespace MVCProject.Common.Resources {
         public static string EmailInvalid {
             get {
                 return ResourceManager.GetString("EmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is Required.
+        /// </summary>
+        public static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
             }
         }
         
@@ -1357,6 +1474,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name is Required.
+        /// </summary>
+        public static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have sufficient privilege to access this application, please contact administrator. .
         /// </summary>
         public static string NoPageAccess {
@@ -1510,6 +1636,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phone is Required.
+        /// </summary>
+        public static string PhoneRequired {
+            get {
+                return ResourceManager.GetString("PhoneRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string Price {
@@ -1587,6 +1722,15 @@ namespace MVCProject.Common.Resources {
         public static string RecordsFound {
             get {
                 return ResourceManager.GetString("RecordsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicant Registration.
+        /// </summary>
+        public static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
             }
         }
         
