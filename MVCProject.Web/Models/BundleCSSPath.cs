@@ -26,6 +26,11 @@ namespace MVCProject.Models
         public string style = cssPath + "style.css";
 
         /// <summary>
+        /// style CSS
+        /// </summary>
+        public string newstyle = cssPath + "newstyles.css";
+
+        /// <summary>
         /// toastr CSS
         /// </summary>
         public string toastr = cssPath + "toastr.css";

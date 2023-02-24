@@ -35,6 +35,7 @@ namespace MVCProject
             bundles.Add(new StyleBundle("~/css/outer")
                 .Include(BundlePath.css.bootstrap, new CssRewriteUrlTransform())
                 .Include(BundlePath.css.style)
+                .Include(BundlePath.css.newstyle)
                 .Include(BundlePath.css.developer)
                 .Include(BundlePath.css.toastr)
                 .Include(BundlePath.css.icons, new CssRewriteUrlTransform()));
@@ -43,6 +44,7 @@ namespace MVCProject
             bundles.Add(new ScriptBundle("~/bundles/outer")
                .Include(BundlePath.jquery)
                .Include(BundlePath.jqPlugin.tether)
+               .Include(BundlePath.js.bootstrapbundle)
                .Include(BundlePath.js.pace)
                .Include(BundlePath.js.common)
                .Include(BundlePath.jqPlugin.cryptography)

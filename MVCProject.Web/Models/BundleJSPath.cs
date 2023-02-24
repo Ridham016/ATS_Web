@@ -89,5 +89,12 @@ namespace MVCProject.Models
         /// canvas JS
         /// </summary>
         public string canvg = jsPath + "canvg.min.js";
+
+        /// <summary>
+        /// canvas JS
+        /// </summary>
+        public string bootstrapbundle = jsPath + "bootstrap.bundle.min.js";
+
+
     }
 }

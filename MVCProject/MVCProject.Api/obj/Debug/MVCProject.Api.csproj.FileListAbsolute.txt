@@ -27,3 +27,5 @@ D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Api\bin\System.Web.Web
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Api\bin\System.Web.WebPages.Razor.xml
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Api\obj\Debug\MVCProject.Api.dll
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Api\obj\Debug\MVCProject.Api.pdb
+D:\ATS Web\ATS_Web\MVCProject\MVCProject.Api\obj\Debug\MVCProject.Api.dll
+D:\ATS Web\ATS_Web\MVCProject\MVCProject.Api\obj\Debug\MVCProject.Api.pdb

@@ -32,3 +32,5 @@ D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Web\bin\System.Web.Web
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Web\bin\System.Web.WebPages.Razor.xml
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Web\obj\Debug\MVCProject.Web.dll
 D:\LATESTPROJECTTFS\MVCProject\Dev2\MVCProject\MVCProject.Web\obj\Debug\MVCProject.Web.pdb
+D:\ATS Web\ATS_Web\MVCProject\MVCProject.Web\obj\Debug\MVCProject.Web.dll
+D:\ATS Web\ATS_Web\MVCProject\MVCProject.Web\obj\Debug\MVCProject.Web.pdb

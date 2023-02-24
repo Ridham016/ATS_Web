@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MVCProject.Web",
+    "\\MVCProject.Web\\App_Start",
+    "\\MVCProject.Web\\Scripts",
+    "\\MVCProject.Web\\Scripts\\jquery",
+    "\\MVCProject.Web\\Scripts\\jquery\\lib",
+    "\\MVCProject.Web\\Scripts\\js",
+    "\\MVCProject.Web\\Views",
+    "\\MVCProject.Web\\Views\\Shared"
+  ],
+  "SelectedNode": "\\MVCProject.Web\\Views\\Shared\\_Layout.cshtml",
+  "PreviewInSolutionExplorer": false
+}
