@@ -40,6 +40,8 @@
         $scope.getAllApplicants = function () {
             RegistrationService.GetAllApplicants().then(function (res) {
                 $scope.applicants = res.data.Result;
+                console.log($scope.applicants);
+                debugger
             });
         };
 
@@ -85,7 +87,6 @@
                     $scope.applicantDetailScope = res.data.Result;
                     $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                     CommonFunctions.ScrollUpAndFocus("Name");
-
                 }
             })
         }
