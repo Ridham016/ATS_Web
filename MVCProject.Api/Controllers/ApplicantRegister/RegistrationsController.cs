@@ -125,6 +125,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
+                data.DateOfBirth.Value.AddDays(1);
                 entities.ApplicantRegisters.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
@@ -139,7 +140,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.Email = data.Email;
                 applicantData.Phone = data.Phone;
                 applicantData.Address = data.Address;
-                applicantData.DateOfBirth = data.DateOfBirth;
+                applicantData.DateOfBirth = data.DateOfBirth.Value.AddDays(1);
                 applicantData.CurrentCompany = data.CurrentCompany;
                 applicantData.CurrentDesignation = data.CurrentDesignation;
                 applicantData.ApplicantDate = data.ApplicantDate;
@@ -161,6 +162,43 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 }
 
                 return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.Applicant));
+            }
+        }
+
+        [HttpPost]
+        public ApiResponse ListSearchFilter([FromBody]ApplicantRegister data)
+        {
+            var applcantlist = this.entities.ApplicantRegisters.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation || 
+            (x.PreferedLocation == data.PreferedLocation && x.CurrentLocation == data.CurrentLocation)).Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                Name = g.Name,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                IsActive = g.IsActive
+            }).ToList();
+            //return this.Response(MessageTypes.Success, string.Empty, applcantlist);
+
+            if (applcantlist != null)
+            {
+                return this.Response(Utilities.MessageTypes.Success, string.Empty, applcantlist);
+            }
+            else
+            {
+                return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
         }
     }
