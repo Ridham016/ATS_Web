@@ -907,7 +907,7 @@
     <value>Current Designation is Required</value>
   </data>
   <data name="Interviewer" xml:space="preserve">
-    <value>Interviewer</value>
+    <value>Interviewer Register</value>
   </data>
   <data name="InterviewerEmail" xml:space="preserve">
     <value>Interviewer Email</value>
@@ -971,5 +971,14 @@
   </data>
   <data name="InterviewerNameRequired" xml:space="preserve">
     <value>Interviewer Name is Required</value>
+  </data>
+  <data name="ScheduleManagement" xml:space="preserve">
+    <value>Schedule Management</value>
+  </data>
+  <data name="InterviewerPhone" xml:space="preserve">
+    <value>Interviewer Phone</value>
+  </data>
+  <data name="InterviewerPhoneRequired" xml:space="preserve">
+    <value>Interviewer Phone is Required</value>
   </data>
 </root>

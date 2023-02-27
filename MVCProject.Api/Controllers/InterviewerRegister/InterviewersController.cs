@@ -29,6 +29,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerId = d.InterviewerId,
                 InterviewerName = d.InterviewerName,
                 InterviewerEmail = d.InterviewerEmail,
+                InterviewerPhone = d.InterviewerPhone
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
         }
@@ -42,6 +43,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                     InterviewerId = d.InterviewerId,
                     InterviewerName = d.InterviewerName,
                     InterviewerEmail = d.InterviewerEmail,
+                    InterviewerPhone = d.InterviewerPhone
                 }).SingleOrDefault();
             if (InterviewerDetail != null)
             {
@@ -71,6 +73,7 @@ namespace MVCProject.Api.Controllers.Interviewers
             {
                 InterviewerData.InterviewerName = data.InterviewerName;
                 InterviewerData.InterviewerEmail = data.InterviewerEmail;
+                InterviewerData.InterviewerPhone = data.InterviewerPhone;
 
                 this.entities.Interviewer.ApplyCurrentValues(InterviewerData);
                 if (!(this.entities.SaveChanges() > 0))

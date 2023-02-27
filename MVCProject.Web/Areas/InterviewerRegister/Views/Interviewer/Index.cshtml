@@ -32,7 +32,7 @@
 <div ng-controller="InterviewerCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
-        <h4 class="header-title-sub l">@Resource.InterviewersReg</h4>
+        <h4 class="header-title-sub l">@Resource.Interviewer</h4>
         <div class="pull-right">
         </div>
     </div>
@@ -71,11 +71,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.InterviewerPhone<span class="required-field">*</span>
+                                </label>
+                                <input type="text" class="form-control" placeholder="Enter Phone" name="Phone No." ng-model="interviewerDetailScope.InterviewerPhone" required />
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerPhone.$dirty && frmRegister.InterviewerPhone.$invalid">
+                                    <span data-ng-show="frmRegister.InterviewerPhone.$error.required">@Resource.InterviewerPhoneRequired</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.Name.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.InterviewerName.$invalid">
                                     {{interviewerDetailScope.InterviewerId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
@@ -107,6 +120,7 @@
                                                 <th>SrNo</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
+                                                <th>Phone</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -120,6 +134,9 @@
                                                 </td>
                                                 <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.InterviewerEmail}}
+                                                </td>
+                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.InterviewerPhone}}
                                                 </td>
                                                 <td ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"

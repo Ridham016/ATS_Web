@@ -938,6 +938,30 @@ namespace MVCProject.Api.Models
         private global::System.String _InterviewerEmail;
         partial void OnInterviewerEmailChanging(global::System.String value);
         partial void OnInterviewerEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerPhone
+        {
+            get
+            {
+                return _InterviewerPhone;
+            }
+            set
+            {
+                OnInterviewerPhoneChanging(value);
+                ReportPropertyChanging("InterviewerPhone");
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerPhone");
+                OnInterviewerPhoneChanged();
+            }
+        }
+        private global::System.String _InterviewerPhone;
+        partial void OnInterviewerPhoneChanging(global::System.String value);
+        partial void OnInterviewerPhoneChanged();
 
         #endregion
 

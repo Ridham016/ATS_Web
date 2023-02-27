@@ -9,7 +9,8 @@
         $scope.interviewerDetailScope = {
             InterviewerId: 0,
             InterviewerName: '',
-            InterviewerEmail: ''
+            InterviewerEmail: '',
+            InterviewerPhone: ''
         };
 
 
@@ -23,7 +24,8 @@
             $scope.interviewerDetailScope = {
                 InterviewertId: 0,
                 InterviewerName: '',
-                InterviewerEmail: ''
+                InterviewerEmail: '',
+                InterviewerPhone:''
             };
             frmRegister.$setPristine();
             $("InterviewerName").focus();
