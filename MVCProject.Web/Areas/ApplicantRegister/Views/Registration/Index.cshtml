@@ -48,13 +48,39 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>
-                                            @Resource.ApplicantName <span class="required-field">*</span>
+                                            @Resource.ApplicantFirstName <span class="required-field">*</span>
                                         </label>
-                                        <input type="text" class="form-control" ng-focus="true" name="Name" ng-model="applicantDetailScope.Name" required placeholder="Enter Name" maxlength="250">
+                                        <input type="text" class="form-control" ng-focus="true" name="FirstName" ng-model="applicantDetailScope.FirstName" required placeholder="Enter First Name" maxlength="250">
                                         <div class="c">
                                         </div>
-                                        <div class="label label-danger" data-ng-show="frmRegister.Name.$dirty && frmRegister.Name.$invalid">
-                                            <span data-ng-show="frmRegister.Name.$error.required">@Resource.NameRequired</span>
+                                        <div class="label label-danger" data-ng-show="frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid">
+                                            <span data-ng-show="frmRegister.FirstName.$error.required">@Resource.FirstNameRequired</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>
+                                            @Resource.ApplicantMiddleName <span class="required-field">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" required placeholder="Enter Middle Name" maxlength="250">
+                                        <div class="c">
+                                        </div>
+                                        <div class="label label-danger" data-ng-show="frmRegister.MiddleName.$dirty && frmRegister.MiddleName.$invalid">
+                                            <span data-ng-show="frmRegister.MiddleName.$error.required">@Resource.MiddleNameRequired</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>
+                                            @Resource.ApplicantLastName <span class="required-field">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" name="LastName" ng-model="applicantDetailScope.LastName" required placeholder="Enter Last Name" maxlength="250">
+                                        <div class="c">
+                                        </div>
+                                        <div class="label label-danger" data-ng-show="frmRegister.LastName.$dirty && frmRegister.LastName.$invalid">
+                                            <span data-ng-show="frmRegister.LastName.$error.required">@Resource.LastNameRequired</span>
                                         </div>
                                     </div>
                                 </div>
@@ -256,6 +282,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>
+                                            @Resource.ApplicantCV<span class="required-field">*</span>
+                                        </label>
+                                        <input type="file" class="form-control" name="ApplicantCV" file-model="file" />
+                                    </div>
+                                </div>
                             </div>
                         </uib-accordion-group>
                     </uib-accordion>
@@ -330,7 +364,7 @@
                                                     {{$index+1}}
                                                 </td>
                                                 <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Name}}
+                                                    {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
                                                 </td>
                                                 <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Email}}
@@ -370,3 +404,4 @@
 @section scripts {
     @Scripts.Render("~/bundles/ApplicantRegister/Registration")
 }
+@*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ng-file-upload@12.2.13/dist/ng-file-upload.min.js"></script>*@

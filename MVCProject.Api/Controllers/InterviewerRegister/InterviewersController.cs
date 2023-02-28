@@ -24,7 +24,7 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpGet]
         public ApiResponse GetAllInterviewers()
         {
-            var interviewerslist = this.entities.Interviewer.Select(d => new
+            var interviewerslist = this.entities.Interviewers.Select(d => new
             {
                 InterviewerId = d.InterviewerId,
                 InterviewerName = d.InterviewerName,
@@ -37,7 +37,7 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpGet]
         public ApiResponse GetInterviewerById(int InterviewerId)
         {
-            var InterviewerDetail = this.entities.Interviewer.Where(x => x.InterviewerId == InterviewerId)
+            var InterviewerDetail = this.entities.Interviewers.Where(x => x.InterviewerId == InterviewerId)
                 .Select(d => new
                 {
                     InterviewerId = d.InterviewerId,
@@ -58,10 +58,10 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpPost]
         public ApiResponse Register([FromBody] Interviewer data)
         {
-            var InterviewerData = this.entities.Interviewer.FirstOrDefault(x => x.InterviewerId == data.InterviewerId);
+            var InterviewerData = this.entities.Interviewers.FirstOrDefault(x => x.InterviewerId == data.InterviewerId);
             if (InterviewerData == null)
             {
-                entities.Interviewer.AddObject(data);
+                entities.Interviewers.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Interviewer));
@@ -75,7 +75,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerData.InterviewerEmail = data.InterviewerEmail;
                 InterviewerData.InterviewerPhone = data.InterviewerPhone;
 
-                this.entities.Interviewer.ApplyCurrentValues(InterviewerData);
+                this.entities.Interviewers.ApplyCurrentValues(InterviewerData);
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Interviewer);

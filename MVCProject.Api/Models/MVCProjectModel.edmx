@@ -4,13 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="MVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="ApplicantRegister">
           <Key>
             <PropertyRef Name="ApplicantId" />
           </Key>
           <Property Name="ApplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
@@ -48,13 +50,15 @@
           <Property Name="InterviewerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
           <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="InterviewerPhone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="MVCProjectModelStoreContainer">
           <EntitySet Name="ApplicantRegister" EntityType="Self.ApplicantRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interviewer" EntityType="Self.Interviewer" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MVCProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -63,17 +67,14 @@
             <PropertyRef Name="ApplicantId" />
           </Key>
           <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="ApplicantDate" Type="DateTime" Precision="0" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="ApplicantDate" Type="DateTime" Precision="0" />
           <Property Name="CurrentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CurrentDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TotalExperience" Type="Int32" />
@@ -84,6 +85,11 @@
           <Property Name="ReasonForChange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CurrentLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PreferedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -94,11 +100,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
-          <EntitySet Name="Designations" EntityType="Self.Designation" />
-          <EntitySet Name="Interviewer" EntityType="MVCProjectModel.Interviewer" />
-        </EntityContainer>
         <EntityType Name="Interviewer">
           <Key>
             <PropertyRef Name="InterviewerId" />
@@ -106,7 +107,13 @@
           <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InterviewerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Interviewers" EntityType="Self.Interviewer" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -116,28 +123,30 @@
           <EntitySetMapping Name="ApplicantRegisters">
             <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
               <MappingFragment StoreEntitySet="ApplicantRegister">
-                <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
-                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
-                <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
-                <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
-                <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
-                <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
-                <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
-                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
-                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
-                <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
                 <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+                <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+                <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+                <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+                <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+                <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+                <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -151,12 +160,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Interviewer">
+          <EntitySetMapping Name="Interviewers">
             <EntityTypeMapping TypeName="MVCProjectModel.Interviewer">
               <MappingFragment StoreEntitySet="Interviewer">
-                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
-                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+                <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -181,12 +191,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram DiagramId="0f149fb9556541b39462f06a12ea44d3" Name="Diagram1">
-        <EntityTypeShape EntityType="MVCProjectModel.ApplicantRegister" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.Designation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.Interviewer" Width="1.5" PointX="3.375" PointY="3.75" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>

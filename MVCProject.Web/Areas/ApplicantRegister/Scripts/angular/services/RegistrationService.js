@@ -25,5 +25,12 @@
             url: 'http://localhost:56562/api/Registrations/GetApplicantList' + (angular.isDefined(isGetAll) ? '?isGetAll=' + isGetAll : '')
         });
     };
+    list.uploadFileToUrl = function (fd) {
+        debugger
+        return $http.post('http://localhost:56562/api/Registrations/Upload', fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        })
+    }
     return list;
 }])

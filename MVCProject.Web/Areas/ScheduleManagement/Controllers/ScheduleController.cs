@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVCProject.Web.Areas.ScheduleManagement.Controllers
+namespace MVCProject.Areas.ScheduleManagement.Controllers
 {
     public class ScheduleController : Controller
     {
         //
-        // GET: /ScheduleManagement/List/
+        // GET: /ScheduleManagement/Schedule/
 
         public ActionResult Index()
         {

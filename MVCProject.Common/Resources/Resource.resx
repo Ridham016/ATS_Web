@@ -864,8 +864,8 @@
   <data name="ApplicantEmail" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="ApplicantName" xml:space="preserve">
-    <value>Name</value>
+  <data name="ApplicantFirstName" xml:space="preserve">
+    <value>Firstname</value>
   </data>
   <data name="ApplicantPhone" xml:space="preserve">
     <value>Phone</value>
@@ -882,8 +882,8 @@
   <data name="EmailRequired" xml:space="preserve">
     <value>Email is Required</value>
   </data>
-  <data name="NameRequired" xml:space="preserve">
-    <value>Name is Required</value>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>Firstname is Required</value>
   </data>
   <data name="PhoneRequired" xml:space="preserve">
     <value>Phone is Required</value>
@@ -980,5 +980,20 @@
   </data>
   <data name="InterviewerPhoneRequired" xml:space="preserve">
     <value>Interviewer Phone is Required</value>
+  </data>
+  <data name="ApplicantLastName" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="ApplicantMiddleName" xml:space="preserve">
+    <value>Middlename</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>Lastname is Required</value>
+  </data>
+  <data name="MiddleNameRequired" xml:space="preserve">
+    <value>Middlename is Required</value>
+  </data>
+  <data name="ApplicantCV" xml:space="preserve">
+    <value>Upload CV</value>
   </data>
 </root>

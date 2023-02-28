@@ -1,11 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    angular.module("MVCApp").controller('RegistrationCtrl', [
-        '$scope', 'CommonFunctions', 'RegistrationService', RegistrationCtrl
+    angular.module("MVCApp").controller('ScheduleCtrl', [
+        '$scope', 'CommonFunctions', 'ScheduleService', ScheduleCtrl
     ]);
 
-    function RegistrationCtrl($scope, CommonFunctions, RegistrationService) {
+    function ScheduleCtrl($scope, CommonFunctions, ScheduleService) {
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             Name: '',
@@ -28,13 +28,13 @@
         }
 
         $scope.getAllApplicants = function () {
-            RegistrationService.GetAllApplicants().then(function (res) {
+            ScheduleService.GetAllApplicants().then(function (res) {
                 $scope.applicants = res.data.Result;
             });
         };
 
         $scope.getApplicantList = function (isGetAll) {
-            RegistrationService.GetApplicantList(isGetAll).then(function (res) {
+            ScheduleService.GetApplicantList(isGetAll).then(function (res) {
                 $scope.applicants = res.data.Result;
             });
         }
@@ -55,7 +55,7 @@
             $("Name").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
-            RegistrationService.Register(applicantDetailScope).then(function (res) {
+            ScheduleService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
                     var applicants = res.data;
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
@@ -70,7 +70,7 @@
             });
         }
         $scope.EditApplicantDetails = function (ApplicantId) {
-            RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
+            ScheduleService.GetApplicantsById(ApplicantId).then(function (res) {
                 if (res) {
                     $scope.applicantDetailScope = res.data.Result;
                     $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);

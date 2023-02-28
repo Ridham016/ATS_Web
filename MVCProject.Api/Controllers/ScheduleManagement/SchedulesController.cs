@@ -4,7 +4,7 @@
 // </copyright>
 // ----------------------------------------------------------------------- 
 
-namespace MVCProject.Api.Controllers.ApplicantRegister
+namespace MVCProject.Api.Controllers.ScheduleManagement
 {
     using MVCProject.Api.Models;
     using MVCProject.Api.Utilities;
@@ -18,11 +18,11 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
     using System.Net.Http;
     using System.Web.Http;
     #endregion
-    public class RegistrationsController : BaseController
+    public class SchedulesController : BaseController
     {
         private MVCProjectEntities entities;
 
-        public RegistrationsController()
+        public SchedulesController()
         {
             this.entities = new MVCProjectEntities();
         }
@@ -44,7 +44,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentDesignation = g.CurrentDesignation,
                 ApplicantDate = g.ApplicantDate,
                 TotalExperience = g.TotalExperience,
-                DetailedExperience = g.DetailedExperience,  
+                DetailedExperience = g.DetailedExperience,
                 CurrentCTC = g.CurrentCTC,
                 ExpectedCTC = g.ExpectedCTC,
                 NoticePeriod = g.NoticePeriod,
@@ -89,7 +89,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpGet]
         public ApiResponse GetApplicantById(int ApplicantId)
         {
-            var applicantDetail = this.entities.ApplicantRegisters.Where(x => x.ApplicantId== ApplicantId)
+            var applicantDetail = this.entities.ApplicantRegisters.Where(x => x.ApplicantId == ApplicantId)
                 .Select(g => new
                 {
                     ApplicantId = g.ApplicantId,
@@ -174,9 +174,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse ListSearchFilter([FromBody]ApplicantRegister data)
+        public ApiResponse ListSearchFilter([FromBody] ApplicantRegister data)
         {
-            var applcantlist = this.entities.ApplicantRegisters.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation || 
+            var applcantlist = this.entities.ApplicantRegisters.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation ||
             (x.PreferedLocation == data.PreferedLocation && x.CurrentLocation == data.CurrentLocation)).Select(g => new
             {
                 ApplicantId = g.ApplicantId,

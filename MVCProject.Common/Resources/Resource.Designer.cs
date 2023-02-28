@@ -169,6 +169,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload CV.
+        /// </summary>
+        public static string ApplicantCV {
+            get {
+                return ResourceManager.GetString("ApplicantCV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of Birth.
         /// </summary>
         public static string ApplicantDOB {
@@ -196,11 +205,29 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Firstname.
         /// </summary>
-        public static string ApplicantName {
+        public static string ApplicantFirstName {
             get {
-                return ResourceManager.GetString("ApplicantName", resourceCulture);
+                return ResourceManager.GetString("ApplicantFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lastname.
+        /// </summary>
+        public static string ApplicantLastName {
+            get {
+                return ResourceManager.GetString("ApplicantLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middlename.
+        /// </summary>
+        public static string ApplicantMiddleName {
+            get {
+                return ResourceManager.GetString("ApplicantMiddleName", resourceCulture);
             }
         }
         
@@ -1033,6 +1060,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Firstname is Required.
+        /// </summary>
+        public static string FirstNameRequired {
+            get {
+                return ResourceManager.GetString("FirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot password.
         /// </summary>
         public static string ForgotPassword {
@@ -1168,7 +1204,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Interviewer.
+        ///   Looks up a localized string similar to Interviewer Register.
         /// </summary>
         public static string Interviewer {
             get {
@@ -1209,6 +1245,24 @@ namespace MVCProject.Common.Resources {
         public static string InterviewerNameRequired {
             get {
                 return ResourceManager.GetString("InterviewerNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewer Phone.
+        /// </summary>
+        public static string InterviewerPhone {
+            get {
+                return ResourceManager.GetString("InterviewerPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interviewer Phone is Required.
+        /// </summary>
+        public static string InterviewerPhoneRequired {
+            get {
+                return ResourceManager.GetString("InterviewerPhoneRequired", resourceCulture);
             }
         }
         
@@ -1290,6 +1344,15 @@ namespace MVCProject.Common.Resources {
         public static string LastCalender {
             get {
                 return ResourceManager.GetString("LastCalender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lastname is Required.
+        /// </summary>
+        public static string LastNameRequired {
+            get {
+                return ResourceManager.GetString("LastNameRequired", resourceCulture);
             }
         }
         
@@ -1546,6 +1609,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Middlename is Required.
+        /// </summary>
+        public static string MiddleNameRequired {
+            get {
+                return ResourceManager.GetString("MiddleNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modified By.
         /// </summary>
         public static string ModifiedBy {
@@ -1596,15 +1668,6 @@ namespace MVCProject.Common.Resources {
         public static string MySOP {
             get {
                 return ResourceManager.GetString("MySOP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name is Required.
-        /// </summary>
-        public static string NameRequired {
-            get {
-                return ResourceManager.GetString("NameRequired", resourceCulture);
             }
         }
         
@@ -2109,6 +2172,15 @@ namespace MVCProject.Common.Resources {
         public static string ScheduleDateRequired {
             get {
                 return ResourceManager.GetString("ScheduleDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule Management.
+        /// </summary>
+        public static string ScheduleManagement {
+            get {
+                return ResourceManager.GetString("ScheduleManagement", resourceCulture);
             }
         }
         

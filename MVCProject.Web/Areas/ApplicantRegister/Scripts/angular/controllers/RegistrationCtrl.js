@@ -1,7 +1,21 @@
 ﻿(function () {
     'use strict';
 
-    angular.module("MVCApp").controller('RegistrationCtrl', [
+    angular.module("MVCApp").directive('fileModel', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        modelSetter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        };
+    }]).controller('RegistrationCtrl', [
         '$scope', 'CommonFunctions', 'RegistrationService', RegistrationCtrl
     ]);
 
@@ -67,6 +81,8 @@
             $("Name").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
+            debugger
+            $scope.uploadFile();
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
                     var applicants = res.data;
@@ -90,5 +106,32 @@
                 }
             })
         }
+
+        //$scope.UploadFile = function (files) {
+        //    $scope.SelectedFiles = files;
+        //    if ($scope.SelectedFiles && $scope.SelectedFiles.lenght) {
+        //        Upload.upload({
+        //            url: 'http://localhost:56562/api/Registrations/Upload',
+        //            data: {
+        //                files: $scope.SelectedFiles
+        //            }
+        //        }).then(function (res) {
+        //            if (res.status > 0) {
+        //                var errormsg = res.status + ":" + res.data.Result;
+        //            }
+        //        })
+        //    }
+        //}
+        $scope.uploadFile = function () {
+            debugger
+            var file = $scope.file;
+            console.log('file is ');
+            console.dir(file);
+            var fd = new FormData();
+            fd.append('file', file);
+            debugger
+            RegistrationService.uploadFileToUrl(fd).success(function () {
+            });
+        };
     }
 })();
