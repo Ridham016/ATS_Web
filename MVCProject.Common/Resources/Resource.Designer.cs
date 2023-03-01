@@ -178,6 +178,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Applicant CV is Required.
+        /// </summary>
+        public static string ApplicantCVRequired {
+            get {
+                return ResourceManager.GetString("ApplicantCVRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of Birth.
         /// </summary>
         public static string ApplicantDOB {

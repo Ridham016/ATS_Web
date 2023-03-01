@@ -12,7 +12,7 @@
         //    });
         //}
         var applicantDetailParams = {};
-
+        $scope.isGetAll = false;
         $scope.tableActiveParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize
@@ -23,7 +23,7 @@
                 }
                 applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
                 debugger
-                ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
+                ScheduleService.GetApplicantList(applicantDetailParams.Paging, $scope.isGetAll).then(function (res) {
                     var data = res.data;
                     $scope.applicants = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success

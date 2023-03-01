@@ -287,7 +287,12 @@
                                         <label>
                                             @Resource.ApplicantCV<span class="required-field">*</span>
                                         </label>
-                                        <input type="file" class="form-control" name="ApplicantCV" file-model="files" />
+                                        <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required/>
+                                        <div class="c">
+                                        </div>
+                                        <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
+                                            <span data-ng-show="frmRegister.ApplicantCV.$error.required">@Resource.ApplicantCVRequired</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -17,6 +17,12 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__Applicant__FileI__0880433F", "FileUpload", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.FileUpload), "ApplicantRegister", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ApplicantRegister), true)]
+
+#endregion
+
 namespace MVCProject.Api.Models
 {
     #region Contexts
@@ -112,6 +118,22 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<Interviewer> _Interviewers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FileUpload> FileUpload
+        {
+            get
+            {
+                if ((_FileUpload == null))
+                {
+                    _FileUpload = base.CreateObjectSet<FileUpload>("FileUpload");
+                }
+                return _FileUpload;
+            }
+        }
+        private ObjectSet<FileUpload> _FileUpload;
 
         #endregion
 
@@ -139,6 +161,14 @@ namespace MVCProject.Api.Models
         public void AddToInterviewers(Interviewer interviewer)
         {
             base.AddObject("Interviewers", interviewer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FileUpload EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFileUpload(FileUpload fileUpload)
+        {
+            base.AddObject("FileUpload", fileUpload);
         }
 
         #endregion
@@ -752,10 +782,76 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.DateTime> _UpdateDate;
         partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FileId
+        {
+            get
+            {
+                return _FileId;
+            }
+            set
+            {
+                OnFileIdChanging(value);
+                ReportPropertyChanging("FileId");
+                _FileId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FileId");
+                OnFileIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FileId;
+        partial void OnFileIdChanging(Nullable<global::System.Int32> value);
+        partial void OnFileIdChanged();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__Applicant__FileI__0880433F", "FileUpload")]
+        public FileUpload FileUpload
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FileUpload>("MVCProjectModel.FK__Applicant__FileI__0880433F", "FileUpload").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FileUpload>("MVCProjectModel.FK__Applicant__FileI__0880433F", "FileUpload").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FileUpload> FileUploadReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FileUpload>("MVCProjectModel.FK__Applicant__FileI__0880433F", "FileUpload");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FileUpload>("MVCProjectModel.FK__Applicant__FileI__0880433F", "FileUpload", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -885,6 +981,161 @@ namespace MVCProject.Api.Models
         #endregion
 
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="FileUpload")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FileUpload : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FileUpload object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static FileUpload CreateFileUpload(global::System.Int32 id)
+        {
+            FileUpload fileUpload = new FileUpload();
+            fileUpload.Id = id;
+            return fileUpload;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilePath
+        {
+            get
+            {
+                return _FilePath;
+            }
+            set
+            {
+                OnFilePathChanging(value);
+                ReportPropertyChanging("FilePath");
+                _FilePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilePath");
+                OnFilePathChanged();
+            }
+        }
+        private global::System.String _FilePath;
+        partial void OnFilePathChanging(global::System.String value);
+        partial void OnFilePathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileType
+        {
+            get
+            {
+                return _FileType;
+            }
+            set
+            {
+                OnFileTypeChanging(value);
+                ReportPropertyChanging("FileType");
+                _FileType = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileType");
+                OnFileTypeChanged();
+            }
+        }
+        private global::System.String _FileType;
+        partial void OnFileTypeChanging(global::System.String value);
+        partial void OnFileTypeChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__Applicant__FileI__0880433F", "ApplicantRegister")]
+        public EntityCollection<ApplicantRegister> ApplicantRegister
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ApplicantRegister>("MVCProjectModel.FK__Applicant__FileI__0880433F", "ApplicantRegister");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ApplicantRegister>("MVCProjectModel.FK__Applicant__FileI__0880433F", "ApplicantRegister", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>

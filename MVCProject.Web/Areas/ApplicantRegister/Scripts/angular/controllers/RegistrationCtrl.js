@@ -1,21 +1,19 @@
 ﻿(function () {
     'use strict';
 
-    angular.module("MVCApp").directive('fileModel', ['$parse', function ($parse) {
+    angular.module("MVCApp").directive('fileOnChange', function () {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
-                element.bind('change', function () {
-                    $parse(attrs.fileModel).assign(scope, element[0].files)
-                    scope.$apply();
-                });
+                var onChangeHandler = scope.$eval(attrs.fileOnChange);
+                element.bind('change', onChangeHandler);
             }
         };
-    }]).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions','$rootScope', 'RegistrationService', RegistrationCtrl
+    }).controller('RegistrationCtrl', [
+        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.applicantDetailScope = {
             ApplicantId: 0,
@@ -35,7 +33,7 @@
             NoticePeriod: null,
             CurrentLocation: '',
             PreferedLocation: '',
-            ReasonForChange : '',
+            ReasonForChange: '',
             IsActive: true
         };
 
@@ -67,7 +65,7 @@
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 if ($scope.IsGetAll) {
-                    RegistrationService.GetApplicantList(applicantDetailParams.Paging, $scope.IsGetAll).then(function (res) {
+                    RegistrationService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
                         if (res.data.MessageType == messageTypes.Success) {// Success
@@ -83,7 +81,7 @@
                         CommonFunctions.SetFixHeader();
                     });
                 }
-                    else {
+                else {
                     RegistrationService.GetAllApplicants(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
@@ -102,35 +100,6 @@
                 }
             }
         });
-
-        $scope.tableActiveParams = new ngTableParams({
-            page: 1,
-            count: $rootScope.pageSize
-        }, {
-            getData: function ($defer, params) {
-                if (applicantDetailParams == null) {
-                    applicantDetailParams = {};
-                }
-                applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                debugger
-                RegistrationService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
-                    var data = res.data;
-                    $scope.applicants = res.data.Result;
-                    if (res.data.MessageType == messageTypes.Success) {// Success
-                        $defer.resolve(res.data.Result);
-                        if (res.data.Result.length == 0) {
-                        } else {
-                            params.total(res.data.Result[0].TotalRecords);
-                        }
-                    } else if (res.data.MessageType == messageTypes.Error) {// Error
-                        toastr.error(res.data.Message, errorTitle);
-                    }
-                    $rootScope.isAjaxLoadingChild = false;
-                    CommonFunctions.SetFixHeader();
-                });
-            }
-        });
-
         //$scope.getApplicantList = function (isGetAll) {
         //    RegistrationService.GetApplicantList(isGetAll).then(function (res) {
         //        $scope.applicants = res.data.Result;
@@ -199,31 +168,71 @@
             })
         }
 
-        //$scope.UploadFile = function (files) {
-        //    $scope.SelectedFiles = files;
-        //    if ($scope.SelectedFiles && $scope.SelectedFiles.lenght) {
-        //        Upload.upload({
-        //            url: 'http://localhost:56562/api/Registrations/Upload',
-        //            data: {
-        //                files: $scope.SelectedFiles
-        //            }
-        //        }).then(function (res) {
-        //            if (res.status > 0) {
-        //                var errormsg = res.status + ":" + res.data.Result;
-        //            }
-        //        })
-        //    }
-        //}
-        $scope.uploadFile = function () {
-            var fd = new FormData();
-            console.log($scope.files);
-            angular.forEach($scope.files, function (file) {
-                fd.append('file', file);
-            });
-            RegistrationService.Upload(fd).success(function (d) {
-                console.log(d);
-            })  
+        $scope.AddFileToDb = function () {
             debugger
+            RegistrationService.AddFile($scope.filedata).then(function (res) {
+                debugger
+                console.log(res.data.Result);
+            })
+        }
+
+        $scope.checkFile = function (event) {
+            debugger
+            var fileInput = event.target.files[0];
+
+            var allowedExtensions =
+                /(\.pdf)$/i;
+
+            if (!allowedExtensions.exec(fileInput)) {
+                alert('Invalid file type');
+                $('#file').val("");
+            }
+        }
+
+        $scope.uploadFile = function () {
+            debugger
+            var fileInput = document.getElementById('file');
+            var allowedExtensions =
+                /(\.pdf)$/i;
+
+            if (!allowedExtensions.exec(fileInput)) {
+                alert('Invalid file type');
+                $('#file').val("");
+            }
+            if (fileInput.files.length === 0) return;
+
+            var file = fileInput.files[0];
+
+            var payload = new FormData();
+            payload.append("file", file);
+            // var url = $rootScope.apiURL + '/Upload/UploadImage'
+
+            var url = $rootScope.apiURL + '/Upload/UploadFile?databaseName=' + $rootScope.userContext.CompanyDB;
+            FileService.uploadFile(url, payload).then(function (response) {
+                console.log(response);
+                $scope.filedata = response.data.Result;
+                debugger
+                $scope.AddFileToDb($scope.filedata);
+                console.log($scope.applicantDetailScope.ApplicantId);
+            }).catch(function (response) {
+                response
+            });
         }
     }
+        angular.module("MVCApp").factory('FileService', ['$http', function ($http) {
+            debugger
+            return {
+                uploadFile: function (url, payload) {
+                    return $http({
+                        url: url,
+                        method: 'POST',
+                        data: payload,
+                        headers: { 'Content-Type': undefined }, 
+                        transformRequest: angular.identity 
+                    });
+                }
+
+            };
+        }]);
 })();
+

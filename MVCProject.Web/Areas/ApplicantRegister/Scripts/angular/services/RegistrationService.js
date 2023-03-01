@@ -26,10 +26,10 @@
     //        url: $rootScope.apiURL + '/Registrations/GetApplicantList' + (angular.isDefined(isGetAll) ? '?isGetAll=' + isGetAll : '')
     //    });
     //};
-    list.GetApplicantList = function (applicantDetailScope, isGetAll) {
+    list.GetApplicantList = function (applicantDetailScope) {
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Registrations/GetApplicantList' + (angular.isDefined(isGetAll) ? '?isGetAll=' + isGetAll : ''),
+            url: $rootScope.apiURL + '/Registrations/GetApplicantList',
             data: JSON.stringify(applicantDetailScope)
         });
     };
@@ -40,11 +40,12 @@
     //        headers: { 'Content-Type': undefined }
     //    })
     //}
-    list.Upload = function (fd) {
+    list.AddFile = function (filedata) {
         debugger
-        return $http.post('/http://localhost:56562/api/Registrations/Upload', fd, {
-            transformRequest: angular.identity,
-            headers: { 'Content-Type': undefined }
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/Registrations/FileUpload',
+            data: JSON.stringify(filedata)
         })
     }
     return list;

@@ -91,11 +91,10 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse GetApplicantList(PagingParams applicantDetailParams, bool isGetAll = false)
+        public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            isGetAll = false;
-            var applcantlist = (from g in this.entities.ApplicantRegisters.AsEnumerable().Where(x => (isGetAll || x.IsActive.Value))
-                                let TotalRecords = this.entities.ApplicantRegisters.AsEnumerable().Count()
+            var applcantlist = (from g in this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable()
+                                let TotalRecords = this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable().Count()
                                 select new
                                 {
                                     ApplicantId = g.ApplicantId,
@@ -274,23 +273,27 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public HttpResponseMessage Upload()
+        public ApiResponse FileUpload([FromBody]FileUpload data)
         {
-            //var file = HttpContext.Current.Request.Files[0];
-            //var path = HttpContext.Current.Server.MapPath("~/Uploads/");
-            //if(!Directory.Exists(path))
+            //this.entities.FileUpload.AddObject(new FileUpload()
             //{
-            //    Directory.CreateDirectory(path);
-            //}
-            //path = HttpContext.Current.Server.MapPath("~/Uploads/" + file.FileName);
-            var file = HttpContext.Current.Request.Files[0];
+            //    FileName = data.FileName,
+            //    FilePath= data.FilePath
+            //});
+            this.entities.FileUpload.AddObject(data);
+            if (!(this.entities.SaveChanges() > 0))
+            {
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
+            }
 
-            var fileName = Path.GetFileName(file.FileName);
-            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads"), fileName);
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant));
+        }
 
-            file.SaveAs(path);
-            var filePath = "~/Uploads/" + fileName;
-            return Request.CreateResponse(HttpStatusCode.OK, filePath);
+        [HttpGet]
+        public ApiResponse GetFileUpload()
+        {
+            var entity = this.entities.FileUpload.ToList();
+            return this.Response(Utilities.MessageTypes.Success, string.Empty, entity);
         }
     }
 }
