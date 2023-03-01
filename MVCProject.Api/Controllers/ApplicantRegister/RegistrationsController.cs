@@ -8,14 +8,17 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
 {
     using MVCProject.Api.Models;
     using MVCProject.Api.Utilities;
+    using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
     using NPOI.HSSF.Record;
     #region Namespaces
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Web;
     using System.Web.Http;
     #endregion
     public class RegistrationsController : BaseController
@@ -27,63 +30,121 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             this.entities = new MVCProjectEntities();
         }
 
-        [HttpGet]
-        public ApiResponse GetAllApplicants()
+        [HttpPost]
+        public ApiResponse GetAllApplicants(PagingParams applicantDetailParams)
         {
-            var applcantlist = this.entities.ApplicantRegisters.Select(g => new
+            //var applcantlist = this.entities.ApplicantRegisters.Select(g => new
+            //{
+            //    ApplicantId = g.ApplicantId,
+            //    FirstName = g.FirstName,
+            //    MiddleName = g.MiddleName,
+            //    LastName = g.LastName,
+            //    Email = g.Email,
+            //    Phone = g.Phone,
+            //    Address = g.Address,
+            //    DateOfBirth = g.DateOfBirth,
+            //    CurrentCompany = g.CurrentCompany,
+            //    CurrentDesignation = g.CurrentDesignation,
+            //    ApplicantDate = g.ApplicantDate,
+            //    TotalExperience = g.TotalExperience,
+            //    DetailedExperience = g.DetailedExperience,  
+            //    CurrentCTC = g.CurrentCTC,
+            //    ExpectedCTC = g.ExpectedCTC,
+            //    NoticePeriod = g.NoticePeriod,
+            //    CurrentLocation = g.CurrentLocation,
+            //    PreferedLocation = g.PreferedLocation,
+            //    ReasonForChange = g.ReasonForChange,
+            //    IsActive = g.IsActive
+            //}).ToList();
+            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
             {
-                ApplicantId = g.ApplicantId,
-                FirstName = g.FirstName,
-                MiddleName = g.MiddleName,
-                LastName = g.LastName,
-                Email = g.Email,
-                Phone = g.Phone,
-                Address = g.Address,
-                DateOfBirth = g.DateOfBirth,
-                CurrentCompany = g.CurrentCompany,
-                CurrentDesignation = g.CurrentDesignation,
-                ApplicantDate = g.ApplicantDate,
-                TotalExperience = g.TotalExperience,
-                DetailedExperience = g.DetailedExperience,  
-                CurrentCTC = g.CurrentCTC,
-                ExpectedCTC = g.ExpectedCTC,
-                NoticePeriod = g.NoticePeriod,
-                CurrentLocation = g.CurrentLocation,
-                PreferedLocation = g.PreferedLocation,
-                ReasonForChange = g.ReasonForChange,
-                IsActive = g.IsActive
-            }).ToList();
+                applicantDetailParams.Search = string.Empty;
+            }
+
+            var applcantlist = (from g in this.entities.ApplicantRegisters.AsEnumerable()
+                                   let TotalRecords = this.entities.ApplicantRegisters.AsEnumerable().Count()
+                                   select new
+                                   {
+                                       ApplicantId = g.ApplicantId,
+                                       FirstName = g.FirstName,
+                                       MiddleName = g.MiddleName,
+                                       LastName = g.LastName,
+                                       Email = g.Email,
+                                       Phone = g.Phone,
+                                       Address = g.Address,
+                                       DateOfBirth = g.DateOfBirth,
+                                       CurrentCompany = g.CurrentCompany,
+                                       CurrentDesignation = g.CurrentDesignation,
+                                       ApplicantDate = g.ApplicantDate,
+                                       TotalExperience = g.TotalExperience,
+                                       DetailedExperience = g.DetailedExperience,
+                                       CurrentCTC = g.CurrentCTC,
+                                       ExpectedCTC = g.ExpectedCTC,
+                                       NoticePeriod = g.NoticePeriod,
+                                       CurrentLocation = g.CurrentLocation,
+                                       PreferedLocation = g.PreferedLocation,
+                                       ReasonForChange = g.ReasonForChange,
+                                       IsActive = g.IsActive,
+                                       TotalRecords
+                                   }).AsQueryable().Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applcantlist);
         }
 
-        [HttpGet]
-        public ApiResponse GetApplicantList(bool isGetAll = false)
+        [HttpPost]
+        public ApiResponse GetApplicantList(PagingParams applicantDetailParams, bool isGetAll = false)
         {
             isGetAll = false;
-            var applcantlist = this.entities.ApplicantRegisters.Where(x => (isGetAll || x.IsActive.Value)).Select(g => new
-            {
-                ApplicantId = g.ApplicantId,
-                FirstName = g.FirstName,
-                MiddleName = g.MiddleName,
-                LastName = g.LastName,
-                Email = g.Email,
-                Phone = g.Phone,
-                Address = g.Address,
-                DateOfBirth = g.DateOfBirth,
-                CurrentCompany = g.CurrentCompany,
-                CurrentDesignation = g.CurrentDesignation,
-                ApplicantDate = g.ApplicantDate,
-                TotalExperience = g.TotalExperience,
-                DetailedExperience = g.DetailedExperience,
-                CurrentCTC = g.CurrentCTC,
-                ExpectedCTC = g.ExpectedCTC,
-                NoticePeriod = g.NoticePeriod,
-                CurrentLocation = g.CurrentLocation,
-                PreferedLocation = g.PreferedLocation,
-                ReasonForChange = g.ReasonForChange,
-                IsActive = g.IsActive
-            }).ToList();
+            var applcantlist = (from g in this.entities.ApplicantRegisters.AsEnumerable().Where(x => (isGetAll || x.IsActive.Value))
+                                let TotalRecords = this.entities.ApplicantRegisters.AsEnumerable().Count()
+                                select new
+                                {
+                                    ApplicantId = g.ApplicantId,
+                                    FirstName = g.FirstName,
+                                    MiddleName = g.MiddleName,
+                                    LastName = g.LastName,
+                                    Email = g.Email,
+                                    Phone = g.Phone,
+                                    Address = g.Address,
+                                    DateOfBirth = g.DateOfBirth,
+                                    CurrentCompany = g.CurrentCompany,
+                                    CurrentDesignation = g.CurrentDesignation,
+                                    ApplicantDate = g.ApplicantDate,
+                                    TotalExperience = g.TotalExperience,
+                                    DetailedExperience = g.DetailedExperience,
+                                    CurrentCTC = g.CurrentCTC,
+                                    ExpectedCTC = g.ExpectedCTC,
+                                    NoticePeriod = g.NoticePeriod,
+                                    CurrentLocation = g.CurrentLocation,
+                                    PreferedLocation = g.PreferedLocation,
+                                    ReasonForChange = g.ReasonForChange,
+                                    IsActive = g.IsActive,
+                                    TotalRecords
+                                }).AsQueryable().Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applcantlist);
+            //var applcantlist = this.entities.ApplicantRegisters.Where(x => (isGetAll || x.IsActive.Value)).Select(g => new
+            //{
+            //    ApplicantId = g.ApplicantId,
+            //    FirstName = g.FirstName,
+            //    MiddleName = g.MiddleName,
+            //    LastName = g.LastName,
+            //    Email = g.Email,
+            //    Phone = g.Phone,
+            //    Address = g.Address,
+            //    DateOfBirth = g.DateOfBirth,
+            //    CurrentCompany = g.CurrentCompany,
+            //    CurrentDesignation = g.CurrentDesignation,
+            //    ApplicantDate = g.ApplicantDate,
+            //    TotalExperience = g.TotalExperience,
+            //    DetailedExperience = g.DetailedExperience,
+            //    CurrentCTC = g.CurrentCTC,
+            //    ExpectedCTC = g.ExpectedCTC,
+            //    NoticePeriod = g.NoticePeriod,
+            //    CurrentLocation = g.CurrentLocation,
+            //    PreferedLocation = g.PreferedLocation,
+            //    ReasonForChange = g.ReasonForChange,
+            //    IsActive = g.IsActive
+            //}).ToList();
+            //return this.Response(MessageTypes.Success, string.Empty, applcantlist);
         }
 
         [HttpGet]
@@ -210,6 +271,26 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Upload()
+        {
+            //var file = HttpContext.Current.Request.Files[0];
+            //var path = HttpContext.Current.Server.MapPath("~/Uploads/");
+            //if(!Directory.Exists(path))
+            //{
+            //    Directory.CreateDirectory(path);
+            //}
+            //path = HttpContext.Current.Server.MapPath("~/Uploads/" + file.FileName);
+            var file = HttpContext.Current.Request.Files[0];
+
+            var fileName = Path.GetFileName(file.FileName);
+            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads"), fileName);
+
+            file.SaveAs(path);
+            var filePath = "~/Uploads/" + fileName;
+            return Request.CreateResponse(HttpStatusCode.OK, filePath);
         }
     }
 }

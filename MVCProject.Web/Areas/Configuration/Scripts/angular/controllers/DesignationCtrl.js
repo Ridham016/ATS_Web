@@ -101,6 +101,7 @@
                     designationDetailParams = {};
                 }
                 designationDetailParams.Paging = CommonFunctions.GetPagingParams(params);
+                debugger
                 designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 DesignationService.GetAllDesignations(designationDetailParams.Paging).then(function (res) {

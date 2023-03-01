@@ -85,7 +85,8 @@ namespace MVCProject.Areas.ApplicantRegister
             // Designation 
             bundles.Add(new ScriptBundle("~/bundles/ApplicantRegister/Registration")
                 .Include("~/Areas/ApplicantRegister/Scripts/angular/services/RegistrationService.js")
-                .Include("~/Areas/ApplicantRegister/Scripts/angular/controllers/RegistrationCtrl.js"));
+                .Include("~/Areas/ApplicantRegister/Scripts/angular/controllers/RegistrationCtrl.js")
+                .Include("~/Scripts/angular/ng-file-upload.min.js"));
 
         }
     }

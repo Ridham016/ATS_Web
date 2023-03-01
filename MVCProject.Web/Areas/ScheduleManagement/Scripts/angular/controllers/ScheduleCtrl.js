@@ -2,82 +2,43 @@
     'use strict';
 
     angular.module("MVCApp").controller('ScheduleCtrl', [
-        '$scope', 'CommonFunctions', 'ScheduleService', ScheduleCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'ScheduleService', ScheduleCtrl
     ]);
 
-    function ScheduleCtrl($scope, CommonFunctions, ScheduleService) {
-        $scope.applicantDetailScope = {
-            ApplicantId: 0,
-            Name: '',
-            Email: '',
-            Phone: '',
-            Address: '',
-            DateOfBirth: null,
-            CurrentCompany: '',
-            CurrentDesignations: '',
-            IsActive: true
-        };
+    function ScheduleCtrl($scope, ngTableParams, CommonFunctions, $rootScope, ScheduleService) {
+        //$scope.getApplicantList = function (isGetAll) {
+        //    ScheduleService.GetApplicantList(isGetAll).then(function (res) {
+        //        $scope.applicants = res.data.Result;
+        //    });
+        //}
+        var applicantDetailParams = {};
 
-        $scope.getApplicants = function (IsGetAll) {
-            if ($scope.IsGetAll == false) {
-                $scope.getAllApplicants();
-            }
-            else {
-                $scope.getApplicantList(IsGetAll);
-            }
-        }
-
-        $scope.getAllApplicants = function () {
-            ScheduleService.GetAllApplicants().then(function (res) {
-                $scope.applicants = res.data.Result;
-            });
-        };
-
-        $scope.getApplicantList = function (isGetAll) {
-            ScheduleService.GetApplicantList(isGetAll).then(function (res) {
-                $scope.applicants = res.data.Result;
-            });
-        }
-
-        $scope.ClearFormData = function (frmRegister) {
-            $scope.applicantDetailScope = {
-                ApplicantId: 0,
-                Name: '',
-                Email: '',
-                Phone: '',
-                Address: '',
-                DateOfBirth: null,
-                CurrentCompany: '',
-                CurrentDesignations: '',
-                IsActive: true
-            };
-            frmRegister.$setPristine();
-            $("Name").focus();
-        };
-        $scope.SaveApplicantDetails = function (applicantDetailScope) {
-            ScheduleService.Register(applicantDetailScope).then(function (res) {
-                if (res) {
-                    var applicants = res.data;
-                    if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
-                        toastr.success(applicants.Message, successTitle);
-                        location.reload();
-                    } else if (applicants.MessageType == messageTypes.Error) {// Error
-                        toastr.error(applicants.Message, errorTitle);
-                    } else if (applicants.MessageType == messageTypes.Warning) {// Warning
-                        toastr.warning(applicants.Message, warningTitle);
+        $scope.tableActiveParams = new ngTableParams({
+            page: 1,
+            count: $rootScope.pageSize
+        }, {
+            getData: function ($defer, params) {
+                if (applicantDetailParams == null) {
+                    applicantDetailParams = {};
+                }
+                applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
+                debugger
+                ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
+                    var data = res.data;
+                    $scope.applicants = res.data.Result;
+                    if (res.data.MessageType == messageTypes.Success) {// Success
+                        $defer.resolve(res.data.Result);
+                        if (res.data.Result.length == 0) {
+                        } else {
+                            params.total(res.data.Result[0].TotalRecords);
+                        }
+                    } else if (res.data.MessageType == messageTypes.Error) {// Error
+                        toastr.error(res.data.Message, errorTitle);
                     }
-                }
-            });
-        }
-        $scope.EditApplicantDetails = function (ApplicantId) {
-            ScheduleService.GetApplicantsById(ApplicantId).then(function (res) {
-                if (res) {
-                    $scope.applicantDetailScope = res.data.Result;
-                    $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
-                    CommonFunctions.ScrollUpAndFocus("Name");
-
-                }
-            })
-        }
+                    $rootScope.isAjaxLoadingChild = false;
+                    CommonFunctions.SetFixHeader();
+                });
+            }
+        });
     }
 })();

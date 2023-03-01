@@ -996,4 +996,7 @@
   <data name="ApplicantCV" xml:space="preserve">
     <value>Upload CV</value>
   </data>
+  <data name="ApplicantName" xml:space="preserve">
+    <value>Name</value>
+  </data>
 </root>
