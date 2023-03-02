@@ -273,14 +273,20 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse FileUpload([FromBody]FileUpload data)
+        public ApiResponse FileUpload([FromBody]Attachment data, int Id)
         {
             //this.entities.FileUpload.AddObject(new FileUpload()
             //{
             //    FileName = data.FileName,
             //    FilePath= data.FilePath
             //});
-            this.entities.FileUpload.AddObject(data);
+            entities.Attachments.AddObject(new Attachment()
+            {
+                FileName = data.FileName,
+                FilePath = data.FilePath,
+                ApplicantId = Id
+            });
+            //this.entities.Attachments.AddObject(data);
             if (!(this.entities.SaveChanges() > 0))
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
@@ -292,7 +298,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpGet]
         public ApiResponse GetFileUpload()
         {
-            var entity = this.entities.FileUpload.ToList();
+            var entity = this.entities.Attachments.ToList();
             return this.Response(Utilities.MessageTypes.Success, string.Empty, entity);
         }
     }

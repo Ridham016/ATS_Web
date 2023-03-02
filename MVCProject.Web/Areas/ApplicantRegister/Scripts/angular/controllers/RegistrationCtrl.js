@@ -142,6 +142,7 @@
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                         toastr.success(applicants.Message, successTitle);
                         $scope.ClearFormData(frmRegister);
+                        $("#file").val("");
                         $scope.tableParams.reload();
                     } else if (applicants.MessageType == messageTypes.Error) {// Error
                         toastr.error(applicants.Message, errorTitle);
@@ -170,7 +171,7 @@
 
         $scope.AddFileToDb = function () {
             debugger
-            RegistrationService.AddFile($scope.filedata).then(function (res) {
+            RegistrationService.AddFile($scope.filedata, $scope.applicantDetailScope.ApplicantId).then(function (res) {
                 debugger
                 console.log(res.data.Result);
             })
@@ -192,13 +193,13 @@
         $scope.uploadFile = function () {
             debugger
             var fileInput = document.getElementById('file');
-            var allowedExtensions =
-                /(\.pdf)$/i;
+            //var allowedExtensions =
+            //    /(\.pdf)$/i;
 
-            if (!allowedExtensions.exec(fileInput)) {
-                alert('Invalid file type');
-                $('#file').val("");
-            }
+            //if (!allowedExtensions.exec(fileInput.type)) {
+            //    alert('Invalid file type');
+            //    $('#file').val("");
+            //}
             if (fileInput.files.length === 0) return;
 
             var file = fileInput.files[0];
@@ -212,7 +213,7 @@
                 console.log(response);
                 $scope.filedata = response.data.Result;
                 debugger
-                $scope.AddFileToDb($scope.filedata);
+                $scope.AddFileToDb($scope.filedata, $scope.applicantDetailScope.ApplicantId);
                 console.log($scope.applicantDetailScope.ApplicantId);
             }).catch(function (response) {
                 response

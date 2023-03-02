@@ -40,11 +40,11 @@
     //        headers: { 'Content-Type': undefined }
     //    })
     //}
-    list.AddFile = function (filedata) {
+    list.AddFile = function (filedata, Id) {
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Registrations/FileUpload',
+            url: $rootScope.apiURL + '/Registrations/FileUpload?Id=' + Id,
             data: JSON.stringify(filedata)
         })
     }

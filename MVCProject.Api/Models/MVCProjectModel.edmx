@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="MVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="ApplicantRegister">
           <Key>
             <PropertyRef Name="ApplicantId" />
@@ -18,7 +18,6 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="ApplicantDate" Type="date" />
-          <Property Name="FileId" Type="int" />
           <Property Name="CurrentCompany" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentDesignation" Type="nvarchar" MaxLength="50" />
           <Property Name="TotalExperience" Type="int" />
@@ -35,6 +34,15 @@
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
         </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="ApplicantId" Type="int" />
+        </EntityType>
         <EntityType Name="Designation">
           <Key>
             <PropertyRef Name="DesignationId" />
@@ -43,15 +51,6 @@
           <Property Name="DesignationName" Type="varchar" MaxLength="250" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
-        </EntityType>
-        <EntityType Name="FileUpload">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
-          <Property Name="FilePath" Type="nvarchar" MaxLength="200" />
-          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Interviewer">
           <Key>
@@ -62,29 +61,30 @@
           <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
           <Property Name="InterviewerPhone" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Applicant__FileI__0880433F">
-          <End Role="FileUpload" Type="Self.FileUpload" Multiplicity="0..1" />
-          <End Role="ApplicantRegister" Type="Self.ApplicantRegister" Multiplicity="*" />
+        <Association Name="FK__Attachmen__Appli__1D7B6025">
+          <End Role="ApplicantRegister" Type="Self.ApplicantRegister" Multiplicity="0..1" />
+          <End Role="Attachment" Type="Self.Attachment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FileUpload">
-              <PropertyRef Name="Id" />
+            <Principal Role="ApplicantRegister">
+              <PropertyRef Name="ApplicantId" />
             </Principal>
-            <Dependent Role="ApplicantRegister">
-              <PropertyRef Name="FileId" />
+            <Dependent Role="Attachment">
+              <PropertyRef Name="ApplicantId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MVCProjectModelStoreContainer">
           <EntitySet Name="ApplicantRegister" EntityType="Self.ApplicantRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attachment" EntityType="Self.Attachment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FileUpload" EntityType="Self.FileUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interviewer" EntityType="Self.Interviewer" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Applicant__FileI__0880433F" Association="Self.FK__Applicant__FileI__0880433F">
-            <End Role="FileUpload" EntitySet="FileUpload" />
+          <AssociationSet Name="FK__Attachmen__Appli__1D7B6025" Association="Self.FK__Attachmen__Appli__1D7B6025">
             <End Role="ApplicantRegister" EntitySet="ApplicantRegister" />
+            <End Role="Attachment" EntitySet="Attachment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MVCProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -116,8 +116,17 @@
           <Property Name="EntryDate" Type="DateTime" Precision="0" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <Property Name="FileId" Type="Int32" />
-          <NavigationProperty Name="FileUpload" Relationship="MVCProjectModel.FK__Applicant__FileI__0880433F" FromRole="ApplicantRegister" ToRole="FileUpload" />
+          <NavigationProperty Name="Attachments" Relationship="Self.FK__Attachmen__Appli__1D7B6025" FromRole="ApplicantRegister" ToRole="Attachment" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantId" Type="Int32" />
+          <NavigationProperty Name="ApplicantRegister" Relationship="Self.FK__Attachmen__Appli__1D7B6025" FromRole="Attachment" ToRole="ApplicantRegister" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -137,38 +146,28 @@
           <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
-          <EntitySet Name="Designations" EntityType="Self.Designation" />
-          <EntitySet Name="Interviewers" EntityType="Self.Interviewer" />
-          <EntitySet Name="FileUpload" EntityType="MVCProjectModel.FileUpload" />
-          <AssociationSet Name="FK__Applicant__FileI__0880433F" Association="MVCProjectModel.FK__Applicant__FileI__0880433F">
-            <End Role="FileUpload" EntitySet="FileUpload" />
-            <End Role="ApplicantRegister" EntitySet="ApplicantRegisters" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="FileUpload">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ApplicantRegister" Relationship="MVCProjectModel.FK__Applicant__FileI__0880433F" FromRole="FileUpload" ToRole="ApplicantRegister" />
-        </EntityType>
-        <Association Name="FK__Applicant__FileI__0880433F">
-          <End Type="MVCProjectModel.FileUpload" Role="FileUpload" Multiplicity="0..1" />
-          <End Type="MVCProjectModel.ApplicantRegister" Role="ApplicantRegister" Multiplicity="*" />
+        <Association Name="FK__Attachmen__Appli__1D7B6025">
+          <End Role="ApplicantRegister" Type="Self.ApplicantRegister" Multiplicity="0..1" />
+          <End Role="Attachment" Type="Self.Attachment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="FileUpload">
-              <PropertyRef Name="Id" />
+            <Principal Role="ApplicantRegister">
+              <PropertyRef Name="ApplicantId" />
             </Principal>
-            <Dependent Role="ApplicantRegister">
-              <PropertyRef Name="FileId" />
+            <Dependent Role="Attachment">
+              <PropertyRef Name="ApplicantId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
+          <EntitySet Name="Attachments" EntityType="Self.Attachment" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Interviewers" EntityType="Self.Interviewer" />
+          <AssociationSet Name="FK__Attachmen__Appli__1D7B6025" Association="Self.FK__Attachmen__Appli__1D7B6025">
+            <End Role="ApplicantRegister" EntitySet="ApplicantRegisters" />
+            <End Role="Attachment" EntitySet="Attachments" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -178,7 +177,6 @@
           <EntitySetMapping Name="ApplicantRegisters">
             <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
               <MappingFragment StoreEntitySet="ApplicantRegister">
-                <ScalarProperty Name="FileId" ColumnName="FileId" />
                 <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -206,6 +204,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Attachments">
+            <EntityTypeMapping TypeName="MVCProjectModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Designations">
             <EntityTypeMapping TypeName="MVCProjectModel.Designation">
               <MappingFragment StoreEntitySet="Designation">
@@ -223,16 +231,6 @@
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FileUpload">
-            <EntityTypeMapping TypeName="MVCProjectModel.FileUpload">
-              <MappingFragment StoreEntitySet="FileUpload">
-                <ScalarProperty Name="FileType" ColumnName="FileType" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -257,14 +255,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram DiagramId="86d71cc2767543d28a40e1a1acaff3ac" Name="Diagram1">
-        <EntityTypeShape EntityType="MVCProjectModel.ApplicantRegister" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.Designation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.Interviewer" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.FileUpload" Width="1.5" PointX="0.75" PointY="7.75" />
-        <AssociationConnector Association="MVCProjectModel.FK__Applicant__FileI__0880433F" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>
