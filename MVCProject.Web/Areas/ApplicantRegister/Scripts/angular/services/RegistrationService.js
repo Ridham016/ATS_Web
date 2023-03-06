@@ -44,7 +44,7 @@
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Registrations/FileUpload?Id=' + Id,
+            url: $rootScope.apiURL + '/Registrations/FileUpload?ApplicantId=' + Id,
             data: JSON.stringify(filedata)
         })
     }

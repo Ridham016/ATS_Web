@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="DesignationsController.cs" company="ASK E-Sqaure">
+// <copyright file="SchedulesController.cs" company="ASK E-Sqaure">
 // All copy rights reserved @ASK E-Sqaure.
 // </copyright>
 // ----------------------------------------------------------------------- 

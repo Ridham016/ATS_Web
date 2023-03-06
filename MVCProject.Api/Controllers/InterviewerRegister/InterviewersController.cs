@@ -1,5 +1,6 @@
 ﻿using MVCProject.Api.Models;
 using MVCProject.Api.Utilities;
+using MVCProject.Api.ViewModel;
 using MVCProject.Common.Resources;
 using NPOI.HSSF.Record;
 #region namespaces
@@ -21,16 +22,27 @@ namespace MVCProject.Api.Controllers.Interviewers
             this.entities = new MVCProjectEntities();
         }
 
-        [HttpGet]
-        public ApiResponse GetAllInterviewers()
+        [HttpPost]
+        public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
         {
-            var interviewerslist = this.entities.Interviewers.Select(d => new
-            {
-                InterviewerId = d.InterviewerId,
-                InterviewerName = d.InterviewerName,
-                InterviewerEmail = d.InterviewerEmail,
-                InterviewerPhone = d.InterviewerPhone
-            }).ToList();
+            //var interviewerslist = this.entities.Interviewers.Select(d => new
+            //{
+            //    InterviewerId = d.InterviewerId,
+            //    InterviewerName = d.InterviewerName,
+            //    InterviewerEmail = d.InterviewerEmail,
+            //    InterviewerPhone = d.InterviewerPhone
+            //}).ToList();
+            //return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
+            var interviewerslist = (from d in this.entities.Interviewers.AsEnumerable()
+                                let TotalRecords = this.entities.Interviewers.AsEnumerable().Count()
+                                select new
+                                {
+                                    InterviewerId = d.InterviewerId,
+                                    InterviewerName = d.InterviewerName,
+                                    InterviewerEmail = d.InterviewerEmail,
+                                    InterviewerPhone = d.InterviewerPhone,
+                                    TotalRecords
+                                }).AsQueryable().Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
         }
 

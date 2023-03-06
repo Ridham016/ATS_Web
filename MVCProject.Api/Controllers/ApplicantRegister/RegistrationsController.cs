@@ -198,7 +198,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
                 }
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant),data.ApplicantId);
             }
             else
             {
@@ -229,7 +229,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Applicant);
                 }
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.Applicant));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.Applicant), data.ApplicantId);
             }
         }
 
@@ -273,7 +273,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse FileUpload([FromBody]Attachment data, int Id)
+        public ApiResponse FileUpload([FromBody]Attachment data, int ApplicantId)
         {
             //this.entities.FileUpload.AddObject(new FileUpload()
             //{
@@ -284,7 +284,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 FileName = data.FileName,
                 FilePath = data.FilePath,
-                ApplicantId = Id
+                ApplicantId = ApplicantId
             });
             //this.entities.Attachments.AddObject(data);
             if (!(this.entities.SaveChanges() > 0))

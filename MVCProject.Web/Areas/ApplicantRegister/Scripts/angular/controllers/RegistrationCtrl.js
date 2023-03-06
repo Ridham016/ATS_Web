@@ -15,6 +15,7 @@
 
     function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
+        $scope.accordionGroup_1 = true;
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -79,6 +80,7 @@
                         }
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
+                        $scope.accordionGroup_1 = true;
                     });
                 }
                 else {
@@ -96,6 +98,7 @@
                         }
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
+                        $scope.accordionGroup_1 = true;
                     });
                 }
             }
@@ -130,6 +133,7 @@
             };
             debugger
             $scope.frmRegister.$setPristine();
+            $scope.accordionGroup_1 = true;
             $("FirstName").focus();
             CommonFunctions.ScrollToTop();
         };
@@ -139,11 +143,14 @@
                 if (res) {
                     debugger
                     var applicants = res.data;
+                    $scope.applicantId = res.data.Result;
+                    $scope.uploadFile();
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                         toastr.success(applicants.Message, successTitle);
                         $scope.ClearFormData(frmRegister);
                         $("#file").val("");
                         $scope.tableParams.reload();
+                        $scope.accordionGroup_1 = true;
                     } else if (applicants.MessageType == messageTypes.Error) {// Error
                         toastr.error(applicants.Message, errorTitle);
                     } else if (applicants.MessageType == messageTypes.Warning) {// Warning
@@ -161,6 +168,7 @@
                         $scope.applicantDetailScope = res.data.Result;
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
+                        $scope.accordionGroup_1 = true;
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);
                     }
@@ -171,7 +179,7 @@
 
         $scope.AddFileToDb = function () {
             debugger
-            RegistrationService.AddFile($scope.filedata, $scope.applicantDetailScope.ApplicantId).then(function (res) {
+            RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
                 debugger
                 console.log(res.data.Result);
             })
@@ -213,7 +221,7 @@
                 console.log(response);
                 $scope.filedata = response.data.Result;
                 debugger
-                $scope.AddFileToDb($scope.filedata, $scope.applicantDetailScope.ApplicantId);
+                $scope.AddFileToDb($scope.filedata, $scope.applicantId);
                 console.log($scope.applicantDetailScope.ApplicantId);
             }).catch(function (response) {
                 response

@@ -1,22 +1,23 @@
-﻿angular.module("MVCApp").service('InterviewerService', ['$http', function ($http) {
+﻿angular.module("MVCApp").service('InterviewerService', ['$rootScope', '$http', function ($rootScope, $http) {
     var list = [];
-    list.GetAllInterviewers = function () {
+    list.GetAllInterviewers = function (interviewerDetailParams) {
         return $http({
-            method: 'GET',
-            url: 'http://localhost:56562/api/Interviewers/GetAllInterviewers'
+            method: 'POST',
+            url: $rootScope.apiURL + '/Interviewers/GetAllInterviewers',
+            data: JSON.stringify(interviewerDetailParams)
         })
     }
     list.Register = function (interviewerDetailScope) {
         return $http({
             method: 'POST',
-            url: 'http://localhost:56562/api/Interviewers/Register',
+            url: $rootScope.apiURL + '/Interviewers/Register',
             data: JSON.stringify(interviewerDetailScope)
         })
     }
     list.GetInterviewersById = function (InterviewerId) {
         return $http({
             method: 'Get',
-            url: 'http://localhost:56562/api/Interviewers/GetInterviewerById?InterviewerId=' + InterviewerId
+            url: $rootScope.apiURL + '/Interviewers/GetInterviewerById?InterviewerId=' + InterviewerId
         })
     }
     return list;
