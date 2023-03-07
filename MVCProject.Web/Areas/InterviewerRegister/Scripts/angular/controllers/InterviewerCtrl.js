@@ -59,8 +59,9 @@
                 InterviewerEmail: '',
                 InterviewerPhone:''
             };
-            frmRegister.$setPristine();
+            $scope.frmRegister.$setPristine();
             $("InterviewerName").focus();
+            CommonFunctions.ScrollToTop();
         };
         $scope.SaveInterviewerDetails = function (interviewerDetailScope) {
             InterviewerService.Register(interviewerDetailScope).then(function (res) {

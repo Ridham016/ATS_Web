@@ -6,16 +6,11 @@
     ]);
 
     function ScheduleCtrl($scope, ngTableParams, CommonFunctions, $rootScope, ScheduleService) {
-        //$scope.getApplicantList = function (isGetAll) {
-        //    ScheduleService.GetApplicantList(isGetAll).then(function (res) {
-        //        $scope.applicants = res.data.Result;
-        //    });
-        //}
         var applicantDetailParams = {};
-        $scope.isGetAll = false;
-        $scope.tableActiveParams = new ngTableParams({
+        $scope.tableParams = new ngTableParams({
             page: 1,
-            count: $rootScope.pageSize
+            count: $rootScope.pageSize,
+            sorting: { FirstName: 'asc' }
         }, {
             getData: function ($defer, params) {
                 if (applicantDetailParams == null) {
@@ -23,7 +18,9 @@
                 }
                 applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
                 debugger
-                ScheduleService.GetApplicantList(applicantDetailParams.Paging, $scope.isGetAll).then(function (res) {
+                //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
+                //Load Employee List
+                ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
                     var data = res.data;
                     $scope.applicants = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success
@@ -37,6 +34,8 @@
                     }
                     $rootScope.isAjaxLoadingChild = false;
                     CommonFunctions.SetFixHeader();
+                    $scope.accordionGroup_1 = true;
+                    $scope.accordionGroup_2 = false;
                 });
             }
         });

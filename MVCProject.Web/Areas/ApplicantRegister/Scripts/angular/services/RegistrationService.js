@@ -48,5 +48,15 @@
             data: JSON.stringify(filedata)
         })
     }
+    list.uploadFile = function (payload) {
+        debugger
+        return $http({
+            url: $rootScope.apiURL + '/Upload/UploadFile?databaseName=' + $rootScope.userContext.CompanyDB,
+            method: 'POST',
+            data: payload,
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
+        });
+    }
     return list;
 }])

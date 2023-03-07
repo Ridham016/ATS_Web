@@ -31,33 +31,10 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var applcantlist = (from g in this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable()
-                                let TotalRecords = this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable().Count()
-                                select new
-                                {
-                                    ApplicantId = g.ApplicantId,
-                                    FirstName = g.FirstName,
-                                    MiddleName = g.MiddleName,
-                                    LastName = g.LastName,
-                                    Email = g.Email,
-                                    Phone = g.Phone,
-                                    Address = g.Address,
-                                    DateOfBirth = g.DateOfBirth,
-                                    CurrentCompany = g.CurrentCompany,
-                                    CurrentDesignation = g.CurrentDesignation,
-                                    ApplicantDate = g.ApplicantDate,
-                                    TotalExperience = g.TotalExperience,
-                                    DetailedExperience = g.DetailedExperience,
-                                    CurrentCTC = g.CurrentCTC,
-                                    ExpectedCTC = g.ExpectedCTC,
-                                    NoticePeriod = g.NoticePeriod,
-                                    CurrentLocation = g.CurrentLocation,
-                                    PreferedLocation = g.PreferedLocation,
-                                    ReasonForChange = g.ReasonForChange,
-                                    IsActive = g.IsActive,
-                                    TotalRecords
-                                }).AsQueryable().Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
-            return this.Response(MessageTypes.Success, string.Empty, applcantlist);
+            var applicantlist = entities.USP_ATS_ApplicantsList().AsEnumerable()
+                .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
+                .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
+            return this.Response(MessageTypes.Success, string.Empty, applicantlist);
         }
         
     }

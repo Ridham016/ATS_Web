@@ -16,6 +16,7 @@
     function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.accordionGroup_1 = true;
+        $scope.accordionGroup_2 = false;
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -55,7 +56,8 @@
         //Load Designation List
         $scope.tableParams = new ngTableParams({
             page: 1,
-            count: $rootScope.pageSize
+            count: $rootScope.pageSize,
+            sorting: { FirstName: 'asc' }
         }, {
             getData: function ($defer, params) {
                 if (applicantDetailParams == null) {
@@ -81,6 +83,7 @@
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
                         $scope.accordionGroup_1 = true;
+                        $scope.accordionGroup_2 = false;
                     });
                 }
                 else {
@@ -99,6 +102,7 @@
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
                         $scope.accordionGroup_1 = true;
+                        $scope.accordionGroup_2 = false;
                     });
                 }
             }
@@ -133,9 +137,10 @@
             };
             debugger
             $scope.frmRegister.$setPristine();
-            $scope.accordionGroup_1 = true;
-            $("FirstName").focus();
             CommonFunctions.ScrollToTop();
+            $scope.accordionGroup_1 = true;
+            $scope.accordionGroup_2 = false;
+            $("FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             debugger
@@ -151,6 +156,7 @@
                         $("#file").val("");
                         $scope.tableParams.reload();
                         $scope.accordionGroup_1 = true;
+                        $scope.accordionGroup_2 = false;
                     } else if (applicants.MessageType == messageTypes.Error) {// Error
                         toastr.error(applicants.Message, errorTitle);
                     } else if (applicants.MessageType == messageTypes.Warning) {// Warning
@@ -169,6 +175,7 @@
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                         $scope.accordionGroup_1 = true;
+                        $scope.accordionGroup_2 = false;
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);
                     }
@@ -214,34 +221,35 @@
 
             var payload = new FormData();
             payload.append("file", file);
-            // var url = $rootScope.apiURL + '/Upload/UploadImage'
 
-            var url = $rootScope.apiURL + '/Upload/UploadFile?databaseName=' + $rootScope.userContext.CompanyDB;
-            FileService.uploadFile(url, payload).then(function (response) {
+
+            RegistrationService.uploadFile(payload).then(function (response) {
                 console.log(response);
                 $scope.filedata = response.data.Result;
                 debugger
                 $scope.AddFileToDb($scope.filedata, $scope.applicantId);
                 console.log($scope.applicantDetailScope.ApplicantId);
+                alert("");
             }).catch(function (response) {
                 response
+                alert("");
             });
         }
     }
-        angular.module("MVCApp").factory('FileService', ['$http', function ($http) {
-            debugger
-            return {
-                uploadFile: function (url, payload) {
-                    return $http({
-                        url: url,
-                        method: 'POST',
-                        data: payload,
-                        headers: { 'Content-Type': undefined }, 
-                        transformRequest: angular.identity 
-                    });
-                }
+        //angular.module("MVCApp").factory('FileService', ['$http', function ($http) {
+        //    debugger
+        //    return {
+        //        uploadFile: function (url, payload) {
+        //            return $http({
+        //                url: url,
+        //                method: 'POST',
+        //                data: payload,
+        //                headers: { 'Content-Type': undefined }, 
+        //                transformRequest: angular.identity 
+        //            });
+        //        }
 
-            };
-        }]);
+        //    };
+        //}]);
 })();
 

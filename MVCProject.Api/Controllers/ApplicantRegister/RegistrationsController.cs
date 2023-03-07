@@ -33,146 +33,25 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse GetAllApplicants(PagingParams applicantDetailParams)
         {
-            //var applcantlist = this.entities.ApplicantRegisters.Select(g => new
-            //{
-            //    ApplicantId = g.ApplicantId,
-            //    FirstName = g.FirstName,
-            //    MiddleName = g.MiddleName,
-            //    LastName = g.LastName,
-            //    Email = g.Email,
-            //    Phone = g.Phone,
-            //    Address = g.Address,
-            //    DateOfBirth = g.DateOfBirth,
-            //    CurrentCompany = g.CurrentCompany,
-            //    CurrentDesignation = g.CurrentDesignation,
-            //    ApplicantDate = g.ApplicantDate,
-            //    TotalExperience = g.TotalExperience,
-            //    DetailedExperience = g.DetailedExperience,  
-            //    CurrentCTC = g.CurrentCTC,
-            //    ExpectedCTC = g.ExpectedCTC,
-            //    NoticePeriod = g.NoticePeriod,
-            //    CurrentLocation = g.CurrentLocation,
-            //    PreferedLocation = g.PreferedLocation,
-            //    ReasonForChange = g.ReasonForChange,
-            //    IsActive = g.IsActive
-            //}).ToList();
-            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
-            {
-                applicantDetailParams.Search = string.Empty;
-            }
-
-            var applcantlist = (from g in this.entities.ApplicantRegisters.AsEnumerable()
-                                   let TotalRecords = this.entities.ApplicantRegisters.AsEnumerable().Count()
-                                   select new
-                                   {
-                                       ApplicantId = g.ApplicantId,
-                                       FirstName = g.FirstName,
-                                       MiddleName = g.MiddleName,
-                                       LastName = g.LastName,
-                                       Email = g.Email,
-                                       Phone = g.Phone,
-                                       Address = g.Address,
-                                       DateOfBirth = g.DateOfBirth,
-                                       CurrentCompany = g.CurrentCompany,
-                                       CurrentDesignation = g.CurrentDesignation,
-                                       ApplicantDate = g.ApplicantDate,
-                                       TotalExperience = g.TotalExperience,
-                                       DetailedExperience = g.DetailedExperience,
-                                       CurrentCTC = g.CurrentCTC,
-                                       ExpectedCTC = g.ExpectedCTC,
-                                       NoticePeriod = g.NoticePeriod,
-                                       CurrentLocation = g.CurrentLocation,
-                                       PreferedLocation = g.PreferedLocation,
-                                       ReasonForChange = g.ReasonForChange,
-                                       IsActive = g.IsActive,
-                                       TotalRecords
-                                   }).AsQueryable().Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
-            return this.Response(MessageTypes.Success, string.Empty, applcantlist);
+            var applicantlist = entities.USP_ATS_AllApplicants().AsEnumerable()
+                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
+                 .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
+            return this.Response(MessageTypes.Success, string.Empty, applicantlist);
         }
 
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var applcantlist = (from g in this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable()
-                                let TotalRecords = this.entities.ApplicantRegisters.Where(x => (x.IsActive.Value)).AsEnumerable().Count()
-                                select new
-                                {
-                                    ApplicantId = g.ApplicantId,
-                                    FirstName = g.FirstName,
-                                    MiddleName = g.MiddleName,
-                                    LastName = g.LastName,
-                                    Email = g.Email,
-                                    Phone = g.Phone,
-                                    Address = g.Address,
-                                    DateOfBirth = g.DateOfBirth,
-                                    CurrentCompany = g.CurrentCompany,
-                                    CurrentDesignation = g.CurrentDesignation,
-                                    ApplicantDate = g.ApplicantDate,
-                                    TotalExperience = g.TotalExperience,
-                                    DetailedExperience = g.DetailedExperience,
-                                    CurrentCTC = g.CurrentCTC,
-                                    ExpectedCTC = g.ExpectedCTC,
-                                    NoticePeriod = g.NoticePeriod,
-                                    CurrentLocation = g.CurrentLocation,
-                                    PreferedLocation = g.PreferedLocation,
-                                    ReasonForChange = g.ReasonForChange,
-                                    IsActive = g.IsActive,
-                                    TotalRecords
-                                }).AsQueryable().Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
-            return this.Response(MessageTypes.Success, string.Empty, applcantlist);
-            //var applcantlist = this.entities.ApplicantRegisters.Where(x => (isGetAll || x.IsActive.Value)).Select(g => new
-            //{
-            //    ApplicantId = g.ApplicantId,
-            //    FirstName = g.FirstName,
-            //    MiddleName = g.MiddleName,
-            //    LastName = g.LastName,
-            //    Email = g.Email,
-            //    Phone = g.Phone,
-            //    Address = g.Address,
-            //    DateOfBirth = g.DateOfBirth,
-            //    CurrentCompany = g.CurrentCompany,
-            //    CurrentDesignation = g.CurrentDesignation,
-            //    ApplicantDate = g.ApplicantDate,
-            //    TotalExperience = g.TotalExperience,
-            //    DetailedExperience = g.DetailedExperience,
-            //    CurrentCTC = g.CurrentCTC,
-            //    ExpectedCTC = g.ExpectedCTC,
-            //    NoticePeriod = g.NoticePeriod,
-            //    CurrentLocation = g.CurrentLocation,
-            //    PreferedLocation = g.PreferedLocation,
-            //    ReasonForChange = g.ReasonForChange,
-            //    IsActive = g.IsActive
-            //}).ToList();
-            //return this.Response(MessageTypes.Success, string.Empty, applcantlist);
+            var applicantlist = entities.USP_ATS_ApplicantsList().AsEnumerable()
+                .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
+                .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
+            return this.Response(MessageTypes.Success, string.Empty, applicantlist);
         }
 
         [HttpGet]
         public ApiResponse GetApplicantById(int ApplicantId)
         {
-            var applicantDetail = this.entities.ApplicantRegisters.Where(x => x.ApplicantId== ApplicantId)
-                .Select(g => new
-                {
-                    ApplicantId = g.ApplicantId,
-                    FirstName = g.FirstName,
-                    MiddleName = g.MiddleName,
-                    LastName = g.LastName,
-                    Email = g.Email,
-                    Phone = g.Phone,
-                    Address = g.Address,
-                    DateOfBirth = g.DateOfBirth,
-                    CurrentCompany = g.CurrentCompany,
-                    CurrentDesignation = g.CurrentDesignation,
-                    ApplicantDate = g.ApplicantDate,
-                    TotalExperience = g.TotalExperience,
-                    DetailedExperience = g.DetailedExperience,
-                    CurrentCTC = g.CurrentCTC,
-                    ExpectedCTC = g.ExpectedCTC,
-                    NoticePeriod = g.NoticePeriod,
-                    CurrentLocation = g.CurrentLocation,
-                    PreferedLocation = g.PreferedLocation,
-                    ReasonForChange = g.ReasonForChange,
-                    IsActive = g.IsActive
-                }).SingleOrDefault();
+            var applicantDetail = this.entities.USP_ATS_ApplicantById(ApplicantId).SingleOrDefault();
             if (applicantDetail != null)
             {
                 return this.Response(Utilities.MessageTypes.Success, string.Empty, applicantDetail);
@@ -184,15 +63,23 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse Register([FromBody] ApplicantRegister data)
+        public ApiResponse Register([FromBody] ATS_ApplicantRegister data)
         {
-            var applicantData = this.entities.ApplicantRegisters.FirstOrDefault(x => x.ApplicantId == data.ApplicantId);
+            var applicantData = this.entities.ATS_ApplicantRegister.FirstOrDefault(x => x.ApplicantId == data.ApplicantId);
             if (applicantData == null)
             {
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
                 data.DateOfBirth.Value.AddDays(1);
-                entities.ApplicantRegisters.AddObject(data);
+                entities.ATS_ApplicantRegister.AddObject(data);
+                this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
+                {
+                    ApplicantId = data.ApplicantId,
+                    StatusId = 1,
+                    Level = 0,
+                    IsActive = true,
+                    EntryDate = DateTime.Now
+                });
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
@@ -223,7 +110,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.IsActive = data.IsActive;
                 applicantData.ApplicantDate = DateTime.Now;
                 applicantData.UpdateDate = DateTime.Now;
-                this.entities.ApplicantRegisters.ApplyCurrentValues(applicantData);
+                this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Applicant);
@@ -234,9 +121,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse ListSearchFilter([FromBody]ApplicantRegister data)
+        public ApiResponse ListSearchFilter([FromBody] ATS_ApplicantRegister data)
         {
-            var applcantlist = this.entities.ApplicantRegisters.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation || 
+            var applcantlist = this.entities.ATS_ApplicantRegister.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation || 
             (x.PreferedLocation == data.PreferedLocation && x.CurrentLocation == data.CurrentLocation)).Select(g => new
             {
                 ApplicantId = g.ApplicantId,
@@ -273,20 +160,21 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse FileUpload([FromBody]Attachment data, int ApplicantId)
+        public ApiResponse FileUpload([FromBody]ATS_Attachment data, int ApplicantId)
         {
             //this.entities.FileUpload.AddObject(new FileUpload()
             //{
             //    FileName = data.FileName,
             //    FilePath= data.FilePath
             //});
-            entities.Attachments.AddObject(new Attachment()
+            entities.ATS_Attachment.AddObject(new ATS_Attachment()
             {
                 FileName = data.FileName,
                 FilePath = data.FilePath,
-                ApplicantId = ApplicantId
+                ApplicantId = ApplicantId,
+                AttachmentTypeId = 1
             });
-            //this.entities.Attachments.AddObject(data);
+            //this.entities.ATS_Attachment.AddObject(data);
             if (!(this.entities.SaveChanges() > 0))
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
@@ -298,7 +186,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpGet]
         public ApiResponse GetFileUpload()
         {
-            var entity = this.entities.Attachments.ToList();
+            var entity = this.entities.ATS_Attachment.ToList();
             return this.Response(Utilities.MessageTypes.Success, string.Empty, entity);
         }
     }
