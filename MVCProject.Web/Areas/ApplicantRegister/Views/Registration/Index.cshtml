@@ -42,7 +42,7 @@
                 <!-- start designation form -->
                 <form name="frmRegister" ng-submit="SaveApplicantDetails(applicantDetailScope)"
                       novalidate>
-                    <uib-accordion close-others="true">
+                    <!--<uib-accordion close-others="true">
                         <uib-accordion-group heading="Personal Details" name="accordion" is-open="accordionGroup_1">
                             <div class="row">
                                 <div class="col-md-4">
@@ -83,10 +83,10 @@
                                             <span data-ng-show="frmRegister.LastName.$error.required">@Resource.LastNameRequired</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <!--Remarks-->
-                                <div class="col-md-4">
+                                <!--<div class="col-md-4">
                                     <div class="form-group">
                                         <label>
                                             @Resource.ApplicantEmail<span class="required-field">*</span>
@@ -287,7 +287,7 @@
                                         <label>
                                             @Resource.ApplicantCV<span class="required-field">*</span>
                                         </label>
-                                        <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required/>
+                                        <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required />
                                         <div class="c">
                                         </div>
                                         <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
@@ -297,11 +297,285 @@
                                 </div>
                             </div>
                         </uib-accordion-group>
-                    </uib-accordion>
+                    </uib-accordion>-->
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="Personal Details" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Personal Details
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantFirstName <span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" ng-focus="true" name="FirstName" ng-model="applicantDetailScope.FirstName" required placeholder="Enter First Name" maxlength="250">
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid">
+                                                    <span data-ng-show="frmRegister.FirstName.$error.required">@Resource.FirstNameRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantMiddleName <span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" required placeholder="Enter Middle Name" maxlength="250">
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.MiddleName.$dirty && frmRegister.MiddleName.$invalid">
+                                                    <span data-ng-show="frmRegister.MiddleName.$error.required">@Resource.MiddleNameRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantLastName <span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" name="LastName" ng-model="applicantDetailScope.LastName" required placeholder="Enter Last Name" maxlength="250">
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.LastName.$dirty && frmRegister.LastName.$invalid">
+                                                    <span data-ng-show="frmRegister.LastName.$error.required">@Resource.LastNameRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Remarks-->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantEmail<span class="required-field">*</span>
+                                                </label>
+                                                <input type="email" class="form-control" placeholder="Enter Email" name="Email" ng-model="applicantDetailScope.Email" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.Email.$dirty && frmRegister.Email.$invalid">
+                                                    <span data-ng-show="frmRegister.Email.$error.required">@Resource.EmailRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantPhone<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Phone" name="Phone" ng-model="applicantDetailScope.Phone" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.Phone.$dirty && frmRegister.Phone.$invalid">
+                                                    <span data-ng-show="frmRegister.Phone.$error.required">@Resource.PhoneRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantAddress
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address" required />
+                                                <div class="c">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantDOB<span class="required-field">*</span>
+                                                </label>
+                                                <input type="date" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DOB.$dirty && frmRegister.DOB.$invalid">
+                                                    <span data-ng-show="frmRegister.DOB.$error.required">@Resource.ApplicantDOBRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-control-static">
+                                                    <label>
+
+                                                    </label>
+                                                    <div class="checkbox checkbox-info">
+                                                        <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="applicantDetailScope.IsActive"
+                                                               tabindex="2" />
+                                                        <label for="chkRegisterActive">
+                                                            @Resource.IsActive
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Company Details
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentCompany
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Current Company" name="CurrentCompany" ng-model="applicantDetailScope.CurrentCompany" required />
+                                                <div class="c">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentDesignation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Current Designation" name="CurrentDesignation" ng-model="applicantDetailScope.CurrentDesignation" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentDesignation.$dirty && frmRegister.CurrentDesignation.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentDesignation.$error.required">@Resource.CurrentDesignationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.TotalExperience<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid">
+                                                    <span data-ng-show="frmRegister.TotalExperience.$error.required">@Resource.TotalExperienceRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.DetailedExperience<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Detailed Experience" name="DetailedExperience" ng-model="applicantDetailScope.DetailedExperience" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid">
+                                                    <span data-ng-show="frmRegister.DetailedExperience.$error.required">@Resource.DetailedExperienceRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentCTC<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC" ng-model="applicantDetailScope.CurrentCTC" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentCTC.$error.required">@Resource.CurrentCTCRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ExpectedCTC<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
+                                                    <span data-ng-show="frmRegister.ExpectedCTC.$error.required">@Resource.ExpectedCTCRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.NoticePeriod<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ReasonForChange<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Reason For Change" name="ReasonForChange" ng-model="applicantDetailScope.ReasonForChange" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ReasonForChange.$dirty && frmRegister.ReasonForChange.$invalid">
+                                                    <span data-ng-show="frmRegister.ReasonForChange.$error.required">@Resource.ReasonForChangeRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentLocation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentLocation.$error.required">@Resource.CurrentLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.PreferedLocation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Prefered Location" name="PreferedLocation" ng-model="applicantDetailScope.PreferedLocation" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.PreferedLocation.$dirty && frmRegister.PreferedLocation.$invalid">
+                                                    <span data-ng-show="frmRegister.PreferedLocation.$error.required">@Resource.PreferedLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantCV<span class="required-field">*</span>
+                                                </label>
+                                                <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
+                                                    <span data-ng-show="frmRegister.ApplicantCV.$error.required">@Resource.ApplicantCVRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit"  class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
