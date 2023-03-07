@@ -29,7 +29,7 @@ namespace MVCProject.Controllers
             //if (this.Session["UserContext"] == null || Request.Url.PathAndQuery.Contains("noSession"))
             //{
             //    ViewBag.IsSessionExpired = Request.QueryString["noSession"] != null ? true : false;
-            //    return this.View();
+            //  return this.View();
             //}
             //else
             //{
@@ -106,7 +106,7 @@ namespace MVCProject.Controllers
             //{
             //    // No session, redirect to login                
             //    this.LogoutUser();
-            //    return this.RedirectToAction("Login", "Account", new { noSession = "y" });
+            //  return this.RedirectToAction("Login", "Account", new { noSession = "y" });
             //}
             //else
             //{

@@ -35,6 +35,7 @@ namespace MVCProject
             bundles.Add(new StyleBundle("~/css/outer")
                 .Include(BundlePath.css.bootstrap, new CssRewriteUrlTransform())
                 .Include(BundlePath.css.style)
+                .Include(BundlePath.css.newstyles)
                 .Include(BundlePath.css.developer)
                 .Include(BundlePath.css.toastr)
                 .Include(BundlePath.css.icons, new CssRewriteUrlTransform()));
@@ -43,6 +44,7 @@ namespace MVCProject
             bundles.Add(new ScriptBundle("~/bundles/outer")
                .Include(BundlePath.jquery)
                .Include(BundlePath.jqPlugin.tether)
+               .Include(BundlePath.js.bootstrapbundle)
                .Include(BundlePath.js.pace)
                .Include(BundlePath.js.common)
                .Include(BundlePath.jqPlugin.cryptography)
@@ -53,7 +55,7 @@ namespace MVCProject
                .Include(BundlePath.angular.module.angularCookies)
                .Include(BundlePath.angular.module.uiBootstrap)
                .Include(BundlePath.angular.module.angularAnimate)
-               .Include(BundlePath.angular.module.angularFilter)               
+               .Include(BundlePath.angular.module.angularFilter)
                .Include(BundlePath.angular.app)
                .Include(BundlePath.angular.commonFunctions)
                .Include(BundlePath.angular.directive.customDirectives)
@@ -125,12 +127,14 @@ namespace MVCProject
                 .Include(BundlePath.css.textAngular)
                 .Include(BundlePath.css.spectrum)
                 .Include(BundlePath.css.scrollableTable)
-                .Include(BundlePath.css.tooltipster));
+                .Include(BundlePath.css.tooltipster)
+                .Include(BundlePath.css.newstyles));
 
             // Common JS Bundle (inner)
             bundles.Add(new ScriptBundle("~/bundles/inner")
                .Include(BundlePath.jquery)
                .Include(BundlePath.jqPlugin.tether)
+               .Include(BundlePath.js.bootstrapbundle)
                .Include(BundlePath.js.detect)
                .Include(BundlePath.js.fastclick)
                .Include(BundlePath.js.blockUI)

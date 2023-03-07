@@ -358,7 +358,7 @@ function CommonFunctions($rootScope, $timeout, $cookies, $window, $filter) {
                 var pager = $(el);
                 var scrollableTable = pager.closest("scrollable-table");
                 pager.insertAfter(scrollableTable);
-                pager.addClass('m-t-5');
+                pager.addClass('mt-3');
             });
         }, 1000);
     };

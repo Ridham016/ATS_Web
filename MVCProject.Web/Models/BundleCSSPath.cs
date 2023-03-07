@@ -25,6 +25,7 @@ namespace MVCProject.Models
         /// </summary>
         public string style = cssPath + "style.css";
 
+
         /// <summary>
         /// toastr CSS
         /// </summary>
@@ -99,5 +100,10 @@ namespace MVCProject.Models
         /// tooltipster CSS
         /// </summary>
         public string tooltipster = cssPath + "tooltipster.min.css";
+
+        /// <summary>
+        /// style CSS
+        /// </summary>
+        public string newstyles = cssPath + "newstyles.css";
     }
 }

@@ -13,21 +13,21 @@
 /* =============
    Common
 ============= */
-body {
+/*body {
     background: #ebeff2;
-    font-family: Arial,sans-serif;
+    font-family: Poppins,sans-serif;
     margin: 0;
     padding-bottom: 0px;
     overflow-x: hidden;
     color: #797979;
     font-size: 12px;
-}
+}*/
 
-html {
+/*html {
     position: relative;
     min-height: 100%;
     background: #ebeff2;
-}
+}*/
 
 h1,
 h2,
@@ -425,13 +425,13 @@ a:focus {
 /* Card Box */
 .card-box {
     padding: 20px;
-    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+    box-shadow: 0 0.625rem 0.875rem rgb(1 1 1 / 10%);
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     background-clip: padding-box;
     margin-bottom: 60px;
-    background-color: #ffffff;
+    background-color: #f6f7f9;
     float: left;
     width: 100%;
 }
@@ -727,23 +727,6 @@ textarea.form-control {
     min-height: 90px;
 }
 
-.form-control {
-    background-color: #FFFFFF;
-    border: 1px solid #E3E3E3;
-    border-radius: 4px;
-    color: #565656;
-    padding: 7px 12px;
-    font-size: 12px;
-    /*height: 38px;*/
-    max-width: 100%;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: all 300ms linear;
-    -moz-transition: all 300ms linear;
-    -o-transition: all 300ms linear;
-    -ms-transition: all 300ms linear;
-    transition: all 300ms linear;
-}
 
     .form-control:focus {
         background-color: #FFFFFF;
@@ -894,26 +877,36 @@ textarea.form-control {
 /* Pagination/ Pager */
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
+    border-radius: 0;
+    border-bottom-left-radius: var(--ats-border-radius);
+    border-top-left-radius: var(--ats-border-radius);
 }
 
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
+    border-radius: 0;
+    border-bottom-right-radius: var(--ats-border-radius);
+    border-top-right-radius: var(--ats-border-radius);
 }
 
 .pagination > li > a,
 .pagination > li > span {
-    color: #636e7b;
+    background-color: var(--primary-color);
+    padding: 12px;
+    margin: 0 4px;
+    color: var(--ats-white);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--ats-border-radius);
 }
 
     .pagination > li > a:hover,
     .pagination > li > span:hover,
     .pagination > li > a:focus,
     .pagination > li > span:focus {
-        background-color: #e4e7ea;
+        background-color: var(--ats-white);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+    }
     }
 
 .pagination-split li {
@@ -938,8 +931,9 @@ textarea.form-control {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-    background-color: #71b6f9;
-    border-color: #71b6f9;
+    background-color: var(--ats-white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 .pager li > a,
@@ -4930,98 +4924,99 @@ table.dataTable td.focus {
 
 
 /*-------------------Loader----------------------*/
-#preloader_2 {
-    position: relative;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-}
 
 
-.circle {
-    width: 40px;
-    height: 40px;
-    border: 2px inset #5571dc;
-    display: block;
+.safeloader {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -22px;
-    margin-top: -22px;
-    border-radius: 100%;
-    -moz-animation: rotate 5s infinitelinear;
-    -webkit-animation: rotate 5s infinite linear;
-    animation: rotate 5s infinite linear;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(252, 255, 252, 0.5);
+    z-index: 999999;
 }
 
-.circle-small {
-    width: 30px;
-    height: 30px;
-    border: 3px outset #e0051a;
-    display: block;
+    .safeloader #preloader_2 {
+        left: 46.8%;
+        z-index: 1051;
+    }
+
+.load-1 {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -17px;
-    margin-top: -17px;
-    border-radius: 100%;
-    -moz-animation: rotate-rev 3s infinite linear;
-    -webkit-animation: rotate-rev 3s infinite linear;
-    animation: rotate-rev 3s infinite linear;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    top: 44.5%;
+    left: 46.5%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    animation: load1 2s linear infinite;
+    animation-delay: 0.75s;
 }
 
-.circle-big {
+.load-2 {
+    position: fixed;
+    top: 46%;
+    left: 47.3%;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    animation: load2 1.5s linear infinite;
+    animation-delay: 0.5s;
+}
+
+.load-3 {
+    position: fixed;
+    top: 48%;
+    left: 48%;
     width: 50px;
     height: 50px;
-    border: 1px dashed #1D2544;
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -27px;
-    margin-top: -27px;
-    border-radius: 100%;
-    -moz-animation: rotate-rev 10s infinite linear;
-    -webkit-animation: rotate-rev 10s infinite linear;
-    animation: rotate-rev 10s infinite linear;
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    animation: load1 1s linear infinite;
+    animation-delay: 0.25s;
 }
 
-.circle-inner {
-    width: 10px;
-    height: 10px;
-    background-color: #e0051a;
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -7px;
-    margin-top: -7px;
-    border-radius: 100%;
-    -moz-animation: pulse 1.5s infinite ease-in;
-    -webkit-animation: pulse 1.5s infinite ease-in;
-    animation: pulse 1.5s infinite ease-in;
-    opacity: 1;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+@keyframes load1 {
+    50% {
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-.circle-inner-inner {
-    width: 20px;
-    height: 20px;
-    background-color: #1D2544;
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -12px;
-    margin-top: -12px;
-    border-radius: 100%;
-    -moz-animation: pulse 1.5s infinite ease-in;
-    -webkit-animation: pulse 1.5s infinite ease-in;
-    animation: pulse 1.5s infinite ease-in;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+@keyframes load2 {
+    50% {
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
 }
+
+@keyframes apperar {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 
 /*==============ANIMATIONS=================*/
 
@@ -5928,20 +5923,16 @@ header {
 
 
 /***************** 5.Footer ****************/
-.footer {
+/*.footer {
     color: #58666e;
     position: absolute;
     left: 0px;
     right: 0px;
-    bottom: 0px; /* */
-    padding: 10px 30px;
+    bottom: 0px;*/ /* */
+    /*padding: 10px 30px;
     background-color: #E6EBEC;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.main_container {
-    margin-bottom: 10px;
-}
+}*/
 
 
 /* =============== RESPONSIVE =================== */
