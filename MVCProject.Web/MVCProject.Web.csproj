@@ -168,6 +168,8 @@
     <Compile Include="Areas\InterviewerRegister\Controllers\InterviewerController.cs" />
     <Compile Include="Areas\InterviewerRegister\InterviewerAreaRegister.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
+    <Compile Include="Areas\ScheduleManagement\Controllers\ScheduleController.cs" />
+    <Compile Include="Areas\ScheduleManagement\ScheduleManagementAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -238,6 +240,8 @@
     <Content Include="Areas\Public\Scripts\js\layerslider.kreaturamedia.jquery.js" />
     <Content Include="Areas\Public\Scripts\js\layerslider.transitions.js" />
     <Content Include="Areas\Public\Views\Web.config" />
+    <Content Include="Areas\ScheduleManagement\Scripts\angular\controllers\ScheduleCtrl.js" />
+    <Content Include="Areas\ScheduleManagement\Scripts\angular\services\ScheduleService.js" />
     <Content Include="Content\css\angucomplete-alt.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -330,6 +334,7 @@
     <Content Include="Scripts\angular\directives\angularDaterangePicker.js" />
     <Content Include="Scripts\angular\directives\SafeFileUploader.js" />
     <Content Include="Scripts\angular\filters\CustomFilters.js" />
+    <Content Include="Scripts\angular\ng-file-upload.min.js" />
     <Content Include="Scripts\angular\services\CommonService.js" />
     <Content Include="Scripts\angular\services\FileService.js" />
     <Content Include="Scripts\angular\services\ResetPasswordService.js" />
@@ -430,6 +435,8 @@
     <Folder Include="Areas\Public\Scripts\angular\controllers\" />
     <Folder Include="Areas\Public\Scripts\angular\services\" />
     <Folder Include="Areas\Public\Views\Shared\" />
+    <Folder Include="Areas\ScheduleManagement\Models\" />
+    <Folder Include="Areas\ScheduleManagement\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -465,6 +472,8 @@
     <Content Include="Areas\ApplicantRegister\Views\Web.config" />
     <Content Include="Areas\InterviewerRegister\Views\Interviewer\Index.cshtml" />
     <Content Include="Areas\InterviewerRegister\Views\Web.config" />
+    <Content Include="Areas\ScheduleManagement\Views\Web.config" />
+    <Content Include="Areas\ScheduleManagement\Views\Schedule\Index.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

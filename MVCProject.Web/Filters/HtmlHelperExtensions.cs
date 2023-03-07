@@ -49,7 +49,7 @@ namespace System.Web.Mvc
             menuString.AppendFormat(GetParentMenu(Resource.Applicant, "fa fa-gears"));
             menuString.Append("<ul class='nav child_menu'>");
             menuString.Append(GetSubMenu(Resource.ApplicantRegister, "ti-id-badge", "/ApplicantRegister/Registration"));
-                    menuString.Append(GetSubMenu(Resource.InterviewersReg, "ti-id-badge", "/InterviewerRegister/Interviewer"));
+                    menuString.Append(GetSubMenu(Resource.Interviewer, "ti-id-badge", "/InterviewerRegister/Interviewer"));
 
             menuString.Append("</ul></li>");
             menuString.Append("<li>");

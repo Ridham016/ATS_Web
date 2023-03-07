@@ -43,7 +43,7 @@
                 <form name="frmRegister" ng-submit="SaveApplicantDetails(applicantDetailScope)"
                       novalidate>
                     <uib-accordion close-others="true">
-                        <uib-accordion-group heading="Personal Details" is-open="true">
+                        <uib-accordion-group heading="Personal Details" name="accordion" is-open="accordionGroup_1">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -153,7 +153,7 @@
                                 </div>
                             </div>
                         </uib-accordion-group>
-                        <uib-accordion-group heading="Company Details">
+                        <uib-accordion-group heading="Company Details" is-open="accordionGroup_2">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -282,12 +282,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>
                                             @Resource.ApplicantCV<span class="required-field">*</span>
                                         </label>
-                                        <input type="file" class="form-control" name="ApplicantCV" file-model="file" />
+                                        <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required/>
+                                        <div class="c">
+                                        </div>
+                                        <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
+                                            <span data-ng-show="frmRegister.ApplicantCV.$error.required">@Resource.ApplicantCVRequired</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +301,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.Name.$invalid">
+                                <button type="submit"  class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
@@ -326,10 +331,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                @*<select class="form-control" ng-model="IsGetAll" name="IsGetAll" ng-change="getApplicants(IsGetAll)" ng-init="IsGetAll = 'true'">
-                                    <option value="true">View All List</option>
-                                    <option value="false">View Active List</option>
-                                </select>*@
                             </div>
                             <div class="col-md-5">
                                 <div class="input-group">
@@ -345,37 +346,25 @@
                         <div class="form-group">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="427">
-                                    <table ng-init="getAllApplicants()" class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>SrNo</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Address</th>
-                                                <th>Date of Birth</th>
-                                                <th>Active</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
+                                    <table ng-table="tableParams" id="datatable" class="table table-striped table-bordered table-hover">
                                         <tbody>
                                             <tr ng-repeat="h in applicants">
-                                                <td ng-class="'colSrno text-right'">
-                                                    {{$index+1}}
+                                                <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
+                                                    {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantName'" sortable="'FirstName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
                                                 </td>
-                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantEmail'" sortable="'Email'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Email}}
                                                 </td>
-                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantPhone'" sortable="'Phone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantAddress'" sortable="'Address'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Address}}
                                                 </td>
-                                                <td ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDOB'" sortable="'Date of Birth'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.DateOfBirth | date}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" sortable="'IsActive'" header-class="'colActive'" ng-class="'colActive text-center'">
@@ -404,4 +393,3 @@
 @section scripts {
     @Scripts.Render("~/bundles/ApplicantRegister/Registration")
 }
-@*<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ng-file-upload@12.2.13/dist/ng-file-upload.min.js"></script>*@

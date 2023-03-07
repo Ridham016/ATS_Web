@@ -1,28 +1,10 @@
-﻿angular.module("MVCApp").service('ScheduleService', ['$http', function ($http) {
+﻿angular.module("MVCApp").service('ScheduleService', ['$rootScope', '$http', function ($rootScope, $http) {
     var list = [];
-    list.GetAllApplicants = function () {
-        return $http({
-            method: 'GET',
-            url: 'http://localhost:56562/api/Schedules/GetAllApplicants'
-        })
-    }
-    list.Register = function (applicantDetailScope) {
+    list.GetApplicantList = function (applicantDetailScope) {
         return $http({
             method: 'POST',
-            url: 'http://localhost:56562/api/Schedules/Register',
+            url: $rootScope.apiURL + '/Schedules/GetApplicantList',
             data: JSON.stringify(applicantDetailScope)
-        })
-    }
-    list.GetApplicantsById = function (ApplicantId) {
-        return $http({
-            method: 'Get',
-            url: 'http://localhost:56562/api/Schedules/GetApplicantById?ApplicantId=' + ApplicantId
-        })
-    }
-    list.GetApplicantList = function (isGetAll) {
-        return $http({
-            method: 'GET',
-            url: 'http://localhost:56562/api/Schedules/GetApplicantList' + (angular.isDefined(isGetAll) ? '?isGetAll=' + isGetAll : '')
         });
     };
     return list;

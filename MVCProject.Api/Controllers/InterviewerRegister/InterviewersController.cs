@@ -1,5 +1,6 @@
 ﻿using MVCProject.Api.Models;
 using MVCProject.Api.Utilities;
+using MVCProject.Api.ViewModel;
 using MVCProject.Common.Resources;
 using NPOI.HSSF.Record;
 #region namespaces
@@ -21,23 +22,34 @@ namespace MVCProject.Api.Controllers.Interviewers
             this.entities = new MVCProjectEntities();
         }
 
-        [HttpGet]
-        public ApiResponse GetAllInterviewers()
+        [HttpPost]
+        public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
         {
-            var interviewerslist = this.entities.Interviewers.Select(d => new
-            {
-                InterviewerId = d.InterviewerId,
-                InterviewerName = d.InterviewerName,
-                InterviewerEmail = d.InterviewerEmail,
-                InterviewerPhone = d.InterviewerPhone
-            }).ToList();
+            //var interviewerslist = this.entities.Interviewers.Select(d => new
+            //{
+            //    InterviewerId = d.InterviewerId,
+            //    InterviewerName = d.InterviewerName,
+            //    InterviewerEmail = d.InterviewerEmail,
+            //    InterviewerPhone = d.InterviewerPhone
+            //}).ToList();
+            //return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
+            var interviewerslist = (from d in this.entities.ATS_Interviewer.AsEnumerable()
+                                let TotalRecords = this.entities.ATS_Interviewer.AsEnumerable().Count()
+                                select new
+                                {
+                                    InterviewerId = d.InterviewerId,
+                                    InterviewerName = d.InterviewerName,
+                                    InterviewerEmail = d.InterviewerEmail,
+                                    InterviewerPhone = d.InterviewerPhone,
+                                    TotalRecords
+                                }).AsQueryable().Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
         }
 
         [HttpGet]
         public ApiResponse GetInterviewerById(int InterviewerId)
         {
-            var InterviewerDetail = this.entities.Interviewers.Where(x => x.InterviewerId == InterviewerId)
+            var InterviewerDetail = this.entities.ATS_Interviewer.Where(x => x.InterviewerId == InterviewerId)
                 .Select(d => new
                 {
                     InterviewerId = d.InterviewerId,
@@ -56,12 +68,12 @@ namespace MVCProject.Api.Controllers.Interviewers
         }
 
         [HttpPost]
-        public ApiResponse Register([FromBody] Interviewer data)
+        public ApiResponse Register([FromBody] ATS_Interviewer data)
         {
-            var InterviewerData = this.entities.Interviewers.FirstOrDefault(x => x.InterviewerId == data.InterviewerId);
+            var InterviewerData = this.entities.ATS_Interviewer.FirstOrDefault(x => x.InterviewerId == data.InterviewerId);
             if (InterviewerData == null)
             {
-                entities.Interviewers.AddObject(data);
+                entities.ATS_Interviewer.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Interviewer));
@@ -75,7 +87,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerData.InterviewerEmail = data.InterviewerEmail;
                 InterviewerData.InterviewerPhone = data.InterviewerPhone;
 
-                this.entities.Interviewers.ApplyCurrentValues(InterviewerData);
+                this.entities.ATS_Interviewer.ApplyCurrentValues(InterviewerData);
                 if (!(this.entities.SaveChanges() > 0))
                 {
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Interviewer);
