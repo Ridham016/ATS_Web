@@ -14,6 +14,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
     #region Namespaces
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -70,7 +71,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
-                data.DateOfBirth.Value.AddDays(1);
+                data.DateOfBirth.Value.ToLocalTime();
                 entities.ATS_ApplicantRegister.AddObject(data);
                 this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
                 {

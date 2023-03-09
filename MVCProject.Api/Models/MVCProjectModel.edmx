@@ -15,7 +15,7 @@
           <Property Name="ReasonId" Type="int" />
           <Property Name="Level" Type="int" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
@@ -100,6 +100,11 @@
           <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
           <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
           <Property Name="InterviewerPhone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="date" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
         </EntityType>
         <EntityType Name="ATS_MasterButton">
           <Key>
@@ -287,6 +292,12 @@
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_ApplicantsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_GetButton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_SingleApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="MVCProjectModelStoreContainer">
           <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" Schema="dbo" store:Type="Tables" />
@@ -419,7 +430,13 @@
           </FunctionImport>
           <FunctionImport Name="USP_ATS_AllApplicants" ReturnType="Collection(MVCProjectModel.USP_ATS_AllApplicants_Result)" />
           <FunctionImport Name="USP_ATS_ApplicantById" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantById_Result)">
-            <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_SingleApplicant" ReturnType="Collection(MVCProjectModel.USP_ATS_SingleApplicant_Result)">
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(MVCProjectModel.USP_ATS_GetButton_Result)">
+          <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
@@ -474,6 +491,11 @@
           <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ATS_ScheduleInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_ScheduleInformation" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK__ATS_Attac__Appli__39237A9A">
           <End Type="MVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="0..1" />
@@ -517,7 +539,7 @@
           <Property Name="ReasonId" Type="Int32" />
           <Property Name="Level" Type="Int32" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
@@ -734,6 +756,8 @@
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="Int32" Name="TotalRecords" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -779,6 +803,32 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_SingleApplicant_Result">
+          <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalExperience" Nullable="true" />
+          <Property Type="Int32" Name="DetailedExperience" Nullable="true" />
+          <Property Type="Decimal" Name="CurrentCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="ExpectedCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="NoticePeriod" Nullable="true" />
+          <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetButton_Result">
+          <Property Type="Int32" Name="ButtonId" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -840,6 +890,11 @@
           <EntitySetMapping Name="ATS_Interviewer">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_Interviewer">
               <MappingFragment StoreEntitySet="ATS_Interviewer">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
@@ -967,6 +1022,8 @@
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1020,6 +1077,40 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_SingleApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_SingleApplicant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_SingleApplicant_Result">
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+                <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+                <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+                <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+                <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+                <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+                <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetButton" FunctionName="MVCProjectModel.Store.USP_ATS_GetButton" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetButton_Result">
+                <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

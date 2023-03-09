@@ -140,6 +140,8 @@
             $("FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
+            debugger
+            console.log(applicantDetailScope.DateOfBirth);
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
                     var applicants = res.data;
@@ -218,7 +220,6 @@
                 $scope.filedata = response.data.Result;
                 $scope.AddFileToDb($scope.filedata, $scope.applicantId);
                 console.log($scope.applicantDetailScope.ApplicantId);
-                alert("");
             }).catch(function (response) {
                 response
                 alert("");

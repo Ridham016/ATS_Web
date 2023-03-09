@@ -8,6 +8,8 @@
         })
     }
     list.Register = function (applicantDetailScope) {
+        console.log(applicantDetailScope.DateOfBirth);
+        debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Registrations/Register',
