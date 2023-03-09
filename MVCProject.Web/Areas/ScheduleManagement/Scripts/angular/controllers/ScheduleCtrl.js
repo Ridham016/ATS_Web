@@ -17,10 +17,10 @@
                     applicantDetailParams = {};
                 }
                 applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                debugger
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
+                    debugger
                     var data = res.data;
                     $scope.applicants = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success

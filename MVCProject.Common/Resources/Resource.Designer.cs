@@ -2356,6 +2356,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string StatusName {
+            get {
+                return ResourceManager.GetString("StatusName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sub-Catgory.
         /// </summary>
         public static string SubCatgory {

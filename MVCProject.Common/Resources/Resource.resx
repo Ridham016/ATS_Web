@@ -1002,4 +1002,7 @@
   <data name="ApplicantCVRequired" xml:space="preserve">
     <value>Applicant CV is Required</value>
   </data>
+  <data name="StatusName" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>
