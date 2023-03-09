@@ -15,6 +15,10 @@ namespace MVCProject.Areas.ScheduleManagement.Controllers
         {
             return View();
         }
+        public ActionResult Details()
+        {
+            return View();
+        }
 
     }
 }

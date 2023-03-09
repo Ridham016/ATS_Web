@@ -27,6 +27,10 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+
+    .ViewLogo {
+        width: 25px;
+    }
 </style>
 
 <div ng-controller="ScheduleCtrl" novalidate>
@@ -39,10 +43,9 @@
     <div class="card-box">
         <div class="row">
             <div class="col-md-12">
-
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="row mb-3">
+                        <div class="row">
                             <div class="col-md-7">
                                 <label class="table-title">
                                     @MVCProject.Common.Resources.Resource.ScheduleManagement
@@ -79,6 +82,12 @@
                                                 </td>
                                                 <td data-title="'@MVCProject.Common.Resources.Resource.StatusName'" sortable="'Status'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.StatusName}}
+                                                </td>
+                                                <td ng-class="'colAction text-center'">
+                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5" title="Action"
+                                                       href="~/ScheduleManagement/Schedule/Details#?ApplicantId={{h.ApplicantId}}">
+                                                        <img src="~/Content/images/view-details-icon.svg" class="ViewLogo" />
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </tbody>

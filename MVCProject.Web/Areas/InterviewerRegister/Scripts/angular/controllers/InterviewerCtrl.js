@@ -47,8 +47,18 @@
 
 
         //$scope.getAllInterviewers = function () {
-        //    InterviewerService.GetAllInterviewers().then(function (res) {
-        //        $scope.interviewers = res.data.Result;
+        //    InterviewerService.GetAllInterviewers(interviewerDetailParams.Paging).then(function (res) {
+        //        var data = res.data;
+            //$scope.interviewers = res.data.Result;
+            //if (res.data.MessageType == messageTypes.Success) {// Success
+            //    $defer.resolve(res.data.Result);
+            //    if (res.data.Result.length == 0) {
+            //    } else {
+            //        params.total(res.data.Result[0].TotalRecords);
+            //    }
+            //} else if (res.data.MessageType == messageTypes.Error) {// Error
+            //    toastr.error(res.data.Message, errorTitle);
+            //}
         //    });
         //};
 
