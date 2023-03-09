@@ -238,10 +238,6 @@
 .table-title
 {
     font-size: 16px;
-    font-weight: normal;
-    padding: 0;
-    color: #1D2544;
-    margin-top: 0px !important;
 }
 
 .btn-colorpicker
@@ -271,8 +267,12 @@
     color: #1D2544;
 }
 
-timepicker-pop div.input-group-addon
-{
+input:checked[type=checkbox]{
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+timepicker-pop div.input-group-addon {
     background-color: rgba(218, 230, 236, 0.5) !important;
     color: #333;
     border: 1px solid rgba(218, 230, 236, 0.7) !important;

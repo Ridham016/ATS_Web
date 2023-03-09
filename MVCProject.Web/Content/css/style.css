@@ -35,7 +35,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #505458;
+  /*  color: #505458;*/
     font-weight: normal; /*font-family: 'Karla', sans-serif;*/
     margin: 10px 0;
 }
@@ -892,7 +892,7 @@ textarea.form-control {
 .pagination > li > a,
 .pagination > li > span {
     background-color: var(--primary-color);
-    padding: 12px;
+    padding: 6px;
     margin: 0 4px;
     color: var(--ats-white);
     border: 1px solid var(--primary-color);
@@ -1176,7 +1176,9 @@ textarea.form-control {
 
 .input-group-addon {
     border-radius: 2px;
-    border: 1px solid #eeeeee;
+    padding: 7px 12px;
+    background-color: var(--primary-color);
+    color: var(--ats-white);
 }
 /* Tooltips */
 .tooltip-inner {
@@ -3422,7 +3424,7 @@ div.hopscotch-bubble {
     color: #60666D;
 }
 
-    .btn-white:hover,
+/*    .btn-white:hover,
     .btn-white:focus,
     .btn-white:active,
     .btn-white.active,
@@ -3434,7 +3436,7 @@ div.hopscotch-bubble {
         background-color: #188AE2;
         border: 1px solid #188AE2 !important;
         color: #fff;
-    }
+    }*/
 
 .btn-primary {
     background-color: #188ae2 !important;
@@ -4650,10 +4652,10 @@ div.hopscotch-bubble {
         border: none;
     }
 
-
+/*
 tbody {
     color: #797979;
-}
+}*/
 
 th {
     color: #666666;
@@ -4928,65 +4930,51 @@ table.dataTable td.focus {
 
 .safeloader {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
     background: rgba(252, 255, 252, 0.5);
     z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
-    .safeloader #preloader_2 {
-        left: 46.8%;
-        z-index: 1051;
-    }
-
 .load-1 {
-    position: fixed;
-    top: 44.5%;
-    left: 46.5%;
+    position: relative;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent;
-    border-top-color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    border: 0;
+    border-top: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--primary-color);
     animation: load1 2s linear infinite;
-    animation-delay: 0.75s;
 }
 
 .load-2 {
-    position: fixed;
-    top: 46%;
-    left: 47.3%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 75px;
     height: 75px;
     border-radius: 50%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent;
-    border-top-color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-    animation: load2 1.5s linear infinite;
-    animation-delay: 0.5s;
+    border-left: 5px solid var(--primary-color);
+    border-right: 5px solid var(--primary-color);
+
+
 }
 
 .load-3 {
-    position: fixed;
-    top: 48%;
-    left: 48%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
+    border: 0;
+    border-top: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--primary-color);
     border-radius: 50%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent;
-    border-top-color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-    animation: load1 1s linear infinite;
-    animation-delay: 0.25s;
 }
 
 @keyframes load1 {
@@ -4995,25 +4983,6 @@ table.dataTable td.focus {
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes load2 {
-    50% {
-    }
-
-    100% {
-        transform: rotate(-360deg);
-    }
-}
-
-@keyframes apperar {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
     }
 }
 

@@ -37,13 +37,13 @@
         </div>
     </div>
     <div class="card-box">
-        <div class="row">
+        <div class="row ">
             <div class="col-md-12">
                 <!-- start designation form -->
                 <form name="frmRegister" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
                       novalidate>
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerName <span class="required-field">*</span>
@@ -58,7 +58,7 @@
                         </div>
 
                         <!--Remarks-->
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerEmail<span class="required-field">*</span>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerPhone<span class="required-field">*</span>
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.InterviewerName.$invalid">
@@ -99,12 +99,14 @@
                         </div>
                     </div>
                 </form>
+
+                <hr class="section-divider"/>
                 <!-- end designation form -->
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-3">
-                                <label class="table-title">
+                                <label class="table-title my-3">
                                     @Resource.InterviewersReg @Resource.Details
                                 </label>
                             </div>

@@ -50,7 +50,6 @@
             RegistrationService.GetAllApplicants().then(function (res) {
                 $scope.applicants = res.data.Result;
                 console.log($scope.applicants);
-                debugger
             });
         };
         //Load Designation List
@@ -64,7 +63,6 @@
                     applicantDetailParams = {};
                 }
                 applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                debugger
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 if ($scope.IsGetAll) {
@@ -135,7 +133,6 @@
                 ReasonForChange: '',
                 IsActive: true
             };
-            debugger
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
             $scope.accordionGroup_1 = true;
@@ -143,10 +140,8 @@
             $("FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
-            debugger
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
-                    debugger
                     var applicants = res.data;
                     $scope.applicantId = res.data.Result;
                     $scope.uploadFile();
@@ -168,7 +163,6 @@
         $scope.EditApplicantDetails = function (ApplicantId) {
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
                 if (res) {
-                    debugger
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {// Success
                         $scope.applicantDetailScope = res.data.Result;
@@ -185,15 +179,12 @@
         }
 
         $scope.AddFileToDb = function () {
-            debugger
             RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                debugger
                 console.log(res.data.Result);
             })
         }
 
         $scope.checkFile = function (event) {
-            debugger
             var fileInput = event.target.files[0];
 
             var allowedExtensions =
@@ -206,7 +197,6 @@
         }
 
         $scope.uploadFile = function () {
-            debugger
             var fileInput = document.getElementById('file');
             //var allowedExtensions =
             //    /(\.pdf)$/i;
@@ -226,7 +216,6 @@
             RegistrationService.uploadFile(payload).then(function (response) {
                 console.log(response);
                 $scope.filedata = response.data.Result;
-                debugger
                 $scope.AddFileToDb($scope.filedata, $scope.applicantId);
                 console.log($scope.applicantDetailScope.ApplicantId);
                 alert("");
@@ -237,7 +226,6 @@
         }
     }
         //angular.module("MVCApp").factory('FileService', ['$http', function ($http) {
-        //    debugger
         //    return {
         //        uploadFile: function (url, payload) {
         //            return $http({
