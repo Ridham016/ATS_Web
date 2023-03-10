@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = @MVCProject.Common.Resources.Resource.ScheduleManagement;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="ScheduleCtrl" ng-init="GetData()" novalidate>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h1 class="Personal Details" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Personal Details
+                </button>
+            </h1>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-md-12 mt-lg-0 mt-md-0 mt-sm-0">
+                            <label>
+                                @MVCProject.Common.Resources.Resource.ApplicantName :
+                            </label>
+                            <label>
+                                {{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-sm-3">
+                            <label>
+                                @MVCProject.Common.Resources.Resource.ApplicantEmail :
+                            </label>
+                            <label>
+                                {{applicants.Email}}
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-sm-3">
+                            <label>
+                                @MVCProject.Common.Resources.Resource.ApplicantAddress :
+                            </label>
+                            <label>
+                                {{applicants.Address}}
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-sm-3">
+                            <label>
+                                @MVCProject.Common.Resources.Resource.ApplicantDOB :
+                            </label>
+                            <label>
+                                {{applicants.DateOfBirth | date}}
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-sm-3">
+                            <label>
+                                @MVCProject.Common.Resources.Resource.ApplicantPhone :
+                            </label>
+                            <label>
+                                {{applicants.Phone}}
+                            </label>
+                        </div>
+                        <div class="col-md-12 mt-sm-3">
+                            <label>
+                                Status :
+                            </label>
+                            <label>
+                                {{applicants.StatusName}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h1 class="Personal Details" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Status
+                </button>
+            </h1>
+            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="card-box">
+                        <button class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId != 4 && h.NextStatusId != 8" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">{{h.ButtonName}}</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 4"
+                                ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">
+                            {{h.ButtonName}}
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Interview</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form name="frmSchedule"
+                                              novalidate>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>
+                                                            @MVCProject.Common.Resources.Resource.ScheduleDateTime <span class="required-field">*</span>
+                                                        </label>
+                                                        <input type="datetime-local" class="form-control datepicker" ng-focus="true" name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
+                                                        <div class="c">
+                                                        </div>
+                                                        <div class="label label-danger" data-ng-show="frmRegister.ScheduleDateTime.$dirty && frmRegister.ScheduleDateTime.$invalid">
+                                                            <span data-ng-show="frmRegister.ScheduleDateTime.$error.required">@MVCProject.Common.Resources.Resource.ScheduleDateRequired</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            @MVCProject.Common.Resources.Resource.Interviewer <span class="required-field">*</span> <br />
+                                                        </label>
+                                                        <select class="form-control" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
+                                                            <option value="" selected>Select Interviewer</option>
+                                                            <option ng-repeat="op in interviewers" value="{{op.InterviewerId}}">{{op.InterviewerName}}</option>
+                                                        </select>
+                                                        <div class="c">
+                                                        </div>
+                                                        <div class="label label-danger" data-ng-show="frmRegister.ScheduleDateTime.$dirty && frmRegister.ScheduleDateTime.$invalid">
+                                                            <span data-ng-show="frmRegister.ScheduleDateTime.$error.required">@MVCProject.Common.Resources.Resource.ScheduleDateRequired</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            @MVCProject.Common.Resources.Resource.ScheduleLink <span class="required-field">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" ng-focus="true" name="ScheduleLink" ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" required>
+                                                        <div class="c">
+                                                        </div>
+                                                        <div class="label label-danger" data-ng-show="frmRegister.ScheduleLink.$dirty && frmRegister.ScheduleLink.$invalid">
+                                                            <span data-ng-show="frmRegister.ScheduleLink.$error.required">@MVCProject.Common.Resources.Resource.ScheduleLink</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            @MVCProject.Common.Resources.Resource.Description <span class="required-field">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" ng-focus="true" name="Description" ng-model="scheduleDetailScope.Description" placeholder="Enter Description" required>
+                                                        <div class="c">
+                                                        </div>
+                                                        <div class="label label-danger" data-ng-show="frmRegister.Description.$dirty && frmRegister.Description.$invalid">
+                                                            <span data-ng-show="frmRegister.Description.$error.required">@MVCProject.Common.Resources.Resource.Description</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="SaveSchduleDetails(scheduleDetailScope)">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 8"
+                                ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">
+                            {{h.ButtonName}}
+                        </button>
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Select Other Reasons</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <select class="form-control" name="OtherReasons" id="OtherReasons" ng-init="getOtherReasons()" ng-model="ReasonId">
+                                                <option value="" selected>Select Reason</option>
+                                                <option ng-repeat="op in reasons" value="{{op.ReasonId}}">{{op.Reason}}</option>
+                                            </select>
+                                            <div class="c">
+                                            </div>
+                                            <div class="label label-danger" data-ng-show="frmRegister.OtherReasons.$dirty && frmRegister.OtherReasons.$invalid">
+                                                <span data-ng-show="frmRegister.OtherReasons.$error.required">@MVCProject.Common.Resources.Resource.OtherReasonRequired</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" ng-click="updateOtherReason(ReasonId)">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/ScheduleManagement/Schedule")
+}

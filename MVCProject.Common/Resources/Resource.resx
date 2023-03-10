@@ -1005,4 +1005,25 @@
   <data name="StatusName" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="ApplicantStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ScheduleDateTime" xml:space="preserve">
+    <value>Schedule Date &amp; Time</value>
+  </data>
+  <data name="ScheduleLink" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="ScheduleLinkRequired" xml:space="preserve">
+    <value>Schedule Link is Required</value>
+  </data>
+  <data name="OtherReasonRequired" xml:space="preserve">
+    <value>Other Reason is Required</value>
+  </data>
+  <data name="Interview" xml:space="preserve">
+    <value>Interview</value>
+  </data>
+  <data name="ScheduledSuccessfully" xml:space="preserve">
+    <value>Scheduled Successfully</value>
+  </data>
 </root>

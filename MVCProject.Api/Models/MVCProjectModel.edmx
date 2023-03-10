@@ -295,6 +295,14 @@
         <Function Name="USP_ATS_GetButton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StatusId" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_GetLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_GetOtherReasons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_InterviewerbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InterviewerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_InterviewerList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_SingleApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -437,6 +445,14 @@
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(MVCProjectModel.USP_ATS_GetButton_Result)">
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_GetOtherReasons" EntitySet="ATS_MasterOtherReason" ReturnType="Collection(MVCProjectModel.ATS_MasterOtherReason)" />
+          <FunctionImport Name="USP_ATS_InterviewerbyId" ReturnType="Collection(MVCProjectModel.USP_ATS_InterviewerbyId_Result)">
+          <Parameter Name="InterviewerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_InterviewerList" ReturnType="Collection(MVCProjectModel.USP_ATS_InterviewerList_Result)" />
+          <FunctionImport Name="USP_ATS_GetLevel" ReturnType="Collection(MVCProjectModel.USP_ATS_GetLevel_Result)">
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
@@ -829,6 +845,31 @@
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
+          <Property Type="String" Name="ButtonName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="NextStatusId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetOtherReasons_Result">
+          <Property Type="Int32" Name="ReasonId" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_InterviewerbyId_Result">
+          <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+          <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_InterviewerList_Result">
+          <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+          <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetLevel_Result">
+          <Property Type="Int32" Name="Level" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1111,6 +1152,40 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetButton_Result">
                 <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+                <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+                <ScalarProperty Name="NextStatusId" ColumnName="NextStatusId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetOtherReasons" FunctionName="MVCProjectModel.Store.USP_ATS_GetOtherReasons">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_InterviewerbyId" FunctionName="MVCProjectModel.Store.USP_ATS_InterviewerbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_InterviewerbyId_Result">
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+                <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_InterviewerList" FunctionName="MVCProjectModel.Store.USP_ATS_InterviewerList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_InterviewerList_Result">
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+                <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="MVCProjectModel.Store.USP_ATS_GetLevel" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetLevel_Result">
+                <ScalarProperty Name="Level" ColumnName="Level" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

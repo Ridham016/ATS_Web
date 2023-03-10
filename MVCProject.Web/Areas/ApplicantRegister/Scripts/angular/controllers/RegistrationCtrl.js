@@ -88,6 +88,7 @@
                     RegistrationService.GetAllApplicants(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
+                        debugger
                         if (res.data.MessageType == messageTypes.Success) {// Success
                             $defer.resolve(res.data.Result);
                             if (res.data.Result.length == 0) {
