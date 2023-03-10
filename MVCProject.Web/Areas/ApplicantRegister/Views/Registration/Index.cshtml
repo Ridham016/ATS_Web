@@ -321,7 +321,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantMiddleName <span class="required-field">*</span>
@@ -334,7 +334,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantLastName <span class="required-field">*</span>
@@ -437,7 +437,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.CurrentDesignation<span class="required-field">*</span>
@@ -450,7 +450,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.TotalExperience<span class="required-field">*</span>
@@ -596,18 +596,18 @@
                                     @Resource.Registration @Resource.Details
                                 </label>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 mt-lg-0 mt-md-0 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox checkbox-info">
                                         <input type="checkbox" id="chkRegisterActive" name="chkRegisterActive" ng-model="IsGetAll" ng-change="getApplicants(IsGetAll)"
                                                tabindex="2" />
-                                        <label for="chkIsGetAll">
+                                        <label for="chkRegisterActive">
                                             View Active
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-5 mt-lg-0 mt-md-0 mt-3">
                                 <div class="input-group">
                                     <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">

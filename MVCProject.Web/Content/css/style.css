@@ -3847,12 +3847,13 @@ div.hopscotch-bubble {
 }
 
 .checkbox-info input[type="checkbox"]:checked + label::before {
-    background-color: #7CBBF8;
-    border-color: #7CBBF8;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .checkbox-info input[type="checkbox"]:checked + label::after {
     color: #ffffff;
+    background-color: var(--primary-color);
 }
 
 .checkbox-warning input[type="checkbox"]:checked + label::before {

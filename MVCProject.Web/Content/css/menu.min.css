@@ -164,7 +164,7 @@
 }
 
 #menu_toggle{
-    margin-top: 9px
+    margin-top: 15px
 }
 
 
@@ -303,7 +303,7 @@ body  .right_col {
 }
     .nav_title a img {
         margin-left: 5px;
-        max-height: 50px;
+        max-height: 70px;
         max-width: 170px;
         -webkit-transition: all .25s ease-in-out;
         transition: all .25s ease-in-out;
@@ -889,8 +889,9 @@ table.no-margin .progress {
 
         .toggle a i {
             font-size: 16px;
-            color: var(--primary-color);
+            color: var(--ats-white);
             BORDER: 1PX SOLID var(--primary-color);
+            background-color: var(--primary-color);
             PADDING: 7PX;
             border-radius: 3px;
         }
@@ -1636,11 +1637,11 @@ ul.project_files li {
     border-bottom: none;
 }
 
-.nav-sm .toggle a i {
+/*.nav-sm .toggle a i {
     color: var(--primary-color);
     BORDER: 1PX SOLID var(--primary-color);
 }
-
+*/
 .nicescroll-rails {
     top: 0;
 }

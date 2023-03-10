@@ -433,10 +433,6 @@ tr {
 	border-width: 0
 }
 
-label {
-	display: inline-block
-}
-
 button {
 	border-radius: 0
 }
@@ -2340,7 +2336,7 @@ progress {
 	--ats-table-striped-bg: #dff0ff;
 	--ats-table-active-color: var(--ats-body-color);
 	--ats-table-active-bg: var(--ats-gray-100);
-	--ats-table-hover-color: var(--ats-body-color);
+	--ats-table-hover-color: var(--ats-black);
 	--ats-table-hover-bg: var(--ats-gray-100);
 	width: 100%;
 	margin-bottom: 1.5rem;
@@ -17202,7 +17198,8 @@ button {
 }
 
 label {
-	font-weight: 600
+	font-weight: 600;
+	margin-bottom: 5px;
 }
 
 address.address-lg {

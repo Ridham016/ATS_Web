@@ -78,7 +78,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: var(--ats-border-radius);
+    color:  red;
+    padding: 0;
+    background-color: transparent;
 }
 
 
