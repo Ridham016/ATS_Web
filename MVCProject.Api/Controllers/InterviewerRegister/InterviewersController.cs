@@ -25,7 +25,7 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpPost]
         public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
         {
-            var interviewerlist = entities.USP_ATS_InterviewerList().ToList();
+            var interviewerlist = entities.USP_ATS_AllInterviewers().ToList();
             //.AsEnumerable()
             // .AsQueryable().OrderByField(interviewerDetailParams.OrderByColumn, interviewerDetailParams.IsAscending)
             // .Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);

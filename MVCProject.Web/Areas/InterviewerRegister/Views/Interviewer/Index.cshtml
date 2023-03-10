@@ -58,7 +58,7 @@
                         </div>
 
                         <!--Remarks-->
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerEmail<span class="required-field">*</span>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-3">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerPhone<span class="required-field">*</span>
@@ -94,7 +94,7 @@
                                 <div class="checkbox checkbox-info">
                                     <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="interviewerDetailScope.Is_Active"
                                            tabindex="2" />
-                                    <label for="chkRegisterActive">
+                                    <label for="chkIsActive">
                                         @Resource.IsActive
                                     </label>
                                 </div>
@@ -116,7 +116,7 @@
                     </div>
                 </form>
 
-                <hr class="section-divider"/>
+                <hr class="section-divider" />
                 <!-- end designation form -->
                 <div class="row mt-4">
                     <div class="col-md-12">
@@ -146,6 +146,10 @@
                                                 </td>
                                                 <td data-title="'@Resource.InterviewerPhone'" sortable="'Phone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.InterviewerPhone}}
+                                                </td>
+                                                <td data-title="'@Resource.Active'" sortable="'IsActive'" header-class="'colActive'" ng-class="'colActive text-center'">
+                                                    <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.Is_Active"
+                                                           ng-disabled="true" />
                                                 </td>
                                                 <td ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"

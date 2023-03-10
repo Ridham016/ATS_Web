@@ -11,7 +11,8 @@
             InterviewerId: 0,
             InterviewerName: '',
             InterviewerEmail: '',
-            InterviewerPhone: ''
+            InterviewerPhone: '',
+            Is_Active: true
         };
 
         $scope.tableParams = new ngTableParams({
@@ -67,7 +68,8 @@
                 InterviewertId: 0,
                 InterviewerName: '',
                 InterviewerEmail: '',
-                InterviewerPhone:''
+                InterviewerPhone: '',
+                Is_Active: true
             };
             $scope.frmRegister.$setPristine();
             $("InterviewerName").focus();

@@ -64,7 +64,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     PreferedLocation = g.PreferedLocation,
                     ReasonForChange = g.ReasonForChange,
                     StatusId = g.StatusId,
-                    StatusName = g.StatusName
+                    StatusName = g.StatusName,
+                    ReasonId = g.ReasonId,
+                    Reason = g.Reason
                 }).SingleOrDefault();
             //var StatusID = applicantDetail.Select(x => x.StatusId).SingleOrDefault();
             //var button = this.entities.USP_ATS_GetButton(StatusID).ToList();
@@ -152,34 +154,57 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             //});
             if (!(this.entities.SaveChanges() > 0))
             {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Interviewer));
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.ScheduleManagement));
             }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Interviewer));
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.ScheduleManagement));
         }
 
         [HttpGet]
         public ApiResponse GetReasons()
         {
-            var reasons = this.entities.USP_ATS_GetOtherReasons().ToList();
+            var reasons = this.entities.USP_ATS_GetOtherReasons().Select(x => new
+            {
+                ReasonId = x.ReasonId,
+                Reason = x.Reason,
+                IsActive = x.IsActive
+            }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, reasons);
         }
 
         [HttpPost]
-        public ApiResponse UpdateReason([FromBody]ATS_MasterOtherReason data, int ActionId)
+        public ApiResponse UpdateReason([FromBody]int ReasonId, int ActionId)
         {
             var Action = entities.ATS_ActionHistory.Where(x => x.ActionId == ActionId).SingleOrDefault();
             if (Action != null)
             {
-                Action.ReasonId = data.ReasonId;
+                Action.ReasonId = ReasonId;
             }
             entities.ATS_ActionHistory.ApplyCurrentValues(Action);
             if (!(this.entities.SaveChanges() > 0))
             {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Interviewer));
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
             }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant));
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.OtherReason));
+        }
+
+        [HttpPost]
+        public ApiResponse HoldReason([FromBody] string Hold, int ActionId)
+        {
+            entities.ATS_ScheduleInformation.AddObject(new ATS_ScheduleInformation
+            {
+                ActionId = ActionId,
+                Description = Hold,
+                EntryDate= DateTime.Now,
+                IsActive= true
+            });
+            if (!(this.entities.SaveChanges() > 0))
+            {
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.HoldReason));
+            }
+
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.HoldReason));
         }
 
 

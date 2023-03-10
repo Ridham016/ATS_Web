@@ -28,7 +28,7 @@
           <Property Name="ButtonId" Type="int" />
           <Property Name="NextStatusId" Type="int" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
@@ -58,7 +58,7 @@
           <Property Name="PreferedLocation" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
         </EntityType>
@@ -87,7 +87,7 @@
           <Property Name="StatusId" Type="int" />
           <Property Name="ButtonId" Type="int" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
@@ -102,7 +102,7 @@
           <Property Name="InterviewerPhone" Type="nvarchar" MaxLength="15" />
           <Property Name="Is_Active" Type="bit" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
         </EntityType>
@@ -132,16 +132,16 @@
         </EntityType>
         <EntityType Name="ATS_ScheduleInformation">
           <Key>
-            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ScheduleDateTime" Type="datetime" />
           <Property Name="ActionId" Type="int" />
           <Property Name="InterviewerId" Type="int" />
           <Property Name="ScheduleLink" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
@@ -288,6 +288,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="USP_ATS_AllApplicants" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_AllInterviewers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_ApplicantById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -454,6 +455,7 @@
           <FunctionImport Name="USP_ATS_GetLevel" ReturnType="Collection(MVCProjectModel.USP_ATS_GetLevel_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="USP_ATS_AllInterviewers" ReturnType="Collection(MVCProjectModel.USP_ATS_AllInterviewers_Result)" />
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -480,7 +482,7 @@
           <Property Name="PreferedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="ATS_Attachment" Relationship="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
@@ -509,7 +511,7 @@
           <NavigationProperty Name="ATS_ScheduleInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_ScheduleInformation" />
           <Property Name="Is_Active" Type="Boolean" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
         </EntityType>
@@ -572,7 +574,7 @@
           <Property Name="ButtonId" Type="Int32" />
           <Property Name="NextStatusId" Type="Int32" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
@@ -587,7 +589,7 @@
           <Property Name="StatusId" Type="Int32" />
           <Property Name="ButtonId" Type="Int32" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
@@ -626,16 +628,16 @@
         </EntityType>
         <EntityType Name="ATS_ScheduleInformation">
           <Key>
-            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
           <Property Name="ActionId" Type="Int32" />
           <Property Name="InterviewerId" Type="Int32" />
           <Property Name="ScheduleLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
@@ -842,6 +844,9 @@
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="ReasonId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
@@ -870,6 +875,14 @@
         </ComplexType>
         <ComplexType Name="USP_ATS_GetLevel_Result">
           <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_AllInterviewers_Result">
+          <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+          <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+          <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1025,6 +1038,7 @@
           <EntitySetMapping Name="ATS_ScheduleInformation">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_ScheduleInformation">
               <MappingFragment StoreEntitySet="ATS_ScheduleInformation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
@@ -1035,7 +1049,6 @@
                 <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
                 <ScalarProperty Name="ActionId" ColumnName="ActionId" />
                 <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
-                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1145,6 +1158,9 @@
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1186,6 +1202,18 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetLevel_Result">
                 <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_AllInterviewers" FunctionName="MVCProjectModel.Store.USP_ATS_AllInterviewers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_AllInterviewers_Result">
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+                <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

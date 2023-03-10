@@ -1026,4 +1026,10 @@
   <data name="ScheduledSuccessfully" xml:space="preserve">
     <value>Scheduled Successfully</value>
   </data>
+  <data name="OtherReason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="HoldReason" xml:space="preserve">
+    <value>Hold Reason</value>
+  </data>
 </root>

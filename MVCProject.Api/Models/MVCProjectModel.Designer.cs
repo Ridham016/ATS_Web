@@ -511,6 +511,14 @@ namespace MVCProject.Api.Models
     
             return base.ExecuteFunction<USP_ATS_GetLevel_Result>("USP_ATS_GetLevel", applicantIdParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<USP_ATS_AllInterviewers_Result> USP_ATS_AllInterviewers()
+        {
+            return base.ExecuteFunction<USP_ATS_AllInterviewers_Result>("USP_ATS_AllInterviewers");
+        }
 
         #endregion
 
@@ -3287,11 +3295,11 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// Create a new ATS_ScheduleInformation object.
         /// </summary>
-        /// <param name="scheduleId">Initial value of the ScheduleId property.</param>
-        public static ATS_ScheduleInformation CreateATS_ScheduleInformation(global::System.Int32 scheduleId)
+        /// <param name="id">Initial value of the Id property.</param>
+        public static ATS_ScheduleInformation CreateATS_ScheduleInformation(global::System.Int32 id)
         {
             ATS_ScheduleInformation aTS_ScheduleInformation = new ATS_ScheduleInformation();
-            aTS_ScheduleInformation.ScheduleId = scheduleId;
+            aTS_ScheduleInformation.Id = id;
             return aTS_ScheduleInformation;
         }
 
@@ -3304,27 +3312,27 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ScheduleId
+        public global::System.Int32 Id
         {
             get
             {
-                return _ScheduleId;
+                return _Id;
             }
             set
             {
-                if (_ScheduleId != value)
+                if (_Id != value)
                 {
-                    OnScheduleIdChanging(value);
-                    ReportPropertyChanging("ScheduleId");
-                    _ScheduleId = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ScheduleId");
-                    OnScheduleIdChanged();
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
                 }
             }
         }
-        private global::System.Int32 _ScheduleId;
-        partial void OnScheduleIdChanging(global::System.Int32 value);
-        partial void OnScheduleIdChanged();
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4288,6 +4296,179 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TotalRecords
+        {
+            get
+            {
+                return _TotalRecords;
+            }
+            set
+            {
+                OnTotalRecordsChanging(value);
+                ReportPropertyChanging("TotalRecords");
+                _TotalRecords = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalRecords");
+                OnTotalRecordsChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TotalRecords;
+        partial void OnTotalRecordsChanging(Nullable<global::System.Int32> value);
+        partial void OnTotalRecordsChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_AllInterviewers_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_AllInterviewers_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_AllInterviewers_Result object.
+        /// </summary>
+        /// <param name="interviewerId">Initial value of the InterviewerId property.</param>
+        public static USP_ATS_AllInterviewers_Result CreateUSP_ATS_AllInterviewers_Result(global::System.Int32 interviewerId)
+        {
+            USP_ATS_AllInterviewers_Result uSP_ATS_AllInterviewers_Result = new USP_ATS_AllInterviewers_Result();
+            uSP_ATS_AllInterviewers_Result.InterviewerId = interviewerId;
+            return uSP_ATS_AllInterviewers_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 InterviewerId
+        {
+            get
+            {
+                return _InterviewerId;
+            }
+            set
+            {
+                OnInterviewerIdChanging(value);
+                ReportPropertyChanging("InterviewerId");
+                _InterviewerId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InterviewerId");
+                OnInterviewerIdChanged();
+            }
+        }
+        private global::System.Int32 _InterviewerId;
+        partial void OnInterviewerIdChanging(global::System.Int32 value);
+        partial void OnInterviewerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerName
+        {
+            get
+            {
+                return _InterviewerName;
+            }
+            set
+            {
+                OnInterviewerNameChanging(value);
+                ReportPropertyChanging("InterviewerName");
+                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerName");
+                OnInterviewerNameChanged();
+            }
+        }
+        private global::System.String _InterviewerName;
+        partial void OnInterviewerNameChanging(global::System.String value);
+        partial void OnInterviewerNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerEmail
+        {
+            get
+            {
+                return _InterviewerEmail;
+            }
+            set
+            {
+                OnInterviewerEmailChanging(value);
+                ReportPropertyChanging("InterviewerEmail");
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerEmail");
+                OnInterviewerEmailChanged();
+            }
+        }
+        private global::System.String _InterviewerEmail;
+        partial void OnInterviewerEmailChanging(global::System.String value);
+        partial void OnInterviewerEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerPhone
+        {
+            get
+            {
+                return _InterviewerPhone;
+            }
+            set
+            {
+                OnInterviewerPhoneChanging(value);
+                ReportPropertyChanging("InterviewerPhone");
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerPhone");
+                OnInterviewerPhoneChanged();
+            }
+        }
+        private global::System.String _InterviewerPhone;
+        partial void OnInterviewerPhoneChanging(global::System.String value);
+        partial void OnInterviewerPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Is_Active
+        {
+            get
+            {
+                return _Is_Active;
+            }
+            set
+            {
+                OnIs_ActiveChanging(value);
+                ReportPropertyChanging("Is_Active");
+                _Is_Active = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Is_Active");
+                OnIs_ActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Is_Active;
+        partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIs_ActiveChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6482,6 +6663,78 @@ namespace MVCProject.Api.Models
         private global::System.String _StatusName;
         partial void OnStatusNameChanging(global::System.String value);
         partial void OnStatusNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Level
+        {
+            get
+            {
+                return _Level;
+            }
+            set
+            {
+                OnLevelChanging(value);
+                ReportPropertyChanging("Level");
+                _Level = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Level");
+                OnLevelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Level;
+        partial void OnLevelChanging(Nullable<global::System.Int32> value);
+        partial void OnLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ReasonId
+        {
+            get
+            {
+                return _ReasonId;
+            }
+            set
+            {
+                OnReasonIdChanging(value);
+                ReportPropertyChanging("ReasonId");
+                _ReasonId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ReasonId");
+                OnReasonIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ReasonId;
+        partial void OnReasonIdChanging(Nullable<global::System.Int32> value);
+        partial void OnReasonIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Reason
+        {
+            get
+            {
+                return _Reason;
+            }
+            set
+            {
+                OnReasonChanging(value);
+                ReportPropertyChanging("Reason");
+                _Reason = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Reason");
+                OnReasonChanged();
+            }
+        }
+        private global::System.String _Reason;
+        partial void OnReasonChanging(global::System.String value);
+        partial void OnReasonChanged();
 
         #endregion
 

@@ -41,6 +41,7 @@
         })
     }
     list.GetOtherReasons = function () {
+        debugger
         return $http({
             method: 'GET',
             url: $rootScope.apiURL + '/Schedules/GetReasons'
@@ -52,6 +53,14 @@
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId,
             data: JSON.stringify(reasonId, actionId)
+        })
+    }
+    list.HoldReason = function (Hold, actionId) {
+        debugger
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/Schedules/HoldReason?ActionId=' + actionId,
+            data: JSON.stringify(Hold, actionId)
         })
     }
     return list;

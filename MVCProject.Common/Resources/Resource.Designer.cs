@@ -268,6 +268,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string ApplicantStatus {
+            get {
+                return ResourceManager.GetString("ApplicantStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application Configuration.
         /// </summary>
         public static string ApplicationConfiguration {
@@ -1204,6 +1213,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hold Reason.
+        /// </summary>
+        public static string HoldReason {
+            get {
+                return ResourceManager.GetString("HoldReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -1218,6 +1236,15 @@ namespace MVCProject.Common.Resources {
         public static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interview.
+        /// </summary>
+        public static string Interview {
+            get {
+                return ResourceManager.GetString("Interview", resourceCulture);
             }
         }
         
@@ -1789,6 +1816,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reason.
+        /// </summary>
+        public static string OtherReason {
+            get {
+                return ResourceManager.GetString("OtherReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Reason is Required.
+        /// </summary>
+        public static string OtherReasonRequired {
+            get {
+                return ResourceManager.GetString("OtherReasonRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string Page {
@@ -2190,6 +2235,42 @@ namespace MVCProject.Common.Resources {
         public static string ScheduleDateRequired {
             get {
                 return ResourceManager.GetString("ScheduleDateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule Date &amp; Time.
+        /// </summary>
+        public static string ScheduleDateTime {
+            get {
+                return ResourceManager.GetString("ScheduleDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scheduled Successfully.
+        /// </summary>
+        public static string ScheduledSuccessfully {
+            get {
+                return ResourceManager.GetString("ScheduledSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link.
+        /// </summary>
+        public static string ScheduleLink {
+            get {
+                return ResourceManager.GetString("ScheduleLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule Link is Required.
+        /// </summary>
+        public static string ScheduleLinkRequired {
+            get {
+                return ResourceManager.GetString("ScheduleLinkRequired", resourceCulture);
             }
         }
         
