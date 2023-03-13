@@ -3,10 +3,32 @@
     bool HasSession = (bool)ViewBag.HasSession;
     Layout = "~/Views/Shared/_Layout" + (HasSession ? "" : "Public") + ".cshtml";
 }
-<div class="row text-center">
+
+<div class="authentication-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xxl-4 col-lg-5">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <h1 class="text-error">@Model</h1>
+                            <h2 class="text-uppercase text-danger mt-3">@ViewBag.Title</h2>
+                            <p class="text-muted mt-3"> @ViewBag.ErrorMessage</p>
+                            <a href="/Account/RedirectToDefaultUrl" class="btn btn-primary waves-effect tada animated">
+                                <span>@Resource.ReturnHome</span>
+                            </a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row text-center">
     <div class="col-sm-12">
         <h1 style="font-size: 120px; margin-top: 10%; color: #fdbf4e;">
-            @Model</h1>
+            @Model
+        </h1>
     </div>
     <div class="col-sm-12">
         <span style="font-size: 2em; line-height: 3em; text-transform: uppercase; color: #004EAC;">@ViewBag.Title</span>
@@ -16,45 +38,46 @@
     </div>
     <div class="col-sm-12 m-t-20">
         <a href="/Account/RedirectToDefaultUrl" class="btn btn-primary waves-effect tada animated">
-            <span>@Resource.TakeMeHome</span></a>
-    </div>
-</div>
-@*<div class="row">
-    <div class="col-sm-12">       
-        <div class="rt-error-header">
-            
-           <div class="rt-error-code  wow fadeInLeft animated relative" style="visibility: visible;
-                animation-name: fadeInLeft;">
-                <svg viewBox="0 0 1320 300">
-                <!-- Symbol -->
-                <symbol id="s-text">
-                    <text text-anchor="middle"
-                          x="50%" y="50%" dy=".35em">
-                      @Model
-                    </text>
-                  </symbol>
-                <!-- Duplicate symbols -->
-                <use xlink:href="#s-text" class="text"></use>
-                <use xlink:href="#s-text" class="text"></use>
-                <use xlink:href="#s-text" class="text"></use>
-                <use xlink:href="#s-text" class="text"></use>
-                <use xlink:href="#s-text" class="text"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="rt-error-content">
-            <div class="rt-error-title wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
-                @ViewBag.Title</div>
-            <div class="rt-error-message  wow fadeInRight animated" style="visibility: visible;animation-name: fadeInRight;">
-                @ViewBag.ErrorMessage</div>
-            <div class="rt-error-button">
-                <a href="/Account/RedirectToDefaultUrl" class="btn btn-primary waves-effect tada animated">
-                    <span>@Resource.TakeMeHome</span></a></div>
-        </div>
-        <div class="c">
-        </div>
+            <span>@Resource.TakeMeHome</span>
+        </a>
     </div>
 </div>*@
+@*<div class="row">
+        <div class="col-sm-12">
+            <div class="rt-error-header">
+
+               <div class="rt-error-code  wow fadeInLeft animated relative" style="visibility: visible;
+                    animation-name: fadeInLeft;">
+                    <svg viewBox="0 0 1320 300">
+                    <!-- Symbol -->
+                    <symbol id="s-text">
+                        <text text-anchor="middle"
+                              x="50%" y="50%" dy=".35em">
+                          @Model
+                        </text>
+                      </symbol>
+                    <!-- Duplicate symbols -->
+                    <use xlink:href="#s-text" class="text"></use>
+                    <use xlink:href="#s-text" class="text"></use>
+                    <use xlink:href="#s-text" class="text"></use>
+                    <use xlink:href="#s-text" class="text"></use>
+                    <use xlink:href="#s-text" class="text"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="rt-error-content">
+                <div class="rt-error-title wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                    @ViewBag.Title</div>
+                <div class="rt-error-message  wow fadeInRight animated" style="visibility: visible;animation-name: fadeInRight;">
+                    @ViewBag.ErrorMessage</div>
+                <div class="rt-error-button">
+                    <a href="/Account/RedirectToDefaultUrl" class="btn btn-primary waves-effect tada animated">
+                        <span>@Resource.TakeMeHome</span></a></div>
+            </div>
+            <div class="c">
+            </div>
+        </div>
+    </div>*@
 <script>
     document.body.className = document.body.className.replace("colorBg1 colorBg", "");
 </script>

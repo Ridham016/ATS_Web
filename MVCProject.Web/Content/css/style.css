@@ -1060,7 +1060,7 @@ textarea.form-control {
 
     .modal .modal-dialog .modal-content .modal-header {
         margin: 0;
-        background: #1D2544;
+        background: var(--primary-color);
         padding: 10px 15px;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
     }
@@ -3438,7 +3438,7 @@ div.hopscotch-bubble {
         color: #fff;
     }*/
 
-.btn-primary {
+/*.btn-primary {
     background-color: #188ae2 !important;
     border: 1px solid #188ae2 !important;
 }
@@ -3569,7 +3569,7 @@ div.hopscotch-bubble {
         background-color: #ff70c1 !important;
         border: 1px solid #ff70c1 !important;
     }
-
+*/
 /*.btn-success.disabled.focus, .btn-success.disabled:focus, .btn-success.disabled:hover, .btn-success[disabled].focus, .btn-success[disabled]:focus, .btn-success[disabled]:hover, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:hover {
     background-color: rgba(0,0,0,0.12) !important;
     color: rgba(0,0,0,0.38) !important;
@@ -4938,6 +4938,11 @@ table.dataTable td.focus {
     align-items: center;
     height: 100%;
     width: 100%;
+    top : 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .load-1 {

@@ -1034,5 +1034,7 @@
   </data>
   <data name="Schedule" xml:space="preserve">
     <value>Schedule</value>
+  <data name="ReturnHome" xml:space="preserve">
+    <value>Return Home</value>
   </data>
 </root>

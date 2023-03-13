@@ -20,7 +20,7 @@
 
             .ng-table th.sortable .sort-indicator:after {
                 opacity: 0.2;
-                content: "\e150";
+                content: "\f0de";
             }
 
             .ng-table th.sortable .sort-indicator:after,
@@ -29,7 +29,7 @@
                 top: 0px;
                 right: 8px;
                 display: block;
-                font-family: 'Glyphicons Halflings';
+                font-family: 'FontAwesome';
                 font-size: 10px;
             }
 
@@ -54,11 +54,11 @@
         }
 
             .ng-table th.sortable.sort-desc .sort-indicator:after {
-                content: "\e156";
+                content: "\f0dd";
             }
 
             .ng-table th.sortable.sort-asc .sort-indicator:after {
-                content: "\e155";
+                content: "\f0de";
             }
 
             .ng-table th.sortable.sort-desc .sort-indicator:after, .ng-table th.sortable.sort-asc .sort-indicator:after {
@@ -66,7 +66,7 @@
                 top: 0px;
                 right: 8px;
                 display: block;
-                font-family: 'Glyphicons Halflings';
+                font-family: 'FontAwesome';
                 opacity: 0.5;
             }
 

@@ -55,6 +55,7 @@
 .nav-sm .navbar.nav_title {
     width: var(--ats-nav-sm-left-col-width);
     background-color: var(--ats-white);
+    transition: 40ms ease-in-out;
 /*    border-bottom: 1px solid var(--primary-color) !important;
     border-right: 1px solid var(--primary-color) !important;*/
 }
@@ -81,7 +82,7 @@
 	box-shadow: var(--ats-box-shadow);
 	min-height: var(--ats-topbar-height);
 	margin-left: var(--ats-nav-sm-left-col-width);
-	position: sticky;
+	position: fixed;
 	top: 0;
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out;
@@ -463,7 +464,6 @@ body  .right_col {
 	-webkit-box-shadow: var(--ats-box-shadow);
 	box-shadow: var(--ats-box-shadow);
 	min-height: var(--ats-topbar-height);
-	position: sticky;
 	top: 0;
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out;

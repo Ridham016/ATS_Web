@@ -4,85 +4,72 @@
 }
 
 <div ng-controller="ScheduleCtrl" ng-init="GetData()" novalidate>
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h1 class="Personal Details" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Personal Details
-                </button>
-            </h1>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <div class="row">
-                        <div class="col-md-12 mt-lg-0 mt-md-0 mt-sm-0">
-                            <label>
-                                @Resource.ApplicantName :
-                            </label>
-                            <label>
-                                {{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3">
-                            <label>
-                                @Resource.ApplicantEmail :
-                            </label>
-                            <label>
-                                {{applicants.Email}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3">
-                            <label>
-                                @Resource.ApplicantAddress :
-                            </label>
-                            <label>
-                                {{applicants.Address}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3">
-                            <label>
-                                @Resource.ApplicantDOB :
-                            </label>
-                            <label>
-                                {{applicants.DateOfBirth | date}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3">
-                            <label>
-                                @Resource.ApplicantPhone :
-                            </label>
-                            <label>
-                                {{applicants.Phone}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3">
-                            <label>
-                                @Resource.StatusName :
-                            </label>
-                            <label>
-                                {{applicants.StatusName}}
-                            </label>
-                        </div>
-                        <div class="col-md-12 mt-sm-3" ng-show="applicants.StatusId == 8">
-                            <label>
-                                @Resource.OtherReason :
-                            </label>
-                            <label>
-                                {{applicants.Reason}}
-                            </label>
-                        </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-12 mt-lg-0 mt-md-0 mt-sm-0">
+                        <label>
+                            @Resource.ApplicantName :
+                        </label>
+                        <label>
+                            {{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3">
+                        <label>
+                            @Resource.ApplicantEmail :
+                        </label>
+                        <label>
+                            {{applicants.Email}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3">
+                        <label>
+                            @Resource.ApplicantAddress :
+                        </label>
+                        <label>
+                            {{applicants.Address}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3">
+                        <label>
+                            @Resource.ApplicantDOB :
+                        </label>
+                        <label>
+                            {{applicants.DateOfBirth | date}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3">
+                        <label>
+                            @Resource.ApplicantPhone :
+                        </label>
+                        <label>
+                            {{applicants.Phone}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3">
+                        <label>
+                            @Resource.StatusName :
+                        </label>
+                        <label>
+                            {{applicants.StatusName}}
+                        </label>
+                    </div>
+                    <div class="col-md-12 mt-sm-3" ng-show="applicants.StatusId == 8">
+                        <label>
+                            @Resource.OtherReason :
+                        </label>
+                        <label>
+                            {{applicants.Reason}}
+                        </label>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="accordion-item" ng-show="applicants.StatusId != 7 && applicants.StatusId != 6 && applicants.StatusId != 3">
-            <h1 class="Personal Details" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    Status Update
-                </button>
-            </h1>
-            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <button class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">{{h.ButtonName}}</button>
+                <div class="card-foot">
+                    <button class="btn btn-primary me-sm-2 ms-sm-2"
+                            ng-repeat="h in buttons" ng-show="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">
+                        {{h.ButtonName}}
+                    </button>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
@@ -96,7 +83,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form name="frmSchedule"
-                                            novalidate>
+                                          novalidate>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -201,7 +188,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <textarea name="Hold" id="Hold" class="form-control" ng-model="Hold" placeholder="Enter Reason For Hold...."></textarea>
+                                        <textarea name="Hold" id="Hold" class="form-control" ng-model="scheduleDetailScope.Description" placeholder="Enter Reason For Hold...."></textarea>
                                         <div class="c">
                                         </div>
                                         <div class="label label-danger" data-ng-show="Hold.$dirty && Hold.$invalid">
@@ -211,17 +198,21 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="holdReason(Hold,5,applicants.ApplicantId)">Save changes</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="holdReason(scheduleDetailScope,5,applicants.ApplicantId)">Save changes</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+    
 
-@section scripts {
-    @Scripts.Render("~/bundles/ScheduleManagement/Schedule")
-}
+
+
+    @section scripts {
+        @Scripts.Render("~/bundles/ScheduleManagement/Schedule")
+    }
