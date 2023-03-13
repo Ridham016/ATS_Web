@@ -51,16 +51,15 @@
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId,
-            data: JSON.stringify(reasonId, actionId)
+            url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId + '&ReasonId=' + reasonId
         })
     }
-    list.HoldReason = function (Hold, actionId) {
+    list.HoldReason = function (scheduleDetailScope, actionId) {
         debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/HoldReason?ActionId=' + actionId,
-            data: JSON.stringify(Hold, actionId)
+            data: JSON.stringify(scheduleDetailScope, actionId)
         })
     }
     return list;

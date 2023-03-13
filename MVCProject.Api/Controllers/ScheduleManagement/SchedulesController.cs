@@ -15,9 +15,11 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
     #region Namespaces
     using System;
     using System.Collections.Generic;
+    using System.Dynamic;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Security.Cryptography.X509Certificates;
     using System.Web.Http;
     #endregion
     public class SchedulesController : BaseController
@@ -131,9 +133,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse ScheduleInterview([FromBody]ATS_ScheduleInformation data)
+        public ApiResponse ScheduleInterview([FromBody]ATS_AdditionalInformation data)
         {
-            entities.ATS_ScheduleInformation.AddObject(new ATS_ScheduleInformation
+            entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
                 ScheduleDateTime = data.ScheduleDateTime,
                 ScheduleLink = data.ScheduleLink,
@@ -154,10 +156,10 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             //});
             if (!(this.entities.SaveChanges() > 0))
             {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.ScheduleManagement));
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.ScheduleManagement));
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
 
         [HttpGet]
@@ -173,29 +175,38 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse UpdateReason([FromBody]int ReasonId, int ActionId)
+        public ApiResponse UpdateReason([FromUri]int ReasonId, [FromUri]int ActionId)
         {
-            var Action = entities.ATS_ActionHistory.Where(x => x.ActionId == ActionId).SingleOrDefault();
+            var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
             if (Action != null)
             {
                 Action.ReasonId = ReasonId;
-            }
-            entities.ATS_ActionHistory.ApplyCurrentValues(Action);
-            if (!(this.entities.SaveChanges() > 0))
-            {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
-            }
+                entities.ATS_ActionHistory.ApplyCurrentValues(Action);
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
+                }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.OtherReason));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.OtherReason));
+            }
+            else
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
+
+        }
+        [HttpGet]
+        public ApiResponse GetAction([FromUri] int ActionId,[FromUri] int? ReasonId)
+        {
+            var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
+            return this.Response(Utilities.MessageTypes.Success, string.Empty,Action);
         }
 
         [HttpPost]
-        public ApiResponse HoldReason([FromBody] string Hold, int ActionId)
+        public ApiResponse HoldReason([FromBody] ATS_AdditionalInformation data, [FromUri]int ActionId)
         {
-            entities.ATS_ScheduleInformation.AddObject(new ATS_ScheduleInformation
+            entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
                 ActionId = ActionId,
-                Description = Hold,
+                Description = data.Description,
                 EntryDate= DateTime.Now,
                 IsActive= true
             });

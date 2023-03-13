@@ -7,7 +7,6 @@
 
     function ScheduleCtrl($scope, ngTableParams, CommonFunctions, $rootScope, $location, $window, ScheduleService) {
         var applicantDetailParams = {};
-
         $scope.scheduleDetailScope = {
             Id: 0,
             ScheduleDateTime: null,
@@ -143,14 +142,14 @@
             })
         }
 
-        $scope.holdReason = function (Hold, StatusId, ApplicantId) {
+        $scope.holdReason = function (scheduleDetailScope, StatusId, ApplicantId) {
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
                 debugger
                 if (res) {
                     $scope.Action = res.data.Result;
                     $scope.ActionId = $scope.Action[1];
                     debugger
-                    ScheduleService.HoldReason(Hold, $scope.ActionId).then(function (res) {
+                    ScheduleService.HoldReason(scheduleDetailScope, $scope.ActionId).then(function (res) {
                         var data = res.data;
                         $window.location.href = '../../ScheduleManagement/Schedule';
                     })

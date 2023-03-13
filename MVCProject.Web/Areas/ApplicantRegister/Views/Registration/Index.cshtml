@@ -331,14 +331,9 @@
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ApplicantMiddleName <span class="required-field">*</span>
+                                                    @Resource.ApplicantMiddleName 
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.MiddleName.$dirty && frmRegister.MiddleName.$invalid}" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" required placeholder="Enter Middle Name" maxlength="250">
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.MiddleName.$dirty && frmRegister.MiddleName.$invalid">
-                                                    <span data-ng-show="frmRegister.MiddleName.$error.required">@Resource.MiddleNameRequired</span>
-                                                </div>
+                                                <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" required placeholder="Enter Middle Name" maxlength="250">
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
@@ -361,11 +356,12 @@
                                                 <label>
                                                     @Resource.ApplicantEmail<span class="required-field">*</span>
                                                 </label>
-                                                <input type="email" ng-class="{'border-color' : frmRegister.Email.$dirty && frmRegister.Email.$invalid,'border-green' : frmRegister.Email.$valid}" class="form-control" placeholder="Enter Email" name="Email" ng-model="applicantDetailScope.Email" required />
+                                                <input type="email" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.Email.$dirty && frmRegister.Email.$invalid,'border-green' : frmRegister.Email.$valid}" class="form-control" placeholder="Enter Email" name="Email" ng-model="applicantDetailScope.Email" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.Email.$dirty && frmRegister.Email.$invalid">
                                                     <span data-ng-show="frmRegister.Email.$error.required">@Resource.EmailRequired</span>
+                                                    <span data-ng-show="frmRegister.Email.$error.email">@Resource.EmailRequired</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -442,25 +438,15 @@
                                                 <label>
                                                     @Resource.CurrentCompany
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.CurrentCompany.$dirty && frmRegister.CurrentCompany.$invalid}" class="form-control" placeholder="Enter Current Company" name="CurrentCompany" ng-model="applicantDetailScope.CurrentCompany" required />
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCompany.$dirty && frmRegister.CurrentCompany.$invalid">
-                                                    <span data-ng-show="frmRegister.CurrentCompany.$error.required">@Resource.CurrentCompany</span>
-                                                </div>
+                                                <input type="text" class="form-control" placeholder="Enter Current Company" name="CurrentCompany" ng-model="applicantDetailScope.CurrentCompany" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.CurrentDesignation<span class="required-field">*</span>
+                                                    @Resource.CurrentDesignation
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.CurrentDesignation.$dirty && frmRegister.CurrentDesignation.$invalid}" class="form-control" placeholder="Enter Current Designation" name="CurrentDesignation" ng-model="applicantDetailScope.CurrentDesignation" required />
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentDesignation.$dirty && frmRegister.CurrentDesignation.$invalid">
-                                                    <span data-ng-show="frmRegister.CurrentDesignation.$error.required">@Resource.CurrentDesignationRequired</span>
-                                                </div>
+                                                <input type="text" class="form-control" placeholder="Enter Current Designation" name="CurrentDesignation" ng-model="applicantDetailScope.CurrentDesignation" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
@@ -492,14 +478,9 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.CurrentCTC<span class="required-field">*</span>
+                                                    @Resource.CurrentCTC
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid}" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC" ng-model="applicantDetailScope.CurrentCTC" required />
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid">
-                                                    <span data-ng-show="frmRegister.CurrentCTC.$error.required">@Resource.CurrentCTCRequired</span>
-                                                </div>
+                                                <input type="text" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC" ng-model="applicantDetailScope.CurrentCTC" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -531,14 +512,9 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ReasonForChange<span class="required-field">*</span>
+                                                    @Resource.ReasonForChange
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.ReasonForChange.$dirty && frmRegister.ReasonForChange.$invalid}" class="form-control" placeholder="Enter Reason For Change" name="ReasonForChange" ng-model="applicantDetailScope.ReasonForChange" required />
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.ReasonForChange.$dirty && frmRegister.ReasonForChange.$invalid">
-                                                    <span data-ng-show="frmRegister.ReasonForChange.$error.required">@Resource.ReasonForChangeRequired</span>
-                                                </div>
+                                                <input type="text" class="form-control" placeholder="Enter Reason For Change" name="ReasonForChange" ng-model="applicantDetailScope.ReasonForChange"  />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -572,7 +548,7 @@
                                                 <label>
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
                                                 </label>
-                                                <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" required />
+                                                <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" file-on-change="uploadFile" required/>
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
@@ -588,7 +564,9 @@
                     <div class="row mt-3 mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.FirstName.$invalid || frmRegister.LastName.$invalid || frmRegister.Email.$invalid
+                                        || frmRegister.Phone.$invalid || frmRegister.DOB.$invalid || frmRegister.TotalExperience.$invalid || frmRegister.DetailedExperience.$invalid || frmRegister.ExpextedCTC.$invalid ||
+                                        frmRegister.NoticePeriod.$invalid || frmRegister.CurrentLocation.$invalid || frmRegister.PreferedLocation.$invalid">
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
@@ -659,7 +637,13 @@
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
                                                            ng-disabled="true" />
                                                 </td>
-                                                <td ng-class="'colAction text-center'">
+                                                @*<td ng-class="'colAction text-center'" header-class="'colActive'" data-title="'@Resource.Action'">
+                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
+                                                       ng-click="EditApplicantDetails(h.ApplicantId)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>*@
+                                                <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
                                                        ng-click="EditApplicantDetails(h.ApplicantId)">
                                                         <i class="fa fa-edit"></i>

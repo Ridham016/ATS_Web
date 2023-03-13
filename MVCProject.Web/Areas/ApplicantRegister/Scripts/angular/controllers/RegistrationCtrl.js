@@ -80,8 +80,6 @@
                         }
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
-                        $scope.accordionGroup_1 = true;
-                        $scope.accordionGroup_2 = false;
                     });
                 }
                 else {
@@ -100,8 +98,6 @@
                         }
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
-                        $scope.accordionGroup_1 = true;
-                        $scope.accordionGroup_2 = false;
                     });
                 }
             }
@@ -136,8 +132,6 @@
             };
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
-            $scope.accordionGroup_1 = true;
-            $scope.accordionGroup_2 = false;
             $("FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
@@ -147,14 +141,16 @@
                 if (res) {
                     var applicants = res.data;
                     $scope.applicantId = res.data.Result;
-                    $scope.uploadFile();
+                    debugger
+                    RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
+                        debugger
+                        console.log(res.data.Result);
+                    })
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                         toastr.success(applicants.Message, successTitle);
                         $scope.ClearFormData(frmRegister);
                         $("#file").val("");
                         $scope.tableParams.reload();
-                        $scope.accordionGroup_1 = true;
-                        $scope.accordionGroup_2 = false;
                     } else if (applicants.MessageType == messageTypes.Error) {// Error
                         toastr.error(applicants.Message, errorTitle);
                     } else if (applicants.MessageType == messageTypes.Warning) {// Warning
@@ -171,8 +167,6 @@
                         $scope.applicantDetailScope = res.data.Result;
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
-                        $scope.accordionGroup_1 = true;
-                        $scope.accordionGroup_2 = false;
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);
                     }
@@ -200,14 +194,8 @@
         }
 
         $scope.uploadFile = function () {
+            debugger
             var fileInput = document.getElementById('file');
-            //var allowedExtensions =
-            //    /(\.pdf)$/i;
-
-            //if (!allowedExtensions.exec(fileInput.type)) {
-            //    alert('Invalid file type');
-            //    $('#file').val("");
-            //}
             if (fileInput.files.length === 0) return;
 
             var file = fileInput.files[0];
@@ -219,27 +207,8 @@
             RegistrationService.uploadFile(payload).then(function (response) {
                 console.log(response);
                 $scope.filedata = response.data.Result;
-                $scope.AddFileToDb($scope.filedata, $scope.applicantId);
-                console.log($scope.applicantDetailScope.ApplicantId);
-            }).catch(function (response) {
-                response
-                alert("");
             });
         }
     }
-        //angular.module("MVCApp").factory('FileService', ['$http', function ($http) {
-        //    return {
-        //        uploadFile: function (url, payload) {
-        //            return $http({
-        //                url: url,
-        //                method: 'POST',
-        //                data: payload,
-        //                headers: { 'Content-Type': undefined }, 
-        //                transformRequest: angular.identity 
-        //            });
-        //        }
-
-        //    };
-        //}]);
 })();
 

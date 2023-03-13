@@ -33,6 +33,22 @@
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="ATS_AdditionalInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleDateTime" Type="datetime" />
+          <Property Name="ActionId" Type="int" />
+          <Property Name="InterviewerId" Type="int" />
+          <Property Name="ScheduleLink" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
             <PropertyRef Name="ApplicantId" />
@@ -69,8 +85,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FileName" Type="nvarchar" MaxLength="100" />
           <Property Name="FilePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="FileRelativePath" Type="nvarchar" MaxLength="100" />
+          <Property Name="OriginalFileName" Type="nvarchar" MaxLength="50" />
           <Property Name="ApplicantId" Type="int" />
           <Property Name="AttachmentTypeId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ATS_AttachmentType">
           <Key>
@@ -78,6 +101,7 @@
           </Key>
           <Property Name="AttachmentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AttachmentTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="ATS_ButtonMapping">
           <Key>
@@ -128,22 +152,6 @@
           </Key>
           <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsActive" Type="bit" />
-        </EntityType>
-        <EntityType Name="ATS_ScheduleInformation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ScheduleDateTime" Type="datetime" />
-          <Property Name="ActionId" Type="int" />
-          <Property Name="InterviewerId" Type="int" />
-          <Property Name="ScheduleLink" Type="nvarchar" MaxLength="100" />
-          <Property Name="Description" Type="nvarchar" MaxLength="200" />
-          <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="EntryDate" Type="datetime" />
-          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Designation">
@@ -265,24 +273,24 @@
         </Association>
         <Association Name="FK__ATS_Sched__Actio__50FB042B">
           <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="0..1" />
-          <End Role="ATS_ScheduleInformation" Type="Self.ATS_ScheduleInformation" Multiplicity="*" />
+          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ATS_ActionHistory">
               <PropertyRef Name="ActionId" />
             </Principal>
-            <Dependent Role="ATS_ScheduleInformation">
+            <Dependent Role="ATS_AdditionalInformation">
               <PropertyRef Name="ActionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ATS_Sched__Inter__51EF2864">
           <End Role="ATS_Interviewer" Type="Self.ATS_Interviewer" Multiplicity="0..1" />
-          <End Role="ATS_ScheduleInformation" Type="Self.ATS_ScheduleInformation" Multiplicity="*" />
+          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ATS_Interviewer">
               <PropertyRef Name="InterviewerId" />
             </Principal>
-            <Dependent Role="ATS_ScheduleInformation">
+            <Dependent Role="ATS_AdditionalInformation">
               <PropertyRef Name="InterviewerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -310,6 +318,7 @@
         <EntityContainer Name="MVCProjectModelStoreContainer">
           <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATS_AdditionalInformation" EntityType="Self.ATS_AdditionalInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_ApplicantRegister" EntityType="Self.ATS_ApplicantRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_Attachment" EntityType="Self.ATS_Attachment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_AttachmentType" EntityType="Self.ATS_AttachmentType" Schema="dbo" store:Type="Tables" />
@@ -318,7 +327,6 @@
           <EntitySet Name="ATS_MasterButton" EntityType="Self.ATS_MasterButton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterOtherReason" EntityType="Self.ATS_MasterOtherReason" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterStatus" EntityType="Self.ATS_MasterStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ATS_ScheduleInformation" EntityType="Self.ATS_ScheduleInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ATS_Actio__Appli__40C49C62" Association="Self.FK__ATS_Actio__Appli__40C49C62">
             <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
@@ -358,11 +366,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="Self.FK__ATS_Sched__Actio__50FB042B">
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
-            <End Role="ATS_ScheduleInformation" EntitySet="ATS_ScheduleInformation" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="Self.FK__ATS_Sched__Inter__51EF2864">
             <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
-            <End Role="ATS_ScheduleInformation" EntitySet="ATS_ScheduleInformation" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -381,24 +389,15 @@
         <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Designations" EntityType="Self.Designation" />
           <EntitySet Name="ATS_ApplicantRegister" EntityType="MVCProjectModel.ATS_ApplicantRegister" />
-          <EntitySet Name="ATS_Attachment" EntityType="MVCProjectModel.ATS_Attachment" />
           <EntitySet Name="ATS_Interviewer" EntityType="MVCProjectModel.ATS_Interviewer" />
-          <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A">
-            <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
-            <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
-          </AssociationSet>
           <EntitySet Name="ATS_AttachmentType" EntityType="MVCProjectModel.ATS_AttachmentType" />
-          <AssociationSet Name="FK__ATS_Attac__Attac__3BFFE745" Association="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745">
-            <End Role="ATS_AttachmentType" EntitySet="ATS_AttachmentType" />
-            <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
-          </AssociationSet>
           <EntitySet Name="ATS_ActionHistory" EntityType="MVCProjectModel.ATS_ActionHistory" />
           <EntitySet Name="ATS_ActionStatus" EntityType="MVCProjectModel.ATS_ActionStatus" />
           <EntitySet Name="ATS_ButtonMapping" EntityType="MVCProjectModel.ATS_ButtonMapping" />
           <EntitySet Name="ATS_MasterButton" EntityType="MVCProjectModel.ATS_MasterButton" />
           <EntitySet Name="ATS_MasterOtherReason" EntityType="MVCProjectModel.ATS_MasterOtherReason" />
           <EntitySet Name="ATS_MasterStatus" EntityType="MVCProjectModel.ATS_MasterStatus" />
-          <EntitySet Name="ATS_ScheduleInformation" EntityType="MVCProjectModel.ATS_ScheduleInformation" />
+          <EntitySet Name="ATS_AdditionalInformation" EntityType="MVCProjectModel.ATS_AdditionalInformation" />
           <AssociationSet Name="FK__ATS_Actio__Appli__40C49C62" Association="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62">
             <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
@@ -413,7 +412,7 @@
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B">
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
-            <End Role="ATS_ScheduleInformation" EntitySet="ATS_ScheduleInformation" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Actio__Butto__4589517F" Association="MVCProjectModel.FK__ATS_Actio__Butto__4589517F">
             <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
@@ -433,7 +432,7 @@
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864">
             <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
-            <End Role="ATS_ScheduleInformation" EntitySet="ATS_ScheduleInformation" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
           <FunctionImport Name="USP_ATS_ApplicantsList" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantsList_Result)" >
           </FunctionImport>
@@ -456,6 +455,15 @@
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_AllInterviewers" ReturnType="Collection(MVCProjectModel.USP_ATS_AllInterviewers_Result)" />
+          <EntitySet Name="ATS_Attachment" EntityType="MVCProjectModel.ATS_Attachment" />
+          <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A">
+            <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+            <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_Attac__Attac__3BFFE745" Association="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745">
+            <End Role="ATS_AttachmentType" EntitySet="ATS_AttachmentType" />
+            <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -485,20 +493,8 @@
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ATS_Attachment" Relationship="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ApplicantRegister" ToRole="ATS_ActionHistory" />
-        </EntityType>
-        <EntityType Name="ATS_Attachment">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicantId" Type="Int32" />
-          <NavigationProperty Name="ATS_ApplicantRegister" Relationship="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_Attachment" ToRole="ATS_ApplicantRegister" />
-          <Property Name="AttachmentTypeId" Type="Int32" />
-          <NavigationProperty Name="ATS_AttachmentType" Relationship="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_Attachment" ToRole="ATS_AttachmentType" />
+          <NavigationProperty Name="ATS_Attachment" Relationship="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
         </EntityType>
         <EntityType Name="ATS_Interviewer">
           <Key>
@@ -508,45 +504,22 @@
           <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ATS_ScheduleInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_ScheduleInformation" />
+          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_AdditionalInformation" />
           <Property Name="Is_Active" Type="Boolean" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <Association Name="FK__ATS_Attac__Appli__39237A9A">
-          <End Type="MVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="0..1" />
-          <End Type="MVCProjectModel.ATS_Attachment" Role="ATS_Attachment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_ApplicantRegister">
-              <PropertyRef Name="ApplicantId" />
-            </Principal>
-            <Dependent Role="ATS_Attachment">
-              <PropertyRef Name="ApplicantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ATS_AttachmentType">
           <Key>
             <PropertyRef Name="AttachmentTypeId" />
           </Key>
           <Property Name="AttachmentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AttachmentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_Attachment" Relationship="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_AttachmentType" ToRole="ATS_Attachment" />
         </EntityType>
-        <Association Name="FK__ATS_Attac__Attac__3BFFE745">
-          <End Type="MVCProjectModel.ATS_AttachmentType" Role="ATS_AttachmentType" Multiplicity="0..1" />
-          <End Type="MVCProjectModel.ATS_Attachment" Role="ATS_Attachment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_AttachmentType">
-              <PropertyRef Name="AttachmentTypeId" />
-            </Principal>
-            <Dependent Role="ATS_Attachment">
-              <PropertyRef Name="AttachmentTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ATS_ActionHistory">
           <Key>
             <PropertyRef Name="ActionId" />
@@ -564,7 +537,7 @@
           <NavigationProperty Name="ATS_ApplicantRegister" Relationship="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ActionHistory" ToRole="ATS_ApplicantRegister" />
           <NavigationProperty Name="ATS_MasterOtherReason" Relationship="MVCProjectModel.FK__ATS_Actio__Reaso__42ACE4D4" FromRole="ATS_ActionHistory" ToRole="ATS_MasterOtherReason" />
           <NavigationProperty Name="ATS_MasterStatus" Relationship="MVCProjectModel.FK__ATS_Actio__Statu__41B8C09B" FromRole="ATS_ActionHistory" ToRole="ATS_MasterStatus" />
-          <NavigationProperty Name="ATS_ScheduleInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ActionHistory" ToRole="ATS_ScheduleInformation" />
+          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ActionHistory" ToRole="ATS_AdditionalInformation" />
         </EntityType>
         <EntityType Name="ATS_ActionStatus">
           <Key>
@@ -626,7 +599,7 @@
           <NavigationProperty Name="ATS_ActionStatus" Relationship="MVCProjectModel.FK__ATS_Actio__NextS__467D75B8" FromRole="ATS_MasterStatus" ToRole="ATS_ActionStatus" />
           <NavigationProperty Name="ATS_ButtonMapping" Relationship="MVCProjectModel.FK__ATS_Butto__Statu__4A4E069C" FromRole="ATS_MasterStatus" ToRole="ATS_ButtonMapping" />
         </EntityType>
-        <EntityType Name="ATS_ScheduleInformation">
+        <EntityType Name="ATS_AdditionalInformation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -641,8 +614,8 @@
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="ATS_ActionHistory" Relationship="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ScheduleInformation" ToRole="ATS_ActionHistory" />
-          <NavigationProperty Name="ATS_Interviewer" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_ScheduleInformation" ToRole="ATS_Interviewer" />
+          <NavigationProperty Name="ATS_ActionHistory" Relationship="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_AdditionalInformation" ToRole="ATS_ActionHistory" />
+          <NavigationProperty Name="ATS_Interviewer" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_AdditionalInformation" ToRole="ATS_Interviewer" />
         </EntityType>
         <Association Name="FK__ATS_Actio__Appli__40C49C62">
           <End Type="MVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="0..1" />
@@ -682,12 +655,12 @@
         </Association>
         <Association Name="FK__ATS_Sched__Actio__50FB042B">
           <End Type="MVCProjectModel.ATS_ActionHistory" Role="ATS_ActionHistory" Multiplicity="0..1" />
-          <End Type="MVCProjectModel.ATS_ScheduleInformation" Role="ATS_ScheduleInformation" Multiplicity="*" />
+          <End Type="MVCProjectModel.ATS_AdditionalInformation" Role="ATS_AdditionalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ATS_ActionHistory">
               <PropertyRef Name="ActionId" />
             </Principal>
-            <Dependent Role="ATS_ScheduleInformation">
+            <Dependent Role="ATS_AdditionalInformation">
               <PropertyRef Name="ActionId" />
             </Dependent>
           </ReferentialConstraint>
@@ -742,12 +715,12 @@
         </Association>
         <Association Name="FK__ATS_Sched__Inter__51EF2864">
           <End Type="MVCProjectModel.ATS_Interviewer" Role="ATS_Interviewer" Multiplicity="0..1" />
-          <End Type="MVCProjectModel.ATS_ScheduleInformation" Role="ATS_ScheduleInformation" Multiplicity="*" />
+          <End Type="MVCProjectModel.ATS_AdditionalInformation" Role="ATS_AdditionalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ATS_Interviewer">
               <PropertyRef Name="InterviewerId" />
             </Principal>
-            <Dependent Role="ATS_ScheduleInformation">
+            <Dependent Role="ATS_AdditionalInformation">
               <PropertyRef Name="InterviewerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -884,6 +857,61 @@
           <Property Type="Boolean" Name="Is_Active" Nullable="true" />
           <Property Type="Int32" Name="TotalRecords" Nullable="true" />
         </ComplexType>
+        <EntityType Name="ATS_Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FileRelativePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantId" Type="Int32" />
+          <Property Name="AttachmentTypeId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ATS_ApplicantRegister" Relationship="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_Attachment" ToRole="ATS_ApplicantRegister" />
+          <NavigationProperty Name="ATS_AttachmentType" Relationship="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_Attachment" ToRole="ATS_AttachmentType" />
+        </EntityType>
+        <Association Name="FK__ATS_Attac__Appli__39237A9A">
+          <End Type="MVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="0..1" />
+          <End Type="MVCProjectModel.ATS_Attachment" Role="ATS_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_ApplicantRegister">
+              <PropertyRef Name="ApplicantId" />
+            </Principal>
+            <Dependent Role="ATS_Attachment">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATS_Attac__Attac__3BFFE745">
+          <End Type="MVCProjectModel.ATS_AttachmentType" Role="ATS_AttachmentType" Multiplicity="0..1" />
+          <End Type="MVCProjectModel.ATS_Attachment" Role="ATS_Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_AttachmentType">
+              <PropertyRef Name="AttachmentTypeId" />
+            </Principal>
+            <Dependent Role="ATS_Attachment">
+              <PropertyRef Name="AttachmentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="USP_ATS_GetAction_Result">
+          <Property Type="Int32" Name="ActionId" Nullable="false" />
+          <Property Type="Int32" Name="ApplicantId" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="Int32" Name="ReasonId" Nullable="true" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -930,17 +958,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ATS_Attachment">
-            <EntityTypeMapping TypeName="MVCProjectModel.ATS_Attachment">
-              <MappingFragment StoreEntitySet="ATS_Attachment">
-                <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
-                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ATS_Interviewer">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_Interviewer">
               <MappingFragment StoreEntitySet="ATS_Interviewer">
@@ -959,6 +976,7 @@
           <EntitySetMapping Name="ATS_AttachmentType">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_AttachmentType">
               <MappingFragment StoreEntitySet="ATS_AttachmentType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="AttachmentTypeName" ColumnName="AttachmentTypeName" />
                 <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
               </MappingFragment>
@@ -1035,9 +1053,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ATS_ScheduleInformation">
-            <EntityTypeMapping TypeName="MVCProjectModel.ATS_ScheduleInformation">
-              <MappingFragment StoreEntitySet="ATS_ScheduleInformation">
+          <EntitySetMapping Name="ATS_AdditionalInformation">
+            <EntityTypeMapping TypeName="MVCProjectModel.ATS_AdditionalInformation">
+              <MappingFragment StoreEntitySet="ATS_AdditionalInformation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
@@ -1217,6 +1235,24 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="ATS_Attachment">
+            <EntityTypeMapping TypeName="MVCProjectModel.ATS_Attachment">
+              <MappingFragment StoreEntitySet="ATS_Attachment">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+                <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1242,18 +1278,15 @@
       <Diagram DiagramId="db0cdb6a0e374690b7440495cb32246b" Name="Diagram1" ZoomLevel="84">
         <EntityTypeShape EntityType="MVCProjectModel.Designation" Width="1.5" PointX="0.5" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ApplicantRegister" Width="1.5" PointX="2.625" PointY="0.5" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_Attachment" Width="1.5" PointX="5.25" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_Interviewer" Width="1.5" PointX="0.5" PointY="0.5" />
-        <AssociationConnector Association="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_AttachmentType" Width="1.5" PointX="5.25" PointY="3.5" />
-        <AssociationConnector Association="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_AttachmentType" Width="1.5" PointX="5.5" PointY="4.375" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionHistory" Width="1.5" PointX="8.125" PointY="5.125" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionStatus" Width="1.5" PointX="14.25" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ButtonMapping" Width="1.5" PointX="12.125" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterButton" Width="1.5" PointX="12.125" PointY="4.375" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterOtherReason" Width="1.5" PointX="5.375" PointY="6.375" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="9.875" PointY="0.875" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_ScheduleInformation" Width="1.5" PointX="8.125" PointY="0.625" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_AdditionalInformation" Width="1.5" PointX="8.125" PointY="0.625" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Reaso__42ACE4D4" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Statu__41B8C09B" />
@@ -1263,6 +1296,9 @@
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Butto__Butto__4959E263" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Butto__Statu__4A4E069C" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_Attachment" Width="1.5" PointX="5.5" PointY="0.5" />
+        <AssociationConnector Association="MVCProjectModel.FK__ATS_Attac__Appli__39237A9A" />
+        <AssociationConnector Association="MVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" />
       </Diagram>
     </Diagrams>
   </Designer>

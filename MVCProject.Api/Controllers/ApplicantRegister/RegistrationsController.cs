@@ -172,6 +172,10 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 FileName = data.FileName,
                 FilePath = data.FilePath,
+                FileRelativePath = data.FileRelativePath,
+                OriginalFileName = data.OriginalFileName,
+                IsDeleted = false,
+                EntryDate= DateTime.Now,
                 ApplicantId = ApplicantId,
                 AttachmentTypeId = 1
             });

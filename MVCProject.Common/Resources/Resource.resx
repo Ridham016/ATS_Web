@@ -1032,4 +1032,7 @@
   <data name="HoldReason" xml:space="preserve">
     <value>Hold Reason</value>
   </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
 </root>
