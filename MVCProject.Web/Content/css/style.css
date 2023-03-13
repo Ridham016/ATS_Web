@@ -1060,7 +1060,7 @@ textarea.form-control {
 
     .modal .modal-dialog .modal-content .modal-header {
         margin: 0;
-        background: #1D2544;
+        background: var(--primary-color);
         padding: 10px 15px;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
     }
@@ -4938,6 +4938,11 @@ table.dataTable td.focus {
     align-items: center;
     height: 100%;
     width: 100%;
+    top : 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .load-1 {

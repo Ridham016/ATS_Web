@@ -12,7 +12,7 @@
                   sortFn: '=',
                   scrollHeight: '='
               },
-              template: '<div class="scrollableContainer" ng-style="{height: scrollHeight?scrollHeight:300}" >' +
+              template: '<div class="scrollableContainer" >' +
                           '<div class="headerSpacer"></div>' +
                           '<div class="scrollArea" ng-transclude></div>' +
                         '</div>',
