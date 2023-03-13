@@ -3749,12 +3749,12 @@ fieldset:disabled .btn {
 	--ats-btn-bg: var(--primary-color);
 	--ats-btn-border-color: var(--primary-color);
 	--ats-btn-hover-color: var(--ats-white);
-	--ats-btn-hover-bg: var(--secondary-color);
+	--ats-btn-hover-bg: #8042c2;
 	--ats-btn-hover-border-color: var(--primary-color);
 	--ats-btn-focus-shadow-rgb: 135, 144, 247;
 	--ats-btn-active-color: var(--ats-white);
-	--ats-btn-active-bg: #060ac7;
-	--ats-btn-active-border-color: #181bd2;
+	--ats-btn-active-bg: var(--primary-color);
+	--ats-btn-active-border-color: var(--primary-color);
 	--ats-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 	--ats-btn-disabled-color: var(--ats-white);
 	--ats-btn-disabled-bg: var(--primary-color);
@@ -5644,10 +5644,13 @@ fieldset:disabled .btn {
 	width: var(--ats-accordion-btn-icon-width);
 	height: var(--ats-accordion-btn-icon-width);
 	margin-left: auto;
-	content: "";
-	background-image: var(--ats-accordion-btn-icon);
+	content: "+";
+	color: var(--ats-body-color);
+	font-size: 16px;
+	background-image: none;
+	/*background-image: var(--ats-accordion-btn-icon);
 	background-repeat: no-repeat;
-	background-size: var(--ats-accordion-btn-icon-width);
+	background-size: var(--ats-accordion-btn-icon-width);*/
 	-webkit-transition: var(--ats-accordion-btn-icon-transition);
 	transition: var(--ats-accordion-btn-icon-transition)
 }
@@ -14074,6 +14077,7 @@ fieldset:disabled .btn {
 	position: relative;
 	margin-left: var(--ats-nav-sm-left-col-width);
 	min-height: calc(100vh - var(--ats-topbar-height) - 2px);
+	margin-top: var(--ats-topbar-height);
 	padding: 20px 20px var(--ats-footer-height);
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out
@@ -14084,7 +14088,8 @@ fieldset:disabled .btn {
 	min-height: calc(100vh - var(--ats-topbar-height) - 2px);
 	padding: 20px 20px var(--ats-footer-height);
 	-webkit-transition: all .25s ease-in-out;
-	transition: all .25s ease-in-out
+	transition: all .25s ease-in-out;
+	margin-top: var(--ats-topbar-height);
 }
 
 .nav-sm .leftside-menu {
@@ -18430,21 +18435,17 @@ html[data-theme=dark] .text-secondary {
 }
 
 
-
-body.authentication-bg {
-	background-image: url(../images/error-bg-img.png);
-	background-size: cover;
-	background-position: center
-}
-
-body.authentication-bg .account-pages {
+.authentication-pages {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	min-height: 100vh
+	min-height: 100vh;
+	position: absolute;
+	height: 100%;
+	width: 100%;
 }
 
 .auth-fluid-pages.enlarged,
@@ -18578,8 +18579,8 @@ body.auth-fluid-pages[data-sidenav-size=condensed] {
 .text-error {
 	color: var(--ats-primary);
 	text-shadow: rgba(var(--ats-primary-rgb), .3) 5px 1px, rgba(var(--ats-primary-rgb), .2) 10px 3px;
-	font-size: 5.25rem;
-	line-height: 5.625rem
+	font-size: 7rem;
+	line-height: 7rem
 }
 
 

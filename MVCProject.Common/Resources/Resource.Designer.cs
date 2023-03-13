@@ -2122,6 +2122,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return Home.
+        /// </summary>
+        public static string ReturnHome {
+            get {
+                return ResourceManager.GetString("ReturnHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Risk Matrix.
         /// </summary>
         public static string RiskMatrix {
