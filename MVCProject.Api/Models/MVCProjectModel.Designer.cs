@@ -4488,30 +4488,6 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TotalRecords
-        {
-            get
-            {
-                return _TotalRecords;
-            }
-            set
-            {
-                OnTotalRecordsChanging(value);
-                ReportPropertyChanging("TotalRecords");
-                _TotalRecords = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalRecords");
-                OnTotalRecordsChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _TotalRecords;
-        partial void OnTotalRecordsChanging(Nullable<global::System.Int32> value);
-        partial void OnTotalRecordsChanged();
 
         #endregion
 
@@ -4661,30 +4637,6 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TotalRecords
-        {
-            get
-            {
-                return _TotalRecords;
-            }
-            set
-            {
-                OnTotalRecordsChanging(value);
-                ReportPropertyChanging("TotalRecords");
-                _TotalRecords = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalRecords");
-                OnTotalRecordsChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _TotalRecords;
-        partial void OnTotalRecordsChanging(Nullable<global::System.Int32> value);
-        partial void OnTotalRecordsChanged();
 
         #endregion
 
@@ -5709,30 +5661,6 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TotalRecords
-        {
-            get
-            {
-                return _TotalRecords;
-            }
-            set
-            {
-                OnTotalRecordsChanging(value);
-                ReportPropertyChanging("TotalRecords");
-                _TotalRecords = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalRecords");
-                OnTotalRecordsChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _TotalRecords;
-        partial void OnTotalRecordsChanging(Nullable<global::System.Int32> value);
-        partial void OnTotalRecordsChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Int32> StatusId
         {
             get
@@ -6567,30 +6495,6 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TotalRecords
-        {
-            get
-            {
-                return _TotalRecords;
-            }
-            set
-            {
-                OnTotalRecordsChanging(value);
-                ReportPropertyChanging("TotalRecords");
-                _TotalRecords = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalRecords");
-                OnTotalRecordsChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _TotalRecords;
-        partial void OnTotalRecordsChanging(Nullable<global::System.Int32> value);
-        partial void OnTotalRecordsChanged();
 
         #endregion
 

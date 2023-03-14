@@ -25,35 +25,19 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpPost]
         public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
         {
-            var interviewerlist = entities.USP_ATS_AllInterviewers().ToList();
-            //.AsEnumerable()
-            // .AsQueryable().OrderByField(interviewerDetailParams.OrderByColumn, interviewerDetailParams.IsAscending)
-            // .Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
-            return this.Response(MessageTypes.Success, string.Empty, interviewerlist);
+            var result = entities.USP_ATS_AllInterviewers().ToList();
+            var TotalRecords = result.Count();
+            var interviewerslist = result.Select(d => new
+                                    {
+                                        InterviewerId = d.InterviewerId,
+                                        InterviewerName = d.InterviewerName,
+                                        InterviewerEmail = d.InterviewerEmail,
+                                        InterviewerPhone = d.InterviewerPhone,
+                                        Is_Active = d.Is_Active,
+                                        TotalRecords
+                                    }).AsQueryable().Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
+            return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
         }
-        //[HttpPost]
-        //public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
-        //{
-        //    //var interviewerslist = this.entities.Interviewers.Select(d => new
-        //    //{
-        //    //    InterviewerId = d.InterviewerId,
-        //    //    InterviewerName = d.InterviewerName,
-        //    //    InterviewerEmail = d.InterviewerEmail,
-        //    //    InterviewerPhone = d.InterviewerPhone
-        //    //}).ToList();
-        //    //return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
-        //    var interviewerslist = (from d in this.entities.ATS_Interviewer.AsEnumerable()
-        //                        let TotalRecords = this.entities.ATS_Interviewer.AsEnumerable().Count()
-        //                        select new
-        //                        {
-        //                            InterviewerId = d.InterviewerId,
-        //                            InterviewerName = d.InterviewerName,
-        //                            InterviewerEmail = d.InterviewerEmail,
-        //                            InterviewerPhone = d.InterviewerPhone,
-        //                            TotalRecords
-        //                        }).AsQueryable().Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
-        //    return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
-        //}
 
         [HttpGet]
         public ApiResponse GetInterviewerById(int InterviewerId)

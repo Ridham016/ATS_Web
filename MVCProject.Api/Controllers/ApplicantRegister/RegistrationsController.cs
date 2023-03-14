@@ -14,6 +14,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
     #region Namespaces
     using System;
     using System.Collections.Generic;
+    using System.Data.Objects;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -34,16 +35,68 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse GetAllApplicants(PagingParams applicantDetailParams)
         {
-            var applicantlist = entities.USP_ATS_AllApplicants().AsEnumerable()
-                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
-                 .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
+            var result = entities.USP_ATS_AllApplicants().ToList();
+            var TotalRecords = result.Count();
+            var applicantlist = result.Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                FirstName = g.FirstName,
+                MiddleName = g.MiddleName,
+                LastName = g.LastName,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                IsActive = g.IsActive,
+                TotalRecords
+            }).AsEnumerable()
+                .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
+                .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applicantlist);
         }
 
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var applicantlist = entities.USP_ATS_ApplicantsList().AsEnumerable()
+            var result = entities.USP_ATS_ApplicantsList().ToList();
+            var TotalRecords = result.Count();
+            var applicantlist = result.Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                FirstName = g.FirstName,
+                MiddleName = g.MiddleName,
+                LastName = g.LastName,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                IsActive = g.IsActive,
+                StatusId = g.StatusId,
+                StatusName = g.StatusName,
+                TotalRecords
+            }).AsEnumerable()
                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
                 .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applicantlist);

@@ -436,7 +436,8 @@
           </AssociationSet>
           <FunctionImport Name="USP_ATS_ApplicantsList" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantsList_Result)" >
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_AllApplicants" ReturnType="Collection(MVCProjectModel.USP_ATS_AllApplicants_Result)" />
+          <FunctionImport Name="USP_ATS_AllApplicants" ReturnType="Collection(MVCProjectModel.USP_ATS_AllApplicants_Result)" >
+          </FunctionImport>
           <FunctionImport Name="USP_ATS_ApplicantById" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantById_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -746,7 +747,6 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
-          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
         </ComplexType>
@@ -771,7 +771,6 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
-          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantById_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -844,7 +843,6 @@
           <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Is_Active" Nullable="true" />
-          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetLevel_Result">
           <Property Type="Int32" Name="Level" Nullable="true" />
@@ -855,7 +853,6 @@
           <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Is_Active" Nullable="true" />
-          <Property Type="Int32" Name="TotalRecords" Nullable="true" />
         </ComplexType>
         <EntityType Name="ATS_Attachment">
           <Key>
@@ -1093,7 +1090,6 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </ComplexTypeMapping>
@@ -1122,7 +1118,6 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1212,7 +1207,6 @@
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1231,7 +1225,6 @@
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
-                <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
