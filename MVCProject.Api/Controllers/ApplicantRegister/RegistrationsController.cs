@@ -58,6 +58,8 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
+                FileName = g.FileName,
+                FileRelativePath = g.FileRelativePath,
                 IsActive = g.IsActive,
                 TotalRecords
             }).AsEnumerable()
@@ -92,6 +94,8 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
+                FileName = g.FileName,
+                FileRelativePath = g.FileRelativePath,
                 IsActive = g.IsActive,
                 TotalRecords
             }).AsEnumerable()

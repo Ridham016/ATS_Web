@@ -132,7 +132,7 @@ namespace MVCProject.Controllers
             //    //}
             //}
 
-            return RedirectToAction("Index", "Registration", new { area = "ApplicantRegister" });
+            return RedirectToAction("Index", "Schedule", new { area = "ScheduleManagement" });
         }
 
         /// <summary>

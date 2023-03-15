@@ -643,7 +643,7 @@
                                                            ng-disabled="true" />
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colDownload text-center'">
-                                                    <a ng-href="{{h.FileRelativePath}}" ng-show="true" download>Download CV</a>
+                                                    <a ng-href="{{h.FileRelativePath}}" ng-show="h.FileRelativePath != null" download>Download CV</a>
                                                 </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
