@@ -27,6 +27,11 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+    .colDownload {
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+    }
 
     .border-color {
         border-color: red !important;
@@ -306,7 +311,7 @@
                         </uib-accordion-group>
                     </uib-accordion>-->
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="personal_details">
                             <h1 class="Personal Details" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Personal Details
@@ -320,7 +325,7 @@
                                                 <label>
                                                     @Resource.ApplicantFirstName <span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid}" class="form-control" ng-focus="true" name="FirstName" ng-model="applicantDetailScope.FirstName" required placeholder="Enter First Name" maxlength="250">
+                                                <input type="text" ng-class="{'border-color' : frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid}" class="form-control" id="FirstName" ng-focus="true" name="FirstName" ng-model="applicantDetailScope.FirstName" required placeholder="Enter First Name" maxlength="250">
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid">
@@ -424,7 +429,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="company_details">
                             <h1 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Company Details
@@ -543,7 +548,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mt-3">
+                                        <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
@@ -621,28 +626,25 @@
                                                 <td data-title="'@Resource.ApplicantName'" sortable="'FirstName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantEmail'" sortable="'Email'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Email}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantPhone'" sortable="'Phone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantPhone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantAddress'" sortable="'Address'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Address}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantDOB'" sortable="'Date of Birth'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDOB'"header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.DateOfBirth | date}}
                                                 </td>
-                                                <td data-title="'@Resource.Active'" sortable="'IsActive'" header-class="'colActive'" ng-class="'colActive text-center'">
+                                                <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
                                                            ng-disabled="true" />
                                                 </td>
-                                                @*<td ng-class="'colAction text-center'" header-class="'colActive'" data-title="'@Resource.Action'">
-                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
-                                                       ng-click="EditApplicantDetails(h.ApplicantId)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                </td>*@
+                                                <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colDownload text-center'">
+                                                    <a ng-href="{{h.FileRelativePath}}" ng-show="true" download>Download CV</a>
+                                                </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
                                                        ng-click="EditApplicantDetails(h.ApplicantId)">

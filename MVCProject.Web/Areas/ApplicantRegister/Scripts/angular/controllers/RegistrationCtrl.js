@@ -10,13 +10,11 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'FileService', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, RegistrationService) {
         var applicantDetailParams = {};
-        $scope.accordionGroup_1 = true;
-        $scope.accordionGroup_2 = false;
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -132,20 +130,26 @@
             };
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
-            $("FirstName").focus();
+            $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');
+            $('#accordionExample').find('#company_details').removeClass('show').find('.accordion-collapse').removeClass('show');
+            $("#FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             debugger
+            console.log(applicantDetailScope.DateOfBirth);
+            applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
             console.log(applicantDetailScope.DateOfBirth);
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
                     var applicants = res.data;
                     $scope.applicantId = res.data.Result;
                     debugger
-                    RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                        debugger
-                        console.log(res.data.Result);
-                    })
+                    if ($scope.filedata) {
+                        RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
+                            debugger
+                            console.log(res.data.Result);
+                        })
+                    }
                     if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                         toastr.success(applicants.Message, successTitle);
                         $scope.ClearFormData(frmRegister);

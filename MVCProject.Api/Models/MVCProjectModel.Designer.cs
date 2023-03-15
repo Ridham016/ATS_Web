@@ -4488,6 +4488,54 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileRelativePath
+        {
+            get
+            {
+                return _FileRelativePath;
+            }
+            set
+            {
+                OnFileRelativePathChanging(value);
+                ReportPropertyChanging("FileRelativePath");
+                _FileRelativePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileRelativePath");
+                OnFileRelativePathChanged();
+            }
+        }
+        private global::System.String _FileRelativePath;
+        partial void OnFileRelativePathChanging(global::System.String value);
+        partial void OnFileRelativePathChanged();
 
         #endregion
 

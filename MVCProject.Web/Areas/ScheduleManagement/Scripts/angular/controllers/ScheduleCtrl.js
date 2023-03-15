@@ -10,7 +10,6 @@
         $scope.scheduleDetailScope = {
             Id: 0,
             ScheduleDateTime: null,
-            InterviewerId: 0,
             ScheduleLink: '',
             Description : '',
             IsActive: true
@@ -19,7 +18,7 @@
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,
-            sorting: { FirstName: 'asc' }
+            sorting: { ApplicantDate: 'asc' }
         }, {
             getData: function ($defer, params) {
                 if (applicantDetailParams == null) {
@@ -43,8 +42,6 @@
                     }
                     $rootScope.isAjaxLoadingChild = false;
                     CommonFunctions.SetFixHeader();
-                    $scope.accordionGroup_1 = true;
-                    $scope.accordionGroup_2 = false;
                 });
             }
         });
@@ -74,13 +71,13 @@
                 if (res) {
                     var status = res.data;
                     $window.location.href = '../../ScheduleManagement/Schedule';
-                    if (status.MessageType == messageTypes.Success && status.IsAuthenticated) {
-                        toastr.success(status.Message, successTitle);
-                    } else if (status.MessageType == messageTypes.Error) {// Error
-                        toastr.error(status.Message, errorTitle);
-                    } else if (status.MessageType == messageTypes.Warning) {// Warning
-                        toastr.warning(applicants.Message, warningTitle);
-                    }
+                    //if (status.MessageType == messageTypes.Success && status.IsAuthenticated) {
+                    //    toastr.success(status.Message, successTitle);
+                    //} else if (status.MessageType == messageTypes.Error) {// Error
+                    //    toastr.error(status.Message, errorTitle);
+                    //} else if (status.MessageType == messageTypes.Warning) {// Warning
+                    //    toastr.warning(applicants.Message, warningTitle);
+                    //}
                 }
             })
         }
@@ -105,13 +102,13 @@
                         if (res) {
                             var schedule = res.data;
                             $window.location.href = '../../ScheduleManagement/Schedule';
-                            if (schedule.MessageType == messageTypes.Success && schedule.IsAuthenticated) {
-                                toastr.success(schedule.Message, successTitle);
-                            } else if (schedule.MessageType == messageTypes.Error) {// Error
-                                toastr.error(schedule.Message, errorTitle);
-                            } else if (schedule.MessageType == messageTypes.Warning) {// Warning
-                                toastr.warning(schedule.Message, warningTitle);
-                            }
+                            //if (schedule.MessageType == messageTypes.Success && schedule.IsAuthenticated) {
+                            //    toastr.success(schedule.Message, successTitle);
+                            //} else if (schedule.MessageType == messageTypes.Error) {// Error
+                            //    toastr.error(schedule.Message, errorTitle);
+                            //} else if (schedule.MessageType == messageTypes.Warning) {// Warning
+                            //    toastr.warning(schedule.Message, warningTitle);
+                            //}
                         }
                     })
                 }

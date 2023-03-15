@@ -69,7 +69,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var result = entities.USP_ATS_ApplicantsList().ToList();
+            var result = entities.USP_ATS_AllApplicants().Where(x => x.IsActive == true).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {
@@ -93,8 +93,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 IsActive = g.IsActive,
-                StatusId = g.StatusId,
-                StatusName = g.StatusName,
                 TotalRecords
             }).AsEnumerable()
                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
@@ -125,6 +123,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
                 data.DateOfBirth.Value.ToLocalTime();
+                data.EntryBy = "1";
                 entities.ATS_ApplicantRegister.AddObject(data);
                 this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
                 {
@@ -132,6 +131,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     StatusId = 1,
                     Level = 0,
                     IsActive = true,
+                    EntryBy= "1",
                     EntryDate = DateTime.Now
                 });
                 if (!(this.entities.SaveChanges() > 0))
@@ -239,13 +239,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             }
 
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant));
-        }
-
-        [HttpGet]
-        public ApiResponse GetFileUpload()
-        {
-            var entity = this.entities.ATS_Attachment.ToList();
-            return this.Response(Utilities.MessageTypes.Success, string.Empty, entity);
         }
     }
 }

@@ -36,7 +36,7 @@
 <div ng-controller="ScheduleCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
-        <h4 class="header-title-sub l">Schedule Management</h4>
+        <h4 class="header-title-sub l">@Resource.ScheduleManagement</h4>
         <div class="pull-right">
         </div>
     </div>
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-12 mb-3">
+                    @*<div class="col-md-12 mb-3">
                         <div class="row">
                             <div class="col-md-7">
                                 <label class="table-title">
@@ -53,16 +53,16 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", MVCProject.Common.Resources.Resource.Search,MVCProject.Common.Resources.Resource.ApplicantRegister,MVCProject.Common.Resources.Resource.Details)" />
+                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", @Resource.Search,@Resource.Schedule,@Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group ng-cloak">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="492">
                                     <table ng-table="tableParams" id="datatable" class="table table-striped table-bordered table-hover">
@@ -80,10 +80,10 @@
                                                 <td data-title="'@Resource.ApplicantPhone'" sortable="'Phone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td data-title="'@Resource.StatusName'" sortable="'Status'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.StatusName}}
+                                                <td data-title="'@Resource.StatusName'" sortable="'StatusId'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    <span>{{h.StatusName}}</span>
                                                 </td>
-                                                <td ng-class="'colAction text-center'">
+                                                <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 b-0" title="Action"
                                                        href="~/ScheduleManagement/Schedule/Details#?ApplicantId={{h.ApplicantId}}">
                                                         <img src="~/Content/images/view-details-icon.svg" class="ViewLogo" />

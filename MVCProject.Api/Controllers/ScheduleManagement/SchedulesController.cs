@@ -135,6 +135,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 StatusId = StatusId,
                 IsActive = true,
                 Level = level,
+                EntryBy = "1",
                 EntryDate = DateTime.Now
             };
             entities.ATS_ActionHistory.AddObject(addtoaction);
@@ -170,6 +171,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 Description = data.Description,
                 InterviewerId = data.InterviewerId,
                 IsActive = true,
+                EntryBy= "1",
                 EntryDate = DateTime.Now
             });
             //entities.ATS_ActionHistory.AddObject(Action);
@@ -220,12 +222,6 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
 
         }
-        [HttpGet]
-        public ApiResponse GetAction([FromUri] int ActionId,[FromUri] int? ReasonId)
-        {
-            var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
-            return this.Response(Utilities.MessageTypes.Success, string.Empty,Action);
-        }
 
         [HttpPost]
         public ApiResponse HoldReason([FromBody] ATS_AdditionalInformation data, [FromUri]int ActionId)
@@ -235,6 +231,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 ActionId = ActionId,
                 Description = data.Description,
                 EntryDate= DateTime.Now,
+                EntryBy="1",
                 IsActive= true
             });
             if (!(this.entities.SaveChanges() > 0))

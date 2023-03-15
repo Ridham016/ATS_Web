@@ -65,12 +65,16 @@
                         </label>
                     </div>
                 </div>
-                <div class="card-foot">
+                <div class="card-foot mt-3">
                     <button class="btn btn-primary me-sm-2 ms-sm-2"
-                            ng-repeat="h in buttons" ng-show="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)">
+                            ng-repeat="h in buttons" ng-if="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"
+                            ng-class="{'btn-success' : h.ButtonId == 5,
+                                       'btn-primary' : h.ButtonId == 1,
+                                       'btn-warning' : h.ButtonId == 2,
+                                       'btn-danger' : h.ButtonId == 6}">
                         {{h.ButtonName}}
                     </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 4"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -81,9 +85,9 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Interview</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <form name="frmSchedule"
-                                          novalidate>
+                                <form name="frmSchedule" 
+                                              novalidate>
+                                    <div class="modal-body">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -93,8 +97,8 @@
                                                     <input type="datetime-local" class="form-control datepicker" ng-focus="true" name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
                                                     <div class="c">
                                                     </div>
-                                                    <div class="label label-danger" data-ng-show="frmRegister.ScheduleDateTime.$dirty && frmRegister.ScheduleDateTime.$invalid">
-                                                        <span data-ng-show="frmRegister.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
+                                                        <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -102,13 +106,13 @@
                                                         @Resource.Interviewer <span class="required-field">*</span> <br />
                                                     </label>
                                                     <select class="form-control" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
-                                                        <option value="" selected>Select Interviewer</option>
+                                                        <option value="" disabled selected>Select Interviewer</option>
                                                         <option ng-repeat="op in interviewers" value="{{op.InterviewerId}}">{{op.InterviewerName}}</option>
                                                     </select>
                                                     <div class="c">
                                                     </div>
-                                                    <div class="label label-danger" data-ng-show="frmRegister.ScheduleDateTime.$dirty && frmRegister.ScheduleDateTime.$invalid">
-                                                        <span data-ng-show="frmRegister.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
+                                                        <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -118,8 +122,8 @@
                                                     <input type="text" class="form-control" ng-focus="true" name="ScheduleLink" ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" required>
                                                     <div class="c">
                                                     </div>
-                                                    <div class="label label-danger" data-ng-show="frmRegister.ScheduleLink.$dirty && frmRegister.ScheduleLink.$invalid">
-                                                        <span data-ng-show="frmRegister.ScheduleLink.$error.required">@Resource.ScheduleLink</span>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.ScheduleLink.$dirty && frmSchedule.ScheduleLink.$invalid">
+                                                        <span data-ng-show="frmSchedule.ScheduleLink.$error.required">@Resource.ScheduleLink</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -129,22 +133,25 @@
                                                     <input type="text" class="form-control" ng-focus="true" name="Description" ng-model="scheduleDetailScope.Description" placeholder="Enter Description" required>
                                                     <div class="c">
                                                     </div>
-                                                    <div class="label label-danger" data-ng-show="frmRegister.Description.$dirty && frmRegister.Description.$invalid">
-                                                        <span data-ng-show="frmRegister.Description.$error.required">@Resource.Description</span>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.Description.$dirty && frmSchedule.Description.$invalid">
+                                                        <span data-ng-show="frmSchedule.Description.$error.required">@Resource.Description</span>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="SaveSchduleDetails(scheduleDetailScope,4,applicants.ApplicantId)">Save changes</button>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" ng-click = "SaveSchduleDetails(scheduleDetailScope,4,applicants.ApplicantId)" ng-disabled="frmSchedule.$invalid">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 8"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-info me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -155,27 +162,29 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Select Other Reasons</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <select class="form-control" name="OtherReasons" id="OtherReasons" ng-init="getOtherReasons()" ng-model="ReasonId">
-                                            <option value="" selected>Select Reason</option>
-                                            <option ng-repeat="op in reasons" value="{{op.ReasonId}}">{{op.Reason}}</option>
-                                        </select>
-                                        <div class="c">
-                                        </div>
-                                        <div class="label label-danger" data-ng-show="frmRegister.OtherReasons.$dirty && frmRegister.OtherReasons.$invalid">
-                                            <span data-ng-show="frmRegister.OtherReasons.$error.required">@Resource.OtherReasonRequired</span>
+                                <form name="frmOtherReason" novalidate>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <select class="form-control" name="OtherReasons" id="OtherReasons" ng-init="getOtherReasons()" ng-model="ReasonId" required>
+                                                <option value="" disabled selected>Select Reason</option>
+                                                <option ng-repeat="op in reasons" value="{{op.ReasonId}}">{{op.Reason}}</option>
+                                            </select>
+                                            <div class="c">
+                                            </div>
+                                            <div class="label label-danger" data-ng-show="frmOtherReason.OtherReasons.$dirty && frmOtherReason.OtherReasons.$invalid">
+                                                <span data-ng-show="frmOtherReason.OtherReasons.$error.required">@Resource.OtherReasonRequired</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="updateOtherReason(ReasonId,8,applicants.ApplicantId)">Save changes</button>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(ReasonId,8,applicants.ApplicantId)" ng-disabled="frmOtherReason.OtherReasons.$invalid">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-primary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-show="h.NextStatusId == 5"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-secondary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -186,20 +195,22 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Select Other Reasons</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <textarea name="Hold" id="Hold" class="form-control" ng-model="scheduleDetailScope.Description" placeholder="Enter Reason For Hold...."></textarea>
-                                        <div class="c">
-                                        </div>
-                                        <div class="label label-danger" data-ng-show="Hold.$dirty && Hold.$invalid">
-                                            <span data-ng-show="Hold.required">@Resource.OtherReasonRequired</span>
+                                <form name="frmHoldReason" novalidate>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <textarea name="Hold" id="Hold" class="form-control" rows="5" ng-model="scheduleDetailScope.Description" placeholder="Enter Reason For Hold...." required></textarea>
+                                            <div class="c">
+                                            </div>
+                                            <div class="label label-danger" data-ng-show="frmHoldReason.Hold.$dirty && frmHoldReason.Hold.$invalid">
+                                                <span data-ng-show="frmHoldReason.Hold.required">@Resource.OtherReasonRequired</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" ng-click="holdReason(scheduleDetailScope,5,applicants.ApplicantId)">Save changes</button>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="holdReason(scheduleDetailScope,5,applicants.ApplicantId)">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

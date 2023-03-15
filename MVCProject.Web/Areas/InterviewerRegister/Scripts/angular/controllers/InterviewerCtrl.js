@@ -42,7 +42,6 @@
                         }
                         $rootScope.isAjaxLoadingChild = false;
                         CommonFunctions.SetFixHeader();
-                        $scope.accordionGroup_1 = true;
                     });
             }
         });

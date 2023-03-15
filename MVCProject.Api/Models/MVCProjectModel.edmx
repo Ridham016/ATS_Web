@@ -771,6 +771,8 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantById_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1118,6 +1120,8 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1273,13 +1277,13 @@
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ApplicantRegister" Width="1.5" PointX="2.625" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_Interviewer" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_AttachmentType" Width="1.5" PointX="5.5" PointY="4.375" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionHistory" Width="1.5" PointX="8.125" PointY="5.125" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionHistory" Width="1.5" PointX="8.125" PointY="4.375" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionStatus" Width="1.5" PointX="14.25" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ButtonMapping" Width="1.5" PointX="12.125" PointY="0.5" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterButton" Width="1.5" PointX="12.125" PointY="4.375" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterOtherReason" Width="1.5" PointX="5.375" PointY="6.375" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="9.875" PointY="0.875" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_AdditionalInformation" Width="1.5" PointX="8.125" PointY="0.625" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterOtherReason" Width="1.5" PointX="5.5" PointY="6.375" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="10.125" PointY="0.5" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_AdditionalInformation" Width="1.5" PointX="8.125" PointY="0.5" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Reaso__42ACE4D4" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Statu__41B8C09B" />
