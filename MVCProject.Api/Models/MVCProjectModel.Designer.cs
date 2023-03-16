@@ -4536,6 +4536,30 @@ namespace MVCProject.Api.Models
         private global::System.String _FileRelativePath;
         partial void OnFileRelativePathChanging(global::System.String value);
         partial void OnFileRelativePathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FilePath
+        {
+            get
+            {
+                return _FilePath;
+            }
+            set
+            {
+                OnFilePathChanging(value);
+                ReportPropertyChanging("FilePath");
+                _FilePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FilePath");
+                OnFilePathChanged();
+            }
+        }
+        private global::System.String _FilePath;
+        partial void OnFilePathChanging(global::System.String value);
+        partial void OnFilePathChanged();
 
         #endregion
 

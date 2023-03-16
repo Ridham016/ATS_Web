@@ -10,10 +10,10 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.applicantDetailScope = {
             ApplicantId: 0,
@@ -84,6 +84,7 @@
                     RegistrationService.GetAllApplicants(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
+                        console.log($scope.applicants);
                         debugger
                         if (res.data.MessageType == messageTypes.Success) {// Success
                             $defer.resolve(res.data.Result);
@@ -136,38 +137,49 @@
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             debugger
-            console.log(applicantDetailScope.DateOfBirth);
             applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
-            console.log(applicantDetailScope.DateOfBirth);
             RegistrationService.Register(applicantDetailScope).then(function (res) {
                 if (res) {
                     var applicants = res.data;
                     $scope.applicantId = res.data.Result;
                     debugger
                     if ($scope.filedata) {
-                        RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                            debugger
-                            console.log(res.data.Result);
-                        })
+                         RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
+                             if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
+                                 toastr.success(applicants.Message, successTitle);
+                                 $scope.ClearFormData(frmRegister);
+                                 $("#file").val("");
+                                 $scope.tableParams.reload();
+                             } else if (applicants.MessageType == messageTypes.Error) {// Error
+                                 toastr.error(applicants.Message, errorTitle);
+                             } else if (applicants.MessageType == messageTypes.Warning) {// Warning
+                                 toastr.warning(applicants.Message, warningTitle);
+                             }
+                    })
                     }
-                    if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
-                        toastr.success(applicants.Message, successTitle);
-                        $scope.ClearFormData(frmRegister);
-                        $("#file").val("");
-                        $scope.tableParams.reload();
-                    } else if (applicants.MessageType == messageTypes.Error) {// Error
-                        toastr.error(applicants.Message, errorTitle);
-                    } else if (applicants.MessageType == messageTypes.Warning) {// Warning
-                        toastr.warning(applicants.Message, warningTitle);
+                    else {
+                        if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
+                            toastr.success(applicants.Message, successTitle);
+                            $scope.ClearFormData(frmRegister);
+                            $("#file").val("");
+                            $scope.tableParams.reload();
+                        } else if (applicants.MessageType == messageTypes.Error) {// Error
+                            toastr.error(applicants.Message, errorTitle);
+                        } else if (applicants.MessageType == messageTypes.Warning) {// Warning
+                            toastr.warning(applicants.Message, warningTitle);
+                        }
                     }
-                }
+}
+                
             });
         }
         $scope.EditApplicantDetails = function (ApplicantId) {
+            debugger
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
+                debugger
                 if (res) {
                     var data = res.data;
-                    if (data.MessageType == messageTypes.Success) {// Success
+                    if (data.MessageType == messageTypes.Success) {
                         $scope.applicantDetailScope = res.data.Result;
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
@@ -181,7 +193,10 @@
 
         $scope.AddFileToDb = function () {
             RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                console.log(res.data.Result);
+                debugger
+                $scope.ClearFormData(frmRegister);
+                $("#file").val("");
+                $scope.tableParams.reload();
             })
         }
 
@@ -212,6 +227,13 @@
                 console.log(response);
                 $scope.filedata = response.data.Result;
             });
+        }
+
+        $scope.downloadPDF = function (data, filename, mimeType) {
+            debugger
+            FileService.SaveBlob(data, filename, mimeType).then(function (res) {
+                res.data;
+            })
         }
     }
 })();

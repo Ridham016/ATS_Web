@@ -799,6 +799,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CV.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Duplicate Dead Stock Details..
         /// </summary>
         public static string DuplicateDeadStockDetails {
@@ -1029,6 +1038,15 @@ namespace MVCProject.Common.Resources {
         public static string February {
             get {
                 return ResourceManager.GetString("February", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
             }
         }
         

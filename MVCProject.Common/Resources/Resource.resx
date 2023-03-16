@@ -1041,4 +1041,10 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>CV</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
 </root>

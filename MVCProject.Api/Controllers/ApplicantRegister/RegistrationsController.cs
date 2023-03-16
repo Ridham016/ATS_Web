@@ -22,6 +22,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
     using System.Net.Http;
     using System.Web;
     using System.Web.Http;
+    using System.Web.WebPages;
     #endregion
     public class RegistrationsController : BaseController
     {
@@ -59,6 +60,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 FileName = g.FileName,
+                FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
                 IsActive = g.IsActive,
                 TotalRecords
@@ -95,6 +97,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 FileName = g.FileName,
+                FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
                 IsActive = g.IsActive,
                 TotalRecords
@@ -126,7 +129,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
-                data.DateOfBirth.Value.ToLocalTime();
                 data.EntryBy = "1";
                 entities.ATS_ApplicantRegister.AddObject(data);
                 this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
@@ -153,7 +155,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.Email = data.Email;
                 applicantData.Phone = data.Phone;
                 applicantData.Address = data.Address;
-                applicantData.DateOfBirth = data.DateOfBirth.Value.AddDays(1);
+                applicantData.DateOfBirth = data.DateOfBirth;
                 applicantData.CurrentCompany = data.CurrentCompany;
                 applicantData.CurrentDesignation = data.CurrentDesignation;
                 applicantData.ApplicantDate = data.ApplicantDate;
@@ -225,24 +227,45 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             //    FileName = data.FileName,
             //    FilePath= data.FilePath
             //});
-            entities.ATS_Attachment.AddObject(new ATS_Attachment()
+            var fileData = this.entities.ATS_Attachment.FirstOrDefault(x => x.ApplicantId == ApplicantId);
+            if(fileData == null)
             {
-                FileName = data.FileName,
-                FilePath = data.FilePath,
-                FileRelativePath = data.FileRelativePath,
-                OriginalFileName = data.OriginalFileName,
-                IsDeleted = false,
-                EntryDate= DateTime.Now,
-                ApplicantId = ApplicantId,
-                AttachmentTypeId = 1
-            });
-            //this.entities.ATS_Attachment.AddObject(data);
-            if (!(this.entities.SaveChanges() > 0))
-            {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
-            }
+                entities.ATS_Attachment.AddObject(new ATS_Attachment()
+                {
+                    FileName = data.FileName,
+                    FilePath = data.FilePath,
+                    FileRelativePath = data.FileRelativePath,
+                    OriginalFileName = data.OriginalFileName,
+                    IsDeleted = false,
+                    EntryDate = DateTime.Now,
+                    ApplicantId = ApplicantId,
+                    AttachmentTypeId = 1
+                });
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
+                }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File));
+            }
+            else
+            {
+                fileData.FileName = data.FileName;
+                fileData.FilePath = data.FilePath;
+                fileData.FileRelativePath = data.FileRelativePath;
+                fileData.OriginalFileName = data.OriginalFileName;
+                fileData.IsDeleted = false;
+                fileData.EntryDate = DateTime.Now;
+                fileData.ApplicantId = ApplicantId;
+                fileData.AttachmentTypeId = 1;
+                entities.ATS_Attachment.ApplyCurrentValues(fileData);
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
+                }
+
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.File));
+            }
         }
     }
 }

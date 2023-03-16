@@ -773,6 +773,7 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantById_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -795,7 +796,7 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
-        </ComplexType>
+          </ComplexType>
         <ComplexType Name="USP_ATS_SingleApplicant_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
           <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
@@ -1122,6 +1123,7 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1148,7 +1150,7 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_SingleApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_SingleApplicant">
