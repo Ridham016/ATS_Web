@@ -6,7 +6,8 @@
     ]);
 
     function AdvancedSearchCtrl($scope, ngTableParams, CommonFunctions, $rootScope, AdvancedSearchService) {
-        var searchDetailParams = {}
+        var searchDetailParams = {};
+        $scope.CurrentDate = new Date();
         $scope.searchDetail = {
             StatusId: null,
             StartDate: null,

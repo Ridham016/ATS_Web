@@ -318,7 +318,7 @@ body  .right_col {
 }
     .nav_title a img {
         margin-left: 5px;
-        max-height: 70px;
+        max-height: 53px;
         max-width: 170px;
         -webkit-transition: all .25s ease-in-out;
         transition: all .25s ease-in-out;

@@ -56,7 +56,11 @@
                                         @Resource.StatusName :
                                     </p>
                                 </td>
-                                <td><p>{{applicants.StatusName}}</p></td>
+                                <td><p> <span ng-class="{'status-hold': applicants.StatusId == 5,
+                                                        'status-registered': applicants.StatusId == 1,
+                                                        'status-shortlist': applicants.StatusId == 2,
+                                                        'status-call-schedule': applicants.StatusId == 4,
+                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}</span></p></td>
                             </tr>
                             <tr ng-show="applicants.StatusId == 8">
                                 <td class="details-schedule-label">
