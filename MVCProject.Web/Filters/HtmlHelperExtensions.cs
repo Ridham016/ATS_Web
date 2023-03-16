@@ -54,8 +54,13 @@ namespace System.Web.Mvc
             menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
             menuString.Append("<ul class='nav child_menu'>");
             menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
-                    menuString.Append(GetSubMenu(Resource.Interviewer, "ti-id-badge", "/InterviewerRegister/Interviewer"));
+                    menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
 
+            menuString.Append("</ul></li>");
+            menuString.Append("<li>");
+            menuString.AppendFormat(GetParentMenu(Resource.AdvancedSearch, "fa fa-search"));
+            menuString.Append("<ul class='nav child_menu'>");
+            menuString.Append(GetSubMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
             menuString.Append("</ul></li>");
 
             menuString.Append("</ul></div></div>");

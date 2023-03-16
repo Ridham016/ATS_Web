@@ -21,9 +21,9 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
             this.entities = new MVCProjectEntities();
         }
         [HttpPost]
-        public ApiResponse AdvancedActionSearch([FromUri] SearchParams, [FromBody] PagingParams searchDetailParams)
+        public ApiResponse AdvancedActionSearch([FromBody] PagingParams searchDetailParams, [FromUri]SearchParams searchParams)
         {
-            var result = this.entities.USP_ATS_ActionApplicantSearch(SearchParams.StatusId, searchDetailParams.StartDate, searchDetailParams.EndDate).ToList();
+            var result = this.entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate).ToList();
             var TotalRecords = result.Count();
             var advancedsearch = result.Select(g => new
             {
@@ -49,22 +49,11 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 StatusId = g.StatusId,
                 StatusName = g.StatusName,
                 Reason = g.Reason,
+                EntryDate = g.EntryDate,
                 TotalRecords
-            });
-            //.AsEnumerable()
-            //.AsQueryable().OrderByField(searchDetailParams.OrderByColumn, searchDetailParams.IsAscending)
-            //.Skip((searchDetailParams.CurrentPageNumber - 1) * searchDetailParams.PageSize).Take(searchDetailParams.PageSize);
+            }).AsEnumerable()
+            .Skip((searchDetailParams.CurrentPageNumber - 1) * searchDetailParams.PageSize).Take(searchDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
-
-            //var advancedsearch = entities.USP_ATS_ActionApplicantSearch(CurrentStatus, PreferredLocation, StartDate, EndDate).ToList();
-            //    .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
-            //    .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
-            //return this.Response(MessageTypes.Success,string.Empty, advancedsearch);
-            //    .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);;
-            //var applicantlist = entities.USP_ATS_ApplicantsList().AsEnumerable()
-            //    .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
-            //    .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
-            //return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
         }
         [HttpGet]
         public ApiResponse GetStatus()

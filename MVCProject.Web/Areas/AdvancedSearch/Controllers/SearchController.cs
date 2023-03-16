@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVCProject.Web.Areas.AdvancedSearch.Controllers
+namespace MVCProject.Areas.AdvancedSearch.Controllers
 {
-    public class AdvancedSearchController : Controller
+    public class SearchController : Controller
     {
         //
-        // GET: /AdvancedSearch/AdvancedSearch/
+        // GET: /AdvancedSearch/Search/
 
         public ActionResult Index()
         {
