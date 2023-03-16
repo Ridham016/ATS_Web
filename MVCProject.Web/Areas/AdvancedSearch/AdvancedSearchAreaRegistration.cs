@@ -4,7 +4,7 @@
 // </copyright>
 // ----------------------------------------------------------------------- 
 
-namespace MVCProject.Web.Areas.AdvancedSearch
+namespace MVCProject.Areas.AdvancedSearch
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -44,7 +44,7 @@ namespace MVCProject.Web.Areas.AdvancedSearch
             context.MapRoute(
                "AdvancedSearch_default",
                "AdvancedSearch/{controller}/{action}/{id}",
-               new { action = "Search", id = UrlParameter.Optional }
+               new { action = "Index", id = UrlParameter.Optional }
            );
         }
 

@@ -7,12 +7,12 @@
     //        /*data: JSON.stringify(applicantDetailParams)*/
     //    })
     //}
-    list.AdvancedSearch = function (searchScope) {
+    list.AdvancedSearch = function (searchDetailParams, searchDetail) {
+        debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/AdvancedSearch/AdvancedActionSearch?StatusId=' + searchScope.StatusId + '&StartDate=' + searchScope.StartDate + '&EndDate=' +searchScope.EndDate ,
-            /*data: JSON.stringify(applicantDetailParams)*/
-            data: JSON.stringify(searchScope)
+            url: $rootScope.apiURL + '/AdvancedSearch/AdvancedActionSearch?StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,
+            data: JSON.stringify(searchDetailParams)
         })
     }
     list.GetStatus = function () {

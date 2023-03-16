@@ -1050,7 +1050,7 @@
   <data name="AdvancedSearch" xml:space="preserve">
     <value>Advanced Search</value>
   </data>
-  <data name="End Date" xml:space="preserve">
+  <data name="EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
   <data name="StartDate" xml:space="preserve">
@@ -1058,5 +1058,11 @@
   </data>
   <data name="StartDateRequired" xml:space="preserve">
     <value>Start Date is Required</value>
+  </data>
+  <data name="EntryDate" xml:space="preserve">
+    <value>Entry Date</value>
+  </data>
+  <data name="StatusAction" xml:space="preserve">
+    <value>Status Action</value>
   </data>
 </root>

@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module("MVCApp").controller('AdvancedSearchCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', '$location', '$window', 'AdvancedSearchService', AdvancedSearchCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', 'AdvancedSearchService', AdvancedSearchCtrl
     ]);
 
-    function AdvancedSearchCtrl($scope, ngTableParams, CommonFunctions, $rootScope, $location, $window, AdvancedSearchService) {
-        var searchDetailParams = {};
-        $scope.searchScope = {
+    function AdvancedSearchCtrl($scope, ngTableParams, CommonFunctions, $rootScope, AdvancedSearchService) {
+        var searchDetailParams = {}
+        $scope.searchDetail = {
             StatusId: null,
             StartDate: null,
             EndDate: null
@@ -19,17 +19,17 @@
 
         $scope.tableParams = new ngTableParams({
             page: 1,
-            count: $rootScope.pageSize,
-            sorting: { FirstName: 'asc' }
+            count: $rootScope.pageSize
         }, {
             getData: function ($defer, params) {
-                if (applicantDetailParams == null) {
-                    applicantDetailParams = {};
+                debugger
+                if (searchDetailParams == null) {
+                    searchDetailParams = {};
                 }
-                applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
+                searchDetailParams.paging = CommonFunctions.GetPagingParams(params);
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
-                ScheduleService.AdvancedSearch(searchScope,searchDetailParams.Paging).then(function (res) {
+                AdvancedSearchService.AdvancedSearch(searchDetailParams.paging, $scope.searchDetail).then(function (res) {
                     debugger
                     var data = res.data;
                     $scope.applicants = res.data.Result;
@@ -50,13 +50,21 @@
             }
         });
 
+        $scope.ClearFormData = function (frmRegister) {
+            $scope.searchDetail = {
+                StatusId: null,
+                StartDate: null,
+                EndDate: null
+            };
+            $scope.frmRegister.$setPristine();
+        };
 
-        $scope.advancedsearch = function (searchScope) {
+        $scope.advancedsearch = function (searchDetail) {
             debugger
-            AdvancedSearchService.AdvancedSearch(searchScope).then(function (res) {
-                var data = res.data;
-                $scope.searchScope = res.data.Result;
-            });
+            $scope.searchDetail = searchDetail;
+            $scope.searchDetail.StartDate = angular.copy(moment($scope.searchDetail.StartDate).format($rootScope.apiDateFormat));
+            $scope.searchDetail.EndDate = angular.copy(moment($scope.searchDetail.EndDate).format($rootScope.apiDateFormat));
+            $scope.tableParams.reload();
         };
         $scope.GetStatus = function () {
             debugger

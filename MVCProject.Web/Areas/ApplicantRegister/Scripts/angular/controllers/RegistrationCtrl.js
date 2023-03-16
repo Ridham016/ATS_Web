@@ -129,6 +129,7 @@
                 ReasonForChange: '',
                 IsActive: true
             };
+            $("#file").val("");
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
             $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');
@@ -148,7 +149,6 @@
                              if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                                  toastr.success(applicants.Message, successTitle);
                                  $scope.ClearFormData(frmRegister);
-                                 $("#file").val("");
                                  $scope.tableParams.reload();
                              } else if (applicants.MessageType == messageTypes.Error) {// Error
                                  toastr.error(applicants.Message, errorTitle);
@@ -161,7 +161,6 @@
                         if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
                             toastr.success(applicants.Message, successTitle);
                             $scope.ClearFormData(frmRegister);
-                            $("#file").val("");
                             $scope.tableParams.reload();
                         } else if (applicants.MessageType == messageTypes.Error) {// Error
                             toastr.error(applicants.Message, errorTitle);
