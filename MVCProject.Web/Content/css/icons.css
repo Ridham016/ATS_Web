@@ -386,6 +386,7 @@ File: Icons
 .fa-edit:before,
 .fa-pencil-square-o:before {
   content: "\f044";
+  font-size: 20px;
 }
 .fa-share-square-o:before {
   content: "\f045";

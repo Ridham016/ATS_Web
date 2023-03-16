@@ -4,55 +4,74 @@
 }
 
 <div ng-controller="ScheduleCtrl" ng-init="GetData()" novalidate>
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-lg-12">
             <div class="card-box">
                 <div class="row">
-                    <div class="col-md-12 mt-lg-0 mt-md-0 mt-sm-0">
-                        <label>
-                            @Resource.ApplicantName :
-                        </label>                  
-                        <span>{{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}</span>
+                    <div class="col-lg-12">
+                        <table>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.ApplicantName :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}</p></td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.ApplicantEmail :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.Email}}</p></td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.ApplicantAddress :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.Address}}</p></td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.ApplicantDOB :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.DateOfBirth | date}}</p></td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.ApplicantPhone :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.Phone}}</p></td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.StatusName :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.StatusName}}</p></td>
+                            </tr>
+                            <tr ng-show="applicants.StatusId == 8">
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.OtherReason :
+                                    </p>
+                                </td>
+                                <td><p>{{applicants.Reason}}</p></td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="col-md-12 mt-sm-2">
-                        <label>
-                            @Resource.ApplicantEmail :
-                        </label>
-                        <span> {{applicants.Email}}</span>
-                    </div>
-                    <div class="col-md-12 mt-sm-2">
-                        <label>
-                            @Resource.ApplicantAddress :
-                        </label>
-                        <span>  {{applicants.Address}}</span>
-                    </div>
-                    <div class="col-md-12 mt-sm-2">
-                        <label>
-                            @Resource.ApplicantDOB :
-                        </label>
-                        <span>{{applicants.DateOfBirth | date}}</span>
-                    </div>
-                    <div class="col-md-12 mt-sm-2">
-                        <label>
-                            @Resource.ApplicantPhone :
-                        </label>
-                        <span>{{applicants.Phone}}</span>
-                    </div>
-                    <div class="col-md-12 mt-sm-2">
-                        <label>
-                            @Resource.StatusName :
-                        </label>
-                        <span>{{applicants.StatusName}}</span>
-                    </div>
-                    <div class="col-md-12 mt-sm-2" ng-show="applicants.StatusId == 8">
-                        <label>
-                            @Resource.OtherReason :
-                        </label>
-                        <span>{{applicants.Reason}}</span>
-                    </div>
+                    
                 </div>
                 <div class="card-foot mt-3">
-                    <button class="btn btn-primary me-sm-2 ms-sm-2"
+                    <button class="btn btn-primary me-sm-2"
                             ng-repeat="h in buttons" ng-if="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"
                             ng-class="{'btn-success' : h.ButtonId == 5,
                                        'btn-primary' : h.ButtonId == 1,
@@ -60,7 +79,7 @@
                                        'btn-danger' : h.ButtonId == 6}">
                         {{h.ButtonName}}
                     </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -137,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-info me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-info me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -170,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-secondary me-sm-2 ms-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-secondary me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>

@@ -16,16 +16,27 @@
         max-width: 200px !important;
     }
 
+    .colPhone {
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+    }
+
     .colActive {
-        width: 50px !important;
-        min-width: 50px !important;
-        max-width: 50px !important;
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+    .colDate {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
     }
 
     .colAction {
-        width: 50px !important;
-        min-width: 50px !important;
-        max-width: 50px !important;
+        width: 65px !important;
+        min-width: 65px !important;
+        max-width: 65px !important;
     }
     .colDownload {
         width: 50px !important;
@@ -374,13 +385,13 @@
                                                 <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Email}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantPhone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
                                                 <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Address}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantDOB'"header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDOB'"header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.DateOfBirth | date}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
