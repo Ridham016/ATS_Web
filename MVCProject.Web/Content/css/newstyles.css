@@ -21513,6 +21513,7 @@ span.flatpickr-weekday {
 	color: var(--ats-white);
 	background: #85837e;
 	padding: 7px 14px;
+	box-shadow: var(--ats-btn-box-shadow) rgba(133, 131, 126, 0.7);
 }
 
 .btn-hold:hover{
@@ -21524,9 +21525,11 @@ span.flatpickr-weekday {
 	color: var(--ats-white);
 	background: #ee984e;
 	padding: 7px 14px;
+	box-shadow: var(--ats-btn-box-shadow) rgba(238, 152, 78, 0.7);
 }
 
 .btn-other-reason:hover {
+	color: var(--ats-white);
 	background: #d58948;
 }
 
