@@ -21408,12 +21408,12 @@ span.flatpickr-weekday {
 	padding: 5px 10px;
 }
 .status-pass{
-	color: #2dda2d;
+	color: #24ce9d;;
 	background: #dcf7e3;
 	padding: 5px 10px;
 }
-.status-reject{
-	color: #ff4d61;
+.status-reject {
+	color: #e6243a;
 	background: #fee4e2;
 	padding: 5px 10px;
 }
@@ -21422,13 +21422,13 @@ span.flatpickr-weekday {
 	background: #f1f3f4;
 	padding: 5px 10px;
 }
-.status-hold{
-	color: #f3aa18;
+.status-hold {
+	color: #85837e;
 	background: #fcf3d7;
 	padding: 5px 10px;
 }
-.status-other-reason{
-	color: #fb8622;
+.status-other-reason {
+	color: #ee984e;
 	background: #ffe6d0;
 	padding: 5px 10px;
 }
@@ -21442,24 +21442,6 @@ span.flatpickr-weekday {
 	background: #dcd0ff;
 	padding: 5px 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .btn-register{
 	color: var(--ats-white);
