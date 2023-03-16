@@ -71,7 +71,7 @@
                     
                 </div>
                 <div class="card-foot mt-3">
-                    <button class="btn btn-primary me-sm-2"
+                    <button class="btn me-sm-2"
                             ng-repeat="h in buttons" ng-if="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"
                             ng-class="{'btn-pass' : h.ButtonId == 5,
                                        'btn-shortlist' : h.ButtonId == 1,
@@ -99,7 +99,7 @@
                                                     <label>
                                                         @Resource.ScheduleDateTime <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="datetime-local" class="form-control datepicker" ng-focus="true" name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
+                                                    <input type="datetime-local" class="form-control datepicker mb-2" ng-focus="true" name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
@@ -110,7 +110,7 @@
                                                     <label>
                                                         @Resource.Interviewer <span class="required-field">*</span> <br />
                                                     </label>
-                                                    <select class="form-control" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
+                                                    <select class="form-control mb-2" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
                                                         <option value="" disabled selected>Select Interviewer</option>
                                                         <option ng-repeat="op in interviewers" value="{{op.InterviewerId}}">{{op.InterviewerName}}</option>
                                                     </select>
@@ -124,7 +124,7 @@
                                                     <label>
                                                         @Resource.ScheduleLink <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" ng-focus="true" name="ScheduleLink" ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" required>
+                                                    <input type="text" class="form-control mb-2" ng-focus="true" name="ScheduleLink" ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" required>
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.ScheduleLink.$dirty && frmSchedule.ScheduleLink.$invalid">
@@ -197,7 +197,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Other Reasons</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reasons for hold</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form name="frmHoldReason" novalidate>
