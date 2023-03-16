@@ -73,13 +73,13 @@
                 <div class="card-foot mt-3">
                     <button class="btn btn-primary me-sm-2"
                             ng-repeat="h in buttons" ng-if="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"
-                            ng-class="{'btn-success' : h.ButtonId == 5,
-                                       'btn-primary' : h.ButtonId == 1,
-                                       'btn-warning' : h.ButtonId == 2,
-                                       'btn-danger' : h.ButtonId == 6}">
+                            ng-class="{'btn-pass' : h.ButtonId == 5,
+                                       'btn-shortlist' : h.ButtonId == 1,
+                                       'btn-not-match' : h.ButtonId == 2,
+                                       'btn-reject' : h.ButtonId == 6}">
                         {{h.ButtonName}}
                     </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-info me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-other-reason me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-secondary me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-hold me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
                         {{h.ButtonName}}
                     </button>
