@@ -60,7 +60,7 @@ namespace MVCProject.Api.ViewModel
         /// Gets or sets a comma separated value for training status 
         /// </summary>
         [DataMember]
-        public string StatusIds { get; set; }
+        public int? StatusId { get; set; }
 
         /// <summary>
         /// Gets or sets a Search string
