@@ -19,7 +19,7 @@
         }
 
             .ng-table th.sortable .sort-indicator:after {
-                opacity: 0.2;
+                opacity: 1;
                 content: "\f0de";
             }
 
@@ -31,6 +31,7 @@
                 display: block;
                 font-family: 'FontAwesome';
                 font-size: 10px;
+                fill: white;
             }
 
             .ng-table th.sortable .sort-indicator:before {
@@ -67,7 +68,7 @@
                 right: 8px;
                 display: block;
                 font-family: 'FontAwesome';
-                opacity: 0.5;
+                opacity: 1;
             }
 
 
@@ -86,9 +87,9 @@
             .ng-table th.sortable.sort-asc .sort-indicator:hover:after {
                 visibility: visible;
                 filter: alpha(opacity=60);
-                -khtml-opacity: 0.6;
-                -moz-opacity: 0.6;
-                opacity: 0.6;
+                -khtml-opacity: 1;
+                -moz-opacity: 1;
+                opacity: 1;
             }
 
             .ng-table th.sortable.sort-desc .sort-indicator:after {
@@ -97,9 +98,9 @@
                 -moz-box-shadow: none;
                 box-shadow: none;
                 filter: alpha(opacity=60);
-                -khtml-opacity: 0.6;
-                -moz-opacity: 0.6;
-                opacity: 0.6;
+                -khtml-opacity: 1;
+                -moz-opacity: 1;
+                opacity: 1;
             }
 
     .ng-table th.filter .input-filter {

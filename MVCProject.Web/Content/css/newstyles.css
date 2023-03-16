@@ -39,8 +39,8 @@
 }
 
 :root {
-	--primary-color: #7016d0;
-	--primary-color-tint-40: #a973e3;
+	--primary-color: #0253cc;
+	--primary-color-tint: #00c5fb;
 	--secondary-color: #FF7A30;
 	--ats-left-col-width: 230px;
 	--ats-nav-sm-left-col-width: 70px;
@@ -106,7 +106,7 @@
 	--ats-danger: #fa5c7c;
 	--ats-light: #eef2f7;
 	--ats-dark: #313a46;
-	--ats-primary-rgb: 112, 22, 208;
+	--ats-primary-rgb: 2, 83, 204;
 	--ats-secondary-rgb: 108, 117, 125;
 	--ats-success-rgb: 10, 207, 151;
 	--ats-info-rgb: 57, 175, 209;
@@ -117,7 +117,7 @@
 	--ats-white-rgb: 255, 255, 255;
 	--ats-black-rgb: 0, 0, 0;
 	--ats-body-color-rgb: 108, 117, 125;
-	--ats-body-bg-rgb: 250, 251, 254;
+	--ats-body-bg-rgb: 223, 240, 255;
 	--ats-font-sans-serif: "Poppins", sans-serif;
 	--ats-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 	--ats-body-font-family: var(--ats-font-sans-serif);
@@ -125,7 +125,7 @@
 	--ats-body-font-weight: 400;
 	--ats-body-line-height: 1.5;
 	--ats-body-color: #6c757d;
-	--ats-body-bg: #f2edf3;
+	--ats-body-bg: #dff0ff;
 	--ats-border-width: 1px;
 	--ats-border-style: solid;
 	--ats-border-color: var(--ats-gray-500);
@@ -2649,27 +2649,27 @@ progress {
 }
 
 .form-control::-webkit-input-placeholder {
-	color: var(--ats-gray-500);
+	color: #4d4d4d;
 	opacity: 1
 }
 
 .form-control::-moz-placeholder {
-	color: var(--ats-gray-500);
+	color: #4d4d4d;
 	opacity: 1
 }
 
 .form-control:-ms-input-placeholder {
-	color: var(--ats-gray-500);
+	color: #4d4d4d;
 	opacity: 1
 }
 
 .form-control::-ms-input-placeholder {
-	color: var(--ats-gray-500);
+	color: #4d4d4d;
 	opacity: 1
 }
 
 .form-control::placeholder {
-	color: var(--ats-gray-500);
+	color: #4d4d4d;
 	opacity: 1
 }
 
@@ -3749,7 +3749,7 @@ fieldset:disabled .btn {
 	--ats-btn-bg: var(--primary-color);
 	--ats-btn-border-color: var(--primary-color);
 	--ats-btn-hover-color: var(--ats-white);
-	--ats-btn-hover-bg: #8042c2;
+	--ats-btn-hover-bg: #1852a8;
 	--ats-btn-hover-border-color: var(--primary-color);
 	--ats-btn-focus-shadow-rgb: 135, 144, 247;
 	--ats-btn-active-color: var(--ats-white);
@@ -5632,10 +5632,11 @@ fieldset:disabled .btn {
 }
 
 .accordion-button:not(.collapsed)::after {
-	background-image: var(--ats-accordion-btn-active-icon);
+	content : "-";
+	/*background-image: var(--ats-accordion-btn-active-icon);*/
 	-webkit-transform: var(--ats-accordion-btn-icon-transform);
 	transform: var(--ats-accordion-btn-icon-transform);
-	color: var(--primary-color);
+	color: var(--ats-white);
 }
 
 .accordion-button::after {

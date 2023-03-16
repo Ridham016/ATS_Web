@@ -425,7 +425,8 @@ a:focus {
 /* Card Box */
 .card-box {
     padding: 20px;
-    box-shadow: 0 0.625rem 0.875rem rgb(1 1 1 / 10%);
+    webkit-box-shadow: 0 10px 10px rgba(0,10,10,.1);
+    box-shadow: 0 10px 10px rgba(0,10,10,.1);
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -4649,6 +4650,7 @@ div.hopscotch-bubble {
         }
 
     .table > thead > tr > th {
+        color: white;
         vertical-align: top;
         border: none;
     }
@@ -4660,7 +4662,7 @@ tbody {
 
 th {
     color: #666666;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .table-bordered {

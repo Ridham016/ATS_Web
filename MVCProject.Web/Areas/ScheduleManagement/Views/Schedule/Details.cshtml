@@ -5,64 +5,50 @@
 
 <div ng-controller="ScheduleCtrl" ng-init="GetData()" novalidate>
     <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="card-box">
                 <div class="row">
                     <div class="col-md-12 mt-lg-0 mt-md-0 mt-sm-0">
                         <label>
                             @Resource.ApplicantName :
-                        </label>
-                        <label>
-                            {{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}
-                        </label>
+                        </label>                  
+                        <span>{{applicants.FirstName}} {{applicants.MiddleName}} {{applicants.LastName}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3">
+                    <div class="col-md-12 mt-sm-2">
                         <label>
                             @Resource.ApplicantEmail :
                         </label>
-                        <label>
-                            {{applicants.Email}}
-                        </label>
+                        <span> {{applicants.Email}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3">
+                    <div class="col-md-12 mt-sm-2">
                         <label>
                             @Resource.ApplicantAddress :
                         </label>
-                        <label>
-                            {{applicants.Address}}
-                        </label>
+                        <span>  {{applicants.Address}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3">
+                    <div class="col-md-12 mt-sm-2">
                         <label>
                             @Resource.ApplicantDOB :
                         </label>
-                        <label>
-                            {{applicants.DateOfBirth | date}}
-                        </label>
+                        <span>{{applicants.DateOfBirth | date}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3">
+                    <div class="col-md-12 mt-sm-2">
                         <label>
                             @Resource.ApplicantPhone :
                         </label>
-                        <label>
-                            {{applicants.Phone}}
-                        </label>
+                        <span>{{applicants.Phone}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3">
+                    <div class="col-md-12 mt-sm-2">
                         <label>
                             @Resource.StatusName :
                         </label>
-                        <label>
-                            {{applicants.StatusName}}
-                        </label>
+                        <span>{{applicants.StatusName}}</span>
                     </div>
-                    <div class="col-md-12 mt-sm-3" ng-show="applicants.StatusId == 8">
+                    <div class="col-md-12 mt-sm-2" ng-show="applicants.StatusId == 8">
                         <label>
                             @Resource.OtherReason :
                         </label>
-                        <label>
-                            {{applicants.Reason}}
-                        </label>
+                        <span>{{applicants.Reason}}</span>
                     </div>
                 </div>
                 <div class="card-foot mt-3">
