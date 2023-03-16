@@ -370,8 +370,3 @@ $(window).bind('storage', function (e) {
     }
 }); 
 
-// Schedule Detail Divs
-const box1Height = document.querySelector('.schedule-detail-div').offsetHeight;
-const box1Width = document.querySelector('.schedule-detail-div').offsetWidth;
-document.querySelector('.schedule-detail-bg-div').style.height = box1Height + 'px';
-document.querySelector('.schedule-detail-bg-div').style.width = box1Width + 'px';

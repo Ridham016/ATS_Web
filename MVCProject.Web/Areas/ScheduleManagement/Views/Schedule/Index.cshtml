@@ -35,7 +35,7 @@
 
 <div ng-controller="ScheduleCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
-        <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
+        <i class="fa fa-calendar icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.ScheduleManagement</h4>
         <div class="pull-right">
         </div>
@@ -84,7 +84,7 @@
                                                     <span>{{h.StatusName}}</span>
                                                 </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
-                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 b-0" title="Action"
+                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 b-0 cursor-pointer" title="Action"
                                                        href="~/ScheduleManagement/Schedule/Details#?ApplicantId={{h.ApplicantId}}">
                                                         <img src="~/Content/images/view-details-icon.svg" class="ViewLogo" />
                                                     </a>

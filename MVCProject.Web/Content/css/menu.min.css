@@ -35,28 +35,42 @@
     transition: all .25s ease-in-out;
 }*/
 
-.nav-sm .accordion.logo-expanded img{
+a.logo-expanded{
+    text-align: center;
+    width: 100%
+}
+
+.nav-sm .logo-expanded img {
     display: none;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
-.nav-sm .accordion.logo-short img{
+.nav-sm .logo-short img {
     display: block;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
-.nav-md .accordion.logo-expanded img{
+.nav-md .logo-expanded img {
     display: block;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
-.nav-md .accordion.logo-short img{
+.nav-md .logo-short img {
     display: none;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
 
 .nav-sm .navbar.nav_title {
     width: var(--ats-nav-sm-left-col-width);
     background-color: var(--ats-white);
-    transition: 40ms ease-in-out;
-/*    border-bottom: 1px solid var(--primary-color) !important;
+    transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
+    /*    border-bottom: 1px solid var(--primary-color) !important;
     border-right: 1px solid var(--primary-color) !important;*/
 }
 
@@ -306,12 +320,6 @@ body  .right_col {
         margin-left: 5px;
         max-height: 70px;
         max-width: 170px;
-        -webkit-transition: all .25s ease-in-out;
-        transition: all .25s ease-in-out;
-    }
-
-    .nav_title a.logo-short img {
-        display: none;
         -webkit-transition: all .25s ease-in-out;
         transition: all .25s ease-in-out;
     }
@@ -655,17 +663,20 @@ table.no-margin .progress {
     width: 100%;
     margin-top: 5px;
     border-radius: var(--ats-border-radius);
-    transition: 400ms ease-in-out
+    transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
 }
 
 /*.nav.side-menu > li:hover , .nav.child_menu > li:hover {
     background: rgba(var(--ats-primary-rgb),0.2);
     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
 }
 
 .nav-sm .side-menu > li:hover, .nav-sm .child_menu > li:hover {
     background: rgba(var(--ats-primary-rgb), 0.2);
     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
     color: var(--ats-white) !important;
 }*/
 .nav-sm .side-menu > li.active:hover a i.fa.fa-gears {
@@ -673,24 +684,30 @@ table.no-margin .progress {
 }
 
 .nav.side-menu > li:hover {
-/*     background: rgba(var(--ats-primary-rgb),0.2);
-     transition: 400ms ease-in-out;*/
+    /*     background: rgba(var(--ats-primary-rgb),0.2);
+     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
+*/
 }
 
 .nav.child-menu > li:hover {
-/*     background: rgba(var(--ats-primary-rgb),0.2);
-     transition: 400ms ease-in-out;*/
+    /*     background: rgba(var(--ats-primary-rgb),0.2);
+     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
+*/
 }
 
 /*.nav.side-menu > li:hover > a, .nav.child_menu > li:hover > a {
     color: var(--ats-dark-nav-link-color);
     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
     background-color: rgba(var(--ats-primary-rgb),0.2);
 }*/
 
 .nav-sm .side-menu > li:hover > a, .nav-sm .child_menu > li:hover > a {
     color: var(--ats-dark-nav-link-color);
     transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
     background-color: rgba(var(--ats-primary-rgb),0.2);
 }
 

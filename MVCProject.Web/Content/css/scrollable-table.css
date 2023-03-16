@@ -11,7 +11,7 @@
     top: 0;
     right: 0;
     left: 0;
-    background: rgb(235, 239, 242);
+    background: var(--primary-color);
 }
 .scrollableContainer th .orderWrapper {
     position: absolute;
