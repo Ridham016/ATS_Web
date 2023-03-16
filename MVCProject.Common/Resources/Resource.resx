@@ -1047,4 +1047,16 @@
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="End Date" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="StartDateRequired" xml:space="preserve">
+    <value>Start Date is Required</value>
+  </data>
 </root>
