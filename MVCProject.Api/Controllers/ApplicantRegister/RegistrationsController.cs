@@ -168,7 +168,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.PreferedLocation = data.PreferedLocation;
                 applicantData.ReasonForChange = data.ReasonForChange;
                 applicantData.IsActive = data.IsActive;
-                applicantData.ApplicantDate = DateTime.Now;
                 applicantData.UpdateDate = DateTime.Now;
                 this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);
                 if (!(this.entities.SaveChanges() > 0))

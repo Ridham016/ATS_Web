@@ -610,7 +610,7 @@
     <value>Time</value>
   </data>
   <data name="TimeLine" xml:space="preserve">
-    <value>Time line</value>
+    <value>Timeline</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
@@ -1064,5 +1064,26 @@
   </data>
   <data name="StatusAction" xml:space="preserve">
     <value>Status Action</value>
+  </data>
+  <data name="CurrentDesignations" xml:space="preserve">
+    <value>Current Designation</value>
+  </data>
+  <data name="DetailedExperince" xml:space="preserve">
+    <value>Detailed Experience</value>
+  </data>
+  <data name="ApplicantDate" xml:space="preserve">
+    <value>Applicant Date</value>
+  </data>
+  <data name="ApplicantDOBMin" xml:space="preserve">
+    <value>Enter Valid Birthdate</value>
+  </data>
+  <data name="ExperienceValid" xml:space="preserve">
+    <value>Enter Valid Experience</value>
+  </data>
+  <data name="PhoneValid" xml:space="preserve">
+    <value>Enter Valid Phone Number</value>
+  </data>
+  <data name="ValidCTC" xml:space="preserve">
+    <value>Enter Valid CTC</value>
   </data>
 </root>

@@ -124,10 +124,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             if(StatusId == 4)
             {
                var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
-                if(getlevel != null)
+                if (getlevel != null)
                 {
                     level = (int)getlevel.Level + 1;
                 }
+                else
+                    level++;
             }
             var addtoaction = new ATS_ActionHistory()
             {

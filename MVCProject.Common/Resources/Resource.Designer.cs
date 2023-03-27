@@ -196,11 +196,29 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Applicant Date.
+        /// </summary>
+        public static string ApplicantDate {
+            get {
+                return ResourceManager.GetString("ApplicantDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of Birth.
         /// </summary>
         public static string ApplicantDOB {
             get {
                 return ResourceManager.GetString("ApplicantDOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Birthdate.
+        /// </summary>
+        public static string ApplicantDOBMin {
+            get {
+                return ResourceManager.GetString("ApplicantDOBMin", resourceCulture);
             }
         }
         
@@ -637,6 +655,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Designation.
+        /// </summary>
+        public static string CurrentDesignations {
+            get {
+                return ResourceManager.GetString("CurrentDesignations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Location.
         /// </summary>
         public static string CurrentLocation {
@@ -786,6 +813,15 @@ namespace MVCProject.Common.Resources {
         public static string DetailedExperienceRequired {
             get {
                 return ResourceManager.GetString("DetailedExperienceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detailed Experience.
+        /// </summary>
+        public static string DetailedExperince {
+            get {
+                return ResourceManager.GetString("DetailedExperince", resourceCulture);
             }
         }
         
@@ -1020,6 +1056,15 @@ namespace MVCProject.Common.Resources {
         public static string ExpectedCTCRequired {
             get {
                 return ResourceManager.GetString("ExpectedCTCRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Experience.
+        /// </summary>
+        public static string ExperienceValid {
+            get {
+                return ResourceManager.GetString("ExperienceValid", resourceCulture);
             }
         }
         
@@ -1960,6 +2005,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Phone Number.
+        /// </summary>
+        public static string PhoneValid {
+            get {
+                return ResourceManager.GetString("PhoneValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prefered Location.
         /// </summary>
         public static string PreferedLocation {
@@ -2608,7 +2662,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time line.
+        ///   Looks up a localized string similar to Timeline.
         /// </summary>
         public static string TimeLine {
             get {
@@ -2838,6 +2892,15 @@ namespace MVCProject.Common.Resources {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Valid CTC.
+        /// </summary>
+        public static string ValidCTC {
+            get {
+                return ResourceManager.GetString("ValidCTC", resourceCulture);
             }
         }
         
