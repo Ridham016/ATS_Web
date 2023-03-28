@@ -25,9 +25,9 @@
             Address: '',
             DateOfBirth: null,
             CurrentCompany: '',
-            CurrentDesignations: '',
+            CurrentDesignation: '',
             TotalExperience: null,
-            DetailedExperince: null,
+            DetailedExperience: null,
             CurrentCTC: null,
             ExpectedCTC: null,
             NoticePeriod: null,
@@ -38,6 +38,7 @@
         };
 
         //$scope.AllData = true;
+        $scope.today = new Date();
 
         $scope.getApplicants = function (IsGetAll) {
             $scope.IsGetAll = IsGetAll;
@@ -50,7 +51,13 @@
                 console.log($scope.applicants);
             });
         };
-        //Load Designation List
+
+        //var table = $('#datatable').DataTable({
+        //    fixedColumns: {
+        //        left: 2,
+        //        right: 2
+        //    }
+        //});
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,

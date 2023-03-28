@@ -36,7 +36,7 @@ namespace System.Web.Mvc
                 menuString.Append("<div class='menu_section'>");
                 menuString.Append("<ul class='nav side-menu'>");
 
-              
+
             //        menuString.Append("<li>");
             //        menuString.AppendFormat(GetParentMenu(Resource.Configuration, "fa fa-gears"));
             //        menuString.Append("<ul class='nav child_menu'>");
@@ -45,23 +45,21 @@ namespace System.Web.Mvc
             //menuString.Append("</ul></li>");
 
 
-            menuString.Append("<li>");
-            menuString.AppendFormat(GetParentMenu(Resource.ScheduleManagement, "fa fa-calendar"));
-            menuString.Append("<ul class='nav child_menu'>");
-            menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
-            menuString.Append("</ul></li>");
+            //menuString.Append("<li>");
+            //menuString.AppendFormat(GetParentMenu(Resource.ScheduleManagement, "fa fa-calendar"));
+            //menuString.Append("<ul class='nav child_menu'>");
+            //menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
+            //menuString.Append("</ul></li>");
+            menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
+
             menuString.Append("<li>");
             menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
             menuString.Append("<ul class='nav child_menu'>");
             menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
-                    menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
+            menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
+            menuString.Append("</ul></li>");
 
-            menuString.Append("</ul></li>");
-            menuString.Append("<li>");
-            menuString.AppendFormat(GetParentMenu(Resource.AdvancedSearch, "fa fa-search"));
-            menuString.Append("<ul class='nav child_menu'>");
-            menuString.Append(GetSubMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
-            menuString.Append("</ul></li>");
+            menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
 
             menuString.Append("</ul></div></div>");
 
