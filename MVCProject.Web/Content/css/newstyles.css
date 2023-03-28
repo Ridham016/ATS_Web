@@ -158,7 +158,7 @@
 }
 
 body {
-	margin: 0;
+	argin: 0;
 	font-family: var(--ats-body-font-family);
 	font-size: var(--ats-body-font-size);
 	font-weight: var(--ats-body-font-weight);
@@ -166,10 +166,10 @@ body {
 	color: var(--ats-black);
 	text-align: var(--ats-body-text-align);
 	background: url(../images/body-bg-img.svg);
-	background-repeat: repeat;
-
+	background-repeat: no-repeat;
+	background-size: cover;
 	-webkit-text-size-adjust: 100%;
-	-webkit-tap-highlight-color: transparent
+	-webkit-tap-highlight-color: transparent;
 }
 
 .body-bg-logreg{
@@ -21423,18 +21423,18 @@ span.flatpickr-weekday {
 	padding: 5px 10px;
 }
 .status-hold {
-	color: var(--ats-warning);
-	background: #fcf3d7;
+	color: #ad8200;
+	background: #ece9dc;
 	padding: 5px 10px;
 }
 .status-other-reason {
-	color: #ee984e;
+	color: #ef6f00;
 	background: #ffe6d0;
 	padding: 5px 10px;
 }
-.status-call-schedule{
-	color: #00aba9;
-	background: #c2f0f0;
+.status-call-schedule {
+	color: #078684;
+	background: #c7e5e5;
 	padding: 5px 10px;
 }
 .status-shortlist{
