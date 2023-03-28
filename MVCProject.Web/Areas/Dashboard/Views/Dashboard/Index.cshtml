@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = MVCProject.Common.Resources.Resource.Dashboard;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .has-events {
+        background-color: #ffc107;
+    }
+
+    .event-count {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #000;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+</style>
+
+<div ng-controller="DashboardCtrl">
+    <div class="main-page-title title-icon relative l mb-3">
+        <i class="fa fa-calendar-check-o icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@MVCProject.Common.Resources.Resource.Dashboard</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" class="bg-light p-3" calendar="myCalendar"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-primary">
+                <h2 style="margin-top:0px"> Schedule Meeting:</h2>
+                <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents">
+                    <span>Schedule Event {{$index + 1}}</span>
+                    <p>Description: {{SelectedEvent.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/Dashboard/Dashboard")
+}

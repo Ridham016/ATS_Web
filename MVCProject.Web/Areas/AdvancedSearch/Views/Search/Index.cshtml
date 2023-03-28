@@ -77,19 +77,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>
-                                    @MVCProject.Common.Resources.Resource.StartDate
+                                    @MVCProject.Common.Resources.Resource.DateRange
                                 </label>
-                                <input type="date" class="form-control" name="StartDate" ng-model="searchDetail.StartDate" min="{{CurrentDate}}"/>
+                                <input type="daterange" class="form-control" autocomplete="off" placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange"/>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        @*<div class="col-md-4">
                             <div class="form-group">
                                 <label>
                                     @MVCProject.Common.Resources.Resource.EndDate
                                 </label>
-                                <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" max="{{CurrentDate}}"/>
+                                <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" />
                             </div>
-                        </div>
+                        </div>*@
                         <div class="row mt-4">
                             <div class="col-md-10">
                                 <div class="form-group">

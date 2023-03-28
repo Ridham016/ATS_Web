@@ -60,6 +60,8 @@ namespace MVCProject
                .Include(BundlePath.angular.commonFunctions)
                .Include(BundlePath.angular.directive.customDirectives)
                .Include(BundlePath.angular.customFilters)
+               .Include(BundlePath.angular.customFilters)
+               .Include(BundlePath.angular.customFilters)
                .Include("~/Scripts/angular/services/CommonService.js")
                .Include("~/Scripts/angular/services/AccountService.js"));
         }
@@ -128,6 +130,7 @@ namespace MVCProject
                 .Include(BundlePath.css.spectrum)
                 .Include(BundlePath.css.scrollableTable)
                 .Include(BundlePath.css.tooltipster)
+                .Include(BundlePath.css.fullCalendar)
                 .Include(BundlePath.css.newstyles));
 
             // Common JS Bundle (inner)
@@ -201,7 +204,10 @@ namespace MVCProject
                .Include("~/Scripts/angular/controllers/MasterCtrl.js")
                .Include("~/Scripts/angular/services/CommonService.js")
                .Include("~/Scripts/angular/services/AccountService.js")
-               .Include("~/Scripts/angular/services/FileService.js"));
+               .Include("~/Scripts/angular/services/FileService.js")
+               .Include(BundlePath.js.fullcalendar)
+               .Include(BundlePath.js.calendar)
+               .Include(BundlePath.js.gcal));
         }
 
         /// <summary>

@@ -306,6 +306,10 @@
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_ApplicantsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_CheckStatusValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrentStatus" Type="int" Mode="In" />
+          <Parameter Name="NextStatus" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_GetApplicantWithStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
         </Function>
@@ -317,10 +321,14 @@
         </Function>
         <Function Name="USP_ATS_GetOtherReasons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_GetStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_GetStatusFromApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_InterviewerbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="InterviewerId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_InterviewerList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_SchduleInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_SingleApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -483,6 +491,7 @@
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetStatus" ReturnType="Collection(MVCProjectModel.USP_ATS_GetStatus_Result)" />
+          <FunctionImport Name="USP_ATS_SchduleInformation" ReturnType="Collection(MVCProjectModel.USP_ATS_SchduleInformation_Result)" />
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -840,6 +849,7 @@
           <Property Type="Int32" Name="Level" Nullable="true" />
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
@@ -1010,6 +1020,25 @@
         <ComplexType Name="USP_ATS_GetStatus_Result">
           <Property Type="Int32" Name="StatusId" Nullable="false" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
+          <Property Type="Boolean" Name="Result" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetStatusFromApplicant_Result">
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_SchduleInformation_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="ScheduleDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ActionId" Nullable="true" />
+          <Property Type="Int32" Name="InterviewerId" Nullable="true" />
+          <Property Type="String" Name="ScheduleLink" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1279,6 +1308,7 @@
                 <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1416,6 +1446,23 @@
               <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetStatus_Result">
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_SchduleInformation" FunctionName="MVCProjectModel.Store.USP_ATS_SchduleInformation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_SchduleInformation_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

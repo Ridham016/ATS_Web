@@ -95,7 +95,8 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     StatusId = g.StatusId,
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
-                    Reason = g.Reason
+                    Reason = g.Reason,
+                    FileName = g.FileName
                 }).SingleOrDefault();
             //var StatusID = applicantDetail.Select(x => x.StatusId).SingleOrDefault();
             //var button = this.entities.USP_ATS_GetButton(StatusID).ToList();

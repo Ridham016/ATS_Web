@@ -105,5 +105,10 @@ namespace MVCProject.Models
         /// style CSS
         /// </summary>
         public string newstyles = cssPath + "newstyles.css";
+
+        /// <summary>
+        /// FullCalendar CSS
+        /// </summary>
+        public string fullCalendar = cssPath + "fullCalendar.css";
     }
 }

@@ -587,6 +587,14 @@ namespace MVCProject.Api.Models
         {
             return base.ExecuteFunction<USP_ATS_GetStatus_Result>("USP_ATS_GetStatus");
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<USP_ATS_SchduleInformation_Result> USP_ATS_SchduleInformation()
+        {
+            return base.ExecuteFunction<USP_ATS_SchduleInformation_Result>("USP_ATS_SchduleInformation");
+        }
 
         #endregion
 
@@ -6504,6 +6512,44 @@ namespace MVCProject.Api.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_CheckStatusValidity_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_CheckStatusValidity_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> Result
+        {
+            get
+            {
+                return _Result;
+            }
+            set
+            {
+                OnResultChanging(value);
+                ReportPropertyChanging("Result");
+                _Result = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Result");
+                OnResultChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _Result;
+        partial void OnResultChanging(Nullable<global::System.Boolean> value);
+        partial void OnResultChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_GetAction_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -8213,6 +8259,44 @@ namespace MVCProject.Api.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_GetStatusFromApplicant_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_GetStatusFromApplicant_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> StatusId
+        {
+            get
+            {
+                return _StatusId;
+            }
+            set
+            {
+                OnStatusIdChanging(value);
+                ReportPropertyChanging("StatusId");
+                _StatusId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StatusId");
+                OnStatusIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _StatusId;
+        partial void OnStatusIdChanging(Nullable<global::System.Int32> value);
+        partial void OnStatusIdChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_InterviewerbyId_Result")]
     [DataContractAttribute(IsReference=true)]
     [Serializable()]
@@ -8503,6 +8587,299 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _Is_Active;
         partial void OnIs_ActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIs_ActiveChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_SchduleInformation_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_SchduleInformation_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_SchduleInformation_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static USP_ATS_SchduleInformation_Result CreateUSP_ATS_SchduleInformation_Result(global::System.Int32 id)
+        {
+            USP_ATS_SchduleInformation_Result uSP_ATS_SchduleInformation_Result = new USP_ATS_SchduleInformation_Result();
+            uSP_ATS_SchduleInformation_Result.Id = id;
+            return uSP_ATS_SchduleInformation_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ScheduleDateTime
+        {
+            get
+            {
+                return _ScheduleDateTime;
+            }
+            set
+            {
+                OnScheduleDateTimeChanging(value);
+                ReportPropertyChanging("ScheduleDateTime");
+                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScheduleDateTime");
+                OnScheduleDateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ScheduleDateTime;
+        partial void OnScheduleDateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnScheduleDateTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ActionId
+        {
+            get
+            {
+                return _ActionId;
+            }
+            set
+            {
+                OnActionIdChanging(value);
+                ReportPropertyChanging("ActionId");
+                _ActionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ActionId");
+                OnActionIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ActionId;
+        partial void OnActionIdChanging(Nullable<global::System.Int32> value);
+        partial void OnActionIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> InterviewerId
+        {
+            get
+            {
+                return _InterviewerId;
+            }
+            set
+            {
+                OnInterviewerIdChanging(value);
+                ReportPropertyChanging("InterviewerId");
+                _InterviewerId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InterviewerId");
+                OnInterviewerIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _InterviewerId;
+        partial void OnInterviewerIdChanging(Nullable<global::System.Int32> value);
+        partial void OnInterviewerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ScheduleLink
+        {
+            get
+            {
+                return _ScheduleLink;
+            }
+            set
+            {
+                OnScheduleLinkChanging(value);
+                ReportPropertyChanging("ScheduleLink");
+                _ScheduleLink = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ScheduleLink");
+                OnScheduleLinkChanged();
+            }
+        }
+        private global::System.String _ScheduleLink;
+        partial void OnScheduleLinkChanging(global::System.String value);
+        partial void OnScheduleLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EntryBy
+        {
+            get
+            {
+                return _EntryBy;
+            }
+            set
+            {
+                OnEntryByChanging(value);
+                ReportPropertyChanging("EntryBy");
+                _EntryBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EntryBy");
+                OnEntryByChanged();
+            }
+        }
+        private global::System.String _EntryBy;
+        partial void OnEntryByChanging(global::System.String value);
+        partial void OnEntryByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EntryDate
+        {
+            get
+            {
+                return _EntryDate;
+            }
+            set
+            {
+                OnEntryDateChanging(value);
+                ReportPropertyChanging("EntryDate");
+                _EntryDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EntryDate");
+                OnEntryDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EntryDate;
+        partial void OnEntryDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnEntryDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UpdateBy
+        {
+            get
+            {
+                return _UpdateBy;
+            }
+            set
+            {
+                OnUpdateByChanging(value);
+                ReportPropertyChanging("UpdateBy");
+                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UpdateBy");
+                OnUpdateByChanged();
+            }
+        }
+        private global::System.String _UpdateBy;
+        partial void OnUpdateByChanging(global::System.String value);
+        partial void OnUpdateByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdateDate
+        {
+            get
+            {
+                return _UpdateDate;
+            }
+            set
+            {
+                OnUpdateDateChanging(value);
+                ReportPropertyChanging("UpdateDate");
+                _UpdateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateDate");
+                OnUpdateDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdateDate;
+        partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
 
         #endregion
 
@@ -9108,6 +9485,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Reason;
         partial void OnReasonChanging(global::System.String value);
         partial void OnReasonChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
 
         #endregion
 

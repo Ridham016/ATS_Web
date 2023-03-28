@@ -187,7 +187,7 @@
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
                         $scope.applicantDetailScope = res.data.Result;
-                        $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
+                        $scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

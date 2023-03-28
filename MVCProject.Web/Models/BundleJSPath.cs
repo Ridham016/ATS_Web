@@ -95,6 +95,21 @@ namespace MVCProject.Models
         /// </summary>
         public string bootstrapbundle = jsPath + "bootstrap.bundle.min.js";
 
+        /// <summary>
+        /// fullcalendar JS
+        /// </summary>
+        public string fullcalendar = jsPath + "fullcalendar.js";
+
+        /// <summary>
+        /// calendar JS
+        /// </summary>
+        public string calendar = jsPath + "calendar.js";
+
+        /// <summary>
+        /// gcal JS
+        /// </summary>
+        public string gcal = jsPath + "gcal.js";
+
 
     }
 }

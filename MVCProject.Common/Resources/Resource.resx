@@ -1086,4 +1086,10 @@
   <data name="ValidCTC" xml:space="preserve">
     <value>Enter Valid CTC</value>
   </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date Range</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
 </root>

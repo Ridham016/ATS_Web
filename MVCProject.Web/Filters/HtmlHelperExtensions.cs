@@ -50,6 +50,7 @@ namespace System.Web.Mvc
             //menuString.Append("<ul class='nav child_menu'>");
             //menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             //menuString.Append("</ul></li>");
+            menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-calendar", "/Dashboard/Dashboard"));
             menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
 
             menuString.Append("<li>");
