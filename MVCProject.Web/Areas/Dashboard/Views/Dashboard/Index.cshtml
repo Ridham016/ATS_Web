@@ -4,7 +4,7 @@
 }
 <style>
     .has-events {
-        background-color: #ffc107;
+        background-color: #8be39d;
     }
 
     .event-count {
@@ -35,12 +35,18 @@
             <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" class="bg-light p-3" calendar="myCalendar"></div>
         </div>
         <div class="col-md-4">
-            <div class="alert alert-primary">
-                <h2 style="margin-top:0px">Meeting:</h2>
-                <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents"><br />
-                    <span>{{SelectedEvent.start | date : format : shortTime}}-{{SelectedEvent.end | date : format : shortTime}}</span><br />
-                    <span>Meeting with {{SelectedEvent.Applicant}}</span><br />
-                    <span><i class="fa fa-user"></i> {{SelectedEvent.Interviewer}}</span>
+            <div class="schedule-event-details">
+                <div class="card alert">
+                    <h2 class="mt-0 fw-normal meeting-title"> Meeting</h2>
+                    <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents">
+                        <div class="card event-card">
+                            <div class="card-body">
+                                <p class="mb-2"><span><i class="time-icon fa fa-clock-o"></i></span><span class="event-detail">{{SelectedEvent.start | date : 'hh:mma'}}-{{SelectedEvent.end | date : 'hh:mma'}}</span></p>
+                                <p class="mb-2"><span><i class="meeting-icon ti-agenda"></i></span><span class="event-detail">Meeting with <span class="fw-bold">{{SelectedEvent.Applicant}}</span></span></p>
+                                <p class="mb-0"><span class="event-detail"><i class="interview-icon fa fa-user"></i> {{SelectedEvent.Interviewer}}</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
