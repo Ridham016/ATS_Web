@@ -130,8 +130,7 @@ namespace MVCProject
                 .Include(BundlePath.css.spectrum)
                 .Include(BundlePath.css.scrollableTable)
                 .Include(BundlePath.css.tooltipster)
-                .Include(BundlePath.css.fullCalendarMin)
-                //.Include(BundlePath.css.fullCalendarPrint)
+                .Include(BundlePath.css.fullCalendar)
                 .Include(BundlePath.css.newstyles));
 
             // Common JS Bundle (inner)
@@ -206,10 +205,9 @@ namespace MVCProject
                .Include("~/Scripts/angular/services/CommonService.js")
                .Include("~/Scripts/angular/services/AccountService.js")
                .Include("~/Scripts/angular/services/FileService.js")
-               .Include(BundlePath.js.fullcalendarMin)
+               .Include(BundlePath.js.fullcalendar)
                .Include(BundlePath.js.calendar)
-               .Include(BundlePath.js.gcal)
-               .Include(BundlePath.js.uibootstraptpls));
+               .Include(BundlePath.js.gcal));
         }
 
         /// <summary>

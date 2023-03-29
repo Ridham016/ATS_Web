@@ -96,9 +96,8 @@
                     $scope.Action = res.data.Result;
                     debugger
                     $scope.scheduleDetailScope['ActionId'] = $scope.Action[1];
-                    //$scope.SaveSchduleDetails(scheduleDetailScope);
+                    $scope.SaveSchduleDetails(scheduleDetailScope);
                     debugger
-                    $scope.scheduleDetailScope.ScheduleDateTime = angular.copy(moment($scope.scheduleDetailScope.ScheduleDateTime).format($rootScope.apiDateFormat));
                     ScheduleService.Schedule(scheduleDetailScope).then(function (res) {
                         if (res) {
                             var schedule = res.data;

@@ -4,7 +4,22 @@
 }
 <style>
     .has-events {
-        background-color: #8fdf82;
+        background-color: #ffc107;
+    }
+
+    .event-count {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #000;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
     }
 </style>
 
@@ -23,7 +38,7 @@
             <div class="alert alert-primary">
                 <h2 style="margin-top:0px">Meeting:</h2>
                 <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents"><br />
-                    <span>{{SelectedEvent.start | date : 'h:mma'}}-{{SelectedEvent.end | date : 'h:mma'}}</span><br />
+                    <span>{{SelectedEvent.start | date : format : shortTime}}-{{SelectedEvent.end | date : format : shortTime}}</span><br />
                     <span>Meeting with {{SelectedEvent.Applicant}}</span><br />
                     <span><i class="fa fa-user"></i> {{SelectedEvent.Interviewer}}</span>
                 </div>

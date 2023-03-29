@@ -22,20 +22,6 @@
             StatusId: null,
             StatusName: null
         };
-
-        $scope.Init = function () {
-            $scope.advancedsearch = function (searchDetail) {
-                debugger
-                console.log(searchDetail);
-                $scope.searchDetail = searchDetail;
-                $scope.searchDetail.StartDate = searchDetail.daterange.startDate._isValid ? angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat)) : null;
-                $scope.searchDetail.EndDate = searchDetail.daterange.endDate._isValid ? angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat)) : null;
-                $scope.tableParams.reload();
-            };
-        }
-
-        $scope.Init();
-
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize
