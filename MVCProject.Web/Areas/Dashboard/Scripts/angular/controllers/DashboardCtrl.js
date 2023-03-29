@@ -31,67 +31,49 @@
         DashboardService.Calendar().then(function (data) {
             angular.forEach(data.data.Result, function (value) {
                 $scope.events.push({
+                    id: value.Id,
                     Description: value.Description,
                     Interviewer: value.InterviewerName,
                     Applicant: value.ApplicantName,
                     start: moment(value.ScheduleDateTime).toDate(),
-                    end: moment(value.ScheduleDateTime).add(2,'hours').toDate()
-                });
+                    end: moment(value.ScheduleDateTime).add(1, 'hours').toDate()
+                })
             });
         });
-
+            
         $scope.uiConfig = {
             calendar: {
                 height: 500,
-                editable: false,
+                selectable: true,
+                selectHelper: true,
+                editable: true,
                 displayEventTime: false,
                 header: {
-                    left: '',
-                    center: "March",
-                    right: ''
+                    left: 'month,agendaWeek,agendaDay',
+                    center: 'title',
+                    right: 'today prev,next'
                 }
                 //,eventClick: function (event) {
                 //    $scope.SelectedEvent = event;
                 //}
-                ,viewRender: function (view) {
-                    $('.fc-day').removeClass('has-events');
-                    $('.fc-day-number').removeClass('event-count');
-                    $('.fc-day-number').removeAttr('data-events');
-                    $scope.events.forEach(function (event) {
-                        var start = moment(event.start).startOf('day');
-                        var end = moment(event.end).startOf('day');
-                        var date = start;
-                        while (date.isSameOrBefore(end)) {
-                            var cell = $('.fc-day[data-date="' + date.format('YYYY-MM-DD') + '"]');
-                            if (cell.length > 0) {
-                                cell.addClass('has-events');
-                                if (!cell.find('.fc-day-number').hasClass('event-count')) {
-                                    cell.find('.fc-day-number').addClass('event-count');
-                                }
-                                var eventsCount = cell.find('.fc-day-number').attr('data-events');
-                                if (eventsCount) {
-                                    eventsCount++;
-                                } else {
-                                    eventsCount = 1;
-                                }
-                                cell.find('.fc-day-number').attr('data-events', eventsCount);
-                                cell.find('.fc-day-number').text(eventsCount);
-                            }
-                            date.add(1, 'days');
-                        }
-                    });
-                },
-                dayClick: function (date, jsEvent, view) {
-                    // Filter the events for the clicked day
+               ,dayClick: function (date, jsEvent, view) {
                     var events = $scope.events.filter(function (event) {
                         return moment(event.start).isSame(date, 'day');
                     });
-                    // Display the events however you like
                     console.log(events);
                     $scope.SelectedEvents = events;
-                },
-                eventRender: function (event, element) {
-                    // Hide the events from the calendar
+                }
+               ,eventAfterAllRender: function (view) {
+                    $('.fc-day').each(function () {
+                        var eventsForDay = $scope.events.filter(function (event) {
+                            return moment(event.start).isSame($(this).data('date'), 'day');
+                        }.bind(this));
+                        if (eventsForDay.length > 0) {
+                            $(this).addClass('has-events');
+                        }
+                    });
+                }
+                ,eventRender: function (event, element) {
                     return false;
                 }
             }

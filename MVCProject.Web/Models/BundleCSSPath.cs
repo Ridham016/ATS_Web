@@ -110,5 +110,15 @@ namespace MVCProject.Models
         /// FullCalendar CSS
         /// </summary>
         public string fullCalendar = cssPath + "fullCalendar.css";
+
+        /// <summary>
+        /// FullCalendar CSS
+        /// </summary>
+        public string fullCalendarMin = cssPath + "fullCalendar.min.css";
+
+        /// <summary>
+        /// FullCalendar CSS
+        /// </summary>
+        public string fullCalendarPrint = cssPath + "fullCalendar.print.css";
     }
 }

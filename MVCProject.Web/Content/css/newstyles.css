@@ -4023,7 +4023,7 @@ fieldset:disabled .btn {
 	--ats-btn-color: var(--ats-link-color);
 	--ats-btn-bg: transparent;
 	--ats-btn-border-color: transparent;
-	--ats-btn-hover-color: var(--secondary-color);
+	--ats-btn-hover-color: var(--primary-color);
 	--ats-btn-hover-border-color: transparent;
 	--ats-btn-active-color: var(--secondary-color);
 	--ats-btn-active-border-color: transparent;
