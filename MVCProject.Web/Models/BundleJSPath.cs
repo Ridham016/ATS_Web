@@ -110,6 +110,21 @@ namespace MVCProject.Models
         /// </summary>
         public string gcal = jsPath + "gcal.js";
 
+        /// <summary>
+        /// ui-bootstrap-tpls.min JS
+        /// </summary>
+        public string uibootstraptpls = jsPath + "ui-bootstrap-tpls.min.js";
+
+        /// <summary>
+        /// fullcalendar JS
+        /// </summary>
+        public string fullcalendarMin = jsPath + "fullcalendar.min.js";
+
+        /// <summary>
+        /// gcal JS
+        /// </summary>
+        public string gcal2 = jsPath + "gcal2.js";
+
 
     }
 }
