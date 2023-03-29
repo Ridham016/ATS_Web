@@ -36,10 +36,11 @@
         </div>
         <div class="col-md-4">
             <div class="alert alert-primary">
-                <h2 style="margin-top:0px"> Schedule Meeting:</h2>
-                <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents">
-                    <span>Schedule Event {{$index + 1}}</span>
-                    <p>Description: {{SelectedEvent.description}}</p>
+                <h2 style="margin-top:0px">Meeting:</h2>
+                <div ng-show="SelectedEvents != null" ng-repeat="SelectedEvent in SelectedEvents"><br />
+                    <span>{{SelectedEvent.start | date : format : shortTime}}-{{SelectedEvent.end | date : format : shortTime}}</span><br />
+                    <span>Meeting with {{SelectedEvent.Applicant}}</span><br />
+                    <span><i class="fa fa-user"></i> {{SelectedEvent.Interviewer}}</span>
                 </div>
             </div>
         </div>

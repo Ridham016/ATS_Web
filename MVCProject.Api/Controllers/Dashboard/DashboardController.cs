@@ -21,7 +21,7 @@ namespace MVCProject.Api.Controllers.Dashboard
         public ApiResponse GetEvents()
         {
 
-            var Calendardisplay = entities.USP_ATS_SchduleInformation().ToList();
+            var Calendardisplay = entities.USP_ATS_ScheduleInformation().ToList();
             return this.Response(MessageTypes.Success, string.Empty, Calendardisplay);
 
         }

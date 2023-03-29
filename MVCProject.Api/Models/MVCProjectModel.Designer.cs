@@ -591,9 +591,9 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectResult<USP_ATS_SchduleInformation_Result> USP_ATS_SchduleInformation()
+        public ObjectResult<USP_ATS_ScheduleInformation_Result> USP_ATS_ScheduleInformation()
         {
-            return base.ExecuteFunction<USP_ATS_SchduleInformation_Result>("USP_ATS_SchduleInformation");
+            return base.ExecuteFunction<USP_ATS_ScheduleInformation_Result>("USP_ATS_ScheduleInformation");
         }
 
         #endregion
@@ -8880,6 +8880,227 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_ScheduleInformation_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_ScheduleInformation_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_ScheduleInformation_Result object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static USP_ATS_ScheduleInformation_Result CreateUSP_ATS_ScheduleInformation_Result(global::System.Int32 id)
+        {
+            USP_ATS_ScheduleInformation_Result uSP_ATS_ScheduleInformation_Result = new USP_ATS_ScheduleInformation_Result();
+            uSP_ATS_ScheduleInformation_Result.Id = id;
+            return uSP_ATS_ScheduleInformation_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ScheduleDateTime
+        {
+            get
+            {
+                return _ScheduleDateTime;
+            }
+            set
+            {
+                OnScheduleDateTimeChanging(value);
+                ReportPropertyChanging("ScheduleDateTime");
+                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScheduleDateTime");
+                OnScheduleDateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ScheduleDateTime;
+        partial void OnScheduleDateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnScheduleDateTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ActionId
+        {
+            get
+            {
+                return _ActionId;
+            }
+            set
+            {
+                OnActionIdChanging(value);
+                ReportPropertyChanging("ActionId");
+                _ActionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ActionId");
+                OnActionIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ActionId;
+        partial void OnActionIdChanging(Nullable<global::System.Int32> value);
+        partial void OnActionIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> InterviewerId
+        {
+            get
+            {
+                return _InterviewerId;
+            }
+            set
+            {
+                OnInterviewerIdChanging(value);
+                ReportPropertyChanging("InterviewerId");
+                _InterviewerId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InterviewerId");
+                OnInterviewerIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _InterviewerId;
+        partial void OnInterviewerIdChanging(Nullable<global::System.Int32> value);
+        partial void OnInterviewerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ScheduleLink
+        {
+            get
+            {
+                return _ScheduleLink;
+            }
+            set
+            {
+                OnScheduleLinkChanging(value);
+                ReportPropertyChanging("ScheduleLink");
+                _ScheduleLink = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ScheduleLink");
+                OnScheduleLinkChanged();
+            }
+        }
+        private global::System.String _ScheduleLink;
+        partial void OnScheduleLinkChanging(global::System.String value);
+        partial void OnScheduleLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerName
+        {
+            get
+            {
+                return _InterviewerName;
+            }
+            set
+            {
+                OnInterviewerNameChanging(value);
+                ReportPropertyChanging("InterviewerName");
+                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerName");
+                OnInterviewerNameChanged();
+            }
+        }
+        private global::System.String _InterviewerName;
+        partial void OnInterviewerNameChanging(global::System.String value);
+        partial void OnInterviewerNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ApplicantName
+        {
+            get
+            {
+                return _ApplicantName;
+            }
+            set
+            {
+                OnApplicantNameChanging(value);
+                ReportPropertyChanging("ApplicantName");
+                _ApplicantName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ApplicantName");
+                OnApplicantNameChanged();
+            }
+        }
+        private global::System.String _ApplicantName;
+        partial void OnApplicantNameChanging(global::System.String value);
+        partial void OnApplicantNameChanged();
 
         #endregion
 

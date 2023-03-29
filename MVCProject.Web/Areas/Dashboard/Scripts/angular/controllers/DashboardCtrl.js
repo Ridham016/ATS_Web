@@ -31,9 +31,11 @@
         DashboardService.Calendar().then(function (data) {
             angular.forEach(data.data.Result, function (value) {
                 $scope.events.push({
-                    title: 'Title',
-                    description: value.Description,
-                    start: moment(value.ScheduleDateTime).toDate()
+                    Description: value.Description,
+                    Interviewer: value.InterviewerName,
+                    Applicant: value.ApplicantName,
+                    start: moment(value.ScheduleDateTime).toDate(),
+                    end: moment(value.ScheduleDateTime).add(2,'hours').toDate()
                 });
             });
         });
@@ -51,14 +53,31 @@
                 //,eventClick: function (event) {
                 //    $scope.SelectedEvent = event;
                 //}
-                ,dayRender: function (date, cell) {
-                    $('.fc-day').each(function () {
-                        var eventsForDay = $scope.events.filter(function (event) {
-                            return moment(event.start).isSame($(this).data('date'), 'day');
-                        }.bind(this));
-                        if (eventsForDay.length > 0) {
-                            $(this).addClass('has-events');
-                            $(this).append('<div class="event-count">' + eventsForDay.length + '</div>');
+                ,viewRender: function (view) {
+                    $('.fc-day').removeClass('has-events');
+                    $('.fc-day-number').removeClass('event-count');
+                    $('.fc-day-number').removeAttr('data-events');
+                    $scope.events.forEach(function (event) {
+                        var start = moment(event.start).startOf('day');
+                        var end = moment(event.end).startOf('day');
+                        var date = start;
+                        while (date.isSameOrBefore(end)) {
+                            var cell = $('.fc-day[data-date="' + date.format('YYYY-MM-DD') + '"]');
+                            if (cell.length > 0) {
+                                cell.addClass('has-events');
+                                if (!cell.find('.fc-day-number').hasClass('event-count')) {
+                                    cell.find('.fc-day-number').addClass('event-count');
+                                }
+                                var eventsCount = cell.find('.fc-day-number').attr('data-events');
+                                if (eventsCount) {
+                                    eventsCount++;
+                                } else {
+                                    eventsCount = 1;
+                                }
+                                cell.find('.fc-day-number').attr('data-events', eventsCount);
+                                cell.find('.fc-day-number').text(eventsCount);
+                            }
+                            date.add(1, 'days');
                         }
                     });
                 },
