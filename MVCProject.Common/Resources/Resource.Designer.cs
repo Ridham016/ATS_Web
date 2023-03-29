@@ -1897,6 +1897,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Notice Period .
+        /// </summary>
+        public static string NoticePeriodValid {
+            get {
+                return ResourceManager.GetString("NoticePeriodValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string November {

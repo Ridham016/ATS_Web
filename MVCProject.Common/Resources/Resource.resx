@@ -1092,4 +1092,7 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="NoticePeriodValid" xml:space="preserve">
+    <value>Enter Valid Notice Period </value>
+  </data>
 </root>

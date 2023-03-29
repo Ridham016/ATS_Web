@@ -15,7 +15,7 @@
             StatusId: null,
             StartDate: null,
             EndDate: null,
-            daterange: [moment().add('days', -1).toDate(), moment().toDate()]
+            daterange: { startDate: null, endDate: null }
         };
         
         $scope.statusDetailScope = {
@@ -26,10 +26,9 @@
         $scope.Init = function () {
             $scope.advancedsearch = function (searchDetail) {
                 debugger
-                console.log(searchDetail);
                 $scope.searchDetail = searchDetail;
-                $scope.searchDetail.StartDate = searchDetail.daterange.startDate._isValid ? angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat)) : null;
-                $scope.searchDetail.EndDate = searchDetail.daterange.endDate._isValid ? angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat)) : null;
+                $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+                $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
                 $scope.tableParams.reload();
             };
         }
@@ -72,10 +71,12 @@
             $scope.searchDetail = {
                 StatusId: null,
                 StartDate: null,
-                EndDate: null
+                EndDate: null,
+                daterange: { startDate: null, endDate: null }
             };
             //$scope.searchDetail.daterange.startDate = null;
             //$scope.searchDetail.daterange.endDate = null;
+            $("#DateRange").val("");
             $scope.frmRegister.$setPristine();
         };
 
@@ -83,10 +84,8 @@
             debugger
             console.log(searchDetail);
             $scope.searchDetail = searchDetail;
-            $scope.searchDetail.StartDate = searchDetail.daterange.startDate._isValid ? angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat)) : null;
-            $scope.searchDetail.EndDate = searchDetail.daterange.endDate._isValid ? angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat)) : null;
-            //$scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-            //$scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+            $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+            $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
             $scope.tableParams.reload();
         };
         $scope.GetStatus = function () {

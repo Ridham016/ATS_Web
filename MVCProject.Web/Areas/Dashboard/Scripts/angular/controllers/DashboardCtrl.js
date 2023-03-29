@@ -56,14 +56,16 @@
                 //,eventClick: function (event) {
                 //    $scope.SelectedEvent = event;
                 //}
-               ,dayClick: function (date, jsEvent, view) {
+                , dayClick: function (date, jsEvent, view) {
+                    debugger
                     var events = $scope.events.filter(function (event) {
                         return moment(event.start).isSame(date, 'day');
                     });
                     console.log(events);
                     $scope.SelectedEvents = events;
                 }
-               ,eventAfterAllRender: function (view) {
+                , eventAfterAllRender: function (view) {
+                    debugger
                     $('.fc-day').each(function () {
                         var eventsForDay = $scope.events.filter(function (event) {
                             return moment(event.start).isSame($(this).data('date'), 'day');
@@ -72,6 +74,12 @@
                             $(this).addClass('has-events');
                         }
                     });
+                    var today = moment().startOf('day');
+                    var events = $scope.events.filter(function (event) {
+                        return moment(event.start).isSame(today, 'day');
+                    });
+                    console.log(events);
+                    $scope.SelectedEvents = events;
                 }
                 ,eventRender: function (event, element) {
                     return false;

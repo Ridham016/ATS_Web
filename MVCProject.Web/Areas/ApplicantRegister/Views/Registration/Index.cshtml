@@ -271,13 +271,12 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ExpectedCTC<span class="required-field">*</span>
+                                                    @Resource.ExpectedCTC
                                                 </label>
-                                                <input type="text"  ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" required />
+                                                <input type="text"  ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
-                                                    <span data-ng-show="frmRegister.ExpectedCTC.$error.required">@Resource.ExpectedCTCRequired</span>
                                                     <span data-ng-show="frmRegister.ExpectedCTC.$error.pattern">@Resource.ValidCTC</span>
                                                 </div>
                                             </div>
@@ -285,13 +284,14 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.NoticePeriod<span class="required-field">*</span>
+                                                    @Resource.NoticePeriod
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" required />
+                                                <input type="text" ng-pattern="/^[0-9]{0,1}$/" min="6" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
                                                 <div class="c">
                                                 </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
-                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
+                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$invalid">
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.pattern">@Resource.NoticePeriodValid</span>
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.min">@Resource.NoticePeriodValid</span>
                                                 </div>
                                             </div>
                                         </div>
