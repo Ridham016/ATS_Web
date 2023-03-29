@@ -104,13 +104,6 @@ a.logo-expanded{
 	border-bottom: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
 }
 
-.nav-sm .nav.side-menu li a {
-    text-align: center !important;
-    font-weight: 400;
-    font-size: var(--ats-menu-item-font-size);
-    padding: 10px 10px;
-}
-
 .nav-sm ul.nav.child_menu ul,
 .nav-sm .nav.side-menu li.active-sm ul ul {
     position: static;
@@ -149,14 +142,18 @@ a.logo-expanded{
     }
 
         .nav-sm ul.nav.child_menu li a {
+            font-weight: 400;
+            font-size: var(--ats-menu-item-font-size);
+            padding: 10px 10px;
             text-align: left !important;
-            color: var(--ats-white);
+            color: var(--ats-dark-nav-link-color);
         }
 
             .nav-sm ul.nav.child_menu li a i {
                 float: left;
                 font-size: var(--ats-menu-item-font-size) !important;
                 width: 12px !important;
+                margin-right: 8px;
             }
 
             .nav-sm ul.nav.child_menu li a span {
@@ -243,7 +240,7 @@ a.logo-expanded{
     margin-top: 5px;
     font-size: 10px;
     min-width: inherit;
-    color: #FAFAFA;
+    color: #var(--ats-dark-nav-link-color);
 }
 
 .nav-sm .menu_section {
@@ -705,10 +702,10 @@ table.no-margin .progress {
 }*/
 
 .nav-sm .side-menu > li:hover > a, .nav-sm .child_menu > li:hover > a {
-    color: var(--ats-dark-nav-link-color);
+    color: var(--ats-white);
     transition: 400ms ease-in-out;
     -webkit-transition: 400ms ease-in-out;
-    background-color: rgba(var(--ats-primary-rgb),0.2);
+    /*background-color: rgba(var(--ats-primary-rgb),0.2);*/
 }
 
 .nav.side-menu > li > a i {
@@ -727,11 +724,11 @@ table.no-margin .progress {
 
 
 
-.nav.side-menu > li > a:hover,
 .nav > li > a:focus {
     text-decoration: none;
     background: transparent;
 }
+
 
 .nav.child_menu {
     display: none;
@@ -808,12 +805,18 @@ table.no-margin .progress {
 }*/
 
 .nav-sm li.current-page {
-    background: var(--ats-white);
+   
 }
 
     .nav-sm li.current-page a {
-        color: var(--primary-color) !important;
+        color: var(--ats-white) !important;
+        background: var(--primary-color);
+        transition : var(--ats-)
     }
+
+.nav-md li.current-page a{
+    color: var(--ats-white) !important;
+}
 
 .nav li li li.current-page {
     background: none;
@@ -821,12 +824,12 @@ table.no-margin .progress {
 
 .nav li li.current-page a {
     color: var(--ats-dark-nav-link-color);
-    background-color: var(--primary-color);
+    /*background-color: var(--primary-color);*/
 }
 
 .nav-sm .nav li li.current-page a {
     background-color: var(--primary-color);
-    color: var(--ats-dark-nav-link-color) !important;
+    color: var(--ats-white) !important;
 }
 
 /*.nav.side-menu > li.active > a {
@@ -837,10 +840,10 @@ table.no-margin .progress {
 
 .nav.side-menu > li.active > a {
     text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
-    background: var(--primary-color);
-    box-shadow: rgba(0,0,0,0.25) 0 1px 0, inset rgba(255,255,255,0.16) 0 1px 0;
+    /*background: var(--primary-color);*/
+    /*box-shadow: rgba(0,0,0,0.25) 0 1px 0, inset rgba(255,255,255,0.16) 0 1px 0;*/
     border-radius: var(--ats-border-radius);
-    color: var(--ats-dark-nav-link-color);
+    color: var(--ats-white);
 }
 
     .nav.side-menu > li.active > a > span.fa{
@@ -920,8 +923,8 @@ table.no-margin .progress {
 }
 
 .nav.side-menu > li:not(.active):hover > a, .nav.child_menu > li:not(.current-page):hover > a {
-    background-color: rgba(var(--ats-primary-rgb), 0.2);
-    color: var(--ats-dark-nav-link-color);
+    /*background-color: rgba(var(--ats-primary-rgb), 0.2);*/
+    color: var(--ats-white);
     transition: 400ms ease-in-out;
 }
 

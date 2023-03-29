@@ -1491,7 +1491,7 @@ pre {
 /* =============
    Calendar
 ============= */
-.calendar {
+/*.calendar {
     float: left;
     margin-bottom: 0px;
 }
@@ -1595,7 +1595,7 @@ pre {
 
 .fc-basic-view td.fc-day-number {
     padding-right: 5px;
-}
+}*/
 /* =============
    Form Advanced
 ============= */
@@ -4996,8 +4996,8 @@ table.dataTable td.focus {
 */
 .spinner {
     position: relative;
-    width: 20.2px;
-    height: 20.2px;
+    width: 15.7px;
+    height: 15.7px;
 }
 
     .spinner div {

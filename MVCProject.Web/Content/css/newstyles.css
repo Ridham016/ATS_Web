@@ -137,7 +137,7 @@
 	--ats-border-radius-2xl: 2rem;
 	--ats-border-radius-pill: 50rem;
 	--ats-link-color: #6D6D6D;
-	--ats-dark-nav-link-color: #FAFAFA;
+	--ats-dark-nav-link-color: #9aa3b4;
 	--ats-link-hover-color: var(--secondary-color);
 	--ats-code-color: #39afd1;
 	--ats-highlight-bg: #fcf8e3;
@@ -4023,7 +4023,7 @@ fieldset:disabled .btn {
 	--ats-btn-color: var(--ats-link-color);
 	--ats-btn-bg: transparent;
 	--ats-btn-border-color: transparent;
-	--ats-btn-hover-color: var(--secondary-color);
+	--ats-btn-hover-color: var(--primary-color);
 	--ats-btn-hover-border-color: transparent;
 	--ats-btn-active-color: var(--secondary-color);
 	--ats-btn-active-border-color: transparent;
@@ -5921,6 +5921,115 @@ fieldset:disabled .btn {
 .btn .badge {
 	position: relative;
 	top: -1px
+}
+
+.schedule-event-details{
+	box-shadow: var(--ats-box-shadow);
+	background: rgba(255,255,255, 0.6);
+}
+
+.schedule-event-details> .alert-primary{
+	background: var(--ats-white);
+}
+
+i.time-icon {
+	background: rgba(248, 120, 143, 0.19);
+	padding: 5px;
+	color: #f8788f;
+	border-radius: var(--ats-border-radius);
+	margin-right: 5px;
+	font-size: 18px;
+	line-height: 12px;
+}
+i.interview-icon {
+	background: rgba(98, 101, 255, 0.19);
+	padding: 5px;
+	color: #6265ff;
+	border-radius: var(--ats-border-radius);
+	margin-right: 5px;
+	font-size: 18px;
+	line-height: 12px;
+}
+i.meeting-icon {
+	background: rgba(255, 162, 29, 0.19);
+	padding: 5px;
+	color: #ffa21d;
+	border-radius: var(--ats-border-radius);
+	margin-right: 5px;
+	font-size: 15px;
+	line-height: 12px;
+}
+
+.event-card > .card-body {
+	box-shadow: 0 10px 10px rgba(0,10,10,.1);
+	border-radius: var(--ats-alert-border-radius);
+	background-color: var(--ats-gray-200);
+	border: 1px solid var(--ats-gray-300);
+}
+
+.event-card{
+	margin-left: 27px;
+}
+.event-card:before {
+	content: "";
+	width: 2.2px;
+	height: 118%;
+	position: absolute;
+	top: 0;
+	left: -25px;
+	background-color: var(--ats-gray-300);
+}
+.event-card:after {
+		content: "";
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: -32px;
+		background-color: var(--ats-gray-600);
+		animation: animate-dots 1s ease-in-out infinite;
+}
+
+@keyframes animate-dots{
+	0%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
+
+}
+
+.meeting-title{
+	margin-left: 27px;
+}
+
+/*.meeting-title:before {
+		content: "";
+		width: 2.2px;
+		height: 29px;
+		position: absolute;
+		top: 2%;
+		left: 22px;
+		background-color: var(--ats-gray-600);
+}
+.meeting-title:after {
+	content: "";
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 22px;
+	background-color: var(--ats-gray-600);
+}*/
+
+span.event-detail{
+	color: var(--ats-gray-dark);
 }
 
 .alert {
@@ -19225,6 +19334,10 @@ body.auth-fluid-pages[data-sidenav-size=condensed] {
 	fill: var(--ats-gray-600)
 }
 
+/************************************
+	Calendar
+************************************/
+
 .calendar {
 	float: left;
 	margin-bottom: 0
@@ -19266,16 +19379,19 @@ th.fc-day-header {
 .fc-toolbar .ui-state-hover,
 .fc-toolbar button:focus,
 .fc-toolbar button:hover {
-	z-index: 0
+	z-index: 0;
+	background: var(--primary-color);
+	color: var(--ats-white);
 }
 
 .fc th.fc-widget-header {
-	background: var(--ats-gray-300);
-	font-size: 13px;
+	background: #516cfa;
+	font-size: 14px;
 	line-height: 20px;
 	padding: 10px 0;
 	text-transform: uppercase;
-	font-weight: 600
+	font-weight: 700;
+	color: var(--ats-white);
 }
 
 .fc .fc-daygrid-body,
@@ -19725,7 +19841,7 @@ div.dataTables_scrollBody>table>:not(:first-child) {
 .daterangepicker td.active:hover,
 .daterangepicker td.available:hover,
 .daterangepicker th.available:hover {
-	background-color: var(--ats-primary);
+	background-color: red;
 	color: var(--ats-white)
 }
 
@@ -21403,138 +21519,158 @@ span.flatpickr-weekday {
 }
 
 .status-registered {
-	color: #3675fb;
-	background: #e5efff;
+	color: #9c27b0;
+	background: #faddff;
 	padding: 5px 10px;
 }
-.status-pass{
-	color: #24ce9d;;
+
+.status-pass {
+	color: #24ce9d;
 	background: #dcf7e3;
 	padding: 5px 10px;
 }
+
 .status-reject {
 	color: #e6243a;
 	background: #fee4e2;
 	padding: 5px 10px;
 }
-.status-not-match{
+
+.status-not-match {
 	color: #989aa2;
 	background: #f1f3f4;
 	padding: 5px 10px;
 }
+
 .status-hold {
-	color: #ad8200;
-	background: #ece9dc;
-	padding: 5px 10px;
-}
-.status-other-reason {
-	color: #ef6f00;
-	background: #ffe6d0;
-	padding: 5px 10px;
-}
-.status-call-schedule {
-	color: #078684;
-	background: #c7e5e5;
-	padding: 5px 10px;
-}
-.status-shortlist{
-	color: #7c4dff;
-	background: #dcd0ff;
+	color: #6c757d;
+	background: #e2e4e7c2;
 	padding: 5px 10px;
 }
 
-.btn-register{
-	color: var(--ats-white);
-	background: #3675fb;
-	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(54, 117, 251, 0.7);
+.status-other-reason {
+	color: #ffa21d;
+	background: #ffdeae63;
+	padding: 5px 10px;
 }
-.btn-register:hover{
-	color: var(--ats-white);
-	background: #3675fb;
-	padding: 7px 14px;
+
+.status-call-schedule {
+	color: #4680ff;
+	background: #e9f0ff;
+	padding: 5px 10px;
 }
+
+.status-shortlist {
+	color: #008a9b;
+	background: #75dae759;
+	padding: 5px 10px;
+}
+
+.btn-register {
+	color: var(--ats-white);
+	background: #9c27b0;
+	padding: 7px 14px;
+	box-shadow: var(--ats-btn-box-shadow) rgba(156, 39, 176, 0.7);
+}
+
+	.btn-register:hover {
+		color: var(--ats-white);
+		background: #9c27b0;
+		padding: 7px 14px;
+	}
 
 .btn-pass {
 	color: var(--ats-white);
-	background: #24ce9d;
+	background: #0e9e4a;
 	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(36, 206, 157, 0.7);
+	box-shadow: var(--ats-btn-box-shadow) rgba(14, 158, 74, 0.7);
 }
 
-.btn-pass:hover{
-	background-color: #09b080;
-	color: var(--ats-white);
-}
+	.btn-pass:hover {
+		background-color: #067857;
+		color: var(--ats-white);
+	}
 
 .btn-reject {
 	color: var(--ats-white);
-	background: #e6243a;
+	background: #ff2c2c;
 	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(230, 36, 58, 0.7);
+	box-shadow: var(--ats-btn-box-shadow) rgba(255, 44, 44, 0.7);
 }
 
-.btn-reject:hover{
-	background: #d54e69;
-	color: var(--ats-white);
-}
+	.btn-reject:hover {
+		background: #cd2424;
+		color: var(--ats-white);
+	}
 
-.btn-not-match{
+.btn-not-match {
 	color: var(--ats-white);
-	background: #989aa2;
+	background: #a66b55;
 	padding: 7px 14px;
 }
 
-.btn-not-match:hover{
-	color: var(--ats-white);
-	background: #80828a;
-	box-shadow: var(--ats-btn-box-shadow) rgba(152, 154, 162, 0.7);
-}
+	.btn-not-match:hover {
+		color: var(--ats-white);
+		background: #704839;
+		box-shadow: var(--ats-btn-box-shadow) rgba(112, 72, 57, 0.7);
+	}
 
 .btn-hold {
 	color: var(--ats-white);
-	background: #85837e;
+	background: #6c757d;
 	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(133, 131, 126, 0.7);
+	box-shadow: var(--ats-btn-box-shadow) rgba(108, 117, 125, 0.7);
 }
 
-.btn-hold:hover{
-	background: #6d6c67;
-	color: var(--ats-white);
-}
+	.btn-hold:hover {
+		background: #4b5156;
+		color: var(--ats-white);
+	}
 
 .btn-other-reason {
 	color: var(--ats-white);
-	background: #ee984e;
+	background: #ffa21d;
 	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(238, 152, 78, 0.7);
+	box-shadow: var(--ats-btn-box-shadow) rgba(255, 162, 29, 0.7);
 }
 
-.btn-other-reason:hover {
-	color: var(--ats-white);
-	background: #d58948;
-}
+	.btn-other-reason:hover {
+		color: var(--ats-white);
+		background: #ca8017;
+	}
 
 .btn-call-schedule {
 	color: var(--ats-white);
-	background: #00aba9;
+	background: #4680ff;
 	padding: 7px 14px;
-	box-shadow: var(--ats-btn-box-shadow) rgba(0, 171, 169, 0.2);
+	box-shadow: var(--ats-btn-box-shadow) rgba(70, 128, 255, 0.7);
 }
 
-.btn-call-schedule:hover {
+	.btn-call-schedule:hover {
 		color: var(--ats-white);
-		background: #108a89;
-}
+		background: #315ab3;
+	}
 
 
 .btn-shortlist {
 	color: var(--ats-white);
-	background: #7c4dff;
+	background: #008a9b;
 	padding: 7px 14px;
 }
 
-.btn-shortlist:hover {
-		background: #633ec9;
+	.btn-shortlist:hover {
+		background: #005863;
 		color: var(--ats-white);
+}
+
+.fc-scroller {
+	overflow: hidden auto !important;
+}
+
+.fc-highlight {
+	background: #01d4ff;
+	opacity: 1;
+}
+.fc-today {
+	background: #e5da06 !important;
 }
