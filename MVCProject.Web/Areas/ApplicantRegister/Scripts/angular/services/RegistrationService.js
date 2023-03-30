@@ -46,7 +46,7 @@
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Registrations/FileUpload?ApplicantId=' + Id,
+            url: $rootScope.apiURL + '/Registrations/FileUpload?ApplicantId=' + Id + '&databaseName=' + $rootScope.userContext.CompanyDB,
             data: JSON.stringify(filedata)
         })
     }
@@ -59,6 +59,12 @@
             headers: { 'Content-Type': undefined },
             transformRequest: angular.identity
         });
+    }
+    list.GetFiles = function (ApplicantId) {
+        return $http({
+            method: 'Get',
+            url: $rootScope.apiURL + '/Registrations/GetFileOfApplicant?ApplicantId=' + ApplicantId
+        })
     }
     return list;
 }])

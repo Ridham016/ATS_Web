@@ -219,51 +219,107 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse FileUpload([FromBody]ATS_Attachment data, int ApplicantId)
+        public ApiResponse FileUpload([FromBody]ATS_Attachment data, int ApplicantId, string databaseName, string directoryPathEnumName = "Attachment_Temp")
         {
-            //this.entities.FileUpload.AddObject(new FileUpload()
-            //{
-            //    FileName = data.FileName,
-            //    FilePath= data.FilePath
-            //});
-            var fileData = this.entities.ATS_Attachment.FirstOrDefault(x => x.ApplicantId == ApplicantId);
-            if(fileData == null)
+            string FileURL = string.Empty;
+            string directoryPath = string.Empty;
+            DirectoryPath enumDirectoryPath = new DirectoryPath();
+            if (Enum.IsDefined(typeof(DirectoryPath), directoryPathEnumName))
             {
-                entities.ATS_Attachment.AddObject(new ATS_Attachment()
-                {
-                    FileName = data.FileName,
-                    FilePath = data.FilePath,
-                    FileRelativePath = data.FileRelativePath,
-                    OriginalFileName = data.OriginalFileName,
-                    IsDeleted = false,
-                    EntryDate = DateTime.Now,
-                    ApplicantId = ApplicantId,
-                    AttachmentTypeId = 1
-                });
-                if (!(this.entities.SaveChanges() > 0))
-                {
-                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
-                }
+                Enum.TryParse(directoryPathEnumName, out enumDirectoryPath);
+                directoryPath = AppUtility.GetDirectoryPath(enumDirectoryPath, databaseName, false, FileURL);
+            }
+            File.Copy(Path.Combine(directoryPath, data.FileName), Path.Combine(AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, false, FileURL), data.FileName), true);
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File));
+            //File.Delete(Path.Combine(directoryPath, data.FileName));
+            //string FileURL = data.FilePath;
+            //string databaseName = "";
+            //string directoryPath = HttpContext.Current.Server.MapPath("~/Attachments");
+            //string originalPath = HttpContext.Current.Server.MapPath("~/Attachments/Temp");
+
+
+            string filePath = Path.Combine(AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, false, FileURL), data.FileName);
+            string fileRelativePath = string.Format("{0}{1}", AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, true, FileURL), data.FileName);
+            entities.ATS_Attachment.AddObject(new ATS_Attachment()
+            {
+                FileName = data.FileName,
+                FilePath = filePath,
+                FileRelativePath = fileRelativePath,
+                OriginalFileName = data.OriginalFileName,
+                IsDeleted = false,
+                EntryDate = DateTime.UtcNow,
+                ApplicantId = ApplicantId,
+                AttachmentTypeId = 1
+            });
+            if (!(this.entities.SaveChanges() > 0))
+            {
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
+            }
+
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File));
+            //var fileData = this.entities.ATS_Attachment.FirstOrDefault(x => x.ApplicantId == ApplicantId);
+            //if(fileData == null)
+            //{
+            //    entities.ATS_Attachment.AddObject(new ATS_Attachment()
+            //    {
+            //        FileName = data.FileName,
+            //        FilePath = filePath,
+            //        FileRelativePath = data.FileRelativePath,
+            //        OriginalFileName = data.OriginalFileName,
+            //        IsDeleted = false,
+            //        EntryDate = DateTime.Now,
+            //        ApplicantId = ApplicantId,
+            //        AttachmentTypeId = 1
+            //    });
+            //    if (!(this.entities.SaveChanges() > 0))
+            //    {
+            //        return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
+            //    }
+
+            //    return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File));
+            //}
+            //else
+            //{
+            //    fileData.FileName = data.FileName;
+            //    fileData.FilePath = data.FilePath;
+            //    fileData.FileRelativePath = data.FileRelativePath;
+            //    fileData.OriginalFileName = data.OriginalFileName;
+            //    fileData.IsDeleted = false;
+            //    fileData.EntryDate = DateTime.Now;
+            //    fileData.ApplicantId = ApplicantId;
+            //    fileData.AttachmentTypeId = 1;
+            //    entities.ATS_Attachment.ApplyCurrentValues(fileData);
+            //    if (!(this.entities.SaveChanges() > 0))
+            //    {
+            //        return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
+            //    }
+
+            //    return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.File));
+            //}
+        }
+
+        [HttpGet]
+        public ApiResponse GetFileOfApplicant([FromUri]int ApplicantId)
+        {
+            var applcantlist = entities.USP_ATS_FilesOfApplicant(ApplicantId).Select(g => new
+            {
+                Id = g.Id,
+                FileName = g.FileName,
+                FilePath = g.FilePath,
+                FileRelativePath = g.FileRelativePath,
+                OriginalFileName = g.OriginalFileName,
+                IsDeleted = g.IsDeleted,
+                EntryDate = g.EntryDate,
+                ApplicantId = g.ApplicantId,
+                AttachmentTypeId = g.AttachmentTypeId
+            });
+            if (applcantlist != null)
+            {
+                return this.Response(Utilities.MessageTypes.Success, string.Empty, applcantlist);
             }
             else
             {
-                fileData.FileName = data.FileName;
-                fileData.FilePath = data.FilePath;
-                fileData.FileRelativePath = data.FileRelativePath;
-                fileData.OriginalFileName = data.OriginalFileName;
-                fileData.IsDeleted = false;
-                fileData.EntryDate = DateTime.Now;
-                fileData.ApplicantId = ApplicantId;
-                fileData.AttachmentTypeId = 1;
-                entities.ATS_Attachment.ApplyCurrentValues(fileData);
-                if (!(this.entities.SaveChanges() > 0))
-                {
-                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
-                }
-
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.File));
+                return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
         }
     }

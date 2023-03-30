@@ -49,7 +49,7 @@
     }
 </style>
 
-<div ng-controller="AdvancedSearchCtrl" ng-init="Init" novalidate>
+<div ng-controller="AdvancedSearchCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-user icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@MVCProject.Common.Resources.Resource.AdvancedSearch</h4>
@@ -79,7 +79,8 @@
                                 <label>
                                     @MVCProject.Common.Resources.Resource.DateRange
                                 </label>
-                                <input type="daterange" class="form-control" autocomplete="off" placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange"/>
+                                <input type="daterange"  class="form-control" autocomplete="off"
+                                       placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange"/>
                             </div>
                         </div>
                         @*<div class="col-md-4">

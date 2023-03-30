@@ -23,14 +23,14 @@
             Email: '',
             Phone: '',
             Address: '',
-            DateOfBirth: null,
+            DateOfBirth: '',
             CurrentCompany: '',
             CurrentDesignation: '',
-            TotalExperience: null,
-            DetailedExperience: null,
-            CurrentCTC: null,
-            ExpectedCTC: null,
-            NoticePeriod: null,
+            TotalExperience: '',
+            DetailedExperience: '',
+            CurrentCTC: '',
+            ExpectedCTC: '',
+            NoticePeriod: '',
             CurrentLocation: '',
             PreferedLocation: '',
             ReasonForChange: '',
@@ -179,6 +179,15 @@
                 
             });
         }
+
+        $scope.getFiles = function (ApplicantId) {
+            debugger
+            RegistrationService.GetFiles(ApplicantId).then(function (res) {
+                debugger
+                $scope.files = res.data.Result;
+            })
+        }
+
         $scope.EditApplicantDetails = function (ApplicantId) {
             debugger
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
@@ -187,7 +196,8 @@
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
                         $scope.applicantDetailScope = res.data.Result;
-                        $scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
+                        //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
+                        $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

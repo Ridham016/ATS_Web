@@ -664,7 +664,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Location.
+        ///   Looks up a localized string similar to Current Job Location.
         /// </summary>
         public static string CurrentLocation {
             get {
@@ -1074,6 +1074,15 @@ namespace MVCProject.Common.Resources {
         public static string ExpectedCTCRequired {
             get {
                 return ResourceManager.GetString("ExpectedCTCRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Experience.
+        /// </summary>
+        public static string Experience {
+            get {
+                return ResourceManager.GetString("Experience", resourceCulture);
             }
         }
         
@@ -1762,6 +1771,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meeting(s).
+        /// </summary>
+        public static string Meeting {
+            get {
+                return ResourceManager.GetString("Meeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Middlename is Required.
         /// </summary>
         public static string MiddleNameRequired {
@@ -2041,7 +2059,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prefered Location.
+        ///   Looks up a localized string similar to Prefered Job Location.
         /// </summary>
         public static string PreferedLocation {
             get {

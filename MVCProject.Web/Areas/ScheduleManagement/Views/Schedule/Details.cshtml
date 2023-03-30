@@ -4,6 +4,12 @@
 }
 
 <div ng-controller="ScheduleCtrl" ng-init="GetData()" novalidate>
+    <div class="main-page-title title-icon relative l">
+        <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@Resource.Schedule</h4>
+        <div class="pull-right">
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="card-box mb-2">
@@ -56,11 +62,15 @@
                                         @Resource.StatusName :
                                     </p>
                                 </td>
-                                <td><p> <span ng-class="{'status-hold': applicants.StatusId == 5,
+                                <td>
+                                    <p>
+                                        <span ng-class="{'status-hold': applicants.StatusId == 5,
                                                         'status-registered': applicants.StatusId == 1,
                                                         'status-shortlist': applicants.StatusId == 2,
                                                         'status-call-schedule': applicants.StatusId == 4,
-                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}</span></p></td>
+                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}</span>
+                                    </p>
+                                </td>
                             </tr>
                             <tr ng-show="applicants.StatusId == 8">
                                 <td class="details-schedule-label">
@@ -72,7 +82,7 @@
                             </tr>
                         </table>
                     </div>
-                    
+
                 </div>
                 <div class="card-foot mt-3">
                     <button class="btn me-sm-2"
@@ -94,8 +104,8 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Interview</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form name="frmSchedule" 
-                                              novalidate>
+                                <form name="frmSchedule"
+                                      novalidate>
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-12">
@@ -146,14 +156,14 @@
                                                         <span data-ng-show="frmSchedule.Description.$error.required">@Resource.Description</span>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" ng-click = "SaveSchduleDetails(scheduleDetailScope,4,applicants.ApplicantId)" ng-disabled="frmSchedule.$invalid">Submit</button>
+                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,4,applicants.ApplicantId)" ng-disabled="frmSchedule.$invalid">Submit</button>
                                         </div>
                                     </div>
                                 </form>

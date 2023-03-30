@@ -925,7 +925,7 @@
     <value>Current CTC is Required</value>
   </data>
   <data name="CurrentLocation" xml:space="preserve">
-    <value>Current Location</value>
+    <value>Current Job Location</value>
   </data>
   <data name="CurrentLocationRequired" xml:space="preserve">
     <value>Current Location is Required</value>
@@ -949,7 +949,7 @@
     <value>Notice Period is Required</value>
   </data>
   <data name="PreferedLocation" xml:space="preserve">
-    <value>Prefered Location</value>
+    <value>Prefered Job Location</value>
   </data>
   <data name="PreferedLocationRequired" xml:space="preserve">
     <value>Prefered Location is Required</value>
@@ -1094,5 +1094,11 @@
   </data>
   <data name="NoticePeriodValid" xml:space="preserve">
     <value>Enter Valid Notice Period </value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="Meeting" xml:space="preserve">
+    <value>Meeting(s)</value>
   </data>
 </root>

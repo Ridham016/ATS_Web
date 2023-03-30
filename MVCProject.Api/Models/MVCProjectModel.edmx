@@ -310,6 +310,9 @@
           <Parameter Name="CurrentStatus" Type="int" Mode="In" />
           <Parameter Name="NextStatus" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_FilesOfApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_GetApplicantWithStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
         </Function>
@@ -492,6 +495,9 @@
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetStatus" ReturnType="Collection(MVCProjectModel.USP_ATS_GetStatus_Result)" />
           <FunctionImport Name="USP_ATS_ScheduleInformation" ReturnType="Collection(MVCProjectModel.USP_ATS_ScheduleInformation_Result)" />
+          <FunctionImport Name="USP_ATS_FilesOfApplicant" ReturnType="Collection(MVCProjectModel.USP_ATS_FilesOfApplicant_Result)">
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -1050,6 +1056,20 @@
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="USP_ATS_FilesOfApplicant_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="OriginalFileName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ApplicantId" Nullable="true" />
+          <Property Type="Int32" Name="AttachmentTypeId" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1470,6 +1490,24 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_FilesOfApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_FilesOfApplicant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_FilesOfApplicant_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+                <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

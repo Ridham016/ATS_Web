@@ -77,16 +77,25 @@
             //$scope.searchDetail.daterange.startDate = null;
             //$scope.searchDetail.daterange.endDate = null;
             $("#DateRange").val("");
-            $scope.frmRegister.$setPristine();
+            frmRegister.$setPristine();
         };
 
         $scope.advancedsearch = function (searchDetail) {
             debugger
             console.log(searchDetail);
-            $scope.searchDetail = searchDetail;
-            $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-            $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
-            $scope.tableParams.reload();
+            if (moment.isDate(searchDetail.daterange.startDate) && moment.isDate(searchDetail.daterange.endDate)) {
+                $scope.searchDetail = searchDetail;
+                $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+                $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+                $scope.tableParams.reload();
+            }
+            else {
+                $scope.searchDetail = searchDetail;
+                $scope.searchDetail.StartDate = null;
+                $scope.searchDetail.EndDate = null;
+                $scope.tableParams.reload();
+            }
+            
         };
         $scope.GetStatus = function () {
             debugger
