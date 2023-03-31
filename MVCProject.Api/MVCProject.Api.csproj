@@ -168,11 +168,13 @@
     <Compile Include="App_Start\HandlerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdvancedSearch\AdvancedSearchController.cs" />
     <Compile Include="Controllers\ApplicantRegister\RegistrationsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Common\CommonController.cs" />
     <Compile Include="Controllers\Configuration\DesignationsController.cs" />
     <Compile Include="Controllers\Common\UploadController.cs" />
+    <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\InterviewerRegister\InterviewersController.cs" />
     <Compile Include="Controllers\ScheduleManagement\SchedulesController.cs" />
     <Compile Include="Filters\CompressContentAttribute.cs" />
@@ -195,6 +197,8 @@
     <Compile Include="Models\Extended\GroupCurriculumMatrixMaster.cs" />
     <Compile Include="Models\Extended\GroupMaster.cs" />
     <Compile Include="Models\Extended\SubGroupMaster.cs" />
+    <Compile Include="Models\FilterCriterias\ReasonParams.cs" />
+    <Compile Include="Models\FilterCriterias\SearchParams.cs" />
     <Compile Include="Models\LogOn.cs" />
     <Compile Include="Models\Extended\Attachments.cs" />
     <Compile Include="Models\Metadata\NewsMetaData.cs" />
@@ -267,7 +271,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Attachments\Temp\" />
     <Folder Include="Help\Templates\" />
-    <Folder Include="Models\FilterCriterias\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

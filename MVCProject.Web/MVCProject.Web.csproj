@@ -157,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Areas\AdvancedSearch\AdvancedSearchAreaRegistration.cs" />
+    <Compile Include="Areas\AdvancedSearch\Controllers\SearchController.cs" />
     <Compile Include="Areas\ApplicantRegister\ApplicantAreaRegistration.cs" />
     <Compile Include="Areas\ApplicantRegister\Controllers\RegistrationController.cs" />
     <Compile Include="Areas\Configuration\ConfigurationAreaRegistration.cs" />
@@ -165,6 +167,8 @@
     <Compile Include="Areas\Configuration\Controllers\ResetLoginController.cs" />
     <Compile Include="Areas\Configuration\Controllers\RoleController.cs" />
     <Compile Include="Areas\Configuration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\InterviewerRegister\Controllers\InterviewerController.cs" />
     <Compile Include="Areas\InterviewerRegister\InterviewerAreaRegister.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
@@ -213,6 +217,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\WebApiConfig.cs" />
+    <Content Include="Areas\AdvancedSearch\Scripts\angularjs\controllers\AdvancedSearchCtrl.js" />
+    <Content Include="Areas\AdvancedSearch\Scripts\angularjs\services\AdvancedSearchService.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\controllers\RegistrationCtrl.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\services\RegistrationService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ApplicationCtrl.js" />
@@ -221,6 +227,8 @@
     <Content Include="Areas\Configuration\Scripts\angular\services\ApplicationService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\services\DesignationService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\services\ResetToLoginService.js" />
+    <Content Include="Areas\Dashboard\Scripts\angular\controllers\DashboardCtrl.js" />
+    <Content Include="Areas\Dashboard\Scripts\angular\services\DashboardService.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\controllers\InterviewerCtrl.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\services\InterviewerService.js" />
     <Content Include="Areas\Public\Content\css\css\blank.gif" />
@@ -334,7 +342,6 @@
     <Content Include="Scripts\angular\directives\angularDaterangePicker.js" />
     <Content Include="Scripts\angular\directives\SafeFileUploader.js" />
     <Content Include="Scripts\angular\filters\CustomFilters.js" />
-    <Content Include="Scripts\angular\ng-file-upload.min.js" />
     <Content Include="Scripts\angular\services\CommonService.js" />
     <Content Include="Scripts\angular\services\FileService.js" />
     <Content Include="Scripts\angular\services\ResetPasswordService.js" />
@@ -474,6 +481,10 @@
     <Content Include="Areas\InterviewerRegister\Views\Web.config" />
     <Content Include="Areas\ScheduleManagement\Views\Web.config" />
     <Content Include="Areas\ScheduleManagement\Views\Schedule\Index.cshtml" />
+    <Content Include="Areas\AdvancedSearch\Views\Search\Index.cshtml" />
+    <Content Include="Areas\AdvancedSearch\Views\Web.config" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Web.config" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />
@@ -493,6 +504,11 @@
     <Content Include="Content\fonts\onlinewebfonts.ttf" />
     <Content Include="Content\fonts\onlinewebfonts.woff" />
     <Content Include="Content\fonts\onlinewebfonts.woff2" />
+    <Content Include="Content\fonts\Poppins-Bold.ttf" />
+    <Content Include="Content\fonts\Poppins-Light.ttf" />
+    <Content Include="Content\fonts\Poppins-Medium.ttf" />
+    <Content Include="Content\fonts\Poppins-Regular.ttf" />
+    <Content Include="Content\fonts\Poppins-SemiBold.ttf" />
     <None Include="Content\fonts\themify.eot" />
     <None Include="Content\fonts\themify.ttf" />
     <None Include="Content\fonts\themify.woff" />
