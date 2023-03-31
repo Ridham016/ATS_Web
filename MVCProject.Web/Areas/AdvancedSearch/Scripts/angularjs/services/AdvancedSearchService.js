@@ -21,5 +21,11 @@
             url: $rootScope.apiURL + '/AdvancedSearch/GetStatus'
         });
     }
+    list.ApplicantTimeline = function (ApplicantId) {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/AdvancedSearch/ApplicantTimeline?ApplicantId=' + ApplicantId
+        });
+    }
     return list;
 }])

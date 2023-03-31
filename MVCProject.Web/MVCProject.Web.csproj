@@ -485,6 +485,7 @@
     <Content Include="Areas\AdvancedSearch\Views\Web.config" />
     <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Web.config" />
+    <Content Include="Areas\ScheduleManagement\Views\Schedule\Details.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

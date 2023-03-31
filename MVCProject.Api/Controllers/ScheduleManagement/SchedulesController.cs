@@ -100,6 +100,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
                     Reason = g.Reason,
+                    ReasonDescription = g.ReasonDescription,
                     FileName = g.FileName
                 }).SingleOrDefault();
             //var StatusID = applicantDetail.Select(x => x.StatusId).SingleOrDefault();
@@ -232,7 +233,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     IsActive = true
                 });
             }
-            else
+            if(Reason.ReasonId != null)
             {
                 var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
                 if (Action != null)
@@ -300,6 +301,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 IsActive = g.IsActive,
                 StatusId = g.StatusId,
                 StatusName = g.StatusName,
+
                 TotalRecords
             }).AsEnumerable()
                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)

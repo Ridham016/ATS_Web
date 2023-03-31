@@ -1,4 +1,5 @@
-﻿using MVCProject.Api.Models;
+﻿using iTextSharp.text.log;
+using MVCProject.Api.Models;
 using MVCProject.Api.Models.FilterCriterias;
 using MVCProject.Api.Utilities;
 using MVCProject.Api.ViewModel;
@@ -47,6 +48,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 StatusId = g.StatusId,
+                Level = g.Level,
                 StatusName = g.StatusName,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
@@ -55,6 +57,40 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
             .Skip((searchDetailParams.CurrentPageNumber - 1) * searchDetailParams.PageSize).Take(searchDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
         }
+
+        [HttpGet]
+        public ApiResponse ApplicantTimeline(int ApplicantId)
+        {
+            var advancedsearch = this.entities.USP_ATS_ApplicantTimeLine(ApplicantId).Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                FirstName = g.FirstName,
+                MiddleName = g.MiddleName,
+                LastName = g.LastName,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                StatusId = g.StatusId,
+                StatusName = g.StatusName,
+                Level = g.Level,
+                Reason = g.Reason,
+                EntryDate = g.EntryDate,
+            }).AsEnumerable();
+            return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
+        }
+
         [HttpGet]
         public ApiResponse GetStatus()
         {

@@ -174,7 +174,7 @@
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
                                                 <p class="input-group">
-                                                    <input type="text" name="DOB" tabindex="3" id="DOB" class="form-control"
+                                                    <input type="text" name="DateOfBirth" tabindex="3" id="DateOfBirth" class="form-control"
                                                            uib-datepicker-popup="{{defaultSettings.dateFormat}}"
                                                            ng-model="applicantDetailScope.DateOfBirth"
                                                            max-date="maxDate" datepicker-options="dateOptions" readonly="readonly" ng-required="true"
@@ -190,8 +190,8 @@
                                                 @* <input type="date" max="{{today}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />*@
                                                 <div class="c">
                                                 </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.DOB.$dirty && frmRegister.DOB.$invalid">
-                                                    <span data-ng-show="frmRegister.DOB.$error.required">@Resource.ApplicantDOBRequired</span>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
+                                                    <span data-ng-show="frmRegister.DateOfBirth.$error.required">@Resource.ApplicantDOBRequired</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,12 +245,12 @@
                                                 <label>
                                                     @Resource.TotalExperience<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-pattern="/^[0-9]{0,2}$/" max="50" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}" class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" required />
+                                                <input type="text" ng-pattern="/^[0-9]{0,2}$/" max="50" ng-change="checkValidationRules()" ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}" class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid">
                                                     <span data-ng-show="frmRegister.TotalExperience.$error.required">@Resource.TotalExperienceRequired</span>
-                                                    <span data-ng-show="frmRegister.TotalExperience.$error.pattern && frmRegister.TotalExperience.$error.max">@Resource.ExperienceValid</span>
+                                                    <span data-ng-show="frmRegister.TotalExperience.$error.pattern || frmRegister.TotalExperience.$error.max">@Resource.ExperienceValid</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -259,12 +259,12 @@
                                                 <label>
                                                     @Resource.DetailedExperience<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-pattern="/^[0-9]{0,2}$/" min="max" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid}" class="form-control" placeholder="Enter Detailed Experience" name="DetailedExperience" ng-model="applicantDetailScope.DetailedExperience" required />
+                                                <input type="text" ng-pattern="/^[0-9]{0,2}$/" max="50" ng-class="{'border-color' : frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid}" class="form-control" placeholder="Enter Detailed Experience" name="DetailedExperience" ng-model="applicantDetailScope.DetailedExperience" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid">
                                                     <span data-ng-show="frmRegister.DetailedExperience.$error.required">@Resource.DetailedExperienceRequired</span>
-                                                    <span data-ng-show="frmRegister.DetailedExperience.$error.pattern && frmRegister.DetailedExperience.$error.max">@Resource.ExperienceValid</span>
+                                                    <span data-ng-show="frmRegister.DetailedExperience.$error.pattern || frmRegister.DetailedExperience.$error.max">@Resource.ExperienceValid</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +273,7 @@
                                                 <label>
                                                     @Resource.CurrentCTC
                                                 </label>
-                                                <input type="text" ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-model-options="{ updateOn: 'blur' }" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC" ng-model="applicantDetailScope.CurrentCTC" />
+                                                <input type="text" ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC" ng-model="applicantDetailScope.CurrentCTC" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$invalid">
@@ -286,7 +286,7 @@
                                                 <label>
                                                     @Resource.ExpectedCTC
                                                 </label>
-                                                <input type="text" ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
+                                                <input type="text" ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
@@ -299,7 +299,7 @@
                                                 <label>
                                                     @Resource.NoticePeriod
                                                 </label>
-                                                <input type="text" ng-pattern="/^[0-9]{0,1}$/" min="6" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
+                                                <input type="text" ng-pattern="/^[0-9]{0,1}$/" min="6" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$invalid">

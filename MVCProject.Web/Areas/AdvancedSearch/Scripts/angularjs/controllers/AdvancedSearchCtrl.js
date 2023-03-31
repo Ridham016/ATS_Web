@@ -23,17 +23,31 @@
             StatusName: null
         };
 
-        $scope.Init = function () {
-            $scope.advancedsearch = function (searchDetail) {
+        $scope.expandSelected = function (applicant, ApplicantId) {
+            AdvancedSearchService.ApplicantTimeline(ApplicantId).then(function (res) {
                 debugger
-                $scope.searchDetail = searchDetail;
-                $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-                $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
-                $scope.tableParams.reload();
-            };
+                $scope.applicantDetail = res.data.Result;
+            })
+            $scope.applicants.forEach(function (val) {
+                val.expanded = false;
+            })
+            debugger
+            applicant.expanded = true;
+            console.log(applicant.expanded);
+
         }
 
-        $scope.Init();
+        //$scope.Init = function () {
+        //    $scope.advancedsearch = function (searchDetail) {
+        //        debugger
+        //        $scope.searchDetail = searchDetail;
+        //        $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+        //        $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+        //        $scope.tableParams.reload();
+        //    };
+        //}
+
+        //$scope.Init();
 
         $scope.tableParams = new ngTableParams({
             page: 1,
@@ -83,22 +97,19 @@
         $scope.advancedsearch = function (searchDetail) {
             debugger
             console.log(searchDetail);
-            $scope.searchDetail = searchDetail;
-            $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-            $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
-            $scope.tableParams.reload();
-            //if (moment.isDate(searchDetail.daterange.startDate) && moment.isDate(searchDetail.daterange.endDate)) {
-            //    $scope.searchDetail = searchDetail;
-            //    $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-            //    $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
-            //    $scope.tableParams.reload();
-            //}
-            //else {
-            //    $scope.searchDetail = searchDetail;
-            //    $scope.searchDetail.StartDate = null;
-            //    $scope.searchDetail.EndDate = null;
-            //    $scope.tableParams.reload();
-            //}
+            
+            if (moment.isDate(searchDetail.daterange.startDate) && moment.isDate(searchDetail.daterange.endDate)) {
+                $scope.searchDetail = searchDetail;
+                $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+                $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+                $scope.tableParams.reload();
+            }
+            else {
+                $scope.searchDetail = searchDetail;
+                $scope.searchDetail.StartDate = null;
+                $scope.searchDetail.EndDate = null;
+                $scope.tableParams.reload();
+            }
             
         };
         $scope.GetStatus = function () {

@@ -9,6 +9,11 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+    .colExpand {
+        width: 30px !important;
+        min-width: 30px !important;
+        max-width: 30px !important;
+    }
 
     .colPosition {
         width: 200px !important;
@@ -113,31 +118,73 @@
                             <scrollable-table scroll-height="450">
                                 <table ng-table="tableParams" id="datatable" class="table table-bordered table-hover">
                                     <tbody>
-                                        <tr ng-repeat="h in applicants">
+                                        <tr ng-repeat-start="applicant in applicants">
+                                            <td header-class="'colExpand'" ng-class="colExpand">
+                                                <a class="status-pass cursor-pointer" ng-if="applicant.expanded" ng-click="applicant.expanded = false">-</a>
+                                                <a class="status-pass cursor-pointer" ng-if="!applicant.expanded" ng-click="expandSelected(applicant,applicant.ApplicantId)">+</a>
+                                            </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                 {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.ApplicantName'" header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
-                                                {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
+                                                {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                {{h.Email}}
+                                                {{applicant.Email}}
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
-                                                {{h.Phone}}
+                                                {{applicant.Phone}}
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.StatusName'" header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
-                                                <span ng-class="{'status-hold': h.StatusId == 5,
-                                                                    'status-registered': h.StatusId == 1,
-                                                                    'status-shortlist': h.StatusId == 2,
-                                                                    'status-pass': h.StatusId == 6,
-                                                                    'status-reject': h.StatusId == 7,
-                                                                    'status-not-match': h.StatusId == 3,
-                                                                    'status-call-schedule': h.StatusId == 4,
-                                                                    'status-other-reason': h.StatusId == 8,}">{{h.StatusName}}</span>
+                                                <span ng-class="{'status-hold': applicant.StatusId == 5,
+                                                                    'status-registered': applicant.StatusId == 1,
+                                                                    'status-shortlist': applicant.StatusId == 2,
+                                                                    'status-pass': applicant.StatusId == 6,
+                                                                    'status-reject': applicant.StatusId == 7,
+                                                                    'status-not-match': applicant.StatusId == 3,
+                                                                    'status-call-schedule': applicant.StatusId == 4,
+                                                                    'status-other-reason': applicant.StatusId == 8,}">
+                                                    {{applicant.StatusName}}<span ng-show="applicant.StatusId == 4"> for L{{applicant.Level}}</span>
+                                                    <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> for L{{applicant.Level+1}}</span>
+                                                </span>
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.EntryDate'" header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
-                                                {{h.EntryDate | date : 'MMM d, y h:mm a'}}
+                                                {{applicant.EntryDate | date : 'MMM d, y h:mm a'}}
+                                            </td>
+                                        </tr>
+                                        <tr ng-show="applicant.expanded" ng-repeat-end="">
+                                            <td></td>
+                                            <td></td>
+                                            <td colspan="5">
+                                                <table class="table table-bordered table-hover">
+                                                    <tr ng-repeat="applicant in applicantDetail">
+                                                        <td header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
+                                                            {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}
+                                                        </td>
+                                                        <td header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                            {{applicant.Email}}
+                                                        </td>
+                                                        <td header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                                            {{applicant.Phone}}
+                                                        </td>
+                                                        <td header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
+                                                            <span ng-class="{'status-hold': applicant.StatusId == 5,
+                                                                    'status-registered': applicant.StatusId == 1,
+                                                                    'status-shortlist': applicant.StatusId == 2,
+                                                                    'status-pass': applicant.StatusId == 6,
+                                                                    'status-reject': applicant.StatusId == 7,
+                                                                    'status-not-match': applicant.StatusId == 3,
+                                                                    'status-call-schedule': applicant.StatusId == 4,
+                                                                    'status-other-reason': applicant.StatusId == 8,}">
+                                                                {{applicant.StatusName}}<span ng-show="applicant.StatusId == 4"> for L{{applicant.Level}}</span>
+                                                                <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> for L{{applicant.Level+1}}</span>
+                                                            </span>
+                                                        </td>
+                                                        <td header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
+                                                            {{applicant.EntryDate | date : 'MMM d, y h:mm a'}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                     </tbody>

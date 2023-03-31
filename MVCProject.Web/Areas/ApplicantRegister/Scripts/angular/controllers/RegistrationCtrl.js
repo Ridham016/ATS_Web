@@ -10,10 +10,10 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions','$timeout', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $rootScope, FileService, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $timeout, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.applicantDetailScope = {
             ApplicantId: 0,
@@ -36,6 +36,21 @@
             ReasonForChange: '',
             IsActive: true
         };
+
+
+        checkValidationRules();
+
+        function checkValidationRules() {
+            debugger
+            $timeout(function () {
+                if ($scope.applicantDetailScope.TotalExperience > 50) {
+                    $scope.frmRegister.TotalExperience.$setValidity('max', false);
+                }
+                if ($scope.applicantDetailScope.DetailedExperience > 50) {
+                    $scope.frmRegister.DetailedExperience.$setValidity('max', false);
+                }
+            })
+        }
 
         $scope.dateOptions = {
             maxDate: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
@@ -146,6 +161,8 @@
                 IsActive: true
             };
             $("#file").val("");
+            $scope.files = null;
+            $scope.Selectedfile = null;
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
             $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');
