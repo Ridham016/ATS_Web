@@ -23,7 +23,7 @@
             Email: '',
             Phone: '',
             Address: '',
-            DateOfBirth: '',
+            DateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
             CurrentCompany: '',
             CurrentDesignation: '',
             TotalExperience: '',
@@ -36,6 +36,15 @@
             ReasonForChange: '',
             IsActive: true
         };
+
+        $scope.dateOptions = {
+            maxDate: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
+            datepickerMode: 'day'
+        };
+        $scope.setDefaultDate = function () {
+            $scope.applicantDetailScope.DateOfBirth = new Date(new Date().setFullYear(new Date().getFullYear() - 18));
+        }
+        $scope.isOpen = false;
 
         //$scope.AllData = true;
         $scope.today = new Date();
@@ -61,7 +70,7 @@
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,
-            sorting: { FirstName: 'asc' }
+            sorting: { ApplicantDate: 'desc' }
         }, {
             getData: function ($defer, params) {
                 if (applicantDetailParams == null) {
@@ -123,7 +132,7 @@
                 Email: '',
                 Phone: '',
                 Address: '',
-                DateOfBirth: null,
+                DateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
                 CurrentCompany: '',
                 CurrentDesignations: '',
                 TotalExperience: null,
@@ -184,6 +193,16 @@
             debugger
             RegistrationService.GetFiles(ApplicantId).then(function (res) {
                 debugger
+                if (res) {
+                    var data = res.data;
+                    if (data.MessageType == messageTypes.Success) {
+                        $scope.files = res.data.Result;
+                        $scope.Selectedfile = res.data.Result[0];
+                    } else if (data.MessageType == messageTypes.Error) {// Error
+                        toastr.error(data.Message, errorTitle);
+                    }
+                }
+                $rootScope.isAjaxLoadingChild = false;
                 $scope.files = res.data.Result;
             })
         }

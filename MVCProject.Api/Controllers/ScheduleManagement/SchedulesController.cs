@@ -8,6 +8,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 {
     using iTextSharp.text.log;
     using MVCProject.Api.Models;
+    using MVCProject.Api.Models.FilterCriterias;
     using MVCProject.Api.Utilities;
     using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
@@ -57,6 +58,8 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
+                Level= g.Level,
+                EntryDate = g.EntryDate,
                 IsActive = g.IsActive,
                 StatusId = g.StatusId,
                 StatusName = g.StatusName,
@@ -92,6 +95,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     CurrentLocation = g.CurrentLocation,
                     PreferedLocation = g.PreferedLocation,
                     ReasonForChange = g.ReasonForChange,
+                    Level = g.Level,
                     StatusId = g.StatusId,
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
@@ -122,15 +126,23 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         public ApiResponse UpdateStatus(int StatusId, int ApplicantId)
         {
             var level = 0;
-            if(StatusId == 4)
+            var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
+            if (StatusId == 4)
             {
-               var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
                 if (getlevel != null)
                 {
                     level = (int)getlevel.Level + 1;
                 }
                 else
                     level++;
+            }
+            else if (StatusId == 8)
+            {
+                level = (int)getlevel.Level - 1;
+            }
+            else
+            {
+                level = (int)getlevel.Level;
             }
             var addtoaction = new ATS_ActionHistory()
             {
@@ -207,22 +219,36 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse UpdateReason([FromUri]int ReasonId, [FromUri]int ActionId)
+        public ApiResponse UpdateReason([FromBody]ReasonParams Reason, [FromUri]int ActionId)
         {
-            var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
-            if (Action != null)
+            if(Reason.Reason != null)
             {
-                Action.ReasonId = ReasonId;
-                entities.ATS_ActionHistory.ApplyCurrentValues(Action);
-                if (!(this.entities.SaveChanges() > 0))
+                entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
                 {
-                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
-                }
-
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.OtherReason));
+                    ActionId = ActionId,
+                    Description = Reason.Reason,
+                    EntryDate = DateTime.Now,
+                    EntryBy = "1",
+                    IsActive = true
+                });
             }
             else
+            {
+                var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
+                if (Action != null)
+                {
+                    Action.ReasonId = Reason.ReasonId;
+                    entities.ATS_ActionHistory.ApplyCurrentValues(Action);
+                }
+                else
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
+            }
+            if (!(this.entities.SaveChanges() > 0))
+            {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.OtherReason));
+            }
+
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.OtherReason));
 
         }
 

@@ -158,7 +158,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.DateOfBirth = data.DateOfBirth;
                 applicantData.CurrentCompany = data.CurrentCompany;
                 applicantData.CurrentDesignation = data.CurrentDesignation;
-                applicantData.ApplicantDate = data.ApplicantDate;
+                applicantData.ApplicantDate = DateTime.Now;
                 applicantData.TotalExperience = data.TotalExperience;
                 applicantData.DetailedExperience = data.DetailedExperience;
                 applicantData.CurrentCTC = data.CurrentCTC;

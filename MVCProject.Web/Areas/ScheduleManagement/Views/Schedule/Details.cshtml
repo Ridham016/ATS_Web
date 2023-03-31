@@ -68,7 +68,9 @@
                                                         'status-registered': applicants.StatusId == 1,
                                                         'status-shortlist': applicants.StatusId == 2,
                                                         'status-call-schedule': applicants.StatusId == 4,
-                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}</span>
+                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}<span ng-show="applicants.StatusId == 4 || applicants.StatusId == 8"> for L{{Level}}</span>
+                                                                                                                                    <span ng-show="applicants.StatusId == 2"> for L{{Level+1}}</span></span>
+                                        
                                     </p>
                                 </td>
                             </tr>
@@ -91,11 +93,11 @@
                                        'btn-shortlist' : h.ButtonId == 1,
                                        'btn-not-match' : h.ButtonId == 2,
                                        'btn-reject' : h.ButtonId == 6}">
-                        {{h.ButtonName}}
+                        {{h.ButtonName}}<span ng-show="h.NextStatusId == 2"> for L{{Level+1}}</span>
                     </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}
+                        {{h.ButtonName}} for L{{Level+1}}
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -172,32 +174,30 @@
                     </div>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-other-reason me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}
+                        {{h.ButtonName}}<span> for L{{Level}}</span>
                     </button>
                     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Other Reasons</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Reason for Cancellation</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form name="frmOtherReason" novalidate>
                                     <div class="modal-body">
-                                        <div class="form-group">
-                                            <select class="form-control" name="OtherReasons" id="OtherReasons" ng-init="getOtherReasons()" ng-model="ReasonId" required>
+                                        <div class="form-group mb-3">
+                                            <select class="form-control" name="OtherReasons" id="OtherReasons" ng-init="getOtherReasons()" ng-model="Reason.ReasonId" ng-required="!Reason.Reason">
                                                 <option value="" disabled selected>Select Reason</option>
                                                 <option ng-repeat="op in reasons" value="{{op.ReasonId}}">{{op.Reason}}</option>
                                             </select>
-                                            <div class="c">
-                                            </div>
-                                            <div class="label label-danger" data-ng-show="frmOtherReason.OtherReasons.$dirty && frmOtherReason.OtherReasons.$invalid">
-                                                <span data-ng-show="frmOtherReason.OtherReasons.$error.required">@Resource.OtherReasonRequired</span>
-                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" cols="5" placeholder="Enter Reason For Cancellation" name="ReasonForCancel" ng-model="Reason.Reason" ng-required="!Reason.ReasonId"></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(ReasonId,8,applicants.ApplicantId)" ng-disabled="frmOtherReason.OtherReasons.$invalid">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,8,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
                                     </div>
                                 </form>
                             </div>

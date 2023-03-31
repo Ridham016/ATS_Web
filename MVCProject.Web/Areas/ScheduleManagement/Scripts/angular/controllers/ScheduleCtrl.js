@@ -15,10 +15,15 @@
             IsActive: true
         };
 
+        $scope.Reason = {
+            ReasonId: '',
+            CancelReason: ''
+        };
+
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,
-            sorting: { ApplicantDate: 'asc' }
+            sorting: { EntryDate: 'desc' }
         }, {
             getData: function ($defer, params) {
                 if (applicantDetailParams == null) {
@@ -53,6 +58,7 @@
             ScheduleService.GetApplicant($scope.applicantId).then(function (res) {
                 debugger
                 $scope.applicants = res.data.Result;
+                $scope.Level = $scope.applicants.Level;
                 $scope.getButtons($scope.applicants.StatusId);
             })
         }
@@ -125,14 +131,14 @@
             });
         };
 
-        $scope.updateOtherReason = function (reasonId, StatusId, ApplicantId) {
+        $scope.updateOtherReason = function (Reason, StatusId, ApplicantId) {
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
                 debugger
                 if (res) {
                     $scope.Action = res.data.Result;
                     $scope.ActionId = $scope.Action[1];
                     debugger
-                    ScheduleService.UpdateOtherReason(reasonId,$scope.ActionId).then(function (res) {
+                    ScheduleService.UpdateOtherReason(Reason,$scope.ActionId).then(function (res) {
                         var data = res.data;
                         $window.location.href = '../../ScheduleManagement/Schedule';
                     })

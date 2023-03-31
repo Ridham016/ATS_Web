@@ -47,11 +47,12 @@
             url: $rootScope.apiURL + '/Schedules/GetReasons'
         })
     }
-    list.UpdateOtherReason = function (reasonId, actionId) {
+    list.UpdateOtherReason = function (Reason, actionId) {
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId + '&ReasonId=' + reasonId
+            url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId,
+            data: JSON.stringify(Reason)
         })
     }
     list.HoldReason = function (scheduleDetailScope, actionId) {

@@ -6523,6 +6523,54 @@ namespace MVCProject.Api.Models
         private global::System.String _StatusName;
         partial void OnStatusNameChanging(global::System.String value);
         partial void OnStatusNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EntryDate
+        {
+            get
+            {
+                return _EntryDate;
+            }
+            set
+            {
+                OnEntryDateChanging(value);
+                ReportPropertyChanging("EntryDate");
+                _EntryDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EntryDate");
+                OnEntryDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EntryDate;
+        partial void OnEntryDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnEntryDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Level
+        {
+            get
+            {
+                return _Level;
+            }
+            set
+            {
+                OnLevelChanging(value);
+                ReportPropertyChanging("Level");
+                _Level = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Level");
+                OnLevelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Level;
+        partial void OnLevelChanging(Nullable<global::System.Int32> value);
+        partial void OnLevelChanged();
 
         #endregion
 

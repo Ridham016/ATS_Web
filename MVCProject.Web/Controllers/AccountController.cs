@@ -29,7 +29,7 @@ namespace MVCProject.Controllers
             //if (this.Session["UserContext"] == null || Request.Url.PathAndQuery.Contains("noSession"))
             //{
             //    ViewBag.IsSessionExpired = Request.QueryString["noSession"] != null ? true : false;
-            //  return this.View();
+            //    return this.View();
             //}
             //else
             //{
@@ -132,7 +132,7 @@ namespace MVCProject.Controllers
             //    //}
             //}
 
-            return RedirectToAction("Index", "Dashboard", new { area = "Dashboard" });
+            return RedirectToAction("Index", "Registration", new { area = "ApplicantRegister" });
         }
 
         /// <summary>

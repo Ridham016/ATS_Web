@@ -782,6 +782,8 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1253,6 +1255,8 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

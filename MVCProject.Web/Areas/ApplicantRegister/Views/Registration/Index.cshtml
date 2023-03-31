@@ -146,7 +146,7 @@
                                                 <label>
                                                     @Resource.ApplicantPhone<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-pattern="/^[0-9]{10,10}$/" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.Phone.$dirty && frmRegister.Phone.$invalid}" class="form-control" placeholder="Enter Phone" name="Phone" ng-model="applicantDetailScope.Phone" required />
+                                                <input type="text" ng-pattern="/^[0-9]{10,10}$/" ng-class="{'border-color' : frmRegister.Phone.$dirty && frmRegister.Phone.$invalid}" class="form-control" placeholder="Enter Phone" name="Phone" ng-model="applicantDetailScope.Phone" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.Phone.$dirty && frmRegister.Phone.$invalid">
@@ -173,12 +173,25 @@
                                                 <label>
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
-                                                <input type="date" max="{{today}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                                <p class="input-group">
+                                                    <input type="text" name="DOB" tabindex="3" id="DOB" class="form-control"
+                                                           uib-datepicker-popup="{{defaultSettings.dateFormat}}"
+                                                           ng-model="applicantDetailScope.DateOfBirth"
+                                                           max-date="maxDate" datepicker-options="dateOptions" readonly="readonly" ng-required="true"
+                                                           close-text="Close" is-open="isOpen" ng-model-options="{ allowInvalid: true }" 
+                                                           ng-pattern="/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/" placeholder="dd/mm/yyyy"/>
+                                                    <span class="input-group-addon">
+                                                        <button type="button" class="btn btn-icon btn-default" ng-click="isOpen=true">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </button>
+                                                    </span>
+                                                </p>
+                                               
+                                                @* <input type="date" max="{{today}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />*@
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DOB.$dirty && frmRegister.DOB.$invalid">
                                                     <span data-ng-show="frmRegister.DOB.$error.required">@Resource.ApplicantDOBRequired</span>
-                                                    <span data-ng-show="frmRegister.DOB.$error.max">@Resource.ApplicantDOBMin</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,8 +346,10 @@
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
+                                                    
                                                 </label>
                                                 <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" file-on-change="uploadFile" required />
+                                                <input type="text" ng-show="Selectedfile != null" class="form-control" disabled ng-model="Selectedfile.OriginalFileName" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
@@ -367,7 +382,7 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.FirstName.$invalid || frmRegister.LastName.$invalid || frmRegister.Email.$invalid
-                                        || frmRegister.Phone.$invalid || frmRegister.DOB.$invalid || frmRegister.TotalExperience.$invalid || frmRegister.DetailedExperience.$invalid || frmRegister.ExpextedCTC.$invalid ||
+                                        || frmRegister.Phone.$invalid || frmRegister.TotalExperience.$invalid || frmRegister.DetailedExperience.$invalid || frmRegister.ExpextedCTC.$invalid ||
                                         frmRegister.NoticePeriod.$invalid || frmRegister.CurrentLocation.$invalid || frmRegister.PreferedLocation.$invalid">
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
