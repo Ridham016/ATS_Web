@@ -74,14 +74,14 @@
                                     </p>
                                 </td>
                             </tr>
-                            <tr ng-show="applicants.Reason != null && applicants.ReasonDescription != null">
+                            <tr ng-show="applicants.Reason != null || applicants.ReasonDescription != null">
                                 <td class="details-schedule-label">
                                     <p class="me-2 fw-bold">
                                         @Resource.OtherReason :
                                     </p>
                                 </td>
-                                <td ng-show="applicants.Reason != null && show=false"><p>{{applicants.Reason}}</p></td>
-                                <td ng-show="applicants.ReasonDescription != null && show"><p>{{applicants.ReasonDescription}}</p></td>
+                                <td ng-show="applicants.Reason != null && show==false"><p>{{applicants.Reason}}</p></td>
+                                <td ng-show="applicants.ReasonDescription != null"><p>{{applicants.ReasonDescription}}</p></td>
                             </tr>
                         </table>
                     </div>
@@ -98,7 +98,7 @@
                     </button>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}} for L{{Level+1}}
+                        <span ng-show="h.StatusId == 8">Re</span>{{h.ButtonName}} for L{{Level+1}}
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

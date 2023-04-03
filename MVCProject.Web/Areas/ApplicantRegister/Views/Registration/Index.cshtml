@@ -348,7 +348,7 @@
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
                                                     
                                                 </label>
-                                                <input type="file" class="form-control" name="ApplicantCV" id="file" accept="application/pdf" file-on-change="uploadFile" required />
+                                                <input type="file" class="form-control" ng-disabled="Files >= 5" name="ApplicantCV" id="file" accept="application/pdf" file-on-change="uploadFile" required />
                                                 <input type="text" ng-show="Selectedfile != null" class="form-control" disabled ng-model="Selectedfile.OriginalFileName" />
                                                 <div class="c">
                                                 </div>
@@ -360,17 +360,34 @@
                                     </div>
                                     <div class="row mt-3 mb-4">
                                         <div class="col-md-4">
-                                            <div class="card">
-                                                <h4 class="card-header">
+                                            <div class="card p-3">
+                                                <h4 class="card-title">
                                                     Uploaded Files
                                                 </h4>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item" ng-repeat="f in files">
-                                                        <a href="{{f.FileRelativePath}}" target="_blank">
+                                                @*<div class="card-body">
+                                                </div>*@
+                                                    <div class="row mb-2" ng-repeat="f in files">
+                                                        <div class="col-11">
+                                                            <a href="{{f.FileRelativePath}}" target="_blank">
+                                                                {{f.OriginalFileName}}
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <a class="btn btn-link p-0" href="#" ng-click="deleteFile(f.Id)" ng-show="Files >= 5">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @*<ul class="list-group list-group-flush">
+                                                    <li class="row list-group-item" ng-repeat="f in files">
+                                                        <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
                                                             {{f.OriginalFileName}}
                                                         </a>
+                                                        <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
                                                     </li>
-                                                </ul>
+                                                </ul>*@
                                             </div>
                                         </div>
                                     </div>

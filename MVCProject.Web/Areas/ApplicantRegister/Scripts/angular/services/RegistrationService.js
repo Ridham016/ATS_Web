@@ -66,5 +66,11 @@
             url: $rootScope.apiURL + '/Registrations/GetFileOfApplicant?ApplicantId=' + ApplicantId
         })
     }
+    list.DeleteFile = function (FileId) {
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/Registrations/DeleteFile?FileId=' + FileId
+            })
+    }
     return list;
 }])

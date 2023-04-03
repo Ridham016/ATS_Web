@@ -259,6 +259,7 @@
     <Content Include="Content\css\components.css" />
     <Content Include="Content\css\core.css" />
     <Content Include="Content\css\dashboard.css" />
+    <Content Include="Content\css\fullcalendar.min.css" />
     <Content Include="Content\css\menu.min.css" />
     <Content Include="Content\css\custombox.min.css" />
     <Content Include="Content\css\fixedHeader.bootstrap.min.css" />
@@ -266,6 +267,7 @@
     <Content Include="Content\css\imgareaselect-default.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\morris.css" />
+    <Content Include="Content\css\newstyles.css" />
     <Content Include="Content\css\ng-table.css" />
     <Content Include="Content\css\pages.css" />
     <Content Include="Content\css\radar-chart.min.css" />
@@ -388,7 +390,11 @@
     <Content Include="Scripts\jquery\plugin\jquery.imgareaselect.pack.js" />
     <Content Include="Scripts\jquery\plugin\saveSvgAsPng.js" />
     <Content Include="Scripts\jquery\plugin\tooltipster.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\js\calendar.js" />
     <Content Include="Scripts\js\canvg.min.js" />
+    <Content Include="Scripts\js\fullcalendar.min.js" />
+    <Content Include="Scripts\js\gcal.js" />
     <Content Include="Scripts\js\html2canvas.min.js" />
     <Content Include="Scripts\js\jquery.fullscreen.js" />
     <Content Include="Scripts\js\jspdf.js" />
@@ -419,6 +425,7 @@
     <Content Include="Scripts\js\modernizr.min.js" />
     <Content Include="Scripts\js\spectrum.min.js" />
     <Content Include="Scripts\js\switchery.min.js" />
+    <Content Include="Scripts\js\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\js\waves.js" />
     <Content Include="Scripts\js\wow.min.js" />
     <Content Include="Views\Template\_SetReminderPopup.cshtml" />

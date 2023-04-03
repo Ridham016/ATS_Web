@@ -1101,4 +1101,7 @@
   <data name="Meeting" xml:space="preserve">
     <value>Meeting(s)</value>
   </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>Deleted Successfully</value>
+  </data>
 </root>

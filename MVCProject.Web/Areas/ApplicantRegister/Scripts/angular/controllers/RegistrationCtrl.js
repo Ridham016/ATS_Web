@@ -206,6 +206,23 @@
             });
         }
 
+        $scope.deleteFile = function (FileId) {
+            debugger
+            RegistrationService.DeleteFile(FileId).then(function (res) {
+                if (res) {
+                    if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
+                        toastr.success(res.data.Message, successTitle);
+                        debugger
+                        var index = $scope.files.indexOf(FileId);
+                        $scope.files.splice(index, 1);
+                    }
+                }
+            })
+        }
+        $scope.$watch('files', function (newVal, oldVal) {
+            $scope.getFiles($scope.applicantDetailScope.ApplicantId);
+        }, true);
+
         $scope.getFiles = function (ApplicantId) {
             debugger
             RegistrationService.GetFiles(ApplicantId).then(function (res) {
@@ -221,6 +238,8 @@
                 }
                 $rootScope.isAjaxLoadingChild = false;
                 $scope.files = res.data.Result;
+                $scope.Files = $scope.files.length;
+                console.log($scope.Files);
             })
         }
 

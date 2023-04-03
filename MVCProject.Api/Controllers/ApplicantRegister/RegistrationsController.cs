@@ -230,13 +230,19 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 directoryPath = AppUtility.GetDirectoryPath(enumDirectoryPath, databaseName, false, FileURL);
             }
             File.Copy(Path.Combine(directoryPath, data.FileName), Path.Combine(AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, false, FileURL), data.FileName), true);
+            int days = 10; // number of days to keep files
 
-            //File.Delete(Path.Combine(directoryPath, data.FileName));
-            //string FileURL = data.FilePath;
-            //string databaseName = "";
-            //string directoryPath = HttpContext.Current.Server.MapPath("~/Attachments");
-            //string originalPath = HttpContext.Current.Server.MapPath("~/Attachments/Temp");
+            DateTime thresholdDate = DateTime.Now.AddDays(-days);
+            string[] files = Directory.GetFiles(directoryPath);
 
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                if (fileInfo.LastWriteTime < thresholdDate)
+                {
+                    File.Delete(file);
+                }
+            }
 
             string filePath = Path.Combine(AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, false, FileURL), data.FileName);
             string fileRelativePath = string.Format("{0}{1}", AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, true, FileURL), data.FileName);
@@ -321,6 +327,21 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
+        }
+
+        [HttpPost]
+        public ApiResponse DeleteFile([FromUri] int FileId)
+        {
+            var file = entities.ATS_Attachment.Where(x => x.Id == FileId).FirstOrDefault();
+            if (file != null)
+            {
+                file.IsDeleted = true;
+            }
+            if (!(this.entities.SaveChanges() > 0))
+            {
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.Delete, Resource.File));
+            }
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.DeletedSuccessfully, Resource.File));
         }
     }
 }
