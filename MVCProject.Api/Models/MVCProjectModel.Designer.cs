@@ -2370,6 +2370,102 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.DateTime> _UpdateDate;
         partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SkillDescription
+        {
+            get
+            {
+                return _SkillDescription;
+            }
+            set
+            {
+                OnSkillDescriptionChanging(value);
+                ReportPropertyChanging("SkillDescription");
+                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SkillDescription");
+                OnSkillDescriptionChanged();
+            }
+        }
+        private global::System.String _SkillDescription;
+        partial void OnSkillDescriptionChanging(global::System.String value);
+        partial void OnSkillDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Link1
+        {
+            get
+            {
+                return _Link1;
+            }
+            set
+            {
+                OnLink1Changing(value);
+                ReportPropertyChanging("Link1");
+                _Link1 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Link1");
+                OnLink1Changed();
+            }
+        }
+        private global::System.String _Link1;
+        partial void OnLink1Changing(global::System.String value);
+        partial void OnLink1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Link2
+        {
+            get
+            {
+                return _Link2;
+            }
+            set
+            {
+                OnLink2Changing(value);
+                ReportPropertyChanging("Link2");
+                _Link2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Link2");
+                OnLink2Changed();
+            }
+        }
+        private global::System.String _Link2;
+        partial void OnLink2Changing(global::System.String value);
+        partial void OnLink2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Link3
+        {
+            get
+            {
+                return _Link3;
+            }
+            set
+            {
+                OnLink3Changing(value);
+                ReportPropertyChanging("Link3");
+                _Link3 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Link3");
+                OnLink3Changed();
+            }
+        }
+        private global::System.String _Link3;
+        partial void OnLink3Changing(global::System.String value);
+        partial void OnLink3Changed();
 
         #endregion
 

@@ -10,11 +10,13 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions','$timeout', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions','CommonEnums','$timeout', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, $timeout, $rootScope, FileService, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $timeout, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
+        $scope.NoticePeriod = CommonEnums.NoticePeriod;
+        console.log($scope.NoticePeriod);
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -34,6 +36,10 @@
             CurrentLocation: '',
             PreferedLocation: '',
             ReasonForChange: '',
+            SkillDescription: '',
+            Link1: '',
+            Link2: '',
+            Link3: '',
             IsActive: true
         };
 
@@ -158,6 +164,10 @@
                 CurrentLocation: '',
                 PreferedLocation: '',
                 ReasonForChange: '',
+                SkillDescription: '',
+                Link1: '',
+                Link2: '',
+                Link3: '',
                 IsActive: true
             };
             $("#file").val("");
@@ -219,6 +229,9 @@
                 }
             })
         }
+
+        $scope.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0];
+
         $scope.$watch('files', function (newVal, oldVal) {
             $scope.getFiles($scope.applicantDetailScope.ApplicantId);
         }, true);

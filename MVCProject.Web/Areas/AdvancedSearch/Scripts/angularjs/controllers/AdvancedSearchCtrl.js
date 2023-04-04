@@ -97,8 +97,9 @@
         $scope.advancedsearch = function (searchDetail) {
             debugger
             console.log(searchDetail);
-            
-            if (moment.isDate(searchDetail.daterange.startDate) && moment.isDate(searchDetail.daterange.endDate)) {
+            console.log(searchDetail.daterange.startDate, searchDetail.daterange.endDate);
+            if (searchDetail.daterange.startDate instanceof moment && searchDetail.daterange.endDate instanceof moment) {
+                debugger
                 $scope.searchDetail = searchDetail;
                 $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
                 $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));

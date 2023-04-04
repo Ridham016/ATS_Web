@@ -59,14 +59,14 @@
                                 allDay: false
                             };
                         });
-                        //$('.fc-day').each(function () {
-                        //    var eventsForDay = $scope.events.filter(function (event) {
-                        //        return moment(event.start).isSame($(this).data('date'), 'day');
-                        //    }.bind(this));
-                        //    if (eventsForDay.length > 0) {
-                        //        $(this).addClass('has-events');
-                        //    }
-                        //});
+                        $('.fc-day').each(function () {
+                            var eventsForDay = $scope.events.filter(function (event) {
+                                return moment(event.start).isSame($(this).data('date'), 'day');
+                            }.bind(this));
+                            if (eventsForDay.length > 0) {
+                                $(this).addClass('has-events');
+                            }
+                        });
                         var today = moment().startOf('day');
                         var events = $scope.events.filter(function (event) {
                             return moment(event.start).isSame(today, 'day');

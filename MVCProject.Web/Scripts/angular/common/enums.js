@@ -17,7 +17,13 @@ function CommonEnums() {
         return tempArray;
     };
 
-   
+    vm.NoticePeriod = {
+        0: 'Immediately',
+        1: '0 to 15 days',
+        2: '15 to 30 days',
+        3: '30 to 45 days',
+        4: '45 to 60 days'
+    };
 
     // Permission Level
     vm.PermissionLevel = {

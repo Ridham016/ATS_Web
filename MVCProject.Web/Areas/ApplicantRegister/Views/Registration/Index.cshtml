@@ -173,7 +173,7 @@
                                                 <label>
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
-                                                <p class="input-group">
+                                                @*<p class="input-group">
                                                     <input type="text" name="DateOfBirth" tabindex="3" id="DateOfBirth" class="form-control"
                                                            uib-datepicker-popup="{{defaultSettings.dateFormat}}"
                                                            ng-model="applicantDetailScope.DateOfBirth"
@@ -185,9 +185,9 @@
                                                             <i class="fa fa-calendar"></i>
                                                         </button>
                                                     </span>
-                                                </p>
+                                                </p>*@
                                                
-                                                @* <input type="date" max="{{today}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />*@
+                                                 <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
