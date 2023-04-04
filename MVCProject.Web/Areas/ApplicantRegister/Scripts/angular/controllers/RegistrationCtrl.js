@@ -312,15 +312,8 @@
                 $scope.filedata = response.data.Result;
             });
         }
-        $scope.selectOptions = [{
-            name: 'Fresher',
-            value: true
-        }, {
-            name: 'Experienced',
-            value: false
-        }];
         $scope.textInput = {
-            disabled: $scope.selectOptions[0].value
+            disabled: 'experienced'
         };
         $scope.downloadPDF = function (data, filename, mimeType) {
             debugger

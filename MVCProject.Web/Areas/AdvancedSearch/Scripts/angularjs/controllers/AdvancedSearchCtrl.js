@@ -17,6 +17,7 @@
             EndDate: null,
             daterange: { startDate: null, endDate: null }
         };
+        angular.extend($scope.searchDetail.daterange, { startDate: null, endDate: null });
         
         $scope.statusDetailScope = {
             StatusId: null,
@@ -88,29 +89,39 @@
                 EndDate: null,
                 daterange: { startDate: null, endDate: null }
             };
-            //$scope.searchDetail.daterange.startDate = null;
-            //$scope.searchDetail.daterange.endDate = null;
             $("#DateRange").val("");
             frmRegister.$setPristine();
         };
 
         $scope.advancedsearch = function (searchDetail) {
             debugger
-            console.log(searchDetail);
-            console.log(searchDetail.daterange.startDate, searchDetail.daterange.endDate);
-            if (searchDetail.daterange.startDate instanceof moment && searchDetail.daterange.endDate instanceof moment) {
-                debugger
-                $scope.searchDetail = searchDetail;
-                $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
-                $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
-                $scope.tableParams.reload();
+            //if (searchDetail.daterange.startDate && searchDetail.daterange.endDate) {
+            //    debugger
+            //    $scope.searchDetail = searchDetail;
+            //    $scope.searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+            //    $scope.searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+            //    $scope.tableParams.reload();
+            //}
+            //else {
+            //    $scope.searchDetail = searchDetail;
+            //    $scope.searchDetail.StartDate = null;
+            //    $scope.searchDetail.EndDate = null;
+            //    $scope.tableParams.reload();
+            //}
+            if (searchDetail.daterange.startDate && searchDetail.daterange.endDate) {
+                if (moment.isMoment(searchDetail.daterange.startDate) && moment.isMoment(searchDetail.daterange.endDate)) {
+                    searchDetail.daterange.startDate = null;
+                    searchDetail.daterange.endDate = null;
+                } else {
+                    searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+                    searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+                }
+            } else {
+                searchDetail.StartDate = null;
+                searchDetail.EndDate = null;
             }
-            else {
-                $scope.searchDetail = searchDetail;
-                $scope.searchDetail.StartDate = null;
-                $scope.searchDetail.EndDate = null;
-                $scope.tableParams.reload();
-            }
+            $scope.searchDetail = searchDetail;
+            $scope.tableParams.reload();
             
         };
         $scope.GetStatus = function () {

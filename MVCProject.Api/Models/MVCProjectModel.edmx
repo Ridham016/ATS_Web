@@ -790,7 +790,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -806,6 +806,10 @@
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -816,7 +820,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -831,6 +835,10 @@
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantById_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -841,7 +849,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -853,6 +861,10 @@
           <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
           </ComplexType>
         <ComplexType Name="USP_ATS_SingleApplicant_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -863,7 +875,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -881,6 +893,10 @@
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ReasonDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
@@ -1005,7 +1021,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -1019,6 +1035,10 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1029,7 +1049,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -1047,6 +1067,10 @@
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetStatus_Result">
           <Property Type="Int32" Name="StatusId" Nullable="false" />
@@ -1104,7 +1128,7 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
-          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="TotalExperience" Nullable="true" />
@@ -1122,6 +1146,10 @@
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetScheduleData_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1322,6 +1350,10 @@
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1351,6 +1383,10 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1377,6 +1413,10 @@
                 <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
                 <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
                 </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1409,6 +1449,10 @@
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1506,6 +1550,10 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1538,6 +1586,10 @@
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1610,6 +1662,10 @@
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

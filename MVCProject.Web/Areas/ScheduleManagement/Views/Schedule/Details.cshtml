@@ -80,8 +80,13 @@
                                         @Resource.OtherReason :
                                     </p>
                                 </td>
-                                <td ng-show="applicants.Reason != null && show==false"><p>{{applicants.Reason}}</p></td>
-                                <td ng-show="applicants.ReasonDescription != null"><p>{{applicants.ReasonDescription}}</p></td>
+                                <td>
+                                    <p>
+                                        <span ng-show="applicants.Reason != null">{{applicants.Reason}}</span> 
+                                        <span ng-show="applicants.Reason != null && applicants.ReasonDescription != null">, </span>
+                                        <span ng-show="applicants.ReasonDescription != null">{{applicants.ReasonDescription}}</span> 
+                                    </p>
+                                </td>
                             </tr>
                         </table>
                     </div>

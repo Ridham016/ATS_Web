@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-md-12">
                 <form name="frmRegister" ng-submit="advancedsearch(searchDetail)"
-                      novalidate>
+                      novalidate ng-init="searchDetail.daterange.startDate = null; searchDetail.daterange.endDate = null;">
                     <div class="row mb-3">
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                             <div class="form-group">

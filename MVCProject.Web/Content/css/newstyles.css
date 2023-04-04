@@ -40,6 +40,7 @@
 
 :root {
 	--primary-color: #0253cc;
+	--primary-color-rgb: 2, 83, 204;
 	--primary-color-tint: #00c5fb;
 	--secondary-color: #FF7A30;
 	--ats-left-col-width: 230px;
@@ -2861,7 +2862,7 @@ textarea.form-control-lg {
 	background-repeat: no-repeat;
 	background-position: right .9rem center;
 	background-size: 14px 10px;
-	border: 2px solid var(--ats-border-color);
+	border: 2px solid var(--ats-gray-300);
 	border-radius: .25rem;
 	-webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
 	transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
@@ -5987,7 +5988,7 @@ i.meeting-icon {
 		position: absolute;
 		top: 50%;
 		left: -32px;
-		background-color: var(--ats-gray-600);
+		background-color: var(--ats-danger);
 		animation: animate-dots 1s ease-in-out infinite;
 }
 

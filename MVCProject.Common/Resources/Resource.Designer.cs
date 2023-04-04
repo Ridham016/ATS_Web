@@ -178,6 +178,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address is Required.
+        /// </summary>
+        public static string ApplicantAddressRequired {
+            get {
+                return ResourceManager.GetString("ApplicantAddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload CV.
         /// </summary>
         public static string ApplicantCV {
@@ -615,6 +624,15 @@ namespace MVCProject.Common.Resources {
         public static string CurrentCompany {
             get {
                 return ResourceManager.GetString("CurrentCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Company is Required.
+        /// </summary>
+        public static string CurrentCompanyRequired {
+            get {
+                return ResourceManager.GetString("CurrentCompanyRequired", resourceCulture);
             }
         }
         
@@ -2104,6 +2122,60 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile Link 1.
+        /// </summary>
+        public static string ProfileLink1 {
+            get {
+                return ResourceManager.GetString("ProfileLink1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Link 1 is Required.
+        /// </summary>
+        public static string ProfileLink1Required {
+            get {
+                return ResourceManager.GetString("ProfileLink1Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Link 2.
+        /// </summary>
+        public static string ProfileLink2 {
+            get {
+                return ResourceManager.GetString("ProfileLink2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Link 2 is Required.
+        /// </summary>
+        public static string ProfileLink2Required {
+            get {
+                return ResourceManager.GetString("ProfileLink2Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Link 3.
+        /// </summary>
+        public static string ProfileLink3 {
+            get {
+                return ResourceManager.GetString("ProfileLink3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProfileLink 3 is Required.
+        /// </summary>
+        public static string ProfileLink3Required {
+            get {
+                return ResourceManager.GetString("ProfileLink3Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile Picture.
         /// </summary>
         public static string ProfilePicture {
@@ -2550,6 +2622,33 @@ namespace MVCProject.Common.Resources {
         public static string SiteRequired {
             get {
                 return ResourceManager.GetString("SiteRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skill.
+        /// </summary>
+        public static string Skill {
+            get {
+                return ResourceManager.GetString("Skill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skill Description.
+        /// </summary>
+        public static string SkillDescription {
+            get {
+                return ResourceManager.GetString("SkillDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skill Description is Required.
+        /// </summary>
+        public static string SkillDescriptionRequired {
+            get {
+                return ResourceManager.GetString("SkillDescriptionRequired", resourceCulture);
             }
         }
         

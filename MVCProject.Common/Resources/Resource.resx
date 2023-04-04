@@ -1107,4 +1107,34 @@
   <data name="Skill" xml:space="preserve">
     <value>Skill</value>
   </data>
+  <data name="SkillDescription" xml:space="preserve">
+    <value>Skill Description</value>
+  </data>
+  <data name="ApplicantAddressRequired" xml:space="preserve">
+    <value>Address is Required</value>
+  </data>
+  <data name="CurrentCompanyRequired" xml:space="preserve">
+    <value>Current Company is Required</value>
+  </data>
+  <data name="ProfileLink1" xml:space="preserve">
+    <value>Profile Link 1</value>
+  </data>
+  <data name="ProfileLink1Required" xml:space="preserve">
+    <value>Profile Link 1 is Required</value>
+  </data>
+  <data name="ProfileLink2" xml:space="preserve">
+    <value>Profile Link 2</value>
+  </data>
+  <data name="ProfileLink2Required" xml:space="preserve">
+    <value>Profile Link 2 is Required</value>
+  </data>
+  <data name="ProfileLink3" xml:space="preserve">
+    <value>Profile Link 3</value>
+  </data>
+  <data name="ProfileLink3Required" xml:space="preserve">
+    <value>ProfileLink 3 is Required</value>
+  </data>
+  <data name="SkillDescriptionRequired" xml:space="preserve">
+    <value>Skill Description is Required</value>
+  </data>
 </root>
