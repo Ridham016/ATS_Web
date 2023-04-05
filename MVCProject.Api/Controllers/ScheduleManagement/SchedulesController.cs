@@ -7,11 +7,17 @@
 namespace MVCProject.Api.Controllers.ScheduleManagement
 {
     using iTextSharp.text.log;
+    //using MailKit.Net.Smtp;
+    //using MailKit.Security;
+    //using MimeKit;
+    //using MimeKit.Text;
+    //using MVCProject.Api.Controllers.Common;
     using MVCProject.Api.Models;
     using MVCProject.Api.Models.FilterCriterias;
     using MVCProject.Api.Utilities;
     using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
+    //using Newtonsoft.Json;
     using NPOI.HSSF.Record;
     #region Namespaces
     using System;
@@ -21,6 +27,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
     using System.Net;
     using System.Net.Http;
     using System.Security.Cryptography.X509Certificates;
+    //using System.Text;
     using System.Web.Http;
     #endregion
     public class SchedulesController : BaseController
@@ -186,6 +193,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 ActionId = data.ActionId,
                 Description = data.Description,
                 InterviewerId = data.InterviewerId,
+                Mode = data.Mode,
                 IsActive = true,
                 EntryBy= "1",
                 EntryDate = DateTime.Now
@@ -203,6 +211,18 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
+            //var applicantemail = entities.USP_ATS_GetEmail(data.ActionId).SingleOrDefault();
+            //var email = new MimeMessage();
+            //email.From.Add(MailboxAddress.Parse("lelia.goodwin70@ethereal.email"));
+            //email.To.Add(MailboxAddress.Parse("dudhatharsh2701@gmail.com"));
+            //email.Subject = "Test Email";
+            //email.Body = new TextPart(TextFormat.Html) { Text = data.Description };
+
+            //using var smtp = new SmtpClient();
+            //smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
+            //smtp.Authenticate("lelia.goodwin70@ethereal.email", "JKNDCFBnK7RDe6HZDz");
+            //smtp.Send(email);
+            //smtp.Disconnect(true);
 
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }

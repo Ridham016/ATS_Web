@@ -48,6 +48,7 @@
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="Mode" Type="int" />
         </EntityType>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -313,6 +314,9 @@
         <Function Name="USP_ATS_ApplicantTimeLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_ApplicantTimeLine_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_CheckStatusValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatus" Type="int" Mode="In" />
           <Parameter Name="NextStatus" Type="int" Mode="In" />
@@ -325,6 +329,9 @@
         </Function>
         <Function Name="USP_ATS_GetButton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StatusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_GetEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_GetLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
@@ -516,6 +523,12 @@
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="USP_ATS_ApplicantTimeLine_APP" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantTimeLine_APP_Result1)">
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_GetEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetEmail_Result)">
+          <Parameter Name="ActionId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -672,6 +685,7 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="MVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_AdditionalInformation" ToRole="ATS_ActionHistory" />
           <NavigationProperty Name="ATS_Interviewer" Relationship="MVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_AdditionalInformation" ToRole="ATS_Interviewer" />
+          <Property Name="Mode" Type="Int32" />
         </EntityType>
         <Association Name="FK__ATS_Actio__Appli__40C49C62">
           <End Type="MVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="0..1" />
@@ -1104,6 +1118,7 @@
           <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Mode" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_FilesOfApplicant_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1160,6 +1175,74 @@
           <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Mode" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_ApplicantTimeline_APP_Result">
+          <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalExperience" Nullable="true" />
+          <Property Type="Int32" Name="DetailedExperience" Nullable="true" />
+          <Property Type="Decimal" Name="CurrentCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="ExpectedCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="NoticePeriod" Nullable="true" />
+          <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="ReasonId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_ApplicantTimeLine_APP_Result1">
+          <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalExperience" Nullable="true" />
+          <Property Type="Int32" Name="DetailedExperience" Nullable="true" />
+          <Property Type="Decimal" Name="CurrentCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="ExpectedCTC" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="NoticePeriod" Nullable="true" />
+          <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Link1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Link3" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="ReasonId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetEmail_Result">
+          <Property Type="String" Name="ApplicantEmail" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1309,6 +1392,7 @@
           <EntitySetMapping Name="ATS_AdditionalInformation">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_AdditionalInformation">
               <MappingFragment StoreEntitySet="ATS_AdditionalInformation">
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
@@ -1612,6 +1696,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1680,6 +1765,50 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantTimeLine_APP" FunctionName="MVCProjectModel.Store.USP_ATS_ApplicantTimeLine_APP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ApplicantTimeLine_APP_Result1">
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+                <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+                <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+                <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+                <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+                <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+                <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+                <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="Link1" ColumnName="Link1" />
+                <ScalarProperty Name="Link2" ColumnName="Link2" />
+                <ScalarProperty Name="Link3" ColumnName="Link3" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetEmail" FunctionName="MVCProjectModel.Store.USP_ATS_GetEmail" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetEmail_Result">
+                <ScalarProperty Name="ApplicantEmail" ColumnName="ApplicantEmail" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

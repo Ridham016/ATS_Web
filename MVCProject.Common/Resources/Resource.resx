@@ -865,7 +865,7 @@
     <value>Email</value>
   </data>
   <data name="ApplicantFirstName" xml:space="preserve">
-    <value>Firstname</value>
+    <value>First Name</value>
   </data>
   <data name="ApplicantPhone" xml:space="preserve">
     <value>Phone</value>
@@ -982,10 +982,10 @@
     <value>Interviewer Phone is Required</value>
   </data>
   <data name="ApplicantLastName" xml:space="preserve">
-    <value>Lastname</value>
+    <value>Last Name</value>
   </data>
   <data name="ApplicantMiddleName" xml:space="preserve">
-    <value>Middlename</value>
+    <value>Middle Name</value>
   </data>
   <data name="LastNameRequired" xml:space="preserve">
     <value>Lastname is Required</value>
@@ -1012,10 +1012,10 @@
     <value>Schedule Date &amp; Time</value>
   </data>
   <data name="ScheduleLink" xml:space="preserve">
-    <value>Link</value>
+    <value>Interview Link</value>
   </data>
   <data name="ScheduleLinkRequired" xml:space="preserve">
-    <value>Schedule Link is Required</value>
+    <value>Interview Link is Required</value>
   </data>
   <data name="OtherReasonRequired" xml:space="preserve">
     <value>Other Reason is Required</value>
@@ -1116,25 +1116,40 @@
   <data name="CurrentCompanyRequired" xml:space="preserve">
     <value>Current Company is Required</value>
   </data>
-  <data name="ProfileLink1" xml:space="preserve">
-    <value>Profile Link 1</value>
+  <data name="PortfolioLink" xml:space="preserve">
+    <value>Portfolio Link</value>
   </data>
   <data name="ProfileLink1Required" xml:space="preserve">
-    <value>Profile Link 1 is Required</value>
+    <value>Portfolio Link is Required</value>
   </data>
-  <data name="ProfileLink2" xml:space="preserve">
-    <value>Profile Link 2</value>
+  <data name="LinkedinLink" xml:space="preserve">
+    <value>Linkedin Profile Link</value>
   </data>
   <data name="ProfileLink2Required" xml:space="preserve">
-    <value>Profile Link 2 is Required</value>
+    <value>Linkedin Profile is Required</value>
   </data>
-  <data name="ProfileLink3" xml:space="preserve">
-    <value>Profile Link 3</value>
+  <data name="OtherLink" xml:space="preserve">
+    <value>Other Links</value>
   </data>
   <data name="ProfileLink3Required" xml:space="preserve">
-    <value>ProfileLink 3 is Required</value>
+    <value>Other Links is Required</value>
   </data>
   <data name="SkillDescriptionRequired" xml:space="preserve">
     <value>Skill Description is Required</value>
+  </data>
+  <data name="ModeOfInterview" xml:space="preserve">
+    <value>Mode of Interview</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Description is Required</value>
+  </data>
+  <data name="NameOfInterviewer" xml:space="preserve">
+    <value>Name of Interviewer</value>
+  </data>
+  <data name="NameOfInterviewerRequired" xml:space="preserve">
+    <value>Name of Interviewer is Required</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>

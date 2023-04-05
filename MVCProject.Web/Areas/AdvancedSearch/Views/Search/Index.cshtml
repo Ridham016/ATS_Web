@@ -144,8 +144,8 @@
                                                                     'status-not-match': applicant.StatusId == 3,
                                                                     'status-call-schedule': applicant.StatusId == 4,
                                                                     'status-other-reason': applicant.StatusId == 8,}">
-                                                    {{applicant.StatusName}}<span ng-show="applicant.StatusId == 4"> for L{{applicant.Level}}</span>
-                                                    <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> for L{{applicant.Level+1}}</span>
+                                                    <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> L{{applicant.Level+1}}</span><span ng-show="applicant.StatusId == 4">L{{applicant.Level}}</span> {{applicant.StatusName}}
+                                                    
                                                 </span>
                                             </td>
                                             <td data-title="'@MVCProject.Common.Resources.Resource.EntryDate'" header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">

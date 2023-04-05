@@ -250,7 +250,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Firstname.
+        ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string ApplicantFirstName {
             get {
@@ -259,7 +259,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lastname.
+        ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string ApplicantLastName {
             get {
@@ -268,7 +268,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Middlename.
+        ///   Looks up a localized string similar to Middle Name.
         /// </summary>
         public static string ApplicantMiddleName {
             get {
@@ -813,6 +813,15 @@ namespace MVCProject.Common.Resources {
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description is Required.
+        /// </summary>
+        public static string DescriptionRequired {
+            get {
+                return ResourceManager.GetString("DescriptionRequired", resourceCulture);
             }
         }
         
@@ -1573,6 +1582,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Linkedin Profile Link.
+        /// </summary>
+        public static string LinkedinLink {
+            get {
+                return ResourceManager.GetString("LinkedinLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
@@ -1816,6 +1834,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mode of Interview.
+        /// </summary>
+        public static string ModeOfInterview {
+            get {
+                return ResourceManager.GetString("ModeOfInterview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modified By.
         /// </summary>
         public static string ModifiedBy {
@@ -1866,6 +1893,24 @@ namespace MVCProject.Common.Resources {
         public static string MySOP {
             get {
                 return ResourceManager.GetString("MySOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of Interviewer.
+        /// </summary>
+        public static string NameOfInterviewer {
+            get {
+                return ResourceManager.GetString("NameOfInterviewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of Interviewer is Required.
+        /// </summary>
+        public static string NameOfInterviewerRequired {
+            get {
+                return ResourceManager.GetString("NameOfInterviewerRequired", resourceCulture);
             }
         }
         
@@ -1978,6 +2023,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other Links.
+        /// </summary>
+        public static string OtherLink {
+            get {
+                return ResourceManager.GetString("OtherLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reason.
         /// </summary>
         public static string OtherReason {
@@ -2086,6 +2140,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Portfolio Link.
+        /// </summary>
+        public static string PortfolioLink {
+            get {
+                return ResourceManager.GetString("PortfolioLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prefered Job Location.
         /// </summary>
         public static string PreferedLocation {
@@ -2122,16 +2185,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile Link 1.
-        /// </summary>
-        public static string ProfileLink1 {
-            get {
-                return ResourceManager.GetString("ProfileLink1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile Link 1 is Required.
+        ///   Looks up a localized string similar to Portfolio Link is Required.
         /// </summary>
         public static string ProfileLink1Required {
             get {
@@ -2140,16 +2194,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile Link 2.
-        /// </summary>
-        public static string ProfileLink2 {
-            get {
-                return ResourceManager.GetString("ProfileLink2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile Link 2 is Required.
+        ///   Looks up a localized string similar to Linkedin Profile is Required.
         /// </summary>
         public static string ProfileLink2Required {
             get {
@@ -2158,16 +2203,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile Link 3.
-        /// </summary>
-        public static string ProfileLink3 {
-            get {
-                return ResourceManager.GetString("ProfileLink3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ProfileLink 3 is Required.
+        ///   Looks up a localized string similar to Other Links is Required.
         /// </summary>
         public static string ProfileLink3Required {
             get {
@@ -2509,7 +2545,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Link.
+        ///   Looks up a localized string similar to Interview Link.
         /// </summary>
         public static string ScheduleLink {
             get {
@@ -2518,7 +2554,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schedule Link is Required.
+        ///   Looks up a localized string similar to Interview Link is Required.
         /// </summary>
         public static string ScheduleLinkRequired {
             get {
@@ -2748,6 +2784,15 @@ namespace MVCProject.Common.Resources {
         public static string StatusName {
             get {
                 return ResourceManager.GetString("StatusName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

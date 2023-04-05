@@ -92,6 +92,39 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
         }
 
         [HttpGet]
+        public ApiResponse ApplicantTimeline_APP(int ApplicantId)
+        {
+            var advancedsearch = this.entities.USP_ATS_ApplicantTimeLine_APP(ApplicantId).Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                FirstName = g.FirstName,
+                MiddleName = g.MiddleName,
+                LastName = g.LastName,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                StatusId = g.StatusId,
+                StatusName = g.StatusName,
+                Level = g.Level,
+                Reason = g.Reason,
+                EntryDate = g.EntryDate,
+            }).AsEnumerable();
+            return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
+        }
+
+        [HttpGet]
         public ApiResponse GetStatus()
         {
             var status = this.entities.USP_ATS_GetStatus().Select(g => new

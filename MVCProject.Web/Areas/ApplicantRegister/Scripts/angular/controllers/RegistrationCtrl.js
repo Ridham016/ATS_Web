@@ -16,7 +16,10 @@
     function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $timeout, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.NoticePeriod = CommonEnums.NoticePeriod;
-        console.log($scope.NoticePeriod);
+        $scope.files = [];
+        $scope.Selectedfile = null;
+        $scope.Files = null;
+
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -32,7 +35,7 @@
             DetailedExperience: '',
             CurrentCTC: '',
             ExpectedCTC: '',
-            NoticePeriod: '',
+            NoticePeriod: '0',
             CurrentLocation: '',
             PreferedLocation: '',
             ReasonForChange: '',
@@ -43,6 +46,19 @@
             IsActive: true
         };
 
+        $scope.Check = function (textInput) {
+            if (textInput = 'fresher') {
+                $scope.applicantDetailScope = {
+                    CurrentCompany: '',
+                    CurrentDesignation: '',
+                    TotalExperience: '',
+                    DetailedExperience: '',
+                    CurrentCTC: '',
+                    CurrentLocation: '',
+                    ReasonForChange: '',
+                };
+            }
+        }
 
         checkValidationRules();
 
@@ -58,18 +74,6 @@
             })
         }
 
-        $scope.dateOptions = {
-            maxDate: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
-            datepickerMode: 'day'
-        };
-        $scope.setDefaultDate = function () {
-            $scope.applicantDetailScope.DateOfBirth = new Date(new Date().setFullYear(new Date().getFullYear() - 18));
-        }
-        $scope.isOpen = false;
-
-        //$scope.AllData = true;
-        $scope.today = new Date();
-
         $scope.getApplicants = function (IsGetAll) {
             $scope.IsGetAll = IsGetAll;
             $scope.tableParams.reload();
@@ -82,12 +86,6 @@
             });
         };
 
-        //var table = $('#datatable').DataTable({
-        //    fixedColumns: {
-        //        left: 2,
-        //        right: 2
-        //    }
-        //});
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,
@@ -138,11 +136,6 @@
                 }
             }
         });
-        //$scope.getApplicantList = function (isGetAll) {
-        //    RegistrationService.GetApplicantList(isGetAll).then(function (res) {
-        //        $scope.applicants = res.data.Result;
-        //    });
-        //}
 
         $scope.ClearFormData = function (frmRegister) {
             $scope.applicantDetailScope = {
@@ -160,7 +153,7 @@
                 DetailedExperince: null,
                 CurrentCTC: null,
                 ExpectedCTC: null,
-                NoticePeriod: null,
+                NoticePeriod: '0',
                 CurrentLocation: '',
                 PreferedLocation: '',
                 ReasonForChange: '',
@@ -173,6 +166,7 @@
             $("#file").val("");
             $scope.files = null;
             $scope.Selectedfile = null;
+            $scope.Files = null;
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
             $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');
@@ -180,40 +174,52 @@
             $("#FirstName").focus();
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
-            debugger
-            applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
-            RegistrationService.Register(applicantDetailScope).then(function (res) {
-                if (res) {
-                    var applicants = res.data;
-                    $scope.applicantId = res.data.Result;
-                    debugger
-                    if ($scope.filedata) {
-                         RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                             if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
-                                 toastr.success(applicants.Message, successTitle);
-                                 $scope.ClearFormData(frmRegister);
-                                 $scope.tableParams.reload();
-                             } else if (applicants.MessageType == messageTypes.Error) {// Error
-                                 toastr.error(applicants.Message, errorTitle);
-                             } else if (applicants.MessageType == messageTypes.Warning) {// Warning
-                                 toastr.warning(applicants.Message, warningTitle);
-                             }
-                    })
-                    }
-                    else {
-                        if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
-                            toastr.success(applicants.Message, successTitle);
-                            $scope.ClearFormData(frmRegister);
-                            $scope.tableParams.reload();
-                        } else if (applicants.MessageType == messageTypes.Error) {// Error
-                            toastr.error(applicants.Message, errorTitle);
-                        } else if (applicants.MessageType == messageTypes.Warning) {// Warning
-                            toastr.warning(applicants.Message, warningTitle);
+            if (!$scope.frmRegister.$valid) {
+                debugger
+                angular.forEach($scope.frmRegister.$error.required, function (field) {
+                    field.$setTouched();
+                    field.$setValidity('required', true);
+                });
+                toastr.error('Please Check Form for errors', errorTitle)
+                return false;
+            }
+            else {
+                debugger
+                applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
+                RegistrationService.Register(applicantDetailScope).then(function (res) {
+                    if (res) {
+                        var applicants = res.data;
+                        $scope.applicantId = res.data.Result;
+                        debugger
+                        if ($scope.filedata) {
+                            RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
+                                if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
+                                    toastr.success(applicants.Message, successTitle);
+                                    $scope.ClearFormData(frmRegister);
+                                    $scope.tableParams.reload();
+                                } else if (applicants.MessageType == messageTypes.Error) {// Error
+                                    toastr.error(applicants.Message, errorTitle);
+                                } else if (applicants.MessageType == messageTypes.Warning) {// Warning
+                                    toastr.warning(applicants.Message, warningTitle);
+                                }
+                            })
+                        }
+                        else {
+                            if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
+                                toastr.success(applicants.Message, successTitle);
+                                $scope.ClearFormData(frmRegister);
+                                $scope.tableParams.reload();
+                            } else if (applicants.MessageType == messageTypes.Error) {// Error
+                                toastr.error(applicants.Message, errorTitle);
+                            } else if (applicants.MessageType == messageTypes.Warning) {// Warning
+                                toastr.warning(applicants.Message, warningTitle);
+                            }
                         }
                     }
-}
-                
-            });
+
+                });
+            }
+            
         }
 
         $scope.deleteFile = function (FileId) {
@@ -232,8 +238,12 @@
 
         $scope.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0];
 
+
         $scope.$watch('files', function (newVal, oldVal) {
-            $scope.getFiles($scope.applicantDetailScope.ApplicantId);
+            if (newVal !== oldVal) { 
+                $scope.Selectedfile = $scope.files[0];
+                console.log($scope.files);
+            }
         }, true);
 
         $scope.getFiles = function (ApplicantId) {
@@ -250,20 +260,20 @@
                     }
                 }
                 $rootScope.isAjaxLoadingChild = false;
-                $scope.files = res.data.Result;
                 $scope.Files = $scope.files.length;
-                console.log($scope.Files);
             })
         }
 
         $scope.EditApplicantDetails = function (ApplicantId) {
             debugger
+            $scope.getFiles(ApplicantId);
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
                 debugger
                 if (res) {
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
                         $scope.applicantDetailScope = res.data.Result;
+                        $scope.applicantDetailScope.NoticePeriod = JSON.stringify($scope.applicantDetailScope.NoticePeriod);
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
@@ -313,7 +323,7 @@
             });
         }
         $scope.textInput = {
-            disabled: 'experienced'
+            disabled: ''
         };
         $scope.downloadPDF = function (data, filename, mimeType) {
             debugger

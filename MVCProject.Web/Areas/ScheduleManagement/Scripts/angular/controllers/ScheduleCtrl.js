@@ -2,18 +2,21 @@
     'use strict';
 
     angular.module("MVCApp").controller('ScheduleCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', '$rootScope', '$location','$window', 'ScheduleService', ScheduleCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonEnums', '$rootScope', '$location','$window', 'ScheduleService', ScheduleCtrl
     ]);
 
-    function ScheduleCtrl($scope, ngTableParams, CommonFunctions, $rootScope, $location, $window, ScheduleService) {
+    function ScheduleCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $rootScope, $location, $window, ScheduleService) {
         var applicantDetailParams = {};
+        $scope.Mode = CommonEnums.Mode;
         $scope.scheduleDetailScope = {
             Id: 0,
             ScheduleDateTime: null,
             ScheduleLink: '',
-            Description : '',
+            Description: '',
+            Mode: '',
             IsActive: true
         };
+        console.log($scope.scheduleDetailScope.Mode);
 
         $scope.Reason = {
             ReasonId: '',

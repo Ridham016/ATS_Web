@@ -68,13 +68,15 @@
                                                         'status-registered': applicants.StatusId == 1,
                                                         'status-shortlist': applicants.StatusId == 2,
                                                         'status-call-schedule': applicants.StatusId == 4,
-                                                        'status-other-reason': applicants.StatusId == 8,}">{{applicants.StatusName}}<span ng-show="applicants.StatusId == 4"> for L{{Level}}</span>
-                                                                                                                                    <span ng-show="applicants.StatusId == 2 || applicants.StatusId == 8"> for L{{Level+1}}</span></span>
+                                                        'status-other-reason': applicants.StatusId == 8,}">
+                                            <span ng-show="applicants.StatusId == 4">L{{Level}}</span>
+                                            <span ng-show="applicants.StatusId == 2 || applicants.StatusId == 8">L{{Level+1}}</span> {{applicants.StatusName}}
+                                        </span>
                                         
                                     </p>
                                 </td>
                             </tr>
-                            <tr ng-show="applicants.Reason != null || applicants.ReasonDescription != null">
+                            <tr ng-show="(applicants.StatusId == 8) && (applicants.Reason != null || applicants.ReasonDescription != null)">
                                 <td class="details-schedule-label">
                                     <p class="me-2 fw-bold">
                                         @Resource.OtherReason :
@@ -99,11 +101,11 @@
                                        'btn-shortlist' : h.ButtonId == 1,
                                        'btn-not-match' : h.ButtonId == 2,
                                        'btn-reject' : h.ButtonId == 6}">
-                        {{h.ButtonName}}<span ng-show="h.NextStatusId == 2"> for L{{Level+1}}</span>
+                        {{h.ButtonName}}
                     </button>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        <span ng-show="h.StatusId == 8">Re</span>{{h.ButtonName}} for L{{Level+1}}
+                        {{h.ButtonName}}
                     </button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -119,9 +121,19 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label>
+                                                        @Resource.ModeOfInterview <span class="required-field">*</span>
+                                                    </label>
+                                                    <select class="form-select mb-2" ng-model="scheduleDetailScope.Mode">
+                                                        <option value="" selected disabled>Select Mode</option>
+                                                        <option ng-repeat="(key,value) in Mode" value="{{key}}">{{value}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
                                                         @Resource.ScheduleDateTime <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="datetime-local" class="form-control datepicker mb-2" ng-focus="true" name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
+                                                    <input type="datetime-local" class="form-control mb-2"
+                                                           name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
@@ -130,7 +142,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        @Resource.Interviewer <span class="required-field">*</span> <br />
+                                                        @Resource.NameOfInterviewer <span class="required-field">*</span> <br />
                                                     </label>
                                                     <select class="form-control mb-2" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
                                                         <option value="" disabled selected>Select Interviewer</option>
@@ -139,29 +151,31 @@
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
-                                                        <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
+                                                        <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.NameOfInterviewerRequired</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         @Resource.ScheduleLink <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control mb-2" ng-focus="true" name="ScheduleLink" ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" required>
+                                                    <input type="text" class="form-control mb-2" ng-disabled="scheduleDetailScope.Mode == 0" name="ScheduleLink" 
+                                                           ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" ng-required="scheduleDetailScope.Mode == 1">
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.ScheduleLink.$dirty && frmSchedule.ScheduleLink.$invalid">
-                                                        <span data-ng-show="frmSchedule.ScheduleLink.$error.required">@Resource.ScheduleLink</span>
+                                                        <span data-ng-show="frmSchedule.ScheduleLink.$error.required">@Resource.ScheduleLinkRequired</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         @Resource.Description <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" ng-focus="true" name="Description" ng-model="scheduleDetailScope.Description" placeholder="Enter Description" required>
+                                                    <textarea class="form-control" name="Description" ng-model="scheduleDetailScope.Description" placeholder="Enter Description..."
+                                                              rows="5" required></textarea>
                                                     <div class="c">
                                                     </div>
                                                     <div class="label label-danger" data-ng-show="frmSchedule.Description.$dirty && frmSchedule.Description.$invalid">
-                                                        <span data-ng-show="frmSchedule.Description.$error.required">@Resource.Description</span>
+                                                        <span data-ng-show="frmSchedule.Description.$error.required">@Resource.DescriptionRequired</span>
                                                     </div>
                                                 </div>
 
@@ -180,7 +194,7 @@
                     </div>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-other-reason me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
                             @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}<span> for L{{Level+1}}</span>
+                        {{h.ButtonName}}
                     </button>
                     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

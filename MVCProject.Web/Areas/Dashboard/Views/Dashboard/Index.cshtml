@@ -5,7 +5,9 @@
 <style>
     .has-events {
         background-color: #8fdf82;
-        opacity: 0.3;
+    }
+    .height{
+        max-height: 74vh;
     }
 </style>
 
@@ -22,15 +24,23 @@
         </div>
         <div class="col-md-4">
             <div class="schedule-event-details">
-                <div class="card alert overflow-auto">
-                    <h2 class="mt-0 fw-normal meeting-title" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h2>
+                <div class="card alert overflow-auto height">
+                    <h2 class="mt-0 mb-3 fw-normal meeting-title" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h2>
                     <p ng-show="length == 0">No Meetings Scheduled</p>
-                    <div ng-show="length != 0" ng-repeat="SelectedEvent in SelectedEvents">
-                        <div class="card event-card">
+                    <div ng-show="length != 0">
+                        <div class="card event-card" ng-repeat="SelectedEvent in SelectedEvents">
                             <div class="card-body">
                                 <p class="mb-2"><span><i class="time-icon fa fa-clock-o"></i></span><span class="event-detail">{{SelectedEvent.start | date : 'd/M/yy h:mm a'}} - {{SelectedEvent.end | date : 'd/M/yy h:mm a'}}</span></p>
                                 <p class="mb-2"><span><i class="interview-icon fa fa-user"></i></span><span class="event-detail">Meeting with <span class="fw-bold">{{SelectedEvent.Applicant}}</span></span></p>
-                                <p class="mb-0"><span class="event-detail"><i class="meeting-icon ti-agenda"></i> {{SelectedEvent.Interviewer}}</span></p>
+                                <p class="mb-2"><span class="event-detail"><i class="meeting-icon ti-agenda"></i> {{SelectedEvent.Interviewer}}</span></p>
+                                <p class="mb-0">
+                                    <span class="event-detail">
+                                        <i class="interview-icon fa fa-globe"></i> 
+                                        <span ng-repeat="(key,value) in Mode">
+                                            <span ng-if="key == SelectedEvent.Mode">{{value}}</span>
+                                        </span>
+                                    </span>
+                                </p>
                             </div>
                         </div>
                     </div>

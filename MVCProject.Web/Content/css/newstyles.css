@@ -2606,7 +2606,7 @@ progress {
 	font-size: 0.9rem;
 	font-weight: 400;
 	line-height: 1.5;
-	color: var(--ats-body-color);
+	color: var(--ats-black);
 	background-color: var(--ats-input-bg-custom);
 	background-clip: padding-box;
 	border: 2px solid var(--ats-gray-300);
@@ -2672,12 +2672,17 @@ progress {
 }
 
 .form-control::placeholder {
-	color: #4d4d4d;
+	color: #6c757d;
+	opacity: 1
+}
+
+.form-select::placeholder {
+	color: #ddd;
 	opacity: 1
 }
 
 .form-control:disabled {
-	background-color: var(--ats-gray-200);
+	background-color: var(--ats-gray-400);
 	opacity: 1
 }
 

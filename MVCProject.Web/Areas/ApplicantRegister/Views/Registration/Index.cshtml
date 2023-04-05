@@ -4,15 +4,40 @@
 }
 
 <style>
+
+    .frozen-columns {
+        table-layout: fixed;
+    }
+    
+    .frozen-columns tbody td:last-child {
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        background-color: #f6f7f9 !important;
+    }
+
+    .frozen-columns thead tr th:last-child .th-inner,
+    .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index:1;
+        background: var(--primary-color) !important;
+    }
+    .frozen-columns thead tr th:nth-last-child(2) .th-inner{
+        right: 70px;
+    }
+    .frozen-columns tbody td:nth-last-child(2) {
+        position: sticky;
+        right: 70px;
+        z-index: 2;
+        background-color: #f6f7f9 !important;
+    }
+
     .colSrno {
         width: 60px !important;
         min-width: 60px !important;
         max-width: 60px !important;
-       /* position: sticky;
-        left: 0;
-        top: auto;
-        z-index: 1;
-        background-color: white !important;*/
     }
 
     .colPosition {
@@ -109,7 +134,7 @@
                                                 <label>
                                                     @Resource.ApplicantMiddleName
                                                 </label>
-                                                <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" required placeholder="Enter Middle Name" maxlength="250">
+                                                <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" placeholder="Enter Middle Name" maxlength="250">
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
@@ -174,7 +199,8 @@
                                                     </span>
                                                 </p>*@
                                                
-                                                 <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}" class="form-control" placeholder="Enter Date of Birth" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                                 <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                        class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
@@ -186,14 +212,9 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ApplicantAddress<span class="required-field">*</span>
+                                                    @Resource.ApplicantAddress
                                                 </label>
-                                                <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address" required></textarea>
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.Address.$dirty && frmRegister.Address.$invalid">
-                                                    <span data-ng-show="frmRegister.Address.$error.required">@Resource.ApplicantAddressRequired</span>
-                                                </div>
+                                                <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address" ></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -228,8 +249,9 @@
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                                             <div class="form-group">
                                                 <label>Status</label>
-                                                <select class="form-select" ng-model="textInput.disabled" required>
-                                                    <option value="experienced" selected> Experienced</option>
+                                                <select class="form-select" ng-model="textInput.disabled" required> 
+                                                    <option value="" selected disabled>Select Status</option>
+                                                    <option value="experienced"> Experienced</option>
                                                     <option value="fresher"> Fresher</option>
                                                 </select>
                                             </div>
@@ -305,7 +327,7 @@
                                                        ng-model="applicantDetailScope.CurrentCTC" ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$invalid">
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid">
                                                     <span data-ng-show="frmRegister.CurrentCTC.$error.pattern">@Resource.ValidCTC</span>
                                                     <span data-ng-show="frmRegister.CurrentCTC.$error.required">@Resource.CurrentCTCRequired</span>
                                                 </div>
@@ -321,7 +343,7 @@
                                                        name="ReasonForChange" ng-model="applicantDetailScope.ReasonForChange" ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.ReasonForChange.$invalid">
+                                                <div class="label label-danger" data-ng-show="frmRegister.ReasonForChange.$dirty && frmRegister.ReasonForChange.$invalid">
                                                     <span data-ng-show="frmRegister.ReasonForChange.$error.required">@Resource.ReasonForChangeRequired</span>
                                                 </div>
                                             </div>
@@ -387,7 +409,7 @@
                                                     @Resource.NoticePeriod<span class="required-field">*</span>
                                                 </label>
                                                 <select class="form-select" ng-model="applicantDetailScope.NoticePeriod" required>
-                                                    <option disabled value="" selected>Select Option</option>
+                                                    <option disabled value="0" selected>Select Option</option>
                                                     <option ng-repeat="(key,value) in NoticePeriod" value="{{key}}">{{value}}</option>
                                                 </select>
                                                 <div class="c">
@@ -397,30 +419,25 @@
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ProfileLink1<span class="required-field">*</span>
+                                                    @Resource.PortfolioLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Profile Link 1" name="ProfileLink1" ng-model="applicantDetailScope.Link1" required/>
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.ProfileLink1.$dirty && frmRegister.ProfileLink1.$invalid">
-                                                    <span data-ng-show="frmRegister.ProfileLink1.$error.required">@Resource.ProfileLink1Required</span>
-                                                </div>
+                                                <input type="text" class="form-control" placeholder="Enter Portfolio Link" name="Link1" ng-model="applicantDetailScope.Link1" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ProfileLink2
+                                                    @Resource.LinkedinLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Profile Link 2" name="ProfileLink2" ng-model="applicantDetailScope.Link2" />
+                                                <input type="text" class="form-control" placeholder="Enter Linkedin Link" name="Link2" ng-model="applicantDetailScope.Link2" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
-                                                    @Resource.ProfileLink3
+                                                    @Resource.OtherLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Profile Link 3" name="ProfileLink3" ng-model="applicantDetailScope.Link3" />
+                                                <input type="text" class="form-control" placeholder="Enter Other Links" name="Link3" ng-model="applicantDetailScope.Link3" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -439,7 +456,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3 mb-4" ng-show="Files != 0">
+                                    <div class="row mt-3 mb-4" ng-show="Files != null">
                                         <div class="col-md-4">
                                             <div class="card p-3">
                                                 <h4 class="card-title">
@@ -479,7 +496,7 @@
                     <div class="row mt-3 mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" @*ng-disabled="frmRegister.$invalid"*@>
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-info waves-effect w-md waves-light m-b-5"
@@ -525,7 +542,7 @@
                         <div class="form-group">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="510">
-                                    <table ng-table="tableParams" id="datatable" class="table table-bordered table-hover">
+                                    <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered table-hover">
                                         <tbody>
                                             <tr ng-repeat="h in applicants">
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
@@ -568,7 +585,9 @@
                                                     {{h.ExpectedCTC}}
                                                 </td>
                                                 <td data-title="'@Resource.NoticePeriod'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.NoticePeriod}}
+                                                    <span ng-repeat="(key,value) in NoticePeriod">
+                                                        <span ng-if="key == h.NoticePeriod">{{value}}</span>
+                                                    </span>
                                                 </td>
                                                 <td data-title="'@Resource.CurrentLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.CurrentLocation}}
@@ -582,13 +601,13 @@
                                                 <td data-title="'@Resource.SkillDescription'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.SkillDescription}}
                                                 </td>
-                                                <td data-title="'@Resource.ProfileLink1'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.PortfolioLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Link1}}
                                                 </td>
-                                                <td data-title="'@Resource.ProfileLink2'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.LinkedinLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Link2}}
                                                 </td>
-                                                <td data-title="'@Resource.ProfileLink3'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.OtherLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Link3}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
@@ -603,7 +622,7 @@
                                                 </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
-                                                       ng-click="EditApplicantDetails(h.ApplicantId);getFiles(h.ApplicantId)">
+                                                       ng-click="EditApplicantDetails(h.ApplicantId)">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>

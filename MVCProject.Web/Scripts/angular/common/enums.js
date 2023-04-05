@@ -18,11 +18,16 @@ function CommonEnums() {
     };
 
     vm.NoticePeriod = {
-        0: 'Immediately',
-        1: '0 to 15 days',
-        2: '15 to 30 days',
-        3: '30 to 45 days',
-        4: '45 to 60 days'
+        1: 'Immediately',
+        2: '0 to 15 days',
+        3: '15 to 30 days',
+        4: '30 to 45 days',
+        5: '45 to 60 days'
+    };
+
+    vm.Mode = {
+        0: 'Offline',
+        1: 'Online'
     };
 
     // Permission Level
