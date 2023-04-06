@@ -25,8 +25,8 @@
                 userdata = userdata.split('░');
                 if (userdata.length > 1) {
                     $scope.loginFormData = {
-                        UserName: userdata[0],
-                        UserPassword: userdata[1],
+                        Email: userdata[0],
+                        Password: userdata[1],
                         Remember: true
                     }
                 }
@@ -48,23 +48,31 @@
                 }
                 return;
             }
+            debugger
             Login.TimeZoneMinutes = CommonFunctions.GetTimeZoneMinutes();
+            Login.Password = CommonFunctions.EncryptData(Login.Password);
+            console.log(Login.Password);
             AccountService.DoLogin(Login).then(function (res) {
+                debugger
                 if (res) {
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success && data.IsAuthenticated) {
                         CommonService.CreateSession(data.Result).then(function (response) {
+                            debugger
+                            console.log(data.Result);
                             $rootScope.isAjaxLoadingChild = true;
                             if (Login.Remember) {
-                                var userdata = Login.UserName + "░" + Login.UserPassword;
+                                var userdata = Login.Email + "░" + Login.Password;
                                 userdata = CommonFunctions.EncryptData(userdata);
                                 CommonFunctions.SetCookie("REM", userdata);
                             } else {
                                 CommonFunctions.SetCookie("REM", "");
                             }
+                            debugger
                             CommonFunctions.RedirectToDefaultUrl();
                         });
                     } else {
+                        Login.Password = CommonFunctions.DecryptData(Login.Password);
                         $("#txtUserName").focus();
                         toastr.error(data.Message, errorTitle);
                     }

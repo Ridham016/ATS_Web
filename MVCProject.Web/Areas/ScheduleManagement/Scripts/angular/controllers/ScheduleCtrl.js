@@ -16,7 +16,8 @@
             Mode: '',
             IsActive: true
         };
-        console.log($scope.scheduleDetailScope.Mode);
+
+        $scope.minDate = new Date().toISOString().slice(0, 16);
 
         $scope.Reason = {
             ReasonId: '',
@@ -70,25 +71,45 @@
             debugger
             ScheduleService.GetButtons(StatusId).then(function (res) {
                 $scope.buttons = res.data.Result;
+                console.log($scope.buttons);
             })
         }
 
-        $scope.updateStatus = function (StatusId, ApplicantId) {
+        $scope.showModal = function (ButtonId) {
+            if (ButtonId == 3 || ButtonId == 4 || ButtonId == 7) {
+                var modalOptions = {
+                    backdrop: 'static'
+                };
+                $scope.ButtonId = ButtonId;
+                $('#Modal' + ButtonId).modal(modalOptions);
+                $('#Modal' + ButtonId).modal('show');
+            }
+            else {
+                var modalOptions = {
+                    backdrop: 'static'
+                };
+                $scope.ButtonId = ButtonId;
+                $('#Modal').modal(modalOptions);
+                $('#Modal').modal('show');
+            }
+            
+        }
+
+        $scope.updateStatus = function (scheduleDetailScope, StatusId, ApplicantId) {
             debugger
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
                 debugger
                 if (res) {
-                    var status = res.data;
-                    $window.location.href = '../../ScheduleManagement/Schedule';
-                    //if (status.MessageType == messageTypes.Success && status.IsAuthenticated) {
-                    //    toastr.success(status.Message, successTitle);
-                    //} else if (status.MessageType == messageTypes.Error) {// Error
-                    //    toastr.error(status.Message, errorTitle);
-                    //} else if (status.MessageType == messageTypes.Warning) {// Warning
-                    //    toastr.warning(applicants.Message, warningTitle);
-                    //}
+                    $scope.Action = res.data.Result;
+                    $scope.ActionId = $scope.Action[1];
+                    debugger
+                    ScheduleService.Comment(scheduleDetailScope, $scope.ActionId).then(function (res) {
+                        var data = res.data;
+                        $window.location.href = '../../ScheduleManagement/Schedule';
+                    })
                 }
             })
+            
         }
         $scope.getAllInterviewers = function () {
             debugger
@@ -105,20 +126,11 @@
                     $scope.Action = res.data.Result;
                     debugger
                     $scope.scheduleDetailScope['ActionId'] = $scope.Action[1];
-                    //$scope.SaveSchduleDetails(scheduleDetailScope);
-                    debugger
                     $scope.scheduleDetailScope.ScheduleDateTime = angular.copy(moment($scope.scheduleDetailScope.ScheduleDateTime).format($rootScope.apiDateFormat));
                     ScheduleService.Schedule(scheduleDetailScope).then(function (res) {
                         if (res) {
                             var schedule = res.data;
                             $window.location.href = '../../ScheduleManagement/Schedule';
-                            //if (schedule.MessageType == messageTypes.Success && schedule.IsAuthenticated) {
-                            //    toastr.success(schedule.Message, successTitle);
-                            //} else if (schedule.MessageType == messageTypes.Error) {// Error
-                            //    toastr.error(schedule.Message, errorTitle);
-                            //} else if (schedule.MessageType == messageTypes.Warning) {// Warning
-                            //    toastr.warning(schedule.Message, warningTitle);
-                            //}
                         }
                     })
                 }
@@ -142,21 +154,6 @@
                     $scope.ActionId = $scope.Action[1];
                     debugger
                     ScheduleService.UpdateOtherReason(Reason,$scope.ActionId).then(function (res) {
-                        var data = res.data;
-                        $window.location.href = '../../ScheduleManagement/Schedule';
-                    })
-                }
-            })
-        }
-
-        $scope.holdReason = function (scheduleDetailScope, StatusId, ApplicantId) {
-            ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
-                debugger
-                if (res) {
-                    $scope.Action = res.data.Result;
-                    $scope.ActionId = $scope.Action[1];
-                    debugger
-                    ScheduleService.HoldReason(scheduleDetailScope, $scope.ActionId).then(function (res) {
                         var data = res.data;
                         $window.location.href = '../../ScheduleManagement/Schedule';
                     })

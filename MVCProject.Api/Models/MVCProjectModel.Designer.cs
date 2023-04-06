@@ -30,6 +30,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Attac__Attac__3BFFE745", "ATS_AttachmentType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_AttachmentType), "ATS_Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Attachment), true)]
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Butto__Butto__4959E263", "ATS_MasterButton", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterButton), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Butto__Statu__4A4E069C", "ATS_MasterStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterStatus), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
+[assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__Users__RoleId__1BC821DD", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.Roles), "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.Users), true)]
 
 #endregion
 
@@ -272,6 +273,38 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<Designation> _Designation;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Roles> Roles
+        {
+            get
+            {
+                if ((_Roles == null))
+                {
+                    _Roles = base.CreateObjectSet<Roles>("Roles");
+                }
+                return _Roles;
+            }
+        }
+        private ObjectSet<Roles> _Roles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Users> Users
+        {
+            get
+            {
+                if ((_Users == null))
+                {
+                    _Users = base.CreateObjectSet<Users>("Users");
+                }
+                return _Users;
+            }
+        }
+        private ObjectSet<Users> _Users;
 
         #endregion
 
@@ -371,6 +404,22 @@ namespace MVCProject.Api.Models
         public void AddToDesignation(Designation designation)
         {
             base.AddObject("Designation", designation);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRoles(Roles roles)
+        {
+            base.AddObject("Roles", roles);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsers(Users users)
+        {
+            base.AddObject("Users", users);
         }
 
         #endregion
@@ -741,6 +790,66 @@ namespace MVCProject.Api.Models
             }
     
             return base.ExecuteFunction<USP_ATS_SingleApplicant_Result>("USP_ATS_SingleApplicant", applicantIdParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="p_Email">No Metadata Documentation available.</param>
+        /// <param name="p_Password">No Metadata Documentation available.</param>
+        public ObjectResult<Users> AuthenticateUser(global::System.String p_Email, global::System.String p_Password)
+        {
+            ObjectParameter p_EmailParameter;
+            if (p_Email != null)
+            {
+                p_EmailParameter = new ObjectParameter("p_Email", p_Email);
+            }
+            else
+            {
+                p_EmailParameter = new ObjectParameter("p_Email", typeof(global::System.String));
+            }
+    
+            ObjectParameter p_PasswordParameter;
+            if (p_Password != null)
+            {
+                p_PasswordParameter = new ObjectParameter("p_Password", p_Password);
+            }
+            else
+            {
+                p_PasswordParameter = new ObjectParameter("p_Password", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Users>("AuthenticateUser", p_EmailParameter, p_PasswordParameter);
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="mergeOption"></param>
+        /// <param name="p_Email">No Metadata Documentation available.</param>
+        /// <param name="p_Password">No Metadata Documentation available.</param>
+        public ObjectResult<Users> AuthenticateUser(global::System.String p_Email, global::System.String p_Password, MergeOption mergeOption)
+        {
+            ObjectParameter p_EmailParameter;
+            if (p_Email != null)
+            {
+                p_EmailParameter = new ObjectParameter("p_Email", p_Email);
+            }
+            else
+            {
+                p_EmailParameter = new ObjectParameter("p_Email", typeof(global::System.String));
+            }
+    
+            ObjectParameter p_PasswordParameter;
+            if (p_Password != null)
+            {
+                p_PasswordParameter = new ObjectParameter("p_Password", p_Password);
+            }
+            else
+            {
+                p_PasswordParameter = new ObjectParameter("p_Password", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Users>("AuthenticateUser", mergeOption, p_EmailParameter, p_PasswordParameter);
         }
 
         #endregion
@@ -4346,10 +4455,415 @@ namespace MVCProject.Api.Models
 
     
     }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="Roles")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Roles : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Roles object.
+        /// </summary>
+        /// <param name="roleId">Initial value of the RoleId property.</param>
+        public static Roles CreateRoles(global::System.Int32 roleId)
+        {
+            Roles roles = new Roles();
+            roles.RoleId = roleId;
+            return roles;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                if (_RoleId != value)
+                {
+                    OnRoleIdChanging(value);
+                    ReportPropertyChanging("RoleId");
+                    _RoleId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RoleId");
+                    OnRoleIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _RoleId;
+        partial void OnRoleIdChanging(global::System.Int32 value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RoleName
+        {
+            get
+            {
+                return _RoleName;
+            }
+            set
+            {
+                OnRoleNameChanging(value);
+                ReportPropertyChanging("RoleName");
+                _RoleName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RoleName");
+                OnRoleNameChanged();
+            }
+        }
+        private global::System.String _RoleName;
+        partial void OnRoleNameChanging(global::System.String value);
+        partial void OnRoleNameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__Users__RoleId__1BC821DD", "Users")]
+        public EntityCollection<Users> Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Users>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Users>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Users", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="Users")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Users : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Users object.
+        /// </summary>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        public static Users CreateUsers(global::System.Int32 userId)
+        {
+            Users users = new Users();
+            users.UserId = userId;
+            return users;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                if (_UserId != value)
+                {
+                    OnUserIdChanging(value);
+                    ReportPropertyChanging("UserId");
+                    _UserId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("UserId");
+                    OnUserIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RoleId;
+        partial void OnRoleIdChanging(Nullable<global::System.Int32> value);
+        partial void OnRoleIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__Users__RoleId__1BC821DD", "Roles")]
+        public Roles Roles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Roles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Roles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Roles> RolesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Roles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Roles>("MVCProjectModel.FK__Users__RoleId__1BC821DD", "Roles", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
 
     #endregion
 
     #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="AuthenticateUser_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class AuthenticateUser_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AuthenticateUser_Result object.
+        /// </summary>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        public static AuthenticateUser_Result CreateAuthenticateUser_Result(global::System.Int32 userId, global::System.String email)
+        {
+            AuthenticateUser_Result authenticateUser_Result = new AuthenticateUser_Result();
+            authenticateUser_Result.UserId = userId;
+            authenticateUser_Result.Email = email;
+            return authenticateUser_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RoleId;
+        partial void OnRoleIdChanging(Nullable<global::System.Int32> value);
+        partial void OnRoleIdChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

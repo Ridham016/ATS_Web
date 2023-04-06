@@ -22,7 +22,7 @@
 
                                         <div class="mb-3">
                                             <label for="emailaddress" class="form-label">Email address</label>
-                                            <input type="text" id="txtUserName" name="txtUserName" ng-model="loginFormData.UserName" @*autocomplete=off*@
+                                            <input type="text" id="txtUserName" name="txtUserName" ng-model="loginFormData.Email" @*autocomplete=off*@
                                                    class="form-control mb-2" maxlength="50" required ng-focus="true" tabindex="1" placeholder="@Resource.UserName" />
                                             <div class="label label-danger" data-ng-show="frmLogin.txtUserName.$dirty && frmLogin.txtUserName.$invalid">
                                                 <span data-ng-show="frmLogin.txtUserName.$error.required">@Resource.UserNameRequired</span>
@@ -34,7 +34,7 @@
                                                 <i class="fa fa-lock m-r-5"></i>@Resource.ForgotPassword?
                                             </a>
                                             <label for="password" class="form-label">Password</label>
-                                            <input name="txtPassword" id="txtPassword" type="password" ng-model="loginFormData.UserPassword" autocomplete=off @*readonly onfocus="$(this).removeAttr('readonly');"*@
+                                            <input name="txtPassword" id="txtPassword" type="password" ng-model="loginFormData.Password" autocomplete=off @*readonly onfocus="$(this).removeAttr('readonly');"*@
                                                    class="form-control mb-2" maxlength="25" required tabindex="2" placeholder="@Resource.Password" />
                                             <div class="label label-danger" data-ng-show="frmLogin.txtPassword.$dirty && frmLogin.txtPassword.$invalid">
                                                 <span data-ng-show="frmLogin.txtPassword.$error.required">@Resource.PasswordRequired</span>
@@ -147,7 +147,7 @@
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label for="txtUserName">@Resource.UserName</label>
-                        <input type="text" class="form-control" id="txtUserName" name="txtUserName" ng-model="user.UserName" required />
+                        <input type="text" class="form-control" id="txtUserName" name="txtUserName" ng-model="user.Email" required />
                         <div class="c">
                         </div>
                         <div class="label label-danger" data-ng-show="frmResetPassword.txtUserName.$dirty && frmResetPassword.txtUserName.$invalid">

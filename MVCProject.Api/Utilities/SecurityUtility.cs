@@ -219,7 +219,7 @@ namespace MVCProject.Api
         /// <returns>Returns generated token.</returns>
         public static string GetToken(UserContext userContext)
         {
-            string tokenInput = string.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}:{7}:{8}:{9}", userContext.UserName, userContext.CompanyDB, userContext.UserId, userContext.RoleId, 9, 14, userContext.EmployeeId, userContext.TimeZoneMinutes, userContext.UserAgent.Replace(":", "="), userContext.Ticks);
+            string tokenInput = string.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}", userContext.UserName, userContext.UserId, userContext.RoleId, 9, 14, userContext.TimeZoneMinutes, userContext.Ticks);
             string tokenLeft = string.Empty;
             string tokenRight = string.Empty;
             using (HMAC hmac = HMACSHA256.Create(Algorithm))

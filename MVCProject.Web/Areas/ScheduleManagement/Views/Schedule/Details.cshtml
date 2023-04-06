@@ -96,22 +96,25 @@
                 </div>
                 <div class="card-foot mt-3">
                     <button class="btn me-sm-2"
-                            ng-repeat="h in buttons" ng-if="h.NextStatusId != 4 && h.NextStatusId != 8 && h.NextStatusId != 5" ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"
-                            ng-class="{'btn-pass' : h.ButtonId == 5,
-                                       'btn-shortlist' : h.ButtonId == 1,
+                            ng-repeat="h in buttons"
+                            data-bs-toggle="modal"
+                            ng-click="showModal(h.ButtonId)"
+                            ng-class="{'btn-shortlist' : h.ButtonId == 1,
                                        'btn-not-match' : h.ButtonId == 2,
-                                       'btn-reject' : h.ButtonId == 6}">
+                                        ' btn-call-schedule' : h.ButtonId == 3,
+                                        'btn-hold' : h.ButtonId == 4,
+                                        'btn-pass' : h.ButtonId == 5,
+                                        'btn-reject' : h.ButtonId == 6,
+                                        'btn-other-reason' : h.ButtonId == 7}">
                         {{h.ButtonName}}
                     </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-call-schedule me-sm-2" ng-repeat="h in buttons" ng-if="h.NextStatusId == 4"
-                            @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}
-                    </button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+                    <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Interview</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Resource.ScheduleInterview</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form name="frmSchedule"
@@ -119,20 +122,20 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ModeOfInterview <span class="required-field">*</span>
                                                     </label>
-                                                    <select class="form-select mb-2" ng-model="scheduleDetailScope.Mode">
+                                                    <select class="form-select" ng-model="scheduleDetailScope.Mode" required>
                                                         <option value="" selected disabled>Select Mode</option>
                                                         <option ng-repeat="(key,value) in Mode" value="{{key}}">{{value}}</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ScheduleDateTime <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="datetime-local" class="form-control mb-2"
+                                                    <input type="datetime-local" min="{{minDate}}" class="form-control"
                                                            name="ScheduleDateTime" ng-model="scheduleDetailScope.ScheduleDateTime" required>
                                                     <div class="c">
                                                     </div>
@@ -140,11 +143,11 @@
                                                         <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.NameOfInterviewer <span class="required-field">*</span> <br />
                                                     </label>
-                                                    <select class="form-control mb-2" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
+                                                    <select class="form-select" name="Interviewer" id="Interviewer" ng-init="getAllInterviewers()" ng-model="scheduleDetailScope.InterviewerId">
                                                         <option value="" disabled selected>Select Interviewer</option>
                                                         <option ng-repeat="op in interviewers" value="{{op.InterviewerId}}">{{op.InterviewerName}}</option>
                                                     </select>
@@ -154,11 +157,11 @@
                                                         <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.NameOfInterviewerRequired</span>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ScheduleLink <span class="required-field">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control mb-2" ng-disabled="scheduleDetailScope.Mode == 0" name="ScheduleLink" 
+                                                    <input type="text" class="form-control" ng-disabled="scheduleDetailScope.Mode == 0" name="ScheduleLink"
                                                            ng-model="scheduleDetailScope.ScheduleLink" placeholder="Enter Interview Link" ng-required="scheduleDetailScope.Mode == 1">
                                                     <div class="c">
                                                     </div>
@@ -184,19 +187,17 @@
                                     </div>
                                     <div class="modal-footer">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,4,applicants.ApplicantId)" ng-disabled="frmSchedule.$invalid">Submit</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Resource.Close</button>
+                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,ButtonId,applicants.ApplicantId)"
+                                                    ng-disabled="frmSchedule.$invalid">@Resource.Submit</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="btn btn-other-reason me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 8"
-                            @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}
-                    </button>
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <div class="modal fade" id="Modal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -217,17 +218,14 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,8,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,ButtonId,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" class="btn btn-hold me-sm-2 " ng-repeat="h in buttons" ng-if="h.NextStatusId == 5"
-                            @*ng-click="updateStatus(h.NextStatusId,applicants.ApplicantId)"*@>
-                        {{h.ButtonName}}
-                    </button>
-                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -247,13 +245,41 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="holdReason(scheduleDetailScope,5,applicants.ApplicantId)">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,ButtonId,applicants.ApplicantId)">Submit</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-
                     </div>
+
+                    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Comment</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form name="frmHoldReason" novalidate>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <textarea name="Hold" id="Hold" class="form-control" rows="5" ng-model="scheduleDetailScope.Description" placeholder="Enter Comment...." required></textarea>
+                                            <div class="c">
+                                            </div>
+                                            <div class="label label-danger" data-ng-show="frmHoldReason.Hold.$dirty && frmHoldReason.Hold.$invalid">
+                                                <span data-ng-show="frmHoldReason.Hold.required">@Resource.CommentRequired</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,ButtonId,applicants.ApplicantId)">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <a href="~/ScheduleManagement/Schedule/" class="btn btn-link"> <i class="fa fa-chevron-left"></i> Back to List</a>

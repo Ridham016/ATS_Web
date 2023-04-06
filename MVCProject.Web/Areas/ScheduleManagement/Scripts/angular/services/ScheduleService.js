@@ -55,11 +55,11 @@
             data: JSON.stringify(Reason)
         })
     }
-    list.HoldReason = function (scheduleDetailScope, actionId) {
+    list.Comment = function (scheduleDetailScope, actionId) {
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Schedules/HoldReason?ActionId=' + actionId,
+            url: $rootScope.apiURL + '/Schedules/Comment?ActionId=' + actionId,
             data: JSON.stringify(scheduleDetailScope, actionId)
         })
     }

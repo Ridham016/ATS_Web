@@ -124,7 +124,7 @@ function CommonFunctions($rootScope, $timeout, $cookies, $window, $filter) {
 
     // Redirect to DefaultUrl
     vm.RedirectToDefaultUrl = function () {
-        //$window.location.href = "/Account/RedirectToDefaultUrl";
+        $window.location.href = "/Account/RedirectToDefaultUrl";
     };
 
     // Scroll to top

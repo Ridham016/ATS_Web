@@ -15,7 +15,6 @@
 
     function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $timeout, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
-        $scope.NoticePeriod = CommonEnums.NoticePeriod;
         $scope.files = [];
         $scope.Selectedfile = null;
         $scope.Files = null;
@@ -226,9 +225,8 @@
 
 
         $scope.$watch('files', function (newVal, oldVal) {
-            if (newVal !== oldVal) { 
-                $scope.Selectedfile = $scope.files[0];
-                console.log($scope.files);
+            if (newVal !== oldVal) {
+                $scope.getFiles($scope.applicantDetailScope.ApplicantId);
             }
         }, true);
 
@@ -259,7 +257,6 @@
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
                         $scope.applicantDetailScope = res.data.Result;
-                        $scope.applicantDetailScope.NoticePeriod = JSON.stringify($scope.applicantDetailScope.NoticePeriod);
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
@@ -347,7 +344,7 @@
                     document.body.appendChild(form);
                     form.submit();
 
-                    $defer.resolve(res.data.Result);
+                    //$defer.resolve(res.data.Result);
                     if (res.data.Result.length == 0) { }
                     else {
                         params.total(res.data.Result[0].TotalRecords);

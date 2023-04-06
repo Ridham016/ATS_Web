@@ -26,17 +26,17 @@ namespace MVCProject.Controllers
         [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Login()
         {
-            //if (this.Session["UserContext"] == null || Request.Url.PathAndQuery.Contains("noSession"))
-            //{
-            //    ViewBag.IsSessionExpired = Request.QueryString["noSession"] != null ? true : false;
-            //    return this.View();
-            //}
-            //else
-            //{
-            //    return this.RedirectToAction("RedirectToDefaultUrl");
-            //}
+            if (this.Session["UserContext"] == null || Request.Url.PathAndQuery.Contains("noSession"))
+            {
+                ViewBag.IsSessionExpired = Request.QueryString["noSession"] != null ? true : false;
+                return this.View();
+            }
+            else
+            {
+                return this.RedirectToAction("RedirectToDefaultUrl");
+            }
 
-            return this.RedirectToAction("RedirectToDefaultUrl");
+            //return this.RedirectToAction("RedirectToDefaultUrl");
         }
 
         /// <summary>
@@ -102,35 +102,35 @@ namespace MVCProject.Controllers
         /// <returns>ActionResult object</returns>
         public ActionResult RedirectToDefaultUrl()
         {
-            //if (this.Session["UserContext"] == null)
-            //{
-            //    // No session, redirect to login                
-            //    this.LogoutUser();
-            //  return this.RedirectToAction("Login", "Account", new { noSession = "y" });
-            //}
-            //else
-            //{
-            //    if (this.Session["LastUrl"] != null)
-            //    {
-            //        string url = this.Session["LastUrl"].ToString();
-            //        this.Session["LastUrl"] = null;
-            //        Response.Redirect(url);
-            //    }
+            if (this.Session["UserContext"] == null)
+            {
+                // No session, redirect to login                
+                this.LogoutUser();
+                return this.RedirectToAction("Login", "Account", new { noSession = "y" });
+            }
+            else
+            {
+                if (this.Session["LastUrl"] != null)
+                {
+                    string url = this.Session["LastUrl"].ToString();
+                    this.Session["LastUrl"] = null;
+                    Response.Redirect(url);
+                }
 
-            //    UserContext userContext = (UserContext)this.Session["UserContext"];
-            //    UserContext.PagePermission generalPermission = userContext.PageAccess.Where(p => p.PageId == Pages.General.Designation || p.PageId == Pages.General.CommonConfiguartion).FirstOrDefault();
-            //    bool hasGeneralAccess = generalPermission.CanWrite || generalPermission.CanRead;
+                //    UserContext userContext = (UserContext)this.Session["UserContext"];
+                //UserContext.PagePermission generalPermission = userContext.PageAccess.Where(p => p.PageId == Pages.General.Designation || p.PageId == Pages.General.CommonConfiguartion).FirstOrDefault();
+                //bool hasGeneralAccess = generalPermission.CanWrite || generalPermission.CanRead;
 
-            //    if (hasGeneralAccess)
-            //    {
-            //        return RedirectToAction("Index", "Designation", new { area = "Configuration" });
-            //    }
-            //    else
-            //    {
-            //        return this.RedirectToAction("ServerError", "Error", new { id = 404 });
-            //    }
-            //    //}
-            //}
+                //if (hasGeneralAccess)
+                //{
+                //    return RedirectToAction("Index", "Designation", new { area = "Configuration" });
+                //}
+                //else
+                //{
+                //    return this.RedirectToAction("ServerError", "Error", new { id = 404 });
+                //}
+                //}
+            }
 
             return RedirectToAction("Index", "Dashboard", new { area = "Dashboard" });
         }

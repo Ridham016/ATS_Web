@@ -5,6 +5,7 @@
 // ----------------------------------------------------------------------- 
 namespace MVCProject
 {
+    using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -30,5 +31,16 @@ namespace MVCProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        //protected void Session_Start()
+        //{
+        //    if (HttpContext.Current.Session != null)
+        //    {
+        //        if (Session["UserContext"] == null)
+        //        {
+        //            Response.Redirect("~/Account/Login");
+        //        }
+        //    }
+        //}
     }
 }

@@ -86,8 +86,11 @@
                                                                     'status-shortlist': h.StatusId == 2,
                                                                     'status-call-schedule': h.StatusId == 4,
                                                                     'status-other-reason': h.StatusId == 8,}">
-                                                        {{h.StatusName}}<span ng-show="h.StatusId == 4"> for L{{h.Level}}</span>
-                                                        <span ng-show="h.StatusId == 2 || h.StatusId == 8"> for L{{h.Level+1}}</span>
+                                                        <span ng-show="h.StatusId == 8">L{{h.Level+1}} </span>
+                                                        <span ng-show="h.StatusId == 4">L{{h.Level}} </span>
+                                                        {{h.StatusName}}
+                                                        <span ng-show="h.StatusId == 2"> for L{{h.Level+1}}</span>
+                                                        
                                                     </span>
                                                 </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">

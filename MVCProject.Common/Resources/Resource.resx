@@ -1152,4 +1152,16 @@
   <data name="String1" xml:space="preserve">
     <value />
   </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>Comment is Required</value>
+  </data>
+  <data name="ScheduleInterview" xml:space="preserve">
+    <value>Schedule Interview</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect Password</value>
+  </data>
 </root>

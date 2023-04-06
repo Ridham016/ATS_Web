@@ -7,7 +7,7 @@
             method: 'GET',
             url: $rootScope.apiURL + '/Account/GetLanguages'
         });
-    };
+    }
 
     // Save Change password detail
     list.SaveChangePassword = function (changePasswordDetail) {
@@ -16,7 +16,7 @@
             url: $rootScope.apiURL + '/Account/SaveChangePassword',
             data: JSON.stringify(changePasswordDetail)
         });
-    };
+    }
 
     // get Encrypted UserName
     list.GetCompanyName = function () {
@@ -24,7 +24,15 @@
             method: 'GET',
             url: $rootScope.apiURL + '/Common/GetCompanyName'
         });
-    };
+    }
+
+    list.CreateSession = function (context) {
+        return $http({
+            method: 'POST',
+            url: '/Account/CreateSession',
+            data: JSON.stringify(context)
+        });
+    }
     
     //Get Project
     list.GetProjects = function (param) {
@@ -55,7 +63,7 @@
                 url: url
             })
         }
-    };
+    }
 
     // Get Site/Project By Vertical for dropdown
     list.GetSitesByVertical = function (verticalId, isGetAll) {
@@ -63,7 +71,7 @@
             method: "GET",
             url: $rootScope.apiURL + '/SiteMaster/GetSitesByVertical?VerticalId=' + verticalId + '&isGetAll=' + (angular.isDefined(isGetAll) ? isGetAll : false)
         });
-    };
+    }
 
     list.downloadReportFile = function (name, filename) {
         $http({
@@ -110,7 +118,7 @@
         }).error(function (data) {
             console.log(data);
         });
-    };
+    }
 
     return list;
 }]);

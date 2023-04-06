@@ -34,7 +34,7 @@
             url: $rootScope.apiURL + '/Registrations/GetApplicantList',
             data: JSON.stringify(applicantDetailScope)
         });
-    };
+    }
     //list.uploadFileToUrl = function (fd) {
     //    debugger
     //    return $http.post('http://localhost:56562/api/Registrations/Upload', fd, {
@@ -72,7 +72,7 @@
             url: $rootScope.apiURL + '/Registrations/DeleteFile?FileId=' + FileId
             })
     }
-    list.Export = function () {
+    list.Export = function() {
         debugger
         return $http({
             method: 'GET',

@@ -493,6 +493,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment is Required.
+        /// </summary>
+        public static string CommentRequired {
+            get {
+                return ResourceManager.GetString("CommentRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
         public static string Comments {
@@ -1389,6 +1398,15 @@ namespace MVCProject.Common.Resources {
         public static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect Password.
+        /// </summary>
+        public static string IncorrectPassword {
+            get {
+                return ResourceManager.GetString("IncorrectPassword", resourceCulture);
             }
         }
         
@@ -2545,6 +2563,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Schedule Interview.
+        /// </summary>
+        public static string ScheduleInterview {
+            get {
+                return ResourceManager.GetString("ScheduleInterview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Interview Link.
         /// </summary>
         public static string ScheduleLink {
@@ -2793,6 +2820,15 @@ namespace MVCProject.Common.Resources {
         public static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String2 {
+            get {
+                return ResourceManager.GetString("String2", resourceCulture);
             }
         }
         

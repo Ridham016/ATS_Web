@@ -58,7 +58,7 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// Gets or sets Role Id
         /// </summary>
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
 
         /// <summary>
         /// Gets or sets Level Ids
