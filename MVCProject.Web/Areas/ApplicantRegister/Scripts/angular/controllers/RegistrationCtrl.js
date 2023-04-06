@@ -317,6 +317,52 @@
                 res.data;
             })
         }
+
+        $scope.Export = function () {
+            debugger
+            RegistrationService.Export().then(function (res) {
+                //var blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                //var filename = 'data.xlsx';
+                ////(blob, filename);
+                debugger
+                var data = res.data;
+                if (data.MessageType == messageTypes.Success) {
+                    debugger
+                    var filename = res.data.Result;
+                    var params = { filename: filename };
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "POST");
+                    form.setAttribute("action", "/ApplicantRegister/Registration/Download");
+                    form.setAttribute("target", "_blank");
+
+                    for (var key in params) {
+                        if (params.hasOwnProperty(key)) {
+                            var hiddenField = document.createElement("input");
+                            hiddenField.setAttribute("type", "hidden");
+                            hiddenField.setAttribute("name", key);
+                            hiddenField.setAttribute("value", params[key]);
+                            form.appendChild(hiddenField);
+                        }
+                    }
+                    document.body.appendChild(form);
+                    form.submit();
+
+                    $defer.resolve(res.data.Result);
+                    if (res.data.Result.length == 0) { }
+                    else {
+                        params.total(res.data.Result[0].TotalRecords);
+                    }
+                }
+                else if (res.data.MessageType == MessageType.Error) {
+                    toastr.error(res.data.Message, errorTitle);
+                }
+
+                //CommonFunctions.DownloadReport('/AdvancedSearch/ExportToXl', filename);
+                $rootScope.isAjaxLoadingChild = false;
+                CommonFunctions.SetFixHeader();
+
+            });
+        }
     }
 })();
 

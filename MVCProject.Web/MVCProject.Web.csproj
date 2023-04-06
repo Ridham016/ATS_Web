@@ -54,6 +54,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Excel.2.1.1\lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
@@ -78,6 +81,18 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Excel.2.1.1\lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.1.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Excel.2.1.1\lib\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.1.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Excel.2.1.1\lib\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.1.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.Excel.2.1.1\lib\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -169,6 +184,8 @@
     <Compile Include="Areas\Configuration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\ImportData\Controllers\ImportController.cs" />
+    <Compile Include="Areas\ImportData\ImportDataAreaRegistration.cs" />
     <Compile Include="Areas\InterviewerRegister\Controllers\InterviewerController.cs" />
     <Compile Include="Areas\InterviewerRegister\InterviewerAreaRegister.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
@@ -229,6 +246,8 @@
     <Content Include="Areas\Configuration\Scripts\angular\services\ResetToLoginService.js" />
     <Content Include="Areas\Dashboard\Scripts\angular\controllers\DashboardCtrl.js" />
     <Content Include="Areas\Dashboard\Scripts\angular\services\DashboardService.js" />
+    <Content Include="Areas\ImportData\Scripts\angular\controllers\ImportCtrl.js" />
+    <Content Include="Areas\ImportData\Scripts\angular\services\ImportService.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\controllers\InterviewerCtrl.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\services\InterviewerService.js" />
     <Content Include="Areas\Public\Content\css\css\blank.gif" />
@@ -444,6 +463,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Configuration\Models\" />
     <Folder Include="Areas\Configuration\Views\Shared\" />
+    <Folder Include="Areas\ImportData\Models\" />
+    <Folder Include="Areas\ImportData\Views\Shared\" />
     <Folder Include="Areas\Public\Controllers\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Scripts\angular\controllers\" />
@@ -493,6 +514,8 @@
     <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\Web.config" />
     <Content Include="Areas\ScheduleManagement\Views\Schedule\Details.cshtml" />
+    <Content Include="Areas\ImportData\Views\Web.config" />
+    <Content Include="Areas\ImportData\Views\Import\Index.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

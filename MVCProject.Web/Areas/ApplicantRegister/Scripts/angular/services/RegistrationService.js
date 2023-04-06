@@ -72,5 +72,12 @@
             url: $rootScope.apiURL + '/Registrations/DeleteFile?FileId=' + FileId
             })
     }
+    list.Export = function () {
+        debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Registrations/ExportToXl'
+        });
+    }
     return list;
 }])

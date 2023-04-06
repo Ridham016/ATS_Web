@@ -11,6 +11,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
     using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
     using NPOI.HSSF.Record;
+    using NPOI.HSSF.UserModel;
+    using NPOI.SS.UserModel;
+    using NPOI.XSSF.UserModel;
     #region Namespaces
     using System;
     using System.Collections.Generic;
@@ -358,6 +361,146 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.Delete, Resource.File));
             }
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.DeletedSuccessfully, Resource.File));
+        }
+
+        [HttpGet]
+        public ApiResponse ExportToXl()
+        {
+            var result = entities.USP_ATS_AllApplicants().ToList();
+            var TotalRecords = result.Count();
+            var applicantlist = result.Select(g => new
+            {
+                ApplicantId = g.ApplicantId,
+                FirstName = g.FirstName,
+                MiddleName = g.MiddleName,
+                LastName = g.LastName,
+                Email = g.Email,
+                Phone = g.Phone,
+                Address = g.Address,
+                DateOfBirth = g.DateOfBirth,
+                CurrentCompany = g.CurrentCompany,
+                CurrentDesignation = g.CurrentDesignation,
+                ApplicantDate = g.ApplicantDate,
+                TotalExperience = g.TotalExperience,
+                DetailedExperience = g.DetailedExperience,
+                CurrentCTC = g.CurrentCTC ?? null,
+                ExpectedCTC = g.ExpectedCTC,
+                NoticePeriod = g.NoticePeriod,
+                CurrentLocation = g.CurrentLocation,
+                PreferedLocation = g.PreferedLocation,
+                ReasonForChange = g.ReasonForChange,
+                FileName = g.FileName,
+                FilePath = g.FilePath,
+                FileRelativePath = g.FileRelativePath,
+                IsActive = g.IsActive,
+                TotalRecords
+            }).ToList();
+
+            IWorkbook workbook = new XSSFWorkbook();
+            ISheet sheet = workbook.CreateSheet("Sheet1");
+
+            IRow header = sheet.CreateRow(0);
+            // Columns as Headers as present in the table
+            header.CreateCell(0).SetCellValue("ApplicantId");
+            header.CreateCell(1).SetCellValue("FirstName");
+            header.CreateCell(2).SetCellValue("MiddleName");
+            header.CreateCell(3).SetCellValue("LastName");
+            header.CreateCell(4).SetCellValue("Email");
+            header.CreateCell(5).SetCellValue("Phone");
+            header.CreateCell(6).SetCellValue("Address");
+            header.CreateCell(7).SetCellValue("DateOfBirth");
+            header.CreateCell(8).SetCellValue("CurrentCompany");
+            header.CreateCell(9).SetCellValue("CurrentDesignation");
+            header.CreateCell(10).SetCellValue("ApplicantDate");
+            header.CreateCell(11).SetCellValue("TotalExperience");
+            header.CreateCell(12).SetCellValue("DetailedExperience");
+            header.CreateCell(13).SetCellValue("CurrentCTC");
+            header.CreateCell(14).SetCellValue("ExpectedCTC");
+            header.CreateCell(15).SetCellValue("NoticePeriod");
+            header.CreateCell(16).SetCellValue("CurrentLocation");
+            header.CreateCell(17).SetCellValue("PreferedLocation");
+            header.CreateCell(18).SetCellValue("ReasonForChange");
+            header.CreateCell(19).SetCellValue("FileName");
+            header.CreateCell(20).SetCellValue("FilePath");
+            header.CreateCell(21).SetCellValue("FileRelativePath");
+            header.CreateCell(22).SetCellValue("IsActive");
+            //header.CreateCell(0).SetCellValue("FirstName");
+
+            int rowNum = 1;
+            foreach (var applicant in applicantlist)
+            {
+                IRow row = sheet.CreateRow(rowNum++);
+                row.CreateCell(0).SetCellValue(applicant.ApplicantId);
+                row.CreateCell(1).SetCellValue(applicant.FirstName);
+                row.CreateCell(2).SetCellValue(applicant.MiddleName);
+                row.CreateCell(3).SetCellValue(applicant.LastName);
+                row.CreateCell(4).SetCellValue(applicant.Email);
+                row.CreateCell(5).SetCellValue(applicant.Phone);
+                row.CreateCell(6).SetCellValue(applicant.Address);
+                row.CreateCell(7).SetCellValue((DateTime)applicant.DateOfBirth);
+                row.CreateCell(8).SetCellValue(applicant.CurrentCompany);
+                row.CreateCell(9).SetCellValue(applicant.CurrentDesignation);
+                row.CreateCell(10).SetCellValue((DateTime)applicant.ApplicantDate);
+                if (applicant.TotalExperience != null)
+                {
+                    row.CreateCell(11).SetCellValue(applicant.TotalExperience);
+                }
+                if (applicant.DetailedExperience != null)
+                {
+                    row.CreateCell(12).SetCellValue(applicant.DetailedExperience);
+                }
+                //row.CreateCell(11).SetCellValue((int)applicant.TotalExperience);
+                //row.CreateCell(12).SetCellValue((int)applicant.DetailedExperience);
+                //var c13 = (applicant.CurrentCTC);
+                if (applicant.CurrentCTC != null)
+                {
+                    row.CreateCell(13).SetCellValue(applicant.CurrentCTC);
+                }
+                //row.CreateCell(13).SetCellValue()=;
+                if (applicant.ExpectedCTC != null)
+                {
+                    row.CreateCell(14).SetCellValue(applicant.ExpectedCTC);
+                }
+                if (applicant.NoticePeriod != null)
+                {
+                    row.CreateCell(15).SetCellValue(applicant.NoticePeriod);
+                }
+                if (applicant.CurrentLocation != null)
+                {
+                    row.CreateCell(16).SetCellValue(applicant.CurrentLocation);
+                }
+                row.CreateCell(17).SetCellValue(applicant.PreferedLocation);
+                row.CreateCell(18).SetCellValue(applicant.ReasonForChange);
+                row.CreateCell(19).SetCellValue(applicant.FileName);
+                row.CreateCell(20).SetCellValue(applicant.FilePath);
+                row.CreateCell(21).SetCellValue(applicant.FileRelativePath);
+
+                if (applicant.IsActive != null)
+                {
+                    row.CreateCell(22).SetCellValue((bool)applicant.IsActive);
+                }
+            }
+
+            string filePath = HttpContext.Current.Server.MapPath("~/Attachments/Temp/ApplicantSheet.xlsx");
+            string fileName = Path.GetFileName(filePath);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            FileStream fileStream = new FileStream(filePath, FileMode.Create);
+            workbook.Write(fileStream);
+            var memorystream = new MemoryStream();
+            var byteArray = memorystream.ToArray();
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            response.Content = new ByteArrayContent(byteArray);
+            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachmet");
+            response.Content.Headers.ContentDisposition.FileName = "ApplicantDetaisSheet.xlsx";
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.Content.Headers.ContentLength = byteArray.Length;
+            Console.WriteLine(response);
+            return this.Response(MessageTypes.Success, string.Empty, filePath);
         }
     }
 }

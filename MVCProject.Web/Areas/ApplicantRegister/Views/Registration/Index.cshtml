@@ -186,21 +186,21 @@
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
                                                 @*<p class="input-group">
-                                                    <input type="text" name="DateOfBirth" tabindex="3" id="DateOfBirth" class="form-control"
-                                                           uib-datepicker-popup="{{defaultSettings.dateFormat}}"
-                                                           ng-model="applicantDetailScope.DateOfBirth"
-                                                           max-date="maxDate" datepicker-options="dateOptions" readonly="readonly" ng-required="true"
-                                                           close-text="Close" is-open="isOpen" ng-model-options="{ allowInvalid: true }" 
-                                                           ng-pattern="/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/" placeholder="dd/mm/yyyy"/>
-                                                    <span class="input-group-addon">
-                                                        <button type="button" class="btn btn-icon btn-default" ng-click="isOpen=true">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </button>
-                                                    </span>
-                                                </p>*@
-                                               
-                                                 <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
-                                                        class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                            <input type="text" name="DateOfBirth" tabindex="3" id="DateOfBirth" class="form-control"
+                                                   uib-datepicker-popup="{{defaultSettings.dateFormat}}"
+                                                   ng-model="applicantDetailScope.DateOfBirth"
+                                                   max-date="maxDate" datepicker-options="dateOptions" readonly="readonly" ng-required="true"
+                                                   close-text="Close" is-open="isOpen" ng-model-options="{ allowInvalid: true }"
+                                                   ng-pattern="/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/" placeholder="dd/mm/yyyy"/>
+                                            <span class="input-group-addon">
+                                                <button type="button" class="btn btn-icon btn-default" ng-click="isOpen=true">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>*@
+
+                                                <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                       class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
@@ -208,13 +208,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantAddress
                                                 </label>
-                                                <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address" ></textarea>
+                                                <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -249,7 +249,7 @@
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                                             <div class="form-group">
                                                 <label>Status</label>
-                                                <select class="form-select" ng-model="textInput.disabled" required> 
+                                                <select class="form-select" ng-model="textInput.disabled" required>
                                                     <option value="" selected disabled>Select Status</option>
                                                     <option value="experienced"> Experienced</option>
                                                     <option value="fresher"> Fresher</option>
@@ -291,7 +291,7 @@
                                                 </label>
                                                 <input type="text" ng-disabled="textInput.disabled == 'fresher'"
                                                        ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}"
-                                                       class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" 
+                                                       class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience"
                                                        ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
@@ -392,7 +392,7 @@
                                                 <label>
                                                     @Resource.ExpectedCTC<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" 
+                                                <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}"
                                                        class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
                                                 <div class="c">
                                                 </div>
@@ -407,10 +407,10 @@
                                                     @Resource.NoticePeriod<span class="required-field">*</span>
                                                 </label>
                                                 @*<select class="form-select" ng-model="applicantDetailScope.NoticePeriod" required>
-                                                    <option disabled value="0" selected>Select Option</option>
-                                                    <option ng-repeat="(key,value) in NoticePeriod" value="{{key}}">{{value}}</option>
-                                                </select>*@
-                                                <input type="text" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" 
+                                            <option disabled value="0" selected>Select Option</option>
+                                            <option ng-repeat="(key,value) in NoticePeriod" value="{{key}}">{{value}}</option>
+                                        </select>*@
+                                                <input type="text" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}"
                                                        class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
                                                 <div class="c">
                                                 </div>
@@ -466,29 +466,29 @@
                                                     Uploaded Files
                                                 </h4>
                                                 @*<div class="card-body">
-                                                </div>*@
-                                                    <div class="row mb-2" ng-repeat="f in files">
-                                                        <div class="col-11">
-                                                            <a href="{{f.FileRelativePath}}" target="_blank">
-                                                                {{f.OriginalFileName}}
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-1">
-                                                            <a class="btn btn-link p-0" href="#" ng-click="deleteFile(f.Id)" ng-show="Files >= 5">
-                                                                <i class="fa fa-trash"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                @*<ul class="list-group list-group-flush">
-                                                    <li class="row list-group-item" ng-repeat="f in files">
-                                                        <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                        </div>*@
+                                                <div class="row mb-2" ng-repeat="f in files">
+                                                    <div class="col-11">
+                                                        <a href="{{f.FileRelativePath}}" target="_blank">
                                                             {{f.OriginalFileName}}
                                                         </a>
-                                                        <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <a class="btn btn-link p-0" href="#" ng-click="deleteFile(f.Id)" ng-show="Files >= 5">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
-                                                    </li>
-                                                </ul>*@
+                                                    </div>
+                                                </div>
+                                                @*<ul class="list-group list-group-flush">
+                                            <li class="row list-group-item" ng-repeat="f in files">
+                                                <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                                    {{f.OriginalFileName}}
+                                                </a>
+                                                <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </li>
+                                        </ul>*@
                                             </div>
                                         </div>
                                     </div>
@@ -635,6 +635,14 @@
                                 </scrollable-table>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-10">
+                        <button type="button" ng-click="Export()" class="btn btn-info waves-effect w-md waves-light mb-5"
+                                tabindex="4">
+                            Export To Excel
+                        </button>
                     </div>
                 </div>
                 <!-- end Registration details list -->
