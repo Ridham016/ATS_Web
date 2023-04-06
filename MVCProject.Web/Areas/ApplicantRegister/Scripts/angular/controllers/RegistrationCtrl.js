@@ -35,14 +35,14 @@
             DetailedExperience: '',
             CurrentCTC: '',
             ExpectedCTC: '',
-            NoticePeriod: '0',
+            NoticePeriod: '',
             CurrentLocation: '',
             PreferedLocation: '',
             ReasonForChange: '',
             SkillDescription: '',
-            Link1: '',
-            Link2: '',
-            Link3: '',
+            PortfolioLink: '',
+            LinkedinLink: '',
+            OtherLink: '',
             IsActive: true
         };
 
@@ -58,20 +58,6 @@
                     ReasonForChange: '',
                 };
             }
-        }
-
-        checkValidationRules();
-
-        function checkValidationRules() {
-            debugger
-            $timeout(function () {
-                if ($scope.applicantDetailScope.TotalExperience > 50) {
-                    $scope.frmRegister.TotalExperience.$setValidity('max', false);
-                }
-                if ($scope.applicantDetailScope.DetailedExperience > 50) {
-                    $scope.frmRegister.DetailedExperience.$setValidity('max', false);
-                }
-            })
         }
 
         $scope.getApplicants = function (IsGetAll) {
@@ -149,18 +135,18 @@
                 DateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
                 CurrentCompany: '',
                 CurrentDesignations: '',
-                TotalExperience: null,
-                DetailedExperince: null,
-                CurrentCTC: null,
-                ExpectedCTC: null,
-                NoticePeriod: '0',
+                TotalExperience: '',
+                DetailedExperince: '',
+                CurrentCTC: '',
+                ExpectedCTC: '',
+                NoticePeriod: '',
                 CurrentLocation: '',
                 PreferedLocation: '',
                 ReasonForChange: '',
                 SkillDescription: '',
-                Link1: '',
-                Link2: '',
-                Link3: '',
+                PortfolioLink: '',
+                LinkedinLink: '',
+                OtherLink: '',
                 IsActive: true
             };
             $("#file").val("");

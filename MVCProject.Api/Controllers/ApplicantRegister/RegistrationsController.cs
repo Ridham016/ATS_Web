@@ -59,9 +59,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 SkillDescription = g.SkillDescription,
-                Link1 = g.Link1,
-                Link2 = g.Link2,
-                Link3 = g.Link3,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 ReasonForChange = g.ReasonForChange,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
@@ -101,9 +101,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 SkillDescription = g.SkillDescription,
-                Link1 = g.Link1,
-                Link2 = g.Link2,
-                Link3 = g.Link3,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
@@ -176,9 +176,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.PreferedLocation = data.PreferedLocation;
                 applicantData.ReasonForChange = data.ReasonForChange;
                 applicantData.SkillDescription = data.SkillDescription;
-                applicantData.Link1 = data.Link1;
-                applicantData.Link2 = data.Link2;
-                applicantData.Link3 = data.Link3;
+                applicantData.PortfolioLink = data.PortfolioLink;
+                applicantData.LinkedinLink = data.LinkedinLink;
+                applicantData.OtherLink = data.OtherLink;
                 applicantData.IsActive = data.IsActive;
                 applicantData.UpdateDate = DateTime.Now;
                 this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);
@@ -217,9 +217,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 SkillDescription = g.SkillDescription,
-                Link1 = g.Link1,
-                Link2 = g.Link2,
-                Link3 = g.Link3,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 IsActive = g.IsActive
             }).ToList();
             //return this.Response(MessageTypes.Success, string.Empty, applcantlist);

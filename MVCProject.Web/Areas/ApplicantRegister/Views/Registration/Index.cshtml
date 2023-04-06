@@ -289,14 +289,14 @@
                                                 <label>
                                                     @Resource.TotalExperience<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'" ng-pattern="/^[0-9]{0,2}$/" max="50"
-                                                       ng-change="checkValidationRules()" ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}"
-                                                       class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" ng-required="textInput.disabled == 'experienced'" />
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'"
+                                                       ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}"
+                                                       class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience" 
+                                                       ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid">
                                                     <span data-ng-show="frmRegister.TotalExperience.$error.required">@Resource.TotalExperienceRequired</span>
-                                                    <span data-ng-show="frmRegister.TotalExperience.$error.pattern || frmRegister.TotalExperience.$error.max">@Resource.ExperienceValid</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,14 +306,13 @@
                                                     @Resource.DetailedExperience<span class="required-field">*</span>
                                                 </label>
                                                 <input type="text" ng-disabled="textInput.disabled == 'fresher'"
-                                                       ng-pattern="/^[0-9]{0,2}$/" max="50" ng-class="{'border-color' : frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid}"
+                                                       ng-class="{'border-color' : frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid}"
                                                        class="form-control" placeholder="Enter Detailed Experience" name="DetailedExperience"
                                                        ng-model="applicantDetailScope.DetailedExperience" ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid">
                                                     <span data-ng-show="frmRegister.DetailedExperience.$error.required">@Resource.DetailedExperienceRequired</span>
-                                                    <span data-ng-show="frmRegister.DetailedExperience.$error.pattern || frmRegister.DetailedExperience.$error.max">@Resource.ExperienceValid</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -323,12 +322,11 @@
                                                     @Resource.CurrentCTC<span class="required-field">*</span>
                                                 </label>
                                                 <input type="text" ng-disabled="textInput.disabled == 'fresher'"
-                                                       ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" class="form-control" placeholder="Enter Current CTC" name="CurrentCTC"
+                                                       class="form-control" placeholder="Enter Current CTC" name="CurrentCTC"
                                                        ng-model="applicantDetailScope.CurrentCTC" ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid">
-                                                    <span data-ng-show="frmRegister.CurrentCTC.$error.pattern">@Resource.ValidCTC</span>
                                                     <span data-ng-show="frmRegister.CurrentCTC.$error.required">@Resource.CurrentCTCRequired</span>
                                                 </div>
                                             </div>
@@ -394,11 +392,11 @@
                                                 <label>
                                                     @Resource.ExpectedCTC<span class="required-field">*</span>
                                                 </label>
-                                                <input type="text" ng-pattern="/^\d{1,2}(\.\d{1,2})?$/" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
+                                                <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}" 
+                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
-                                                    <span data-ng-show="frmRegister.ExpectedCTC.$error.pattern">@Resource.ValidCTC</span>
                                                     <span data-ng-show="frmRegister.ExpectedCTC.$error.required">@Resource.ExpectedCTCRequired</span>
                                                 </div>
                                             </div>
@@ -408,11 +406,16 @@
                                                 <label>
                                                     @Resource.NoticePeriod<span class="required-field">*</span>
                                                 </label>
-                                                <select class="form-select" ng-model="applicantDetailScope.NoticePeriod" required>
+                                                @*<select class="form-select" ng-model="applicantDetailScope.NoticePeriod" required>
                                                     <option disabled value="0" selected>Select Option</option>
                                                     <option ng-repeat="(key,value) in NoticePeriod" value="{{key}}">{{value}}</option>
-                                                </select>
+                                                </select>*@
+                                                <input type="text" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}" 
+                                                       class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
                                                 <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -421,7 +424,7 @@
                                                 <label>
                                                     @Resource.PortfolioLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Portfolio Link" name="Link1" ng-model="applicantDetailScope.Link1" />
+                                                <input type="text" class="form-control" placeholder="Enter Portfolio Link" name="PortfolioLink" ng-model="applicantDetailScope.PortfolioLink" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -429,7 +432,7 @@
                                                 <label>
                                                     @Resource.LinkedinLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Linkedin Link" name="Link2" ng-model="applicantDetailScope.Link2" />
+                                                <input type="text" class="form-control" placeholder="Enter Linkedin Link" name="LinkedinLink" ng-model="applicantDetailScope.LinkedinLink" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -437,7 +440,7 @@
                                                 <label>
                                                     @Resource.OtherLink
                                                 </label>
-                                                <input type="text" class="form-control" placeholder="Enter Other Links" name="Link3" ng-model="applicantDetailScope.Link3" />
+                                                <input type="text" class="form-control" placeholder="Enter Other Links" name="OtherLink" ng-model="applicantDetailScope.OtherLink" />
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-3">
@@ -602,13 +605,13 @@
                                                     {{h.SkillDescription}}
                                                 </td>
                                                 <td data-title="'@Resource.PortfolioLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Link1}}
+                                                    {{h.PortfolioLink}}
                                                 </td>
                                                 <td data-title="'@Resource.LinkedinLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Link2}}
+                                                    {{h.LinkedinLink}}
                                                 </td>
                                                 <td data-title="'@Resource.OtherLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Link3}}
+                                                    {{h.OtherLink}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
