@@ -32,6 +32,10 @@ namespace MVCProject.Api.Handlers
         /// <returns>Returns http response message of type <see cref="HttpResponseMessage"/> class asynchronously.</returns>
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            if (request.RequestUri.AbsolutePath.ToLower().Contains("/login"))
+            {
+                return base.SendAsync(request, cancellationToken);
+            }
             if (request.Headers.Contains(SecurityToken))
             {
                 // Authorize securityToken

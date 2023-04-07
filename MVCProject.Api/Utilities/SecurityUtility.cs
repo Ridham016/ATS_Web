@@ -135,19 +135,17 @@ namespace MVCProject.Api
             string key = Encoding.UTF8.GetString(Convert.FromBase64String(request.Headers[SecurityToken]));
             UserContext userContext = new UserContext();
             string[] parts = key.Split(new char[] { ':' });
-            if (parts.Length == 11)
+            if (parts.Length == 7)
             {
                 userContext = new UserContext()
                 {
                     UserName = parts[1],
-                    CompanyDB = parts[2],
-                    UserId = int.Parse(parts[3]),
-                    RoleId = int.Parse(parts[4]),
+                    UserId = int.Parse(parts[2]),
+                    RoleId = int.Parse(parts[3]),
                     SiteLevelId = 9,
                     FunctionLevelId = 14,
-                    EmployeeId = int.Parse(parts[7]),
-                    TimeZoneMinutes = int.Parse(parts[8]),
-                    Ticks = long.Parse(parts[10])
+                    TimeZoneMinutes = int.Parse(parts[6]),
+                    Ticks = long.Parse(parts[7])
                 };
             }
 
@@ -250,22 +248,19 @@ namespace MVCProject.Api
 
                 // Split the parts from token.
                 string[] parts = key.Split(new char[] { ':' });
-                if (parts.Length == 11)
+                if (parts.Length == 8)
                 {
                     // Get the hash message, user name, and timestamps.
                     string hash = parts[0];
                     UserContext userContext = new UserContext()
                     {
                         UserName = parts[1],
-                        CompanyDB = parts[2],
-                        UserId = int.Parse(parts[3]),
-                        RoleId = int.Parse(parts[4]),
+                        UserId = int.Parse(parts[2]),
+                        RoleId = int.Parse(parts[3]),
                         SiteLevelId = 9,
                         FunctionLevelId = 14,
-                        EmployeeId = int.Parse(parts[7]),
-                        TimeZoneMinutes = int.Parse(parts[8]),
-                        UserAgent = userAgent,
-                        Ticks = long.Parse(parts[10])
+                        TimeZoneMinutes = int.Parse(parts[6]),
+                        Ticks = long.Parse(parts[7])
                     };
 
                     DateTime timeStamp = new DateTime(userContext.Ticks);

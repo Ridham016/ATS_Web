@@ -353,11 +353,28 @@
                                                 </label>
                                                 <input type="text" ng-disabled="textInput.disabled == 'fresher'"
                                                        ng-class="{'border-color' : frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid}"
-                                                       class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation" ng-required="textInput.disabled == 'experienced'" />
+                                                       class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation" 
+                                                       ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid">
                                                     <span data-ng-show="frmRegister.CurrentLocation.$error.required">@Resource.CurrentLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.NoticePeriod<span class="required-field">*</span>
+                                                </label>
+                                                <textarea rows="5" ng-disabled="textInput.disabled == 'fresher'"
+                                                         ng-required="textInput.disabled == 'experienced'"
+                                                          ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}"
+                                                          class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod"></textarea>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -398,24 +415,6 @@
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
                                                     <span data-ng-show="frmRegister.ExpectedCTC.$error.required">@Resource.ExpectedCTCRequired</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3">
-                                            <div class="form-group">
-                                                <label>
-                                                    @Resource.NoticePeriod<span class="required-field">*</span>
-                                                </label>
-                                                @*<select class="form-select" ng-model="applicantDetailScope.NoticePeriod" required>
-                                            <option disabled value="0" selected>Select Option</option>
-                                            <option ng-repeat="(key,value) in NoticePeriod" value="{{key}}">{{value}}</option>
-                                        </select>*@
-                                                <input type="text" ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}"
-                                                       class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod" />
-                                                <div class="c">
-                                                </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
-                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
                                                 </div>
                                             </div>
                                         </div>

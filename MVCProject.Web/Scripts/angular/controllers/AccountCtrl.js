@@ -62,6 +62,7 @@
                             console.log(data.Result);
                             $rootScope.isAjaxLoadingChild = true;
                             if (Login.Remember) {
+                                Login.Password = CommonFunctions.DecryptData(Login.Password);
                                 var userdata = Login.Email + "░" + Login.Password;
                                 userdata = CommonFunctions.EncryptData(userdata);
                                 CommonFunctions.SetCookie("REM", userdata);

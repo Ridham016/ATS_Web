@@ -45,7 +45,7 @@ namespace MVCProject.Api.Controllers.Account
             var user = entities.AuthenticateUser(users.Email,users.Password).SingleOrDefault();
             if (user == null)
             {
-                return this.Response(Utilities.MessageTypes.Error,string.Format(Resource.IncorrectPassword));
+                return this.Response(Utilities.MessageTypes.Error,string.Format(Resource.IncorrectCredentials));
             }
             else
             {

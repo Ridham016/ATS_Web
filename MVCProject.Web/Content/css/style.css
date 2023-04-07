@@ -4933,7 +4933,7 @@ table.dataTable td.focus {
 
 .safeloader {
     position: fixed;
-    background: rgba(252, 255, 252, 0.5);
+    background: var(--ats-white);
     z-index: 999999;
     display: flex;
     justify-content: center;

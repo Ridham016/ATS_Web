@@ -103,11 +103,15 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     PreferedLocation = g.PreferedLocation,
                     ReasonForChange = g.ReasonForChange,
                     Level = g.Level,
+                    SkillDescription = g.SkillDescription,
+                    PortfolioLink = g.PortfolioLink,
+                    LinkedinLink = g.LinkedinLink,
+                    OtherLink = g.OtherLink,
                     StatusId = g.StatusId,
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
                     Reason = g.Reason,
-                    ReasonDescription = g.ReasonDescription,
+                    Comment = g.Comment,
                     FileName = g.FileName
                 }).SingleOrDefault();
             //var StatusID = applicantDetail.Select(x => x.StatusId).SingleOrDefault();

@@ -1,4 +1,5 @@
 ﻿using iTextSharp.text.log;
+using MVCProject.Api.Handlers;
 using MVCProject.Api.Models;
 using MVCProject.Api.Models.FilterCriterias;
 using MVCProject.Api.Utilities;
@@ -9,7 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using System.Web.Http.Filters;
 
 namespace MVCProject.Api.Controllers.AdvancedSearch
 {
@@ -21,6 +24,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
         {
             this.entities = new MVCProjectEntities();
         }
+
         [HttpPost]
         public ApiResponse AdvancedActionSearch([FromBody] PagingParams searchDetailParams, [FromUri]SearchParams searchParams)
         {
@@ -49,7 +53,12 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 ReasonForChange = g.ReasonForChange,
                 StatusId = g.StatusId,
                 Level = g.Level,
+                SkillDescription = g.SkillDescription,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 StatusName = g.StatusName,
+                Comment = g.Comment,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
                 TotalRecords
@@ -85,6 +94,11 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 StatusId = g.StatusId,
                 StatusName = g.StatusName,
                 Level = g.Level,
+                Comment = g.Comment,
+                SkillDescription = g.SkillDescription,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
             }).AsEnumerable();
@@ -118,6 +132,11 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 StatusId = g.StatusId,
                 StatusName = g.StatusName,
                 Level = g.Level,
+                SkillDescription = g.SkillDescription,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
+                Comment = g.Comment,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
             }).AsEnumerable();

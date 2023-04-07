@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module("MVCApp").controller('DashboardCtrl', [
-        '$scope', 'uiCalendarConfig','CommonEnums', 'DashboardService', DashboardCtrl
+        '$scope', 'uiCalendarConfig','$rootScope','CommonEnums', 'DashboardService', DashboardCtrl
     ]);
-    function DashboardCtrl($scope, uiCalendarConfig, CommonEnums, DashboardService) {
+    function DashboardCtrl($scope, uiCalendarConfig, $rootScope, CommonEnums, DashboardService) {
 
         $scope.SelectedEvent = null;
         var isFirstTime = true;
@@ -16,6 +16,7 @@
             StartDate: moment().startOf('month').toDate(),
             EndDate: moment().endOf('month').toDate()
         };
+        
 
         $scope.Mode = CommonEnums.Mode;
 
@@ -50,6 +51,7 @@
                     debugger
                     DashboardService.Calendar($scope.DateRange).then(function (data) {
                         debugger
+                        console.log($rootScope.sessionToken);
                         $scope.events = data.data.Result.map(function (value) {
                             return {
                                 id: value.Id,

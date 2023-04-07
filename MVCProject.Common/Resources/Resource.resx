@@ -1123,7 +1123,7 @@
     <value>Portfolio Link is Required</value>
   </data>
   <data name="LinkedinLink" xml:space="preserve">
-    <value>Linkedin Profile Link</value>
+    <value>Linkedin Link</value>
   </data>
   <data name="ProfileLink2Required" xml:space="preserve">
     <value>Linkedin Profile is Required</value>
@@ -1161,7 +1161,7 @@
   <data name="String2" xml:space="preserve">
     <value />
   </data>
-  <data name="IncorrectPassword" xml:space="preserve">
-    <value>Incorrect Password</value>
+  <data name="IncorrectCredentials" xml:space="preserve">
+    <value>The Email address or Password provided is incorrect</value>
   </data>
 </root>

@@ -1402,11 +1402,11 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incorrect Password.
+        ///   Looks up a localized string similar to The Email address or Password provided is incorrect.
         /// </summary>
-        public static string IncorrectPassword {
+        public static string IncorrectCredentials {
             get {
-                return ResourceManager.GetString("IncorrectPassword", resourceCulture);
+                return ResourceManager.GetString("IncorrectCredentials", resourceCulture);
             }
         }
         
@@ -1600,7 +1600,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Linkedin Profile Link.
+        ///   Looks up a localized string similar to Linkedin Link.
         /// </summary>
         public static string LinkedinLink {
             get {

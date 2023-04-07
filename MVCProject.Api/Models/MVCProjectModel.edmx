@@ -1007,6 +1007,7 @@
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantTimeLine_APP_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1039,6 +1040,7 @@
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_FilesOfApplicant_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1160,9 +1162,9 @@
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Level" Nullable="true" />
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
-          <Property Type="String" Name="ReasonDescription" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1195,6 +1197,7 @@
           <Property Type="Int32" Name="ReasonId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
           <Property Type="Boolean" Name="Result" Nullable="true" />
@@ -1458,6 +1461,7 @@
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1602,6 +1606,7 @@
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1638,6 +1643,7 @@
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1827,9 +1833,9 @@
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
-                <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

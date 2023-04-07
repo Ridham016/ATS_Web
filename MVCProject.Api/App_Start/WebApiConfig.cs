@@ -25,6 +25,8 @@ namespace MVCProject.Api
             //AuthenticationHandler defaultHandler = new AuthenticationHandler() { InnerHandler = new HttpControllerDispatcher(config) };
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
+            config.MessageHandlers.Add(new AuthenticationHandler());
+
             config.Routes.MapHttpRoute(
               name: "Authentication",
               routeTemplate: "api/account/{action}/{id}",

@@ -80,7 +80,8 @@
                 var modalOptions = {
                     backdrop: 'static'
                 };
-                $scope.ButtonId = ButtonId;
+                debugger
+                $scope.StatusId = ButtonId + 1;
                 $('#Modal' + ButtonId).modal(modalOptions);
                 $('#Modal' + ButtonId).modal('show');
             }
@@ -88,7 +89,7 @@
                 var modalOptions = {
                     backdrop: 'static'
                 };
-                $scope.ButtonId = ButtonId;
+                $scope.StatusId = ButtonId + 1;
                 $('#Modal').modal(modalOptions);
                 $('#Modal').modal('show');
             }

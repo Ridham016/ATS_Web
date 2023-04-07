@@ -72,11 +72,11 @@
                                             <span ng-show="applicants.StatusId == 4">L{{Level}}</span>
                                             <span ng-show="applicants.StatusId == 2 || applicants.StatusId == 8">L{{Level+1}}</span> {{applicants.StatusName}}
                                         </span>
-                                        
+
                                     </p>
                                 </td>
                             </tr>
-                            <tr ng-show="(applicants.StatusId == 8) && (applicants.Reason != null || applicants.ReasonDescription != null)">
+                            <tr ng-show="(applicants.StatusId == 8)">
                                 <td class="details-schedule-label">
                                     <p class="me-2 fw-bold">
                                         @Resource.OtherReason :
@@ -84,9 +84,19 @@
                                 </td>
                                 <td>
                                     <p>
-                                        <span ng-show="applicants.Reason != null">{{applicants.Reason}}</span> 
-                                        <span ng-show="applicants.Reason != null && applicants.ReasonDescription != null">, </span>
-                                        <span ng-show="applicants.ReasonDescription != null">{{applicants.ReasonDescription}}</span> 
+                                        {{applicants.Reason}}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="details-schedule-label">
+                                    <p class="me-2 fw-bold">
+                                        @Resource.Comments :
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        {{applicants.Comment}}
                                     </p>
                                 </td>
                             </tr>
@@ -188,7 +198,7 @@
                                     <div class="modal-footer">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Resource.Close</button>
-                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,ButtonId,applicants.ApplicantId)"
+                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,StatusId,applicants.ApplicantId)"
                                                     ng-disabled="frmSchedule.$invalid">@Resource.Submit</button>
                                         </div>
                                     </div>
@@ -218,7 +228,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,ButtonId,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,StatusId,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -245,7 +255,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,ButtonId,applicants.ApplicantId)">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,StatusId,applicants.ApplicantId)">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -272,7 +282,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,ButtonId,applicants.ApplicantId)">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,StatusId,applicants.ApplicantId)">Submit</button>
                                     </div>
                                 </form>
                             </div>
