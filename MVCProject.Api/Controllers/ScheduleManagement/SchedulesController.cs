@@ -274,7 +274,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse HoldReason([FromBody] ATS_AdditionalInformation data, [FromUri]int ActionId)
+        public ApiResponse Comment([FromBody] ATS_AdditionalInformation data, [FromUri]int ActionId)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {

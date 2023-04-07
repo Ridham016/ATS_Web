@@ -1,31 +1,159 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityType Name="ApplicantRegister">
+  <EntityType Name="ATS_ActionHistory">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicantId" Type="int" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="ReasonId" Type="int" />
+    <Property Name="Level" Type="int" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_ActionStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonId" Type="int" />
+    <Property Name="NextStatusId" Type="int" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_AdditionalInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleDateTime" Type="datetime" />
+    <Property Name="ActionId" Type="int" />
+    <Property Name="InterviewerId" Type="int" />
+    <Property Name="ScheduleLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Mode" Type="int" />
+  </EntityType>
+  <EntityType Name="ATS_ApplicantRegister">
     <Key>
       <PropertyRef Name="ApplicantId" />
     </Key>
     <Property Name="ApplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nvarchar" MaxLength="15" />
     <Property Name="Address" Type="nvarchar" MaxLength="100" />
     <Property Name="DateOfBirth" Type="date" />
-    <Property Name="ApplicantDate" Type="date" />
+    <Property Name="ApplicantDate" Type="datetime" />
     <Property Name="CurrentCompany" Type="nvarchar" MaxLength="50" />
     <Property Name="CurrentDesignation" Type="nvarchar" MaxLength="50" />
-    <Property Name="TotalExperience" Type="int" />
-    <Property Name="DetailedExperience" Type="int" />
-    <Property Name="CurrentCTC" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="ExpectedCTC" Type="decimal" Precision="5" Scale="2" />
-    <Property Name="NoticePeriod" Type="int" />
-    <Property Name="ReasonForChange" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalExperience" Type="nvarchar" MaxLength="50" />
+    <Property Name="DetailedExperience" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentCTC" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExpectedCTC" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoticePeriod" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReasonForChange" Type="nvarchar" MaxLength="100" />
     <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" />
     <Property Name="PreferedLocation" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
-    <Property Name="EntryDate" Type="date" />
+    <Property Name="EntryDate" Type="datetime" />
     <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="UpdateDate" Type="date" />
+    <Property Name="SkillDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="PortfolioLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="LinkedinLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="OtherLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ATS_Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FilePath" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileRelativePath" Type="nvarchar" MaxLength="100" />
+    <Property Name="OriginalFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplicantId" Type="int" />
+    <Property Name="AttachmentTypeId" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ATS_AttachmentType">
+    <Key>
+      <PropertyRef Name="AttachmentTypeId" />
+    </Key>
+    <Property Name="AttachmentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttachmentTypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_ButtonMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="ButtonId" Type="int" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_Interviewer">
+    <Key>
+      <PropertyRef Name="InterviewerId" />
+    </Key>
+    <Property Name="InterviewerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="InterviewerPhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Is_Active" Type="bit" />
+    <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ATS_MasterButton">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_MasterOtherReason">
+    <Key>
+      <PropertyRef Name="ReasonId" />
+    </Key>
+    <Property Name="ReasonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ATS_MasterStatus">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Designation">
     <Key>
@@ -36,17 +164,285 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="Remarks" Type="varchar" MaxLength="500" />
   </EntityType>
-  <EntityType Name="Interviewer">
+  <EntityType Name="Roles">
     <Key>
-      <PropertyRef Name="InterviewerId" />
+      <PropertyRef Name="RoleId" />
     </Key>
-    <Property Name="InterviewerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="InterviewerName" Type="nvarchar" MaxLength="50" />
-    <Property Name="InterviewerEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <Association Name="FK__ATS_Actio__Appli__40C49C62">
+    <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ApplicantRegister">
+        <PropertyRef Name="ApplicantId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Butto__4589517F">
+    <End Role="ATS_MasterButton" Type="Self.ATS_MasterButton" Multiplicity="0..1" />
+    <End Role="ATS_ActionStatus" Type="Self.ATS_ActionStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterButton">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="ATS_ActionStatus">
+        <PropertyRef Name="ButtonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__NextS__467D75B8">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ActionStatus" Type="Self.ATS_ActionStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ActionStatus">
+        <PropertyRef Name="NextStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Reaso__42ACE4D4">
+    <End Role="ATS_MasterOtherReason" Type="Self.ATS_MasterOtherReason" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterOtherReason">
+        <PropertyRef Name="ReasonId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Statu__41B8C09B">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Attac__Appli__39237A9A">
+    <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="0..1" />
+    <End Role="ATS_Attachment" Type="Self.ATS_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ApplicantRegister">
+        <PropertyRef Name="ApplicantId" />
+      </Principal>
+      <Dependent Role="ATS_Attachment">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Attac__Attac__3BFFE745">
+    <End Role="ATS_AttachmentType" Type="Self.ATS_AttachmentType" Multiplicity="0..1" />
+    <End Role="ATS_Attachment" Type="Self.ATS_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_AttachmentType">
+        <PropertyRef Name="AttachmentTypeId" />
+      </Principal>
+      <Dependent Role="ATS_Attachment">
+        <PropertyRef Name="AttachmentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Butto__Butto__4959E263">
+    <End Role="ATS_MasterButton" Type="Self.ATS_MasterButton" Multiplicity="0..1" />
+    <End Role="ATS_ButtonMapping" Type="Self.ATS_ButtonMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterButton">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="ATS_ButtonMapping">
+        <PropertyRef Name="ButtonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Butto__Statu__4A4E069C">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ButtonMapping" Type="Self.ATS_ButtonMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ButtonMapping">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Sched__Actio__50FB042B">
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="0..1" />
+    <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ActionHistory">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="ATS_AdditionalInformation">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Sched__Inter__51EF2864">
+    <End Role="ATS_Interviewer" Type="Self.ATS_Interviewer" Multiplicity="0..1" />
+    <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_Interviewer">
+        <PropertyRef Name="InterviewerId" />
+      </Principal>
+      <Dependent Role="ATS_AdditionalInformation">
+        <PropertyRef Name="InterviewerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleId__1BC821DD">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_ActionApplicantSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_AllApplicants" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_AllInterviewers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_ApplicantById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_ApplicantsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_ApplicantTimeLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_ApplicantTimeLine_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_CheckStatusValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentStatus" Type="int" Mode="In" />
+    <Parameter Name="NextStatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_FilesOfApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetApplicantWithStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetButton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StatusId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ActionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetOtherReasons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_GetScheduleData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_GetStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_GetStatusFromApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_InterviewerbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InterviewerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_ATS_InterviewerList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_ScheduleInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_ATS_SingleApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicantId" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="MVCProjectModelStoreContainer">
-    <EntitySet Name="ApplicantRegister" EntityType="Self.ApplicantRegister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_AdditionalInformation" EntityType="Self.ATS_AdditionalInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_ApplicantRegister" EntityType="Self.ATS_ApplicantRegister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_Attachment" EntityType="Self.ATS_Attachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_AttachmentType" EntityType="Self.ATS_AttachmentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_ButtonMapping" EntityType="Self.ATS_ButtonMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_Interviewer" EntityType="Self.ATS_Interviewer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_MasterButton" EntityType="Self.ATS_MasterButton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_MasterOtherReason" EntityType="Self.ATS_MasterOtherReason" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATS_MasterStatus" EntityType="Self.ATS_MasterStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Interviewer" EntityType="Self.Interviewer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ATS_Actio__Appli__40C49C62" Association="Self.FK__ATS_Actio__Appli__40C49C62">
+      <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Butto__4589517F" Association="Self.FK__ATS_Actio__Butto__4589517F">
+      <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
+      <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__NextS__467D75B8" Association="Self.FK__ATS_Actio__NextS__467D75B8">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Reaso__42ACE4D4" Association="Self.FK__ATS_Actio__Reaso__42ACE4D4">
+      <End Role="ATS_MasterOtherReason" EntitySet="ATS_MasterOtherReason" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Statu__41B8C09B" Association="Self.FK__ATS_Actio__Statu__41B8C09B">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="Self.FK__ATS_Attac__Appli__39237A9A">
+      <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+      <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Attac__Attac__3BFFE745" Association="Self.FK__ATS_Attac__Attac__3BFFE745">
+      <End Role="ATS_AttachmentType" EntitySet="ATS_AttachmentType" />
+      <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Butto__Butto__4959E263" Association="Self.FK__ATS_Butto__Butto__4959E263">
+      <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
+      <End Role="ATS_ButtonMapping" EntitySet="ATS_ButtonMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Butto__Statu__4A4E069C" Association="Self.FK__ATS_Butto__Statu__4A4E069C">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ButtonMapping" EntitySet="ATS_ButtonMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="Self.FK__ATS_Sched__Actio__50FB042B">
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+      <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="Self.FK__ATS_Sched__Inter__51EF2864">
+      <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
+      <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleId__1BC821DD" Association="Self.FK__Users__RoleId__1BC821DD">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

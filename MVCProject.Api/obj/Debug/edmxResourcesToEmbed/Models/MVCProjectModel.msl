@@ -1,52 +1,608 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MVCProjectModelStoreContainer" CdmEntityContainer="MVCProjectEntities">
-    <EntitySetMapping Name="ApplicantRegisters">
-      <EntityTypeMapping TypeName="MVCProjectModel.ApplicantRegister">
-        <MappingFragment StoreEntitySet="ApplicantRegister">
-          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
-          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
-          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
-          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
-          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
-          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
-          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
-          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
-          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
-          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+    <EntitySetMapping Name="ATS_ActionHistory">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_ActionHistory">
+        <MappingFragment StoreEntitySet="ATS_ActionHistory">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
           <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
           <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
           <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
-          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Designations">
+    <EntitySetMapping Name="ATS_ActionStatus">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_ActionStatus">
+        <MappingFragment StoreEntitySet="ATS_ActionStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+          <ScalarProperty Name="NextStatusId" ColumnName="NextStatusId" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_AdditionalInformation">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_AdditionalInformation">
+        <MappingFragment StoreEntitySet="ATS_AdditionalInformation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_ApplicantRegister">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_ApplicantRegister">
+        <MappingFragment StoreEntitySet="ATS_ApplicantRegister">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_Attachment">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_Attachment">
+        <MappingFragment StoreEntitySet="ATS_Attachment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+          <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_AttachmentType">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_AttachmentType">
+        <MappingFragment StoreEntitySet="ATS_AttachmentType">
+          <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
+          <ScalarProperty Name="AttachmentTypeName" ColumnName="AttachmentTypeName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_ButtonMapping">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_ButtonMapping">
+        <MappingFragment StoreEntitySet="ATS_ButtonMapping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_Interviewer">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_Interviewer">
+        <MappingFragment StoreEntitySet="ATS_Interviewer">
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+          <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_MasterButton">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_MasterButton">
+        <MappingFragment StoreEntitySet="ATS_MasterButton">
+          <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+          <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_MasterOtherReason">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_MasterOtherReason">
+        <MappingFragment StoreEntitySet="ATS_MasterOtherReason">
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATS_MasterStatus">
+      <EntityTypeMapping TypeName="MVCProjectModel.ATS_MasterStatus">
+        <MappingFragment StoreEntitySet="ATS_MasterStatus">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ActionApplicantSearch" FunctionName="MVCProjectModel.Store.USP_ATS_ActionApplicantSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ActionApplicantSearch_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_AllApplicants" FunctionName="MVCProjectModel.Store.USP_ATS_AllApplicants">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_AllApplicants_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_AllInterviewers" FunctionName="MVCProjectModel.Store.USP_ATS_AllInterviewers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_AllInterviewers_Result">
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+          <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantById" FunctionName="MVCProjectModel.Store.USP_ATS_ApplicantById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ApplicantById_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantsList" FunctionName="MVCProjectModel.Store.USP_ATS_ApplicantsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ApplicantsList_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantTimeLine" FunctionName="MVCProjectModel.Store.USP_ATS_ApplicantTimeLine">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ApplicantTimeLine_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantTimeLine_APP" FunctionName="MVCProjectModel.Store.USP_ATS_ApplicantTimeLine_APP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ApplicantTimeLine_APP_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_CheckStatusValidity" FunctionName="MVCProjectModel.Store.USP_ATS_CheckStatusValidity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_CheckStatusValidity_Result">
+          <ScalarProperty Name="Result" ColumnName="Result" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_FilesOfApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_FilesOfApplicant">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_FilesOfApplicant_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+          <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="AttachmentTypeId" ColumnName="AttachmentTypeId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetApplicantWithStatus" FunctionName="MVCProjectModel.Store.USP_ATS_GetApplicantWithStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetApplicantWithStatus_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetButton" FunctionName="MVCProjectModel.Store.USP_ATS_GetButton">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetButton_Result">
+          <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+          <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+          <ScalarProperty Name="NextStatusId" ColumnName="NextStatusId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetEmail" FunctionName="MVCProjectModel.Store.USP_ATS_GetEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetEmail_Result">
+          <ScalarProperty Name="ApplicantEmail" ColumnName="ApplicantEmail" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="MVCProjectModel.Store.USP_ATS_GetLevel">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetLevel_Result">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetOtherReasons" FunctionName="MVCProjectModel.Store.USP_ATS_GetOtherReasons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetOtherReasons_Result">
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetScheduleData" FunctionName="MVCProjectModel.Store.USP_ATS_GetScheduleData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetScheduleData_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetStatus" FunctionName="MVCProjectModel.Store.USP_ATS_GetStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetStatus_Result">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_GetStatusFromApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_GetStatusFromApplicant">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetStatusFromApplicant_Result">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_InterviewerbyId" FunctionName="MVCProjectModel.Store.USP_ATS_InterviewerbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_InterviewerbyId_Result">
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+          <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_InterviewerList" FunctionName="MVCProjectModel.Store.USP_ATS_InterviewerList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_InterviewerList_Result">
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
+          <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_ScheduleInformation" FunctionName="MVCProjectModel.Store.USP_ATS_ScheduleInformation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_ScheduleInformation_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+          <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+          <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_ATS_SingleApplicant" FunctionName="MVCProjectModel.Store.USP_ATS_SingleApplicant">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_SingleApplicant_Result">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ApplicantDate" ColumnName="ApplicantDate" />
+          <ScalarProperty Name="CurrentCompany" ColumnName="CurrentCompany" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="TotalExperience" ColumnName="TotalExperience" />
+          <ScalarProperty Name="DetailedExperience" ColumnName="DetailedExperience" />
+          <ScalarProperty Name="CurrentCTC" ColumnName="CurrentCTC" />
+          <ScalarProperty Name="ExpectedCTC" ColumnName="ExpectedCTC" />
+          <ScalarProperty Name="NoticePeriod" ColumnName="NoticePeriod" />
+          <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+          <ScalarProperty Name="PreferedLocation" ColumnName="PreferedLocation" />
+          <ScalarProperty Name="ReasonForChange" ColumnName="ReasonForChange" />
+          <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+          <ScalarProperty Name="PortfolioLink" ColumnName="PortfolioLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+          <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Designation">
       <EntityTypeMapping TypeName="MVCProjectModel.Designation">
         <MappingFragment StoreEntitySet="Designation">
-          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
-          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Interviewer">
-      <EntityTypeMapping TypeName="MVCProjectModel.Interviewer">
-        <MappingFragment StoreEntitySet="Interviewer">
-          <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
-          <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
-          <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="MVCProjectModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MVCProjectModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="MVCProjectModel.Store.AuthenticateUser" />
   </EntityContainerMapping>
 </Mapping>

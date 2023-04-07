@@ -1,32 +1,759 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MVCProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityType Name="ApplicantRegister">
+  <EntityType Name="ATS_ActionHistory">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicantId" Type="Int32" />
+    <Property Name="StatusId" Type="Int32" />
+    <Property Name="ReasonId" Type="Int32" />
+    <Property Name="Level" Type="Int32" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_ApplicantRegister" Relationship="Self.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ActionHistory" ToRole="ATS_ApplicantRegister" />
+    <NavigationProperty Name="ATS_MasterOtherReason" Relationship="Self.FK__ATS_Actio__Reaso__42ACE4D4" FromRole="ATS_ActionHistory" ToRole="ATS_MasterOtherReason" />
+    <NavigationProperty Name="ATS_MasterStatus" Relationship="Self.FK__ATS_Actio__Statu__41B8C09B" FromRole="ATS_ActionHistory" ToRole="ATS_MasterStatus" />
+    <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ActionHistory" ToRole="ATS_AdditionalInformation" />
+  </EntityType>
+  <EntityType Name="ATS_ActionStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonId" Type="Int32" />
+    <Property Name="NextStatusId" Type="Int32" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_MasterButton" Relationship="Self.FK__ATS_Actio__Butto__4589517F" FromRole="ATS_ActionStatus" ToRole="ATS_MasterButton" />
+    <NavigationProperty Name="ATS_MasterStatus" Relationship="Self.FK__ATS_Actio__NextS__467D75B8" FromRole="ATS_ActionStatus" ToRole="ATS_MasterStatus" />
+  </EntityType>
+  <EntityType Name="ATS_AdditionalInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ActionId" Type="Int32" />
+    <Property Name="InterviewerId" Type="Int32" />
+    <Property Name="ScheduleLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Mode" Type="Int32" />
+    <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_AdditionalInformation" ToRole="ATS_ActionHistory" />
+    <NavigationProperty Name="ATS_Interviewer" Relationship="Self.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_AdditionalInformation" ToRole="ATS_Interviewer" />
+  </EntityType>
+  <EntityType Name="ATS_ApplicantRegister">
     <Key>
       <PropertyRef Name="ApplicantId" />
     </Key>
     <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="EntryDate" Type="DateTime" Precision="0" />
-    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-    <Property Name="IsActive" Type="Boolean" />
-    <Property Name="ApplicantDate" Type="DateTime" Precision="0" />
     <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="ApplicantDate" Type="DateTime" Precision="3" />
     <Property Name="CurrentCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CurrentDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TotalExperience" Type="Int32" />
-    <Property Name="DetailedExperience" Type="Int32" />
-    <Property Name="CurrentCTC" Type="Decimal" Precision="5" Scale="2" />
-    <Property Name="ExpectedCTC" Type="Decimal" Precision="5" Scale="2" />
-    <Property Name="NoticePeriod" Type="Int32" />
-    <Property Name="ReasonForChange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalExperience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DetailedExperience" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCTC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExpectedCTC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoticePeriod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReasonForChange" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CurrentLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PreferedLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="SkillDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PortfolioLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedinLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OtherLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ApplicantRegister" ToRole="ATS_ActionHistory" />
+    <NavigationProperty Name="ATS_Attachment" Relationship="Self.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
   </EntityType>
+  <EntityType Name="ATS_Attachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FileRelativePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OriginalFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicantId" Type="Int32" />
+    <Property Name="AttachmentTypeId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ATS_ApplicantRegister" Relationship="Self.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_Attachment" ToRole="ATS_ApplicantRegister" />
+    <NavigationProperty Name="ATS_AttachmentType" Relationship="Self.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_Attachment" ToRole="ATS_AttachmentType" />
+  </EntityType>
+  <EntityType Name="ATS_AttachmentType">
+    <Key>
+      <PropertyRef Name="AttachmentTypeId" />
+    </Key>
+    <Property Name="AttachmentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttachmentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_Attachment" Relationship="Self.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_AttachmentType" ToRole="ATS_Attachment" />
+  </EntityType>
+  <EntityType Name="ATS_ButtonMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusId" Type="Int32" />
+    <Property Name="ButtonId" Type="Int32" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_MasterButton" Relationship="Self.FK__ATS_Butto__Butto__4959E263" FromRole="ATS_ButtonMapping" ToRole="ATS_MasterButton" />
+    <NavigationProperty Name="ATS_MasterStatus" Relationship="Self.FK__ATS_Butto__Statu__4A4E069C" FromRole="ATS_ButtonMapping" ToRole="ATS_MasterStatus" />
+  </EntityType>
+  <EntityType Name="ATS_Interviewer">
+    <Key>
+      <PropertyRef Name="InterviewerId" />
+    </Key>
+    <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InterviewerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Is_Active" Type="Boolean" />
+    <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_AdditionalInformation" />
+  </EntityType>
+  <EntityType Name="ATS_MasterButton">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_ActionStatus" Relationship="Self.FK__ATS_Actio__Butto__4589517F" FromRole="ATS_MasterButton" ToRole="ATS_ActionStatus" />
+    <NavigationProperty Name="ATS_ButtonMapping" Relationship="Self.FK__ATS_Butto__Butto__4959E263" FromRole="ATS_MasterButton" ToRole="ATS_ButtonMapping" />
+  </EntityType>
+  <EntityType Name="ATS_MasterOtherReason">
+    <Key>
+      <PropertyRef Name="ReasonId" />
+    </Key>
+    <Property Name="ReasonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Reaso__42ACE4D4" FromRole="ATS_MasterOtherReason" ToRole="ATS_ActionHistory" />
+  </EntityType>
+  <EntityType Name="ATS_MasterStatus">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Statu__41B8C09B" FromRole="ATS_MasterStatus" ToRole="ATS_ActionHistory" />
+    <NavigationProperty Name="ATS_ActionStatus" Relationship="Self.FK__ATS_Actio__NextS__467D75B8" FromRole="ATS_MasterStatus" ToRole="ATS_ActionStatus" />
+    <NavigationProperty Name="ATS_ButtonMapping" Relationship="Self.FK__ATS_Butto__Statu__4A4E069C" FromRole="ATS_MasterStatus" ToRole="ATS_ButtonMapping" />
+  </EntityType>
+  <Association Name="FK__ATS_Actio__Appli__40C49C62">
+    <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ApplicantRegister">
+        <PropertyRef Name="ApplicantId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Reaso__42ACE4D4">
+    <End Role="ATS_MasterOtherReason" Type="Self.ATS_MasterOtherReason" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterOtherReason">
+        <PropertyRef Name="ReasonId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="ReasonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Statu__41B8C09B">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ActionHistory">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Sched__Actio__50FB042B">
+    <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="0..1" />
+    <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ActionHistory">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="ATS_AdditionalInformation">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__Butto__4589517F">
+    <End Role="ATS_MasterButton" Type="Self.ATS_MasterButton" Multiplicity="0..1" />
+    <End Role="ATS_ActionStatus" Type="Self.ATS_ActionStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterButton">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="ATS_ActionStatus">
+        <PropertyRef Name="ButtonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Actio__NextS__467D75B8">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ActionStatus" Type="Self.ATS_ActionStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ActionStatus">
+        <PropertyRef Name="NextStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Sched__Inter__51EF2864">
+    <End Role="ATS_Interviewer" Type="Self.ATS_Interviewer" Multiplicity="0..1" />
+    <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_Interviewer">
+        <PropertyRef Name="InterviewerId" />
+      </Principal>
+      <Dependent Role="ATS_AdditionalInformation">
+        <PropertyRef Name="InterviewerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Attac__Appli__39237A9A">
+    <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="0..1" />
+    <End Role="ATS_Attachment" Type="Self.ATS_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_ApplicantRegister">
+        <PropertyRef Name="ApplicantId" />
+      </Principal>
+      <Dependent Role="ATS_Attachment">
+        <PropertyRef Name="ApplicantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Attac__Attac__3BFFE745">
+    <End Role="ATS_AttachmentType" Type="Self.ATS_AttachmentType" Multiplicity="0..1" />
+    <End Role="ATS_Attachment" Type="Self.ATS_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_AttachmentType">
+        <PropertyRef Name="AttachmentTypeId" />
+      </Principal>
+      <Dependent Role="ATS_Attachment">
+        <PropertyRef Name="AttachmentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Butto__Butto__4959E263">
+    <End Role="ATS_MasterButton" Type="Self.ATS_MasterButton" Multiplicity="0..1" />
+    <End Role="ATS_ButtonMapping" Type="Self.ATS_ButtonMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterButton">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="ATS_ButtonMapping">
+        <PropertyRef Name="ButtonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATS_Butto__Statu__4A4E069C">
+    <End Role="ATS_MasterStatus" Type="Self.ATS_MasterStatus" Multiplicity="0..1" />
+    <End Role="ATS_ButtonMapping" Type="Self.ATS_ButtonMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATS_MasterStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="ATS_ButtonMapping">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" />
+    <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" />
+    <EntitySet Name="ATS_AdditionalInformation" EntityType="Self.ATS_AdditionalInformation" />
+    <EntitySet Name="ATS_ApplicantRegister" EntityType="Self.ATS_ApplicantRegister" />
+    <EntitySet Name="ATS_Attachment" EntityType="Self.ATS_Attachment" />
+    <EntitySet Name="ATS_AttachmentType" EntityType="Self.ATS_AttachmentType" />
+    <EntitySet Name="ATS_ButtonMapping" EntityType="Self.ATS_ButtonMapping" />
+    <EntitySet Name="ATS_Interviewer" EntityType="Self.ATS_Interviewer" />
+    <EntitySet Name="ATS_MasterButton" EntityType="Self.ATS_MasterButton" />
+    <EntitySet Name="ATS_MasterOtherReason" EntityType="Self.ATS_MasterOtherReason" />
+    <EntitySet Name="ATS_MasterStatus" EntityType="Self.ATS_MasterStatus" />
+    <AssociationSet Name="FK__ATS_Actio__Appli__40C49C62" Association="Self.FK__ATS_Actio__Appli__40C49C62">
+      <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Reaso__42ACE4D4" Association="Self.FK__ATS_Actio__Reaso__42ACE4D4">
+      <End Role="ATS_MasterOtherReason" EntitySet="ATS_MasterOtherReason" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Statu__41B8C09B" Association="Self.FK__ATS_Actio__Statu__41B8C09B">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="Self.FK__ATS_Sched__Actio__50FB042B">
+      <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+      <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__Butto__4589517F" Association="Self.FK__ATS_Actio__Butto__4589517F">
+      <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
+      <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Actio__NextS__467D75B8" Association="Self.FK__ATS_Actio__NextS__467D75B8">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="Self.FK__ATS_Sched__Inter__51EF2864">
+      <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
+      <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="Self.FK__ATS_Attac__Appli__39237A9A">
+      <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+      <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Attac__Attac__3BFFE745" Association="Self.FK__ATS_Attac__Attac__3BFFE745">
+      <End Role="ATS_AttachmentType" EntitySet="ATS_AttachmentType" />
+      <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Butto__Butto__4959E263" Association="Self.FK__ATS_Butto__Butto__4959E263">
+      <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
+      <End Role="ATS_ButtonMapping" EntitySet="ATS_ButtonMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATS_Butto__Statu__4A4E069C" Association="Self.FK__ATS_Butto__Statu__4A4E069C">
+      <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
+      <End Role="ATS_ButtonMapping" EntitySet="ATS_ButtonMapping" />
+    </AssociationSet>
+    <FunctionImport Name="USP_ATS_ActionApplicantSearch" ReturnType="Collection(MVCProjectModel.USP_ATS_ActionApplicantSearch_Result)">
+      <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_AllApplicants" ReturnType="Collection(MVCProjectModel.USP_ATS_AllApplicants_Result)" />
+    <FunctionImport Name="USP_ATS_AllInterviewers" ReturnType="Collection(MVCProjectModel.USP_ATS_AllInterviewers_Result)" />
+    <FunctionImport Name="USP_ATS_ApplicantById" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantById_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_ApplicantsList" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantsList_Result)" />
+    <FunctionImport Name="USP_ATS_ApplicantTimeLine" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantTimeLine_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_ApplicantTimeLine_APP" ReturnType="Collection(MVCProjectModel.USP_ATS_ApplicantTimeLine_APP_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_CheckStatusValidity" ReturnType="Collection(MVCProjectModel.USP_ATS_CheckStatusValidity_Result)">
+      <Parameter Name="CurrentStatus" Mode="In" Type="Int32" />
+      <Parameter Name="NextStatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_FilesOfApplicant" ReturnType="Collection(MVCProjectModel.USP_ATS_FilesOfApplicant_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetApplicantWithStatus" ReturnType="Collection(MVCProjectModel.USP_ATS_GetApplicantWithStatus_Result)">
+      <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(MVCProjectModel.USP_ATS_GetButton_Result)">
+      <Parameter Name="StatusId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetEmail_Result)">
+      <Parameter Name="ActionId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetLevel" ReturnType="Collection(MVCProjectModel.USP_ATS_GetLevel_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetOtherReasons" ReturnType="Collection(MVCProjectModel.USP_ATS_GetOtherReasons_Result)" />
+    <FunctionImport Name="USP_ATS_GetScheduleData" ReturnType="Collection(MVCProjectModel.USP_ATS_GetScheduleData_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_GetStatus" ReturnType="Collection(MVCProjectModel.USP_ATS_GetStatus_Result)" />
+    <FunctionImport Name="USP_ATS_GetStatusFromApplicant" ReturnType="Collection(MVCProjectModel.USP_ATS_GetStatusFromApplicant_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_InterviewerbyId" ReturnType="Collection(MVCProjectModel.USP_ATS_InterviewerbyId_Result)">
+      <Parameter Name="InterviewerId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ATS_InterviewerList" ReturnType="Collection(MVCProjectModel.USP_ATS_InterviewerList_Result)" />
+    <FunctionImport Name="USP_ATS_ScheduleInformation" ReturnType="Collection(MVCProjectModel.USP_ATS_ScheduleInformation_Result)" />
+    <FunctionImport Name="USP_ATS_SingleApplicant" ReturnType="Collection(MVCProjectModel.USP_ATS_SingleApplicant_Result)">
+      <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Designation" EntityType="MVCProjectModel.Designation" />
+    <EntitySet Name="Roles" EntityType="MVCProjectModel.Roles" />
+    <EntitySet Name="Users" EntityType="MVCProjectModel.Users" />
+    <AssociationSet Name="FK__Users__RoleId__1BC821DD" Association="MVCProjectModel.FK__Users__RoleId__1BC821DD">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="AuthenticateUser" EntitySet="Users" ReturnType="Collection(MVCProjectModel.Users)">
+      <Parameter Name="p_Email" Mode="In" Type="String" />
+      <Parameter Name="p_Password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="USP_ATS_AllApplicants_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_AllInterviewers_Result">
+    <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+    <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+    <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ApplicantById_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ApplicantsList_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ApplicantTimeLine_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ApplicantTimeLine_APP_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_FilesOfApplicant_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OriginalFileName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ApplicantId" Nullable="true" />
+    <Property Type="Int32" Name="AttachmentTypeId" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetApplicantWithStatus_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetButton_Result">
+    <Property Type="Int32" Name="ButtonId" Nullable="true" />
+    <Property Type="String" Name="ButtonName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NextStatusId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetOtherReasons_Result">
+    <Property Type="Int32" Name="ReasonId" Nullable="false" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetScheduleData_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="ScheduleDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ActionId" Nullable="true" />
+    <Property Type="Int32" Name="InterviewerId" Nullable="true" />
+    <Property Type="String" Name="ScheduleLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Mode" Nullable="true" />
+    <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetStatus_Result">
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_InterviewerbyId_Result">
+    <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+    <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+    <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_InterviewerList_Result">
+    <Property Type="Int32" Name="InterviewerId" Nullable="false" />
+    <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
+    <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ScheduleInformation_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="ScheduleDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ActionId" Nullable="true" />
+    <Property Type="Int32" Name="InterviewerId" Nullable="true" />
+    <Property Type="String" Name="ScheduleLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Mode" Nullable="true" />
+    <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_SingleApplicant_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="ReasonDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
+    <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+    <Property Type="DateTime" Name="ApplicantDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CurrentCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentDesignation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TotalExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DetailedExperience" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ExpectedCTC" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NoticePeriod" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CurrentLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PreferedLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReasonForChange" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="String" Name="SkillDescription" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="PortfolioLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+    <Property Type="Int32" Name="ReasonId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
+    <Property Type="Boolean" Name="Result" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetEmail_Result">
+    <Property Type="String" Name="ApplicantEmail" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetLevel_Result">
+    <Property Type="Int32" Name="Level" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_ATS_GetStatusFromApplicant_Result">
+    <Property Type="Int32" Name="StatusId" Nullable="true" />
+  </ComplexType>
   <EntityType Name="Designation">
     <Key>
       <PropertyRef Name="DesignationId" />
@@ -36,17 +763,40 @@
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ApplicantRegisters" EntityType="Self.ApplicantRegister" />
-    <EntitySet Name="Designations" EntityType="Self.Designation" />
-    <EntitySet Name="Interviewer" EntityType="MVCProjectModel.Interviewer" />
-  </EntityContainer>
-  <EntityType Name="Interviewer">
+  <EntityType Name="Roles">
     <Key>
-      <PropertyRef Name="InterviewerId" />
+      <PropertyRef Name="RoleId" />
     </Key>
-    <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="MVCProjectModel.FK__Users__RoleId__1BC821DD" FromRole="Roles" ToRole="Users" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Roles" Relationship="MVCProjectModel.FK__Users__RoleId__1BC821DD" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK__Users__RoleId__1BC821DD">
+    <End Type="MVCProjectModel.Roles" Role="Roles" Multiplicity="0..1" />
+    <End Type="MVCProjectModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="AuthenticateUser_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="RoleId" Nullable="true" />
+  </ComplexType>
 </Schema>
