@@ -2702,6 +2702,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -5633,6 +5657,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -6310,6 +6358,30 @@ namespace MVCProject.Api.Models
         private global::System.String _FileRelativePath;
         partial void OnFileRelativePathChanging(global::System.String value);
         partial void OnFileRelativePathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -7064,6 +7136,30 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -7765,6 +7861,30 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Int32> _Level;
         partial void OnLevelChanging(Nullable<global::System.Int32> value);
         partial void OnLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -8538,6 +8658,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -9311,6 +9455,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -10319,6 +10487,30 @@ namespace MVCProject.Api.Models
         private global::System.String _StatusName;
         partial void OnStatusNameChanging(global::System.String value);
         partial void OnStatusNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 
@@ -12234,6 +12426,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ExpectedJoiningDate
+        {
+            get
+            {
+                return _ExpectedJoiningDate;
+            }
+            set
+            {
+                OnExpectedJoiningDateChanging(value);
+                ReportPropertyChanging("ExpectedJoiningDate");
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExpectedJoiningDate");
+                OnExpectedJoiningDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ExpectedJoiningDate;
+        partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnExpectedJoiningDateChanged();
 
         #endregion
 

@@ -83,6 +83,7 @@
           <Property Name="LinkedinLink" Type="nvarchar" MaxLength="100" />
           <Property Name="OtherLink" Type="nvarchar" MaxLength="100" />
           <Property Name="Comment" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExpectedJoiningDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ATS_Attachment">
           <Key>
@@ -542,6 +543,7 @@
           <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ApplicantRegister" ToRole="ATS_ActionHistory" />
           <NavigationProperty Name="ATS_Attachment" Relationship="Self.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
+          <Property Name="ExpectedJoiningDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ATS_Attachment">
           <Key>
@@ -912,6 +914,7 @@
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllInterviewers_Result">
           <Property Type="Int32" Name="InterviewerId" Nullable="false" />
@@ -945,6 +948,7 @@
           <Property Type="String" Name="LinkedinLink" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantsList_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -975,6 +979,7 @@
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantTimeLine_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1008,6 +1013,7 @@
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantTimeLine_APP_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1041,6 +1047,7 @@
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_FilesOfApplicant_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1083,6 +1090,7 @@
           <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
@@ -1165,6 +1173,7 @@
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1198,6 +1207,7 @@
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
           <Property Type="Boolean" Name="Result" Nullable="true" />
@@ -1313,6 +1323,7 @@
           <EntitySetMapping Name="ATS_ApplicantRegister">
             <EntityTypeMapping TypeName="MVCProjectModel.ATS_ApplicantRegister">
               <MappingFragment StoreEntitySet="ATS_ApplicantRegister">
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
                 <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -1462,6 +1473,7 @@
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1495,6 +1507,7 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1536,6 +1549,7 @@
                 <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
                 <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1570,6 +1584,7 @@
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1607,6 +1622,7 @@
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1644,6 +1660,7 @@
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1701,6 +1718,7 @@
                 <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1836,6 +1854,7 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1891,7 +1910,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="49dd2286fab449339269c4086b56fc30" Name="Diagram1" ZoomLevel="97">
+      <Diagram DiagramId="49dd2286fab449339269c4086b56fc30" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionHistory" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_ActionStatus" Width="1.5" PointX="4.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_AdditionalInformation" Width="1.5" PointX="6.375" PointY="0.5" IsExpanded="true" />

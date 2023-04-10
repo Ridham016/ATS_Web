@@ -185,20 +185,6 @@
                                                 <label>
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
-                                                @*<p class="input-group">
-                                            <input type="text" name="DateOfBirth" tabindex="3" id="DateOfBirth" class="form-control"
-                                                   uib-datepicker-popup="{{defaultSettings.dateFormat}}"
-                                                   ng-model="applicantDetailScope.DateOfBirth"
-                                                   max-date="maxDate" datepicker-options="dateOptions" readonly="readonly" ng-required="true"
-                                                   close-text="Close" is-open="isOpen" ng-model-options="{ allowInvalid: true }"
-                                                   ng-pattern="/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/" placeholder="dd/mm/yyyy"/>
-                                            <span class="input-group-addon">
-                                                <button type="button" class="btn btn-icon btn-default" ng-click="isOpen=true">
-                                                    <i class="fa fa-calendar"></i>
-                                                </button>
-                                            </span>
-                                        </p>*@
-
                                                 <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
                                                        class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
@@ -353,7 +339,7 @@
                                                 </label>
                                                 <input type="text" ng-disabled="textInput.disabled == 'fresher'"
                                                        ng-class="{'border-color' : frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid}"
-                                                       class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation" 
+                                                       class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation"
                                                        ng-required="textInput.disabled == 'experienced'" />
                                                 <div class="c">
                                                 </div>
@@ -368,7 +354,7 @@
                                                     @Resource.NoticePeriod<span class="required-field">*</span>
                                                 </label>
                                                 <textarea rows="5" ng-disabled="textInput.disabled == 'fresher'"
-                                                         ng-required="textInput.disabled == 'experienced'"
+                                                          ng-required="textInput.disabled == 'experienced'"
                                                           ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}"
                                                           class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod"></textarea>
                                                 <div class="c">
@@ -388,6 +374,20 @@
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.PreferedLocation.$dirty && frmRegister.PreferedLocation.$invalid">
                                                     <span data-ng-show="frmRegister.PreferedLocation.$error.required">@Resource.PreferedLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.Expected_Joining_Date<span class="required-field">*</span>
+                                                </label>
+                                                <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                       class="form-control" placeholder="Enter Expected Joining Date" id="ExpectedJoiningDate" name="ExpectedJoiningDate" ng-model="applicantDetailScope.ExpectedJoiningDate" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ExpectedJoiningDate.$dirty && frmRegister.ExpectedJoiningDate.$invalid">
+                                                    <span data-ng-show="frmRegister.ExpectedJoiningDate.$error.required">@Resource.ExpectedJoiningDateRequired</span>
                                                 </div>
                                             </div>
                                         </div>

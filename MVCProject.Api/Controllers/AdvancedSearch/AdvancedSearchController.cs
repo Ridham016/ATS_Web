@@ -57,6 +57,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 StatusName = g.StatusName,
                 Comment = g.Comment,
                 Reason = g.Reason,
@@ -99,6 +100,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
             }).AsEnumerable();
@@ -136,6 +138,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 Comment = g.Comment,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,

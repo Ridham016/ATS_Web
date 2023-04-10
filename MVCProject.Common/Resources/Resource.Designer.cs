@@ -1105,6 +1105,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expected Joining Date.
+        /// </summary>
+        public static string Expected_Joining_Date {
+            get {
+                return ResourceManager.GetString("Expected Joining Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expected CTC.
         /// </summary>
         public static string ExpectedCTC {
@@ -1119,6 +1128,15 @@ namespace MVCProject.Common.Resources {
         public static string ExpectedCTCRequired {
             get {
                 return ResourceManager.GetString("ExpectedCTCRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected Joining Date is Required.
+        /// </summary>
+        public static string ExpectedJoiningDateRequired {
+            get {
+                return ResourceManager.GetString("ExpectedJoiningDateRequired", resourceCulture);
             }
         }
         

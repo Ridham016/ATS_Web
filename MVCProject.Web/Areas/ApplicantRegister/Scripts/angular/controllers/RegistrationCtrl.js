@@ -42,6 +42,7 @@
             PortfolioLink: '',
             LinkedinLink: '',
             OtherLink: '',
+            ExpectedJoiningDate: null,
             IsActive: true
         };
 
@@ -146,6 +147,7 @@
                 PortfolioLink: '',
                 LinkedinLink: '',
                 OtherLink: '',
+                ExpectedJoiningDate : null,
                 IsActive: true
             };
             $("#file").val("");

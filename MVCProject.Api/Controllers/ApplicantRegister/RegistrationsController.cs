@@ -66,6 +66,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ReasonForChange = g.ReasonForChange,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
@@ -107,6 +108,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
@@ -183,6 +185,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.LinkedinLink = data.LinkedinLink;
                 applicantData.OtherLink = data.OtherLink;
                 applicantData.IsActive = data.IsActive;
+                applicantData.ExpectedJoiningDate = data.ExpectedJoiningDate;
                 applicantData.UpdateDate = DateTime.Now;
                 this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);
                 if (!(this.entities.SaveChanges() > 0))
@@ -223,6 +226,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
+                ExpectedJoiningDate = g.ExpectedJoiningDate,
                 IsActive = g.IsActive
             }).ToList();
             //return this.Response(MessageTypes.Success, string.Empty, applcantlist);

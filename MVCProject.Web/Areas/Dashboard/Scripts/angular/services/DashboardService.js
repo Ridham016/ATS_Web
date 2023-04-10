@@ -7,7 +7,7 @@
             url: $rootScope.apiURL + '/Dashboard/GetEventWithDate',
             data: JSON.stringify(DateRange),
             headers: {
-                '__RequestAuthToken': $rootScope.sessionToken
+                'Authorization' : '__RequestAuthToken'+ $rootScope.sessionToken
             }
         });
     }

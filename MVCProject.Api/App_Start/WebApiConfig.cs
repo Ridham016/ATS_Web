@@ -22,7 +22,7 @@ namespace MVCProject.Api
         public static void Register(HttpConfiguration config)
         {
             // Add Authentication Handler
-            //AuthenticationHandler defaultHandler = new AuthenticationHandler() { InnerHandler = new HttpControllerDispatcher(config) };
+            AuthenticationHandler defaultHandler = new AuthenticationHandler() { InnerHandler = new HttpControllerDispatcher(config) };
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
             config.MessageHandlers.Add(new AuthenticationHandler());

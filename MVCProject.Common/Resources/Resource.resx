@@ -1164,4 +1164,10 @@
   <data name="IncorrectCredentials" xml:space="preserve">
     <value>The Email address or Password provided is incorrect</value>
   </data>
+  <data name="Expected Joining Date" xml:space="preserve">
+    <value>Expected Joining Date</value>
+  </data>
+  <data name="ExpectedJoiningDateRequired" xml:space="preserve">
+    <value>Expected Joining Date is Required</value>
+  </data>
 </root>
