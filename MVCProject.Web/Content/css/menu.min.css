@@ -462,18 +462,19 @@ body  .right_col {
     margin-left: var(--ats-left-col-width);
     position: fixed;
     left: 0;
+    /*border-bottom-left-radius: 15px;*/
     right: 0;
     -webkit-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
     background: var(--ats-topbar-bg);
-	-webkit-box-shadow: var(--ats-box-shadow);
-	box-shadow: var(--ats-box-shadow);
-	min-height: var(--ats-topbar-height);
-	top: 0;
-	-webkit-transition: all .25s ease-in-out;
-	transition: all .25s ease-in-out;
-	z-index: 1000;
-	border-bottom: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
+    -webkit-box-shadow: var(--ats-box-shadow);
+    box-shadow: var(--ats-box-shadow);
+    min-height: var(--ats-topbar-height);
+    top: 0;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    z-index: 1000;
+    border-bottom: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
 }
 
 .no-padding {
@@ -650,7 +651,9 @@ table.no-margin .progress {
     width: 100%;
     padding: 0 5px;
     margin-top: 5px;
-    border-radius: var(--ats-border-radius);
+    margin-left: 6px;
+    margin-right: 6px;
+    border-radius: 25px;
 }
 .nav-sm .nav.side-menu > li {
     position: relative;
@@ -685,6 +688,11 @@ table.no-margin .progress {
      transition: 400ms ease-in-out;
     -webkit-transition: 400ms ease-in-out;
 */
+    background: var(--ats-gray-300);
+    box-shadow: 0 2px 2px rgb(161, 169, 177);
+    -webkit-box-shadow: 0 2px 2px rgb(161, 169, 177);
+    transition: 50ms ease-in-out;
+    -webkit-transition: 50ms ease-in-out;
 }
 
 .nav.child-menu > li:hover {
@@ -906,16 +914,24 @@ table.no-margin .progress {
         margin: 0;
         cursor: pointer;
     }
+    .toggle a:hover{
+        cursor: pointer;
+    }
+
 
         .toggle a i {
-            font-size: 16px;
-            color: var(--ats-white);
-            BORDER: 1PX SOLID var(--primary-color);
-            background-color: var(--primary-color);
-            PADDING: 7PX;
-            border-radius: 3px;
+            font-size: 20px;
+            color: #2d2d2d;
+            PADDING: 12PX;
+            cursor: pointer;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
+        .toggle a:hover i {
+            background-color: rgba(60,64,67,.08);
+            outline: none;
+        }
 .nav.child_menu > li > a {
     color: var(--ats-dark-nav-link-color);
     font-size: var(--ats-menu-item-font-size);
@@ -923,8 +939,8 @@ table.no-margin .progress {
 }
 
 .nav.side-menu > li:not(.active):hover > a, .nav.child_menu > li:not(.current-page):hover > a {
-    /*background-color: rgba(var(--ats-primary-rgb), 0.2);*/
-    color: var(--ats-white);
+    /*background-color: rgba(var(--ats-primary-rgb), 0.2);
+    color: var(--ats-white);*/
     transition: 400ms ease-in-out;
 }
 
