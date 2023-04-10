@@ -6,6 +6,7 @@
 
 namespace MVCProject.Api.Models
 {
+    using System.Net;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -14,6 +15,15 @@ namespace MVCProject.Api.Models
     [DataContract]
     public class ApiResponse
     {
+        private HttpStatusCode badRequest;
+        private string exceptionMessage;
+
+        public ApiResponse(HttpStatusCode badRequest, string exceptionMessage)
+        {
+            this.badRequest = badRequest;
+            this.exceptionMessage = exceptionMessage;
+        }
+
         /// <summary>
         /// Gets or sets a value indicating whether request is authenticated or not.
         /// </summary>

@@ -29,7 +29,7 @@
 // </copyright>
 // ----------------------------------------------------------------------- 
 
-namespace MVCProject.Areas.AdvancedSearch
+namespace MVCProject.Areas.ImportData
 {
     using System.Web.Mvc;
     using System.Web.Optimization;

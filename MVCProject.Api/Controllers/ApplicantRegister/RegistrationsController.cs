@@ -150,7 +150,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     StatusId = 1,
                     Level = 0,
                     IsActive = true,
-                    EntryBy= "1",
+                    EntryBy = "1",
                     EntryDate = DateTime.Now
                 });
                 if (!(this.entities.SaveChanges() > 0))
@@ -158,7 +158,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
                 }
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant),data.ApplicantId);
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant), data.ApplicantId);
             }
             else
             {
@@ -200,7 +200,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse ListSearchFilter([FromBody] ATS_ApplicantRegister data)
         {
-            var applcantlist = this.entities.ATS_ApplicantRegister.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation || 
+            var applcantlist = this.entities.ATS_ApplicantRegister.Where(x => x.PreferedLocation == data.PreferedLocation || x.CurrentLocation == data.CurrentLocation ||
             (x.PreferedLocation == data.PreferedLocation && x.CurrentLocation == data.CurrentLocation)).Select(g => new
             {
                 ApplicantId = g.ApplicantId,
@@ -242,7 +242,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpPost]
-        public ApiResponse FileUpload([FromBody]ATS_Attachment data, int ApplicantId, string databaseName, string directoryPathEnumName = "Attachment_Temp")
+        public ApiResponse FileUpload([FromBody] ATS_Attachment data, int ApplicantId, string databaseName, string directoryPathEnumName = "Attachment_Temp")
         {
             string FileURL = string.Empty;
             string directoryPath = string.Empty;
@@ -328,7 +328,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpGet]
-        public ApiResponse GetFileOfApplicant([FromUri]int ApplicantId)
+        public ApiResponse GetFileOfApplicant([FromUri] int ApplicantId)
         {
             var applcantlist = entities.USP_ATS_FilesOfApplicant(ApplicantId).Select(g => new
             {
@@ -399,38 +399,11 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 IsActive = g.IsActive,
                 TotalRecords
             }).ToList();
-
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("Sheet1");
-
-            IRow header = sheet.CreateRow(0);
-            // Columns as Headers as present in the table
-            header.CreateCell(0).SetCellValue("ApplicantId");
-            header.CreateCell(1).SetCellValue("FirstName");
-            header.CreateCell(2).SetCellValue("MiddleName");
-            header.CreateCell(3).SetCellValue("LastName");
-            header.CreateCell(4).SetCellValue("Email");
-            header.CreateCell(5).SetCellValue("Phone");
-            header.CreateCell(6).SetCellValue("Address");
-            header.CreateCell(7).SetCellValue("DateOfBirth");
-            header.CreateCell(8).SetCellValue("CurrentCompany");
-            header.CreateCell(9).SetCellValue("CurrentDesignation");
-            header.CreateCell(10).SetCellValue("ApplicantDate");
-            header.CreateCell(11).SetCellValue("TotalExperience");
-            header.CreateCell(12).SetCellValue("DetailedExperience");
-            header.CreateCell(13).SetCellValue("CurrentCTC");
-            header.CreateCell(14).SetCellValue("ExpectedCTC");
-            header.CreateCell(15).SetCellValue("NoticePeriod");
-            header.CreateCell(16).SetCellValue("CurrentLocation");
-            header.CreateCell(17).SetCellValue("PreferedLocation");
-            header.CreateCell(18).SetCellValue("ReasonForChange");
-            header.CreateCell(19).SetCellValue("FileName");
-            header.CreateCell(20).SetCellValue("FilePath");
-            header.CreateCell(21).SetCellValue("FileRelativePath");
-            header.CreateCell(22).SetCellValue("IsActive");
-            //header.CreateCell(0).SetCellValue("FirstName");
-
+            AddHeaderRow(sheet);
             int rowNum = 1;
+
             foreach (var applicant in applicantlist)
             {
                 IRow row = sheet.CreateRow(rowNum++);
@@ -469,20 +442,22 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 {
                     row.CreateCell(15).SetCellValue(applicant.NoticePeriod);
                 }
+
+                row.CreateCell(16).SetCellValue(applicant.ReasonForChange);
                 if (applicant.CurrentLocation != null)
                 {
-                    row.CreateCell(16).SetCellValue(applicant.CurrentLocation);
+                    row.CreateCell(17).SetCellValue(applicant.CurrentLocation);
                 }
-                row.CreateCell(17).SetCellValue(applicant.PreferedLocation);
-                row.CreateCell(18).SetCellValue(applicant.ReasonForChange);
-                row.CreateCell(19).SetCellValue(applicant.FileName);
-                row.CreateCell(20).SetCellValue(applicant.FilePath);
-                row.CreateCell(21).SetCellValue(applicant.FileRelativePath);
-
+                row.CreateCell(18).SetCellValue(applicant.PreferedLocation);
                 if (applicant.IsActive != null)
                 {
-                    row.CreateCell(22).SetCellValue((bool)applicant.IsActive);
+                    row.CreateCell(19).SetCellValue((bool)applicant.IsActive);
                 }
+                row.CreateCell(20).SetCellValue(applicant.FileName);
+                row.CreateCell(21).SetCellValue(applicant.FilePath);
+                row.CreateCell(22).SetCellValue(applicant.FileRelativePath);
+
+
             }
 
             string filePath = HttpContext.Current.Server.MapPath("~/Attachments/Temp/ApplicantSheet.xlsx");
@@ -505,6 +480,19 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             response.Content.Headers.ContentLength = byteArray.Length;
             Console.WriteLine(response);
             return this.Response(MessageTypes.Success, string.Empty, filePath);
+        }
+        private void AddHeaderRow(ISheet sheet)
+        {
+            IRow headerRow = sheet.CreateRow(0);
+
+            // Define the column headers
+            string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "EntryBy", "EntryDate", "UpdatedBy", "UpdateDate", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
+
+            // Add each header to the row
+            for (int i = 0; i < headers.Length; i++)
+            {
+                headerRow.CreateCell(i).SetCellValue(headers[i]);
+            }
         }
     }
 }

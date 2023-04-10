@@ -234,6 +234,7 @@
     <Compile Include="Models\Common\ChangeEmailAddressModel.cs" />
     <Compile Include="Models\Common\EmailSettings.cs" />
     <Compile Include="Models\Common\ForgotPasswordModel.cs" />
+    <Compile Include="Models\Common\HeaderRow.cs" />
     <Compile Include="Models\Common\RegisterModel.cs" />
     <Compile Include="Models\Common\ResetPasswordModel.cs" />
     <Compile Include="Models\Extended\Configuration.cs" />
