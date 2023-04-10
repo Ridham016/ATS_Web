@@ -139,7 +139,7 @@
 	--ats-border-radius-2xl: 2rem;
 	--ats-border-radius-pill: 50rem;
 	--ats-link-color: #6D6D6D;
-	--ats-dark-nav-link-color: #9aa3b4;
+	--ats-dark-nav-link-color: #53455e;
 	--ats-link-hover-color: var(--secondary-color);
 	--ats-code-color: #39afd1;
 	--ats-highlight-bg: #fcf8e3;
@@ -14259,7 +14259,7 @@ span.event-detail{
 	position: fixed;
 	width: var(--ats-left-col-width);
 	padding-bottom: calc(var(--ats-footer-height) + .75rem);
-	background: var(--ats-dark-side-nav);
+	background: var(--ats-white);
 	-webkit-box-shadow: var(--ats-box-shadow);
 	box-shadow: var(--ats-box-shadow);
 	border-right: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
