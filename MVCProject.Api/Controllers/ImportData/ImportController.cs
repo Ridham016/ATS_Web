@@ -23,7 +23,7 @@ namespace MVCProject.Api.Controllers.ImportData
         private MVCProjectEntities entities;
         [HttpPost]
         //[Route("importData")]
-        public ApiResponse ImportData()
+        public ApiResponse ImportData(HttpPostedFileBase file)
         {
             try
             {
@@ -31,11 +31,11 @@ namespace MVCProject.Api.Controllers.ImportData
                 if (httpRequest.Files.Count == 0)
                     return this.Response(Utilities.MessageTypes.Error);
 
-                var file = httpRequest.Files[0];
-                if (file.ContentType != "application/vnd.ms-excel" && file.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                var files = httpRequest.Files[0];
+                if (files.ContentType != "application/vnd.ms-excel" && files.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
                     return this.Response(Utilities.MessageTypes.Error);
 
-                var stream = file.InputStream;
+                var stream = files.InputStream;
                 var workbook = new XSSFWorkbook(stream);
                 var sheet = workbook.GetSheetAt(0);
                 var validationErrors = new List<string>();
@@ -145,15 +145,15 @@ namespace MVCProject.Api.Controllers.ImportData
                 var fullErrorMessage = string.Join("; ", errorMessages);
 
                 var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
-                return new ApiResponse(HttpStatusCode.BadRequest, exceptionMessage);
+                return this.Response(Utilities.MessageTypes.Error,exceptionMessage);
             }
             catch (Exception ex)
             {
-                return new ApiResponse(HttpStatusCode.BadRequest, "Error occurred while importing data: " + ex.Message);
+                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: " + ex.Message);
             }
         }
         [HttpPost]
-        public ApiResponse Register([FromBody] List<ATS_ApplicantRegister> data)
+        public ApiResponse AddApplicants([FromBody] List<ATS_ApplicantRegister> data)
         {
             foreach (var applicant in data)
             {

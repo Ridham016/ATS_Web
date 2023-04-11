@@ -1,5 +1,670 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @Resource.Registration;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<style>
+
+    .frozen-columns {
+        table-layout: fixed;
+    }
+
+        .frozen-columns tbody td:last-child {
+            position: sticky;
+            right: 0;
+            z-index: 2;
+            background-color: #f6f7f9 !important;
+        }
+
+        .frozen-columns thead tr th:last-child .th-inner,
+        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+            background: var(--primary-color) !important;
+        }
+
+        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+            right: 70px;
+        }
+
+        .frozen-columns tbody td:nth-last-child(2) {
+            position: sticky;
+            right: 70px;
+            z-index: 2;
+            background-color: #f6f7f9 !important;
+        }
+
+    .colSrno {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+
+    .colPosition {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+
+    .colPhone {
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+    }
+
+    .colActive {
+        width: 75px !important;
+        min-width: 75px !important;
+        max-width: 75px !important;
+    }
+
+    .colDate {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+    }
+
+    .colAction {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+
+    .colDownload {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+
+    .colNum {
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+    }
+
+    .colExperience {
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+    }
+
+    .border-color {
+        border-color: red !important;
+    }
+
+    .border-green {
+        border-color: #07c907 !important;
+    }
+</style>
+
+<div ng-controller="ImportCtrl" novalidate>
+    <div class="main-page-title title-icon relative l">
+        <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@Resource.ApplicantRegister</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div>
+        <input type="file" ng-model="myFile" />
+        <button ng-click="uploadFile()">Upload</button>
+    </div>
+
+    <div class="card-box">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- start designation form -->
+                @*submitApplicants(applicantDetailScope)*@
+                <form name="frmRegister" ng-submit="showNextApplicant(applicantDetailScope)"
+                      novalidate>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item" id="personal_details">
+                            <h1 class="Personal Details" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Personal Details
+                                </button>
+                            </h1>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantFirstName <span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-class="{'border-color' : frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid}" class="form-control" id="FirstName" ng-focus="true" name="FirstName" ng-model="applicantDetailScope.FirstName" required placeholder="Enter First Name" maxlength="250">
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.FirstName.$dirty && frmRegister.FirstName.$invalid">
+                                                    <span data-ng-show="frmRegister.FirstName.$error.required">@Resource.FirstNameRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantMiddleName
+                                                </label>
+                                                <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" placeholder="Enter Middle Name" maxlength="250">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantLastName <span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-class="{'border-color' : frmRegister.LastName.$dirty && frmRegister.LastName.$invalid}" class="form-control" name="LastName" ng-model="applicantDetailScope.LastName" required placeholder="Enter Last Name" maxlength="250">
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.LastName.$dirty && frmRegister.LastName.$invalid">
+                                                    <span data-ng-show="frmRegister.LastName.$error.required">@Resource.LastNameRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Remarks-->
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantEmail<span class="required-field">*</span>
+                                                </label>
+                                                <input type="email" ng-model-options="{ updateOn: 'blur' }" ng-class="{'border-color' : frmRegister.Email.$dirty && frmRegister.Email.$invalid,'border-green' : frmRegister.Email.$valid}" class="form-control" placeholder="Enter Email" name="Email" ng-model="applicantDetailScope.Email" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.Email.$dirty && frmRegister.Email.$invalid">
+                                                    <span data-ng-show="frmRegister.Email.$error.required">@Resource.EmailRequired</span>
+                                                    <span data-ng-show="frmRegister.Email.$error.email">@Resource.EmailRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantPhone<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-pattern="/^[0-9]{10,10}$/" ng-class="{'border-color' : frmRegister.Phone.$dirty && frmRegister.Phone.$invalid}" class="form-control" placeholder="Enter Phone" name="Phone" ng-model="applicantDetailScope.Phone" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.Phone.$dirty && frmRegister.Phone.$invalid">
+                                                    <span data-ng-show="frmRegister.Phone.$error.required">@Resource.PhoneRequired</span>
+                                                    <span data-ng-show="frmRegister.Phone.$error.pattern">@Resource.PhoneValid</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantDOB<span class="required-field">*</span>
+                                                </label>
+                                                <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                       class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
+                                                    <span data-ng-show="frmRegister.DateOfBirth.$error.required">@Resource.ApplicantDOBRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantAddress
+                                                </label>
+                                                <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <div class="form-control-static">
+                                                    <label>
+
+                                                    </label>
+                                                    <div class="checkbox checkbox-info">
+                                                        <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="applicantDetailScope.IsActive"
+                                                               tabindex="2" />
+                                                        <label for="chkIsActive">
+                                                            @Resource.IsActive
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" id="company_details">
+                            <h1 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    @Resource.Experience
+                                </button>
+                            </h1>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <select class="form-select" ng-model="textInput.disabled" required>
+                                                    <option value="" selected disabled>Select Status</option>
+                                                    <option value="experienced"> Experienced</option>
+                                                    <option value="fresher"> Fresher</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentCompany<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" ng-disabled="textInput.disabled == 'fresher'" placeholder="Enter Current Company" name="CurrentCompany"
+                                                       ng-model="applicantDetailScope.CurrentCompany" ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCompany.$dirty && frmRegister.CurrentCompany.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentCompany.$error.required">@Resource.CurrentCompanyRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentDesignation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" ng-disabled="textInput.disabled === 'fresher'" placeholder="Enter Current Designation"
+                                                       name="CurrentDesignation" ng-model="applicantDetailScope.CurrentDesignation" ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentDesignation.$dirty && frmRegister.CurrentDesignation.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentDesignation.$error.required">@Resource.CurrentDesignationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.TotalExperience<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'"
+                                                       ng-class="{'border-color' : frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid}"
+                                                       class="form-control" placeholder="Enter Total Experience" name="TotalExperience" ng-model="applicantDetailScope.TotalExperience"
+                                                       ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.TotalExperience.$dirty && frmRegister.TotalExperience.$invalid">
+                                                    <span data-ng-show="frmRegister.TotalExperience.$error.required">@Resource.TotalExperienceRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.DetailedExperience<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'"
+                                                       ng-class="{'border-color' : frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid}"
+                                                       class="form-control" placeholder="Enter Detailed Experience" name="DetailedExperience"
+                                                       ng-model="applicantDetailScope.DetailedExperience" ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DetailedExperience.$dirty && frmRegister.DetailedExperience.$invalid">
+                                                    <span data-ng-show="frmRegister.DetailedExperience.$error.required">@Resource.DetailedExperienceRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentCTC<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'"
+                                                       class="form-control" placeholder="Enter Current CTC" name="CurrentCTC"
+                                                       ng-model="applicantDetailScope.CurrentCTC" ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentCTC.$dirty && frmRegister.CurrentCTC.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentCTC.$error.required">@Resource.CurrentCTCRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ReasonForChange<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'" class="form-control" placeholder="Enter Reason For Change"
+                                                       name="ReasonForChange" ng-model="applicantDetailScope.ReasonForChange" ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ReasonForChange.$dirty && frmRegister.ReasonForChange.$invalid">
+                                                    <span data-ng-show="frmRegister.ReasonForChange.$error.required">@Resource.ReasonForChangeRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.CurrentLocation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-disabled="textInput.disabled == 'fresher'"
+                                                       ng-class="{'border-color' : frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid}"
+                                                       class="form-control" placeholder="Enter Current Location" name="CurrentLocation" ng-model="applicantDetailScope.CurrentLocation"
+                                                       ng-required="textInput.disabled == 'experienced'" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.CurrentLocation.$dirty && frmRegister.CurrentLocation.$invalid">
+                                                    <span data-ng-show="frmRegister.CurrentLocation.$error.required">@Resource.CurrentLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.NoticePeriod<span class="required-field">*</span>
+                                                </label>
+                                                <textarea rows="5" ng-disabled="textInput.disabled == 'fresher'"
+                                                          ng-required="textInput.disabled == 'experienced'"
+                                                          ng-class="{'border-color' : frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid}"
+                                                          class="form-control" placeholder="Enter Notice Period" name="NoticePeriod" ng-model="applicantDetailScope.NoticePeriod"></textarea>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.NoticePeriod.$dirty && frmRegister.NoticePeriod.$invalid">
+                                                    <span data-ng-show="frmRegister.NoticePeriod.$error.required">@Resource.NoticePeriodRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.PreferedLocation<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-class="{'border-color' : frmRegister.PreferedLocation.$dirty && frmRegister.PreferedLocation.$invalid}" class="form-control" placeholder="Enter Prefered Location" name="PreferedLocation" ng-model="applicantDetailScope.PreferedLocation" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.PreferedLocation.$dirty && frmRegister.PreferedLocation.$invalid">
+                                                    <span data-ng-show="frmRegister.PreferedLocation.$error.required">@Resource.PreferedLocationRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.Expected_Joining_Date<span class="required-field">*</span>
+                                                </label>
+                                                <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                       class="form-control" placeholder="Enter Expected Joining Date" id="ExpectedJoiningDate" name="ExpectedJoiningDate" ng-model="applicantDetailScope.ExpectedJoiningDate" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ExpectedJoiningDate.$dirty && frmRegister.ExpectedJoiningDate.$invalid">
+                                                    <span data-ng-show="frmRegister.ExpectedJoiningDate.$error.required">@Resource.ExpectedJoiningDateRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.SkillDescription<span class="required-field">*</span>
+                                                </label>
+                                                <textarea rows="5" class="form-control" placeholder="Enter Skills in Description" name="SkillDescription" ng-model="applicantDetailScope.SkillDescription" required></textarea>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.SkillDescription.$dirty && frmRegister.SkillDescription.$invalid">
+                                                    <span data-ng-show="frmRegister.SkillDescription.$error.required">@Resource.SkillDescriptionRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ExpectedCTC<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}"
+                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
+                                                    <span data-ng-show="frmRegister.ExpectedCTC.$error.required">@Resource.ExpectedCTCRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.PortfolioLink
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Portfolio Link" name="PortfolioLink" ng-model="applicantDetailScope.PortfolioLink" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.LinkedinLink
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Linkedin Link" name="LinkedinLink" ng-model="applicantDetailScope.LinkedinLink" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.OtherLink
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Other Links" name="OtherLink" ng-model="applicantDetailScope.OtherLink" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.ApplicantCV<span class="required-field">*</span>
+
+                                                </label>
+                                                <input type="file" class="form-control" ng-disabled="Files >= 5" name="ApplicantCV" id="file" accept="application/pdf" file-on-change="uploadFile" required />
+                                                <input type="text" ng-show="Selectedfile != null" class="form-control" disabled ng-model="Selectedfile.OriginalFileName" />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.ApplicantCV.$dirty && frmRegister.ApplicantCV.$invalid">
+                                                    <span data-ng-show="frmRegister.ApplicantCV.$error.required">@Resource.ApplicantCVRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 mb-4" ng-show="Files != null">
+                                        <div class="col-md-4">
+                                            <div class="card p-3">
+                                                <h4 class="card-title">
+                                                    Uploaded Files
+                                                </h4>
+                                                @*<div class="card-body">
+                                        </div>*@
+                                                <div class="row mb-2" ng-repeat="f in files">
+                                                    <div class="col-11">
+                                                        <a href="{{f.FileRelativePath}}" target="_blank">
+                                                            {{f.OriginalFileName}}
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <a class="btn btn-link p-0" href="#" ng-click="deleteFile(f.Id)" ng-show="Files >= 5">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                @*<ul class="list-group list-group-flush">
+                                            <li class="row list-group-item" ng-repeat="f in files">
+                                                <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                                    {{f.OriginalFileName}}
+                                                </a>
+                                                <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </li>
+                                        </ul>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 mb-4">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="showNextApplicant()">
+                                    @Resource.Save
+                                
+
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" @*ng-disabled="frmRegister.$invalid"*@>
+                                    @Resource.Save
+                                </button>
+                                <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
+                                        tabindex="4">
+                                    @Resource.Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr class="section-divider" />
+                <!-- end designation form -->
+                <!--<div class="row mt-4">
+        <div class="col-md-12">
+            <div class="row mb-3 align-items-baseline">
+                <div class="col-md-5">
+                    <label class="table-title">
+                        @Resource.Registration @Resource.Details
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="checkbox checkbox-info">
+                            <input type="checkbox" id="chkRegisterActive" name="chkRegisterActive" ng-model="IsGetAll" ng-change="getApplicants(IsGetAll)"
+                                   tabindex="2" />
+                            <label for="chkRegisterActive">
+                                View Active
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
+                        <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="form-control-static">
+                    <scrollable-table scroll-height="510">
+                        <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered table-hover">
+                            <tbody>
+                                <tr ng-repeat="h in applicants">
+                                    <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
+                                        {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantName'" sortable="'FirstName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.Email}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.Phone}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.Address}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantDate'" sortable="'ApplicantDate'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.ApplicantDate | date}}
+                                    </td>
+                                    <td data-title="'@Resource.ApplicantDOB'" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.DateOfBirth | date}}
+                                    </td>
+                                    <td data-title="'@Resource.CurrentCompany'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.CurrentCompany}}
+                                    </td>
+                                    <td data-title="'@Resource.CurrentDesignations'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.CurrentDesignation}}
+                                    </td>
+                                    <td data-title="'@Resource.TotalExperience'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.TotalExperience}}
+                                    </td>
+                                    <td data-title="'@Resource.DetailedExperince'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.DetailedExperience}}
+                                    </td>
+                                    <td data-title="'@Resource.CurrentCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.CurrentCTC}}
+                                    </td>
+                                    <td data-title="'@Resource.ExpectedCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.ExpectedCTC}}
+                                    </td>
+                                    <td data-title="'@Resource.NoticePeriod'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                        <span ng-repeat="(key,value) in NoticePeriod">
+                                            <span ng-if="key == h.NoticePeriod">{{value}}</span>
+                                        </span>
+                                    </td>
+                                    <td data-title="'@Resource.CurrentLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.CurrentLocation}}
+                                    </td>
+                                    <td data-title="'@Resource.PreferedLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.PreferedLocation}}
+                                    </td>
+                                    <td data-title="'@Resource.ReasonForChange'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.ReasonForChange}}
+                                    </td>
+                                    <td data-title="'@Resource.SkillDescription'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.SkillDescription}}
+                                    </td>
+                                    <td data-title="'@Resource.PortfolioLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.PortfolioLink}}
+                                    </td>
+                                    <td data-title="'@Resource.LinkedinLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.LinkedinLink}}
+                                    </td>
+                                    <td data-title="'@Resource.OtherLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                        {{h.OtherLink}}
+                                    </td>
+                                    <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
+                                        <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
+                                               ng-disabled="true" />
+                                    </td>
+                                    <td data-title="'@Resource.Download'" header-class="'colDownload'" ng-class="'colDownload text-center'">
+                                        <a ng-if="h.FileRelativePath != null" href="{{h.FileRelativePath}}" target="_blank">
+                                            <img src="~/Content/images/download.svg" style="width:25px" alt="Download" />
+                                        </a>-->
+                @*<button class="btn btn-primary" ng-if="h.FileRelativePath != null" ng-click="downloadPDF(h.FileRelativePath,h.FileName,'application/pdf')">Download CV</button>*@
+                <!--</td>
+                                    <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
+                                        <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
+                                           ng-click="EditApplicantDetails(h.ApplicantId)">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </scrollable-table>
+                </div>
+            </div>
+        </div>
+    </div>-->
+                @*<div class="col-md-5">
+            <div class="col-md-10">
+                <button type="button" ng-click="Export()" class="btn btn-info waves-effect w-md waves-light mb-5"
+                        tabindex="4">
+                    Export To Excel
+                </button>
+            </div>
+        </div>*@
+                <!-- end Registration details list -->
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/ImportData/Import")
+}

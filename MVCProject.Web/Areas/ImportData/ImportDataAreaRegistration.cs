@@ -29,7 +29,7 @@
 // </copyright>
 // ----------------------------------------------------------------------- 
 
-namespace MVCProject.Areas.ImportData
+namespace MVCProject.Web.Areas.ImportData
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
