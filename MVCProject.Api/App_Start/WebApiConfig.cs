@@ -25,8 +25,6 @@ namespace MVCProject.Api
             AuthenticationHandler defaultHandler = new AuthenticationHandler() { InnerHandler = new HttpControllerDispatcher(config) };
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
-            config.MessageHandlers.Add(new AuthenticationHandler());
-
             config.Routes.MapHttpRoute(
               name: "Authentication",
               routeTemplate: "api/account/{action}/{id}",
@@ -46,8 +44,8 @@ namespace MVCProject.Api
                 name: "ActionApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional },
-                constraints: null);
-                //handler: defaultHandler
+                constraints: null,
+                handler: defaultHandler);
         }
     }
 }
