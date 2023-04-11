@@ -32,15 +32,15 @@ namespace MVCProject
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        //protected void Session_Start()
-        //{
-        //    if (HttpContext.Current.Session != null)
-        //    {
-        //        if (Session["UserContext"] == null)
-        //        {
-        //            Response.Redirect("~/Account/Login");
-        //        }
-        //    }
-        //}
+        protected void Session_Start()
+        {
+            if (HttpContext.Current.Session != null)
+            {
+                if (Session["UserContext"] == null)
+                {
+                    Response.Redirect("~/Account/Login");
+                }
+            }
+        }
     }
 }

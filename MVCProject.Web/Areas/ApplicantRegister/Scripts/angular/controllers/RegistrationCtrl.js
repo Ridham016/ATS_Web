@@ -105,7 +105,6 @@
                     RegistrationService.GetAllApplicants(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
-                        console.log($scope.applicants);
                         debugger
                         if (res.data.MessageType == messageTypes.Success) {// Success
                             $defer.resolve(res.data.Result);
@@ -173,6 +172,7 @@
             else {
                 debugger
                 applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
+                applicantDetailScope.ExpectedCTC = angular.copy(moment(applicantDetailScope.ExpectedCTC).format($rootScope.apiDateFormat));
                 RegistrationService.Register(applicantDetailScope).then(function (res) {
                     if (res) {
                         var applicants = res.data;
@@ -218,15 +218,17 @@
                         debugger
                         var index = $scope.files.indexOf(FileId);
                         $scope.files.splice(index, 1);
+                        $scope.Files = $scope.files.length;
                     }
                 }
             })
         }
 
+        $scope.today = new Date().toISOString().split('T')[0];
         $scope.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0];
 
 
-        $scope.$watch('files', function (newVal, oldVal) {
+        $scope.$watch('Files', function (newVal, oldVal) {
             if (newVal !== oldVal) {
                 $scope.getFiles($scope.applicantDetailScope.ApplicantId);
             }
@@ -247,6 +249,8 @@
                 }
                 $rootScope.isAjaxLoadingChild = false;
                 $scope.Files = $scope.files.length;
+                debugger
+                console.log($scope.Files);
             })
         }
 
@@ -261,6 +265,7 @@
                         $scope.applicantDetailScope = res.data.Result;
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
+                        $scope.applicantDetailScope.ExpectedJoiningDate = new Date($scope.applicantDetailScope.ExpectedJoiningDate);
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

@@ -42,7 +42,7 @@
           <Property Name="ActionId" Type="int" />
           <Property Name="InterviewerId" Type="int" />
           <Property Name="ScheduleLink" Type="nvarchar" MaxLength="100" />
-          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
@@ -498,7 +498,7 @@
           <Property Name="ActionId" Type="Int32" />
           <Property Name="InterviewerId" Type="Int32" />
           <Property Name="ScheduleLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1108,7 +1108,7 @@
           <Property Type="Int32" Name="ActionId" Nullable="true" />
           <Property Type="Int32" Name="InterviewerId" Nullable="true" />
           <Property Type="String" Name="ScheduleLink" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="Mode" Nullable="true" />
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />

@@ -5,10 +5,7 @@
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Dashboard/GetEventWithDate',
-            data: JSON.stringify(DateRange),
-            headers: {
-                'Authorization' : '__RequestAuthToken'+ $rootScope.sessionToken
-            }
+            data: JSON.stringify(DateRange)
         });
     }
     return list;

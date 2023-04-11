@@ -59,17 +59,16 @@ namespace MVCProject.Controllers
                 {
                     return this.RedirectToAction("Login");
                 }
-                //else
-                //{
-                //    string lastUrl = Request.UrlReferrer == null ? null : Request.UrlReferrer.OriginalString;
-                //    if (lastUrl.Contains("InternalAudit"))
-                //    {
-                //        lastUrl = lastUrl.Split('#')[0].Replace("InternalAudit", "MyAudit");
-                //    }
-
-                //    this.Session["LastUrl"] = lastUrl;
-                return this.RedirectToAction("Login", new { noSession = "y" });
-                //}
+                else
+                {
+                    string lastUrl = Request.UrlReferrer == null ? null : Request.UrlReferrer.OriginalString;
+                    if (lastUrl.Contains("InternalAudit"))
+                    {
+                        lastUrl = lastUrl.Split('#')[0].Replace("InternalAudit", "MyAudit");
+                    }
+                    this.Session["LastUrl"] = lastUrl;
+                    return this.RedirectToAction("Login", new { noSession = "y" });
+                }
             }
         }
 

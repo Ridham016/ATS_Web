@@ -101,7 +101,7 @@
                         <li class="dropdown text-center">
                             <a data-bs-toggle="dropdown" class="dropdown-toggle waves-effect waves-light profile">
                                 <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg" class="img-circle user-img profile-img thumb-sm" />
-                                <span class="username">{{userContext.EmployeeName}}</span>
+                                <span class="username">{{userContext.UserName}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 @*<li><a ng-click="SynchronizeReportingData()" ng-href="/Home"><i class="fa fa-home m-r-5">
@@ -115,9 +115,9 @@
                         </i>
                             @Resource.NotificationSetting
                         </a></li>*@
-                        <li>
-                            <a ng-click="Logout()" href="javascript:void(0)">
-                                <i class="dropdown-item ti-power-off m-r-5"></i>
+                        <li class="dropdown-item">
+                            <a href="~/Account/Logout">
+                                <i class="ti-power-off m-r-5"></i>
                                 @Resource.Logout
                             </a>
                         </li>

@@ -11,10 +11,6 @@ namespace MVCProject.Api.Controllers.Account
     using MVCProject.Api.Utilities;
     using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
-    using System.Web.SessionState;
-    //using Newtonsoft.Json;
-    using NPOI.HSSF.Record;
-    using NPOI.SS.Formula.Functions;
 
     #region Namespaces
     using System;

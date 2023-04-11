@@ -218,8 +218,10 @@
 
         // BEGIN Log out user
         $scope.Logout = function () {
+            debugger
             AccountService.DoLogOut().then(function (res) {
                 if (res) {
+                    debugger
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success && data.IsAuthenticated) {
                         CommonFunctions.RedirectToLoginPage(false);
@@ -237,7 +239,7 @@
             // Stop the pending timeout
             $timeout.cancel($scope.TimeOut_Thread);
             // Reset the timeout
-            // CommonService.ResetSession().then(function (response) { });
+             //CommonService.ResetSession().then(function (response) { });
             var timeoutMinutes = 60;
             $scope.TimeOut_Thread = $timeout(function () {
                 if ($scope.isActiveWindow) {
@@ -253,8 +255,8 @@
 	    });
         $window.onfocus = function () {
             if (sessionStorage.getItem("LoggedOut") != null) {
-                //sessionStorage.removeItem("LoggedOut");
-                //window.location = '/Account/Login';
+                sessionStorage.removeItem("LoggedOut");
+                window.location = '/Account/Login';
             } else {
                 $scope.isActiveWindow = true;
                 $scope.TimeOut_Resetter();
