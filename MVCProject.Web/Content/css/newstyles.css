@@ -14244,10 +14244,10 @@ span.event-detail{
 	position: fixed;
 	width: var(--ats-nav-sm-left-col-width);
 	padding: 0;
-	background: var(--ats-dark-side-nav);
+	background: var(--ats-white);
 	-webkit-box-shadow: var(--ats-box-shadow);
 	box-shadow: var(--ats-box-shadow);
-	border-right: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
+	border-right: 1px solid var(--ats-gray-300);
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out
 }
@@ -14262,7 +14262,7 @@ span.event-detail{
 	background: var(--ats-white);
 	-webkit-box-shadow: var(--ats-box-shadow);
 	box-shadow: var(--ats-box-shadow);
-	border-right: var(--ats-theme-card-border-width) solid var(--ats-gray-300);
+	border-right: 1px solid var(--ats-gray-300);
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out
 }
@@ -21864,4 +21864,8 @@ span.flatpickr-weekday {
 			left: 50px;
 			right: inherit;
 		}
+}
+
+.btn-export{
+	background: #217346;
 }

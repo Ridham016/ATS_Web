@@ -129,11 +129,12 @@ a.logo-expanded{
     left: 70px;
     position: fixed;
     top: 0;
-    width: 230px;
+    width: 240px;
     z-index: 999;
-    background: var(--ats-dark-side-nav);
+    background: var(--ats-white);
     border-radius: var(--ats-border-radius);
     display: none;
+    border: 1px solid var(--ats-gray-400);
 }
 
     .nav-sm ul.nav.child_menu li {
@@ -650,7 +651,7 @@ table.no-margin .progress {
     clear: both;
     width: 100%;
     padding: 0 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-left: 6px;
     margin-right: 6px;
     border-radius: 25px;
@@ -661,10 +662,17 @@ table.no-margin .progress {
     cursor: pointer;
     clear: both;
     width: 100%;
+    padding: 3px;
     margin-top: 5px;
-    border-radius: var(--ats-border-radius);
+    border-radius: 50%;
     transition: 400ms ease-in-out;
     -webkit-transition: 400ms ease-in-out;
+}
+
+.nav.side-menu > li.current-page, .nav.child_menu > li.current-page {
+    background: var(--primary-color);
+    box-shadow: 0 3px 2px rgb(161, 169, 177);
+    -webkit-box-shadow: 0 3px 2px rgb(161, 169, 177);
 }
 
 /*.nav.side-menu > li:hover , .nav.child_menu > li:hover {
@@ -680,19 +688,15 @@ table.no-margin .progress {
     color: var(--ats-white) !important;
 }*/
 .nav-sm .side-menu > li.active:hover a i.fa.fa-gears {
-    color: var(--ats-white);
+    /*color: var(--ats-white);*/
 }
 
-.nav.side-menu > li:hover {
-    /*     background: rgba(var(--ats-primary-rgb),0.2);
-     transition: 400ms ease-in-out;
-    -webkit-transition: 400ms ease-in-out;
-*/
-    background: var(--ats-gray-300);
+.nav.side-menu > li:not(.current-page, .active):hover {
     box-shadow: 0 2px 2px rgb(161, 169, 177);
     -webkit-box-shadow: 0 2px 2px rgb(161, 169, 177);
     transition: 50ms ease-in-out;
     -webkit-transition: 50ms ease-in-out;
+    background: rgba(var(--primary-color-rgb), 0.1);
 }
 
 .nav.child-menu > li:hover {
@@ -710,7 +714,6 @@ table.no-margin .progress {
 }*/
 
 .nav-sm .side-menu > li:hover > a, .nav-sm .child_menu > li:hover > a {
-    color: var(--ats-white);
     transition: 400ms ease-in-out;
     -webkit-transition: 400ms ease-in-out;
     /*background-color: rgba(var(--ats-primary-rgb),0.2);*/
@@ -746,9 +749,13 @@ table.no-margin .progress {
 
     .nav.child_menu li {
         padding-left: 10px;
-        border-radius: var(--ats-border-radius);
+        border-radius: 25px;
         margin-top: 5px;
     }
+
+ .nav.child_menu li:not(.current-page):hover {
+    background: rgba(var(--primary-color-rgb), 0.1);
+}
 
     .nav.child-menu > li > a:hover{
 
@@ -818,7 +825,7 @@ table.no-margin .progress {
 
     .nav-sm li.current-page a {
         color: var(--ats-white) !important;
-        background: var(--primary-color);
+        /*background: var(--primary-color);*/
         transition : var(--ats-)
     }
 
@@ -831,12 +838,12 @@ table.no-margin .progress {
 }
 
 .nav li li.current-page a {
-    color: var(--ats-dark-nav-link-color);
+   /* color: var(--ats-dark-nav-link-color);*/
     /*background-color: var(--primary-color);*/
 }
 
 .nav-sm .nav li li.current-page a {
-    background-color: var(--primary-color);
+    /*background-color: var(--primary-color);*/
     color: var(--ats-white) !important;
 }
 
@@ -851,11 +858,11 @@ table.no-margin .progress {
     /*background: var(--primary-color);*/
     /*box-shadow: rgba(0,0,0,0.25) 0 1px 0, inset rgba(255,255,255,0.16) 0 1px 0;*/
     border-radius: var(--ats-border-radius);
-    color: var(--ats-white);
+    /*color: var(--ats-white);*/
 }
 
     .nav.side-menu > li.active > a > span.fa{
-        color: var(--ats-white);
+   /*     color: var(--ats-white);*/
     }
     .navbar-brand,
     .navbar-nav > li > a {
