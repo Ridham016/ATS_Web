@@ -394,6 +394,31 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         }
 
+        [HttpGet]
+        public ApiResponse SendEmail()
+        {
+            EmailParams emailParams = new EmailParams();
+            string[] emails = { "dudhatharsh2701@gmail.com" };
+            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
+            UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
+            UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
+            emailParams.emailIdTO = emails;
+            emailParams.subject = "Test Mail";
+            emailParams.body = "This is demo mail";
+            emailParams.emailIdFrom = UserDetails.Email;
+            emailParams.emailPassword = UserDetails.Password;
+            emailParams.Host = UserDetails.Host;
+            emailParams.Port = UserDetails.Port;
+            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
+            bool isSend = ApiHttpUtility.SendMail(emailParams);
+
+            if (!isSend)
+            {
+                return this.Response(Utilities.MessageTypes.Error, "Error Sending Mail");
+            }
+            return this.Response(Utilities.MessageTypes.Success, "Error Sending Mail");
+        }
+
 
     }
 }
