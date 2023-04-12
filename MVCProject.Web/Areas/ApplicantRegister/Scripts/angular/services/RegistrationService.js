@@ -9,7 +9,7 @@
     }
     list.Register = function (applicantDetailScope) {
         console.log(applicantDetailScope.DateOfBirth);
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Registrations/Register',
@@ -43,7 +43,7 @@
     //    })
     //}
     list.AddFile = function (filedata, Id) {
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Registrations/FileUpload?ApplicantId=' + Id + '&databaseName=' + $rootScope.userContext.CompanyDB,
@@ -51,7 +51,7 @@
         })
     }
     list.uploadFile = function (payload) {
-        debugger
+        //debugger
         return $http({
             url: $rootScope.apiURL + '/Upload/UploadFile?databaseName=' + $rootScope.userContext.CompanyDB,
             method: 'POST',
@@ -73,7 +73,7 @@
             })
     }
     list.Export = function() {
-        debugger
+        //debugger
         return $http({
             method: 'GET',
             url: $rootScope.apiURL + '/Registrations/ExportToXl'

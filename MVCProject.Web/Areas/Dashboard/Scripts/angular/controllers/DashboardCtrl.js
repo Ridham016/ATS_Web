@@ -32,7 +32,7 @@
                     right: 'today prev,next'
                 }
                 , dayClick: function (date) {
-                    debugger
+                    //debugger
                     var events = $scope.events.filter(function (event) {
                         return moment(event.start).isSame(date, 'day');
                     });
@@ -41,16 +41,16 @@
                     $scope.SelectedEvents = events;
                 }
                 ,eventAfterAllRender: function (view) {
-                    debugger
+                    //debugger
                     $scope.DateRange = {
                         StartDate: moment(view.start).startOf('month').format('YYYY-MM-DD'),
                         EndDate: moment(view.end).endOf('month').format('YYYY-MM-DD')
                     };
                     //$scope.events.length = 0;
                     console.log($scope.DateRange);
-                    debugger
+                    //debugger
                     DashboardService.Calendar($scope.DateRange).then(function (data) {
-                        debugger
+                        //debugger
                         console.log($rootScope.sessionToken);
                         $scope.events = data.data.Result.map(function (value) {
                             return {
@@ -76,7 +76,7 @@
                         var events = $scope.events.filter(function (event) {
                             return moment(event.start).isSame(today, 'day');
                         });
-                        debugger
+                        //debugger
                         $scope.length = Object.keys(events).length;
                         $scope.SelectedEvents = events;
                     });

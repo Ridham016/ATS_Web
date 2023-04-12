@@ -8,7 +8,7 @@
     //    })
     //}
     list.AdvancedSearch = function (searchDetailParams, searchDetail) {
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/AdvancedSearch/AdvancedActionSearch?StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,

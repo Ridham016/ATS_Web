@@ -48,17 +48,17 @@
                 }
                 return;
             }
-            debugger
+            //debugger
             Login.TimeZoneMinutes = CommonFunctions.GetTimeZoneMinutes();
             Login.Password = CommonFunctions.EncryptData(Login.Password);
             console.log(Login.Password);
             AccountService.DoLogin(Login).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success && data.IsAuthenticated) {
                         CommonService.CreateSession(data.Result).then(function (response) {
-                            debugger
+                            //debugger
                             console.log(data.Result);
                             $rootScope.isAjaxLoadingChild = true;
                             if (Login.Remember) {
@@ -69,7 +69,7 @@
                             } else {
                                 CommonFunctions.SetCookie("REM", "");
                             }
-                            debugger
+                            //debugger
                             CommonFunctions.RedirectToDefaultUrl();
                         });
                     } else {

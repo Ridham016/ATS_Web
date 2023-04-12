@@ -23,7 +23,7 @@
 
         // BEGIN Add/Update Designation details
         $scope.SaveDesignationDetails = function (designationDetailScope, frmDesignations) {
-            debugger
+            //debugger
             //if (!$rootScope.permission.CanWrite) { return; }
             if (frmDesignations.$valid) {
                 DesignationService.SaveDesignationDetails(designationDetailScope).then(function (res) {
@@ -101,7 +101,7 @@
                     designationDetailParams = {};
                 }
                 designationDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                debugger
+                //debugger
                 designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 DesignationService.GetAllDesignations(designationDetailParams.Paging).then(function (res) {

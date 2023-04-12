@@ -31,6 +31,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Butto__Butto__4959E263", "ATS_MasterButton", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterButton), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Butto__Statu__4A4E069C", "ATS_MasterStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterStatus), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
 [assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__Users__RoleId__1BC821DD", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.Roles), "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.Users), true)]
+[assembly: EdmRelationshipAttribute("MVCProjectModel", "FK__ATS_Users__RoleI__07E124C1", "ATS_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_Roles), "ATS_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Users), true)]
 
 #endregion
 
@@ -305,6 +306,54 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<Users> _Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ATS_EmailInformation> ATS_EmailInformation
+        {
+            get
+            {
+                if ((_ATS_EmailInformation == null))
+                {
+                    _ATS_EmailInformation = base.CreateObjectSet<ATS_EmailInformation>("ATS_EmailInformation");
+                }
+                return _ATS_EmailInformation;
+            }
+        }
+        private ObjectSet<ATS_EmailInformation> _ATS_EmailInformation;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ATS_Roles> ATS_Roles
+        {
+            get
+            {
+                if ((_ATS_Roles == null))
+                {
+                    _ATS_Roles = base.CreateObjectSet<ATS_Roles>("ATS_Roles");
+                }
+                return _ATS_Roles;
+            }
+        }
+        private ObjectSet<ATS_Roles> _ATS_Roles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ATS_Users> ATS_Users
+        {
+            get
+            {
+                if ((_ATS_Users == null))
+                {
+                    _ATS_Users = base.CreateObjectSet<ATS_Users>("ATS_Users");
+                }
+                return _ATS_Users;
+            }
+        }
+        private ObjectSet<ATS_Users> _ATS_Users;
 
         #endregion
 
@@ -420,6 +469,30 @@ namespace MVCProject.Api.Models
         public void AddToUsers(Users users)
         {
             base.AddObject("Users", users);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ATS_EmailInformation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToATS_EmailInformation(ATS_EmailInformation aTS_EmailInformation)
+        {
+            base.AddObject("ATS_EmailInformation", aTS_EmailInformation);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ATS_Roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToATS_Roles(ATS_Roles aTS_Roles)
+        {
+            base.AddObject("ATS_Roles", aTS_Roles);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ATS_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToATS_Users(ATS_Users aTS_Users)
+        {
+            base.AddObject("ATS_Users", aTS_Users);
         }
 
         #endregion
@@ -850,6 +923,36 @@ namespace MVCProject.Api.Models
             }
     
             return base.ExecuteFunction<Users>("AuthenticateUser", mergeOption, p_EmailParameter, p_PasswordParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="email">No Metadata Documentation available.</param>
+        /// <param name="password">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_AuthenticateUser_Result> USP_ATS_AuthenticateUser(global::System.String email, global::System.String password)
+        {
+            ObjectParameter emailParameter;
+            if (email != null)
+            {
+                emailParameter = new ObjectParameter("Email", email);
+            }
+            else
+            {
+                emailParameter = new ObjectParameter("Email", typeof(global::System.String));
+            }
+    
+            ObjectParameter passwordParameter;
+            if (password != null)
+            {
+                passwordParameter = new ObjectParameter("Password", password);
+            }
+            else
+            {
+                passwordParameter = new ObjectParameter("Password", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_AuthenticateUser_Result>("USP_ATS_AuthenticateUser", emailParameter, passwordParameter);
         }
 
         #endregion
@@ -3620,6 +3723,111 @@ namespace MVCProject.Api.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="ATS_EmailInformation")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ATS_EmailInformation : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ATS_EmailInformation object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static ATS_EmailInformation CreateATS_EmailInformation(global::System.Int32 id)
+        {
+            ATS_EmailInformation aTS_EmailInformation = new ATS_EmailInformation();
+            aTS_EmailInformation.Id = id;
+            return aTS_EmailInformation;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="ATS_Interviewer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -4343,6 +4551,548 @@ namespace MVCProject.Api.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_ButtonMapping>("MVCProjectModel.FK__ATS_Butto__Statu__4A4E069C", "ATS_ButtonMapping", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="ATS_Roles")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ATS_Roles : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ATS_Roles object.
+        /// </summary>
+        /// <param name="roleId">Initial value of the RoleId property.</param>
+        public static ATS_Roles CreateATS_Roles(global::System.Int32 roleId)
+        {
+            ATS_Roles aTS_Roles = new ATS_Roles();
+            aTS_Roles.RoleId = roleId;
+            return aTS_Roles;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                if (_RoleId != value)
+                {
+                    OnRoleIdChanging(value);
+                    ReportPropertyChanging("RoleId");
+                    _RoleId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RoleId");
+                    OnRoleIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _RoleId;
+        partial void OnRoleIdChanging(global::System.Int32 value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RoleName
+        {
+            get
+            {
+                return _RoleName;
+            }
+            set
+            {
+                OnRoleNameChanging(value);
+                ReportPropertyChanging("RoleName");
+                _RoleName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RoleName");
+                OnRoleNameChanged();
+            }
+        }
+        private global::System.String _RoleName;
+        partial void OnRoleNameChanging(global::System.String value);
+        partial void OnRoleNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EntryBy
+        {
+            get
+            {
+                return _EntryBy;
+            }
+            set
+            {
+                OnEntryByChanging(value);
+                ReportPropertyChanging("EntryBy");
+                _EntryBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EntryBy");
+                OnEntryByChanged();
+            }
+        }
+        private global::System.String _EntryBy;
+        partial void OnEntryByChanging(global::System.String value);
+        partial void OnEntryByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EntryDate
+        {
+            get
+            {
+                return _EntryDate;
+            }
+            set
+            {
+                OnEntryDateChanging(value);
+                ReportPropertyChanging("EntryDate");
+                _EntryDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EntryDate");
+                OnEntryDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EntryDate;
+        partial void OnEntryDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnEntryDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UpdateBy
+        {
+            get
+            {
+                return _UpdateBy;
+            }
+            set
+            {
+                OnUpdateByChanging(value);
+                ReportPropertyChanging("UpdateBy");
+                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UpdateBy");
+                OnUpdateByChanged();
+            }
+        }
+        private global::System.String _UpdateBy;
+        partial void OnUpdateByChanging(global::System.String value);
+        partial void OnUpdateByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdateDate
+        {
+            get
+            {
+                return _UpdateDate;
+            }
+            set
+            {
+                OnUpdateDateChanging(value);
+                ReportPropertyChanging("UpdateDate");
+                _UpdateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateDate");
+                OnUpdateDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdateDate;
+        partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__ATS_Users__RoleI__07E124C1", "ATS_Users")]
+        public EntityCollection<ATS_Users> ATS_Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_Users>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_Users>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Users", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MVCProjectModel", Name="ATS_Users")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ATS_Users : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ATS_Users object.
+        /// </summary>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        public static ATS_Users CreateATS_Users(global::System.Int32 userId)
+        {
+            ATS_Users aTS_Users = new ATS_Users();
+            aTS_Users.UserId = userId;
+            return aTS_Users;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                if (_UserId != value)
+                {
+                    OnUserIdChanging(value);
+                    ReportPropertyChanging("UserId");
+                    _UserId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("UserId");
+                    OnUserIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UserName
+        {
+            get
+            {
+                return _UserName;
+            }
+            set
+            {
+                OnUserNameChanging(value);
+                ReportPropertyChanging("UserName");
+                _UserName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UserName");
+                OnUserNameChanged();
+            }
+        }
+        private global::System.String _UserName;
+        partial void OnUserNameChanging(global::System.String value);
+        partial void OnUserNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RoleId;
+        partial void OnRoleIdChanging(Nullable<global::System.Int32> value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EntryBy
+        {
+            get
+            {
+                return _EntryBy;
+            }
+            set
+            {
+                OnEntryByChanging(value);
+                ReportPropertyChanging("EntryBy");
+                _EntryBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EntryBy");
+                OnEntryByChanged();
+            }
+        }
+        private global::System.String _EntryBy;
+        partial void OnEntryByChanging(global::System.String value);
+        partial void OnEntryByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EntryDate
+        {
+            get
+            {
+                return _EntryDate;
+            }
+            set
+            {
+                OnEntryDateChanging(value);
+                ReportPropertyChanging("EntryDate");
+                _EntryDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EntryDate");
+                OnEntryDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EntryDate;
+        partial void OnEntryDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnEntryDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UpdateBy
+        {
+            get
+            {
+                return _UpdateBy;
+            }
+            set
+            {
+                OnUpdateByChanging(value);
+                ReportPropertyChanging("UpdateBy");
+                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UpdateBy");
+                OnUpdateByChanged();
+            }
+        }
+        private global::System.String _UpdateBy;
+        partial void OnUpdateByChanging(global::System.String value);
+        partial void OnUpdateByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdateDate
+        {
+            get
+            {
+                return _UpdateDate;
+            }
+            set
+            {
+                OnUpdateDateChanging(value);
+                ReportPropertyChanging("UpdateDate");
+                _UpdateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateDate");
+                OnUpdateDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdateDate;
+        partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MVCProjectModel", "FK__ATS_Users__RoleI__07E124C1", "ATS_Roles")]
+        public ATS_Roles ATS_Roles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Roles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Roles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ATS_Roles> ATS_RolesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Roles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_Roles>("MVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Roles", value);
                 }
             }
         }
@@ -9479,6 +10229,275 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.DateTime> _ExpectedJoiningDate;
         partial void OnExpectedJoiningDateChanging(Nullable<global::System.DateTime> value);
         partial void OnExpectedJoiningDateChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_AuthenticateUser_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_AuthenticateUser_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_AuthenticateUser_Result object.
+        /// </summary>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        public static USP_ATS_AuthenticateUser_Result CreateUSP_ATS_AuthenticateUser_Result(global::System.Int32 userId)
+        {
+            USP_ATS_AuthenticateUser_Result uSP_ATS_AuthenticateUser_Result = new USP_ATS_AuthenticateUser_Result();
+            uSP_ATS_AuthenticateUser_Result.UserId = userId;
+            return uSP_ATS_AuthenticateUser_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UserName
+        {
+            get
+            {
+                return _UserName;
+            }
+            set
+            {
+                OnUserNameChanging(value);
+                ReportPropertyChanging("UserName");
+                _UserName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UserName");
+                OnUserNameChanged();
+            }
+        }
+        private global::System.String _UserName;
+        partial void OnUserNameChanging(global::System.String value);
+        partial void OnUserNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _RoleId;
+        partial void OnRoleIdChanging(Nullable<global::System.Int32> value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EntryBy
+        {
+            get
+            {
+                return _EntryBy;
+            }
+            set
+            {
+                OnEntryByChanging(value);
+                ReportPropertyChanging("EntryBy");
+                _EntryBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EntryBy");
+                OnEntryByChanged();
+            }
+        }
+        private global::System.String _EntryBy;
+        partial void OnEntryByChanging(global::System.String value);
+        partial void OnEntryByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> EntryDate
+        {
+            get
+            {
+                return _EntryDate;
+            }
+            set
+            {
+                OnEntryDateChanging(value);
+                ReportPropertyChanging("EntryDate");
+                _EntryDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EntryDate");
+                OnEntryDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _EntryDate;
+        partial void OnEntryDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnEntryDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UpdateBy
+        {
+            get
+            {
+                return _UpdateBy;
+            }
+            set
+            {
+                OnUpdateByChanging(value);
+                ReportPropertyChanging("UpdateBy");
+                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UpdateBy");
+                OnUpdateByChanged();
+            }
+        }
+        private global::System.String _UpdateBy;
+        partial void OnUpdateByChanging(global::System.String value);
+        partial void OnUpdateByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdateDate
+        {
+            get
+            {
+                return _UpdateDate;
+            }
+            set
+            {
+                OnUpdateDateChanging(value);
+                ReportPropertyChanging("UpdateDate");
+                _UpdateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateDate");
+                OnUpdateDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdateDate;
+        partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdateDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
 
         #endregion
 

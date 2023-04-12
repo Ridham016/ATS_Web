@@ -218,10 +218,10 @@
 
         // BEGIN Log out user
         $scope.Logout = function () {
-            debugger
+            //debugger
             AccountService.DoLogOut().then(function (res) {
                 if (res) {
-                    debugger
+                    //debugger
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success && data.IsAuthenticated) {
                         CommonFunctions.RedirectToLoginPage(false);

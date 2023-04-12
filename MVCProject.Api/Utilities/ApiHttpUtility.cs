@@ -16,6 +16,7 @@ namespace MVCProject.Api.Utilities
     using System.Net.Mail;
     using System.Text;
     using System.Threading.Tasks;
+    using MailKit.Security;
     using MVCProject.Api.Models;
 
     #endregion
@@ -72,10 +73,10 @@ namespace MVCProject.Api.Utilities
         /// <param name="emailIdBC">emailIdBC is BC of email and send email to multiple or single email id.</param>
         /// <param name="attachmentFile">attachmentFile is attachment of email.</param>
         /// <returns>Return true or false sent mail or not, respectively.</returns>
-        public static bool SendMail(string[] emailIdTO, string subject, string body, string emailIdFrom = null, string[] emailIdCC = null, string[] emailIdBC = null, string attachmentFile = null)
+        public static bool SendMail(string[] emailIdTO, string subject, string body, string emailIdFrom, string userPassword, string[] emailIdCC = null, string[] emailIdBC = null, string attachmentFile = null)
         {
             MailAddressCollection mailAddressCollection = new MailAddressCollection();
-            emailIdFrom = emailIdFrom ?? ConfigurationManager.AppSettings["defaultSenderNotificationEmail"];
+            //emailIdFrom = emailIdFrom ?? ConfigurationManager.AppSettings["Username"];
 
             foreach (string item in emailIdTO)
             {
@@ -84,8 +85,10 @@ namespace MVCProject.Api.Utilities
                     mailAddressCollection.Add(item.Trim());
                 }
             }
-
-            SmtpClient smtpClient = new SmtpClient();
+            var host = ConfigurationManager.AppSettings["Host"];
+            SmtpClient smtpClient = new SmtpClient(host,587);
+            smtpClient.Credentials = new NetworkCredential(emailIdFrom, userPassword);
+            smtpClient.EnableSsl = true;
             using (MailMessage mailMessage = new MailMessage())
             {
                 mailMessage.Subject = subject;
@@ -118,7 +121,6 @@ namespace MVCProject.Api.Utilities
                 {
                     mailMessage.To.Add(item);
                 }
-
                 smtpClient.Send(mailMessage);
                 mailMessage.Attachments.ToList().ForEach(a => a.Dispose());
             }

@@ -1,14 +1,17 @@
 ﻿angular.module("MVCApp").service('ImportService', ['$rootScope', '$http', function ($rootScope, $http) {
     var list = [];
 
-    list.uploadFile = function (file) {
+    list.uploadFile = function (payload) {
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Import/ImportData',
-            data: file
+            data: payload,
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
         })
     }
     list.AddApplicants = function (applicantDetailScope) {
+        debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Import/AddApplicants',

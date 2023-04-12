@@ -221,18 +221,17 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
-            //var applicantemail = entities.USP_ATS_GetEmail(data.ActionId).SingleOrDefault();
-            //var email = new MimeMessage();
-            //email.From.Add(MailboxAddress.Parse("lelia.goodwin70@ethereal.email"));
-            //email.To.Add(MailboxAddress.Parse("dudhatharsh2701@gmail.com"));
-            //email.Subject = "Test Email";
-            //email.Body = new TextPart(TextFormat.Html) { Text = data.Description };
+            var applicantemail = entities.USP_ATS_GetEmail(data.ActionId).FirstOrDefault();
+            string[] emails = { applicantemail.ApplicantEmail };
+            var UserDetails = entities.ATS_EmailInformation.Where(x => x.Id == 1).FirstOrDefault();
+            UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
+            UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
+            bool isSend = ApiHttpUtility.SendMail(emails, "Test Mail", data.Description,UserDetails.Email,UserDetails.Password);
 
-            //using var smtp = new SmtpClient();
-            //smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-            //smtp.Authenticate("lelia.goodwin70@ethereal.email", "JKNDCFBnK7RDe6HZDz");
-            //smtp.Send(email);
-            //smtp.Disconnect(true);
+            if (!isSend)
+            {
+                return this.Response(Utilities.MessageTypes.Error, "Error Sending Mail");
+            }
 
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
@@ -342,6 +341,19 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
                 .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applicantlist);
+
+        }
+
+        [HttpPost]
+        public ApiResponse GetEncrptData([FromBody]string ciphertext)
+        {
+            var encryptData = SecurityUtility.Encrypt(ciphertext);
+            var decryptData = SecurityUtility.Decrypt(encryptData);
+            var data = new {
+                encryptData,
+                decryptData
+            };
+            return this.Response(Utilities.MessageTypes.Success, string.Empty, data);
 
         }
 

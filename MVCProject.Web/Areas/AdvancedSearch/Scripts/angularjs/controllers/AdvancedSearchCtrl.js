@@ -26,13 +26,13 @@
 
         $scope.expandSelected = function (applicant, ApplicantId) {
             AdvancedSearchService.ApplicantTimeline(ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 $scope.applicantDetail = res.data.Result;
             })
             $scope.applicants.forEach(function (val) {
                 val.expanded = false;
             })
-            debugger
+            //debugger
             applicant.expanded = true;
             console.log(applicant.expanded);
 
@@ -63,7 +63,7 @@
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 AdvancedSearchService.AdvancedSearch(searchDetailParams.paging, $scope.searchDetail).then(function (res) {
-                    debugger
+                    //debugger
                     var data = res.data;
                     $scope.applicants = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success
@@ -82,7 +82,7 @@
         });
 
         $scope.ClearFormData = function (frmRegister) {
-            debugger
+            //debugger
             $scope.searchDetail = {
                 StatusId: null,
                 StartDate: null,
@@ -94,7 +94,7 @@
         };
 
         $scope.advancedsearch = function (searchDetail) {
-            debugger
+            //debugger
             //if (searchDetail.daterange.startDate && searchDetail.daterange.endDate) {
             //    debugger
             //    $scope.searchDetail = searchDetail;
@@ -121,11 +121,13 @@
                 searchDetail.EndDate = null;
             }
             $scope.searchDetail = searchDetail;
+            debugger
+            $scope.tableParams.page(1);
             $scope.tableParams.reload();
             
         };
         $scope.GetStatus = function () {
-            debugger
+            //debugger
             AdvancedSearchService.GetStatus().then(function (res) {
                 var data = res.data;
                 $scope.status = res.data.Result;

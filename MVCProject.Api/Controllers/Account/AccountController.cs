@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SchedulesController.cs" company="ASK E-Sqaure">
+// <copyright file="AccountController.cs" company="ASK E-Sqaure">
 // All copy rights reserved @ASK E-Sqaure.
 // </copyright>
 // ----------------------------------------------------------------------- 
@@ -38,7 +38,7 @@ namespace MVCProject.Api.Controllers.Account
         [HttpPost]
         public ApiResponse Login(Users users)
         {
-            var user = entities.AuthenticateUser(users.Email,users.Password).SingleOrDefault();
+            var user = entities.USP_ATS_AuthenticateUser(users.Email,users.Password).SingleOrDefault();
             if (user == null)
             {
                 return this.Response(Utilities.MessageTypes.Error,string.Format(Resource.IncorrectCredentials));

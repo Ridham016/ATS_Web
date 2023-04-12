@@ -211,8 +211,6 @@
     <Compile Include="Controllers\ApplicantRegister\RegistrationsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Common\CommonController.cs" />
-    <Compile Include="Controllers\Common\EmailController.cs" />
-    <Compile Include="Controllers\Common\EmailService.cs" />
     <Compile Include="Controllers\Configuration\DesignationsController.cs" />
     <Compile Include="Controllers\Common\UploadController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
@@ -232,7 +230,6 @@
     <Compile Include="Models\Common\AttachmentSaveModel.cs" />
     <Compile Include="Models\Common\ChangePasswordModel.cs" />
     <Compile Include="Models\Common\ChangeEmailAddressModel.cs" />
-    <Compile Include="Models\Common\EmailSettings.cs" />
     <Compile Include="Models\Common\ForgotPasswordModel.cs" />
     <Compile Include="Models\Common\HeaderRow.cs" />
     <Compile Include="Models\Common\RegisterModel.cs" />
@@ -241,6 +238,7 @@
     <Compile Include="Models\Extended\GroupCurriculumMatrixMaster.cs" />
     <Compile Include="Models\Extended\GroupMaster.cs" />
     <Compile Include="Models\Extended\SubGroupMaster.cs" />
+    <Compile Include="Models\FilterCriterias\EmailParams.cs" />
     <Compile Include="Models\FilterCriterias\ReasonParams.cs" />
     <Compile Include="Models\FilterCriterias\SearchParams.cs" />
     <Compile Include="Models\LogOn.cs" />

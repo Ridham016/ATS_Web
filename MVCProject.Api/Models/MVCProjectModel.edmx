@@ -123,6 +123,14 @@
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="ATS_EmailInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="ATS_Interviewer">
           <Key>
             <PropertyRef Name="InterviewerId" />
@@ -159,6 +167,33 @@
           </Key>
           <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ATS_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ATS_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="EntryBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDate" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Designation">
@@ -318,6 +353,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ATS_Users__RoleI__07E124C1">
+          <End Role="ATS_Roles" Type="Self.ATS_Roles" Multiplicity="0..1" />
+          <End Role="ATS_Users" Type="Self.ATS_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ATS_Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Users__RoleId__1BC821DD">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -350,6 +397,10 @@
         </Function>
         <Function Name="USP_ATS_ApplicantTimeLine_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="USP_ATS_CheckStatusValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatus" Type="int" Mode="In" />
@@ -395,10 +446,13 @@
           <EntitySet Name="ATS_Attachment" EntityType="Self.ATS_Attachment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_AttachmentType" EntityType="Self.ATS_AttachmentType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_ButtonMapping" EntityType="Self.ATS_ButtonMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATS_EmailInformation" EntityType="Self.ATS_EmailInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_Interviewer" EntityType="Self.ATS_Interviewer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterButton" EntityType="Self.ATS_MasterButton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterOtherReason" EntityType="Self.ATS_MasterOtherReason" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterStatus" EntityType="Self.ATS_MasterStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATS_Roles" EntityType="Self.ATS_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATS_Users" EntityType="Self.ATS_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -445,6 +499,10 @@
           <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="Self.FK__ATS_Sched__Inter__51EF2864">
             <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
             <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_Users__RoleI__07E124C1" Association="Self.FK__ATS_Users__RoleI__07E124C1">
+            <End Role="ATS_Roles" EntitySet="ATS_Roles" />
+            <End Role="ATS_Users" EntitySet="ATS_Users" />
           </AssociationSet>
           <AssociationSet Name="FK__Users__RoleId__1BC821DD" Association="Self.FK__Users__RoleId__1BC821DD">
             <End Role="Roles" EntitySet="Roles" />
@@ -885,6 +943,17 @@
             <Parameter Name="p_Email" Mode="In" Type="String" />
             <Parameter Name="p_Password" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="ATS_EmailInformation" EntityType="MVCProjectModel.ATS_EmailInformation" />
+          <EntitySet Name="ATS_Roles" EntityType="MVCProjectModel.ATS_Roles" />
+          <EntitySet Name="ATS_Users" EntityType="MVCProjectModel.ATS_Users" />
+          <AssociationSet Name="FK__ATS_Users__RoleI__07E124C1" Association="MVCProjectModel.FK__ATS_Users__RoleI__07E124C1">
+            <End Role="ATS_Roles" EntitySet="ATS_Roles" />
+            <End Role="ATS_Users" EntitySet="ATS_Users" />
+          </AssociationSet>
+          <FunctionImport Name="USP_ATS_AuthenticateUser" ReturnType="Collection(MVCProjectModel.USP_ATS_AuthenticateUser_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1265,6 +1334,67 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="Password" Nullable="true" MaxLength="20" />
           <Property Type="Int32" Name="RoleId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ATS_EmailInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ATS_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntryBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ATS_Users" Relationship="MVCProjectModel.FK__ATS_Users__RoleI__07E124C1" FromRole="ATS_Roles" ToRole="ATS_Users" />
+        </EntityType>
+        <EntityType Name="ATS_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="EntryBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ATS_Roles" Relationship="MVCProjectModel.FK__ATS_Users__RoleI__07E124C1" FromRole="ATS_Users" ToRole="ATS_Roles" />
+        </EntityType>
+        <Association Name="FK__ATS_Users__RoleI__07E124C1">
+          <End Type="MVCProjectModel.ATS_Roles" Role="ATS_Roles" Multiplicity="0..1" />
+          <End Type="MVCProjectModel.ATS_Users" Role="ATS_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ATS_Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="USP_ATS_AuthenticateUser_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="RoleId" Nullable="true" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1888,6 +2018,60 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="MVCProjectModel.Store.AuthenticateUser">
           </FunctionImportMapping>
+          <EntitySetMapping Name="ATS_EmailInformation">
+            <EntityTypeMapping TypeName="MVCProjectModel.ATS_EmailInformation">
+              <MappingFragment StoreEntitySet="ATS_EmailInformation">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATS_Roles">
+            <EntityTypeMapping TypeName="MVCProjectModel.ATS_Roles">
+              <MappingFragment StoreEntitySet="ATS_Roles">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATS_Users">
+            <EntityTypeMapping TypeName="MVCProjectModel.ATS_Users">
+              <MappingFragment StoreEntitySet="ATS_Users">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_AuthenticateUser" FunctionName="MVCProjectModel.Store.USP_ATS_AuthenticateUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_AuthenticateUser_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1937,6 +2121,10 @@
         <EntityTypeShape EntityType="MVCProjectModel.Roles" Width="1.5" PointX="0.75" PointY="9.125" />
         <EntityTypeShape EntityType="MVCProjectModel.Users" Width="1.5" PointX="3" PointY="8.875" />
         <AssociationConnector Association="MVCProjectModel.FK__Users__RoleId__1BC821DD" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_EmailInformation" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_Roles" Width="1.5" PointX="7.375" PointY="9.25" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_Users" Width="1.5" PointX="9.625" PointY="9" />
+        <AssociationConnector Association="MVCProjectModel.FK__ATS_Users__RoleI__07E124C1" />
       </Diagram>
     </Diagrams>
   </Designer>

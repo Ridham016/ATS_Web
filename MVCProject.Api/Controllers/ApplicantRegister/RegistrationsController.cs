@@ -285,7 +285,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.File));
             }
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File));
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.File),data);
             //var fileData = this.entities.ATS_Attachment.FirstOrDefault(x => x.ApplicantId == ApplicantId);
             //if(fileData == null)
             //{
@@ -387,7 +387,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 ApplicantDate = g.ApplicantDate,
                 TotalExperience = g.TotalExperience,
                 DetailedExperience = g.DetailedExperience,
-                CurrentCTC = g.CurrentCTC ?? null,
+                CurrentCTC = g.CurrentCTC,
                 ExpectedCTC = g.ExpectedCTC,
                 NoticePeriod = g.NoticePeriod,
                 CurrentLocation = g.CurrentLocation,
@@ -415,9 +415,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 row.CreateCell(5).SetCellValue(applicant.Phone);
                 row.CreateCell(6).SetCellValue(applicant.Address);
                 row.CreateCell(7).SetCellValue((DateTime)applicant.DateOfBirth);
-                row.CreateCell(8).SetCellValue(applicant.CurrentCompany);
-                row.CreateCell(9).SetCellValue(applicant.CurrentDesignation);
-                row.CreateCell(10).SetCellValue((DateTime)applicant.ApplicantDate);
+                row.CreateCell(8).SetCellValue((DateTime)applicant.ApplicantDate);
+                row.CreateCell(9).SetCellValue(applicant.CurrentCompany);
+                row.CreateCell(10).SetCellValue(applicant.CurrentDesignation);
                 if (applicant.TotalExperience != null)
                 {
                     row.CreateCell(11).SetCellValue(applicant.TotalExperience);
@@ -486,7 +486,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             IRow headerRow = sheet.CreateRow(0);
 
             // Define the column headers
-            string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "EntryBy", "EntryDate", "UpdatedBy", "UpdateDate", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
+            string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "FileName", "FilePath", "FileRelativePath", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
 
             // Add each header to the row
             for (int i = 0; i < headers.Length; i++)

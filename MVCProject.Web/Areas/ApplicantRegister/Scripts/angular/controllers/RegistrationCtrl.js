@@ -105,7 +105,7 @@
                     RegistrationService.GetAllApplicants(applicantDetailParams.Paging).then(function (res) {
                         var data = res.data;
                         $scope.applicants = res.data.Result;
-                        debugger
+                        //debugger
                         if (res.data.MessageType == messageTypes.Success) {// Success
                             $defer.resolve(res.data.Result);
                             if (res.data.Result.length == 0) {
@@ -161,7 +161,7 @@
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             if (!$scope.frmRegister.$valid) {
-                debugger
+                //debugger
                 angular.forEach($scope.frmRegister.$error.required, function (field) {
                     field.$setTouched();
                     field.$setValidity('required', true);
@@ -170,14 +170,14 @@
                 return false;
             }
             else {
-                debugger
+                //debugger
                 applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                 applicantDetailScope.ExpectedCTC = angular.copy(moment(applicantDetailScope.ExpectedCTC).format($rootScope.apiDateFormat));
                 RegistrationService.Register(applicantDetailScope).then(function (res) {
                     if (res) {
                         var applicants = res.data;
                         $scope.applicantId = res.data.Result;
-                        debugger
+                        //debugger
                         if ($scope.filedata) {
                             RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
                                 if (applicants.MessageType == messageTypes.Success && applicants.IsAuthenticated) {
@@ -210,12 +210,12 @@
         }
 
         $scope.deleteFile = function (FileId) {
-            debugger
+            //debugger
             RegistrationService.DeleteFile(FileId).then(function (res) {
                 if (res) {
                     if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
                         toastr.success(res.data.Message, successTitle);
-                        debugger
+                        //debugger
                         var index = $scope.files.indexOf(FileId);
                         $scope.files.splice(index, 1);
                         $scope.Files = $scope.files.length;
@@ -235,9 +235,9 @@
         }, true);
 
         $scope.getFiles = function (ApplicantId) {
-            debugger
+            //debugger
             RegistrationService.GetFiles(ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
@@ -249,16 +249,16 @@
                 }
                 $rootScope.isAjaxLoadingChild = false;
                 $scope.Files = $scope.files.length;
-                debugger
+                //debugger
                 console.log($scope.Files);
             })
         }
 
         $scope.EditApplicantDetails = function (ApplicantId) {
-            debugger
+            //debugger
             $scope.getFiles(ApplicantId);
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
@@ -277,7 +277,7 @@
 
         $scope.AddFileToDb = function () {
             RegistrationService.AddFile($scope.filedata, $scope.applicantId).then(function (res) {
-                debugger
+                //debugger
                 $scope.ClearFormData(frmRegister);
                 $("#file").val("");
                 $scope.tableParams.reload();
@@ -297,7 +297,7 @@
         }
 
         $scope.uploadFile = function () {
-            debugger
+            //debugger
             var fileInput = document.getElementById('file');
             if (fileInput.files.length === 0) return;
 
@@ -316,22 +316,22 @@
             disabled: ''
         };
         $scope.downloadPDF = function (data, filename, mimeType) {
-            debugger
+            //debugger
             FileService.SaveBlob(data, filename, mimeType).then(function (res) {
                 res.data;
             })
         }
 
         $scope.Export = function () {
-            debugger
+            //debugger
             RegistrationService.Export().then(function (res) {
                 //var blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
                 //var filename = 'data.xlsx';
                 ////(blob, filename);
-                debugger
+                //debugger
                 var data = res.data;
                 if (data.MessageType == messageTypes.Success) {
-                    debugger
+                    //debugger
                     var filename = res.data.Result;
                     var params = { filename: filename };
                     var form = document.createElement("form");

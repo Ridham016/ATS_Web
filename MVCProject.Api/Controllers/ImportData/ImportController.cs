@@ -23,7 +23,7 @@ namespace MVCProject.Api.Controllers.ImportData
         private MVCProjectEntities entities;
         [HttpPost]
         //[Route("importData")]
-        public ApiResponse ImportData(HttpPostedFileBase file)
+        public ApiResponse ImportData()
         {
             try
             {
@@ -157,30 +157,55 @@ namespace MVCProject.Api.Controllers.ImportData
         {
             foreach (var applicant in data)
             {
-                var applicantData = this.entities.ATS_ApplicantRegister.FirstOrDefault(x => x.ApplicantId == applicant.ApplicantId);
-                if (applicantData == null)
+                applicant.EntryDate = DateTime.Now;
+                applicant.ApplicantDate = DateTime.Now;
+                applicant.EntryBy = "1";
+                entities.ATS_ApplicantRegister.AddObject(new ATS_ApplicantRegister
                 {
-                    applicant.EntryDate = DateTime.Now;
-                    applicant.ApplicantDate = DateTime.Now;
-                    applicant.EntryBy = "1";
-                    entities.ATS_ApplicantRegister.AddObject(applicant);
-                    this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
-                    {
-                        ApplicantId = applicant.ApplicantId,
-                        StatusId = 1,
-                        Level = 0,
-                        IsActive = true,
-                        EntryBy = "1",
-                        EntryDate = DateTime.Now
-                    });
-                    if (!(this.entities.SaveChanges() > 0))
-                    {
-                        return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
-                    }
-
-                    return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant), applicant.ApplicantId);
+                    FirstName = applicant.FirstName,
+                    MiddleName = applicant.MiddleName,
+                    LastName = applicant.LastName,
+                    Email = applicant.Email,
+                    Phone = applicant.Phone,
+                    Address = applicant.Address,
+                    DateOfBirth = applicant.DateOfBirth,
+                    CurrentCompany = applicant.CurrentCompany,
+                    CurrentDesignation = applicant.CurrentDesignation,
+                    ApplicantDate = applicant.ApplicantDate,
+                    TotalExperience = applicant.TotalExperience,
+                    DetailedExperience = applicant.DetailedExperience,
+                    CurrentCTC = applicant.CurrentCTC,
+                    ExpectedCTC = applicant.ExpectedCTC,
+                    NoticePeriod = applicant.NoticePeriod,
+                    CurrentLocation = applicant.CurrentLocation,
+                    PreferedLocation = applicant.PreferedLocation,
+                    ReasonForChange = applicant.ReasonForChange,
+                    SkillDescription = applicant.SkillDescription,
+                    PortfolioLink = applicant.PortfolioLink,
+                    LinkedinLink = applicant.LinkedinLink,
+                    OtherLink = applicant.OtherLink,
+                    IsActive = applicant.IsActive,
+                    Comment = applicant.Comment,
+                    EntryBy = "1",
+                    EntryDate = DateTime.Now,
+                    UpdatedBy = "1"
+                });
+                this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
+                {
+                    ApplicantId = applicant.ApplicantId,
+                    StatusId = 1,
+                    Level = 0,
+                    IsActive = true,
+                    EntryBy = "1",
+                    EntryDate = DateTime.Now
+                });
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
                 }
-                
+
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant), applicant.ApplicantId);
+
             }
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.Success, Resource.Applicant));
         }

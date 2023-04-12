@@ -59,21 +59,56 @@
         //};
         debugger
 
-        $scope.applicantDetailScope = [];
+        $scope.applicantDetailScope = {
+            ApplicantId: 0,
+            FirstName: '',
+            MiddleName: '',
+            LastName: '',
+            Email: '',
+            Phone: '',
+            Address: '',
+            DateOfBirth: null,
+            CurrentCompany: '',
+            CurrentDesignation: '',
+            TotalExperience: '',
+            DetailedExperience: '',
+            CurrentCTC: '',
+            ExpectedCTC: '',
+            NoticePeriod: '',
+            CurrentLocation: '',
+            PreferedLocation: '',
+            ReasonForChange: '',
+            SkillDescription: '',
+            PortfolioLink: '',
+            LinkedinLink: '',
+            OtherLink: '',
+            ExpectedJoiningDate: null,
+            IsActive: true
+        };
+        $scope.applicant = [];
+        $scope.Updatedapplicant = [];
         $scope.currentApplicantIndex = 0;
         $scope.showNextApplicant = function () {
+            debugger
+            $scope.Updatedapplicant[$scope.currentApplicantIndex] = $scope.applicantDetailScope;
             $scope.currentApplicantIndex++;
-            if ($scope.currentApplicantIndex >= $scope.applicants.length) {
+            if ($scope.currentApplicantIndex >= $scope.applicant.length) {
                 $scope.currentApplicantIndex = 0;
             }
+            console.log($scope.applicant[0]);
+            $scope.applicantDetailScope = $scope.applicant[$scope.currentApplicantIndex];
+            $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth); 
         };
-        $scope.applicant = $scope.applicants[$scope.currentApplicantIndex];
         //$scope.showNextApplicant();
         $scope.uploadFile = function () {
-            var file = $scope.myFile;
-            var formData = new FormData();
-            formData.append('file', file);
+            debugger
+            var fileInput = document.getElementById('file');
+            if (fileInput.files.length === 0) return;
 
+            var file = fileInput.files[0];
+
+            var payload = new FormData();
+            payload.append("file", file);
 
             //$scope.showNextApplicant = function () {
             //    // Check if there are more applicants to display
@@ -95,13 +130,12 @@
             //    transformRequest: angular.identity,
             //    headers: { 'Content-Type': undefined }
             //})
-            ImportService.uploadFile(formData).then(function (response) {
-                // Success callback function
-                $scope.applicantDetails = response.data;
+            ImportService.uploadFile(payload).then(function (response) {
+                $scope.applicant = response.data.Result;
+                $scope.applicantDetailScope = $scope.applicant[$scope.currentApplicantIndex];
+                $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth); 
+                debugger
                 $scope.showNextApplicant();
-            }, function (error) {
-                // Error callback function
-                console.log(error);
             });
 
         };
@@ -110,9 +144,11 @@
             //    method: 'POST',
             //    url: '/api/Import/AddApplicants',
             //    data: applicantDetailScope
-            ImportService.AddApplicants(applicantDetailScope).then(function (response) {
+            $scope.Updatedapplicant[$scope.currentApplicantIndex] = applicantDetailScope;
+            debugger
+            ImportService.AddApplicants($scope.Updatedapplicant).then(function (response) {
                 // Handle success response
-                console.log(response.data);
+                console.log(response.data.Result);
             }, function (error) {
                 // Handle error response
                 console.log(error.data);

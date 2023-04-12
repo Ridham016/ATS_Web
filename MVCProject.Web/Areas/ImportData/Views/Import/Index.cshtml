@@ -5,91 +5,6 @@
 
 <style>
 
-    .frozen-columns {
-        table-layout: fixed;
-    }
-
-        .frozen-columns tbody td:last-child {
-            position: sticky;
-            right: 0;
-            z-index: 2;
-            background-color: #f6f7f9 !important;
-        }
-
-        .frozen-columns thead tr th:last-child .th-inner,
-        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: 1;
-            background: var(--primary-color) !important;
-        }
-
-        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
-            right: 70px;
-        }
-
-        .frozen-columns tbody td:nth-last-child(2) {
-            position: sticky;
-            right: 70px;
-            z-index: 2;
-            background-color: #f6f7f9 !important;
-        }
-
-    .colSrno {
-        width: 60px !important;
-        min-width: 60px !important;
-        max-width: 60px !important;
-    }
-
-    .colPosition {
-        width: 200px !important;
-        min-width: 200px !important;
-        max-width: 200px !important;
-    }
-
-    .colPhone {
-        width: 130px !important;
-        min-width: 130px !important;
-        max-width: 130px !important;
-    }
-
-    .colActive {
-        width: 75px !important;
-        min-width: 75px !important;
-        max-width: 75px !important;
-    }
-
-    .colDate {
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-    }
-
-    .colAction {
-        width: 70px !important;
-        min-width: 70px !important;
-        max-width: 70px !important;
-    }
-
-    .colDownload {
-        width: 50px !important;
-        min-width: 50px !important;
-        max-width: 50px !important;
-    }
-
-    .colNum {
-        width: 130px !important;
-        min-width: 130px !important;
-        max-width: 130px !important;
-    }
-
-    .colExperience {
-        width: 180px !important;
-        min-width: 180px !important;
-        max-width: 180px !important;
-    }
-
     .border-color {
         border-color: red !important;
     }
@@ -106,17 +21,24 @@
         <div class="pull-right">
         </div>
     </div>
-    <div>
-        <input type="file" ng-model="myFile" />
-        <button ng-click="uploadFile()">Upload</button>
-    </div>
-
     <div class="card-box">
+        <div class="row mb-3">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-8">
+                        <input class="form-control" type="file" id="file" ng-model="myFile" />
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-success" ng-click="uploadFile()">Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <!-- start designation form -->
                 @*submitApplicants(applicantDetailScope)*@
-                <form name="frmRegister" ng-submit="showNextApplicant(applicantDetailScope)"
+                <form name="frmRegister"
                       novalidate>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item" id="personal_details">
@@ -197,7 +119,7 @@
                                                 <label>
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
                                                 </label>
-                                                <input type="date" max="{{maxDate}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                <input type="date" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
                                                        class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
                                                 </div>
@@ -454,7 +376,7 @@
                                                 <input type="text" class="form-control" placeholder="Enter Other Links" name="OtherLink" ng-model="applicantDetailScope.OtherLink" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        @*<div class="col-md-4 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
@@ -468,16 +390,14 @@
                                                     <span data-ng-show="frmRegister.ApplicantCV.$error.required">@Resource.ApplicantCVRequired</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*@
                                     </div>
-                                    <div class="row mt-3 mb-4" ng-show="Files != null">
+                                    @*<div class="row mt-3 mb-4" ng-show="Files != null">
                                         <div class="col-md-4">
                                             <div class="card p-3">
                                                 <h4 class="card-title">
                                                     Uploaded Files
                                                 </h4>
-                                                @*<div class="card-body">
-                                        </div>*@
                                                 <div class="row mb-2" ng-repeat="f in files">
                                                     <div class="col-11">
                                                         <a href="{{f.FileRelativePath}}" target="_blank">
@@ -490,19 +410,9 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                @*<ul class="list-group list-group-flush">
-                                            <li class="row list-group-item" ng-repeat="f in files">
-                                                <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
-                                                    {{f.OriginalFileName}}
-                                                </a>
-                                                <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </li>
-                                        </ul>*@
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -510,11 +420,11 @@
                     <div class="row mt-3 mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <input type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="showNextApplicant()">
+                                <button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="showNextApplicant()">
                                     @Resource.Save
-                                
+                                </button>
 
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" @*ng-disabled="frmRegister.$invalid"*@>
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5"  ng-click="submitApplicants(applicantDetailScope)" @*ng-disabled="frmRegister.$invalid"*@>
                                     @Resource.Save
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
@@ -526,6 +436,7 @@
                     </div>
                 </form>
                 <hr class="section-divider" />
+
                 <!-- end designation form -->
                 <!--<div class="row mt-4">
         <div class="col-md-12">

@@ -24,13 +24,13 @@
                     interviewerDetailParams = {};
                 }
                 interviewerDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                debugger
+                //debugger
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 InterviewerService.GetAllInterviewers(interviewerDetailParams.Paging).then(function (res) {
                         var data = res.data;
                     $scope.interviewers = res.data.Result;
-                    debugger
+                    //debugger
                         if (res.data.MessageType == messageTypes.Success) {// Success
                             $defer.resolve(res.data.Result);
                             if (res.data.Result.length == 0) {
@@ -94,7 +94,7 @@
         $scope.EditInterviewersDetails = function (InterviewerId) {
             InterviewerService.GetInterviewersById(InterviewerId).then(function (res) {
                 if (res) {
-                    debugger
+                    //debugger
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {// Success
                         $scope.interviewerDetailScope = res.data.Result;

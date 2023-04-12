@@ -37,7 +37,7 @@
                 //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
-                    debugger
+                    //debugger
                     var data = res.data;
                     $scope.applicants = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success
@@ -56,11 +56,11 @@
         });
 
         $scope.GetData = function () {
-            debugger
+            //debugger
             var param = $location.search();
             $scope.applicantId = param.ApplicantId;
             ScheduleService.GetApplicant($scope.applicantId).then(function (res) {
-                debugger
+                //debugger
                 $scope.applicants = res.data.Result;
                 $scope.Level = $scope.applicants.Level;
                 $scope.getButtons($scope.applicants.StatusId);
@@ -68,7 +68,7 @@
         }
 
         $scope.getButtons = function (StatusId) {
-            debugger
+            //debugger
             ScheduleService.GetButtons(StatusId).then(function (res) {
                 $scope.buttons = res.data.Result;
                 console.log($scope.buttons);
@@ -80,7 +80,7 @@
                 var modalOptions = {
                     backdrop: 'static'
                 };
-                debugger
+                //debugger
                 $scope.StatusId = ButtonId + 1;
                 $('#Modal' + ButtonId).modal(modalOptions);
                 $('#Modal' + ButtonId).modal('show');
@@ -97,13 +97,13 @@
         }
 
         $scope.updateStatus = function (scheduleDetailScope, StatusId, ApplicantId) {
-            debugger
+            //debugger
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     $scope.Action = res.data.Result;
                     $scope.ActionId = $scope.Action[1];
-                    debugger
+                    //debugger
                     ScheduleService.Comment(scheduleDetailScope, $scope.ActionId).then(function (res) {
                         var data = res.data;
                         $window.location.href = '../../ScheduleManagement/Schedule';
@@ -113,7 +113,7 @@
             
         }
         $scope.getAllInterviewers = function () {
-            debugger
+            //debugger
             ScheduleService.GetAllInterviewers().then(function (res) {
                 var data = res.data;
             $scope.interviewers = res.data.Result;
@@ -122,10 +122,10 @@
 
         $scope.SaveSchduleDetails = function (scheduleDetailScope, StatusId, ApplicantId) {
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     $scope.Action = res.data.Result;
-                    debugger
+                    //debugger
                     $scope.scheduleDetailScope['ActionId'] = $scope.Action[1];
                     $scope.scheduleDetailScope.ScheduleDateTime = angular.copy(moment($scope.scheduleDetailScope.ScheduleDateTime).format($rootScope.apiDateFormat));
                     ScheduleService.Schedule(scheduleDetailScope).then(function (res) {
@@ -139,9 +139,9 @@
         }
 
         $scope.getOtherReasons = function () {
-            debugger
+            //debugger
             ScheduleService.GetOtherReasons().then(function (res) {
-                debugger
+                //debugger
                 var data = res.data;
                 $scope.reasons = res.data.Result;
             });
@@ -149,11 +149,11 @@
 
         $scope.updateOtherReason = function (Reason, StatusId, ApplicantId) {
             ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
-                debugger
+                //debugger
                 if (res) {
                     $scope.Action = res.data.Result;
                     $scope.ActionId = $scope.Action[1];
-                    debugger
+                    //debugger
                     ScheduleService.UpdateOtherReason(Reason,$scope.ActionId).then(function (res) {
                         var data = res.data;
                         $window.location.href = '../../ScheduleManagement/Schedule';

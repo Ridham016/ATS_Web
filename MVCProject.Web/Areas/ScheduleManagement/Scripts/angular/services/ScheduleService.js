@@ -33,7 +33,7 @@
         })
     }
     list.Schedule = function (scheduleDetailScope) {
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/ScheduleInterview',
@@ -41,14 +41,14 @@
         })
     }
     list.GetOtherReasons = function () {
-        debugger
+        //debugger
         return $http({
             method: 'GET',
             url: $rootScope.apiURL + '/Schedules/GetReasons'
         })
     }
     list.UpdateOtherReason = function (Reason, actionId) {
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId,
@@ -56,7 +56,7 @@
         })
     }
     list.Comment = function (scheduleDetailScope, actionId) {
-        debugger
+        //debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/Comment?ActionId=' + actionId,

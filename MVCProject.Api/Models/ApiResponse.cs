@@ -15,14 +15,18 @@ namespace MVCProject.Api.Models
     [DataContract]
     public class ApiResponse
     {
-        private HttpStatusCode badRequest;
-        private string exceptionMessage;
+        //private HttpStatusCode badRequest;
+        //private string exceptionMessage;
 
-        public ApiResponse(HttpStatusCode badRequest, string exceptionMessage)
-        {
-            this.badRequest = badRequest;
-            this.exceptionMessage = exceptionMessage;
-        }
+        //public ApiResponse()
+        //{
+        //}
+
+        //public ApiResponse(HttpStatusCode badRequest, string exceptionMessage)
+        //{
+        //    this.badRequest = badRequest;
+        //    this.exceptionMessage = exceptionMessage;
+        //}
 
         /// <summary>
         /// Gets or sets a value indicating whether request is authenticated or not.
