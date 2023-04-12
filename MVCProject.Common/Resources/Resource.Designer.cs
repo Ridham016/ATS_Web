@@ -520,6 +520,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company is Required.
+        /// </summary>
+        public static string CompanyRequired {
+            get {
+                return ResourceManager.GetString("CompanyRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Level.
         /// </summary>
         public static string ConfigLevel {
@@ -1879,6 +1897,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mode of Interview is Required.
+        /// </summary>
+        public static string ModeRequired {
+            get {
+                return ResourceManager.GetString("ModeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modified By.
         /// </summary>
         public static string ModifiedBy {
@@ -2181,6 +2208,24 @@ namespace MVCProject.Common.Resources {
         public static string PortfolioLink {
             get {
                 return ResourceManager.GetString("PortfolioLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posiiton is Required.
+        /// </summary>
+        public static string PosiitonRequired {
+            get {
+                return ResourceManager.GetString("PosiitonRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posiiton.
+        /// </summary>
+        public static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         
@@ -3162,6 +3207,24 @@ namespace MVCProject.Common.Resources {
         public static string ValueIsRequired {
             get {
                 return ResourceManager.GetString("ValueIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venue.
+        /// </summary>
+        public static string Venue {
+            get {
+                return ResourceManager.GetString("Venue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venue is Required.
+        /// </summary>
+        public static string VenueRequired {
+            get {
+                return ResourceManager.GetString("VenueRequired", resourceCulture);
             }
         }
         

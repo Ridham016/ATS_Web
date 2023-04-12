@@ -1170,4 +1170,25 @@
   <data name="ExpectedJoiningDateRequired" xml:space="preserve">
     <value>Expected Joining Date is Required</value>
   </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="CompanyRequired" xml:space="preserve">
+    <value>Company is Required</value>
+  </data>
+  <data name="ModeRequired" xml:space="preserve">
+    <value>Mode of Interview is Required</value>
+  </data>
+  <data name="PosiitonRequired" xml:space="preserve">
+    <value>Posiiton is Required</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Posiiton</value>
+  </data>
+  <data name="Venue" xml:space="preserve">
+    <value>Venue</value>
+  </data>
+  <data name="VenueRequired" xml:space="preserve">
+    <value>Venue is Required</value>
+  </data>
 </root>

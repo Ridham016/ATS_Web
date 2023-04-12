@@ -23,11 +23,12 @@
     @Html.Partial("~/Views/Shared/_CommonScriptInner.cshtml")
     @{BundleTable.EnableOptimizations = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsJsCssMinified"]);}
     @Styles.Render("~/css/inner")
-    <script>
+<script>
         var sessionToken = '@Html.Raw(userContext.Token)';
         var baseApiURL = '@System.Configuration.ConfigurationManager.AppSettings["ApiServiceUrl"]';
         var userContext = {
             UserName: '@Html.Raw(userContext.UserName)',
+            User: '@userContext.User',
             CompanyDB: '@userContext.CompanyDB',
             CompanyId: parseInt('@userContext.CompanyId'),
             UserId: parseInt('@userContext.UserId'),
@@ -55,15 +56,15 @@
             AllowReport: '@Html.Raw(userContext.AllowReport)',
             AllowSearch: '@Html.Raw(userContext.AllowSearch)',
             AllowAnalytics: '@Html.Raw(userContext.AllowAnalytics)'
-        };        
+        };
         var permission = {
             PageId : @(permission.PageId),
             CanRead : '@(permission.CanRead)' == 'True',
             CanWrite : '@(permission.CanWrite)' == 'True'
         };
         var roles= @Html.RoleJson(userContext.UserRole);
-        
-    </script>
+
+</script>
     <link href="@Url.Content("~/Content/css/nv.d3.min.css")" rel="stylesheet" type="text/css" />
 </head>
 <body ng-controller="MasterCtrl" ng-cloak id="LayoutBody" class="fullscreen" ng-class="isSmallMenu?'nav-sm':'nav-md'"
@@ -101,7 +102,7 @@
                         <li class="dropdown text-center">
                             <a data-bs-toggle="dropdown" class="dropdown-toggle waves-effect waves-light profile">
                                 <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg" class="img-circle user-img profile-img thumb-sm" />
-                                <span class="username">{{userContext.UserName}}</span>
+                                <span class="username">{{userContext.User}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 @*<li><a ng-click="SynchronizeReportingData()" ng-href="/Home"><i class="fa fa-home m-r-5">

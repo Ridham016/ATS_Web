@@ -10,9 +10,36 @@ namespace MVCProject.Api.Models.FilterCriterias
     public class EmailParams
     {
         [DataMember]
-        public String Subject { get; set; }
+        public string[] emailIdTO { get; set; }
+        
+        [DataMember]
+        public string subject { get; set; }
 
         [DataMember]
-        public string Body { get; set; }
+        public string body { get; set; }
+
+        [DataMember]
+        public string emailIdFrom { get; set; }
+        
+        [DataMember]
+        public string emailPassword { get; set; }
+
+        [DataMember]
+        public string Host { get; set; }
+
+        [DataMember]
+        public int? Port { get; set; }
+
+        [DataMember]
+        public bool EnableSSL { get; set; }
+
+        [DataMember]
+        public string[] emailIdCC { get; set; }
+        
+        [DataMember]
+        public string[] emailIdBC { get; set; }
+        
+        [DataMember]
+        public string attachmentFile { get; set; }
     }
 }

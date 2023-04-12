@@ -203,6 +203,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 ActionId = data.ActionId,
                 Description = data.Description,
                 InterviewerId = data.InterviewerId,
+                PositionId = data.PositionId,
+                CompanyId = data.CompanyId,
+                Venue = data.Venue,
                 Mode = data.Mode,
                 IsActive = true,
                 EntryBy= "1",
@@ -223,10 +226,19 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             }
             var applicantemail = entities.USP_ATS_GetEmail(data.ActionId).FirstOrDefault();
             string[] emails = { applicantemail.ApplicantEmail };
-            var UserDetails = entities.ATS_EmailInformation.Where(x => x.Id == 1).FirstOrDefault();
+            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
             UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
             UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
-            bool isSend = ApiHttpUtility.SendMail(emails, "Test Mail", data.Description,UserDetails.Email,UserDetails.Password);
+            EmailParams emailParams = new EmailParams();
+            emailParams.emailIdTO = emails;
+            emailParams.subject = "Test Mail";
+            emailParams.body = data.Description;
+            emailParams.emailIdFrom = UserDetails.Email;
+            emailParams.emailPassword = UserDetails.Password;
+            emailParams.Host= UserDetails.Host;
+            emailParams.Port = UserDetails.Port;
+            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
+            bool isSend = ApiHttpUtility.SendMail(emailParams);
 
             if (!isSend)
             {
@@ -246,6 +258,31 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 IsActive = x.IsActive
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, reasons);
+        }
+
+        [HttpGet]
+        public ApiResponse GetCompanyDetails()
+        {
+            var data = this.entities.USP_ATS_GetCompanyDetails().Select(x => new
+            {
+                Id = x.Id,
+                CompanyName = x.CompanyName,
+                Venue = x.Venue,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
+        [HttpGet]
+        public ApiResponse GetPositionDetails()
+        {
+            var data = this.entities.USP_ATS_GetPositionDetails().Select(x => new
+            {
+                Id = x.Id,
+                PositionName = x.PositionName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
         }
 
         [HttpPost]

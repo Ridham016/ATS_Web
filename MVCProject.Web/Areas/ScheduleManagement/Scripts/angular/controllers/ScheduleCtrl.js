@@ -7,6 +7,7 @@
 
     function ScheduleCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $rootScope, $location, $window, ScheduleService) {
         var applicantDetailParams = {};
+        $scope.useCompanyVenue = false;
         $scope.Mode = CommonEnums.Mode;
         $scope.scheduleDetailScope = {
             Id: 0,
@@ -14,6 +15,9 @@
             ScheduleLink: '',
             Description: '',
             Mode: '',
+            PositionId: '',
+            CompanyId: '',
+            Venue : '',
             IsActive: true
         };
 
@@ -23,6 +27,19 @@
             ReasonId: '',
             CancelReason: ''
         };
+
+        $scope.useCompanyVenue = function (useCompanyVenue) {
+            if (useCompanyVenue) {
+                debugger
+                var selectedCompany = $scope.companyDetails.find(function (company) {
+                    return company.Id == $scope.scheduleDetailScope.CompanyId;
+                });
+                $scope.scheduleDetailScope.Venue = selectedCompany.Venue;
+            }
+            else {
+                $scope.scheduleDetailScope.Venue = ''
+            }
+        }
 
         $scope.tableParams = new ngTableParams({
             page: 1,
@@ -72,6 +89,20 @@
             ScheduleService.GetButtons(StatusId).then(function (res) {
                 $scope.buttons = res.data.Result;
                 console.log($scope.buttons);
+            })
+        }
+
+        $scope.getCompanyDetails = function () {
+            //debugger
+            ScheduleService.GetCompanyDetails().then(function (res) {
+                $scope.companyDetails = res.data.Result;
+            })
+        }
+
+        $scope.getPositionDetails = function () {
+            //debugger
+            ScheduleService.GetPositionDetails().then(function (res) {
+                $scope.positionDetails = res.data.Result;
             })
         }
 

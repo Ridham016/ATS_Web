@@ -16,8 +16,8 @@ namespace MVCProject.Api.Utilities
     using System.Net.Mail;
     using System.Text;
     using System.Threading.Tasks;
-    using MailKit.Security;
     using MVCProject.Api.Models;
+    using MVCProject.Api.Models.FilterCriterias;
 
     #endregion
 
@@ -73,12 +73,12 @@ namespace MVCProject.Api.Utilities
         /// <param name="emailIdBC">emailIdBC is BC of email and send email to multiple or single email id.</param>
         /// <param name="attachmentFile">attachmentFile is attachment of email.</param>
         /// <returns>Return true or false sent mail or not, respectively.</returns>
-        public static bool SendMail(string[] emailIdTO, string subject, string body, string emailIdFrom, string userPassword, string[] emailIdCC = null, string[] emailIdBC = null, string attachmentFile = null)
+        public static bool SendMail(EmailParams emailParams)
         {
             MailAddressCollection mailAddressCollection = new MailAddressCollection();
             //emailIdFrom = emailIdFrom ?? ConfigurationManager.AppSettings["Username"];
 
-            foreach (string item in emailIdTO)
+            foreach (string item in emailParams.emailIdTO)
             {
                 if (!string.IsNullOrEmpty(item))
                 {
@@ -86,17 +86,17 @@ namespace MVCProject.Api.Utilities
                 }
             }
             var host = ConfigurationManager.AppSettings["Host"];
-            SmtpClient smtpClient = new SmtpClient(host,587);
-            smtpClient.Credentials = new NetworkCredential(emailIdFrom, userPassword);
-            smtpClient.EnableSsl = true;
+            SmtpClient smtpClient = new SmtpClient(emailParams.Host, (int)emailParams.Port);
+            smtpClient.Credentials = new NetworkCredential(emailParams.emailIdFrom, emailParams.emailPassword);
+            smtpClient.EnableSsl = emailParams.EnableSSL;
             using (MailMessage mailMessage = new MailMessage())
             {
-                mailMessage.Subject = subject;
-                mailMessage.From = new MailAddress(emailIdFrom);
-                mailMessage.Body = body;
+                mailMessage.Subject = emailParams.subject;
+                mailMessage.From = new MailAddress(emailParams.emailIdFrom);
+                mailMessage.Body = emailParams.body;
                 mailMessage.IsBodyHtml = true;
                 mailMessage.BodyEncoding = Encoding.GetEncoding("utf-8");
-                foreach (string item in emailIdCC ?? new string[0])
+                foreach (string item in emailParams.emailIdCC ?? new string[0])
                 {
                     if (!string.IsNullOrEmpty(item))
                     {
@@ -104,7 +104,7 @@ namespace MVCProject.Api.Utilities
                     }
                 }
 
-                foreach (string item in emailIdBC ?? new string[0])
+                foreach (string item in emailParams.emailIdBC ?? new string[0])
                 {
                     if (!string.IsNullOrEmpty(item))
                     {
@@ -112,9 +112,9 @@ namespace MVCProject.Api.Utilities
                     }
                 }
 
-                if (!string.IsNullOrEmpty(attachmentFile))
+                if (!string.IsNullOrEmpty(emailParams.attachmentFile))
                 {
-                    mailMessage.Attachments.Add(new System.Net.Mail.Attachment(attachmentFile));
+                    mailMessage.Attachments.Add(new System.Net.Mail.Attachment(emailParams.attachmentFile));
                 }
 
                 foreach (MailAddress item in mailAddressCollection)

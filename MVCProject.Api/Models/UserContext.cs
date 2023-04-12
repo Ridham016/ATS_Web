@@ -28,9 +28,14 @@ namespace MVCProject.Api.Models
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or sets User Name
+        /// Gets or sets User Email
         /// </summary>
         public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets User Name
+        /// </summary>
+        public string User { get; set; }
 
         /// <summary>
         /// Gets or sets User Id

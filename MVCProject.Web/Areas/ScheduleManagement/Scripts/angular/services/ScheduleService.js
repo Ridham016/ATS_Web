@@ -30,7 +30,7 @@
         return $http({
             method: 'GET',
             url: $rootScope.apiURL + '/Schedules/GetInterviewers'
-        })
+        });
     }
     list.Schedule = function (scheduleDetailScope) {
         //debugger
@@ -38,14 +38,28 @@
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/ScheduleInterview',
             data: JSON.stringify(scheduleDetailScope)
-        })
+        });
+    }
+    list.GetCompanyDetails = function () {
+        //debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Schedules/GetCompanyDetails'
+        });
+    }
+    list.GetPositionDetails = function () {
+        //debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Schedules/GetPositionDetails'
+        });
     }
     list.GetOtherReasons = function () {
         //debugger
         return $http({
             method: 'GET',
             url: $rootScope.apiURL + '/Schedules/GetReasons'
-        })
+        });
     }
     list.UpdateOtherReason = function (Reason, actionId) {
         //debugger
@@ -53,7 +67,7 @@
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/UpdateReason?ActionId=' + actionId,
             data: JSON.stringify(Reason)
-        })
+        });
     }
     list.Comment = function (scheduleDetailScope, actionId) {
         //debugger
@@ -61,7 +75,7 @@
             method: 'POST',
             url: $rootScope.apiURL + '/Schedules/Comment?ActionId=' + actionId,
             data: JSON.stringify(scheduleDetailScope, actionId)
-        })
+        });
     }
     return list;
 }])

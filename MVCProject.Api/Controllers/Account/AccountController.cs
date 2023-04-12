@@ -36,7 +36,7 @@ namespace MVCProject.Api.Controllers.Account
         }
 
         [HttpPost]
-        public ApiResponse Login(Users users)
+        public ApiResponse Login(ATS_Users users)
         {
             var user = entities.USP_ATS_AuthenticateUser(users.Email,users.Password).SingleOrDefault();
             if (user == null)
@@ -48,6 +48,7 @@ namespace MVCProject.Api.Controllers.Account
                 UserContext userContext = new UserContext();
                 userContext.UserId = user.UserId;
                 userContext.UserName = user.Email;
+                userContext.User = user.UserName;
                 userContext.RoleId = user.RoleId;
                 userContext.Ticks = DateTime.Now.Ticks;
                 userContext.Token = SecurityUtility.GetToken(userContext);

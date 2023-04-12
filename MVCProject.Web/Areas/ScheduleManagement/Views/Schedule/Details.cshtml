@@ -120,8 +120,8 @@
                     </button>
 
 
-                    <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal fade" id="Modal3" tabindex="-1" ng-init="getPositionDetails();getCompanyDetails()" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">@Resource.ScheduleInterview</h1>
@@ -131,7 +131,39 @@
                                       novalidate>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    <label>
+                                                        @Resource.Company <span class="required-field">*</span>
+                                                    </label>
+                                                    <select class="form-select" name="Company" ng-model="scheduleDetailScope.CompanyId" required>
+                                                        <option value="" selected disabled>Select Company Name</option>
+                                                        <option ng-repeat="h in companyDetails" value="{{h.Id}}">{{h.CompanyName}}</option>
+                                                    </select>
+                                                    <div class="c">
+                                                    </div>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.Company.$dirty && frmSchedule.Company.$invalid">
+                                                        <span data-ng-show="frmSchedule.Company.$error.required">@Resource.CompanyRequired</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group mb-3">
+                                                    <label>
+                                                        @Resource.Position <span class="required-field">*</span>
+                                                    </label>
+                                                    <select class="form-select" name="Position" ng-model="scheduleDetailScope.PositionId" required>
+                                                        <option value="" selected disabled>Select Position</option>
+                                                        <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
+                                                    </select>
+                                                    <div class="c">
+                                                    </div>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.Position.$dirty && frmSchedule.Position.$invalid">
+                                                        <span data-ng-show="frmSchedule.Position.$error.required">@Resource.PosiitonRequired</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
                                                 <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ModeOfInterview <span class="required-field">*</span>
@@ -140,7 +172,14 @@
                                                         <option value="" selected disabled>Select Mode</option>
                                                         <option ng-repeat="(key,value) in Mode" value="{{key}}">{{value}}</option>
                                                     </select>
+                                                    <div class="c">
+                                                    </div>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.ScheduleDateTime.$dirty && frmSchedule.ScheduleDateTime.$invalid">
+                                                        <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
+                                                    </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-6">
                                                 <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ScheduleDateTime <span class="required-field">*</span>
@@ -153,6 +192,8 @@
                                                         <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.ScheduleDateRequired</span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-6">
                                                 <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.NameOfInterviewer <span class="required-field">*</span> <br />
@@ -167,6 +208,8 @@
                                                         <span data-ng-show="frmSchedule.ScheduleDateTime.$error.required">@Resource.NameOfInterviewerRequired</span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-6">
                                                 <div class="form-group mb-3">
                                                     <label>
                                                         @Resource.ScheduleLink <span class="required-field">*</span>
@@ -179,6 +222,33 @@
                                                         <span data-ng-show="frmSchedule.ScheduleLink.$error.required">@Resource.ScheduleLinkRequired</span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="checkbox checkbox-info">
+                                                        <input type="checkbox" id="UseCompanyAddress" ng-disabled="scheduleDetailScope.Mode != 0" name="UseCompanyAddress" ng-model="UseCompanyAddress" ng-change="useCompanyVenue(UseCompanyAddress)"
+                                                               tabindex="2" />
+                                                        <label for="UseCompanyAddress">
+                                                            Use Company Address
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label>
+                                                        @Resource.Venue <span class="required-field">*</span>
+                                                    </label>
+                                                    <textarea class="form-control" name="Venue" ng-disabled="scheduleDetailScope.Mode != 0 || UseCompanyAddress" ng-model="scheduleDetailScope.Venue" placeholder="Enter Venue..."
+                                                              rows="5" ng-required="scheduleDetailScope.Mode == 0"></textarea>
+                                                    <div class="c">
+                                                    </div>
+                                                    <div class="label label-danger" data-ng-show="frmSchedule.Venue.$dirty && frmSchedule.Venue.$invalid">
+                                                        <span data-ng-show="frmSchedule.Venue.$error.required">@Resource.VenueRequired</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label>
                                                         @Resource.Description <span class="required-field">*</span>
@@ -191,7 +261,6 @@
                                                         <span data-ng-show="frmSchedule.Description.$error.required">@Resource.DescriptionRequired</span>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

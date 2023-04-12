@@ -137,6 +137,7 @@ function DorfKetalMVCAppRun($rootScope) {
     //user Context of logged user
     $rootScope.userContext = {
         UserName: '',
+        User: '',
         CompanyDB: '',
         CompanyId: -1,
         UserId: -1,

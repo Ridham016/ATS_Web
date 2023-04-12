@@ -135,17 +135,18 @@ namespace MVCProject.Api
             string key = Encoding.UTF8.GetString(Convert.FromBase64String(request.Headers[SecurityToken]));
             UserContext userContext = new UserContext();
             string[] parts = key.Split(new char[] { ':' });
-            if (parts.Length == 7)
+            if (parts.Length == 9)
             {
                 userContext = new UserContext()
                 {
                     UserName = parts[1],
-                    UserId = int.Parse(parts[2]),
-                    RoleId = int.Parse(parts[3]),
+                    User = parts[2],
+                    UserId = int.Parse(parts[3]),
+                    RoleId = int.Parse(parts[4]),
                     SiteLevelId = 9,
                     FunctionLevelId = 14,
-                    TimeZoneMinutes = int.Parse(parts[6]),
-                    Ticks = long.Parse(parts[7])
+                    TimeZoneMinutes = int.Parse(parts[7]),
+                    Ticks = long.Parse(parts[8])
                 };
             }
 
@@ -217,7 +218,7 @@ namespace MVCProject.Api
         /// <returns>Returns generated token.</returns>
         public static string GetToken(UserContext userContext)
         {
-            string tokenInput = string.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}", userContext.UserName, userContext.UserId, userContext.RoleId, 9, 14, userContext.TimeZoneMinutes, userContext.Ticks);
+            string tokenInput = string.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}:{7}", userContext.UserName, userContext.User, userContext.UserId, userContext.RoleId, 9, 14, userContext.TimeZoneMinutes, userContext.Ticks);
             string tokenLeft = string.Empty;
             string tokenRight = string.Empty;
             using (HMAC hmac = HMACSHA256.Create(Algorithm))
@@ -248,19 +249,20 @@ namespace MVCProject.Api
 
                 // Split the parts from token.
                 string[] parts = key.Split(new char[] { ':' });
-                if (parts.Length == 8)
+                if (parts.Length == 9)
                 {
                     // Get the hash message, user name, and timestamps.
                     string hash = parts[0];
                     UserContext userContext = new UserContext()
                     {
                         UserName = parts[1],
-                        UserId = int.Parse(parts[2]),
-                        RoleId = int.Parse(parts[3]),
+                        User = parts[2],
+                        UserId = int.Parse(parts[3]),
+                        RoleId = int.Parse(parts[4]),
                         SiteLevelId = 9,
                         FunctionLevelId = 14,
-                        TimeZoneMinutes = int.Parse(parts[6]),
-                        Ticks = long.Parse(parts[7])
+                        TimeZoneMinutes = int.Parse(parts[7]),
+                        Ticks = long.Parse(parts[8])
                     };
 
                     DateTime timeStamp = new DateTime(userContext.Ticks);
