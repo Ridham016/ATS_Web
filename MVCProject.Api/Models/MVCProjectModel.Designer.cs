@@ -713,25 +713,6 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="actionId">No Metadata Documentation available.</param>
-        public ObjectResult<USP_ATS_GetEmail_Result> USP_ATS_GetEmail(Nullable<global::System.Int32> actionId)
-        {
-            ObjectParameter actionIdParameter;
-            if (actionId.HasValue)
-            {
-                actionIdParameter = new ObjectParameter("ActionId", actionId);
-            }
-            else
-            {
-                actionIdParameter = new ObjectParameter("ActionId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<USP_ATS_GetEmail_Result>("USP_ATS_GetEmail", actionIdParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="applicantId">No Metadata Documentation available.</param>
         public ObjectResult<USP_ATS_GetLevel_Result> USP_ATS_GetLevel(Nullable<global::System.Int32> applicantId)
         {
@@ -941,6 +922,25 @@ namespace MVCProject.Api.Models
         public ObjectResult<USP_ATS_GetPositionDetails_Result> USP_ATS_GetPositionDetails()
         {
             return base.ExecuteFunction<USP_ATS_GetPositionDetails_Result>("USP_ATS_GetPositionDetails");
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="actionId">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_GetApplicantNameAndEmail_Result> USP_ATS_GetApplicantNameAndEmail(Nullable<global::System.Int32> actionId)
+        {
+            ObjectParameter actionIdParameter;
+            if (actionId.HasValue)
+            {
+                actionIdParameter = new ObjectParameter("ActionId", actionId);
+            }
+            else
+            {
+                actionIdParameter = new ObjectParameter("ActionId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_GetApplicantNameAndEmail_Result>("USP_ATS_GetApplicantNameAndEmail", actionIdParameter);
         }
 
         #endregion
@@ -11537,6 +11537,140 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.DateTime> _UpdateDate;
         partial void OnUpdateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnUpdateDateChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_GetApplicantNameAndEmail_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_GetApplicantNameAndEmail_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ApplicantEmail
+        {
+            get
+            {
+                return _ApplicantEmail;
+            }
+            set
+            {
+                OnApplicantEmailChanging(value);
+                ReportPropertyChanging("ApplicantEmail");
+                _ApplicantEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ApplicantEmail");
+                OnApplicantEmailChanged();
+            }
+        }
+        private global::System.String _ApplicantEmail;
+        partial void OnApplicantEmailChanging(global::System.String value);
+        partial void OnApplicantEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FirstName
+        {
+            get
+            {
+                return _FirstName;
+            }
+            set
+            {
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+            }
+        }
+        private global::System.String _FirstName;
+        partial void OnFirstNameChanging(global::System.String value);
+        partial void OnFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FileLink
+        {
+            get
+            {
+                return _FileLink;
+            }
+            set
+            {
+                OnFileLinkChanging(value);
+                ReportPropertyChanging("FileLink");
+                _FileLink = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileLink");
+                OnFileLinkChanged();
+            }
+        }
+        private global::System.String _FileLink;
+        partial void OnFileLinkChanging(global::System.String value);
+        partial void OnFileLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MiddleName
+        {
+            get
+            {
+                return _MiddleName;
+            }
+            set
+            {
+                OnMiddleNameChanging(value);
+                ReportPropertyChanging("MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MiddleName");
+                OnMiddleNameChanged();
+            }
+        }
+        private global::System.String _MiddleName;
+        partial void OnMiddleNameChanging(global::System.String value);
+        partial void OnMiddleNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
 
         #endregion
 

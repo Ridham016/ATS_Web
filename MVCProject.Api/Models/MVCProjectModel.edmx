@@ -457,6 +457,9 @@
         <Function Name="USP_ATS_FilesOfApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_GetApplicantNameAndEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActionId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_GetApplicantWithStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
         </Function>
@@ -464,9 +467,6 @@
           <Parameter Name="StatusId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_GetCompanyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="USP_ATS_GetEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ActionId" Type="int" Mode="In" />
-        </Function>
         <Function Name="USP_ATS_GetLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -972,9 +972,6 @@
           <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(MVCProjectModel.USP_ATS_GetButton_Result)">
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_GetEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetEmail_Result)">
-          <Parameter Name="ActionId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="USP_ATS_GetLevel" ReturnType="Collection(MVCProjectModel.USP_ATS_GetLevel_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1027,6 +1024,9 @@
           </AssociationSet>
           <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(MVCProjectModel.USP_ATS_GetCompanyDetails_Result)" />
           <FunctionImport Name="USP_ATS_GetPositionDetails" ReturnType="Collection(MVCProjectModel.USP_ATS_GetPositionDetails_Result)" />
+          <FunctionImport Name="USP_ATS_GetApplicantNameAndEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetApplicantNameAndEmail_Result)">
+          <Parameter Name="ActionId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1539,6 +1539,13 @@
           <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="USP_ATS_GetApplicantNameAndEmail_Result">
+          <Property Type="String" Name="ApplicantEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FileLink" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2007,13 +2014,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_GetEmail" FunctionName="MVCProjectModel.Store.USP_ATS_GetEmail" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetEmail_Result">
-                <ScalarProperty Name="ApplicantEmail" ColumnName="ApplicantEmail" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="MVCProjectModel.Store.USP_ATS_GetLevel" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetLevel_Result">
@@ -2270,6 +2270,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetApplicantNameAndEmail" FunctionName="MVCProjectModel.Store.USP_ATS_GetApplicantNameAndEmail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetApplicantNameAndEmail_Result">
+                <ScalarProperty Name="ApplicantEmail" ColumnName="ApplicantEmail" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FileLink" ColumnName="FileLink" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2303,7 +2314,7 @@
         <EntityTypeShape EntityType="MVCProjectModel.ATS_Interviewer" Width="1.5" PointX="8.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterButton" Width="1.5" PointX="2.625" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterOtherReason" Width="1.5" PointX="10.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="6.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="6.375" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MVCProjectModel.Designation" Width="1.5" PointX="10.125" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Appli__40C49C62" ManuallyRouted="false" />
         <AssociationConnector Association="MVCProjectModel.FK__ATS_Actio__Reaso__42ACE4D4" ManuallyRouted="false" />
