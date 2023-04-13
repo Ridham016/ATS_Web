@@ -6020,7 +6020,7 @@ i.interview-mode-icon {
 		position: absolute;
 		top: 50%;
 		left: -32px;
-		background-color: var(--ats-danger);
+		background-color: var(--ats-success);
 		animation: animate-dots 1s ease-in-out infinite;
 }
 
@@ -21866,6 +21866,13 @@ span.flatpickr-weekday {
 		}
 }
 
-.btn-export{
+.btn-export {
 	background: #217346;
+	color: var(--ats-white);
+	border: 1px solid #217346;
+}
+.btn-export:hover {
+	background: #0eac5c;
+	color: var(--ats-white);
+	border: 1px solid #0eac5c;
 }

@@ -124,7 +124,6 @@ namespace MVCProject.Api.Utilities
                 smtpClient.Send(mailMessage);
                 mailMessage.Attachments.ToList().ForEach(a => a.Dispose());
             }
-
             return true;
         }
     }

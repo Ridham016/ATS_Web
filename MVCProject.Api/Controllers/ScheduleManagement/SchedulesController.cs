@@ -27,6 +27,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
     using System.Net;
     using System.Net.Http;
     using System.Security.Cryptography.X509Certificates;
+    using System.Threading.Tasks;
     //using System.Text;
     using System.Web.Http;
     #endregion
@@ -194,7 +195,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse ScheduleInterview([FromBody]ATS_AdditionalInformation data)
+        public async Task<ApiResponse> ScheduleInterview([FromBody]ATS_AdditionalInformation data)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
@@ -215,69 +216,73 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
-
-            var applicantemail = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
-            string[] emails = { applicantemail.ApplicantEmail };
-            string FirstName = applicantemail.FirstName;
-            string MiddleName = applicantemail.MiddleName;
-            string LastName = applicantemail.LastName;
-            string ApplicantName = FirstName + " " + LastName;
-            string FileLink = applicantemail.FileLink;
-            string linkLabelvenueLabel = "";
-            string linkvenue = "";
-            string Mode = "";
-
-            string ScheduleDatetime = data.ScheduleDateTime.Value.ToString("MMM, dd YYYY HH:MM tt");
-
-            var Interviewer = entities.ATS_Interviewer.Where(x => x.InterviewerId == data.InterviewerId).Select(g => new
+            await Task.Run(() =>
             {
-                g.InterviewerName,
-                g.InterviewerEmail
-            }).FirstOrDefault();
-            var Position = entities.ATS_PositionMaster.Where(x => x.Id == data.PositionId).Select(g => new
-            {
-                g.PositionName
-            }).FirstOrDefault();
+                var applicantemail = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
+                string[] emails = { applicantemail.ApplicantEmail };
+                string FirstName = applicantemail.FirstName;
+                string MiddleName = applicantemail.MiddleName;
+                string LastName = applicantemail.LastName;
+                string ApplicantName = FirstName + " " + LastName;
+                string FileLink = applicantemail.FileLink;
+                string linkLabelvenueLabel = "";
+                string linkvenue = "";
+                string Mode = "";
 
-            if (data.Mode == 0)
-            {
-                linkLabelvenueLabel = "Venue";
-                linkvenue = data.Venue;
-                Mode = "Offline";
-                var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                string ScheduleDatetime = data.ScheduleDateTime.Value.ToString("MMM, dd yyyy HH:MM tt");
+
+                var Interviewer = entities.ATS_Interviewer.Where(x => x.InterviewerId == data.InterviewerId).Select(g => new
                 {
-                    g.CompanyName,
-                    g.ContactPersonName,
-                    g.ContactPersonPositionId,
-                    g.ContactPersonPhone,
+                    g.InterviewerName,
+                    g.InterviewerEmail
                 }).FirstOrDefault();
-
-                var ContactPersonPosition = entities.ATS_PositionMaster.Where(x => x.Id == Company.ContactPersonPositionId).Select(g => new
+                var Position = entities.ATS_PositionMaster.Where(x => x.Id == data.PositionId).Select(g => new
                 {
                     g.PositionName
                 }).FirstOrDefault();
 
-                this.SendEmailToApplicantOffline(emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName, ContactPersonPosition.PositionName, Company.ContactPersonPhone);
-
-            }
-            else
-            {
-                linkLabelvenueLabel = "Interview link";
-                linkvenue = data.ScheduleLink;
-                Mode = "Online";
-                var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                if (data.Mode == 0)
                 {
-                    g.CompanyName,
-                    g.ContactPersonName,
-                    g.ContactPersonPositionId,
-                    g.ContactPersonPhone,
-                }).FirstOrDefault();
-                this.SendEmailToApplicantOnline(emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
+                    linkLabelvenueLabel = "Venue";
+                    linkvenue = data.Venue;
+                    Mode = "Offline";
+                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                    {
+                        g.CompanyName,
+                        g.ContactPersonName,
+                        g.ContactPersonPositionId,
+                        g.ContactPersonPhone,
+                    }).FirstOrDefault();
 
-            }
-            string[] intervieweremail = { Interviewer.InterviewerEmail };
-            this.SendEmailToInterviewer(intervieweremail, ScheduleDatetime, Mode, ApplicantName, linkLabelvenueLabel, linkvenue, FileLink, Position.PositionName, 
-                data.ScheduleLink, Interviewer.InterviewerName);
+                    var ContactPersonPosition = entities.ATS_PositionMaster.Where(x => x.Id == Company.ContactPersonPositionId).Select(g => new
+                    {
+                        g.PositionName
+                    }).FirstOrDefault();
+                    //Task.Run(() => );
+                    SendEmailToApplicantOffline(emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName, ContactPersonPosition.PositionName, Company.ContactPersonPhone);
+
+                }
+                else
+                {
+                    linkLabelvenueLabel = "Interview link";
+                    linkvenue = data.ScheduleLink;
+                    Mode = "Online";
+                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                    {
+                        g.CompanyName,
+                        g.ContactPersonName,
+                        g.ContactPersonPositionId,
+                        g.ContactPersonPhone,
+                    }).FirstOrDefault();
+                    //Task.Run(() => );
+                    SendEmailToApplicantOnline(emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
+
+                }
+                string[] intervieweremail = { Interviewer.InterviewerEmail };
+                //Task.Run(() => );
+                SendEmailToInterviewer(intervieweremail, ScheduleDatetime, Mode, ApplicantName, linkLabelvenueLabel, linkvenue, FileLink, Position.PositionName,
+                    data.ScheduleLink, Interviewer.InterviewerName);
+            });
 
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
@@ -447,13 +452,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool isSend = ApiHttpUtility.SendMail(emailParams);
-
-            if (!isSend)
+            bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            if (!IsSent)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error Sending Mail");
+                return this.Response(MessageTypes.Error, "Error in Sending Mail");
             }
-            return this.Response(Utilities.MessageTypes.Success, "Mail Sent Successfully");
+            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
         public ApiResponse SendEmailToApplicantOnline(string[] emailIdTo, string companyName, string FirstName, string PositionName,string Link, string Interviewer)
@@ -475,13 +479,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool isSend = ApiHttpUtility.SendMail(emailParams);
-
-            if (!isSend)
+            bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            if (!IsSent)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error Sending Mail");
+                return this.Response(MessageTypes.Error, "Error in Sending Mail");
             }
-            return this.Response(Utilities.MessageTypes.Success, "Mail Sent Successfully");
+            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
         public ApiResponse SendEmailToInterviewer(string[] emailIdTo, string DateTime,string Mode, string ApplicantName,string linkLabelvenueLabel,
@@ -503,13 +506,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool isSend = ApiHttpUtility.SendMail(emailParams);
-
-            if (!isSend)
+            bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            if (!IsSent)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error Sending Mail");
+                return this.Response(MessageTypes.Error, "Error in Sending Mail");
             }
-            return this.Response(Utilities.MessageTypes.Success, "Mail Sent Successfully");
+            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
     }

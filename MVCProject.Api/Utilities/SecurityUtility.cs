@@ -31,7 +31,7 @@ namespace MVCProject.Api
         /// <summary>
         /// Holds token expiration time in minutes which is 12 hours.
         /// </summary>
-        private const int ExpirationMinutes = 720;
+        private const int ExpirationMinutes = 100;
 
         /// <summary>
         /// Holds name of algorithm of encryption-decryption.
@@ -268,7 +268,7 @@ namespace MVCProject.Api
                     DateTime timeStamp = new DateTime(userContext.Ticks);
 
                     // Ensure the timestamp is valid.
-                    bool expired = Math.Abs((DateTime.UtcNow - timeStamp).TotalMinutes) > ExpirationMinutes;
+                    bool expired = Math.Abs((DateTime.Now - timeStamp).TotalMinutes) > ExpirationMinutes;
                     if (!expired)
                     {
                         if (userContext.UserName != null)
