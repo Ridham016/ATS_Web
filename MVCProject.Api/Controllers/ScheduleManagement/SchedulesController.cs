@@ -18,6 +18,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
     using System;
     using System.Collections.Generic;
     using System.Dynamic;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -468,7 +469,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         public ApiResponse SendEmailToApplicantOffline(string User,string Role,string[] emailIdTo,string companyName, string FirstName,string PositionName, string Venue, string ContactPersonName, string ContactPersonPosition, string ContactPersonPhone)
         {
-            string htmlBody = System.IO.File.ReadAllText("F:/Office Tasks/ATS_Web/MVCProject.Api/Templates/EmailForApplicantOffline.html");
+            string file = "Templates/EmailForApplicantOffline.html";
+            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Venue}}", Venue)
                 .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{ContactPersonPosition}}", ContactPersonPosition).
                 Replace("{{ContactPersonPhone}}", ContactPersonPhone).Replace("{{User}}",User).Replace("{{Role}}",Role);
@@ -496,7 +499,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         public ApiResponse SendEmailToApplicantOnline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName,string Link, string Interviewer)
         {
-            string htmlBody = System.IO.File.ReadAllText("F:/Office Tasks/ATS_Web/MVCProject.Api/Templates/EmailForApplicantOnline.html");
+            string file = "Templates/EmailForApplicantOnline.html";
+            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Link}}", Link)
                 .Replace("{{Interviewer}}", Interviewer).Replace("{{User}}", User).Replace("{{Role}}", Role);
             string subject = "Interview Invitation for " + PositionName + " with " + companyName;
@@ -524,7 +529,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         public ApiResponse SendEmailToInterviewer(string User, string Role, string[] emailIdTo, string DateTime,string Mode, string ApplicantName,string linkLabelvenueLabel,
             string linkvenue,string Resume, string PositionName, string Link, string Interviewer)
         {
-            string htmlBody = System.IO.File.ReadAllText("F:/Office Tasks/ATS_Web/MVCProject.Api/Templates/EmailForInterviewer.html");
+            string file = "Templates/EmailForInterviewer.html";
+            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{Applicant}}", ApplicantName).Replace("{{DateTime}}", DateTime).Replace("{{Position}}", PositionName).
                 Replace("{{Link}}", Link).Replace("{{Mode}}", Mode).Replace("{{linkLabelvenueLabel}}", linkLabelvenueLabel).Replace("{{linkvenue}}", linkvenue)
                 .Replace("{{Interviewer}}", Interviewer).Replace("{{Resume}}", Resume).Replace("{{User}}", User).Replace("{{Role}}", Role);
@@ -550,7 +557,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         public ApiResponse SendEmailForStatus(string User, string Role, string[] emailIdTo, string Date, string Level, string Applicant, string Position, string Message, string Company)
         {
-            string htmlBody = System.IO.File.ReadAllText("F:/Office Tasks/ATS_Web/MVCProject.Api/Templates/EmailForStatus.html");
+            string file = "Templates/EmailForStatus.html";
+            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{Applicant}}", Applicant).Replace("{{Date}}", Date).Replace("{{Position}}", Position).
                 Replace("{{Company}}", Company).Replace("{{Level}}", Level)
                 .Replace("{{Message}}", Message).Replace("{{User}}", User).Replace("{{Role}}", Role);
