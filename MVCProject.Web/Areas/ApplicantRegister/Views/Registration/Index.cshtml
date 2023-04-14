@@ -8,31 +8,33 @@
     .frozen-columns {
         table-layout: fixed;
     }
-    
-    .frozen-columns tbody td:last-child {
-        position: sticky;
-        right: 0;
-        z-index: 2;
-        background-color: #f6f7f9 !important;
-    }
 
-    .frozen-columns thead tr th:last-child .th-inner,
-    .frozen-columns thead tr th:nth-last-child(2) .th-inner {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index:1;
-        background: var(--primary-color) !important;
-    }
-    .frozen-columns thead tr th:nth-last-child(2) .th-inner{
-        right: 70px;
-    }
-    .frozen-columns tbody td:nth-last-child(2) {
-        position: sticky;
-        right: 70px;
-        z-index: 2;
-        background-color: #f6f7f9 !important;
-    }
+        .frozen-columns tbody td:last-child {
+            position: sticky;
+            right: 0;
+            z-index: 2;
+            background-color: #f6f7f9 !important;
+        }
+
+        .frozen-columns thead tr th:last-child .th-inner,
+        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+            background: var(--primary-color) !important;
+        }
+
+        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+            right: 70px;
+        }
+
+        .frozen-columns tbody td:nth-last-child(2) {
+            position: sticky;
+            right: 70px;
+            z-index: 2;
+            background-color: #f6f7f9 !important;
+        }
 
     .colSrno {
         width: 60px !important;
@@ -57,6 +59,7 @@
         min-width: 75px !important;
         max-width: 75px !important;
     }
+
     .colDate {
         width: 120px !important;
         min-width: 120px !important;
@@ -68,6 +71,7 @@
         min-width: 70px !important;
         max-width: 70px !important;
     }
+
     .colDownload {
         width: 50px !important;
         min-width: 50px !important;
@@ -79,11 +83,13 @@
         min-width: 130px !important;
         max-width: 130px !important;
     }
+
     .colExperience {
         width: 180px !important;
         min-width: 180px !important;
         max-width: 180px !important;
     }
+
     .border-color {
         border-color: red !important;
     }
@@ -465,7 +471,7 @@
                                                     Uploaded Files
                                                 </h4>
                                                 @*<div class="card-body">
-                                                    </div>*@
+                                                </div>*@
                                                 <div class="row mb-2" ng-repeat="f in files">
                                                     <div class="col-11">
                                                         <a href="{{f.FileRelativePath}}" target="_blank">
@@ -479,15 +485,15 @@
                                                     </div>
                                                 </div>
                                                 @*<ul class="list-group list-group-flush">
-                                                        <li class="row list-group-item" ng-repeat="f in files">
-                                                            <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
-                                                                {{f.OriginalFileName}}
-                                                            </a>
-                                                            <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
-                                                                <i class="fa fa-trash"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>*@
+                                                    <li class="row list-group-item" ng-repeat="f in files">
+                                                        <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                                            {{f.OriginalFileName}}
+                                                        </a>
+                                                        <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>*@
                                             </div>
                                         </div>
                                     </div>
@@ -498,7 +504,7 @@
                     <div class="row mt-3 mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" @*ng-disabled="frmRegister.$invalid"*@>
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" @*ng-disabled="frmRegister.$invalid" *@>
                                     {{applicantDetailScope.ApplicantId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
@@ -516,7 +522,7 @@
                         <button type="button" ng-click="Export()" class="btn btn-export"
                                 tabindex="4">
                             <i class="fa fa-file-excel-o">  </i>
-                             Export To Excel
+                            Export To Excel
                         </button>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="card-box mb-2">
+            <div class="card-box mb-2 detail-card">
                 <div class="row">
                     <div class="col-lg-12">
                         <table>
@@ -104,6 +104,7 @@
                     </div>
 
                 </div>
+                <hr />
                 <div class="card-foot mt-3">
                     <button class="btn me-sm-2"
                             ng-repeat="h in buttons"
@@ -268,7 +269,9 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Resource.Close</button>
                                             <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,StatusId,applicants.ApplicantId)"
-                                                    ng-disabled="frmSchedule.$invalid">@Resource.Submit</button>
+                                                    ng-disabled="frmSchedule.$invalid">
+                                                @Resource.Submit
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -358,17 +361,18 @@
                         </div>
                     </div>
 
-
+                    <div class="back-to-list">
+                        <a href="~/ScheduleManagement/Schedule/" class="btn btn-link mt-3"> <i class="fa fa-chevron-left"></i> Back to List</a>
+                    </div>
                 </div>
             </div>
-            <a href="~/ScheduleManagement/Schedule/" class="btn btn-link"> <i class="fa fa-chevron-left"></i> Back to List</a>
         </div>
     </div>
 </div>
-    
 
 
 
-    @section scripts {
-        @Scripts.Render("~/bundles/ScheduleManagement/Schedule")
-    }
+
+@section scripts {
+    @Scripts.Render("~/bundles/ScheduleManagement/Schedule")
+}

@@ -9,6 +9,7 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+
     .colExpand {
         width: 30px !important;
         min-width: 30px !important;
@@ -20,6 +21,7 @@
         min-width: 200px !important;
         max-width: 200px !important;
     }
+
     .colName {
         width: 180px !important;
         min-width: 180px !important;
@@ -37,21 +39,25 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+
     .colPhone {
         width: 120px !important;
         min-width: 120px !important;
         max-width: 120px !important;
     }
+
     .colStatus {
         width: 210px !important;
         min-width: 210px !important;
         max-width: 210px !important;
     }
+
     .colEntry {
         width: 170px !important;
         min-width: 170px !important;
         max-width: 170px !important;
     }
+
     .colNum {
         width: 130px !important;
         min-width: 130px !important;
@@ -95,18 +101,18 @@
                                 <label>
                                     @MVCProject.Common.Resources.Resource.TimeLine
                                 </label>
-                                <input type="daterange"  class="form-control" autocomplete="off"
-                                       placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange"/>
+                                <input type="daterange" class="form-control" autocomplete="off"
+                                       placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange" />
                             </div>
                         </div>
                         @*<div class="col-md-4">
-                            <div class="form-group">
-                                <label>
-                                    @MVCProject.Common.Resources.Resource.EndDate
-                                </label>
-                                <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" />
-                            </div>
-                        </div>*@
+                                <div class="form-group">
+                                    <label>
+                                        @MVCProject.Common.Resources.Resource.EndDate
+                                    </label>
+                                    <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" />
+                                </div>
+                            </div>*@
                         <div class="row mt-4">
                             <div class="col-md-10">
                                 <div class="form-group">
@@ -217,46 +223,46 @@
                                                 {{applicant.OtherLink}}
                                             </td>
                                         </tr>
-                                        <tr ng-show="applicant.expanded" ng-repeat-end="">
+                                        <tr ng-show="applicant.expanded" ng-repeat-end="" class="timeline-search-expanded-detail">
                                             @*<td></td>
-                                            <td></td>
-                                            <td colspan="5">
-                                                <table class="table table-bordered table-hover">
-                                                    <tr ng-repeat="applicant in applicantDetail">
-                                                        <td header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
-                                                            {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}
-                                                        </td>
-                                                        <td header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                            {{applicant.Email}}
-                                                        </td>
-                                                        <td header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
-                                                            {{applicant.Phone}}
-                                                        </td>
-                                                        <td header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
-                                                            <span ng-class="{'status-hold': applicant.StatusId == 5,
-                                                                    'status-registered': applicant.StatusId == 1,
-                                                                    'status-shortlist': applicant.StatusId == 2,
-                                                                    'status-pass': applicant.StatusId == 6,
-                                                                    'status-reject': applicant.StatusId == 7,
-                                                                    'status-not-match': applicant.StatusId == 3,
-                                                                    'status-call-schedule': applicant.StatusId == 4,
-                                                                    'status-other-reason': applicant.StatusId == 8,}">
-                                                                {{applicant.StatusName}}<span ng-show="applicant.StatusId == 4"> for L{{applicant.Level}}</span>
-                                                                <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> for L{{applicant.Level+1}}</span>
-                                                            </span>
-                                                        </td>
-                                                        <td header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
-                                                            {{applicant.EntryDate | date : 'MMM d, y h:mm a'}}
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>*@
+                                                <td></td>
+                                                <td colspan="5">
+                                                    <table class="table table-bordered table-hover">
+                                                        <tr ng-repeat="applicant in applicantDetail">
+                                                            <td header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
+                                                                {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}
+                                                            </td>
+                                                            <td header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                                {{applicant.Email}}
+                                                            </td>
+                                                            <td header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                                                {{applicant.Phone}}
+                                                            </td>
+                                                            <td header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
+                                                                <span ng-class="{'status-hold': applicant.StatusId == 5,
+                                                                        'status-registered': applicant.StatusId == 1,
+                                                                        'status-shortlist': applicant.StatusId == 2,
+                                                                        'status-pass': applicant.StatusId == 6,
+                                                                        'status-reject': applicant.StatusId == 7,
+                                                                        'status-not-match': applicant.StatusId == 3,
+                                                                        'status-call-schedule': applicant.StatusId == 4,
+                                                                        'status-other-reason': applicant.StatusId == 8,}">
+                                                                    {{applicant.StatusName}}<span ng-show="applicant.StatusId == 4"> for L{{applicant.Level}}</span>
+                                                                    <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> for L{{applicant.Level+1}}</span>
+                                                                </span>
+                                                            </td>
+                                                            <td header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
+                                                                {{applicant.EntryDate | date : 'MMM d, y h:mm a'}}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>*@
                                             <td colspan="8">
                                                 <div class="timeline-search">
-                                                    <ul>
+                                                    <ul class="timeline-ul">
                                                         <li ng-repeat="applicant in applicantDetail">
-                                                            <div class="content-search">
-                                                                <h4>{{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}</h4>
+                                                            <div class="content-search card-box">
+                                                                <h4><i class="fa fa-user me-2"></i>{{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}</h4>
                                                                 <p>
                                                                     <span ng-class="{'status-hold': applicant.StatusId == 5,
                                                                     'status-registered': applicant.StatusId == 1,

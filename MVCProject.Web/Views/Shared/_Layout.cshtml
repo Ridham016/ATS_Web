@@ -11,7 +11,7 @@
     if (Session["PagePermission"] != null)
     {
         permission = (UserContext.PagePermission)Session["PagePermission"];
-    }    
+    }
 }
 <!DOCTYPE html>
 <html ng-app="MVCApp">
@@ -23,7 +23,7 @@
     @Html.Partial("~/Views/Shared/_CommonScriptInner.cshtml")
     @{BundleTable.EnableOptimizations = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsJsCssMinified"]);}
     @Styles.Render("~/css/inner")
-<script>
+    <script>
         var sessionToken = '@Html.Raw(userContext.Token)';
         var baseApiURL = '@System.Configuration.ConfigurationManager.AppSettings["ApiServiceUrl"]';
         var userContext = {
@@ -34,88 +34,100 @@
             UserId: parseInt('@userContext.UserId'),
             RoleId: parseInt('@userContext.RoleId'),
             RoleGroupId: [@(userContext.RoleGroupId == null || userContext.RoleGroupId.Length < 1 ? "" : string.Join(",", userContext.RoleGroupId))],
-            RoleLevel: parseInt('@userContext.RoleLevel'),
+        RoleLevel: parseInt('@userContext.RoleLevel'),
             SiteId: parseInt('@userContext.SiteId'),
-            DepartmentId: parseInt('@userContext.DepartmentId'),
-            EmployeeId: parseInt('@userContext.EmployeeId'),
-            EmployeeName: '@Html.Raw(userContext.EmployeeName)',
-            ProfilePicturePath: '@userContext.ProfilePicturePath',
-            ApplicationLogo: '@userContext.ApplicationLogo',
-            DepartmentLabel: '@Html.Raw(userContext.DepartmentLabel)',
-            Designation: '@Html.Raw(userContext.Designation)',
-            Department: '@Html.Raw(userContext.Department)',
-            SiteName: '@Html.Raw(userContext.SiteName)',
-            IsCorporateSite: '@userContext.IsCorporateSite' == "True" ? true : false,
-            AllowSubArea: '@Html.Raw(userContext.AllowSubArea)',
-            AllowNearmiss: '@Html.Raw(userContext.AllowNearmiss)',
-            AllowRiskBehaviour: '@Html.Raw(userContext.AllowRiskBehaviour)',
-            AllowHazard: '@Html.Raw(userContext.AllowHazard)',
-            AllowInvestigation: '@Html.Raw(userContext.AllowInvestigation)',
-            AllowCAPA: '@Html.Raw(userContext.AllowCAPA)',
-            AllowCAPAProgress: '@Html.Raw(userContext.AllowCAPAProgress)',
-            AllowReport: '@Html.Raw(userContext.AllowReport)',
-            AllowSearch: '@Html.Raw(userContext.AllowSearch)',
-            AllowAnalytics: '@Html.Raw(userContext.AllowAnalytics)'
-        };
+                DepartmentId: parseInt('@userContext.DepartmentId'),
+                    EmployeeId: parseInt('@userContext.EmployeeId'),
+                        EmployeeName: '@Html.Raw(userContext.EmployeeName)',
+                            ProfilePicturePath: '@userContext.ProfilePicturePath',
+                                ApplicationLogo: '@userContext.ApplicationLogo',
+                                    DepartmentLabel: '@Html.Raw(userContext.DepartmentLabel)',
+                                        Designation: '@Html.Raw(userContext.Designation)',
+                                            Department: '@Html.Raw(userContext.Department)',
+                                                SiteName: '@Html.Raw(userContext.SiteName)',
+                                                    IsCorporateSite: '@userContext.IsCorporateSite' == "True" ? true : false,
+                                                        AllowSubArea: '@Html.Raw(userContext.AllowSubArea)',
+                                                            AllowNearmiss: '@Html.Raw(userContext.AllowNearmiss)',
+                                                                AllowRiskBehaviour: '@Html.Raw(userContext.AllowRiskBehaviour)',
+                                                                    AllowHazard: '@Html.Raw(userContext.AllowHazard)',
+                                                                        AllowInvestigation: '@Html.Raw(userContext.AllowInvestigation)',
+                                                                            AllowCAPA: '@Html.Raw(userContext.AllowCAPA)',
+                                                                                AllowCAPAProgress: '@Html.Raw(userContext.AllowCAPAProgress)',
+                                                                                    AllowReport: '@Html.Raw(userContext.AllowReport)',
+                                                                                        AllowSearch: '@Html.Raw(userContext.AllowSearch)',
+                                                                                            AllowAnalytics: '@Html.Raw(userContext.AllowAnalytics)'
+            };
         var permission = {
-            PageId : @(permission.PageId),
-            CanRead : '@(permission.CanRead)' == 'True',
+            PageId: @(permission.PageId),
+        CanRead: '@(permission.CanRead)' == 'True',
             CanWrite : '@(permission.CanWrite)' == 'True'
-        };
-        var roles= @Html.RoleJson(userContext.UserRole);
+            };
+        var roles = @Html.RoleJson(userContext.UserRole);
 
-</script>
-    <link href="@Url.Content("~/Content/css/nv.d3.min.css")" rel="stylesheet" type="text/css" />
+    </script>
+    <link href="@Url.Content(" ~ /Content/css/nv.d3.min.css")" rel="stylesheet" type="text/css" />
 </head>
 <body ng-controller="MasterCtrl" ng-cloak id="LayoutBody" class="fullscreen" ng-class="isSmallMenu?'nav-sm':'nav-md'"
-    ng-init="CheckUserSession()" style="display: none;">
+      ng-init="CheckUserSession()" style="display: none;">
     @Html.Partial("~/Views/Shared/_Loader.cshtml")
-            <div class="leftside-menu">
-                <div id="sidebar-scroll" class="scroll-view my-scroll-area" ng-nicescroll nice-option="{cursorcolor: '#e2edff', cursoropacitymax:0.50, touchbehavior: false, cursordragontouch: true, preventmultitouchscrolling: true,preservenativescrolling:false, cursorwidth:'3px',cursorborderradius:'0px'}">
-                    <div class="navbar nav_title">
-                        <a href="/Account/RedirectToDefaultUrl" class="logo-expanded">
-                            <img ng-src="~/Content/images/company-logo.png" @*ng-src="{{userContext.ApplicationLogo}}*@"
-                                ng-class="{'blur-7' : !isLogoLoaded}" fallback-src="/Content/images/company-logo.png"
-                                alt="Application Logo" /> </a>
-                        <a href="/Account/RedirectToDefaultUrl" class="logo-short">
-                            <img ng-src="/Content/images/company-logo-sm.png" @*ng-src="{{userContext.ApplicationLogo}}*@"
-                                 ng-class="{'blur-7' : !isLogoLoaded}" fallback-src="/Content/images/company-logo-sm.png"
-                                 alt="Application Logo" />
-                        </a>
-                       
-                    </div>
-                    <div class="c">
-                    </div>
-                    <!-- sidebar menu -->
-                    @Html.Menu(userContext.PageAccess)
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
-                </div>
+    <div class="leftside-menu">
+        <div id="sidebar-scroll" class="scroll-view my-scroll-area" ng-nicescroll nice-option="{cursorcolor: '#e2edff', cursoropacitymax:0.50, touchbehavior: false, cursordragontouch: true, preventmultitouchscrolling: true,preservenativescrolling:false, cursorwidth:'3px',cursorborderradius:'0px'}">
+            <div class="navbar nav_title">
+                <a href="/Account/RedirectToDefaultUrl" class="logo-expanded">
+                    <img ng-src="~/Content/images/company-logo.png" @*ng-src="{{userContext.ApplicationLogo}}*@"
+                         ng-class="{'blur-7' : !isLogoLoaded}" fallback-src="/Content/images/company-logo.png"
+                         alt="Application Logo" />
+                </a>
+                <a href="/Account/RedirectToDefaultUrl" class="logo-short">
+                    <img ng-src="/Content/images/company-logo-sm.png" @*ng-src="{{userContext.ApplicationLogo}}*@"
+                         ng-class="{'blur-7' : !isLogoLoaded}" fallback-src="/Content/images/company-logo-sm.png"
+                         alt="Application Logo" />
+                </a>
+
             </div>
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="topbar container-fluid">
-                    <div class="nav toggle ms-2" title="Toggle menu">
-                        <a id="menu_toggle" ng-click="SetToggleMenu()"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right top-menu top-right-menu">
-                        <li class="dropdown text-center">
-                            <a data-bs-toggle="dropdown" class="dropdown-toggle waves-effect waves-light profile">
-                                <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg" class="img-circle user-img profile-img thumb-sm" />
-                                <span class="username">{{userContext.User}}</span>
+            <div class="c">
+            </div>
+            <!-- sidebar menu -->
+            @Html.Menu(userContext.PageAccess)
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+        </div>
+    </div>
+    <!-- top navigation -->
+    <div class="top_nav">
+        <div class="topbar container-fluid">
+            <div class="nav toggle ms-2" title="Toggle menu">
+                <a id="menu_toggle" ng-click="SetToggleMenu()"><i class="fa fa-bars"></i></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right top-menu top-right-menu">
+                <li class="dropdown text-center">
+                    <a data-bs-toggle="dropdown" class="dropdown-toggle waves-effect waves-light profile">
+                        <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg" class="img-circle user-img profile-img thumb-sm" />
+                        <span class="username">{{userContext.User}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @*
+                        <li>
+                            <a ng-click="SynchronizeReportingData()" ng-href="/Home">
+                                <i class="fa fa-home m-r-5">
+                                </i>
+                                @Resource.BackToHome
                             </a>
-                            <ul class="dropdown-menu">
-                                @*<li><a ng-click="SynchronizeReportingData()" ng-href="/Home"><i class="fa fa-home m-r-5">
-                        </i>
-                            @Resource.BackToHome
-                        </a></li>*@ @*<li><a ng-click="SynchronizeReportingData()" href="javascript:void(0)"><i class="fa fa-refresh m-r-5">
-                        </i>
-                            @Resource.SynchronizeData
-                        </a></li>
-                        <li><a ng-click="UserNotificationSetting()" href="javascript:void(0)"><i class="fa fa-bell m-r-5">
-                        </i>
-                            @Resource.NotificationSetting
-                        </a></li>*@
+                        </li>*@ @*
+                        <li>
+                            <a ng-click="SynchronizeReportingData()" href="javascript:void(0)">
+                                <i class="fa fa-refresh m-r-5">
+                                </i>
+                                @Resource.SynchronizeData
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="UserNotificationSetting()" href="javascript:void(0)">
+                                <i class="fa fa-bell m-r-5">
+                                </i>
+                                @Resource.NotificationSetting
+                            </a>
+                        </li>*@
                         <li class="dropdown-item">
                             <a href="~/Account/Logout">
                                 <i class="ti-power-off m-r-5"></i>
@@ -124,28 +136,29 @@
                         </li>
                     </ul>
                 </li>
-                @*<li style="max-width: 200px; margin-top: 13px; margin-right: 5px;">
-            <select class="form-control" ng-model="userContext.RoleId" ng-change="ChangeRole(userContext.RoleId)"
-                ng-options="r.RoleId as r.RoleName for r in userCurrentRoles" ng-disabled="userCurrentRoles.length == 1">
-            </select>
-        </li>*@
+                @*
+                <li style="max-width: 200px; margin-top: 13px; margin-right: 5px;">
+                    <select class="form-control" ng-model="userContext.RoleId" ng-change="ChangeRole(userContext.RoleId)"
+                            ng-options="r.RoleId as r.RoleName for r in userCurrentRoles" ng-disabled="userCurrentRoles.length == 1">
+                    </select>
+                </li>*@
             </ul>
+        </div>
+    </div>
+    <!-- /top navigation -->
+    <div class="content-page" role="main">
+
+        @RenderBody()
+    </div>
+    <!-- footer content -->
+    <footer class="footer">
+        <div class="row">
+            <div class="col-xs-12">
+                @*@Resource.CopyrightCompanyName*@
             </div>
-            </div>
-            <!-- /top navigation -->
-            <div class="content-page" role="main">
-                
-                @RenderBody()
-            </div>
-        <!-- footer content -->
-        <footer class="footer">
-            <div class="row">
-                <div class="col-xs-12">
-                    @*@Resource.CopyrightCompanyName*@
-                </div>
-            </div>
-        </footer>
-        <!-- /footer content -->
+        </div>
+    </footer>
+    <!-- /footer content -->
 
     <span class="backToTop"><i class="fa fa-arrow-circle-o-up"></i></span>
     <!--BEGIN Javascript bundles-->
@@ -228,8 +241,8 @@
             // Get element offset top property
             function GetElementOffsetTop(element) {
                 return $(element).length > 0
-                             ? $(element).offset().top - $(window).scrollTop()
-                             : 0;
+                    ? $(element).offset().top - $(window).scrollTop()
+                    : 0;
             };
         });
 
@@ -238,14 +251,14 @@
             var offscreenHeight = 0;
             if (isOpenCall && $('.nav-sm ul.side-menu li.active ul.child_menu').length) {
                 var $el = $('.nav-sm ul.side-menu li.active ul.child_menu'),
-                        scrollTop = $(this).scrollTop(),
-                        scrollBot = scrollTop + $(this).height(),
-                        elTop = $el.offset().top,
-                        elBottom = elTop + $el.outerHeight(),
-                        visibleTop = elTop < scrollTop ? scrollTop : elTop,
-                        visibleBottom = elBottom > scrollBot ? scrollBot : elBottom,
-                        submenuVisibleHeight = (visibleBottom - visibleTop),
-                        submenuFullHeight = $el.height();
+                    scrollTop = $(this).scrollTop(),
+                    scrollBot = scrollTop + $(this).height(),
+                    elTop = $el.offset().top,
+                    elBottom = elTop + $el.outerHeight(),
+                    visibleTop = elTop < scrollTop ? scrollTop : elTop,
+                    visibleBottom = elBottom > scrollBot ? scrollBot : elBottom,
+                    submenuVisibleHeight = (visibleBottom - visibleTop),
+                    submenuFullHeight = $el.height();
 
                 offscreenHeight = submenuFullHeight - submenuVisibleHeight;
             }
