@@ -211,7 +211,7 @@ function Interceptors($rootScope, CommonFunctions) {
                 $rootScope.isAjaxLoadingChild = false;
             }
             if (angular.isDefined(response) && angular.isDefined(response.data) && angular.isDefined(response.data.IsAuthenticated) && !response.data.IsAuthenticated) {
-                //CommonFunctions.RedirectToLoginPage(true);
+                CommonFunctions.RedirectToLoginPage(true);
             }
             return response;
         },
@@ -221,13 +221,13 @@ function Interceptors($rootScope, CommonFunctions) {
                 $rootScope.isAjaxLoadingChild = false;
             }
             if (response.status === 500) {
-                if (response.config.url.toLowerCase().indexOf($rootScope.apiURL + "/Account/LogOut".toLowerCase()) >= 0) {
+                if (response.config.url.toLowerCase().indexOf("/Account/Logout".toLowerCase()) >= 0) {
                     CommonFunctions.RedirectToLoginPage(false);
                 } else {
                     CommonFunctions.RedirectToErrorPage(response.status);
                 }
             } else if (response.status == 401 || (response.status == 400 && !response.data.IsAuthenticated)) {
-               // CommonFunctions.RedirectToLoginPage(true);
+                CommonFunctions.RedirectToLoginPage(true);
             }
         }
     };

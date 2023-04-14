@@ -467,6 +467,9 @@
           <Parameter Name="StatusId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_GetCompanyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_GetInfoForEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_GetLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -1027,6 +1030,9 @@
           <FunctionImport Name="USP_ATS_GetApplicantNameAndEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetApplicantNameAndEmail_Result)">
           <Parameter Name="ActionId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="USP_ATS_GetInfoForEmail" ReturnType="Collection(MVCProjectModel.USP_ATS_GetInfoForEmail_Result)">
+            <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1545,6 +1551,15 @@
           <Property Type="String" Name="FileLink" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_GetInfoForEmail_Result">
+          <Property Type="DateTime" Name="ScheduleDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApplicantName" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2278,6 +2293,19 @@
                 <ScalarProperty Name="FileLink" ColumnName="FileLink" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetInfoForEmail" FunctionName="MVCProjectModel.Store.USP_ATS_GetInfoForEmail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVCProjectModel.USP_ATS_GetInfoForEmail_Result">
+                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

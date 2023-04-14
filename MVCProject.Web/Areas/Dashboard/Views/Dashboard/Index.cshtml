@@ -14,7 +14,7 @@
 <div ng-controller="DashboardCtrl">
     <div class="main-page-title title-icon relative l mb-3">
         <i class="fa fa-calendar-check-o icon-position" style="padding-top: 8px;"></i>
-        <h4 class="header-title-sub l">@MVCProject.Common.Resources.Resource.Dashboard</h4>
+        <h3 class="header-title-sub l">@MVCProject.Common.Resources.Resource.Dashboard</h3>
         <div class="pull-right">
         </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="col-md-4">
             <div class="schedule-event-details">
                 <div class="card alert overflow-auto height">
-                    <h2 class="mt-0 mb-3 fw-normal meeting-title" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h2>
+                    <h4 class="mt-0 mb-3 meeting-title font-bold" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h4>
                     <p ng-show="length == 0">No Meetings Scheduled</p>
                     <div ng-show="length != 0">
                         <div class="card event-card" ng-repeat="SelectedEvent in SelectedEvents">

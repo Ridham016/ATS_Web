@@ -942,6 +942,25 @@ namespace MVCProject.Api.Models
     
             return base.ExecuteFunction<USP_ATS_GetApplicantNameAndEmail_Result>("USP_ATS_GetApplicantNameAndEmail", actionIdParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="applicantId">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_GetInfoForEmail_Result> USP_ATS_GetInfoForEmail(Nullable<global::System.Int32> applicantId)
+        {
+            ObjectParameter applicantIdParameter;
+            if (applicantId.HasValue)
+            {
+                applicantIdParameter = new ObjectParameter("ApplicantId", applicantId);
+            }
+            else
+            {
+                applicantIdParameter = new ObjectParameter("ApplicantId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_GetInfoForEmail_Result>("USP_ATS_GetInfoForEmail", applicantIdParameter);
+        }
 
         #endregion
 
@@ -12765,6 +12784,203 @@ namespace MVCProject.Api.Models
         private global::System.String _ApplicantEmail;
         partial void OnApplicantEmailChanging(global::System.String value);
         partial void OnApplicantEmailChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="MVCProjectModel", Name="USP_ATS_GetInfoForEmail_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_GetInfoForEmail_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_GetInfoForEmail_Result object.
+        /// </summary>
+        /// <param name="applicantName">Initial value of the ApplicantName property.</param>
+        public static USP_ATS_GetInfoForEmail_Result CreateUSP_ATS_GetInfoForEmail_Result(global::System.String applicantName)
+        {
+            USP_ATS_GetInfoForEmail_Result uSP_ATS_GetInfoForEmail_Result = new USP_ATS_GetInfoForEmail_Result();
+            uSP_ATS_GetInfoForEmail_Result.ApplicantName = applicantName;
+            return uSP_ATS_GetInfoForEmail_Result;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ScheduleDateTime
+        {
+            get
+            {
+                return _ScheduleDateTime;
+            }
+            set
+            {
+                OnScheduleDateTimeChanging(value);
+                ReportPropertyChanging("ScheduleDateTime");
+                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ScheduleDateTime");
+                OnScheduleDateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ScheduleDateTime;
+        partial void OnScheduleDateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnScheduleDateTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerName
+        {
+            get
+            {
+                return _InterviewerName;
+            }
+            set
+            {
+                OnInterviewerNameChanging(value);
+                ReportPropertyChanging("InterviewerName");
+                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerName");
+                OnInterviewerNameChanged();
+            }
+        }
+        private global::System.String _InterviewerName;
+        partial void OnInterviewerNameChanging(global::System.String value);
+        partial void OnInterviewerNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ApplicantName
+        {
+            get
+            {
+                return _ApplicantName;
+            }
+            set
+            {
+                OnApplicantNameChanging(value);
+                ReportPropertyChanging("ApplicantName");
+                _ApplicantName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ApplicantName");
+                OnApplicantNameChanged();
+            }
+        }
+        private global::System.String _ApplicantName;
+        partial void OnApplicantNameChanging(global::System.String value);
+        partial void OnApplicantNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Level
+        {
+            get
+            {
+                return _Level;
+            }
+            set
+            {
+                OnLevelChanging(value);
+                ReportPropertyChanging("Level");
+                _Level = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Level");
+                OnLevelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Level;
+        partial void OnLevelChanging(Nullable<global::System.Int32> value);
+        partial void OnLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PositionName
+        {
+            get
+            {
+                return _PositionName;
+            }
+            set
+            {
+                OnPositionNameChanging(value);
+                ReportPropertyChanging("PositionName");
+                _PositionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PositionName");
+                OnPositionNameChanged();
+            }
+        }
+        private global::System.String _PositionName;
+        partial void OnPositionNameChanging(global::System.String value);
+        partial void OnPositionNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CompanyName
+        {
+            get
+            {
+                return _CompanyName;
+            }
+            set
+            {
+                OnCompanyNameChanging(value);
+                ReportPropertyChanging("CompanyName");
+                _CompanyName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CompanyName");
+                OnCompanyNameChanged();
+            }
+        }
+        private global::System.String _CompanyName;
+        partial void OnCompanyNameChanging(global::System.String value);
+        partial void OnCompanyNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InterviewerEmail
+        {
+            get
+            {
+                return _InterviewerEmail;
+            }
+            set
+            {
+                OnInterviewerEmailChanging(value);
+                ReportPropertyChanging("InterviewerEmail");
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InterviewerEmail");
+                OnInterviewerEmailChanged();
+            }
+        }
+        private global::System.String _InterviewerEmail;
+        partial void OnInterviewerEmailChanging(global::System.String value);
+        partial void OnInterviewerEmailChanged();
 
         #endregion
 
