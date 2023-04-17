@@ -21930,3 +21930,23 @@ tr.timeline-search-expanded-detail {
 	position: absolute;
 	bottom: 11%;
 }
+
+/******************************* Joblist Card **************************************/
+
+
+.card.joblist::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 1px;
+	height: 100%;
+	width: 5px;
+	background: linear-gradient(to bottom, var(--ats-primary), var(--ats-success));
+	border-radius: 1rem 0 0 1rem;
+}
+
+.card.joblist {
+	border: 2px solid #ddd;
+	border-left: none;
+	position: relative;
+}

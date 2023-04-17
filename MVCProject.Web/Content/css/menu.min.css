@@ -664,7 +664,7 @@ table.no-margin .progress {
     cursor: pointer;
     clear: both;
     width: 100%;
-    padding: 3px;
+    padding: 5px;
     margin-top: 5px;
     border-radius: 50%;
     transition: 400ms ease-in-out;
