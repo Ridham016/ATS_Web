@@ -205,11 +205,15 @@
     <Compile Include="Controllers\ApplicantRegister\RegistrationsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Common\CommonController.cs" />
+    <Compile Include="Controllers\CompanyMaster\CompanyController.cs" />
     <Compile Include="Controllers\Configuration\DesignationsController.cs" />
     <Compile Include="Controllers\Common\UploadController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\ImportData\ImportController.cs" />
     <Compile Include="Controllers\InterviewerRegister\InterviewersController.cs" />
+    <Compile Include="Controllers\JobListing\JobListingController.cs" />
+    <Compile Include="Controllers\JobPostingMaster\JobPostingController.cs" />
+    <Compile Include="Controllers\PositionMaster\PositionController.cs" />
     <Compile Include="Controllers\ScheduleManagement\SchedulesController.cs" />
     <Compile Include="Filters\CompressContentAttribute.cs" />
     <Compile Include="Filters\ContactNumberAnnotation.cs" />

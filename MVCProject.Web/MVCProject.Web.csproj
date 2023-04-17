@@ -177,6 +177,8 @@
     <Compile Include="Areas\AdvancedSearch\Controllers\SearchController.cs" />
     <Compile Include="Areas\ApplicantRegister\ApplicantAreaRegistration.cs" />
     <Compile Include="Areas\ApplicantRegister\Controllers\RegistrationController.cs" />
+    <Compile Include="Areas\CompanyMaster\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\CompanyMaster\CompanyAreaRegistration.cs" />
     <Compile Include="Areas\Configuration\ConfigurationAreaRegistration.cs" />
     <Compile Include="Areas\Configuration\Controllers\ApplicationController.cs" />
     <Compile Include="Areas\Configuration\Controllers\DesignationController.cs" />
@@ -189,6 +191,12 @@
     <Compile Include="Areas\ImportData\ImportDataAreaRegistration.cs" />
     <Compile Include="Areas\InterviewerRegister\Controllers\InterviewerController.cs" />
     <Compile Include="Areas\InterviewerRegister\InterviewerAreaRegister.cs" />
+    <Compile Include="Areas\JobListing\Controllers\JobListingController.cs" />
+    <Compile Include="Areas\JobListing\JobListingAreaRegistration.cs" />
+    <Compile Include="Areas\JobPostingMaster\Controllers\JobPostingController.cs" />
+    <Compile Include="Areas\JobPostingMaster\JobPostingAreaRegistration.cs" />
+    <Compile Include="Areas\PositionMaster\Controllers\PositionController.cs" />
+    <Compile Include="Areas\PositionMaster\PositionAreaRegistration.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\ScheduleManagement\Controllers\ScheduleController.cs" />
     <Compile Include="Areas\ScheduleManagement\ScheduleManagementAreaRegistration.cs" />
@@ -239,6 +247,8 @@
     <Content Include="Areas\AdvancedSearch\Scripts\angularjs\services\AdvancedSearchService.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\controllers\RegistrationCtrl.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\services\RegistrationService.js" />
+    <Content Include="Areas\CompanyMaster\Scripts\angular\controllers\CompanyCtrl.js" />
+    <Content Include="Areas\CompanyMaster\Scripts\angular\services\CompanyService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ApplicationCtrl.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\DesignationCtrl.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ResetToLoginCtrl.js" />
@@ -251,6 +261,12 @@
     <Content Include="Areas\ImportData\Scripts\angular\services\ImportService.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\controllers\InterviewerCtrl.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\services\InterviewerService.js" />
+    <Content Include="Areas\JobListing\Scripts\angular\controllers\JobListingCtrl.js" />
+    <Content Include="Areas\JobListing\Scripts\angular\services\JobListingService.js" />
+    <Content Include="Areas\JobPostingMaster\Scripts\angular\controllers\JobPostingCtrl.js" />
+    <Content Include="Areas\JobPostingMaster\Scripts\angular\services\JobPostingService.js" />
+    <Content Include="Areas\PositionMaster\Scripts\angular\controllers\PositionCtrl.js" />
+    <Content Include="Areas\PositionMaster\Scripts\angular\services\PositionService.js" />
     <Content Include="Areas\Public\Content\css\css\blank.gif" />
     <Content Include="Areas\Public\Content\css\HomePageStyle.css" />
     <Content Include="Areas\Public\Content\css\skins\fullwidth\loading.gif" />
@@ -467,10 +483,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\CompanyMaster\Models\" />
+    <Folder Include="Areas\CompanyMaster\Views\Shared\" />
     <Folder Include="Areas\Configuration\Models\" />
     <Folder Include="Areas\Configuration\Views\Shared\" />
     <Folder Include="Areas\ImportData\Models\" />
     <Folder Include="Areas\ImportData\Views\Shared\" />
+    <Folder Include="Areas\JobListing\Models\" />
+    <Folder Include="Areas\JobListing\Views\Shared\" />
+    <Folder Include="Areas\JobPostingMaster\Models\" />
+    <Folder Include="Areas\JobPostingMaster\Views\Shared\" />
+    <Folder Include="Areas\PositionMaster\Models\" />
+    <Folder Include="Areas\PositionMaster\Views\Shared\" />
     <Folder Include="Areas\Public\Controllers\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Scripts\angular\controllers\" />
@@ -522,6 +546,14 @@
     <Content Include="Areas\ScheduleManagement\Views\Schedule\Details.cshtml" />
     <Content Include="Areas\ImportData\Views\Web.config" />
     <Content Include="Areas\ImportData\Views\Import\Index.cshtml" />
+    <Content Include="Areas\JobPostingMaster\Views\Web.config" />
+    <Content Include="Areas\JobPostingMaster\Views\JobPosting\Index.cshtml" />
+    <Content Include="Areas\PositionMaster\Views\Position\Index.cshtml" />
+    <Content Include="Areas\PositionMaster\Views\Web.config" />
+    <Content Include="Areas\CompanyMaster\Views\Company\Index.cshtml" />
+    <Content Include="Areas\CompanyMaster\Views\Web.config" />
+    <Content Include="Areas\JobListing\Views\JobListing\Index.cshtml" />
+    <Content Include="Areas\JobListing\Views\Web.config" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

@@ -25,7 +25,11 @@ namespace MVCProject.Api.Controllers.Interviewers
         [HttpPost]
         public ApiResponse GetAllInterviewers(PagingParams interviewerDetailParams)
         {
-            var result = entities.USP_ATS_AllInterviewers().ToList();
+            if (string.IsNullOrWhiteSpace(interviewerDetailParams.Search))
+            {
+                interviewerDetailParams.Search = string.Empty;
+            }
+            var result = entities.USP_ATS_AllInterviewers().Where(x => x.InterviewerName.Trim().ToLower().Contains(interviewerDetailParams.Search.Trim().ToLower())).ToList();
             var TotalRecords = result.Count();
             var interviewerslist = result.Select(d => new
                                     {

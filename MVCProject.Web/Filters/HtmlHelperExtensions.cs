@@ -51,6 +51,7 @@ namespace System.Web.Mvc
             //menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             //menuString.Append("</ul></li>");
             menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
+            menuString.Append(GetMainMenu(Resource.JobListing, "fa fa-list-ul", "/JobListing/JobListing"));
             menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
 
@@ -59,6 +60,9 @@ namespace System.Web.Mvc
             menuString.Append("<ul class='nav child_menu'>");
             menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
             menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
+            menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus", "/JobPostingMaster/JobPosting"));
+            menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-user-plus", "/PositionMaster/Position"));
+            menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa fa-user-plus", "/CompanyMaster/Company"));
             menuString.Append("</ul></li>");
 
             menuString.Append("</ul></div></div>");

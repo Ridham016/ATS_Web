@@ -1170,7 +1170,7 @@
   <data name="ExpectedJoiningDateRequired" xml:space="preserve">
     <value>Expected Joining Date is Required</value>
   </data>
-  <data name="Company" xml:space="preserve">
+  <data name="CompanyName" xml:space="preserve">
     <value>Company Name</value>
   </data>
   <data name="CompanyRequired" xml:space="preserve">
@@ -1183,12 +1183,72 @@
     <value>Posiiton is Required</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Posiiton</value>
+    <value>Position</value>
   </data>
   <data name="Venue" xml:space="preserve">
     <value>Venue</value>
   </data>
   <data name="VenueRequired" xml:space="preserve">
     <value>Venue is Required</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="CompanyRegister" xml:space="preserve">
+    <value>Company Register</value>
+  </data>
+  <data name="ContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
+  <data name="ContactPersonNameRequired" xml:space="preserve">
+    <value>Contact Person Name is Required</value>
+  </data>
+  <data name="ContactPersonPhone" xml:space="preserve">
+    <value>Contact Person Phone</value>
+  </data>
+  <data name="ContactPersonPhoneRequired" xml:space="preserve">
+    <value>Contact Person Phone is Required</value>
+  </data>
+  <data name="ContactPersonPosition" xml:space="preserve">
+    <value>Contact Person Position</value>
+  </data>
+  <data name="ContactPersonPositionRequired" xml:space="preserve">
+    <value>Contact Person Position is Required</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>Job</value>
+  </data>
+  <data name="JobPosting" xml:space="preserve">
+    <value>Job Posting</value>
+  </data>
+  <data name="JobPostingRegister" xml:space="preserve">
+    <value>Job Posting Register</value>
+  </data>
+  <data name="PositionName" xml:space="preserve">
+    <value>Position Name</value>
+  </data>
+  <data name="PositionNameRequired" xml:space="preserve">
+    <value>Position Name is Required</value>
+  </data>
+  <data name="PositionRegister" xml:space="preserve">
+    <value>Position Register</value>
+  </data>
+  <data name="PostingExperience" xml:space="preserve">
+    <value>Enter Required Experience</value>
+  </data>
+  <data name="PostingExperienceRequired" xml:space="preserve">
+    <value>Experience is Required</value>
+  </data>
+  <data name="PostingSalary" xml:space="preserve">
+    <value>Enter Required Salary</value>
+  </data>
+  <data name="PostingSalaryRequired" xml:space="preserve">
+    <value>Salary is Required</value>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="JobListing" xml:space="preserve">
+    <value>Job Listing</value>
   </data>
 </root>

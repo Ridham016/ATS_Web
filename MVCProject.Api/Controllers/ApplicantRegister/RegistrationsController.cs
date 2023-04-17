@@ -39,7 +39,11 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse GetAllApplicants(PagingParams applicantDetailParams)
         {
-            var result = entities.USP_ATS_AllApplicants().ToList();
+            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
+            {
+                applicantDetailParams.Search = string.Empty;
+            }
+            var result = entities.USP_ATS_AllApplicants().Where(x => x.FirstName.Trim().ToLower().Contains(applicantDetailParams.Search.Trim().ToLower())).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {
@@ -81,7 +85,11 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var result = entities.USP_ATS_AllApplicants().Where(x => x.IsActive == true).ToList();
+            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
+            {
+                applicantDetailParams.Search = string.Empty;
+            }
+            var result = entities.USP_ATS_AllApplicants().Where(x => x.IsActive == true && x.FirstName.Trim().ToLower().Contains(applicantDetailParams.Search.Trim().ToLower())).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = @Resource.Interviewer;
+    ViewBag.Title = @Resource.PositionRegister;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -29,10 +29,10 @@
     }
 </style>
 
-<div ng-controller="InterviewerCtrl" novalidate>
+<div ng-controller="PositionCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
-        <h4 class="header-title-sub l">@Resource.Interviewer</h4>
+        <h4 class="header-title-sub l">@Resource.PositionRegister</h4>
         <div class="pull-right">
         </div>
     </div>
@@ -40,63 +40,48 @@
         <div class="row ">
             <div class="col-md-12">
                 <!-- start designation form -->
-                <form name="frmRegister" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
+                <form name="frmRegister" ng-submit="SavePositionDetails(positionDetailScope)"
                       novalidate>
                     <div class="row mb-3">
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
-                            <div class="form-group">
-                                <label>
-                                    @Resource.InterviewerName <span class="required-field">*</span>
-                                </label>
-                                <input type="text" class="form-control" ng-focus="true" name="InterviewerName" ng-model="interviewerDetailScope.InterviewerName" required placeholder="Enter Name" maxlength="250">
-                                <div class="c">
-                                </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerName.$dirty && frmRegister.InterviewerName.$invalid">
-                                    <span data-ng-show="frmRegister.InterviewerName.$error.required">@Resource.InterviewerNameRequired</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Remarks-->
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
-                                    @Resource.InterviewerEmail<span class="required-field">*</span>
+                                    @Resource.PositionName<span class="required-field">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Enter Email" name="EmailId" ng-model="interviewerDetailScope.InterviewerEmail" required />
+                                <input type="text" class="form-control" placeholder="Enter Position Name" name="PositionName" ng-model="positionDetailScope.PositionName" required />
                                 <div class="c">
                                 </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerEmail.$dirty && frmRegister.InterviewerEmail.$invalid">
-                                    <span data-ng-show="frmRegister.InterviewerEmail.$error.required">@Resource.InterviewerEmailRequired</span>
+                                <div class="label label-danger" data-ng-show="frmRegister.PositionName.$dirty && frmRegister.PositionName.$invalid">
+                                    <span data-ng-show="frmRegister.PositionName.$error.required">@Resource.PositionNameRequired</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
-                                    @Resource.InterviewerPhone<span class="required-field">*</span>
+                                    @Resource.Description<span class="required-field">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Enter Phone" name="Phone No." ng-model="interviewerDetailScope.InterviewerPhone" required />
+                                <textarea rows="5" type="text" class="form-control" placeholder="Enter Description" name="Description" ng-model="positionDetailScope.Description" required ></textarea>
                                 <div class="c">
                                 </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.InterviewerPhone.$dirty && frmRegister.InterviewerPhone.$invalid">
-                                    <span data-ng-show="frmRegister.InterviewerPhone.$error.required">@Resource.InterviewerPhoneRequired</span>
+                                <div class="label label-danger" data-ng-show="frmRegister.Description.$dirty && frmRegister.Description.$invalid">
+                                    <span data-ng-show="frmRegister.Description.$error.required">@Resource.DescriptionRequired</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
-                        <div class="form-group">
-                            <div class="form-control-static">
-                                <label>
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                            <div class="form-group">
+                                <div class="form-control-static">
+                                    <label>
 
-                                </label>
-                                <div class="checkbox checkbox-info p-0">
-                                    <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="interviewerDetailScope.Is_Active"
-                                           tabindex="2" />
-                                    <label for="chkIsActive">
-                                        @Resource.IsActive
                                     </label>
+                                    <div class="checkbox checkbox-info p-0">
+                                        <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="positionDetailScope.IsActive"
+                                               tabindex="2" />
+                                        <label for="chkIsActive">
+                                            @Resource.IsActive
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -104,8 +89,8 @@
                     <div class="row mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.InterviewerName.$invalid">
-                                    {{interviewerDetailScope.InterviewerId > 0 ? '@Resource.Update' : '@Resource.Save'}}
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
+                                    {{positionDetailScope.Id > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
                                         tabindex="4">
@@ -123,12 +108,12 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label class="table-title my-3">
-                                    @Resource.InterviewersReg @Resource.Details
+                                    @Resource.Position @Resource.Details
                                 </label>
                             </div>
                             <div class="col-md-5 offset-4">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Interviewer, Resource.Details)" />
+                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Position, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -142,26 +127,23 @@
                                 <scrollable-table scroll-height="500">
                                     <table ng-table="tableParams" id="datatable" @*ng-init="getAllInterviewers()"*@ class="table table-bordered table-hover">
                                         <tbody>
-                                            <tr ng-repeat="h in interviewers">
+                                            <tr ng-repeat="h in position">
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.InterviewerName'" sortable="'Name'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.InterviewerName}}
+                                                <td data-title="'@Resource.Position'" sortable="'Name'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.PositionName}}
                                                 </td>
-                                                <td data-title="'@Resource.InterviewerEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.InterviewerEmail}}
-                                                </td>
-                                                <td data-title="'@Resource.InterviewerPhone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.InterviewerPhone}}
+                                                <td data-title="'@Resource.Company'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.Description}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
-                                                    <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.Is_Active"
+                                                    <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
                                                            ng-disabled="true" />
                                                 </td>
                                                 <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
                                                     <a class="btn btn-icon cursor-pointer btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
-                                                       ng-click="EditInterviewersDetails(h.InterviewerId)">
+                                                       ng-click="EditPositionDetails(h.Id)">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
@@ -179,5 +161,5 @@
     </div>
 </div>
 @section scripts {
-    @Scripts.Render("~/bundles/InterviewerRegister/Interviewer")
+    @Scripts.Render("~/bundles/Position/Position")
 }

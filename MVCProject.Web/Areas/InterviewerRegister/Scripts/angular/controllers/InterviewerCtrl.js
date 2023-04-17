@@ -25,8 +25,9 @@
                 }
                 interviewerDetailParams.Paging = CommonFunctions.GetPagingParams(params);
                 //debugger
-                //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
+                interviewerDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
+                debugger
                 InterviewerService.GetAllInterviewers(interviewerDetailParams.Paging).then(function (res) {
                         var data = res.data;
                     $scope.interviewers = res.data.Result;

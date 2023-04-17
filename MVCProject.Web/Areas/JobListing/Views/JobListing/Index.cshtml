@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = @Resource.JobListing;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .colSrno {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+    }
+
+    .colPosition {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+
+    .colActive {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+
+    .colAction {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+</style>
+
+<div ng-controller="JobListingCtrl" ng-init="getJobPostingList();" novalidate>
+    <div class="main-page-title title-icon relative l">
+        <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@Resource.JobListing</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div class="card-box">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12" ng-repeat="h in JobList">
+                        <div class="card p-3">
+                            <h3 class="card-title">{{h.PositionName}}</h3>
+                            <p class="card-subtitle">{{h.CompanyName}}</p>
+                            <div class="d-flex mt-3">
+                                <div class="group">
+                                    <i class="fa fa-briefcase me-2"></i>
+                                    <span class="">{{h.Experience}}</span>
+                                </div>
+                                <span class="me-3 ms-3 border-end"></span>
+                                <div class="group">
+                                    <i class="fa fa-rupee me-2"></i>
+                                    <span class="">{{h.Salary}}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-lg-12">
+                                    <i class="fa fa-location-arrow me-2"></i>
+                                    <span class="">{{h.CompanyVenue}}</span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="mt-0 d-flex justify-content-between">
+                                <div class="group">
+                                    Posted :
+                                    <span class="ms-1">{{calculateDay(h.EntryDate)}}+ days ago</span>
+                                </div>
+                                <div class="group">
+                                    <a href="~/ApplicantRegister/Registration" class="btn btn-success">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/JobListing/JobListing")
+}
