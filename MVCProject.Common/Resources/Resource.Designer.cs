@@ -2887,6 +2887,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select Status.
+        /// </summary>
+        public static string SelectStatus {
+            get {
+                return ResourceManager.GetString("SelectStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to September.
         /// </summary>
         public static string September {
@@ -3378,6 +3387,24 @@ namespace MVCProject.Common.Resources {
         public static string ValidCTC {
             get {
                 return ResourceManager.GetString("ValidCTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Date of Birth.
+        /// </summary>
+        public static string ValidDOB {
+            get {
+                return ResourceManager.GetString("ValidDOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Valid Joining Date.
+        /// </summary>
+        public static string ValidExpectedDate {
+            get {
+                return ResourceManager.GetString("ValidExpectedDate", resourceCulture);
             }
         }
         

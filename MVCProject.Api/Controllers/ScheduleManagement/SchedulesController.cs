@@ -69,6 +69,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 EntryDate = g.EntryDate,
                 IsActive = g.IsActive,
                 StatusId = g.StatusId,
@@ -111,6 +112,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     LinkedinLink = g.LinkedinLink,
                     OtherLink = g.OtherLink,
                     ExpectedJoiningDate = g.ExpectedJoiningDate,
+                    PostingId = g.PostingId,
                     StatusId = g.StatusId,
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
@@ -139,7 +141,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId)
+        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId, HttpRequestMessage httpRequest)
         {
             var level = 0;
             var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
@@ -174,7 +176,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.StatusName));
             }
-            if(StatusId == 2 || StatusId == 7)
+            string User = UserContext.User;
+            int? RoleId = UserContext.RoleId;
+            var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
+            string RoleName = Role.RoleName;
+            string Useremail = UserContext.UserName;
+            if (StatusId == 2 || StatusId == 7)
             {
                 await Task.Run(() =>
                 {
@@ -183,11 +190,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     {
                         string Date = Data.ScheduleDateTime.Value.ToString("MMM, dd yyyy");
                         string Message;
-                        string[] emails = { Data.InterviewerEmail };
-                        string User = "John Doe";
-                        int? RoleId = 1;
-                        var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
-                        string RoleName = Role.RoleName;
+                        string[] emails = { Useremail };
                         if (StatusId == 2)
                         {
                             Message = "Shortlisted for Next round of interview";
@@ -220,7 +223,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> ScheduleInterview([FromBody]ATS_AdditionalInformation data)
+        public async Task<ApiResponse> ScheduleInterview([FromBody]ATS_AdditionalInformation data, HttpRequestMessage httpRequest)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
@@ -241,12 +244,13 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
+            
+            string User = UserContext.User;
+            int? RoleId = UserContext.RoleId;
+            var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
+            string RoleName = Role.RoleName;
             await Task.Run(() =>
             {
-                string User = "John Doe";
-                int? RoleId = 1;
-                var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
-                string RoleName = Role.RoleName;
                 var applicantemail = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
                 string[] emails = { applicantemail.ApplicantEmail };
                 string FirstName = applicantemail.FirstName;
@@ -442,6 +446,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 StatusId = g.StatusId,
                 IsActive = g.IsActive,
                 StatusName = g.StatusName,

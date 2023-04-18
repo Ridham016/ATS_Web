@@ -34,29 +34,29 @@
             UserId: parseInt('@userContext.UserId'),
             RoleId: parseInt('@userContext.RoleId'),
             RoleGroupId: [@(userContext.RoleGroupId == null || userContext.RoleGroupId.Length < 1 ? "" : string.Join(",", userContext.RoleGroupId))],
-        RoleLevel: parseInt('@userContext.RoleLevel'),
+            RoleLevel: parseInt('@userContext.RoleLevel'),
             SiteId: parseInt('@userContext.SiteId'),
-                DepartmentId: parseInt('@userContext.DepartmentId'),
-                    EmployeeId: parseInt('@userContext.EmployeeId'),
-                        EmployeeName: '@Html.Raw(userContext.EmployeeName)',
-                            ProfilePicturePath: '@userContext.ProfilePicturePath',
-                                ApplicationLogo: '@userContext.ApplicationLogo',
-                                    DepartmentLabel: '@Html.Raw(userContext.DepartmentLabel)',
-                                        Designation: '@Html.Raw(userContext.Designation)',
-                                            Department: '@Html.Raw(userContext.Department)',
-                                                SiteName: '@Html.Raw(userContext.SiteName)',
-                                                    IsCorporateSite: '@userContext.IsCorporateSite' == "True" ? true : false,
-                                                        AllowSubArea: '@Html.Raw(userContext.AllowSubArea)',
-                                                            AllowNearmiss: '@Html.Raw(userContext.AllowNearmiss)',
-                                                                AllowRiskBehaviour: '@Html.Raw(userContext.AllowRiskBehaviour)',
-                                                                    AllowHazard: '@Html.Raw(userContext.AllowHazard)',
-                                                                        AllowInvestigation: '@Html.Raw(userContext.AllowInvestigation)',
-                                                                            AllowCAPA: '@Html.Raw(userContext.AllowCAPA)',
-                                                                                AllowCAPAProgress: '@Html.Raw(userContext.AllowCAPAProgress)',
-                                                                                    AllowReport: '@Html.Raw(userContext.AllowReport)',
-                                                                                        AllowSearch: '@Html.Raw(userContext.AllowSearch)',
-                                                                                            AllowAnalytics: '@Html.Raw(userContext.AllowAnalytics)'
-            };
+            DepartmentId: parseInt('@userContext.DepartmentId'),
+            EmployeeId: parseInt('@userContext.EmployeeId'),
+            EmployeeName: '@Html.Raw(userContext.EmployeeName)',
+            ProfilePicturePath: '@userContext.ProfilePicturePath',
+            ApplicationLogo: '@userContext.ApplicationLogo',
+            DepartmentLabel: '@Html.Raw(userContext.DepartmentLabel)',
+            Designation: '@Html.Raw(userContext.Designation)',
+            Department: '@Html.Raw(userContext.Department)',
+            SiteName: '@Html.Raw(userContext.SiteName)',
+            IsCorporateSite: '@userContext.IsCorporateSite' == "True" ? true : false,
+            AllowSubArea: '@Html.Raw(userContext.AllowSubArea)',
+            AllowNearmiss: '@Html.Raw(userContext.AllowNearmiss)',
+            AllowRiskBehaviour: '@Html.Raw(userContext.AllowRiskBehaviour)',
+            AllowHazard: '@Html.Raw(userContext.AllowHazard)',
+            AllowInvestigation: '@Html.Raw(userContext.AllowInvestigation)',
+            AllowCAPA: '@Html.Raw(userContext.AllowCAPA)',
+            AllowCAPAProgress: '@Html.Raw(userContext.AllowCAPAProgress)',
+            AllowReport: '@Html.Raw(userContext.AllowReport)',
+            AllowSearch: '@Html.Raw(userContext.AllowSearch)',
+            AllowAnalytics: '@Html.Raw(userContext.AllowAnalytics)'
+        };
         var permission = {
             PageId: @(permission.PageId),
         CanRead: '@(permission.CanRead)' == 'True',
@@ -65,7 +65,7 @@
         var roles = @Html.RoleJson(userContext.UserRole);
 
     </script>
-    <link href="@Url.Content(" ~ /Content/css/nv.d3.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/nv.d3.min.css")" rel="stylesheet" type="text/css" />
 </head>
 <body ng-controller="MasterCtrl" ng-cloak id="LayoutBody" class="fullscreen" ng-class="isSmallMenu?'nav-sm':'nav-md'"
       ng-init="CheckUserSession()" style="display: none;">

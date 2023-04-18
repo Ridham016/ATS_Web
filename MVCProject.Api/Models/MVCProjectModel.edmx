@@ -87,6 +87,7 @@
           <Property Name="OtherLink" Type="nvarchar" MaxLength="100" />
           <Property Name="Comment" Type="nvarchar" MaxLength="200" />
           <Property Name="ExpectedJoiningDate" Type="datetime" />
+          <Property Name="PostingId" Type="int" />
         </EntityType>
         <EntityType Name="ATS_Attachment">
           <Key>
@@ -171,6 +172,7 @@
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
+          <Property Name="CompanyId" Type="int" />
         </EntityType>
         <EntityType Name="ATS_JobPosting">
           <Key>
@@ -344,6 +346,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ATS_Appli__Posti__3D491139">
+          <End Role="ATS_JobPosting" Type="Self.ATS_JobPosting" Multiplicity="0..1" />
+          <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_JobPosting">
+              <PropertyRef Name="PostingId" />
+            </Principal>
+            <Dependent Role="ATS_ApplicantRegister">
+              <PropertyRef Name="PostingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ATS_Attac__Appli__39237A9A">
           <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="0..1" />
           <End Role="ATS_Attachment" Type="Self.ATS_Attachment" Multiplicity="*" />
@@ -401,6 +415,18 @@
             </Principal>
             <Dependent Role="ATS_CompanyMaster">
               <PropertyRef Name="ContactPersonPositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATS_Inter__Compa__3E3D3572">
+          <End Role="ATS_CompanyMaster" Type="Self.ATS_CompanyMaster" Multiplicity="0..1" />
+          <End Role="ATS_Interviewer" Type="Self.ATS_Interviewer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_CompanyMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ATS_Interviewer">
+              <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -586,6 +612,10 @@
             <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
             <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
+          <AssociationSet Name="FK__ATS_Appli__Posti__3D491139" Association="Self.FK__ATS_Appli__Posti__3D491139">
+            <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
+            <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+          </AssociationSet>
           <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="Self.FK__ATS_Attac__Appli__39237A9A">
             <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
             <End Role="ATS_Attachment" EntitySet="ATS_Attachment" />
@@ -605,6 +635,10 @@
           <AssociationSet Name="FK__ATS_Compa__Conta__0F824689" Association="Self.FK__ATS_Compa__Conta__0F824689">
             <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
             <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_Inter__Compa__3E3D3572" Association="Self.FK__ATS_Inter__Compa__3E3D3572">
+            <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
+            <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_JobPo__Compa__2EFAF1E2" Association="Self.FK__ATS_JobPo__Compa__2EFAF1E2">
             <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
@@ -725,6 +759,8 @@
           <Property Name="ExpectedJoiningDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ApplicantRegister" ToRole="ATS_ActionHistory" />
           <NavigationProperty Name="ATS_Attachment" Relationship="Self.FK__ATS_Attac__Appli__39237A9A" FromRole="ATS_ApplicantRegister" ToRole="ATS_Attachment" />
+          <Property Name="PostingId" Type="Int32" />
+          <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_Appli__Posti__3D491139" FromRole="ATS_ApplicantRegister" ToRole="ATS_JobPosting" />
         </EntityType>
         <EntityType Name="ATS_Attachment">
           <Key>
@@ -787,6 +823,7 @@
           <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Addit__Compa__125EB334" FromRole="ATS_CompanyMaster" ToRole="ATS_AdditionalInformation" />
           <NavigationProperty Name="ATS_PositionMaster" Relationship="Self.FK__ATS_Compa__Conta__0F824689" FromRole="ATS_CompanyMaster" ToRole="ATS_PositionMaster" />
           <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2" FromRole="ATS_CompanyMaster" ToRole="ATS_JobPosting" />
+          <NavigationProperty Name="ATS_Interviewer" Relationship="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" FromRole="ATS_CompanyMaster" ToRole="ATS_Interviewer" />
         </EntityType>
         <EntityType Name="ATS_EmailConfiguration">
           <Key>
@@ -818,6 +855,8 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_AdditionalInformation" />
+          <Property Name="CompanyId" Type="Int32" />
+          <NavigationProperty Name="ATS_CompanyMaster" Relationship="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" FromRole="ATS_Interviewer" ToRole="ATS_CompanyMaster" />
         </EntityType>
         <EntityType Name="ATS_MasterButton">
           <Key>
@@ -1183,10 +1222,6 @@
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_CheckStatusValidity" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CheckStatusValidity_Result)">
-            <Parameter Name="CurrentStatus" Mode="In" Type="Int32" />
-            <Parameter Name="NextStatus" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="USP_ATS_FilesOfApplicant" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_FilesOfApplicant_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1213,9 +1248,6 @@
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetStatus" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetStatus_Result)" />
-          <FunctionImport Name="USP_ATS_GetStatusFromApplicant" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetStatusFromApplicant_Result)">
-          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="USP_ATS_InterviewerbyId" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_InterviewerbyId_Result)">
           <Parameter Name="InterviewerId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1245,6 +1277,14 @@
           <Parameter Name="CompanyId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_JobListing" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_JobListing_Result)" />
+          <AssociationSet Name="FK__ATS_Appli__Posti__3D491139" Association="ATSMVCProjectModel.FK__ATS_Appli__Posti__3D491139">
+            <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
+            <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_Inter__Compa__3E3D3572" Association="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572">
+            <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
+            <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1279,6 +1319,7 @@
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllApplicants_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1309,6 +1350,7 @@
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="FilePath" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="FileRelativePath" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllInterviewers_Result">
           <Property Type="Int32" Name="InterviewerId" Nullable="false" />
@@ -1316,6 +1358,8 @@
           <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllPostings_Result">
           <Property Type="Int32" Name="PostingId" Nullable="false" />
@@ -1354,6 +1398,7 @@
           <Property Type="String" Name="OtherLink" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantsList_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1385,6 +1430,7 @@
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Level" Nullable="true" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantTimeLine_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1419,6 +1465,7 @@
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantTimeLine_APP_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1453,6 +1500,7 @@
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AuthenticateUser_Result">
           <Property Type="Int32" Name="UserId" Nullable="false" />
@@ -1515,6 +1563,7 @@
           <Property Type="DateTime" Name="ExpectedJoiningDate" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="StatusId" Nullable="true" />
           <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetButton_Result">
           <Property Type="Int32" Name="ButtonId" Nullable="true" />
@@ -1579,6 +1628,8 @@
           <Property Type="String" Name="InterviewerEmail" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="InterviewerPhone" Nullable="true" MaxLength="15" />
           <Property Type="Boolean" Name="Is_Active" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_InterviewerList_Result">
           <Property Type="Int32" Name="InterviewerId" Nullable="false" />
@@ -1630,6 +1681,7 @@
           <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
           <Property Type="Boolean" Name="Result" Nullable="true" />
@@ -1656,6 +1708,7 @@
           <Property Name="PositionId" Type="Int32" />
           <NavigationProperty Name="ATS_CompanyMaster" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2" FromRole="ATS_JobPosting" ToRole="ATS_CompanyMaster" />
           <NavigationProperty Name="ATS_PositionMaster" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Posit__2FEF161B" FromRole="ATS_JobPosting" ToRole="ATS_PositionMaster" />
+          <NavigationProperty Name="ATS_ApplicantRegister" Relationship="ATSMVCProjectModel.FK__ATS_Appli__Posti__3D491139" FromRole="ATS_JobPosting" ToRole="ATS_ApplicantRegister" />
         </EntityType>
         <Association Name="FK__ATS_JobPo__Compa__2EFAF1E2">
           <End Type="ATSMVCProjectModel.ATS_CompanyMaster" Role="ATS_CompanyMaster" Multiplicity="0..1" />
@@ -1745,7 +1798,32 @@
           <Property Type="String" Name="Salary" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="Posted" Nullable="true" />
         </ComplexType>
+        <Association Name="FK__ATS_Appli__Posti__3D491139">
+          <End Type="ATSMVCProjectModel.ATS_JobPosting" Role="ATS_JobPosting" Multiplicity="0..1" />
+          <End Type="ATSMVCProjectModel.ATS_ApplicantRegister" Role="ATS_ApplicantRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_JobPosting">
+              <PropertyRef Name="PostingId" />
+            </Principal>
+            <Dependent Role="ATS_ApplicantRegister">
+              <PropertyRef Name="PostingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATS_Inter__Compa__3E3D3572">
+          <End Type="ATSMVCProjectModel.ATS_CompanyMaster" Role="ATS_CompanyMaster" Multiplicity="0..1" />
+          <End Type="ATSMVCProjectModel.ATS_Interviewer" Role="ATS_Interviewer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_CompanyMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ATS_Interviewer">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1806,6 +1884,7 @@
           <EntitySetMapping Name="ATS_ApplicantRegister">
             <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_ApplicantRegister">
               <MappingFragment StoreEntitySet="ATS_ApplicantRegister">
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
                 <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -1917,6 +1996,7 @@
           <EntitySetMapping Name="ATS_Interviewer">
             <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_Interviewer">
               <MappingFragment StoreEntitySet="ATS_Interviewer">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
@@ -2044,6 +2124,7 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2078,6 +2159,7 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="FileRelativePath" ColumnName="FileRelativePath" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2089,6 +2171,8 @@
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2135,6 +2219,7 @@
                 <ScalarProperty Name="OtherLink" ColumnName="OtherLink" />
                 <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2170,6 +2255,7 @@
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2208,6 +2294,7 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2246,6 +2333,7 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2262,13 +2350,6 @@
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_CheckStatusValidity" FunctionName="ATSMVCProjectModel.Store.USP_ATS_CheckStatusValidity" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_CheckStatusValidity_Result">
-                <ScalarProperty Name="Result" ColumnName="Result" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2331,6 +2412,7 @@
                 <ScalarProperty Name="ExpectedJoiningDate" ColumnName="ExpectedJoiningDate" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2426,13 +2508,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_GetStatusFromApplicant" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetStatusFromApplicant" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetStatusFromApplicant_Result">
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_InterviewerbyId" FunctionName="ATSMVCProjectModel.Store.USP_ATS_InterviewerbyId">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_InterviewerbyId_Result">
@@ -2441,6 +2516,8 @@
                 <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
                 <ScalarProperty Name="InterviewerPhone" ColumnName="InterviewerPhone" />
                 <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2504,6 +2581,7 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2609,6 +2687,7 @@
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Posted" ColumnName="Posted" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

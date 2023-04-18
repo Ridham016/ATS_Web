@@ -54,8 +54,8 @@
                                 </select>
                                 <div class="c">
                                 </div>
-                                <div class="label label-danger" data-ng-show="frmSchedule.Position.$dirty && frmSchedule.Position.$invalid">
-                                    <span data-ng-show="frmSchedule.Position.$error.required">@Resource.PosiitonRequired</span>
+                                <div class="label label-danger" data-ng-show="frmRegister.Position.$dirty && frmRegister.Position.$invalid">
+                                    <span data-ng-show="frmRegister.Position.$error.required">@Resource.PosiitonRequired</span>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +70,8 @@
                                 </select>
                                 <div class="c">
                                 </div>
-                                <div class="label label-danger" data-ng-show="frmSchedule.Company.$dirty && frmSchedule.Company.$invalid">
-                                    <span data-ng-show="frmSchedule.Company.$error.required">@Resource.CompanyRequired</span>
+                                <div class="label label-danger" data-ng-show="frmRegister.Company.$dirty && frmRegister.Company.$invalid">
+                                    <span data-ng-show="frmRegister.Company.$error.required">@Resource.CompanyRequired</span>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                     <div class="row mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5">
                                     {{jobpostingDetailScope.PostingId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"

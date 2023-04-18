@@ -71,6 +71,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 OtherLink = g.OtherLink,
                 ReasonForChange = g.ReasonForChange,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
@@ -117,6 +118,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 FileName = g.FileName,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
@@ -193,6 +195,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.LinkedinLink = data.LinkedinLink;
                 applicantData.OtherLink = data.OtherLink;
                 applicantData.IsActive = data.IsActive;
+                applicantData.PostingId = data.PostingId;
                 applicantData.ExpectedJoiningDate = data.ExpectedJoiningDate;
                 applicantData.UpdateDate = DateTime.Now;
                 this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);

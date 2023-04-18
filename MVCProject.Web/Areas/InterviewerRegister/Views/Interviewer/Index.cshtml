@@ -17,15 +17,15 @@
     }
 
     .colActive {
-        width: 50px !important;
-        min-width: 50px !important;
-        max-width: 50px !important;
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
     }
 
     .colAction {
-        width: 50px !important;
-        min-width: 50px !important;
-        max-width: 50px !important;
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
     }
 </style>
 
@@ -40,7 +40,7 @@
         <div class="row ">
             <div class="col-md-12">
                 <!-- start designation form -->
-                <form name="frmRegister" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
+                <form name="frmRegister" ng-init="getCompanyDetails()" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
                       novalidate>
                     <div class="row mb-3">
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
@@ -63,7 +63,7 @@
                                 <label>
                                     @Resource.InterviewerEmail<span class="required-field">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Enter Email" name="EmailId" ng-model="interviewerDetailScope.InterviewerEmail" required />
+                                <input type="text" class="form-control" placeholder="Enter Email" name="InterviewerEmail" ng-model="interviewerDetailScope.InterviewerEmail" required />
                                 <div class="c">
                                 </div>
                                 <div class="label label-danger" data-ng-show="frmRegister.InterviewerEmail.$dirty && frmRegister.InterviewerEmail.$invalid">
@@ -76,7 +76,7 @@
                                 <label>
                                     @Resource.InterviewerPhone<span class="required-field">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Enter Phone" name="Phone No." ng-model="interviewerDetailScope.InterviewerPhone" required />
+                                <input type="text" class="form-control" placeholder="Enter Phone" name="InterviewerPhone" ng-model="interviewerDetailScope.InterviewerPhone" required />
                                 <div class="c">
                                 </div>
                                 <div class="label label-danger" data-ng-show="frmRegister.InterviewerPhone.$dirty && frmRegister.InterviewerPhone.$invalid">
@@ -84,19 +84,35 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
-                        <div class="form-group">
-                            <div class="form-control-static">
+                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                            <div class="form-group">
                                 <label>
-
+                                    @Resource.Company <span class="required-field">*</span>
                                 </label>
-                                <div class="checkbox checkbox-info p-0">
-                                    <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="interviewerDetailScope.Is_Active"
-                                           tabindex="2" />
-                                    <label for="chkIsActive">
-                                        @Resource.IsActive
+                                <select class="form-select" name="Company" ng-model="interviewerDetailScope.CompanyId" required>
+                                    <option value="" selected disabled>Select Company Name</option>
+                                    <option ng-repeat="h in companyDetails" value="{{h.Id}}">{{h.CompanyName}}</option>
+                                </select>
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.Company.$dirty && frmRegister.Company.$invalid">
+                                    <span data-ng-show="frmRegister.Company.$error.required">@Resource.CompanyRequired</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                            <div class="form-group">
+                                <div class="form-control-static">
+                                    <label>
+
                                     </label>
+                                    <div class="checkbox checkbox-info p-0">
+                                        <input type="checkbox" id="chkIsActive" name="chkIsActive" ng-model="interviewerDetailScope.Is_Active"
+                                               tabindex="2" />
+                                        <label for="chkIsActive">
+                                            @Resource.IsActive
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +120,7 @@
                     <div class="row mb-4">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-disabled="frmRegister.InterviewerName.$invalid">
+                                <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5">
                                     {{interviewerDetailScope.InterviewerId > 0 ? '@Resource.Update' : '@Resource.Save'}}
                                 </button>
                                 <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
@@ -154,6 +170,9 @@
                                                 </td>
                                                 <td data-title="'@Resource.InterviewerPhone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.InterviewerPhone}}
+                                                </td>
+                                                <td data-title="'@Resource.Company'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.CompanyName}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.Is_Active"

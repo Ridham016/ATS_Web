@@ -1251,4 +1251,13 @@
   <data name="JobListing" xml:space="preserve">
     <value>Job Listing</value>
   </data>
+  <data name="SelectStatus" xml:space="preserve">
+    <value>Please Select Status</value>
+  </data>
+  <data name="ValidDOB" xml:space="preserve">
+    <value>Enter Valid Date of Birth</value>
+  </data>
+  <data name="ValidExpectedDate" xml:space="preserve">
+    <value>Enter Valid Joining Date</value>
+  </data>
 </root>

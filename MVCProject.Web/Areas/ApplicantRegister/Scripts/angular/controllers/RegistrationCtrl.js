@@ -10,14 +10,17 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions','CommonEnums','$timeout', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonService','$location', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $timeout, $rootScope, FileService, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonService, $location, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.files = [];
         $scope.Selectedfile = null;
         $scope.Files = null;
+
+        var params = $location.search();
+        $scope.PostingId = params.PostingId;
 
         $scope.applicantDetailScope = {
             ApplicantId: 0,
@@ -43,6 +46,7 @@
             LinkedinLink: '',
             OtherLink: '',
             ExpectedJoiningDate: null,
+            PostingId: $scope.PostingId,
             IsActive: true
         };
 
@@ -146,7 +150,8 @@
                 PortfolioLink: '',
                 LinkedinLink: '',
                 OtherLink: '',
-                ExpectedJoiningDate : null,
+                ExpectedJoiningDate: null,
+                PostingId: 0,
                 IsActive: true
             };
             $("#file").val("");
@@ -161,18 +166,19 @@
         };
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             if (!$scope.frmRegister.$valid) {
-                //debugger
-                angular.forEach($scope.frmRegister.$error.required, function (field) {
-                    field.$setTouched();
-                    field.$setValidity('required', true);
+                angular.forEach($scope.frmRegister.$error, function (controls) {
+                    angular.forEach(controls, function (control) {
+                        control.$setDirty();
+                    });
                 });
                 toastr.error('Please Check Form for errors', errorTitle)
                 return false;
             }
             else {
-                //debugger
                 applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
-                applicantDetailScope.ExpectedCTC = angular.copy(moment(applicantDetailScope.ExpectedCTC).format($rootScope.apiDateFormat));
+                applicantDetailScope.ExpectedJoiningDate = angular.copy(moment(applicantDetailScope.ExpectedJoiningDate).format($rootScope.apiDateFormat));
+                applicantDetailScope.PostingId = $scope.PostingId;
+                console.log(applicantDetailScope.PostingId);
                 RegistrationService.Register(applicantDetailScope).then(function (res) {
                     if (res) {
                         var applicants = res.data;
@@ -249,8 +255,6 @@
                 }
                 $rootScope.isAjaxLoadingChild = false;
                 $scope.Files = $scope.files.length;
-                //debugger
-                console.log($scope.Files);
             })
         }
 
@@ -266,6 +270,13 @@
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         $scope.applicantDetailScope.ExpectedJoiningDate = new Date($scope.applicantDetailScope.ExpectedJoiningDate);
+                        $scope.PostingId = $scope.applicantDetailScope.PostingId 
+                        $scope.frmRegister.$setSubmitted();
+                        angular.forEach($scope.frmRegister.$error, function (controls) {
+                            angular.forEach(controls, function (control) {
+                                control.$setDirty(); 
+                            });
+                        });
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

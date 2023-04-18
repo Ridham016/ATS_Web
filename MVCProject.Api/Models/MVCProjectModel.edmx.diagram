@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5f9fa218bed4aecbdcc2bdd7c6a3d16" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_ActionHistory" Width="1.5" PointX="2.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_ActionStatus" Width="1.5" PointX="4.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_AdditionalInformation" Width="1.5" PointX="12.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_ApplicantRegister" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_Attachment" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_AttachmentType" Width="1.5" PointX="6.375" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_ButtonMapping" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_CompanyMaster" Width="1.5" PointX="10.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_EmailConfiguration" Width="1.5" PointX="14" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_Interviewer" Width="1.5" PointX="12.125" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_MasterButton" Width="1.5" PointX="10.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_MasterOtherReason" Width="1.5" PointX="6.375" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_MasterStatus" Width="1.5" PointX="10.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_PositionMaster" Width="1.5" PointX="14" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_Roles" Width="1.5" PointX="6.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_Users" Width="1.5" PointX="8.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.Designation" Width="1.5" PointX="14" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Actio__Appli__40C49C62" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Actio__Reaso__42ACE4D4" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Actio__Statu__41B8C09B" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Sched__Actio__50FB042B" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Actio__Butto__4589517F" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Actio__NextS__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Addit__Compa__125EB334" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Addit__Posit__116A8EFB" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Attac__Appli__39237A9A" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Attac__Attac__3BFFE745" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Butto__Butto__4959E263" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Butto__Statu__4A4E069C" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Users__RoleI__07E124C1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ATSMVCProjectModel.ATS_JobPosting" Width="1.5" PointX="8.375" PointY="3.875" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_JobPo__Posit__2FEF161B" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Appli__Posti__3D491139" />
+        <AssociationConnector Association="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

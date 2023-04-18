@@ -58,6 +58,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 StatusName = g.StatusName,
                 Comment = g.Comment,
                 Reason = g.Reason,
@@ -101,6 +102,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
             }).AsEnumerable();
@@ -139,6 +141,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 LinkedinLink = g.LinkedinLink,
                 OtherLink = g.OtherLink,
                 ExpectedJoiningDate = g.ExpectedJoiningDate,
+                PostingId = g.PostingId,
                 Comment = g.Comment,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,

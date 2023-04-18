@@ -38,6 +38,8 @@ namespace MVCProject.Api.Controllers.Interviewers
                                         InterviewerEmail = d.InterviewerEmail,
                                         InterviewerPhone = d.InterviewerPhone,
                                         Is_Active = d.Is_Active,
+                                        CompanyId = d.CompanyId,
+                                        CompanyName = d.CompanyName,
                                         TotalRecords
                                     }).AsQueryable().Skip((interviewerDetailParams.CurrentPageNumber - 1) * interviewerDetailParams.PageSize).Take(interviewerDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, interviewerslist);
@@ -52,16 +54,10 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerName = d.InterviewerName,
                 InterviewerEmail = d.InterviewerEmail,
                 InterviewerPhone = d.InterviewerPhone,
+                CompanyId = d.CompanyId,
+                CompanyName = d.CompanyName,
                 Is_Active = d.Is_Active
             }).SingleOrDefault();
-            //.ATS_Interviewer.Where(x => x.InterviewerId == InterviewerId)
-            //.Select(d => new
-            //{
-            //    InterviewerId = d.InterviewerId,
-            //    InterviewerName = d.InterviewerName,
-            //    InterviewerEmail = d.InterviewerEmail,
-            //    InterviewerPhone = d.InterviewerPhone
-            //}).SingleOrDefault();
             if (InterviewerDetail != null)
             {
                 return this.Response(Utilities.MessageTypes.Success, string.Empty, InterviewerDetail);
@@ -70,6 +66,18 @@ namespace MVCProject.Api.Controllers.Interviewers
             {
                 return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
+        }
+
+        [HttpGet]
+        public ApiResponse GetCompanyDetails()
+        {
+            var data = this.entities.USP_ATS_GetCompanyDetails().Select(x => new
+            {
+                Id = x.Id,
+                CompanyName = x.CompanyName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
         }
 
         [HttpPost]
@@ -94,6 +102,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerData.InterviewerName = data.InterviewerName;
                 InterviewerData.InterviewerEmail = data.InterviewerEmail;
                 InterviewerData.InterviewerPhone = data.InterviewerPhone;
+                InterviewerData.CompanyId = data.CompanyId;
                 InterviewerData.Is_Active = data.Is_Active;
                 InterviewerData.UpdateDate = DateTime.Now;
 

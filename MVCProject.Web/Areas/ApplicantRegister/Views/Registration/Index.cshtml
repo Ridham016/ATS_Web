@@ -195,8 +195,9 @@
                                                        class="form-control" placeholder="Enter Date of Birth" id="DOB" name="DOB" ng-model="applicantDetailScope.DateOfBirth" required />
                                                 <div class="c">
                                                 </div>
-                                                <div class="label label-danger" data-ng-show="frmRegister.DateOfBirth.$dirty && frmRegister.DateOfBirth.$invalid">
-                                                    <span data-ng-show="frmRegister.DateOfBirth.$error.required">@Resource.ApplicantDOBRequired</span>
+                                                <div class="label label-danger" data-ng-show="frmRegister.DOB.$dirty && frmRegister.DOB.$invalid">
+                                                    <span data-ng-show="frmRegister.DOB.$error.required">@Resource.ApplicantDOBRequired</span>
+                                                    <span data-ng-show="frmRegister.DOB.$error">@Resource.ValidDOB</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,11 +242,17 @@
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                                             <div class="form-group">
                                                 <label>Status</label>
-                                                <select class="form-select" ng-model="textInput.disabled" required>
+                                                <select class="form-select" name="status"
+                                                        ng-class="{'border-color' : frmRegister.status.$dirty && frmRegister.status.$invalid}" ng-model="textInput.disabled" required>
                                                     <option value="" selected disabled>Select Status</option>
                                                     <option value="experienced"> Experienced</option>
                                                     <option value="fresher"> Fresher</option>
                                                 </select>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmRegister.status.$dirty && frmRegister.status.$invalid">
+                                                    <span data-ng-show="frmRegister.status.$error.required">@Resource.SelectStatus</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
@@ -388,12 +395,13 @@
                                                 <label>
                                                     @Resource.Expected_Joining_Date<span class="required-field">*</span>
                                                 </label>
-                                                <input type="date" min="{{today}}" ng-class="{'border-color' : frmRegister.DOB.$dirty && frmRegister.DOB.$invalid}"
+                                                <input type="date" min="{{today}}" ng-class="{'border-color' : (frmRegister.ExpectedJoiningDate.$dirty && frmRegister.ExpectedJoiningDate.$invalid)}"
                                                        class="form-control" placeholder="Enter Expected Joining Date" id="ExpectedJoiningDate" name="ExpectedJoiningDate" ng-model="applicantDetailScope.ExpectedJoiningDate" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedJoiningDate.$dirty && frmRegister.ExpectedJoiningDate.$invalid">
                                                     <span data-ng-show="frmRegister.ExpectedJoiningDate.$error.required">@Resource.ExpectedJoiningDateRequired</span>
+                                                    <span data-ng-show="frmRegister.ExpectedJoiningDate.$error.min">@Resource.ValidExpectedDate</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -416,7 +424,7 @@
                                                     @Resource.ExpectedCTC<span class="required-field">*</span>
                                                 </label>
                                                 <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}"
-                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" />
+                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" required/>
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">

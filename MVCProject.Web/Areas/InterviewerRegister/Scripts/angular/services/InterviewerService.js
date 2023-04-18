@@ -20,5 +20,12 @@
             url: $rootScope.apiURL + '/Interviewers/GetInterviewerById?InterviewerId=' + InterviewerId
         })
     }
+    list.GetCompanyDetails = function () {
+        //debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Interviewers/GetCompanyDetails'
+        });
+    }
     return list;
 }])

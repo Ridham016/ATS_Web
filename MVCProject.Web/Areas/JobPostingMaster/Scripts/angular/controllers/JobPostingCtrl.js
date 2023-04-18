@@ -77,9 +77,10 @@
 
         $scope.SavePostingDetails = function (jobpostingDetailScope) {
             if (!$scope.frmRegister.$valid) {
-                angular.forEach($scope.frmRegister.$error.required, function (field) {
-                    field.$setTouched();
-                    field.$setValidity('required', true);
+                angular.forEach($scope.frmRegister.$error, function (controls) {
+                    angular.forEach(controls, function (control) {
+                        control.$setDirty();
+                    });
                 });
                 toastr.error('Please Check Form for errors', errorTitle)
                 return false;
@@ -112,6 +113,12 @@
                         $scope.jobpostingDetailScope = res.data.Result;
                         $scope.jobpostingDetailScope.PositionId = JSON.stringify($scope.jobpostingDetailScope.PositionId);
                         $scope.jobpostingDetailScope.CompanyId = JSON.stringify($scope.jobpostingDetailScope.CompanyId);
+                        $scope.frmRegister.$setSubmitted();
+                        angular.forEach($scope.frmRegister.$error, function (controls) {
+                            angular.forEach(controls, function (control) {
+                                control.$setDirty();
+                            });
+                        });
                         CommonFunctions.ScrollToTop();
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

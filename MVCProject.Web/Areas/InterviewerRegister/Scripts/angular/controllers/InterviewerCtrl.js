@@ -64,6 +64,13 @@
         //    });
         //};
 
+        $scope.getCompanyDetails = function () {
+            debugger
+            InterviewerService.GetCompanyDetails().then(function (res) {
+                $scope.companyDetails = res.data.Result;
+            })
+        }
+
         $scope.ClearFormData = function (frmRegister) {
             $scope.interviewerDetailScope = {
                 InterviewertId: 0,
@@ -77,20 +84,31 @@
             CommonFunctions.ScrollToTop();
         };
         $scope.SaveInterviewerDetails = function (interviewerDetailScope) {
-            InterviewerService.Register(interviewerDetailScope).then(function (res) {
-                if (res) {
-                    var interviewers = res.data;
-                    if (interviewers.MessageType == messageTypes.Success && interviewers.IsAuthenticated) {
-                        toastr.success(interviewers.Message, successTitle);
-                        $scope.ClearFormData(frmRegister);
-                        $scope.tableParams.reload();
-                    } else if (interviewers.MessageType == messageTypes.Error) {// Error
-                        toastr.error(interviewers.Message, errorTitle);
-                    } else if (interviewers.MessageType == messageTypes.Warning) {// Warning
-                        toastr.warning(interviewers.Message, warningTitle);
+            if (!$scope.frmRegister.$valid) {
+                angular.forEach($scope.frmRegister.$error, function (controls) {
+                    angular.forEach(controls, function (control) {
+                        control.$setDirty();
+                    });
+                });
+                toastr.error('Please Check Form for errors', errorTitle)
+                return false;
+            }
+            else {
+                InterviewerService.Register(interviewerDetailScope).then(function (res) {
+                    if (res) {
+                        var interviewers = res.data;
+                        if (interviewers.MessageType == messageTypes.Success && interviewers.IsAuthenticated) {
+                            toastr.success(interviewers.Message, successTitle);
+                            $scope.ClearFormData(frmRegister);
+                            $scope.tableParams.reload();
+                        } else if (interviewers.MessageType == messageTypes.Error) {// Error
+                            toastr.error(interviewers.Message, errorTitle);
+                        } else if (interviewers.MessageType == messageTypes.Warning) {// Warning
+                            toastr.warning(interviewers.Message, warningTitle);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
         $scope.EditInterviewersDetails = function (InterviewerId) {
             InterviewerService.GetInterviewersById(InterviewerId).then(function (res) {
@@ -99,6 +117,13 @@
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {// Success
                         $scope.interviewerDetailScope = res.data.Result;
+                        $scope.interviewerDetailScope.CompanyId = JSON.stringify($scope.interviewerDetailScope.CompanyId);
+                        $scope.frmRegister.$setSubmitted();
+                        angular.forEach($scope.frmRegister.$error, function (controls) {
+                            angular.forEach(controls, function (control) {
+                                control.$setDirty();
+                            });
+                        });
                         CommonFunctions.ScrollUpAndFocus("InterviewerName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

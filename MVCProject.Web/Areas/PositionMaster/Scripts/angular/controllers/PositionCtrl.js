@@ -59,9 +59,10 @@
 
         $scope.SavePositionDetails = function (positionDetailScope) {
             if (!$scope.frmRegister.$valid) {
-                angular.forEach($scope.frmRegister.$error.required, function (field) {
-                    field.$setTouched();
-                    field.$setValidity('required', true);
+                angular.forEach($scope.frmRegister.$error, function (controls) {
+                    angular.forEach(controls, function (control) {
+                        control.$setDirty();
+                    });
                 });
                 toastr.error('Please Check Form for errors', errorTitle)
                 return false;
@@ -94,6 +95,12 @@
                         $scope.positionDetailScope = res.data.Result;
                         $scope.positionDetailScope.PositionId = JSON.stringify($scope.positionDetailScope.PositionId);
                         $scope.positionDetailScope.CompanyId = JSON.stringify($scope.positionDetailScope.CompanyId);
+                        $scope.frmRegister.$setSubmitted();
+                        angular.forEach($scope.frmRegister.$error, function (controls) {
+                            angular.forEach(controls, function (control) {
+                                control.$setDirty();
+                            });
+                        });
                         CommonFunctions.ScrollToTop();
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

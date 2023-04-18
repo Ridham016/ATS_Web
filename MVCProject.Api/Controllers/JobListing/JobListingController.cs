@@ -38,6 +38,7 @@ namespace MVCProject.Api.Controllers.JobListing
                 Experience = g.Experience,
                 Salary = g.Salary,
                 EntryDate = g.EntryDate,
+                Posted = g.Posted,
                 IsActive = g.IsActive,
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, data);
