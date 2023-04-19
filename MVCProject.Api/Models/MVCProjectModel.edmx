@@ -49,8 +49,6 @@
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="Mode" Type="int" />
-          <Property Name="PositionId" Type="int" />
-          <Property Name="CompanyId" Type="int" />
           <Property Name="Venue" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ATS_ApplicantRegister">
@@ -322,30 +320,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ATS_Addit__Compa__125EB334">
-          <End Role="ATS_CompanyMaster" Type="Self.ATS_CompanyMaster" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_CompanyMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ATS_Addit__Posit__116A8EFB">
-          <End Role="ATS_PositionMaster" Type="Self.ATS_PositionMaster" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_PositionMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="PositionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ATS_Appli__Posti__3D491139">
           <End Role="ATS_JobPosting" Type="Self.ATS_JobPosting" Multiplicity="0..1" />
           <End Role="ATS_ApplicantRegister" Type="Self.ATS_ApplicantRegister" Multiplicity="*" />
@@ -534,6 +508,9 @@
           <Parameter Name="StatusId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_GetCompanyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_GetCompanyDetailsFromApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_GetInfoForEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -603,14 +580,6 @@
           <AssociationSet Name="FK__ATS_Actio__Statu__41B8C09B" Association="Self.FK__ATS_Actio__Statu__41B8C09B">
             <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ATS_Addit__Compa__125EB334" Association="Self.FK__ATS_Addit__Compa__125EB334">
-            <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ATS_Addit__Posit__116A8EFB" Association="Self.FK__ATS_Addit__Posit__116A8EFB">
-            <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Appli__Posti__3D491139" Association="Self.FK__ATS_Appli__Posti__3D491139">
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
@@ -682,7 +651,7 @@
           <NavigationProperty Name="ATS_ApplicantRegister" Relationship="Self.FK__ATS_Actio__Appli__40C49C62" FromRole="ATS_ActionHistory" ToRole="ATS_ApplicantRegister" />
           <NavigationProperty Name="ATS_MasterOtherReason" Relationship="Self.FK__ATS_Actio__Reaso__42ACE4D4" FromRole="ATS_ActionHistory" ToRole="ATS_MasterOtherReason" />
           <NavigationProperty Name="ATS_MasterStatus" Relationship="Self.FK__ATS_Actio__Statu__41B8C09B" FromRole="ATS_ActionHistory" ToRole="ATS_MasterStatus" />
-          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ActionHistory" ToRole="ATS_AdditionalInformation" />
+          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="ATSMVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_ActionHistory" ToRole="ATS_AdditionalInformation" />
         </EntityType>
         <EntityType Name="ATS_ActionStatus">
           <Key>
@@ -698,30 +667,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_MasterButton" Relationship="Self.FK__ATS_Actio__Butto__4589517F" FromRole="ATS_ActionStatus" ToRole="ATS_MasterButton" />
           <NavigationProperty Name="ATS_MasterStatus" Relationship="Self.FK__ATS_Actio__NextS__467D75B8" FromRole="ATS_ActionStatus" ToRole="ATS_MasterStatus" />
-        </EntityType>
-        <EntityType Name="ATS_AdditionalInformation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
-          <Property Name="ActionId" Type="Int32" />
-          <Property Name="InterviewerId" Type="Int32" />
-          <Property Name="ScheduleLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EntryDate" Type="DateTime" Precision="3" />
-          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="Mode" Type="Int32" />
-          <Property Name="PositionId" Type="Int32" />
-          <Property Name="CompanyId" Type="Int32" />
-          <Property Name="Venue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_AdditionalInformation" ToRole="ATS_ActionHistory" />
-          <NavigationProperty Name="ATS_CompanyMaster" Relationship="Self.FK__ATS_Addit__Compa__125EB334" FromRole="ATS_AdditionalInformation" ToRole="ATS_CompanyMaster" />
-          <NavigationProperty Name="ATS_PositionMaster" Relationship="Self.FK__ATS_Addit__Posit__116A8EFB" FromRole="ATS_AdditionalInformation" ToRole="ATS_PositionMaster" />
-          <NavigationProperty Name="ATS_Interviewer" Relationship="Self.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_AdditionalInformation" ToRole="ATS_Interviewer" />
         </EntityType>
         <EntityType Name="ATS_ApplicantRegister">
           <Key>
@@ -820,7 +765,6 @@
           <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Addit__Compa__125EB334" FromRole="ATS_CompanyMaster" ToRole="ATS_AdditionalInformation" />
           <NavigationProperty Name="ATS_PositionMaster" Relationship="Self.FK__ATS_Compa__Conta__0F824689" FromRole="ATS_CompanyMaster" ToRole="ATS_PositionMaster" />
           <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2" FromRole="ATS_CompanyMaster" ToRole="ATS_JobPosting" />
           <NavigationProperty Name="ATS_Interviewer" Relationship="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" FromRole="ATS_CompanyMaster" ToRole="ATS_Interviewer" />
@@ -854,9 +798,9 @@
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_AdditionalInformation" />
           <Property Name="CompanyId" Type="Int32" />
           <NavigationProperty Name="ATS_CompanyMaster" Relationship="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" FromRole="ATS_Interviewer" ToRole="ATS_CompanyMaster" />
+          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_Interviewer" ToRole="ATS_AdditionalInformation" />
         </EntityType>
         <EntityType Name="ATS_MasterButton">
           <Key>
@@ -900,7 +844,6 @@
           <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="ATS_AdditionalInformation" Relationship="Self.FK__ATS_Addit__Posit__116A8EFB" FromRole="ATS_PositionMaster" ToRole="ATS_AdditionalInformation" />
           <NavigationProperty Name="ATS_CompanyMaster" Relationship="Self.FK__ATS_Compa__Conta__0F824689" FromRole="ATS_PositionMaster" ToRole="ATS_CompanyMaster" />
           <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Posit__2FEF161B" FromRole="ATS_PositionMaster" ToRole="ATS_JobPosting" />
         </EntityType>
@@ -978,18 +921,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ATS_Sched__Actio__50FB042B">
-          <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_ActionHistory">
-              <PropertyRef Name="ActionId" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="ActionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ATS_Actio__Butto__4589517F">
           <End Role="ATS_MasterButton" Type="Self.ATS_MasterButton" Multiplicity="0..1" />
           <End Role="ATS_ActionStatus" Type="Self.ATS_ActionStatus" Multiplicity="*" />
@@ -1011,42 +942,6 @@
             </Principal>
             <Dependent Role="ATS_ActionStatus">
               <PropertyRef Name="NextStatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ATS_Addit__Compa__125EB334">
-          <End Role="ATS_CompanyMaster" Type="Self.ATS_CompanyMaster" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_CompanyMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ATS_Addit__Posit__116A8EFB">
-          <End Role="ATS_PositionMaster" Type="Self.ATS_PositionMaster" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_PositionMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="PositionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ATS_Sched__Inter__51EF2864">
-          <End Role="ATS_Interviewer" Type="Self.ATS_Interviewer" Multiplicity="0..1" />
-          <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATS_Interviewer">
-              <PropertyRef Name="InterviewerId" />
-            </Principal>
-            <Dependent Role="ATS_AdditionalInformation">
-              <PropertyRef Name="InterviewerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1125,7 +1020,6 @@
         <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" />
           <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" />
-          <EntitySet Name="ATS_AdditionalInformation" EntityType="Self.ATS_AdditionalInformation" />
           <EntitySet Name="ATS_ApplicantRegister" EntityType="Self.ATS_ApplicantRegister" />
           <EntitySet Name="ATS_Attachment" EntityType="Self.ATS_Attachment" />
           <EntitySet Name="ATS_AttachmentType" EntityType="Self.ATS_AttachmentType" />
@@ -1152,10 +1046,6 @@
             <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
           </AssociationSet>
-          <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="Self.FK__ATS_Sched__Actio__50FB042B">
-            <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
-          </AssociationSet>
           <AssociationSet Name="FK__ATS_Actio__Butto__4589517F" Association="Self.FK__ATS_Actio__Butto__4589517F">
             <End Role="ATS_MasterButton" EntitySet="ATS_MasterButton" />
             <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
@@ -1163,18 +1053,6 @@
           <AssociationSet Name="FK__ATS_Actio__NextS__467D75B8" Association="Self.FK__ATS_Actio__NextS__467D75B8">
             <End Role="ATS_MasterStatus" EntitySet="ATS_MasterStatus" />
             <End Role="ATS_ActionStatus" EntitySet="ATS_ActionStatus" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ATS_Addit__Compa__125EB334" Association="Self.FK__ATS_Addit__Compa__125EB334">
-            <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ATS_Addit__Posit__116A8EFB" Association="Self.FK__ATS_Addit__Posit__116A8EFB">
-            <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="Self.FK__ATS_Sched__Inter__51EF2864">
-            <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
-            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Attac__Appli__39237A9A" Association="Self.FK__ATS_Attac__Appli__39237A9A">
             <End Role="ATS_ApplicantRegister" EntitySet="ATS_ApplicantRegister" />
@@ -1234,7 +1112,8 @@
           <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetButton_Result)">
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetails_Result)" />
+          <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetails_Result)" >
+          </FunctionImport>
           <FunctionImport Name="USP_ATS_GetInfoForEmail" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetInfoForEmail_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1285,6 +1164,18 @@
             <End Role="ATS_CompanyMaster" EntitySet="ATS_CompanyMaster" />
             <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
           </AssociationSet>
+          <EntitySet Name="ATS_AdditionalInformation" EntityType="ATSMVCProjectModel.ATS_AdditionalInformation" />
+          <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="ATSMVCProjectModel.FK__ATS_Sched__Actio__50FB042B">
+            <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_Sched__Inter__51EF2864" Association="ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864">
+            <End Role="ATS_Interviewer" EntitySet="ATS_Interviewer" />
+            <End Role="ATS_AdditionalInformation" EntitySet="ATS_AdditionalInformation" />
+          </AssociationSet>
+          <FunctionImport Name="USP_ATS_GetCompanyDetailsFromApplicant" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetailsFromApplicant_Result)">
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1534,6 +1425,9 @@
           <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="FileLink" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
+          <Property Type="Int32" Name="PositionId" Nullable="true" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="USP_ATS_GetApplicantWithStatus_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1575,14 +1469,14 @@
           <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Venue" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="ContactPersonPositionId" Nullable="true" />
           <Property Type="String" Name="ContactPersonPhone" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="ContactPersonPositionId" Nullable="true" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
-          <Property Type="Boolean" Name="IsActive" Nullable="true" />
-        </ComplexType>
+          </ComplexType>
         <ComplexType Name="USP_ATS_GetInfoForEmail_Result">
           <Property Type="DateTime" Name="ScheduleDateTime" Nullable="true" Precision="23" />
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="50" />
@@ -1824,6 +1718,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ATS_AdditionalInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ActionId" Type="Int32" />
+          <Property Name="InterviewerId" Type="Int32" />
+          <Property Name="ScheduleLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Mode" Type="Int32" />
+          <Property Name="Venue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATS_ActionHistory" Relationship="ATSMVCProjectModel.FK__ATS_Sched__Actio__50FB042B" FromRole="ATS_AdditionalInformation" ToRole="ATS_ActionHistory" />
+          <NavigationProperty Name="ATS_Interviewer" Relationship="ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864" FromRole="ATS_AdditionalInformation" ToRole="ATS_Interviewer" />
+        </EntityType>
+        <Association Name="FK__ATS_Sched__Actio__50FB042B">
+          <End Type="ATSMVCProjectModel.ATS_ActionHistory" Role="ATS_ActionHistory" Multiplicity="0..1" />
+          <End Type="ATSMVCProjectModel.ATS_AdditionalInformation" Role="ATS_AdditionalInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_ActionHistory">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="ATS_AdditionalInformation">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATS_Sched__Inter__51EF2864">
+          <End Type="ATSMVCProjectModel.ATS_Interviewer" Role="ATS_Interviewer" Multiplicity="0..1" />
+          <End Type="ATSMVCProjectModel.ATS_AdditionalInformation" Role="ATS_AdditionalInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_Interviewer">
+              <PropertyRef Name="InterviewerId" />
+            </Principal>
+            <Dependent Role="ATS_AdditionalInformation">
+              <PropertyRef Name="InterviewerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="USP_ATS_GetCompanyDetailsFromApplicant_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Venue" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactPersonPhone" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1857,27 +1804,6 @@
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ATS_AdditionalInformation">
-            <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_AdditionalInformation">
-              <MappingFragment StoreEntitySet="ATS_AdditionalInformation">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
-                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
-                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
-                <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
-                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
-                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Mode" ColumnName="Mode" />
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Venue" ColumnName="Venue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2379,6 +2305,9 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FileLink" ColumnName="FileLink" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2432,14 +2361,14 @@
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Venue" ColumnName="Venue" />
                 <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
-                <ScalarProperty Name="ContactPersonPositionId" ColumnName="ContactPersonPositionId" />
                 <ScalarProperty Name="ContactPersonPhone" ColumnName="ContactPersonPhone" />
-                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactPersonPositionId" ColumnName="ContactPersonPositionId" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_GetInfoForEmail" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetInfoForEmail">
@@ -2688,6 +2617,38 @@
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Posted" ColumnName="Posted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ATS_AdditionalInformation">
+            <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_AdditionalInformation">
+              <MappingFragment StoreEntitySet="ATS_AdditionalInformation">
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ScheduleLink" ColumnName="ScheduleLink" />
+                <ScalarProperty Name="InterviewerId" ColumnName="InterviewerId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetCompanyDetailsFromApplicant" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetCompanyDetailsFromApplicant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetCompanyDetailsFromApplicant_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="ContactPersonPhone" ColumnName="ContactPersonPhone" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

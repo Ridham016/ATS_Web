@@ -15,8 +15,6 @@
             ScheduleLink: '',
             Description: '',
             Mode: '',
-            PositionId: '',
-            CompanyId: '',
             Venue : '',
             IsActive: true
         };
@@ -31,10 +29,7 @@
         $scope.useCompanyVenue = function (useCompanyVenue) {
             if (useCompanyVenue) {
                 debugger
-                var selectedCompany = $scope.companyDetails.find(function (company) {
-                    return company.Id == $scope.scheduleDetailScope.CompanyId;
-                });
-                $scope.scheduleDetailScope.Venue = selectedCompany.Venue;
+                $scope.scheduleDetailScope.Venue = $scope.companyDetails[0].Venue;
             }
             else {
                 $scope.scheduleDetailScope.Venue = ''
@@ -93,16 +88,9 @@
         }
 
         $scope.getCompanyDetails = function () {
-            //debugger
-            ScheduleService.GetCompanyDetails().then(function (res) {
-                $scope.companyDetails = res.data.Result;
-            })
-        }
 
-        $scope.getPositionDetails = function () {
-            //debugger
-            ScheduleService.GetPositionDetails().then(function (res) {
-                $scope.positionDetails = res.data.Result;
+            ScheduleService.GetCompanyDetails($scope.applicantId).then(function (res) {
+                $scope.companyDetails = res.data.Result;
             })
         }
 

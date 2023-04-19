@@ -99,11 +99,24 @@
     }
 </style>
 
-<div ng-controller="RegistrationCtrl" novalidate>
+<div ng-controller="RegistrationCtrl" ng-init="getJobPostingList()" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.ApplicantRegister</h4>
         <div class="pull-right">
+            <form name="frmRegister1" novalidate>
+                <div class="form-group">
+                    <select class="form-select" name="PostingId"
+                             ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}" ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList"  required>
+                        <option value="" disabled>Select Job Posting</option>
+                    </select>
+                    <div class="c">
+                    </div>
+                    <div class="label label-danger" data-ng-show="frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid">
+                        <span data-ng-show="frmRegister1.PostingId.$error.required">@Resource.JobPostingRequired</span>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="card-box">
@@ -424,7 +437,7 @@
                                                     @Resource.ExpectedCTC<span class="required-field">*</span>
                                                 </label>
                                                 <input type="text" ng-class="{'border-color' : frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid}"
-                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" required/>
+                                                       class="form-control" placeholder="Enter Expected CTC" name="ExpectedCTC" ng-model="applicantDetailScope.ExpectedCTC" required />
                                                 <div class="c">
                                                 </div>
                                                 <div class="label label-danger" data-ng-show="frmRegister.ExpectedCTC.$dirty && frmRegister.ExpectedCTC.$invalid">
@@ -479,7 +492,7 @@
                                                     Uploaded Files
                                                 </h4>
                                                 @*<div class="card-body">
-                                                </div>*@
+                                    </div>*@
                                                 <div class="row mb-2" ng-repeat="f in files">
                                                     <div class="col-11">
                                                         <a href="{{f.FileRelativePath}}" target="_blank">
@@ -493,15 +506,15 @@
                                                     </div>
                                                 </div>
                                                 @*<ul class="list-group list-group-flush">
-                                                    <li class="row list-group-item" ng-repeat="f in files">
-                                                        <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
-                                                            {{f.OriginalFileName}}
-                                                        </a>
-                                                        <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>*@
+                                        <li class="row list-group-item" ng-repeat="f in files">
+                                            <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                                {{f.OriginalFileName}}
+                                            </a>
+                                            <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </li>
+                                    </ul>*@
                                             </div>
                                         </div>
                                     </div>

@@ -40,18 +40,10 @@
             data: JSON.stringify(scheduleDetailScope)
         });
     }
-    list.GetCompanyDetails = function () {
-        //debugger
+    list.GetCompanyDetails = function (applicantId) {
         return $http({
             method: 'GET',
-            url: $rootScope.apiURL + '/Schedules/GetCompanyDetails'
-        });
-    }
-    list.GetPositionDetails = function () {
-        //debugger
-        return $http({
-            method: 'GET',
-            url: $rootScope.apiURL + '/Schedules/GetPositionDetails'
+            url: $rootScope.apiURL + '/Schedules/GetCompanyDetails?ApplicantId=' + applicantId,
         });
     }
     list.GetOtherReasons = function () {

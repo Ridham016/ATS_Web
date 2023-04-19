@@ -78,5 +78,12 @@
             url: $rootScope.apiURL + '/Registrations/ExportToXl'
         });
     }
+
+    list.GetJobPostingList = function () {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Registrations/GetJobPostingList'
+        })
+    }
     return list;
 }])

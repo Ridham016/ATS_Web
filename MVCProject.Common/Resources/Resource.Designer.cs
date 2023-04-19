@@ -1681,6 +1681,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job Posting is Required.
+        /// </summary>
+        public static string JobPostingRequired {
+            get {
+                return ResourceManager.GetString("JobPostingRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to July.
         /// </summary>
         public static string July {

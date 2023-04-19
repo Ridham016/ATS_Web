@@ -232,8 +232,6 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 ActionId = data.ActionId,
                 Description = data.Description,
                 InterviewerId = data.InterviewerId,
-                PositionId = data.PositionId,
-                CompanyId = data.CompanyId,
                 Venue = data.Venue,
                 Mode = data.Mode,
                 IsActive = true,
@@ -251,18 +249,18 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             string RoleName = Role.RoleName;
             await Task.Run(() =>
             {
-                var applicantemail = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
-                string[] emails = { applicantemail.ApplicantEmail };
-                string FirstName = applicantemail.FirstName;
-                string MiddleName = applicantemail.MiddleName;
-                string LastName = applicantemail.LastName;
+                var applicant = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
+                string[] emails = { applicant.ApplicantEmail };
+                string FirstName = applicant.FirstName;
+                string MiddleName = applicant.MiddleName;
+                string LastName = applicant.LastName;
                 string ApplicantName;
                 if (MiddleName != "")
                 {
                     ApplicantName = FirstName + " " + MiddleName + " " + LastName;
                 }
                 ApplicantName = FirstName + " " + LastName;
-                string FileLink = applicantemail.FileLink;
+                string FileLink = applicant.FileLink;
                 string linkLabelvenueLabel = "";
                 string linkvenue = "";
                 string Mode = "";
@@ -274,7 +272,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     g.InterviewerName,
                     g.InterviewerEmail
                 }).FirstOrDefault();
-                var Position = entities.ATS_PositionMaster.Where(x => x.Id == data.PositionId).Select(g => new
+                var Position = entities.ATS_PositionMaster.Where(x => x.Id == applicant.PositionId).Select(g => new
                 {
                     g.PositionName
                 }).FirstOrDefault();
@@ -284,7 +282,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     linkLabelvenueLabel = "Venue";
                     linkvenue = data.Venue;
                     Mode = "Offline";
-                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
                     {
                         g.CompanyName,
                         g.ContactPersonName,
@@ -305,7 +303,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     linkLabelvenueLabel = "Interview link";
                     linkvenue = data.ScheduleLink;
                     Mode = "Online";
-                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == data.CompanyId).Select(g => new
+                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
                     {
                         g.CompanyName,
                         g.ContactPersonName,
@@ -338,27 +336,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpGet]
-        public ApiResponse GetCompanyDetails()
+        public ApiResponse GetCompanyDetails([FromUri]int ApplicantId)
         {
-            var data = this.entities.USP_ATS_GetCompanyDetails().Select(x => new
-            {
-                Id = x.Id,
-                CompanyName = x.CompanyName,
-                Venue = x.Venue,
-                IsActive = x.IsActive
-            }).ToList();
-            return this.Response(MessageTypes.Success, string.Empty, data);
-        }
-
-        [HttpGet]
-        public ApiResponse GetPositionDetails()
-        {
-            var data = this.entities.USP_ATS_GetPositionDetails().Select(x => new
-            {
-                Id = x.Id,
-                PositionName = x.PositionName,
-                IsActive = x.IsActive
-            }).ToList();
+            var data = this.entities.USP_ATS_GetCompanyDetailsFromApplicant(ApplicantId).SingleOrDefault();
             return this.Response(MessageTypes.Success, string.Empty, data);
         }
 

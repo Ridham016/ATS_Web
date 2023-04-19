@@ -121,7 +121,7 @@
                     </button>
 
 
-                    <div class="modal fade" id="Modal3" tabindex="-1" ng-init="getPositionDetails();getCompanyDetails()" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="Modal3" tabindex="-1" ng-init="getCompanyDetails()" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -132,38 +132,6 @@
                                       novalidate>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group mb-3">
-                                                    <label>
-                                                        @Resource.Company <span class="required-field">*</span>
-                                                    </label>
-                                                    <select class="form-select" name="Company" ng-model="scheduleDetailScope.CompanyId" required>
-                                                        <option value="" selected disabled>Select Company Name</option>
-                                                        <option ng-repeat="h in companyDetails" value="{{h.Id}}">{{h.CompanyName}}</option>
-                                                    </select>
-                                                    <div class="c">
-                                                    </div>
-                                                    <div class="label label-danger" data-ng-show="frmSchedule.Company.$dirty && frmSchedule.Company.$invalid">
-                                                        <span data-ng-show="frmSchedule.Company.$error.required">@Resource.CompanyRequired</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group mb-3">
-                                                    <label>
-                                                        @Resource.Position <span class="required-field">*</span>
-                                                    </label>
-                                                    <select class="form-select" name="Position" ng-model="scheduleDetailScope.PositionId" required>
-                                                        <option value="" selected disabled>Select Position</option>
-                                                        <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
-                                                    </select>
-                                                    <div class="c">
-                                                    </div>
-                                                    <div class="label label-danger" data-ng-show="frmSchedule.Position.$dirty && frmSchedule.Position.$invalid">
-                                                        <span data-ng-show="frmSchedule.Position.$error.required">@Resource.PosiitonRequired</span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-6">
                                                 <div class="form-group mb-3">
                                                     <label>

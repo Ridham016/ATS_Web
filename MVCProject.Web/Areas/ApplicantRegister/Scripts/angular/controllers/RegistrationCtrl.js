@@ -19,9 +19,6 @@
         $scope.Selectedfile = null;
         $scope.Files = null;
 
-        var params = $location.search();
-        $scope.PostingId = params.PostingId;
-
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             FirstName: '',
@@ -46,9 +43,18 @@
             LinkedinLink: '',
             OtherLink: '',
             ExpectedJoiningDate: null,
-            PostingId: $scope.PostingId,
+            PostingId: '',
             IsActive: true
         };
+
+        var params = $location.search();
+        if (params.PostingId != null) {
+            $scope.applicantDetailScope.PostingId = JSON.parse(params.PostingId);
+            console.log($scope.applicantDetailScope);
+        }
+        else {
+            $scope.applicantDetailScope.PostingId = '';
+        }
 
         $scope.Check = function (textInput) {
             if (textInput = 'fresher') {
@@ -151,7 +157,7 @@
                 LinkedinLink: '',
                 OtherLink: '',
                 ExpectedJoiningDate: null,
-                PostingId: 0,
+                PostingId: '',
                 IsActive: true
             };
             $("#file").val("");
@@ -159,11 +165,16 @@
             $scope.Selectedfile = null;
             $scope.Files = null;
             $scope.frmRegister.$setPristine();
+            $scope.frmRegister1.$setPristine();
+            $location.search({});
             CommonFunctions.ScrollToTop();
             $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');
             $('#accordionExample').find('#company_details').removeClass('show').find('.accordion-collapse').removeClass('show');
             $("#FirstName").focus();
         };
+
+
+
         $scope.SaveApplicantDetails = function (applicantDetailScope) {
             if (!$scope.frmRegister.$valid) {
                 angular.forEach($scope.frmRegister.$error, function (controls) {
@@ -171,13 +182,16 @@
                         control.$setDirty();
                     });
                 });
+                if ($scope.frmRegister1.PostingId.$error) {
+                    $scope.frmRegister1.PostingId.$setDirty();
+                }
                 toastr.error('Please Check Form for errors', errorTitle)
                 return false;
             }
             else {
                 applicantDetailScope.DateOfBirth = angular.copy(moment(applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                 applicantDetailScope.ExpectedJoiningDate = angular.copy(moment(applicantDetailScope.ExpectedJoiningDate).format($rootScope.apiDateFormat));
-                applicantDetailScope.PostingId = $scope.PostingId;
+                //applicantDetailScope.PostingId = $scope.PostingId;
                 console.log(applicantDetailScope.PostingId);
                 RegistrationService.Register(applicantDetailScope).then(function (res) {
                     if (res) {
@@ -259,7 +273,7 @@
         }
 
         $scope.EditApplicantDetails = function (ApplicantId) {
-            //debugger
+            $location.search({});
             $scope.getFiles(ApplicantId);
             RegistrationService.GetApplicantsById(ApplicantId).then(function (res) {
                 //debugger
@@ -270,19 +284,28 @@
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         $scope.applicantDetailScope.ExpectedJoiningDate = new Date($scope.applicantDetailScope.ExpectedJoiningDate);
-                        $scope.PostingId = $scope.applicantDetailScope.PostingId 
                         $scope.frmRegister.$setSubmitted();
                         angular.forEach($scope.frmRegister.$error, function (controls) {
                             angular.forEach(controls, function (control) {
                                 control.$setDirty(); 
                             });
                         });
+                        if ($scope.frmRegister1.PostingId.$error) {
+                            $scope.frmRegister1.PostingId.$setDirty();
+                        }
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);
                     }
                 }
                 $rootScope.isAjaxLoadingChild = false;
+            })
+        }
+
+        $scope.getJobPostingList = function () {
+            RegistrationService.GetJobPostingList().then(function (res) {
+                $scope.JobList = res.data.Result;
+                console.log($scope.JobList);
             })
         }
 

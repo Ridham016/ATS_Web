@@ -208,6 +208,26 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             }
         }
 
+        [HttpGet]
+        public ApiResponse GetJobPostingList()
+        {
+            var data = this.entities.USP_ATS_JobListing().Select(g => new
+            {
+                PostingId = g.PostingId,
+                CompanyId = g.CompanyId,
+                PositionId = g.PositionId,
+                CompanyName = g.CompanyName,
+                CompanyVenue = g.CompanyVenue,
+                PositionName = g.PositionName,
+                Experience = g.Experience,
+                Salary = g.Salary,
+                EntryDate = g.EntryDate,
+                Posted = g.Posted,
+                IsActive = g.IsActive,
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
         [HttpPost]
         public ApiResponse ListSearchFilter([FromBody] ATS_ApplicantRegister data)
         {
