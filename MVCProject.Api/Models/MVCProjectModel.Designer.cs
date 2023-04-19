@@ -28,14 +28,13 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Attac__Attac__3BFFE745", "ATS_AttachmentType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_AttachmentType), "ATS_Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Attachment), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Butto__Butto__4959E263", "ATS_MasterButton", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterButton), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Butto__Statu__4A4E069C", "ATS_MasterStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterStatus), "ATS_ButtonMapping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ButtonMapping), true)]
-[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_PositionMaster), "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_CompanyMaster), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Users__RoleI__07E124C1", "ATS_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_Roles), "ATS_Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Users), true)]
-[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_CompanyMaster), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Posit__2FEF161B", "ATS_PositionMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_PositionMaster), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Appli__Posti__3D491139", "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_JobPosting), "ATS_ApplicantRegister", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_ApplicantRegister), true)]
-[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Inter__Compa__3E3D3572", "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_CompanyMaster), "ATS_Interviewer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Interviewer), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Sched__Actio__50FB042B", "ATS_ActionHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_ActionHistory), "ATS_AdditionalInformation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_AdditionalInformation), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Sched__Inter__51EF2864", "ATS_Interviewer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_Interviewer), "ATS_AdditionalInformation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_AdditionalInformation), true)]
+[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_Inter__Compa__3E3D3572", "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_CompanyMaster), "ATS_Interviewer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_Interviewer), true)]
+[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_CompanyMaster), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
 
 #endregion
 
@@ -182,22 +181,6 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<ATS_ButtonMapping> _ATS_ButtonMapping;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ATS_CompanyMaster> ATS_CompanyMaster
-        {
-            get
-            {
-                if ((_ATS_CompanyMaster == null))
-                {
-                    _ATS_CompanyMaster = base.CreateObjectSet<ATS_CompanyMaster>("ATS_CompanyMaster");
-                }
-                return _ATS_CompanyMaster;
-            }
-        }
-        private ObjectSet<ATS_CompanyMaster> _ATS_CompanyMaster;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -374,6 +357,22 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<ATS_AdditionalInformation> _ATS_AdditionalInformation;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ATS_CompanyMaster> ATS_CompanyMaster
+        {
+            get
+            {
+                if ((_ATS_CompanyMaster == null))
+                {
+                    _ATS_CompanyMaster = base.CreateObjectSet<ATS_CompanyMaster>("ATS_CompanyMaster");
+                }
+                return _ATS_CompanyMaster;
+            }
+        }
+        private ObjectSet<ATS_CompanyMaster> _ATS_CompanyMaster;
 
         #endregion
 
@@ -425,14 +424,6 @@ namespace MVCProject.Api.Models
         public void AddToATS_ButtonMapping(ATS_ButtonMapping aTS_ButtonMapping)
         {
             base.AddObject("ATS_ButtonMapping", aTS_ButtonMapping);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ATS_CompanyMaster EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToATS_CompanyMaster(ATS_CompanyMaster aTS_CompanyMaster)
-        {
-            base.AddObject("ATS_CompanyMaster", aTS_CompanyMaster);
         }
     
         /// <summary>
@@ -521,6 +512,14 @@ namespace MVCProject.Api.Models
         public void AddToATS_AdditionalInformation(ATS_AdditionalInformation aTS_AdditionalInformation)
         {
             base.AddObject("ATS_AdditionalInformation", aTS_AdditionalInformation);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ATS_CompanyMaster EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToATS_CompanyMaster(ATS_CompanyMaster aTS_CompanyMaster)
+        {
+            base.AddObject("ATS_CompanyMaster", aTS_CompanyMaster);
         }
 
         #endregion
@@ -3997,54 +3996,6 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ContactPersonPositionId
-        {
-            get
-            {
-                return _ContactPersonPositionId;
-            }
-            set
-            {
-                OnContactPersonPositionIdChanging(value);
-                ReportPropertyChanging("ContactPersonPositionId");
-                _ContactPersonPositionId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ContactPersonPositionId");
-                OnContactPersonPositionIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ContactPersonPositionId;
-        partial void OnContactPersonPositionIdChanging(Nullable<global::System.Int32> value);
-        partial void OnContactPersonPositionIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ContactPersonPhone
-        {
-            get
-            {
-                return _ContactPersonPhone;
-            }
-            set
-            {
-                OnContactPersonPhoneChanging(value);
-                ReportPropertyChanging("ContactPersonPhone");
-                _ContactPersonPhone = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPhone");
-                OnContactPersonPhoneChanged();
-            }
-        }
-        private global::System.String _ContactPersonPhone;
-        partial void OnContactPersonPhoneChanging(global::System.String value);
-        partial void OnContactPersonPhoneChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String EntryBy
         {
             get
@@ -4171,34 +4122,18 @@ namespace MVCProject.Api.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster")]
-        public ATS_PositionMaster ATS_PositionMaster
+        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer")]
+        public EntityCollection<ATS_Interviewer> ATS_Interviewer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_PositionMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_PositionMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<ATS_PositionMaster> ATS_PositionMasterReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_PositionMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_Interviewer>("ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_PositionMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_PositionMaster", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_Interviewer>("ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer", value);
                 }
             }
         }
@@ -4221,28 +4156,6 @@ namespace MVCProject.Api.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_JobPosting>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_JobPosting", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer")]
-        public EntityCollection<ATS_Interviewer> ATS_Interviewer
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_Interviewer>("ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_Interviewer>("ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572", "ATS_Interviewer", value);
                 }
             }
         }
@@ -4827,6 +4740,28 @@ namespace MVCProject.Api.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation")]
+        public EntityCollection<ATS_AdditionalInformation> ATS_AdditionalInformation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_AdditionalInformation>("ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_AdditionalInformation>("ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Inter__Compa__3E3D3572", "ATS_CompanyMaster")]
         public ATS_CompanyMaster ATS_CompanyMaster
         {
@@ -4855,28 +4790,6 @@ namespace MVCProject.Api.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572", "ATS_CompanyMaster", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation")]
-        public EntityCollection<ATS_AdditionalInformation> ATS_AdditionalInformation
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_AdditionalInformation>("ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_AdditionalInformation>("ATSMVCProjectModel.FK__ATS_Sched__Inter__51EF2864", "ATS_AdditionalInformation", value);
                 }
             }
         }
@@ -5164,44 +5077,6 @@ namespace MVCProject.Api.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster")]
-        public ATS_CompanyMaster ATS_CompanyMaster
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<ATS_CompanyMaster> ATS_CompanyMasterReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Posit__2FEF161B", "ATS_PositionMaster")]
         public ATS_PositionMaster ATS_PositionMaster
         {
@@ -5252,6 +5127,44 @@ namespace MVCProject.Api.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_ApplicantRegister>("ATSMVCProjectModel.FK__ATS_Appli__Posti__3D491139", "ATS_ApplicantRegister", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster")]
+        public ATS_CompanyMaster ATS_CompanyMaster
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ATS_CompanyMaster> ATS_CompanyMasterReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster", value);
                 }
             }
         }
@@ -5943,28 +5856,6 @@ namespace MVCProject.Api.Models
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_Compa__Conta__0F824689", "ATS_CompanyMaster")]
-        public EntityCollection<ATS_CompanyMaster> ATS_CompanyMaster
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_CompanyMaster");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_CompanyMaster>("ATSMVCProjectModel.FK__ATS_Compa__Conta__0F824689", "ATS_CompanyMaster", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8339,54 +8230,6 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ContactPersonPositionId
-        {
-            get
-            {
-                return _ContactPersonPositionId;
-            }
-            set
-            {
-                OnContactPersonPositionIdChanging(value);
-                ReportPropertyChanging("ContactPersonPositionId");
-                _ContactPersonPositionId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ContactPersonPositionId");
-                OnContactPersonPositionIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ContactPersonPositionId;
-        partial void OnContactPersonPositionIdChanging(Nullable<global::System.Int32> value);
-        partial void OnContactPersonPositionIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ContactPersonPhone
-        {
-            get
-            {
-                return _ContactPersonPhone;
-            }
-            set
-            {
-                OnContactPersonPhoneChanging(value);
-                ReportPropertyChanging("ContactPersonPhone");
-                _ContactPersonPhone = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPhone");
-                OnContactPersonPhoneChanged();
-            }
-        }
-        private global::System.String _ContactPersonPhone;
-        partial void OnContactPersonPhoneChanging(global::System.String value);
-        partial void OnContactPersonPhoneChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> EntryDate
         {
             get
@@ -8429,30 +8272,6 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ContactPersonPostionName
-        {
-            get
-            {
-                return _ContactPersonPostionName;
-            }
-            set
-            {
-                OnContactPersonPostionNameChanging(value);
-                ReportPropertyChanging("ContactPersonPostionName");
-                _ContactPersonPostionName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPostionName");
-                OnContactPersonPostionNameChanged();
-            }
-        }
-        private global::System.String _ContactPersonPostionName;
-        partial void OnContactPersonPostionNameChanging(global::System.String value);
-        partial void OnContactPersonPostionNameChanged();
 
         #endregion
 
@@ -12598,78 +12417,6 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String ContactPersonPhone
-        {
-            get
-            {
-                return _ContactPersonPhone;
-            }
-            set
-            {
-                OnContactPersonPhoneChanging(value);
-                ReportPropertyChanging("ContactPersonPhone");
-                _ContactPersonPhone = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPhone");
-                OnContactPersonPhoneChanged();
-            }
-        }
-        private global::System.String _ContactPersonPhone;
-        partial void OnContactPersonPhoneChanging(global::System.String value);
-        partial void OnContactPersonPhoneChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ContactPersonPositionId
-        {
-            get
-            {
-                return _ContactPersonPositionId;
-            }
-            set
-            {
-                OnContactPersonPositionIdChanging(value);
-                ReportPropertyChanging("ContactPersonPositionId");
-                _ContactPersonPositionId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ContactPersonPositionId");
-                OnContactPersonPositionIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ContactPersonPositionId;
-        partial void OnContactPersonPositionIdChanging(Nullable<global::System.Int32> value);
-        partial void OnContactPersonPositionIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ContactPersonPostionName
-        {
-            get
-            {
-                return _ContactPersonPostionName;
-            }
-            set
-            {
-                OnContactPersonPostionNameChanging(value);
-                ReportPropertyChanging("ContactPersonPostionName");
-                _ContactPersonPostionName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPostionName");
-                OnContactPersonPostionNameChanged();
-            }
-        }
-        private global::System.String _ContactPersonPostionName;
-        partial void OnContactPersonPostionNameChanging(global::System.String value);
-        partial void OnContactPersonPostionNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> EntryDate
         {
             get
@@ -14153,30 +13900,6 @@ namespace MVCProject.Api.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String ContactPersonPhone
-        {
-            get
-            {
-                return _ContactPersonPhone;
-            }
-            set
-            {
-                OnContactPersonPhoneChanging(value);
-                ReportPropertyChanging("ContactPersonPhone");
-                _ContactPersonPhone = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPhone");
-                OnContactPersonPhoneChanged();
-            }
-        }
-        private global::System.String _ContactPersonPhone;
-        partial void OnContactPersonPhoneChanging(global::System.String value);
-        partial void OnContactPersonPhoneChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> EntryDate
         {
             get
@@ -14219,30 +13942,6 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ContactPersonPositionId
-        {
-            get
-            {
-                return _ContactPersonPositionId;
-            }
-            set
-            {
-                OnContactPersonPositionIdChanging(value);
-                ReportPropertyChanging("ContactPersonPositionId");
-                _ContactPersonPositionId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ContactPersonPositionId");
-                OnContactPersonPositionIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ContactPersonPositionId;
-        partial void OnContactPersonPositionIdChanging(Nullable<global::System.Int32> value);
-        partial void OnContactPersonPositionIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14440,30 +14139,6 @@ namespace MVCProject.Api.Models
         private global::System.String _Venue;
         partial void OnVenueChanging(global::System.String value);
         partial void OnVenueChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ContactPersonPhone
-        {
-            get
-            {
-                return _ContactPersonPhone;
-            }
-            set
-            {
-                OnContactPersonPhoneChanging(value);
-                ReportPropertyChanging("ContactPersonPhone");
-                _ContactPersonPhone = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ContactPersonPhone");
-                OnContactPersonPhoneChanged();
-            }
-        }
-        private global::System.String _ContactPersonPhone;
-        partial void OnContactPersonPhoneChanging(global::System.String value);
-        partial void OnContactPersonPhoneChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

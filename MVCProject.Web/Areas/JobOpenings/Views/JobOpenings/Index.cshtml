@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = @Resource.JobListing;
+    ViewBag.Title = @Resource.JobOpenings;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -32,7 +32,7 @@
 <div ng-controller="JobListingCtrl" ng-init="getJobPostingList();" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
-        <h3 class="header-title-sub l">@Resource.JobListing</h3>
+        <h3 class="header-title-sub l">@Resource.JobOpenings</h3>
         <div class="pull-right">
         </div>
     </div>
@@ -65,7 +65,7 @@
                             <div class="mt-0 d-flex justify-content-between">
                                 <div class="group">
                                     Posted :
-                                    <span class="ms-1"><b>{{h.Posted}}+</b> days ago</span>
+                                    <span class="ms-1"><b>{{h.Posted}}</b> days ago</span>
                                 </div>
                                 <div class="group">
                                     <a href="~/ApplicantRegister/Registration#?PostingId={{h.PostingId}}" class="btn shadow-none btn-xs btn-success">Register</a>

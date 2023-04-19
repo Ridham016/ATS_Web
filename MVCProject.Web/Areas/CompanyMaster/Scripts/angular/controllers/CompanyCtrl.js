@@ -49,13 +49,6 @@
             }
         });
 
-        $scope.getPositionDetails = function () {
-            debugger
-            CompanyService.GetPositionDetails().then(function (res) {
-                $scope.positionDetails = res.data.Result;
-            })
-        }
-
         $scope.ClearFormData = function (frmRegister) {
             $scope.companyDetailScope = {
                 Id: 0,

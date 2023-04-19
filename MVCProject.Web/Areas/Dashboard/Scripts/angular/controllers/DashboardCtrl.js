@@ -39,6 +39,7 @@
                     console.log(events);
                     $scope.length = Object.keys(events).length;
                     $scope.SelectedEvents = events;
+                    $scope.Date = moment(date).format('DD MMM YYYY');
                 }
                 ,eventAfterAllRender: function (view) {
                     //debugger
@@ -79,6 +80,7 @@
                         //debugger
                         $scope.length = Object.keys(events).length;
                         $scope.SelectedEvents = events;
+                        $scope.Date = moment(today).format('DD MMM YYYY');
                     });
                 }
                 //,eventRender: function (event, element) {

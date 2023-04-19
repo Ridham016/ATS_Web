@@ -285,17 +285,10 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
                     {
                         g.CompanyName,
-                        g.ContactPersonName,
-                        g.ContactPersonPositionId,
-                        g.ContactPersonPhone,
-                    }).FirstOrDefault();
-
-                    var ContactPersonPosition = entities.ATS_PositionMaster.Where(x => x.Id == Company.ContactPersonPositionId).Select(g => new
-                    {
-                        g.PositionName
+                        g.ContactPersonName
                     }).FirstOrDefault();
                     //Task.Run(() => );
-                    SendEmailToApplicantOffline(User,RoleName,emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName, ContactPersonPosition.PositionName, Company.ContactPersonPhone);
+                    SendEmailToApplicantOffline(User,RoleName,emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName);
 
                 }
                 else
@@ -306,9 +299,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
                     {
                         g.CompanyName,
-                        g.ContactPersonName,
-                        g.ContactPersonPositionId,
-                        g.ContactPersonPhone,
+                        g.ContactPersonName
                     }).FirstOrDefault();
                     //Task.Run(() => );
                     SendEmailToApplicantOnline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
@@ -452,14 +443,13 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         }
 
-        public ApiResponse SendEmailToApplicantOffline(string User,string Role,string[] emailIdTo,string companyName, string FirstName,string PositionName, string Venue, string ContactPersonName, string ContactPersonPosition, string ContactPersonPhone)
+        public ApiResponse SendEmailToApplicantOffline(string User,string Role,string[] emailIdTo,string companyName, string FirstName,string PositionName, string Venue, string ContactPersonName)
         {
             string file = "Templates/EmailForApplicantOffline.html";
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
             string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Venue}}", Venue)
-                .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{ContactPersonPosition}}", ContactPersonPosition).
-                Replace("{{ContactPersonPhone}}", ContactPersonPhone).Replace("{{User}}",User).Replace("{{Role}}",Role);
+                .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{User}}",User).Replace("{{Role}}",Role);
             string subject = "Interview Invitation for " + PositionName + " with " + companyName;
             EmailParams emailParams = new EmailParams();
             string[] emails = emailIdTo;

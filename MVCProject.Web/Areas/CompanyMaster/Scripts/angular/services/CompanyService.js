@@ -16,13 +16,6 @@
             data: JSON.stringify(companyDetailParams)
         });
     }
-    list.GetPositionDetails = function () {
-        //debugger
-        return $http({
-            method: 'GET',
-            url: $rootScope.apiURL + '/Company/GetPositionDetails'
-        });
-    }
     list.GetCompanyById = function (CompanyId) {
         return $http({
             method: 'Get',

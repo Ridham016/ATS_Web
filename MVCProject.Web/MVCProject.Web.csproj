@@ -191,8 +191,8 @@
     <Compile Include="Areas\ImportData\ImportDataAreaRegistration.cs" />
     <Compile Include="Areas\InterviewerRegister\Controllers\InterviewerController.cs" />
     <Compile Include="Areas\InterviewerRegister\InterviewerAreaRegister.cs" />
-    <Compile Include="Areas\JobListing\Controllers\JobListingController.cs" />
-    <Compile Include="Areas\JobListing\JobListingAreaRegistration.cs" />
+    <Compile Include="Areas\JobOpenings\Controllers\JobOpeningsController.cs" />
+    <Compile Include="Areas\JobOpenings\JobOpeningsAreaRegistration.cs" />
     <Compile Include="Areas\JobPostingMaster\Controllers\JobPostingController.cs" />
     <Compile Include="Areas\JobPostingMaster\JobPostingAreaRegistration.cs" />
     <Compile Include="Areas\PositionMaster\Controllers\PositionController.cs" />
@@ -261,8 +261,8 @@
     <Content Include="Areas\ImportData\Scripts\angular\services\ImportService.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\controllers\InterviewerCtrl.js" />
     <Content Include="Areas\InterviewerRegister\Scripts\angular\services\InterviewerService.js" />
-    <Content Include="Areas\JobListing\Scripts\angular\controllers\JobListingCtrl.js" />
-    <Content Include="Areas\JobListing\Scripts\angular\services\JobListingService.js" />
+    <Content Include="Areas\JobOpenings\Scripts\angular\controllers\JobListingCtrl.js" />
+    <Content Include="Areas\JobOpenings\Scripts\angular\services\JobListingService.js" />
     <Content Include="Areas\JobPostingMaster\Scripts\angular\controllers\JobPostingCtrl.js" />
     <Content Include="Areas\JobPostingMaster\Scripts\angular\services\JobPostingService.js" />
     <Content Include="Areas\PositionMaster\Scripts\angular\controllers\PositionCtrl.js" />
@@ -489,8 +489,8 @@
     <Folder Include="Areas\Configuration\Views\Shared\" />
     <Folder Include="Areas\ImportData\Models\" />
     <Folder Include="Areas\ImportData\Views\Shared\" />
-    <Folder Include="Areas\JobListing\Models\" />
-    <Folder Include="Areas\JobListing\Views\Shared\" />
+    <Folder Include="Areas\JobOpenings\Models\" />
+    <Folder Include="Areas\JobOpenings\Views\Shared\" />
     <Folder Include="Areas\JobPostingMaster\Models\" />
     <Folder Include="Areas\JobPostingMaster\Views\Shared\" />
     <Folder Include="Areas\PositionMaster\Models\" />
@@ -552,8 +552,8 @@
     <Content Include="Areas\PositionMaster\Views\Web.config" />
     <Content Include="Areas\CompanyMaster\Views\Company\Index.cshtml" />
     <Content Include="Areas\CompanyMaster\Views\Web.config" />
-    <Content Include="Areas\JobListing\Views\JobListing\Index.cshtml" />
-    <Content Include="Areas\JobListing\Views\Web.config" />
+    <Content Include="Areas\JobOpenings\Views\JobOpenings\Index.cshtml" />
+    <Content Include="Areas\JobOpenings\Views\Web.config" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

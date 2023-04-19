@@ -29,7 +29,7 @@
         $scope.useCompanyVenue = function (useCompanyVenue) {
             if (useCompanyVenue) {
                 debugger
-                $scope.scheduleDetailScope.Venue = $scope.companyDetails[0].Venue;
+                $scope.scheduleDetailScope.Venue = $scope.companyDetails.Venue;
             }
             else {
                 $scope.scheduleDetailScope.Venue = ''

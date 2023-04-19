@@ -46,8 +46,6 @@ namespace MVCProject.Api.Controllers.CompanyMaster
                 companyData.CompanyName = data.CompanyName;
                 companyData.Venue = data.Venue;
                 companyData.ContactPersonName = data.ContactPersonName;
-                companyData.ContactPersonPhone = data.ContactPersonPhone;
-                companyData.ContactPersonPositionId = data.ContactPersonPositionId;
                 companyData.IsActive = data.IsActive;
                 companyData.EntryDate = DateTime.Now;
                 companyData.UpdateDate = DateTime.Now;
@@ -78,9 +76,6 @@ namespace MVCProject.Api.Controllers.CompanyMaster
                     CompanyName = g.CompanyName,
                     Venue = g.Venue,
                     ContactPersonName = g.ContactPersonName,
-                    ContactPersonPhone = g.ContactPersonPhone,
-                    ContactPersonPositionId = g.ContactPersonPositionId,
-                    ContactPersonPositionName = g.ContactPersonPostionName,
                     EntryDate = g.EntryDate,
                     IsActive = g.IsActive,
                     TotalRecords
@@ -104,18 +99,6 @@ namespace MVCProject.Api.Controllers.CompanyMaster
             {
                 return this.Response(Utilities.MessageTypes.NotFound, string.Empty);
             }
-        }
-
-        [HttpGet]
-        public ApiResponse GetPositionDetails()
-        {
-            var data = this.entities.USP_ATS_GetPositionDetails().Select(x => new
-            {
-                Id = x.Id,
-                PositionName = x.PositionName,
-                IsActive = x.IsActive
-            }).ToList();
-            return this.Response(MessageTypes.Success, string.Empty, data);
         }
 
     }

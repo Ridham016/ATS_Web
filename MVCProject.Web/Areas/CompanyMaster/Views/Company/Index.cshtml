@@ -40,7 +40,7 @@
         <div class="row ">
             <div class="col-md-12">
                 <!-- start designation form -->
-                <form name="frmRegister" ng-init="getPositionDetails()" ng-submit="SaveCompanyDetails(companyDetailScope)"
+                <form name="frmRegister" ng-submit="SaveCompanyDetails(companyDetailScope)"
                       novalidate>
                     <div class="row mb-3">
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
@@ -79,35 +79,6 @@
                                 </div>
                                 <div class="label label-danger" data-ng-show="frmRegister.ContactPersonName.$dirty && frmRegister.ContactPersonName.$invalid">
                                     <span data-ng-show="frmRegister.ContactPersonName.$error.required">@Resource.ContactPersonNameRequired</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
-                            <div class="form-group">
-                                <label>
-                                    @Resource.ContactPersonPhone<span class="required-field">*</span>
-                                </label>
-                                <input type="text" class="form-control" placeholder="Enter Contact Person Phone" name="ContactPersonPhone" ng-model="companyDetailScope.ContactPersonPhone" required/>
-                                <div class="c">
-                                </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.ContactPersonPhone.$dirty && frmRegister.ContactPersonPhone.$invalid">
-                                    <span data-ng-show="frmRegister.ContactPersonPhone.$error.required">@Resource.ContactPersonPhoneRequired</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-0">
-                            <div class="form-group">
-                                <label>
-                                    @Resource.ContactPersonPosition <span class="required-field">*</span>
-                                </label>
-                                <select class="form-select" name="ContactPersonPosition" ng-model="companyDetailScope.ContactPersonPositionId" required>
-                                    <option value="" selected disabled>Select Position</option>
-                                    <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
-                                </select>
-                                <div class="c">
-                                </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.ContactPersonPosition.$dirty && frmRegister.ContactPersonPosition.$invalid">
-                                    <span data-ng-show="frmRegister.ContactPersonPosition.$error.required">@Resource.ContactPersonPositionRequired</span>
                                 </div>
                             </div>
                         </div>
@@ -181,12 +152,6 @@
                                                 </td>
                                                 <td data-title="'@Resource.ContactPersonName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.ContactPersonName}}
-                                                </td>
-                                                <td data-title="'@Resource.ContactPersonPhone'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.ContactPersonPhone}}
-                                                </td>
-                                                <td data-title="'@Resource.ContactPersonPosition'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.ContactPersonPositionName}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"

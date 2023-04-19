@@ -27,12 +27,15 @@
             <div class="col-md-4">
                 <div class="schedule-event-details">
                     <div class="card alert overflow-auto height">
-                        <h4 class="mt-0 mb-3 meeting-title font-bold" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h4>
+                        <div class="d-flex justify-content-between align-items-center mt-0 mb-3">
+                            <h4 class="meeting-title font-bold me-3" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h4>
+                            <h5>{{Date | date }}</h5>
+                        </div>
                         <p ng-show="length == 0">No Meetings Scheduled</p>
                         <div ng-show="length != 0">
                             <div class="card event-card" ng-repeat="SelectedEvent in SelectedEvents">
                                 <div class="card-body">
-                                    <p class="mb-2"><span><i class="time-icon fa fa-clock-o"></i></span><span class="event-detail">{{SelectedEvent.start | date : 'd/M/yy h:mm a'}} - {{SelectedEvent.end | date : 'd/M/yy h:mm a'}}</span></p>
+                                    <p class="mb-2"><span><i class="time-icon fa fa-clock-o"></i></span><span class="event-detail">{{SelectedEvent.start | date : 'h:mm a'}} - {{SelectedEvent.end | date : 'h:mm a'}}</span></p>
                                     <p class="mb-2"><span><i class="interview-icon fa fa-user"></i></span><span class="event-detail">Meeting with <span class="fw-bold">{{SelectedEvent.Applicant}}</span></span></p>
                                     <p class="mb-2"><span class="event-detail"><i class="meeting-icon ti-agenda"></i> {{SelectedEvent.Interviewer}}</span></p>
                                     <p class="mb-0">

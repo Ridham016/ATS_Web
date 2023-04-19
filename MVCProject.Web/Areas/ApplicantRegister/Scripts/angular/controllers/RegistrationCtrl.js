@@ -27,7 +27,7 @@
             Email: '',
             Phone: '',
             Address: '',
-            DateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
+            DateOfBirth: null,
             CurrentCompany: '',
             CurrentDesignation: '',
             TotalExperience: '',
@@ -56,16 +56,35 @@
             $scope.applicantDetailScope.PostingId = '';
         }
 
-        $scope.Check = function (textInput) {
-            if (textInput = 'fresher') {
+        $scope.Check = function (textInput, applicantDetailScope) {
+            debugger
+            if (textInput.disabled == 'fresher') {
                 $scope.applicantDetailScope = {
+                    ApplicantId: applicantDetailScope.ApplicantId,
+                    FirstName: applicantDetailScope.FirstName,
+                    MiddleName: applicantDetailScope.MiddleName,
+                    LastName: applicantDetailScope.LastName,
+                    Email: applicantDetailScope.Email,
+                    Phone: applicantDetailScope.Phone,
+                    Address: applicantDetailScope.Address,
+                    DateOfBirth: applicantDetailScope.DateOfBirth,
                     CurrentCompany: '',
                     CurrentDesignation: '',
                     TotalExperience: '',
                     DetailedExperience: '',
                     CurrentCTC: '',
-                    CurrentLocation: '',
+                    ExpectedCTC: applicantDetailScope.ExpectedCTC,
+                    NoticePeriod: '',
+                    CurrentLocation: applicantDetailScope.CurrentLocation,
+                    PreferedLocation: applicantDetailScope.PreferedLocation,
                     ReasonForChange: '',
+                    SkillDescription: applicantDetailScope.SkillDescription,
+                    PortfolioLink: applicantDetailScope.PortfolioLink,
+                    LinkedinLink: applicantDetailScope.LinkedinLink,
+                    OtherLink: applicantDetailScope.OtherLink,
+                    ExpectedJoiningDate: applicantDetailScope.ExpectedJoiningDate,
+                    PostingId: applicantDetailScope.PostingId,
+                    IsActive: true
                 };
             }
         }
@@ -141,7 +160,7 @@
                 Email: '',
                 Phone: '',
                 Address: '',
-                DateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
+                DateOfBirth: null,
                 CurrentCompany: '',
                 CurrentDesignations: '',
                 TotalExperience: '',
@@ -182,9 +201,7 @@
                         control.$setDirty();
                     });
                 });
-                if ($scope.frmRegister1.PostingId.$error) {
-                    $scope.frmRegister1.PostingId.$setDirty();
-                }
+               
                 toastr.error('Please Check Form for errors', errorTitle)
                 return false;
             }
@@ -290,9 +307,7 @@
                                 control.$setDirty(); 
                             });
                         });
-                        if ($scope.frmRegister1.PostingId.$error) {
-                            $scope.frmRegister1.PostingId.$setDirty();
-                        }
+                        
                         CommonFunctions.ScrollUpAndFocus("FirstName");
                     } else if (data.MessageType == messageTypes.Error) {// Error
                         toastr.error(data.Message, errorTitle);

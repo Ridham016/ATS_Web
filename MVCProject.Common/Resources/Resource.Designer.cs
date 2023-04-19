@@ -1663,6 +1663,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job Openings.
+        /// </summary>
+        public static string JobOpenings {
+            get {
+                return ResourceManager.GetString("JobOpenings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Job Posting.
         /// </summary>
         public static string JobPosting {

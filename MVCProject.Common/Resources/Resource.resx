@@ -1260,6 +1260,9 @@
   <data name="ValidExpectedDate" xml:space="preserve">
     <value>Enter Valid Joining Date</value>
   </data>
+  <data name="JobOpenings" xml:space="preserve">
+    <value>Job Openings</value>
+  </data>
   <data name="JobPostingRequired" xml:space="preserve">
     <value>Job Posting is Required</value>
   </data>

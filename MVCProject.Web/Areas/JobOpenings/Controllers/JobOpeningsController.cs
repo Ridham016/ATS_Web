@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVCProject.Areas.JobListing.Controllers
+namespace MVCProject.Areas.JobOpenings.Controllers
 {
-    public class JobListingController : Controller
+    public class JobOpeningsController : Controller
     {
         //
         // GET: /JobListing/JobListing/

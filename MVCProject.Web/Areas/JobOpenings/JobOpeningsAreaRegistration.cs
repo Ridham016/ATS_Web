@@ -4,7 +4,7 @@
 // </copyright>
 // ----------------------------------------------------------------------- 
 
-namespace MVCProject.Areas.JobListing
+namespace MVCProject.Areas.JobOpenings
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -12,7 +12,7 @@ namespace MVCProject.Areas.JobListing
     /// <summary>
     /// JobPosting Area Registration
     /// </summary>
-    public class JobListingAreaRegister : AreaRegistration
+    public class JobOpeningsAreaRegister : AreaRegistration
     {
         /// <summary>
         /// Gets Area Name
@@ -21,12 +21,12 @@ namespace MVCProject.Areas.JobListing
         {
             get
             {
-                return "JobListing";
+                return "JobOpenings";
             }
         }
 
         /// <summary>
-        /// Register JobListing Area
+        /// Register JobOpenings Area
         /// </summary>
         /// <param name="context">Area Registration Context</param>
         public override void RegisterArea(AreaRegistrationContext context)
@@ -36,14 +36,14 @@ namespace MVCProject.Areas.JobListing
         }
 
         /// <summary>
-        /// Register JobListing Routes
+        /// Register JobOpenings Routes
         /// </summary>
         /// <param name="context">Area Registration Context</param>
         private void RegisterRoutes(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "JobListing_default",
-                "JobListing/{controller}/{action}/{id}",
+                "JobOpenings_default",
+                "JobOpenings/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
@@ -55,8 +55,8 @@ namespace MVCProject.Areas.JobListing
         private void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/JobListing/JobListing")
-                .Include("~/Areas/JobListing/Scripts/angular/services/JobListingService.js")
-                .Include("~/Areas/JobListing/Scripts/angular/controllers/JobListingCtrl.js"));
+                .Include("~/Areas/JobOpenings/Scripts/angular/services/JobListingService.js")
+                .Include("~/Areas/JobOpenings/Scripts/angular/controllers/JobListingCtrl.js"));
 
         }
     }
