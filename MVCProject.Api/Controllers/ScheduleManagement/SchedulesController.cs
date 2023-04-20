@@ -141,20 +141,8 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId,int CurrentStatusId, HttpRequestMessage httpRequest)
+        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId, HttpRequestMessage httpRequest)
         {
-            var status = this.entities.USP_ATS_SingleApplicant(ApplicantId)
-                .Select(g => new
-                {
-                    //ApplicantId = g.ApplicantId,
-                    StatusId = g.StatusId
-                }).SingleOrDefault();
-            int curstatus = Convert.ToInt32(status);
-            if (curstatus != CurrentStatusId)
-            {
-                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.StatusName));
-            }
-
             var level = 0;
             var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
             if (StatusId == 4)
