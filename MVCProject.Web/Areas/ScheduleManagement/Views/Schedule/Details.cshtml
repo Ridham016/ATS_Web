@@ -236,7 +236,7 @@
                                     <div class="modal-footer">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Resource.Close</button>
-                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,StatusId,applicants.ApplicantId)"
+                                            <button type="button" class="btn btn-primary" ng-click="SaveSchduleDetails(scheduleDetailScope,StatusId,applicants.ApplicantId,applicants.StatusId)"
                                                     ng-disabled="frmSchedule.$invalid">
                                                 @Resource.Submit
                                             </button>
@@ -268,7 +268,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,StatusId,applicants.ApplicantId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-click="updateOtherReason(Reason,StatusId,applicants.ApplicantId,applicants.StatusId)" ng-disabled="frmOtherReason.$invalid">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -322,7 +322,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,StatusId,applicants.ApplicantId)">Submit</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmHoldReason.$invalid" ng-click="updateStatus(scheduleDetailScope,StatusId,applicants.ApplicantId,applicants.StatusId)">Submit</button>
                                     </div>
                                 </form>
                             </div>

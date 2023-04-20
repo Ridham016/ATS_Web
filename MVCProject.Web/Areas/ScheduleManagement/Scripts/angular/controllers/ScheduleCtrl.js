@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module("MVCApp").controller('ScheduleCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonEnums', '$rootScope', '$location','$window', 'ScheduleService', ScheduleCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonEnums', '$rootScope','$timeout', '$location','$window', 'ScheduleService', ScheduleCtrl
     ]);
 
-    function ScheduleCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $rootScope, $location, $window, ScheduleService) {
+    function ScheduleCtrl($scope, ngTableParams, CommonFunctions, CommonEnums, $rootScope, $timeout, $location, $window, ScheduleService) {
         var applicantDetailParams = {};
         $scope.useCompanyVenue = false;
         $scope.Mode = CommonEnums.Mode;
@@ -88,9 +88,22 @@
         }
 
         $scope.getCompanyDetails = function () {
-
             ScheduleService.GetCompanyDetails($scope.applicantId).then(function (res) {
-                $scope.companyDetails = res.data.Result;
+                if (res) {
+                    if (res.data.MessageType == messageTypes.Success) {
+                        $scope.companyDetails = res.data.Result;
+                    }
+                    else if (res.data.MessageType == messageTypes.Error) {// Error
+                        debugger
+                        toastr.error(res.data.Message, errorTitle);
+                        $timeout(function () {
+                        }, 1000).then(function () {
+                            $window.location.href = '../../ScheduleManagement/Schedule';
+                        })
+                    }
+                    $rootScope.isAjaxLoadingChild = false;
+                    CommonFunctions.SetFixHeader();
+                }
             })
         }
 
@@ -116,7 +129,7 @@
         }
 
         $scope.updateStatus = function (scheduleDetailScope, StatusId, ApplicantId, CurrentStatusId) {
-            //debugger
+            debugger
             ScheduleService.UpdateButton(StatusId, ApplicantId,CurrentStatusId).then(function (res) {
                 //debugger
                 if (res) {
@@ -139,20 +152,33 @@
             });
         };
 
-        $scope.SaveSchduleDetails = function (scheduleDetailScope, StatusId, ApplicantId) {
-            ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
-                //debugger
+        $scope.SaveSchduleDetails = function (scheduleDetailScope, StatusId, ApplicantId, CurrentStatusId) {
+            debugger
+            ScheduleService.UpdateButton(StatusId, ApplicantId, CurrentStatusId).then(function (res) {
+                debugger
                 if (res) {
-                    $scope.Action = res.data.Result;
-                    //debugger
-                    $scope.scheduleDetailScope['ActionId'] = $scope.Action[1];
-                    $scope.scheduleDetailScope.ScheduleDateTime = angular.copy(moment($scope.scheduleDetailScope.ScheduleDateTime).format($rootScope.apiDateFormat));
-                    ScheduleService.Schedule(scheduleDetailScope).then(function (res) {
-                        if (res) {
-                            var schedule = res.data;
+                    if (res.data.MessageType == messageTypes.Success) {
+                        $scope.Action = res.data.Result;
+                        //debugger
+                        $scope.scheduleDetailScope['ActionId'] = $scope.Action[1];
+                        $scope.scheduleDetailScope.ScheduleDateTime = angular.copy(moment($scope.scheduleDetailScope.ScheduleDateTime).format($rootScope.apiDateFormat));
+                        ScheduleService.Schedule(scheduleDetailScope).then(function (res) {
+                            if (res) {
+                                var schedule = res.data;
+                                $window.location.href = '../../ScheduleManagement/Schedule';
+                            }
+                        })
+                    }
+                    else if (res.data.MessageType == messageTypes.Error) {// Error
+                        debugger
+                        toastr.error(res.data.Message, errorTitle);
+                        $timeout(function () {
+                        }, 1000).then(function () {
                             $window.location.href = '../../ScheduleManagement/Schedule';
-                        }
-                    })
+                        })
+                    }
+                    $rootScope.isAjaxLoadingChild = false;
+                    CommonFunctions.SetFixHeader();
                 }
             })
         }
@@ -166,8 +192,8 @@
             });
         };
 
-        $scope.updateOtherReason = function (Reason, StatusId, ApplicantId) {
-            ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
+        $scope.updateOtherReason = function (Reason, StatusId, ApplicantId, CurrentStatusId) {
+            ScheduleService.UpdateButton(StatusId, ApplicantId, CurrentStatusId).then(function (res) {
                 //debugger
                 if (res) {
                     $scope.Action = res.data.Result;

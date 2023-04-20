@@ -184,7 +184,6 @@
             $scope.Selectedfile = null;
             $scope.Files = null;
             $scope.frmRegister.$setPristine();
-            $scope.frmRegister1.$setPristine();
             $location.search({});
             CommonFunctions.ScrollToTop();
             $('#accordionExample').find('#personal_details').addClass('show').find('.accordion-collapse').addClass('show');

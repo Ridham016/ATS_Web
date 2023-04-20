@@ -141,8 +141,17 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId, HttpRequestMessage httpRequest)
+        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId,int CurrentStatusId, HttpRequestMessage httpRequest)
         {
+            var status = this.entities.USP_ATS_SingleApplicant(ApplicantId)
+              .Select(g => new
+              {
+                  StatusId = g.StatusId
+              }).SingleOrDefault();
+            if (status.StatusId != CurrentStatusId)
+            {
+                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.StatusName));
+            }
             var level = 0;
             var getlevel = entities.USP_ATS_GetLevel(ApplicantId).SingleOrDefault();
             if (StatusId == 4)
@@ -327,10 +336,14 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpGet]
-        public ApiResponse GetCompanyDetails([FromUri]int ApplicantId)
+        public ApiResponse GetCompanyDetails([FromUri] int ApplicantId)
         {
             var data = this.entities.USP_ATS_GetCompanyDetailsFromApplicant(ApplicantId).SingleOrDefault();
-            return this.Response(MessageTypes.Success, string.Empty, data);
+            if (data != null)
+            {
+                return this.Response(MessageTypes.Success, string.Empty, data);
+            }
+            return this.Response(Utilities.MessageTypes.Error, "No Openings Selected");
         }
 
         [HttpPost]

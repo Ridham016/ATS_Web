@@ -19,11 +19,11 @@
             url: $rootScope.apiURL + '/Schedules/GetButtons?StatusId=' + statusId
         });
     }
-    list.UpdateButton = function (statusId,applicantId) {
+    list.UpdateButton = function (statusId, applicantId, CurrentStatusId) {
+        debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Schedules/UpdateStatus?ApplicantId=' + applicantId + '&StatusId=' + statusId + '&CurrentStatusId=' + CurrentStatusId , 
-            data: JSON.stringify(statusId, applicantId)
+            url: $rootScope.apiURL + '/Schedules/UpdateStatus?ApplicantId=' + applicantId + '&StatusId=' + statusId + '&CurrentStatusId=' + CurrentStatusId 
         });
     }
     list.GetAllInterviewers = function () {
