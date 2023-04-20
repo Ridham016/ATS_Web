@@ -160,7 +160,7 @@ namespace MVCProject.Api.Controllers.ImportData
                 applicant.EntryDate = DateTime.Now;
                 applicant.ApplicantDate = DateTime.Now;
                 applicant.EntryBy = "1";
-                entities.ATS_ApplicantRegister.AddObject(new ATS_ApplicantRegister
+                this.entities.ATS_ApplicantRegister.AddObject(new ATS_ApplicantRegister
                 {
                     FirstName = applicant.FirstName,
                     MiddleName = applicant.MiddleName,
