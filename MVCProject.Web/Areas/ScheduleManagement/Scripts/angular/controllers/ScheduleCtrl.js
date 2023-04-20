@@ -115,9 +115,9 @@
             
         }
 
-        $scope.updateStatus = function (scheduleDetailScope, StatusId, ApplicantId) {
+        $scope.updateStatus = function (scheduleDetailScope, StatusId, ApplicantId, CurrentStatusId) {
             //debugger
-            ScheduleService.UpdateButton(StatusId, ApplicantId).then(function (res) {
+            ScheduleService.UpdateButton(StatusId, ApplicantId,CurrentStatusId).then(function (res) {
                 //debugger
                 if (res) {
                     $scope.Action = res.data.Result;

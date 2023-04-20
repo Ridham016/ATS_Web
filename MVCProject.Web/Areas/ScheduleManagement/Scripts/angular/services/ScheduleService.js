@@ -22,7 +22,7 @@
     list.UpdateButton = function (statusId,applicantId) {
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Schedules/UpdateStatus?ApplicantId=' + applicantId + '&StatusId=' + statusId,
+            url: $rootScope.apiURL + '/Schedules/UpdateStatus?ApplicantId=' + applicantId + '&StatusId=' + statusId + '&CurrentStatusId=' + CurrentStatusId , 
             data: JSON.stringify(statusId, applicantId)
         });
     }
