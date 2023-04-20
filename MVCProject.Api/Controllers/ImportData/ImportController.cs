@@ -20,7 +20,7 @@ namespace MVCProject.Api.Controllers.ImportData
 {
     public class ImportController : BaseController
     {
-        private MVCProjectEntities entities;
+        private MVCProjectEntities entities = new MVCProjectEntities();
         [HttpPost]
         //[Route("importData")]
         public ApiResponse ImportData()

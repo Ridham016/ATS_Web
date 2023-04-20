@@ -10,13 +10,21 @@
             transformRequest: angular.identity
         })
     }
-    list.AddApplicants = function (applicantDetailScope) {
+    list.AddApplicants = function (requestBody) {
         debugger
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/Import/AddApplicants',
-            data: JSON.stringify(applicantDetailScope)
+            data: JSON.stringify(requestBody)
         })
     }
+    //list.AddApplicants = function (applicant) {
+    //    debugger
+    //    return $http({
+    //        method: 'POST',
+    //        url: $rootScope.apiURL + '/Import/AddApplicants',
+    //        data: JSON.stringify(applicant)
+    //    })
+    //}
     return list;
 }])
