@@ -35,7 +35,28 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
             }).ToList();
             return this.Response(MessageTypes.Success, string.Empty, data);
         }
-
+        [HttpGet]
+        public ApiResponse GetPostingStatus()
+        {
+            var data = this.entities.USP_ATS_GetPostingstatus().Select(x => new
+            {
+                Id = x.Id,
+                PostingStatus = x.PostingStatus,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+        //[HttpGet]
+        //public ApiResponse GetPositionDetails(string searchText)
+        //{
+        //    var data = this.entities.USP_ATS_GetPositionDetails().Where(x => x.PositionName.Contains(searchText)).Select(x => new
+        //    {
+        //        Id = x.Id,
+        //        PositionName = x.PositionName,
+        //        IsActive = x.IsActive
+        //    }).ToList();
+        //    return this.Response(MessageTypes.Success, string.Empty, data);
+        //}
         [HttpGet]
         public ApiResponse GetPositionDetails()
         {
@@ -67,9 +88,11 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
             else
             {
                 postingData.PostingId = data.PostingId;
+                postingData.PositionId = data.PositionId;
                 postingData.CompanyId = data.CompanyId;
                 postingData.Experience = data.Experience;
                 postingData.Salary = data.Salary;
+                postingData.PostingStatusId = data.PostingStatusId;
                 postingData.IsActive = data.IsActive;
                 postingData.EntryDate = DateTime.Now;
                 postingData.UpdateDate = DateTime.Now;
@@ -99,6 +122,8 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                     PostingId = g.PostingId,
                     CompanyId = g.CompanyId,
                     PositionId = g.PositionId,
+                    PostingStatusId = g.PostingStatusId,
+                    PostingStatus = g.PostingStatus,
                     CompanyName = g.CompanyName,
                     PositionName = g.PositionName,
                     Experience = g.Experience,

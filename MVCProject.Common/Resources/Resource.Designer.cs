@@ -2419,6 +2419,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Posting Status.
+        /// </summary>
+        public static string PostingStatus {
+            get {
+                return ResourceManager.GetString("PostingStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posting Status is Required.
+        /// </summary>
+        public static string PostingStatusRequired {
+            get {
+                return ResourceManager.GetString("PostingStatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prefered Job Location.
         /// </summary>
         public static string PreferedLocation {

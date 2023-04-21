@@ -12,9 +12,11 @@
             PositionId: '',
             CompanyId: '',
             Experience: '',
+            PostingStatusId: '',
             Salary: '',
             IsActive: true
         };
+        $scope.jobpostingDetail = {};
 
         $scope.tableParams = new ngTableParams({
             page: 1,
@@ -22,7 +24,6 @@
             sorting: { EntryDate: 'desc' }
         }, {
             getData: function ($defer, params) {
-                debugger
                 if (jobpostingDetailParams == null) {
                     jobpostingDetailParams = {};
                 }
@@ -30,7 +31,6 @@
                 jobpostingDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 JobPostingService.GetAllPostings(jobpostingDetailParams.Paging).then(function (res) {
-                    debugger
                     var data = res.data;
                     $scope.postings = res.data.Result;
                     if (res.data.MessageType == messageTypes.Success) {// Success
@@ -49,16 +49,51 @@
         });
 
         $scope.getCompanyDetails = function () {
-            debugger
             JobPostingService.GetCompanyDetails().then(function (res) {
                 $scope.companyDetails = res.data.Result;
             })
         }
 
+        $scope.getPostingStatus = function () {
+            JobPostingService.GetPostingStatus().then(function (res) {
+                $scope.postingStatusDetails = res.data.Result;
+            })
+        }
+
+        //$scope.getPositionDetails = JobPostingService.GetPositionDetails();
+
+        //$scope.$watch('Position', function (newValue, oldValue) {
+        //    if (newValue !== oldValue && newValue != null) {
+        //        debugger
+        //        $scope.jobpostingDetailScope.PositionId = newValue.description.Id;
+        //        console.log($scope.jobpostingDetailScope);
+        //        console.log($scope.jobpostingDetail);
+        //    }
+        //});
+
+        $scope.Position = function (selected) {
+            if (selected.originalObject.Id) {
+                $scope.jobpostingDetailScope.PositionId = selected.originalObject.Id;
+                console.log($scope.jobpostingDetailScope);
+            }
+            else {
+                $scope.positionDetail = {
+                    Id: '',
+                    PositionName: selected.originalObject
+                };
+            }
+        };
+
         $scope.getPositionDetails = function () {
-            debugger
             JobPostingService.GetPositionDetails().then(function (res) {
-                $scope.positionDetails = res.data.Result;
+                if (res) {
+                    $scope.jobpostingDetail = res.data.Result.map(function (item) {
+                        return {
+                            Id: item.Id,
+                            PositionName: item.PositionName
+                        };
+                    });
+                }
             })
         }
 
@@ -68,12 +103,24 @@
                 PositionId: '',
                 CompanyId: '',
                 Experience: '',
+                PostingStatusId: '',
                 Salary: '',
                 IsActive: true
             };
+            $scope.$broadcast('angucomplete-alt:clearInput')
             $scope.frmRegister.$setPristine();
             CommonFunctions.ScrollToTop();
         };
+
+        $scope.onSearchCompletedCallback = function (str) {
+            if ($scope.jobpostingDetail.findIndex(x => x.PositionName === str) === -1) {
+                $scope.positionDetail.push({
+                    Id: '',
+                    PositionName: str
+                });
+            }
+        };
+
 
         $scope.SavePostingDetails = function (jobpostingDetailScope) {
             if (!$scope.frmRegister.$valid) {
@@ -86,6 +133,13 @@
                 return false;
             }
             else {
+                debugger
+                if (jobpostingDetailScope.Id == null && $scope.positionDetail != null) {
+                    JobPostingService.PositionRegister($scope.positionDetail).then(function (res) {
+                        console.log(res.data);
+                        debugger
+                    })
+                }
                 JobPostingService.Register(jobpostingDetailScope).then(function (res) {
                     if (res) {
                         if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
@@ -111,8 +165,13 @@
                     var data = res.data;
                     if (data.MessageType == messageTypes.Success) {
                         $scope.jobpostingDetailScope = res.data.Result;
-                        $scope.jobpostingDetailScope.PositionId = JSON.stringify($scope.jobpostingDetailScope.PositionId);
+                        $scope.selectedPosition = {
+                            Id: $scope.jobpostingDetailScope.PositionId,
+                            PositionName: $scope.jobpostingDetailScope.PositionName
+                         }
+                        $scope.$broadcast('angucomplete-alt:changeInput', 'Position', $scope.selectedPosition);
                         $scope.jobpostingDetailScope.CompanyId = JSON.stringify($scope.jobpostingDetailScope.CompanyId);
+                        $scope.jobpostingDetailScope.PostingStatusId = JSON.stringify($scope.jobpostingDetailScope.PostingStatusId);
                         $scope.frmRegister.$setSubmitted();
                         angular.forEach($scope.frmRegister.$error, function (controls) {
                             angular.forEach(controls, function (control) {

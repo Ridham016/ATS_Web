@@ -10,7 +10,6 @@
         $scope.positionDetailScope = {
             PositionId: 0,
             PositionName: '',
-            Description: '',
             IsActive: true
         };
 
@@ -50,7 +49,6 @@
             $scope.positionDetailScope = {
                 PositionId: 0,
                 PositionName: '',
-                Description: '',
                 IsActive: true
             };
             $scope.frmRegister.$setPristine();

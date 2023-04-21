@@ -44,7 +44,6 @@ namespace MVCProject.Api.Controllers.PositionMaster
             {
                 positionData.Id = data.Id;
                 positionData.PositionName = data.PositionName;
-                positionData.Description = data.Description;
                 positionData.IsActive = data.IsActive;
                 positionData.EntryDate = DateTime.Now;
                 positionData.UpdateDate = DateTime.Now;
@@ -73,7 +72,6 @@ namespace MVCProject.Api.Controllers.PositionMaster
                 {
                     Id = g.Id,
                     PositionName = g.PositionName,
-                    Description = g.Description,
                     EntryDate = g.EntryDate,
                     IsActive = g.IsActive,
                     TotalRecords

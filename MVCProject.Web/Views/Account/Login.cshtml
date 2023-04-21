@@ -19,7 +19,6 @@
                                                  alt="#" ng-class="{'blur-7' : !isLogoLoaded}" style="height: 70px;max-width: 300px;" /><span style="color: #D40003;
                                     font-size: 18px; font-weight: bold;"></span>
                                         </div>
-
                                         <div class="form-group mb-3 ">
                                             <label for="emailaddress" class="form-label">Email address</label>
                                             <input type="text" id="txtUserName" name="txtUserName" ng-model="loginFormData.Email" @*autocomplete=off*@
@@ -27,7 +26,6 @@
                                             <div class="label label-danger" data-ng-show="frmLogin.txtUserName.$dirty && frmLogin.txtUserName.$invalid">
                                                 <span data-ng-show="frmLogin.txtUserName.$error.required">@Resource.UserNameRequired</span>
                                             </div>
-
                                         </div>
                                         <div class="form-group mb-3">
                                             <a class="text-muted float-end" tabindex="5" ng-click="OpenResetPasswordModel()">

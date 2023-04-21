@@ -27,7 +27,7 @@ namespace System.Web.Mvc
         /// <param name="helper">Html Helper</param>
         /// <param name="permission">Page Permission</param>
         /// <returns>MVC Html String</returns>
-        public static MvcHtmlString Menu(this HtmlHelper helper, List<UserContext.PagePermission> permission)
+        public static MvcHtmlString Menu(this HtmlHelper helper, UserContext userContext)
         {
             //if (permission != null)
             //{
@@ -50,21 +50,27 @@ namespace System.Web.Mvc
             //menuString.Append("<ul class='nav child_menu'>");
             //menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             //menuString.Append("</ul></li>");
-            menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
-            menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
-            menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
-            menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
-
-            menuString.Append("<li>");
-            menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
-            menuString.Append("<ul class='nav child_menu'>");
-            menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
-            menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
-            menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus", "/JobPostingMaster/JobPosting"));
-            menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-user-plus", "/PositionMaster/Position"));
-            menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa fa-user-plus", "/CompanyMaster/Company"));
-            menuString.Append("</ul></li>");
-
+            if(userContext.RoleId == 3)
+            {
+                menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
+                menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
+            }
+            else if(userContext.RoleId == 1 || userContext.RoleId == 2)
+            {
+                menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
+                menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
+                menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
+                menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
+                menuString.Append("<li>");
+                menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
+                menuString.Append("<ul class='nav child_menu'>");
+                menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
+                menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
+                menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus", "/JobPostingMaster/JobPosting"));
+                menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-user-plus", "/PositionMaster/Position"));
+                menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa fa-user-plus", "/CompanyMaster/Company"));
+                menuString.Append("</ul></li>");
+            }
             menuString.Append("</ul></div></div>");
 
                 string menu = menuString.ToString();

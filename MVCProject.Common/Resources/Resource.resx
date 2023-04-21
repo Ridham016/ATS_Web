@@ -1266,4 +1266,10 @@
   <data name="JobPostingRequired" xml:space="preserve">
     <value>Job Posting is Required</value>
   </data>
+  <data name="PostingStatus" xml:space="preserve">
+    <value>Posting Status</value>
+  </data>
+  <data name="PostingStatusRequired" xml:space="preserve">
+    <value>Posting Status is Required</value>
+  </data>
 </root>

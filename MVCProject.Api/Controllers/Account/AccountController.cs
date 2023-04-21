@@ -57,5 +57,20 @@ namespace MVCProject.Api.Controllers.Account
             }
         }
 
+        [HttpGet]
+        public ApiResponse GetUserRoles(int UserId)
+        {
+            var role = this.entities.USP_ATS_GetUserRoles(UserId).Select(x => new
+            {
+                x.RoleId,
+                x.RoleName
+            }).ToList();
+            if (role == null)
+            {
+                return this.Response(MessageTypes.Error, Resource.Error);
+            }
+            return this.Response(MessageTypes.Success,string.Empty,role);
+        }
+
     }
 }

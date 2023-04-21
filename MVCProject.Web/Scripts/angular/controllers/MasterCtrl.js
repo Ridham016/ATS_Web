@@ -54,6 +54,19 @@
             });
         };
 
+        $scope.getRoles = function () {
+            AccountService.GetUserRoles(userContext.UserId).then(function (res) {
+                if (res) {
+                    if (res.data.MessageType == messageTypes.Success) {
+                        $scope.roles = res.data.Result;
+                    }
+                    else if (res.data.MessageType == messageTypes.Error) {
+                        toastr.error(res.data.Message, errorTitle);
+                    }
+                }
+            })
+        }
+
         //Open  Comments Popup
         $scope.OpenCommentsPopup = function (moduleId, referenceId, isReadOnly) {
             var modalInstance = $uibModal.open({

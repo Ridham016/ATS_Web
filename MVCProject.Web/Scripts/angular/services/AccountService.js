@@ -34,5 +34,12 @@
         });
     }
 
+    list.GetUserRoles = function (userId) {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Account/GetUserRoles?UserId=' + userId
+        });
+    }
+
     return list;
 } ]);

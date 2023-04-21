@@ -32,6 +32,8 @@ namespace MVCProject.Api.Controllers.JobListing
                 PostingId = g.PostingId,
                 CompanyId = g.CompanyId,
                 PositionId = g.PositionId,
+                PostingStatusId = g.PostingStatusId,
+                PostingStatus = g.PostingStatus,
                 CompanyName = g.CompanyName,
                 CompanyVenue = g.CompanyVenue,
                 PositionName = g.PositionName,

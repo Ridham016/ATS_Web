@@ -58,19 +58,6 @@
                         </div>
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
                             <div class="form-group">
-                                <label>
-                                    @Resource.Description<span class="required-field">*</span>
-                                </label>
-                                <textarea rows="5" type="text" class="form-control" placeholder="Enter Description" name="Description" ng-model="positionDetailScope.Description" required ></textarea>
-                                <div class="c">
-                                </div>
-                                <div class="label label-danger" data-ng-show="frmRegister.Description.$dirty && frmRegister.Description.$invalid">
-                                    <span data-ng-show="frmRegister.Description.$error.required">@Resource.DescriptionRequired</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
-                            <div class="form-group">
                                 <div class="form-control-static">
                                     <label>
 
@@ -131,11 +118,8 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.Position'" sortable="'Name'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Position'" sortable="'PositionName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.PositionName}}
-                                                </td>
-                                                <td data-title="'@Resource.Company'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Description}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"

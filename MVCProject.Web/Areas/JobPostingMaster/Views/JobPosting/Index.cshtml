@@ -40,7 +40,7 @@
         <div class="row ">
             <div class="col-md-12">
                 <!-- start designation form -->
-                <form name="frmRegister" ng-init="getCompanyDetails();getPositionDetails();" ng-submit="SavePostingDetails(jobpostingDetailScope)"
+                <form name="frmRegister" ng-init="getCompanyDetails();getPositionDetails();getPostingStatus();" ng-submit="SavePostingDetails(jobpostingDetailScope)"
                       novalidate>
                     <div class="row mb-3">
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
@@ -48,17 +48,37 @@
                                 <label>
                                     @Resource.Position <span class="required-field">*</span>
                                 </label>
-                                <select class="form-select" name="Position" ng-model="jobpostingDetailScope.PositionId" required>
-                                    <option value="" selected disabled>Select Position</option>
-                                    <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
-                                </select>
+                                @*<select class="form-select" name="Position" ng-model="jobpostingDetailScope.PositionId" required>
+            <option value="" selected disabled>Select Position</option>
+            <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
+        </select>*@
+                                    <div angucomplete-alt
+                                         field-tabindex="14"
+                                         input-name="Position"
+                                         id="Position"
+                                         placeholder="Enter Position"
+                                         input-class="form-control"
+                                         pause="400"
+                                         minlength="1"
+                                         maxlength="255"
+                                         selected-object="Position"
+                                         local-data="jobpostingDetail"
+                                         initial-value="selectedPosition"
+                                         match-class="blue"
+                                         search-fields="PositionName"
+                                         title-field="PositionName"
+                                         override-suggestions="true"
+                                         on-select="Position()"
+                                         text-searching="@Resource.AutocompleteSearching"
+                                         text-no-results="@Resource.NoRecordFound">
+                                    </div>
                                 <div class="c">
                                 </div>
                                 <div class="label label-danger" data-ng-show="frmRegister.Position.$dirty && frmRegister.Position.$invalid">
                                     <span data-ng-show="frmRegister.Position.$error.required">@Resource.PosiitonRequired</span>
                                 </div>
                             </div>
-                        </div>
+                            </div>
                         <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
                             <div class="form-group">
                                 <label>
@@ -75,7 +95,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.PostingStatus <span class="required-field">*</span>
+                                </label>
+                                <select class="form-select" name="PostingStatus" ng-model="jobpostingDetailScope.PostingStatusId" required>
+                                    <option value="" selected disabled>Select Posting Status</option>
+                                    <option ng-repeat="h in postingStatusDetails" value="{{h.Id}}">{{h.PostingStatus}}</option>
+                                </select>
+                                <div class="c">
+                                </div>
+                                <div class="label label-danger" data-ng-show="frmRegister.PostingStatus.$dirty && frmRegister.PostingStatus.$invalid">
+                                    <span data-ng-show="frmRegister.PostingStatus.$error.required">@Resource.PostingStatusRequired</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.PostingExperience<span class="required-field">*</span>
@@ -174,6 +210,9 @@
                                                 </td>
                                                 <td data-title="'@Resource.Salary'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Salary}}
+                                                </td>
+                                                <td data-title="'@Resource.PostingStatus'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.PostingStatus}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
                                                     <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
