@@ -13,48 +13,90 @@
 </style>
 
 <div ng-controller="DashboardCtrl">
-    <div class="main-page-title title-icon relative l ">
-        <i class="fa fa fa-home icon-position" style="padding-top: 8px;"></i>
-        <h3 class="header-title-sub l">@MVCProject.Common.Resources.Resource.Dashboard</h3>
-        <div class="pull-right">
-        </div>
-    </div>
-    <div class="card-box">
-        <div class="row">
-            <div class="col-md-8">
-                <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" class="bg-light p-3" calendar="myCalendar"></div>
-            </div>
-            <div class="col-md-4">
-                <div class="schedule-event-details">
-                    <div class="card alert overflow-auto height">
-                        <div class="d-flex justify-content-between align-items-center mt-0 mb-3">
-                            <h4 class="meeting-title font-bold me-3" ng-class="{'ms-0' : length == 0}"> @Resource.Meeting</h4>
-                            <h5>{{Date | date }}</h5>
-                        </div>
-                        <p ng-show="length == 0">No Meetings Scheduled</p>
-                        <div ng-show="length != 0">
-                            <div class="card event-card" ng-repeat="SelectedEvent in SelectedEvents">
-                                <div class="card-body">
-                                    <p class="mb-2"><span><i class="time-icon fa fa-clock-o"></i></span><span class="event-detail">{{SelectedEvent.start | date : 'h:mm a'}} - {{SelectedEvent.end | date : 'h:mm a'}}</span></p>
-                                    <p class="mb-2"><span><i class="interview-icon fa fa-user"></i></span><span class="event-detail">Meeting with <span class="fw-bold">{{SelectedEvent.Applicant}}</span></span></p>
-                                    <p class="mb-2"><span class="event-detail"><i class="meeting-icon ti-agenda"></i> {{SelectedEvent.Interviewer}}</span></p>
-                                    <p class="mb-0">
-                                        <span class="event-detail">
-                                            <i class="interview-mode-icon ti-world"></i>
-                                            <span ng-repeat="(key,value) in Mode">
-                                                <span ng-if="key == SelectedEvent.Mode">{{value}}</span>
-                                            </span>
-                                        </span>
-                                    </p>
+    <div class="main-container">
+        <div class="row mt-5">
+            <div class="col-lg-3 ">
+                <div class="card dashboard-card-1">
+                    <a href="#" class="card-content">
+                        <div class="card-bg"></div>
+                        <div class="row">
+                            <div class="col-lg-3 dashboard-item-icon">
+                                <div class="icon-div">
+                                    <img src="~/Content/images/meetings-icon.svg" class="dashboard-icon" />
+                                </div>              
+                            </div>
+                            <div class="col-lg-9 text-center">
+                                <p class="info-number"> 15</p>
+                                <div class="dashboard-card-title">
+                                    Total Meetings
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card dashboard-card-2">
+                    <a href="#" class="card-content">
+                        <div class="card-bg"></div>
+                        <div class="row">
+                            <div class="col-lg-3 dashboard-item-icon">
+                                <div class="icon-div">
+                                <img src="~/Content/images/openings-icon.svg" class="dashboard-icon" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 text-center">
+                                <p class="info-number"> 15</p>
+                                <div class="dashboard-card-title">
+                                    Total Openings
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card dashboard-card-3">
+                    <a href="#" class="card-content">
+                        <div class="card-bg"></div>
+                        <div class="row">
+                            <div class="col-lg-3 dashboard-item-icon">
+                                <div class="icon-div">
+                                <img src="~/Content/images/applications.svg" class="dashboard-icon" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 text-center">
+                                <p class="info-number"> 15</p>
+                                <div class="dashboard-card-title">
+                                    Total Applications
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card dashboard-card-4">
+                    <a href="#" class="card-content">
+                        <div class="card-bg"></div>
+                        <div class="row">
+                            <div class="col-lg-3 dashboard-item-icon">
+                                <div class="icon-div">
+                                <img src="~/Content/images/hired.svg" class="dashboard-icon" />
+                                </div>
+                            </div>
+                            <div class="col-lg-9 text-center">
+                                <p class="info-number"> 15</p>
+                                <div class="dashboard-card-title">
+                                    Total Hired
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-
+        </div>
 </div>
 
 @section scripts {

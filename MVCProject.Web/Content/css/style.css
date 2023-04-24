@@ -6241,10 +6241,10 @@ header {
         padding: 15px 20px 20px 20px;
     }
 
-    .eternity-form input[type="checkbox"] {
+/*    .eternity-form input[type="checkbox"] {
         width: 30px;
     }
-
+*/
     .eternity-form .blue {
         color: #3498db;
         color: #3498db;
@@ -6619,13 +6619,13 @@ header {
     }
 
 .colorBg.colorBg1 {
-    background-color: #1D2544;
+/*    background-color: #1D2544;
     background-image: -ms-radial-gradient(center top, circle farthest-side, #5E6CA0 0%, #1D2544 100%);
     background-image: -moz-radial-gradient(center top, circle farthest-side, #5E6CA0 0%, #1D2544 100%);
     background-image: -o-radial-gradient(center top, circle farthest-side, #5E6CA0 0%, #1D2544 100%);
     background-image: -webkit-gradient(radial, center top, 0, center top, 487, color-stop(0, #5E6CA0), color-stop(1, #1D2544));
     background-image: -webkit-radial-gradient(center top, circle farthest-side, #5E6CA0 0%, #1D2544 100%);
-    background-image: radial-gradient(circle farthest-side at center top, #5E6CA0 0%, #1D2544 100%);
+    background-image: radial-gradient(circle farthest-side at center top, #5E6CA0 0%, #1D2544 100%);*/
     height: 100%;
 }
 

@@ -160,7 +160,7 @@ body {
 	line-height: var(--ats-body-line-height);
 	color: var(--ats-black);
 	text-align: var(--ats-body-text-align);
-	background: url(../images/body-bg-img.svg);
+/*	background: url(../images/body-bg-img.svg);*/
 	background-repeat: no-repeat;
 	background-size: cover;
 	-webkit-text-size-adjust: 100%;
@@ -4841,7 +4841,7 @@ fieldset:disabled .btn {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
-	flex-direction: column;
+	flex-direction: row-reverse;
 	padding-left: 0;
 	margin-bottom: 0;
 	list-style: none
@@ -21950,3 +21950,192 @@ tr.timeline-search-expanded-detail {
 	border-left: none;
 	position: relative;
 }
+
+/* ********************************    Login   **************************/
+main div.section-login {
+	width: 100%;
+	height: 100vh;
+	background-image: url('../images/login-bg-img.svg');
+	background-repeat: no-repeat;
+	background-size: 54%;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.login-card {
+	box-shadow: 0px 0px 6px #ddd;
+}
+
+.login-form-card {
+	width: 80%;
+}
+
+.login-row {
+	padding: 60px;
+}
+
+.card-login {
+	box-shadow: 0px 0px 20px 2px #cccccc;
+}
+
+a.forgot-password {
+	font-size: 13px;
+}
+
+.login-checkbox {
+	font-size: 13px;
+}
+
+.login-img {
+	height: auto;
+	width: 77%;
+}
+
+.login-img-col {
+	background: #483d8b;
+	text-align: center;
+}
+
+.section-login::before {
+	content: "";
+	background-image: url(../images/login-bg-img.svg);
+	position: absolute;
+	left: 20%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+	z-index: 0;
+	height: 500px;
+	width: 500px;
+}
+
+@media only screen and (max-width: 991px) {
+	.login-form-card {
+		width: 100%;
+		margin-left: 24px;
+		margin-right: 24px;
+	}
+}
+
+
+
+.dashboard-card-1, .dashboard-card-2, .dashboard-card-3, .dashboard-card-4{
+  overflow: hidden;
+}
+.card-content {
+  display: block;
+  padding: 30px 20px;
+  background-color: #121212;
+  overflow: hidden;
+  position: relative;
+}
+.card-content:hover,
+.card-content:hover .ag-courses-item_date {
+  text-decoration: none;
+  color: #FFF;
+}
+/*.card-content:hover{
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}*/
+.dashboard-card-title{
+	overflow: hidden;
+	font-weight: bold;
+	font-size: 16px;
+	color: #FFF;
+	z-index: 2;
+	position: relative;
+}
+.card-bg {
+	height: 81px;
+	width: 68px;
+	z-index: 1;
+	background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
+	position: absolute;
+	top: 20px;
+	right: -21px;
+	border-radius: 10px;
+	transform: rotate(-45deg);
+	-webkit-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.dashboard-card-1 .card-content{
+  background-color: #f9b234;
+}
+.dashboard-card-2 .card-content {
+	background-color: #007bff;
+}
+.dashboard-card-3 .card-content {
+	background-color: #e44022;
+}
+.dashboard-card-4 .card-content {
+	background-color: #3ecd5e;
+}
+
+.info-number{
+	color: var(--ats-white);
+	margin-bottom: 0;
+	font-size: 40px;
+}
+
+.dashboard-item-icon{
+	display: flex;
+	align-items: center;
+}
+
+.icon-div {
+	border-radius: 50%;
+	background: rgba(255,255,255,0.25);
+	padding: 15px;
+	display: flex;
+	align-items: center;
+}
+
+/*.ag-courses_item:nth-child(6n) .card-bg {
+  background-color: #4c49ea;
+}*/
+
+/*
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .card-content {
+    padding: 22px 40px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 16px;
+  }
+}*/
