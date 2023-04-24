@@ -204,6 +204,7 @@
     <Compile Include="Controllers\AdvancedSearch\AdvancedSearchController.cs" />
     <Compile Include="Controllers\ApplicantRegister\RegistrationsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Calendar\CalendarController.cs" />
     <Compile Include="Controllers\Common\CommonController.cs" />
     <Compile Include="Controllers\CompanyMaster\CompanyController.cs" />
     <Compile Include="Controllers\Configuration\DesignationsController.cs" />

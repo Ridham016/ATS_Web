@@ -177,6 +177,8 @@
     <Compile Include="Areas\AdvancedSearch\Controllers\SearchController.cs" />
     <Compile Include="Areas\ApplicantRegister\ApplicantAreaRegistration.cs" />
     <Compile Include="Areas\ApplicantRegister\Controllers\RegistrationController.cs" />
+    <Compile Include="Areas\Calendar\CalendarAreaRegistration.cs" />
+    <Compile Include="Areas\Calendar\Controllers\CalendarController.cs" />
     <Compile Include="Areas\CompanyMaster\Controllers\CompanyController.cs" />
     <Compile Include="Areas\CompanyMaster\CompanyAreaRegistration.cs" />
     <Compile Include="Areas\Configuration\ConfigurationAreaRegistration.cs" />
@@ -247,6 +249,8 @@
     <Content Include="Areas\AdvancedSearch\Scripts\angularjs\services\AdvancedSearchService.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\controllers\RegistrationCtrl.js" />
     <Content Include="Areas\ApplicantRegister\Scripts\angular\services\RegistrationService.js" />
+    <Content Include="Areas\Calendar\Scripts\angular\controllers\CalendarCtrl.js" />
+    <Content Include="Areas\Calendar\Scripts\angular\services\CalendarService.js" />
     <Content Include="Areas\CompanyMaster\Scripts\angular\controllers\CompanyCtrl.js" />
     <Content Include="Areas\CompanyMaster\Scripts\angular\services\CompanyService.js" />
     <Content Include="Areas\Configuration\Scripts\angular\controllers\ApplicationCtrl.js" />
@@ -554,6 +558,8 @@
     <Content Include="Areas\CompanyMaster\Views\Web.config" />
     <Content Include="Areas\JobOpenings\Views\JobOpenings\Index.cshtml" />
     <Content Include="Areas\JobOpenings\Views\Web.config" />
+    <Content Include="Areas\Calendar\Views\Web.config" />
+    <Content Include="Areas\Calendar\Views\Calendar\Index.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />
