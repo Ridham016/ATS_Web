@@ -1272,4 +1272,13 @@
   <data name="PostingStatusRequired" xml:space="preserve">
     <value>Posting Status is Required</value>
   </data>
+  <data name="ExcelData" xml:space="preserve">
+    <value>Excel Data</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import Data</value>
+  </data>
+  <data name="ImportApplicant" xml:space="preserve">
+    <value>Import Applicant Data</value>
+  </data>
 </root>

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = @Resource.Registration;
+    ViewBag.Title = @Resource.Import;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +17,7 @@
 <div ng-controller="ImportCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
         <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
-        <h4 class="header-title-sub l">@Resource.ApplicantRegister</h4>
+        <h4 class="header-title-sub l">@Resource.ImportApplicant</h4>
         <div class="pull-right">
         </div>
     </div>
@@ -31,6 +31,9 @@
                     <div class="col-4">
                         <button class="btn btn-success" ng-click="uploadFile()">Import</button>
                     </div>
+                    @*<div class="col-4">
+                            <button class="btn btn-success" ng-click="getSampleExcel()">Get Sample Excel</button>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -42,14 +45,16 @@
                             @*<button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="showNextApplicant()">
                                     @Resource.Save
                                 </button>*@
-
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" @*ng-disabled="frmRegister.$invalid"*@>
+                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
+                                Get Sample Excel
+                            </button>
+                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0">
                                 Add Applicants
                             </button>
-                            <button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
-                                    tabindex="4">
-                                @Resource.Clear
-                            </button>
+                            @*<button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
+                                        tabindex="4">
+                                    @Resource.Clear
+                                </button>*@
                         </div>
                     </div>
                 </div>
@@ -59,7 +64,7 @@
                         <div class="row mb-3 align-items-baseline">
                             <div class="col-md-5">
                                 <label class="table-title">
-                                    @Resource.Registration @Resource.Details
+                                    @Resource.ExcelData @Resource.Details
                                 </label>
                             </div>
                         </div>
@@ -70,7 +75,7 @@
                                 <scrollable-table scroll-height="510">
                                     <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered table-hover">
                                         <tbody>
-                                            <tr ng-repeat="h in applicant">
+                                            <tr ng-repeat="h in applicant track by $index">
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
@@ -83,69 +88,15 @@
                                                 <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.Address}}
-                                                </td>
-                                                <td data-title="'@Resource.ApplicantDate'" sortable="'ApplicantDate'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.ApplicantDate | date}}
-                                                </td>
-                                                <td data-title="'@Resource.ApplicantDOB'" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.DateOfBirth | date}}
-                                                </td>
-                                                <td data-title="'@Resource.CurrentCompany'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.CurrentCompany}}
-                                                </td>
-                                                <td data-title="'@Resource.CurrentDesignations'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.CurrentDesignation}}
-                                                </td>
-                                                <td data-title="'@Resource.TotalExperience'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.TotalExperience}}
-                                                </td>
-                                                <td data-title="'@Resource.DetailedExperince'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.DetailedExperience}}
-                                                </td>
-                                                <td data-title="'@Resource.CurrentCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.CurrentCTC}}
-                                                </td>
-                                                <td data-title="'@Resource.ExpectedCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.ExpectedCTC}}
-                                                </td>
-                                                <td data-title="'@Resource.NoticePeriod'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
-                                                    <span ng-repeat="(key,value) in NoticePeriod">
-                                                        <span ng-if="key == h.NoticePeriod">{{value}}</span>
-                                                    </span>
-                                                </td>
-                                                <td data-title="'@Resource.CurrentLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.CurrentLocation}}
-                                                </td>
-                                                <td data-title="'@Resource.PreferedLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.PreferedLocation}}
-                                                </td>
-                                                <td data-title="'@Resource.ReasonForChange'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.ReasonForChange}}
-                                                </td>
-                                                <td data-title="'@Resource.SkillDescription'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.SkillDescription}}
-                                                </td>
-                                                <td data-title="'@Resource.PortfolioLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.PortfolioLink}}
-                                                </td>
-                                                <td data-title="'@Resource.LinkedinLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.LinkedinLink}}
-                                                </td>
-                                                <td data-title="'@Resource.OtherLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                    {{h.OtherLink}}
-                                                </td>
-                                                <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
-                                                    <input type="checkbox" class="js-switch" ui-switch options="switchOptions" ng-model="h.IsActive"
-                                                           ng-disabled="true" />
-                                                </td>
-                                                @*<td data-title="Errors" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                        {{errors}}
+                                                @*<td ng-if="errors[$index] && errors[$index].length > 0" class="error-text" data-title="'@Resource.Error'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                                    <span ng-repeat="error in errors[$index]">{{ error }}{{ $last ? '' : ', ' }}</span>
                                                     </td>*@
-                                                @*<td ng-if="errors[$index]" data-title="Errors" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                        {{errors[$index].join(',')}}
+                                                @*<td ng-show="errors[$index]" style="color: red;" data-title="Errors" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                        {{ errors[$index].join(', ') }} (index = {{ $index }})
                                                     </td>*@
+                                                <td class="error-text" data-title="'@Resource.Error'" style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.Error}}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

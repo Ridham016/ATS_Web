@@ -238,48 +238,50 @@
             IsActive: true
         };
         $scope.applicant = [];
+        $scope.errors = '';
+
         $scope.Updatedapplicant = [];
         $scope.currentApplicantIndex = 0;
         $scope.validation = [];
-        $scope.validateApplicant = function (applicant) {
-            debugger
-            var errors = [];
-            var onlyNumbersRegex = /^\d+$/;
-            if (!applicant.FirstName) {
-                errors.push('First Name is required');
-            }
-            if (!applicant.LastName) {
-                errors.push('Last Name is required');
-            }
-            if (!applicant.Email) {
-                errors.push('Email is required');
-            } else if (!isValidEmail(applicant.Email)) {
-                errors.push('Invalid email format');
-            }
-            if (!applicant.Phone) {
-                errors.push('Phone is required');
-            } else if (!isValidPhone(applicant.Phone)) {
-                errors.push('Invalid phone number format');
-            }
-            if (!applicant.DateOfBirth) {
-                errors.push('Date Of Birth is required');
-            }
-            if (onlyNumbersRegex.test(applicant.CurrentCompany)) {
-                return 'CurrentCompany field cannot contain only numbers.';
-            }
-            if (onlyNumbersRegex.test(applicant.CurrentDesignation)) {
-                return 'CurrentDesignation field cannot contain only numbers.';
-            }
-            if (onlyNumbersRegex.test(applicant.NoticePeriod)) {
-                return 'NoticePeriod field cannot contain only numbers.';
-            }
+        //$scope.validateApplicant = function (applicant) {
+        //    debugger
+        //    var errors = [];
+        //    var onlyNumbersRegex = /^\d+$/;
+        //    if (!applicant.FirstName) {
+        //        errors.push('First Name is required');
+        //    }
+        //    if (!applicant.LastName) {
+        //        errors.push('Last Name is required');
+        //    }
+        //    if (!applicant.Email) {
+        //        errors.push('Email is required');
+        //    } else if (!isValidEmail(applicant.Email)) {
+        //        errors.push('Invalid email format');
+        //    }
+        //    if (!applicant.Phone) {
+        //        errors.push('Phone is required');
+        //    } else if (!isValidPhone(applicant.Phone)) {
+        //        errors.push('Invalid phone number format');
+        //    }
+        //    if (!applicant.DateOfBirth) {
+        //        errors.push('Date Of Birth is required');
+        //    }
+        //    if (onlyNumbersRegex.test(applicant.CurrentCompany)) {
+        //        return 'CurrentCompany field cannot contain only numbers.';
+        //    }
+        //    if (onlyNumbersRegex.test(applicant.CurrentDesignation)) {
+        //        return 'CurrentDesignation field cannot contain only numbers.';
+        //    }
+        //    if (onlyNumbersRegex.test(applicant.NoticePeriod)) {
+        //        return 'NoticePeriod field cannot contain only numbers.';
+        //    }
 
-            return errors;
-        };
-        $scope.isValidEmail = function (email) {
-            var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(email);
-        };
+        //    return errors;
+        //};
+        //$scope.isValidEmail = function (email) {
+        //    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        //    return regex.test(email);
+        //};
         $scope.showNextApplicant = function () {
             debugger
             $scope.Updatedapplicant[$scope.currentApplicantIndex] = $scope.applicantDetailScope;
@@ -302,32 +304,52 @@
             var payload = new FormData();
             payload.append("file", file);
             ImportService.uploadFile(payload).then(function (response) {
-                $scope.applicant = response.data.Result;
-                $scope.validation = response.data.validation;
-                $scope.validateApplicant(applicant);
-                $scope.errors = $scope.validateApplicant(applicant);
-                $scope.applicantDetailScope = $scope.applicant[$scope.currentApplicantIndex];
-                $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
+                $scope.applicant = response.data.Result.Data;
+                $scope.errors = response.data.Result.Errors;
+                for (var i = 0; i < $scope.errors.length; i++) {
+                    var errorRow = parseInt($scope.errors[i].split(":")[0]);
+                    var errorMessage = $scope.errors[i].split(":")[1];
+                    $scope.applicant[errorRow - 1].Error = errorMessage;
+                    console.log($scope.errors);
+                }
+                //$scope.validation = response.data.validation;
+                //$scope.validateApplicant($scope.applicant);
+                //$scope.errors = $scope.validateApplicant($scope.applicant);
+                //$scope.applicantDetailScope = $scope.applicant[$scope.currentApplicantIndex];
+                //$scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                 debugger
                 //$scope.showNextApplicant();
             });
+            //.catch (function (response) {
+            //    $scope.errors = response.data;
+
+            //});
 
         };
         $scope.submitApplicants = function (applicant) {
-            //$http({
-            //    method: 'POST',
-            //    url: '/api/Import/AddApplicants',
-            //    data: applicantDetailScope
-            //$scope.Updatedapplicant[$scope.currentApplicantIndex] = applicantDetailScope;
             debugger
             ImportService.AddApplicants($scope.applicant).then(function (response) {
                 // Handle success response
+                toastr.success(response.Message, successTitle);
                 console.log(response.data.Result);
             }, function (error) {
+                toastr.error(response.Message, errorTitle);
                 // Handle error response
                 console.log(error.data);
             });
         };
+
+        $scope.getSampleExcel = function () {
+            ImportService.GetSample($scope.applicant).then(function (response) {
+                var data = new Blob([response.data], { type: 'application/octet-stream' });
+                var downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(data);
+                downloadLink.download = 'SampleExcel.xlsx';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
     }
 
 })();
