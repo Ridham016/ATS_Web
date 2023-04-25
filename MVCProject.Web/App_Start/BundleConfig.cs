@@ -131,6 +131,7 @@ namespace MVCProject
                 .Include(BundlePath.css.scrollableTable)
                 .Include(BundlePath.css.tooltipster)
                 .Include(BundlePath.css.fullCalendarMin)
+                .Include(BundlePath.css.apexcharts)
                 //.Include(BundlePath.css.fullCalendarPrint)
                 .Include(BundlePath.css.newstyles));
 

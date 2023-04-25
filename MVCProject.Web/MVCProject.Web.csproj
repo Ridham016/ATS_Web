@@ -292,6 +292,7 @@
     <Content Include="Areas\ScheduleManagement\Scripts\angular\services\ScheduleService.js" />
     <Content Include="Content\css\angucomplete-alt.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\apexcharts.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bs-daterangepicker.css" />
     <Content Include="Content\css\buttons.bootstrap.min.css" />

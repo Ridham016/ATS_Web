@@ -23,17 +23,17 @@
     </div>
     <div class="card-box">
         <div class="row mb-3">
-            <div class="col-4">
+            <div class="col-lg-5">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <input class="form-control" type="file" id="file" ng-model="myFile" />
                     </div>
-                    <div class="col-4">
-                        <button class="btn btn-success" ng-click="uploadFile()">Import</button>
+                    <div class="col-lg-4">
+                        <button class="btn btn-success" ng-click="uploadFile()">
+                            <i class="fa fa-file-import me-2"></i>
+                            Import
+                        </button>
                     </div>
-                    @*<div class="col-4">
-                            <button class="btn btn-success" ng-click="getSampleExcel()">Get Sample Excel</button>
-                        </div>*@
                 </div>
             </div>
         </div>
@@ -42,23 +42,16 @@
                 <div class="row mt-3 mb-4">
                     <div class="col-md-10">
                         <div class="form-group">
-                            @*<button type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="showNextApplicant()">
-                                    @Resource.Save
-                                </button>*@
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
+                            <button type="submit" class="btn btn-primary m-b-5 me-2" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
                                 Get Sample Excel
                             </button>
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0"><i class="fa fa-plus me-2"></i>
+                            <button type="submit" class="btn btn-success waves-effect w-md me-2 waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0">
+                                <i class="fa fa-plus me-2"></i>
                                 Add Applicants
                             </button>
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="reset()">
-                                <i class="fa fa-plus me-2"></i>
+                            <button type="submit" class="btn btn-danger waves-effect w-md waves-light m-b-5" ng-click="reset()">
                                 @Resource.Clear
                             </button>
-                            @*<button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
-                                        tabindex="4">
-                                    @Resource.Clear
-                                </button>*@
                         </div>
                     </div>
                 </div>
@@ -77,13 +70,13 @@
                         <div class="form-group">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="510">
-                                    <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered table-hover">
+                                    <table ng-table="tableParams" id="datatable" class="table table-bordered">
                                         <tbody>
                                             <tr ng-repeat="h in applicant track by $index">
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
-                                                    {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
+                                                    {{($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantName'" sortable="'FirstName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
                                                 </td>
                                                 <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
@@ -92,12 +85,6 @@
                                                 <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                @*<td ng-if="errors[$index] && errors[$index].length > 0" class="error-text" data-title="'@Resource.Error'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
-                                                    <span ng-repeat="error in errors[$index]">{{ error }}{{ $last ? '' : ', ' }}</span>
-                                                    </td>*@
-                                                @*<td ng-show="errors[$index]" style="color: red;" data-title="Errors" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
-                                                        {{ errors[$index].join(', ') }} (index = {{ $index }})
-                                                    </td>*@
                                                 <td class="error-text" data-title="'@Resource.Error'" style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Error}}
                                                 </td>

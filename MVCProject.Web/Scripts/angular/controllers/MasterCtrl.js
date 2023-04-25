@@ -407,7 +407,17 @@
         }
         // end open popup to select area map
 
+        //Set Sidebar to nav-sm when screen size is 992px
+        angular.element(window).bind('resize', function () { 
+            $timeout(function () { 
+                if (window.innerWidth < 992) {
+                    sessionStorage.setItem("IsSmallMenu", "Yes");
+                    $scope.isSmallMenu = true;
+                }
+            });
+        });
 
+        angular.element(window).triggerHandler('resize');
 
 
     }

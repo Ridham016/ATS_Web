@@ -11,7 +11,7 @@
 
         .frozen-columns tbody td:last-child {
             position: sticky;
-            right: 0;
+            right: -2px;
             z-index: 2;
             background-color: #f6f7f9 !important;
         }
@@ -61,9 +61,9 @@
     }
 
     .colDate {
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
+        width: 135px !important;
+        min-width: 135px !important;
+        max-width: 135px !important;
     }
 
     .colAction {
@@ -575,8 +575,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="form-control-static">
-                                <scrollable-table scroll-height="510">
-                                    <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered table-hover">
+                                <scrollable-table scroll-height="520">
+                                    <table ng-table="tableParams" id="datatable" class="frozen-columns table table-bordered">
                                         <tbody>
                                             <tr ng-repeat="h in applicants">
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
@@ -594,7 +594,7 @@
                                                 <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Address}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantDate'" sortable="'ApplicantDate'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDate'" sortable="'ApplicantDate'" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.ApplicantDate | date}}
                                                 </td>
                                                 <td data-title="'@Resource.ApplicantDOB'" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">

@@ -753,7 +753,9 @@ namespace MVCProject.Api.Models
         /// No Metadata Documentation available.
         /// </summary>
         /// <param name="currentStatusId">No Metadata Documentation available.</param>
-        public ObjectResult<USP_ATS_GetApplicantWithStatus_Result> USP_ATS_GetApplicantWithStatus(Nullable<global::System.Int32> currentStatusId)
+        /// <param name="companyId">No Metadata Documentation available.</param>
+        /// <param name="positionId">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_GetApplicantWithStatus_Result> USP_ATS_GetApplicantWithStatus(Nullable<global::System.Int32> currentStatusId, Nullable<global::System.Int32> companyId, Nullable<global::System.Int32> positionId)
         {
             ObjectParameter currentStatusIdParameter;
             if (currentStatusId.HasValue)
@@ -765,7 +767,27 @@ namespace MVCProject.Api.Models
                 currentStatusIdParameter = new ObjectParameter("CurrentStatusId", typeof(global::System.Int32));
             }
     
-            return base.ExecuteFunction<USP_ATS_GetApplicantWithStatus_Result>("USP_ATS_GetApplicantWithStatus", currentStatusIdParameter);
+            ObjectParameter companyIdParameter;
+            if (companyId.HasValue)
+            {
+                companyIdParameter = new ObjectParameter("CompanyId", companyId);
+            }
+            else
+            {
+                companyIdParameter = new ObjectParameter("CompanyId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter positionIdParameter;
+            if (positionId.HasValue)
+            {
+                positionIdParameter = new ObjectParameter("PositionId", positionId);
+            }
+            else
+            {
+                positionIdParameter = new ObjectParameter("PositionId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_GetApplicantWithStatus_Result>("USP_ATS_GetApplicantWithStatus", currentStatusIdParameter, companyIdParameter, positionIdParameter);
         }
     
         /// <summary>
@@ -1085,6 +1107,14 @@ namespace MVCProject.Api.Models
             }
     
             return base.ExecuteFunction<USP_ATS_CountForDashboard_Result>("USP_ATS_CountForDashboard", timeFrameParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectResult<USP_ATS_CountForStackedBar_Result> USP_ATS_CountForStackedBar()
+        {
+            return base.ExecuteFunction<USP_ATS_CountForStackedBar_Result>("USP_ATS_CountForStackedBar");
         }
 
         #endregion
@@ -13001,6 +13031,116 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Int32> _InterviewCancelled;
         partial void OnInterviewCancelledChanging(Nullable<global::System.Int32> value);
         partial void OnInterviewCancelledChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="USP_ATS_CountForStackedBar_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_CountForStackedBar_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Months
+        {
+            get
+            {
+                return _Months;
+            }
+            set
+            {
+                OnMonthsChanging(value);
+                ReportPropertyChanging("Months");
+                _Months = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Months");
+                OnMonthsChanged();
+            }
+        }
+        private global::System.String _Months;
+        partial void OnMonthsChanging(global::System.String value);
+        partial void OnMonthsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApplicantsRegistered
+        {
+            get
+            {
+                return _ApplicantsRegistered;
+            }
+            set
+            {
+                OnApplicantsRegisteredChanging(value);
+                ReportPropertyChanging("ApplicantsRegistered");
+                _ApplicantsRegistered = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantsRegistered");
+                OnApplicantsRegisteredChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApplicantsRegistered;
+        partial void OnApplicantsRegisteredChanging(Nullable<global::System.Int32> value);
+        partial void OnApplicantsRegisteredChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApplicantsHired
+        {
+            get
+            {
+                return _ApplicantsHired;
+            }
+            set
+            {
+                OnApplicantsHiredChanging(value);
+                ReportPropertyChanging("ApplicantsHired");
+                _ApplicantsHired = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantsHired");
+                OnApplicantsHiredChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApplicantsHired;
+        partial void OnApplicantsHiredChanging(Nullable<global::System.Int32> value);
+        partial void OnApplicantsHiredChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApplicantsRejected
+        {
+            get
+            {
+                return _ApplicantsRejected;
+            }
+            set
+            {
+                OnApplicantsRejectedChanging(value);
+                ReportPropertyChanging("ApplicantsRejected");
+                _ApplicantsRejected = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantsRejected");
+                OnApplicantsRejectedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApplicantsRejected;
+        partial void OnApplicantsRejectedChanging(Nullable<global::System.Int32> value);
+        partial void OnApplicantsRejectedChanged();
 
         #endregion
 

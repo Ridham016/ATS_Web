@@ -39,24 +39,8 @@
         $scope.applicant = [];
         $scope.errors = '';
 
-        $scope.Updatedapplicant = [];
-        $scope.currentApplicantIndex = 0;
-        $scope.validation = [];
-
-        $scope.showNextApplicant = function () {
-            debugger
-            $scope.Updatedapplicant[$scope.currentApplicantIndex] = $scope.applicantDetailScope;
-            $scope.currentApplicantIndex++;
-            if ($scope.currentApplicantIndex >= $scope.applicant.length) {
-                $scope.currentApplicantIndex = 0;
-            }
-            console.log($scope.applicant[0]);
-            $scope.applicantDetailScope = $scope.applicant[$scope.currentApplicantIndex];
-            $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
-        };
-        //$scope.showNextApplicant();
         $scope.uploadFile = function () {
-            debugger
+            //debugger
             var fileInput = document.getElementById('file');
             if (fileInput.files.length === 0) return;
 
@@ -107,7 +91,7 @@
 
         };
         $scope.submitApplicants = function (applicant) {
-            debugger
+            //debugger
             ImportService.AddApplicants($scope.applicant).then(function (response) {
                 // Handle success response
                 if (response.data.MessageType == messageTypes.Success) {
@@ -136,10 +120,7 @@
             });
         }
         $scope.reset = function () {
-            // Reset file input
-            document.getElementById('file').value = '';
-
-            // Clear table data
+            $('#file').val('');
             $scope.applicant = [];
             $scope.errors = [];
         };

@@ -111,5 +111,10 @@ namespace MVCProject.Models
         /// FullCalendar CSS
         /// </summary>
         public string fullCalendarMin = cssPath + "fullCalendar.min.css";
+
+        /// <summary>
+        /// Apexcharts CSS
+        /// </summary>
+        public string apexcharts = cssPath + "apexcharts.css";
     }
 }

@@ -504,6 +504,7 @@
         <Function Name="USP_ATS_CountForDashboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="timeFrame" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_CountForStackedBar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_FilesOfApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -512,6 +513,8 @@
         </Function>
         <Function Name="USP_ATS_GetApplicantWithStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="PositionId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_GetButton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StatusId" Type="int" Mode="In" />
@@ -1069,7 +1072,9 @@
           <Parameter Name="ActionId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetApplicantWithStatus" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetApplicantWithStatus_Result)">
-          <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="PositionId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetButton_Result)">
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
@@ -1150,8 +1155,9 @@
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
           </AssociationSet>
           <FunctionImport Name="USP_ATS_CountForDashboard" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForDashboard_Result)" >
-            <Parameter Name="timeFrame" Mode="In" Type="Int32" />
+          <Parameter Name="timeFrame" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="USP_ATS_CountForStackedBar" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForStackedBar_Result)" />
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1827,6 +1833,12 @@
           <Property Type="Int32" Name="Hold" Nullable="true" />
           <Property Type="Int32" Name="Rejected" Nullable="true" />
           <Property Type="Int32" Name="InterviewCancelled" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_CountForStackedBar_Result">
+          <Property Type="String" Name="Months" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="ApplicantsRegistered" Nullable="true" />
+          <Property Type="Int32" Name="ApplicantsHired" Nullable="true" />
+          <Property Type="Int32" Name="ApplicantsRejected" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2741,6 +2753,16 @@
                 <ScalarProperty Name="Hold" ColumnName="Hold" />
                 <ScalarProperty Name="Rejected" ColumnName="Rejected" />
                 <ScalarProperty Name="InterviewCancelled" ColumnName="InterviewCancelled" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_CountForStackedBar" FunctionName="ATSMVCProjectModel.Store.USP_ATS_CountForStackedBar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_CountForStackedBar_Result">
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="ApplicantsRegistered" ColumnName="ApplicantsRegistered" />
+                <ScalarProperty Name="ApplicantsHired" ColumnName="ApplicantsHired" />
+                <ScalarProperty Name="ApplicantsRejected" ColumnName="ApplicantsRejected" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

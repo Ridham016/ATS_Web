@@ -2,10 +2,11 @@
     'use strict';
 
     angular.module("MVCApp").controller('DashboardCtrl', [
-        '$scope', 'uiCalendarConfig','$rootScope','CommonEnums', 'DashboardService', DashboardCtrl
+        '$scope', 'uiCalendarConfig','$timeout','$rootScope','CommonEnums', 'DashboardService', DashboardCtrl
     ]);
-    function DashboardCtrl($scope, uiCalendarConfig, $rootScope, CommonEnums, DashboardService) {
+    function DashboardCtrl($scope, uiCalendarConfig, $timeout, $rootScope, CommonEnums, DashboardService) {
 
+        var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c','#ffa21d'];
 
         $scope.getCounts = function (time) {
             $scope.timeFrame = time;
@@ -13,7 +14,6 @@
                 if (res) {
                     if (res.data.MessageType = messageTypes.Success) {
                         $scope.Counts = res.data.Result;
-                        var colorPalette = ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0']
 
                         var optionDonut = {
                             chart: {
@@ -28,7 +28,7 @@
                                 pie: {
                                     customScale: 0.8,
                                     donut: {
-                                        size: '70%',
+                                        size: '60%',
                                     },
                                     offsetY: 20,
                                 },
@@ -41,7 +41,7 @@
                                 text: 'Applicant Status',
                                 align: 'center',
                                 style: {
-                                    fontSize: '24px',
+                                    fontSize: '16px',
                                     fontWeight: 'bold',
                                     color: '#000'
                                 },
@@ -52,13 +52,17 @@
                                 position: 'bottom'
                             }
                         }
-
                         var donut = new ApexCharts(
                             document.querySelector("#donut"),
                             optionDonut
                         )
-                        donut.render();
-                        window.dispatchEvent(new Event('resize'));
+
+                        $timeout(function () {
+                        }, 200).then(function () {
+                            donut.render();
+                        })
+                        //donut.render();
+                        //window.dispatchEvent(new Event('resize'));
                     } else if (res.data.MessageType == messageTypes.Error) {
                         toastr.error(res.data.Message, errorTitle);
                     } else if (res.data.MessageType == messageTypes.Warning) {
@@ -68,5 +72,95 @@
             })
         }
 
+        $scope.getStackedCount = function () {
+            DashboardService.GetStackedCount().then(function (res) {
+                if (res) {
+                    if (res.data.MessageType = messageTypes.Success) {
+                        $scope.StackedCounts = res.data.Result;
+                        var labels = [],registeredData = [], hiredData = [], rejectedData = [];
+
+                        for (var i = 0; i < $scope.StackedCounts.length; i++) {
+                            labels.push($scope.StackedCounts[i].Months);
+                            registeredData.push($scope.StackedCounts[i].ApplicantsRegistered);
+                            hiredData.push($scope.StackedCounts[i].ApplicantsHired);
+                            rejectedData.push($scope.StackedCounts[i].ApplicantsRejected);
+                        }
+                        console.log($scope.StackedCounts)
+                        var optionsBar = {
+                            chart: {
+                                type: 'bar',
+                                height: 380,
+                                width: '100%',
+                                stacked: true,
+                            },
+                            plotOptions: {
+                                bar: {
+                                    columnWidth: '45%',
+                                }
+                            },
+                            fill: {
+                                opacity: 1,
+                            },
+                            colors: ['#007bff', '#3ecd5e', '#e44022'],
+                            series: [{
+                                name: "Applicants Registered",
+                                data: registeredData
+                            }, {
+                                name: "Accepted",
+                                data: hiredData,
+                            }, {
+                                name: "Rejected",
+                                data: rejectedData,
+                            }],
+                            labels: labels,
+                            xaxis: {
+                                labels: {
+                                    show: true
+                                },
+                                axisBorder: {
+                                    show: false
+                                },
+                                axisTicks: {
+                                    show: false
+                                },
+                            },
+                            yaxis: {
+                                axisBorder: {
+                                    show: false
+                                },
+                                axisTicks: {
+                                    show: false
+                                },
+                                labels: {
+                                    style: {
+                                        colors: '#78909c'
+                                    }
+                                }
+                            },
+                            title: {
+                                text: 'Number of Offers',
+                                align: 'center',
+                                style: {
+                                    fontSize: '16px'
+                                }
+                            }
+
+                        }
+
+                        var chartBar = new ApexCharts(document.querySelector('#bar'), optionsBar);
+                        $timeout(function () {
+                        }, 200).then(function () {
+                            chartBar.render();
+                        })
+                        //chartBar.render();
+
+                    } else if (res.data.MessageType == messageTypes.Error) {
+                        toastr.error(res.data.Message, errorTitle);
+                    } else if (res.data.MessageType == messageTypes.Warning) {
+                        toastr.warning(res.data.Message, warningTitle);
+                    }
+                }
+            })
+        }
     }
 })();

@@ -137,7 +137,7 @@ namespace MVCProject.Api.Controllers.ImportData
                 if (validationErrors.Any())
                 {
                     //var result = new { Data = list, Errors = validationErrors };
-                    return this.Response(Utilities.MessageTypes.Error, string.Join(",", validationErrors), result);
+                    return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel", result);
                     //return (string.Join(",", validationErrors));
                 }
                 else
@@ -156,9 +156,9 @@ namespace MVCProject.Api.Controllers.ImportData
                 var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
                 return this.Response(Utilities.MessageTypes.Error, exceptionMessage);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel" + ex.Message);
+                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel");
             }
 
         }

@@ -20,19 +20,37 @@ namespace MVCProject.Api.Controllers.Dashboard
             this.entities = new MVCProjectEntities();
         }
         [HttpGet]
-        public ApiResponse GetEvents()
+        public ApiResponse GetCounts_APP(int timeFrame = 3)
         {
 
-            var Calendardisplay = entities.USP_ATS_ScheduleInformation().ToList();
-            return this.Response(MessageTypes.Success, string.Empty, Calendardisplay);
+            var counts = entities.USP_ATS_CountForDashboard(timeFrame).ToList();
+            if(counts != null)
+            {
+                return this.Response(MessageTypes.Success, string.Empty, counts);
+            }
+            return this.Response(Utilities.MessageTypes.Error, Resource.Error);
 
         }
+
         [HttpGet]
         public ApiResponse GetCounts(int timeFrame = 3)
         {
 
             var counts = entities.USP_ATS_CountForDashboard(timeFrame).FirstOrDefault();
-            if(counts != null)
+            if (counts != null)
+            {
+                return this.Response(MessageTypes.Success, string.Empty, counts);
+            }
+            return this.Response(Utilities.MessageTypes.Error, Resource.Error);
+
+        }
+
+        [HttpGet]
+        public ApiResponse GetStackedCount()
+        {
+
+            var counts = entities.USP_ATS_CountForStackedBar().ToList();
+            if (counts != null)
             {
                 return this.Response(MessageTypes.Success, string.Empty, counts);
             }

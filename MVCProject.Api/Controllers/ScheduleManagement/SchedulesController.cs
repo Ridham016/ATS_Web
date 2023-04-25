@@ -400,9 +400,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse GetApplicantsParam([FromBody]PagingParams applicantDetailParams)
+        public ApiResponse GetApplicantsParam([FromBody]PagingParams applicantDetailParams, int CompanyId, int PositionId)
         {
-            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId).ToList();
+            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, CompanyId, PositionId).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {

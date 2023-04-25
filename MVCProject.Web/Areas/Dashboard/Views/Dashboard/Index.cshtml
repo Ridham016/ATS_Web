@@ -3,13 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .has-events {
-        background-color: #8fdf82;
-    }
-
-    .height {
-        max-height: 74vh;
-    }
     .week {
         border-radius: 5px 0px 0px 5px;
     }
@@ -27,7 +20,7 @@
     }
 </style>
 
-<div ng-controller="DashboardCtrl" ng-init="getCounts(3)">
+<div ng-controller="DashboardCtrl" ng-init="getCounts(3);getStackedCount()">
     <div class="main-container">
         <div class="card-box">
             <div class="d-flex justify-content-end">
@@ -119,9 +112,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <div class="card-box chart-card">
                         <div id="donut"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-box chart-card">
+                        <div id="bar"></div>
                     </div>
                 </div>
             </div>
