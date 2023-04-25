@@ -363,6 +363,7 @@
     <Content Include="Content\images\selectimage.png" />
     <Content Include="Content\images\skin.png" />
     <Content Include="Content\images\sprit.png" />
+    <Content Include="Content\images\top-header.png" />
     <Content Include="Content\images\view-details-icon.svg" />
     <Content Include="Content\images\zydus-logo.jpg" />
     <Content Include="Rotativa\msvcp120.dll" />
@@ -436,6 +437,7 @@
     <Content Include="Scripts\jquery\plugin\jquery.imgareaselect.pack.js" />
     <Content Include="Scripts\jquery\plugin\saveSvgAsPng.js" />
     <Content Include="Scripts\jquery\plugin\tooltipster.js" />
+    <Content Include="Scripts\js\apexcharts.js" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
     <Content Include="Scripts\js\calendar.js" />
     <Content Include="Scripts\js\canvg.min.js" />

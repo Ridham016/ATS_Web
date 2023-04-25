@@ -1067,6 +1067,25 @@ namespace MVCProject.Api.Models
         {
             return base.ExecuteFunction<USP_ATS_GetPostingstatus_Result>("USP_ATS_GetPostingstatus");
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="timeFrame">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_CountForDashboard_Result> USP_ATS_CountForDashboard(Nullable<global::System.Int32> timeFrame)
+        {
+            ObjectParameter timeFrameParameter;
+            if (timeFrame.HasValue)
+            {
+                timeFrameParameter = new ObjectParameter("timeFrame", timeFrame);
+            }
+            else
+            {
+                timeFrameParameter = new ObjectParameter("timeFrame", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_CountForDashboard_Result>("USP_ATS_CountForDashboard", timeFrameParameter);
+        }
 
         #endregion
 
@@ -12704,6 +12723,284 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="USP_ATS_CountForDashboard_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_CountForDashboard_Result : ComplexObject
+    {
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MeetingsScheduled
+        {
+            get
+            {
+                return _MeetingsScheduled;
+            }
+            set
+            {
+                OnMeetingsScheduledChanging(value);
+                ReportPropertyChanging("MeetingsScheduled");
+                _MeetingsScheduled = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MeetingsScheduled");
+                OnMeetingsScheduledChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MeetingsScheduled;
+        partial void OnMeetingsScheduledChanging(Nullable<global::System.Int32> value);
+        partial void OnMeetingsScheduledChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> JobOpenings
+        {
+            get
+            {
+                return _JobOpenings;
+            }
+            set
+            {
+                OnJobOpeningsChanging(value);
+                ReportPropertyChanging("JobOpenings");
+                _JobOpenings = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("JobOpenings");
+                OnJobOpeningsChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _JobOpenings;
+        partial void OnJobOpeningsChanging(Nullable<global::System.Int32> value);
+        partial void OnJobOpeningsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApplicantsRegistered
+        {
+            get
+            {
+                return _ApplicantsRegistered;
+            }
+            set
+            {
+                OnApplicantsRegisteredChanging(value);
+                ReportPropertyChanging("ApplicantsRegistered");
+                _ApplicantsRegistered = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantsRegistered");
+                OnApplicantsRegisteredChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApplicantsRegistered;
+        partial void OnApplicantsRegisteredChanging(Nullable<global::System.Int32> value);
+        partial void OnApplicantsRegisteredChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ApplicantsHired
+        {
+            get
+            {
+                return _ApplicantsHired;
+            }
+            set
+            {
+                OnApplicantsHiredChanging(value);
+                ReportPropertyChanging("ApplicantsHired");
+                _ApplicantsHired = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ApplicantsHired");
+                OnApplicantsHiredChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ApplicantsHired;
+        partial void OnApplicantsHiredChanging(Nullable<global::System.Int32> value);
+        partial void OnApplicantsHiredChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Registered
+        {
+            get
+            {
+                return _Registered;
+            }
+            set
+            {
+                OnRegisteredChanging(value);
+                ReportPropertyChanging("Registered");
+                _Registered = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Registered");
+                OnRegisteredChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Registered;
+        partial void OnRegisteredChanging(Nullable<global::System.Int32> value);
+        partial void OnRegisteredChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Shortlisted
+        {
+            get
+            {
+                return _Shortlisted;
+            }
+            set
+            {
+                OnShortlistedChanging(value);
+                ReportPropertyChanging("Shortlisted");
+                _Shortlisted = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Shortlisted");
+                OnShortlistedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Shortlisted;
+        partial void OnShortlistedChanging(Nullable<global::System.Int32> value);
+        partial void OnShortlistedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Discarded
+        {
+            get
+            {
+                return _Discarded;
+            }
+            set
+            {
+                OnDiscardedChanging(value);
+                ReportPropertyChanging("Discarded");
+                _Discarded = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Discarded");
+                OnDiscardedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Discarded;
+        partial void OnDiscardedChanging(Nullable<global::System.Int32> value);
+        partial void OnDiscardedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> InterviewScheduled
+        {
+            get
+            {
+                return _InterviewScheduled;
+            }
+            set
+            {
+                OnInterviewScheduledChanging(value);
+                ReportPropertyChanging("InterviewScheduled");
+                _InterviewScheduled = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InterviewScheduled");
+                OnInterviewScheduledChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _InterviewScheduled;
+        partial void OnInterviewScheduledChanging(Nullable<global::System.Int32> value);
+        partial void OnInterviewScheduledChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Hold
+        {
+            get
+            {
+                return _Hold;
+            }
+            set
+            {
+                OnHoldChanging(value);
+                ReportPropertyChanging("Hold");
+                _Hold = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Hold");
+                OnHoldChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Hold;
+        partial void OnHoldChanging(Nullable<global::System.Int32> value);
+        partial void OnHoldChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Rejected
+        {
+            get
+            {
+                return _Rejected;
+            }
+            set
+            {
+                OnRejectedChanging(value);
+                ReportPropertyChanging("Rejected");
+                _Rejected = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Rejected");
+                OnRejectedChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Rejected;
+        partial void OnRejectedChanging(Nullable<global::System.Int32> value);
+        partial void OnRejectedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> InterviewCancelled
+        {
+            get
+            {
+                return _InterviewCancelled;
+            }
+            set
+            {
+                OnInterviewCancelledChanging(value);
+                ReportPropertyChanging("InterviewCancelled");
+                _InterviewCancelled = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InterviewCancelled");
+                OnInterviewCancelledChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _InterviewCancelled;
+        partial void OnInterviewCancelledChanging(Nullable<global::System.Int32> value);
+        partial void OnInterviewCancelledChanged();
 
         #endregion
 

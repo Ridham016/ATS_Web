@@ -20,7 +20,7 @@
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/Position/Register',
+            url: $rootScope.apiURL + '/JobPosting/PositionRegister',
             data: JSON.stringify(positionDetailScope)
         })
     }

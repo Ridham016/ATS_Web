@@ -10,14 +10,35 @@
     .height {
         max-height: 74vh;
     }
+    .week {
+        border-radius: 5px 0px 0px 5px;
+    }
+    .month, .year {
+        border-radius: 0px;
+    }
+    .all-time{
+        border-radius: 0px 5px 5px 0px;
+    }
+    .bg-grey{
+        background: var(--ats-gray-300);
+    }
+    .bg-grey:hover {
+        background: var(--ats-gray-400);
+    }
 </style>
 
-<div ng-controller="DashboardCtrl">
+<div ng-controller="DashboardCtrl" ng-init="getCounts(3)">
     <div class="main-container">
-        <div class="row mt-5">
-            <div class="col-lg-3 ">
+        <div class="d-flex justify-content-end">
+            <button ng-click="getCounts(0)" class="btn week shadow-none" ng-class="{'btn-primary' : timeFrame == 0,'bg-grey': timeFrame != 0}">Week</button>
+            <button ng-click="getCounts(1)" class="btn month shadow-none"  ng-class="{'btn-primary' : timeFrame == 1,'bg-grey': timeFrame != 1}">Month</button>
+            <button ng-click="getCounts(2)" class="btn year shadow-none"  ng-class="{'btn-primary' : timeFrame == 2,'bg-grey': timeFrame != 2}">Year</button>
+            <button ng-click="getCounts(3)" class="btn all-time shadow-none"  ng-class="{'btn-primary' : timeFrame == 3,'bg-grey': timeFrame != 3}">All Time</button>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6">
                 <div class="card dashboard-card-1">
-                    <a href="#" class="card-content">
+                    <div class="card-content">
                         <div class="card-bg"></div>
                         <div class="row">
                             <div class="col-lg-3 dashboard-item-icon">
@@ -26,18 +47,18 @@
                                 </div>              
                             </div>
                             <div class="col-lg-9 text-center">
-                                <p class="info-number"> 15</p>
+                                <p class="info-number"> {{Counts.MeetingsScheduled}}</p>
                                 <div class="dashboard-card-title">
-                                    Total Meetings
+                                    Meetings Scheduled
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card dashboard-card-2">
-                    <a href="#" class="card-content">
+                    <div class="card-content">
                         <div class="card-bg"></div>
                         <div class="row">
                             <div class="col-lg-3 dashboard-item-icon">
@@ -46,18 +67,18 @@
                                 </div>
                             </div>
                             <div class="col-lg-9 text-center">
-                                <p class="info-number"> 15</p>
+                                <p class="info-number"> {{Counts.JobOpenings}}</p>
                                 <div class="dashboard-card-title">
-                                    Total Openings
+                                    Job Openings
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card dashboard-card-3">
-                    <a href="#" class="card-content">
+                    <div class="card-content">
                         <div class="card-bg"></div>
                         <div class="row">
                             <div class="col-lg-3 dashboard-item-icon">
@@ -66,18 +87,18 @@
                                 </div>
                             </div>
                             <div class="col-lg-9 text-center">
-                                <p class="info-number"> 15</p>
+                                <p class="info-number"> {{Counts.ApplicantsRegistered}}</p>
                                 <div class="dashboard-card-title">
                                     Total Applications
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card dashboard-card-4">
-                    <a href="#" class="card-content">
+                    <div class="card-content">
                         <div class="card-bg"></div>
                         <div class="row">
                             <div class="col-lg-3 dashboard-item-icon">
@@ -86,17 +107,24 @@
                                 </div>
                             </div>
                             <div class="col-lg-9 text-center">
-                                <p class="info-number"> 15</p>
+                                <p class="info-number"> {{Counts.ApplicantsHired}}</p>
                                 <div class="dashboard-card-title">
-                                    Total Hired
+                                    Applicants Hired
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="card-box bg-light opacity-100">
+                <div id="donut"></div>
+            </div>
         </div>
+    </div>
 </div>
 
 @section scripts {

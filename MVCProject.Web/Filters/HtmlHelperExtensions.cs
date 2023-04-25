@@ -61,6 +61,7 @@ namespace System.Web.Mvc
                 menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
                 menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
                 menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
+                menuString.Append(GetMainMenu(Resource.ImportApplicant, "fa fa-file-import", "/ImportData/Import"));
                 menuString.Append("<li>");
                 menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
                 menuString.Append("<ul class='nav child_menu'>");

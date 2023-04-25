@@ -79,7 +79,8 @@
             else {
                 $scope.positionDetail = {
                     Id: '',
-                    PositionName: selected.originalObject
+                    PositionName: selected.originalObject,
+                    IsActive: true
                 };
             }
         };
@@ -136,24 +137,39 @@
                 debugger
                 if (jobpostingDetailScope.Id == null && $scope.positionDetail != null) {
                     JobPostingService.PositionRegister($scope.positionDetail).then(function (res) {
-                        console.log(res.data);
-                        debugger
+                        jobpostingDetailScope.PositionId = res.data.Result;
+                        JobPostingService.Register(jobpostingDetailScope).then(function (res) {
+                            if (res) {
+                                if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
+                                    toastr.success(res.data.Message, successTitle);
+                                    $scope.ClearFormData(frmRegister);
+                                    $scope.tableParams.reload();
+                                } else if (res.data.MessageType == messageTypes.Error) {// Error
+                                    toastr.error(res.data.Message, errorTitle);
+                                } else if (res.data.MessageType == messageTypes.Warning) {// Warning
+                                    toastr.warning(res.data.Message, warningTitle);
+                                }
+                            }
+
+                        });
                     })
                 }
-                JobPostingService.Register(jobpostingDetailScope).then(function (res) {
-                    if (res) {
-                        if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
-                            toastr.success(res.data.Message, successTitle);
-                            $scope.ClearFormData(frmRegister);
-                            $scope.tableParams.reload();
-                        } else if (res.data.MessageType == messageTypes.Error) {// Error
-                            toastr.error(res.data.Message, errorTitle);
-                        } else if (res.data.MessageType == messageTypes.Warning) {// Warning
-                            toastr.warning(res.data.Message, warningTitle);
+                else {
+                    JobPostingService.Register(jobpostingDetailScope).then(function (res) {
+                        if (res) {
+                            if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
+                                toastr.success(res.data.Message, successTitle);
+                                $scope.ClearFormData(frmRegister);
+                                $scope.tableParams.reload();
+                            } else if (res.data.MessageType == messageTypes.Error) {// Error
+                                toastr.error(res.data.Message, errorTitle);
+                            } else if (res.data.MessageType == messageTypes.Warning) {// Warning
+                                toastr.warning(res.data.Message, warningTitle);
+                            }
                         }
-                    }
 
-                });
+                    });
+                }
             }
 
         }

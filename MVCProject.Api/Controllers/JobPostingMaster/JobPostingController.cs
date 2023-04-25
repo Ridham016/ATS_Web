@@ -153,5 +153,18 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
             }
         }
 
+        [HttpPost]
+        public ApiResponse PositionRegister([FromBody] ATS_PositionMaster data)
+        {
+           
+                entities.ATS_PositionMaster.AddObject(data);
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Position));
+                }
+
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Position),data.Id);
+        }
+
     }
 }

@@ -403,6 +403,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string Calendar {
+            get {
+                return ResourceManager.GetString("Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -1195,6 +1204,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excel Data.
+        /// </summary>
+        public static string ExcelData {
+            get {
+                return ResourceManager.GetString("ExcelData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expected Joining Date.
         /// </summary>
         public static string Expected_Joining_Date {
@@ -1497,6 +1515,24 @@ namespace MVCProject.Common.Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Data.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Applicant Data.
+        /// </summary>
+        public static string ImportApplicant {
+            get {
+                return ResourceManager.GetString("ImportApplicant", resourceCulture);
             }
         }
         

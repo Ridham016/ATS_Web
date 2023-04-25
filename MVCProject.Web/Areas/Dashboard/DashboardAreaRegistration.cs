@@ -55,6 +55,7 @@ namespace MVCProject.Areas.Dashboard
         private void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/Dashboard/Dashboard")
+                .Include("~/Scripts/js/apexcharts.js")
                 .Include("~/Areas/Dashboard/Scripts/angular/controllers/DashboardCtrl.js")
                 .Include("~/Areas/Dashboard/Scripts/angular/services/DashboardService.js"));
 

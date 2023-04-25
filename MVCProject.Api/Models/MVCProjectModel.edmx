@@ -501,6 +501,9 @@
         <Function Name="USP_ATS_CompanyById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CompanyId" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_CountForDashboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="timeFrame" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_FilesOfApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -1146,6 +1149,9 @@
             <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
           </AssociationSet>
+          <FunctionImport Name="USP_ATS_CountForDashboard" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForDashboard_Result)" >
+            <Parameter Name="timeFrame" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1809,6 +1815,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="USP_ATS_CountForDashboard_Result">
+          <Property Type="Int32" Name="MeetingsScheduled" Nullable="true" />
+          <Property Type="Int32" Name="JobOpenings" Nullable="true" />
+          <Property Type="Int32" Name="ApplicantsRegistered" Nullable="true" />
+          <Property Type="Int32" Name="ApplicantsHired" Nullable="true" />
+          <Property Type="Int32" Name="Registered" Nullable="true" />
+          <Property Type="Int32" Name="Shortlisted" Nullable="true" />
+          <Property Type="Int32" Name="Discarded" Nullable="true" />
+          <Property Type="Int32" Name="InterviewScheduled" Nullable="true" />
+          <Property Type="Int32" Name="Hold" Nullable="true" />
+          <Property Type="Int32" Name="Rejected" Nullable="true" />
+          <Property Type="Int32" Name="InterviewCancelled" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2708,6 +2727,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_CountForDashboard" FunctionName="ATSMVCProjectModel.Store.USP_ATS_CountForDashboard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_CountForDashboard_Result">
+                <ScalarProperty Name="MeetingsScheduled" ColumnName="MeetingsScheduled" />
+                <ScalarProperty Name="JobOpenings" ColumnName="JobOpenings" />
+                <ScalarProperty Name="ApplicantsRegistered" ColumnName="ApplicantsRegistered" />
+                <ScalarProperty Name="ApplicantsHired" ColumnName="ApplicantsHired" />
+                <ScalarProperty Name="Registered" ColumnName="Registered" />
+                <ScalarProperty Name="Shortlisted" ColumnName="Shortlisted" />
+                <ScalarProperty Name="Discarded" ColumnName="Discarded" />
+                <ScalarProperty Name="InterviewScheduled" ColumnName="InterviewScheduled" />
+                <ScalarProperty Name="Hold" ColumnName="Hold" />
+                <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+                <ScalarProperty Name="InterviewCancelled" ColumnName="InterviewCancelled" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

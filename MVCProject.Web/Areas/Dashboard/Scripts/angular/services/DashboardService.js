@@ -8,5 +8,11 @@
             data: JSON.stringify(DateRange)
         });
     }
+    list.GetCount = function (time) {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Dashboard/GetCounts?timeFrame=' + time
+         })
+    } 
     return list;
 }])
