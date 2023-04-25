@@ -38,19 +38,22 @@ namespace MVCProject.Api.Controllers.ImportData
 
                 var files = httpRequest.Files[0];
                 if (files.ContentType != "application/vnd.ms-excel" && files.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-                    return this.Response(Utilities.MessageTypes.Error);
+                    return this.Response(Utilities.MessageTypes.Error, "Invalid File Formate");
 
                 var stream = files.InputStream;
                 var workbook = new XSSFWorkbook(stream);
                 var sheet = workbook.GetSheetAt(0);
                 var validationErrors = new List<string>();
+                int flag = 0;
 
                 var list = new List<ATS_ApplicantRegister>();
                 for (int i = 1; i <= sheet.LastRowNum; i++)
                 {
                     var row = sheet.GetRow(i);
                     if (row == null || row.Cells.Count < 27)
-                        continue;
+                    {
+                        flag++;
+                    }
                     var FirstName = row.GetCell(0)?.StringCellValue?.Trim();
                     var MiddleName = row.GetCell(1)?.StringCellValue?.Trim();
                     var LastName = row.GetCell(2)?.StringCellValue?.Trim();
@@ -126,60 +129,22 @@ namespace MVCProject.Api.Controllers.ImportData
                     }
                     //list.Add((ATS_ApplicantRegister)applicantlist);
                 }
+                if (flag > 0)
+                {
+                    return this.Response(Utilities.MessageTypes.Error, "Invalid Excel Formate");
+                }
                 var result = new { Data = list, Errors = validationErrors };
                 if (validationErrors.Any())
                 {
                     //var result = new { Data = list, Errors = validationErrors };
-                    return this.Response(Utilities.MessageTypes.Information, string.Join(",", validationErrors), result);
+                    return this.Response(Utilities.MessageTypes.Error, string.Join(",", validationErrors), result);
                     //return (string.Join(",", validationErrors));
                 }
-
-                return this.Response(Utilities.MessageTypes.Success, "No Validation Errors in Data", result);
-                //var validationErrors = new List<string>();
-                //foreach (var applicant in list)
-                //{
-                //    if (applicant.FirstName != null && applicant.FirstName.Any(char.IsDigit))
-                //    {
-                //        validationErrors.Add("First Name is required.");
-                //        //validationErrors.Add(new KeyValuePair<int, string>(applicant.Id, "Name should not contain digits."));
-                //    }
-                //    if (applicant.LastName != null && applicant.LastName.Any(char.IsDigit))
-                //    {
-                //        validationErrors.Add("Last Name is required.");
-                //    }
-                //    if (!string.IsNullOrEmpty(applicant.Email) && !Regex.IsMatch(applicant.Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                //    {
-                //        validationErrors.Add("Invalid email address.");
-                //    }
-                //    if (!string.IsNullOrEmpty(applicant.Phone) && !Regex.IsMatch(applicant.Phone, @"^(?:\+?\d{1,3})?[ -]?\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"))
-                //    {
-                //        validationErrors.Add("Invalid phone number.");
-                //    }
-                //    if (applicant.DateOfBirth>DateTime.Now && applicant.DateOfBirth>DateTime.Now.AddYears(-18))
-                //    {
-                //        validationErrors.Add("Invalid DOB.");
-                //    }
-
-                //}
-                //if (validationErrors.Any())
-                //{
-                //    //validationErrors.Add($"{i + 1}: {validationResult}");
-                //    //List<object> result = new List<object>();
-                //    //result.Add(list);
-                //    //result.Add(validationErrors);
-                //    return this.Response(Utilities.MessageTypes.Error,string.Empty,list);
-                //}
-                //using (var context = new MVCProjectEntities())
-                //{
-                //    foreach (var applicant in list)
-                //    {
-                //        context.ATS_ApplicantRegister.AddObject(applicant);
-                //    }
-                //    context.SaveChanges();
-                //}
-
-                // return new ApiResponse(HttpStatusCode.OK, list);
-
+                else
+                {
+                    return this.Response(Utilities.MessageTypes.Success, "No Validation Errors in Data", result);
+                }
+                //return this.Response(Utilities.MessageTypes.Success, "No Validation Errors in Data", result);
             }
             catch (DbEntityValidationException ex)
             {
@@ -193,7 +158,7 @@ namespace MVCProject.Api.Controllers.ImportData
             }
             catch (Exception ex)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: " + ex.Message);
+                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel" + ex.Message);
             }
 
         }
@@ -228,65 +193,6 @@ namespace MVCProject.Api.Controllers.ImportData
             //}
 
         }
-
-        //[HttpPost]
-        //public ApiResponse AddApplicants(string applicantsJson)
-        //{
-        //    List<ATS_ApplicantRegister> data = JsonConvert.DeserializeObject<List<ATS_ApplicantRegister>>(applicantsJson);
-        //    foreach (var applicant in data)
-        //    {
-        //        applicant.EntryDate = DateTime.Now;
-        //        applicant.ApplicantDate = DateTime.Now;
-        //        applicant.EntryBy = "1";
-        //        entities.ATS_ApplicantRegister.AddObject(new ATS_ApplicantRegister
-        //        {
-        //            FirstName = applicant.FirstName,
-        //            MiddleName = applicant.MiddleName,
-        //            LastName = applicant.LastName,
-        //            Email = applicant.Email,
-        //            Phone = applicant.Phone,
-        //            Address = applicant.Address,
-        //            DateOfBirth = applicant.DateOfBirth,
-        //            CurrentCompany = applicant.CurrentCompany,
-        //            CurrentDesignation = applicant.CurrentDesignation,
-        //            ApplicantDate = applicant.ApplicantDate,
-        //            TotalExperience = applicant.TotalExperience,
-        //            DetailedExperience = applicant.DetailedExperience,
-        //            CurrentCTC = applicant.CurrentCTC,
-        //            ExpectedCTC = applicant.ExpectedCTC,
-        //            NoticePeriod = applicant.NoticePeriod,
-        //            CurrentLocation = applicant.CurrentLocation,
-        //            PreferedLocation = applicant.PreferedLocation,
-        //            ReasonForChange = applicant.ReasonForChange,
-        //            SkillDescription = applicant.SkillDescription,
-        //            PortfolioLink = applicant.PortfolioLink,
-        //            LinkedinLink = applicant.LinkedinLink,
-        //            OtherLink = applicant.OtherLink,
-        //            IsActive = applicant.IsActive,
-        //            Comment = applicant.Comment,
-        //            EntryBy = "1",
-        //            EntryDate = DateTime.Now,
-        //            UpdatedBy = "1"
-        //        });
-        //        this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
-        //        {
-        //            ApplicantId = applicant.ApplicantId,
-        //            StatusId = 1,
-        //            Level = 0,
-        //            IsActive = true,
-        //            EntryBy = "1",
-        //            EntryDate = DateTime.Now
-        //        });
-        //        if (!(this.entities.SaveChanges() > 0))
-        //        {
-        //            return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
-        //        }
-
-        //        return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant), applicant.ApplicantId);
-
-        //    }
-        //    return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.Success, Resource.Applicant));
-        //}
 
         [HttpGet]
         public HttpResponseMessage GetSample()
@@ -352,6 +258,10 @@ namespace MVCProject.Api.Controllers.ImportData
         [HttpPost]
         public ApiResponse AddApplicants(List<ATS_ApplicantRegister> data)
         {
+            if (data.Count == 0)
+            {
+                return this.Response(Utilities.MessageTypes.Error, "No Data Inserted / Fetched");
+            }
             foreach (var applicant in data)
             {
                 var applicantData = this.entities.ATS_ApplicantRegister.FirstOrDefault(x => x.ApplicantId == applicant.ApplicantId);
@@ -381,39 +291,7 @@ namespace MVCProject.Api.Controllers.ImportData
             }
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.Success, Resource.Applicant));
         }
-        //[HttpPost]
-        //public ApiResponse AddApplicant(string applicantsJson)
-        //{
-        //    List<ATS_ApplicantRegister> data = JsonConvert.DeserializeObject<List<ATS_ApplicantRegister>>(applicantsJson);
-        //    foreach (var applicant in data)
-        //    {
-        //        var applicantData = this.entities.ATS_ApplicantRegister.FirstOrDefault(x => x.ApplicantId == applicant.ApplicantId);
-        //        if (applicantData == null)
-        //        {
-        //            applicant.EntryDate = DateTime.Now;
-        //            applicant.ApplicantDate = DateTime.Now;
-        //            applicant.EntryBy = "1";
-        //            entities.ATS_ApplicantRegister.AddObject(applicant);
-        //            this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
-        //            {
-        //                ApplicantId = applicant.ApplicantId,
-        //                StatusId = 1,
-        //                Level = 0,
-        //                IsActive = true,
-        //                EntryBy = "1",
-        //                EntryDate = DateTime.Now
-        //            });
-        //            if (!(this.entities.SaveChanges() > 0))
-        //            {
-        //                return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Applicant));
-        //            }
 
-        //            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Applicant), applicant.ApplicantId);
-        //        }
-
-        //    }
-        //    return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.Success, Resource.Applicant));
-        //}
     }
 
 }

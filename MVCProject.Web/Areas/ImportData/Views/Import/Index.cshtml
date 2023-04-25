@@ -51,6 +51,10 @@
                             <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0"><i class="fa fa-plus me-2"></i>
                                 Add Applicants
                             </button>
+                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="reset()">
+                                <i class="fa fa-plus me-2"></i>
+                                @Resource.Clear
+                            </button>
                             @*<button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"
                                         tabindex="4">
                                     @Resource.Clear

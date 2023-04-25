@@ -16,6 +16,7 @@
     function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonService, $location, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.files = [];
+        $scope.headers = ["ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "CurrentCompany", "CurrentDesignation", "ApplicantDate", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "FileName", "FilePath", "FileRelativePath", "Comment", "EntryBy", "EntryDate", "UpdatedBy", "UpdateDate"];
         $scope.Selectedfile = null;
         $scope.Files = null;
 

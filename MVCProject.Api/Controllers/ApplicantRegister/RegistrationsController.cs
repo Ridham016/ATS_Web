@@ -524,18 +524,5 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             Console.WriteLine(response);
             return this.Response(MessageTypes.Success, string.Empty, filePath);
         }
-        //private void AddHeaderRow(ISheet sheet)
-        //{
-        //    IRow headerRow = sheet.CreateRow(0);
-
-        //    // Define the column headers
-        //    string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "FileName", "FilePath", "FileRelativePath", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
-
-        //    // Add each header to the row
-        //    for (int i = 0; i < headers.Length; i++)
-        //    {
-        //        headerRow.CreateCell(i).SetCellValue(headers[i]);
-        //    }
-        //}
     }
 }

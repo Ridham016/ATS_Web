@@ -27,5 +27,13 @@
             url: $rootScope.apiURL + '/AdvancedSearch/ApplicantTimeline?ApplicantId=' + ApplicantId
         });
     }
+    list.Export = function (headers, searchDetail) {
+        debugger
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/AdvancedSearch/ExportToXl?headers=' + headers.join(',') + '&StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,
+            data: JSON.stringify(searchDetail)
+        });
+    }
     return list;
 }])
