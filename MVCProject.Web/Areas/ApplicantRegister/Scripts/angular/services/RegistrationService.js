@@ -71,11 +71,11 @@
             url: $rootScope.apiURL + '/Registrations/DeleteFile?FileId=' + FileId
             })
     }
-    list.Export = function() {
-        //debugger
+    list.Export = function (headers) {
+        debugger
         return $http({
             method: 'GET',
-            url: $rootScope.apiURL + '/Registrations/ExportToXl'
+            url: $rootScope.apiURL + '/Registrations/ExportToXl?headers=' + headers.join(',')
         });
     }
 

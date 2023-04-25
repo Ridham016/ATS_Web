@@ -370,16 +370,16 @@
             })
         }
 
-        $scope.Export = function () {
-            //debugger
-            RegistrationService.Export().then(function (res) {
+        $scope.Export = function (headers) {
+            debugger
+            RegistrationService.Export(headers).then(function (res) {
                 //var blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
                 //var filename = 'data.xlsx';
                 ////(blob, filename);
-                //debugger
+                debugger
                 var data = res.data;
                 if (data.MessageType == messageTypes.Success) {
-                    //debugger
+                    debugger
                     var filename = res.data.Result;
                     var params = { filename: filename };
                     var form = document.createElement("form");

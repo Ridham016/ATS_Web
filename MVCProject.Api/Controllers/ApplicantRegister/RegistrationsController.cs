@@ -399,7 +399,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
         }
 
         [HttpGet]
-        public ApiResponse ExportToXl()
+        public ApiResponse ExportToXl([FromUri] string[] headers)
         {
             var result = entities.USP_ATS_AllApplicants().ToList();
             var TotalRecords = result.Count();
@@ -418,13 +418,17 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 ApplicantDate = g.ApplicantDate,
                 TotalExperience = g.TotalExperience,
                 DetailedExperience = g.DetailedExperience,
-                CurrentCTC = g.CurrentCTC,
+                CurrentCTC = g.CurrentCTC ?? null,
                 ExpectedCTC = g.ExpectedCTC,
                 NoticePeriod = g.NoticePeriod,
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
                 FileName = g.FileName,
+                SkillDescription = g.SkillDescription,
+                PortfolioLink = g.PortfolioLink,
+                LinkedinLink = g.LinkedinLink,
+                OtherLink = g.OtherLink,
                 FilePath = g.FilePath,
                 FileRelativePath = g.FileRelativePath,
                 IsActive = g.IsActive,
@@ -432,7 +436,13 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             }).ToList();
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet = workbook.CreateSheet("Sheet1");
-            AddHeaderRow(sheet);
+            IRow headerRow = sheet.CreateRow(0);
+            string[] h = headers[0].Split(',');
+            for (int i = 0; i < h.Length; i++)
+            {
+                headerRow.CreateCell(i).SetCellValue(h[i]);
+            }
+            //AddHeaderRow(sheet);
             int rowNum = 1;
 
             foreach (var applicant in applicantlist)
@@ -446,9 +456,9 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 row.CreateCell(5).SetCellValue(applicant.Phone);
                 row.CreateCell(6).SetCellValue(applicant.Address);
                 row.CreateCell(7).SetCellValue((DateTime)applicant.DateOfBirth);
-                row.CreateCell(8).SetCellValue((DateTime)applicant.ApplicantDate);
-                row.CreateCell(9).SetCellValue(applicant.CurrentCompany);
-                row.CreateCell(10).SetCellValue(applicant.CurrentDesignation);
+                row.CreateCell(8).SetCellValue(applicant.CurrentCompany);
+                row.CreateCell(9).SetCellValue(applicant.CurrentDesignation);
+                row.CreateCell(10).SetCellValue((DateTime)applicant.ApplicantDate);
                 if (applicant.TotalExperience != null)
                 {
                     row.CreateCell(11).SetCellValue(applicant.TotalExperience);
@@ -457,9 +467,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 {
                     row.CreateCell(12).SetCellValue(applicant.DetailedExperience);
                 }
-                //row.CreateCell(11).SetCellValue((int)applicant.TotalExperience);
-                //row.CreateCell(12).SetCellValue((int)applicant.DetailedExperience);
-                //var c13 = (applicant.CurrentCTC);
                 if (applicant.CurrentCTC != null)
                 {
                     row.CreateCell(13).SetCellValue(applicant.CurrentCTC);
@@ -484,15 +491,17 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 {
                     row.CreateCell(19).SetCellValue((bool)applicant.IsActive);
                 }
-                row.CreateCell(20).SetCellValue(applicant.FileName);
-                row.CreateCell(21).SetCellValue(applicant.FilePath);
-                row.CreateCell(22).SetCellValue(applicant.FileRelativePath);
-
-
+                row.CreateCell(20).SetCellValue(applicant.SkillDescription);
+                row.CreateCell(21).SetCellValue(applicant.PortfolioLink);
+                row.CreateCell(22).SetCellValue(applicant.LinkedinLink);
+                row.CreateCell(23).SetCellValue(applicant.OtherLink);
+                row.CreateCell(24).SetCellValue(applicant.FileName);
+                row.CreateCell(25).SetCellValue(applicant.FilePath);
+                row.CreateCell(26).SetCellValue(applicant.FileRelativePath);
             }
 
             string filePath = HttpContext.Current.Server.MapPath("~/Attachments/Temp/ApplicantSheet.xlsx");
-            string fileName = Path.GetFileName(filePath);
+            string fileName = Path.GetFileName("ApplicantSheet.xlsx");
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -505,25 +514,28 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             var response = new HttpResponseMessage(HttpStatusCode.OK);
 
             response.Content = new ByteArrayContent(byteArray);
-            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachmet");
-            response.Content.Headers.ContentDisposition.FileName = "ApplicantDetaisSheet.xlsx";
+            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachmet")
+            {
+                FileName = "ApplicantDetaisSheet.xlsx"
+            };
+            //response.Content.Headers.ContentDisposition.FileName = "ApplicantDetaisSheet.xlsx";
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.Content.Headers.ContentLength = byteArray.Length;
             Console.WriteLine(response);
             return this.Response(MessageTypes.Success, string.Empty, filePath);
         }
-        private void AddHeaderRow(ISheet sheet)
-        {
-            IRow headerRow = sheet.CreateRow(0);
+        //private void AddHeaderRow(ISheet sheet)
+        //{
+        //    IRow headerRow = sheet.CreateRow(0);
 
-            // Define the column headers
-            string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "FileName", "FilePath", "FileRelativePath", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
+        //    // Define the column headers
+        //    string[] headers = new string[] { "ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "ApplicantDate", "CurrentCompany", "CurrentDesignation", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "FileName", "FilePath", "FileRelativePath", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "Comment" };
 
-            // Add each header to the row
-            for (int i = 0; i < headers.Length; i++)
-            {
-                headerRow.CreateCell(i).SetCellValue(headers[i]);
-            }
-        }
+        //    // Add each header to the row
+        //    for (int i = 0; i < headers.Length; i++)
+        //    {
+        //        headerRow.CreateCell(i).SetCellValue(headers[i]);
+        //    }
+        //}
     }
 }

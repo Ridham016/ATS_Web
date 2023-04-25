@@ -23,7 +23,7 @@ namespace MVCProject.Areas.ApplicantRegister.Controllers
 
             var cd = new System.Net.Mime.ContentDisposition
             {
-                FileName = filename,
+                FileName = "ApplicantDetaisSheet.xlsx",
                 Inline = true,
             };
 
