@@ -41,7 +41,7 @@
 	--primary-color-rgb: 2, 83, 204;
 	--primary-color-tint: #00c5fb;
 	--secondary-color: #FF7A30;
-	--ats-left-col-width: 230px;
+	--ats-left-col-width: 260px;
 	--ats-nav-sm-left-col-width: 70px;
 	--ats-logo-lg-height: 50px;
 	--ats-logo-sm-height: 50px;
@@ -153,7 +153,7 @@
 }
 
 body {
-	argin: 0;
+	margin: 0;
 	font-family: var(--ats-body-font-family);
 	font-size: var(--ats-body-font-size);
 	font-weight: var(--ats-body-font-weight);
@@ -14223,7 +14223,8 @@ span.event-detail {
 	margin-top: var(--ats-topbar-height);
 	padding: 20px 20px var(--ats-footer-height);
 	-webkit-transition: all .25s ease-in-out;
-	transition: all .25s ease-in-out
+	transition: all .25s ease-in-out;
+	background: #faf6f6;
 }
 
 .nav-md .content-page {
@@ -14234,6 +14235,7 @@ span.event-detail {
 	-webkit-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out;
 	margin-top: var(--ats-topbar-height);
+	background: #faf6f6;
 }
 
 .nav-sm .leftside-menu {
@@ -19266,7 +19268,7 @@ body.auth-fluid-pages[data-sidenav-size=condensed] {
 
 .apexcharts-subtitle-text,
 .apexcharts-title-text {
-	fill: var(--ats-gray-500);
+/*	fill: var(--ats-gray-500);*/
 	font-family: var(--ats-font-sans-serif) !important
 }
 
@@ -22014,6 +22016,7 @@ a.forgot-password {
 	width: 500px;
 }
 
+
 @media only screen and (max-width: 991px) {
 	.login-form-card {
 		width: 100%;
@@ -22065,6 +22068,22 @@ a.forgot-password {
 	-webkit-transition: all .5s ease;
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
+	animation: myAnim 20s ease-in-out 0s infinite normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale(.8);
+		transform: rotate(-45deg);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+
+	100% {
+		transform: scale(1.5);
+		transform: rotate(-45deg);
+	}
 }
 
 .dashboard-card-1 .card-content{
@@ -22098,6 +22117,13 @@ a.forgot-password {
 	display: flex;
 	align-items: center;
 }
+
+.chart-card {
+	box-shadow: 0 0 9px 2px rgba(0,10,10,0.1);
+}
+
+
+
 
 /*.ag-courses_item:nth-child(6n) .card-bg {
   background-color: #4c49ea;

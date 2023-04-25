@@ -31,7 +31,7 @@
 
 <div ng-controller="InterviewerCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
-        <i class="ti-id-badge icon-position" style="padding-top: 8px;"></i>
+        <i class="fa-solid fa-user-tie icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.Interviewer</h4>
         <div class="pull-right">
         </div>
@@ -43,7 +43,7 @@
                 <form name="frmRegister" ng-init="getCompanyDetails()" ng-submit="SaveInterviewerDetails(interviewerDetailScope)"
                       novalidate>
                     <div class="row mb-3">
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerName <span class="required-field">*</span>
@@ -58,7 +58,7 @@
                         </div>
 
                         <!--Remarks-->
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerEmail<span class="required-field">*</span>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.InterviewerPhone<span class="required-field">*</span>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="form-group">
                                 <label>
                                     @Resource.Company <span class="required-field">*</span>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                        <div class="col-lg-4 col-md-6 mt-3">
                             <div class="form-group">
                                 <div class="form-control-static">
                                     <label>
@@ -137,12 +137,12 @@
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6">
                                 <label class="table-title my-3">
                                     @Resource.InterviewersReg @Resource.Details
                                 </label>
                             </div>
-                            <div class="col-md-5 offset-4">
+                            <div class="col-lg-5 col-md-6 offset-lg-4">
                                 <div class="input-group">
                                     <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Interviewer, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
@@ -152,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-3">
                         <div class="form-group">
                             <div class="form-control-static">
                                 <scrollable-table scroll-height="500">

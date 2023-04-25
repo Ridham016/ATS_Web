@@ -16,7 +16,7 @@
 
 <div ng-controller="ImportCtrl" novalidate>
     <div class="main-page-title title-icon relative l">
-        <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
+        <i class="fa fa-file-import icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.ImportApplicant</h4>
         <div class="pull-right">
         </div>
@@ -48,7 +48,7 @@
                             <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
                                 Get Sample Excel
                             </button>
-                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0">
+                            <button type="submit" class="btn btn-success waves-effect w-md waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0"><i class="fa fa-plus me-2"></i>
                                 Add Applicants
                             </button>
                             @*<button type="button" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light m-b-5"

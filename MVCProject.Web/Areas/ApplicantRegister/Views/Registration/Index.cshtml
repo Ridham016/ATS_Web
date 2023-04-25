@@ -101,12 +101,12 @@
 
 <div ng-controller="RegistrationCtrl" ng-init="getJobPostingList()" novalidate>
     <div class="main-page-title title-icon relative l d-flex justify-content-between align-items-center">
-        <i class="fa fa-user-plus icon-position" style="padding-top: 8px;"></i>
+        <i class="fa-solid fa-user-plus icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.ApplicantRegister</h4>
         <div class="pull-right">
             <div class="form-group">
                 <select class="form-select" name="PostingId"
-                            ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}" ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList" >
+                        ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}" ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList">
                     <option value="" disabled>Select Job Posting</option>
                 </select>
             </div>
@@ -128,7 +128,7 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantFirstName <span class="required-field">*</span>
@@ -141,7 +141,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantMiddleName
@@ -149,7 +149,7 @@
                                                 <input type="text" class="form-control" name="MiddleName" ng-model="applicantDetailScope.MiddleName" placeholder="Enter Middle Name" maxlength="250">
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantLastName <span class="required-field">*</span>
@@ -164,7 +164,7 @@
                                         </div>
 
                                         <!--Remarks-->
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantEmail<span class="required-field">*</span>
@@ -178,7 +178,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantPhone<span class="required-field">*</span>
@@ -192,7 +192,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantDOB<span class="required-field">*</span>
@@ -208,7 +208,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantAddress
@@ -216,7 +216,7 @@
                                                 <textarea rows="5" ng-class="{'border-color' : frmRegister.Address.$dirty && frmRegister.Address.$invalid}" class="form-control" placeholder="Enter Address" name="Address" ng-model="applicantDetailScope.Address"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <div class="form-control-static">
                                                     <label>
@@ -245,7 +245,7 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row">
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>Status</label>
                                                 <select class="form-select" name="status"
@@ -261,7 +261,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.CurrentCompany<span class="required-field">*</span>
@@ -275,7 +275,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-3">
+                                        <div class="col-lg-4 col-md-6 mt-lg-0 mt-sm-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.CurrentDesignation<span class="required-field">*</span>
@@ -289,7 +289,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
+                                        <div class="col-lg-4 col-md-6 mt-lg-3 mt-sm-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.TotalExperience<span class="required-field">*</span>
@@ -305,7 +305,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.DetailedExperience<span class="required-field">*</span>
@@ -321,7 +321,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.CurrentCTC<span class="required-field">*</span>
@@ -337,7 +337,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ReasonForChange<span class="required-field">*</span>
@@ -351,7 +351,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.CurrentLocation<span class="required-field">*</span>
@@ -367,7 +367,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.NoticePeriod<span class="required-field">*</span>
@@ -383,7 +383,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.PreferedLocation<span class="required-field">*</span>
@@ -396,7 +396,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.Expected_Joining_Date<span class="required-field">*</span>
@@ -411,7 +411,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.SkillDescription<span class="required-field">*</span>
@@ -424,7 +424,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ExpectedCTC<span class="required-field">*</span>
@@ -438,7 +438,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.PortfolioLink
@@ -446,7 +446,7 @@
                                                 <input type="text" class="form-control" placeholder="Enter Portfolio Link" name="PortfolioLink" ng-model="applicantDetailScope.PortfolioLink" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.LinkedinLink
@@ -454,7 +454,7 @@
                                                 <input type="text" class="form-control" placeholder="Enter Linkedin Link" name="LinkedinLink" ng-model="applicantDetailScope.LinkedinLink" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.OtherLink
@@ -462,7 +462,7 @@
                                                 <input type="text" class="form-control" placeholder="Enter Other Links" name="OtherLink" ng-model="applicantDetailScope.OtherLink" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label>
                                                     @Resource.ApplicantCV<span class="required-field">*</span>
@@ -479,13 +479,13 @@
                                         </div>
                                     </div>
                                     <div class="row mt-3 mb-4" ng-show="Files != null && Files != 0">
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4 col-md-6">
                                             <div class="card p-3">
                                                 <h4 class="card-title">
                                                     Uploaded Files
                                                 </h4>
                                                 @*<div class="card-body">
-                                    </div>*@
+                                                    </div>*@
                                                 <div class="row mb-2" ng-repeat="f in files">
                                                     <div class="col-11">
                                                         <a href="{{f.FileRelativePath}}" target="_blank">
@@ -499,15 +499,15 @@
                                                     </div>
                                                 </div>
                                                 @*<ul class="list-group list-group-flush">
-                                        <li class="row list-group-item" ng-repeat="f in files">
-                                            <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
-                                                {{f.OriginalFileName}}
-                                            </a>
-                                            <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </li>
-                                    </ul>*@
+                                                        <li class="row list-group-item" ng-repeat="f in files">
+                                                            <a href="{{f.FileRelativePath}}" class="col-11" target="_blank">
+                                                                {{f.OriginalFileName}}
+                                                            </a>
+                                                            <a class="col-1" href="{{f.FileRelativePath}}" target="_blank">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>*@
                                             </div>
                                         </div>
                                     </div>
@@ -533,24 +533,20 @@
                 <!-- end designation form -->
                 <div class="row mt-4">
                     <div class="d-flex justify-content-end">
-                        <button type="button" ng-click="Export(headers)" class="btn btn-export"
-                                tabindex="4">
-                            <i class="fa fa-file-excel-o">  </i>
-                            Export To Excel
-                        </button>
+                        
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="row mb-3 align-items-baseline">
-                            <div class="col-md-5">
+                            <div class="col-lg-4 col-md-12">
                                 <label class="table-title">
                                     @Resource.Registration @Resource.Details
                                 </label>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-lg-2 my-3 d-lg-block d-md-none d-sm-none d-none">
                                 <div class="form-group">
-                                    <div class="checkbox checkbox-info">
+                                    <div class="checkbox checkbox-info p-0">
                                         <input type="checkbox" id="chkRegisterActive" name="chkRegisterActive" ng-model="IsGetAll" ng-change="getApplicants(IsGetAll)"
                                                tabindex="2" />
                                         <label for="chkRegisterActive">
@@ -559,7 +555,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-lg-2 col-md-12 my-md-3 my-sm-2">
+                                <button type="button" ng-click="Export()" class="btn btn-export"
+                                        tabindex="4">
+                                    <i class="fa fa-file-excel-o">  </i>
+                                    Export To Excel
+                                </button>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
                                 <div class="input-group">
                                     <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">

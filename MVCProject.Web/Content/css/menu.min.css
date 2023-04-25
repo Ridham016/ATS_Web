@@ -238,10 +238,11 @@ a.logo-expanded {
 .main_menu span.fa {
     float: right;
     text-align: center;
+    padding-right: 15px;
     margin-top: 5px;
     font-size: 10px;
     min-width: inherit;
-    color: #var(--ats-dark-nav-link-color);
+    color: var(--ats-dark-nav-link-color);
 }
 
 .nav-sm .menu_section {
@@ -696,8 +697,8 @@ table.no-margin .progress {
 .nav.side-menu > li:not(.current-page, .active):hover {
     box-shadow: 0 2px 2px rgb(161, 169, 177);
     -webkit-box-shadow: 0 2px 2px rgb(161, 169, 177);
-    transition: 50ms ease-in-out;
-    -webkit-transition: 50ms ease-in-out;
+    transition: 200ms ease-in-out;
+    -webkit-transition: 200ms ease-in-out;
     background: rgba(var(--primary-color-rgb), 0.1);
 }
 
@@ -794,6 +795,7 @@ table.no-margin .progress {
     .nav.child_menu > li > a i {
         margin-right: 5px;
         float: left;
+        width: 20px;
     }
 
     .nav.child_menu > li > a span {
@@ -947,12 +949,16 @@ table.no-margin .progress {
     color: var(--ats-dark-nav-link-color);
     font-size: var(--ats-menu-item-font-size);
     padding: 8px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.nav.side-menu > li:not(.active):hover > a, .nav.child_menu > li:not(.current-page):hover > a {
+.nav-md .side-menu > li:not(.active):hover > a, .nav-md .child_menu > li:not(.current-page):hover > a {
     /*background-color: rgba(var(--ats-primary-rgb), 0.2);
     color: var(--ats-white);*/
-    transition: 400ms ease-in-out;
+    transition: 200ms ease-in-out;
+    transform: translateX(10px);
 }
 
 .panel_toolbox {

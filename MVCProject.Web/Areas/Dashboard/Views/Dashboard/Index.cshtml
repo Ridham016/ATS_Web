@@ -29,103 +29,106 @@
 
 <div ng-controller="DashboardCtrl" ng-init="getCounts(3)">
     <div class="main-container">
-        <div class="d-flex justify-content-end">
-            <button ng-click="getCounts(0)" class="btn week shadow-none" ng-class="{'btn-primary' : timeFrame == 0,'bg-grey': timeFrame != 0}">Week</button>
-            <button ng-click="getCounts(1)" class="btn month shadow-none"  ng-class="{'btn-primary' : timeFrame == 1,'bg-grey': timeFrame != 1}">Month</button>
-            <button ng-click="getCounts(2)" class="btn year shadow-none"  ng-class="{'btn-primary' : timeFrame == 2,'bg-grey': timeFrame != 2}">Year</button>
-            <button ng-click="getCounts(3)" class="btn all-time shadow-none"  ng-class="{'btn-primary' : timeFrame == 3,'bg-grey': timeFrame != 3}">All Time</button>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card-1">
-                    <div class="card-content">
-                        <div class="card-bg"></div>
-                        <div class="row">
-                            <div class="col-lg-3 dashboard-item-icon">
-                                <div class="icon-div">
-                                    <img src="~/Content/images/meetings-icon.svg" class="dashboard-icon" />
-                                </div>              
+        <div class="card-box">
+            <div class="d-flex justify-content-end">
+                <button ng-click="getCounts(0)" class="btn week shadow-none" ng-class="{'btn-primary' : timeFrame == 0,'bg-grey': timeFrame != 0}">Week</button>
+                <button ng-click="getCounts(1)" class="btn month shadow-none" ng-class="{'btn-primary' : timeFrame == 1,'bg-grey': timeFrame != 1}">Month</button>
+                <button ng-click="getCounts(2)" class="btn year shadow-none" ng-class="{'btn-primary' : timeFrame == 2,'bg-grey': timeFrame != 2}">Year</button>
+                <button ng-click="getCounts(3)" class="btn all-time shadow-none" ng-class="{'btn-primary' : timeFrame == 3,'bg-grey': timeFrame != 3}">All Time</button>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card dashboard-card-1">
+                        <div class="card-content">
+                            <div class="card-bg"></div>
+                            <div class="row">
+                                <div class="col-lg-3 dashboard-item-icon">
+                                    <div class="icon-div">
+                                        <img src="~/Content/images/meetings-icon.svg" class="dashboard-icon" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 text-center">
+                                    <p class="info-number"> {{Counts.MeetingsScheduled}}</p>
+                                    <div class="dashboard-card-title">
+                                        Meetings Scheduled
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-9 text-center">
-                                <p class="info-number"> {{Counts.MeetingsScheduled}}</p>
-                                <div class="dashboard-card-title">
-                                    Meetings Scheduled
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card dashboard-card-2">
+                        <div class="card-content">
+                            <div class="card-bg"></div>
+                            <div class="row">
+                                <div class="col-lg-3 dashboard-item-icon">
+                                    <div class="icon-div">
+                                        <img src="~/Content/images/openings-icon.svg" class="dashboard-icon" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 text-center">
+                                    <p class="info-number"> {{Counts.JobOpenings}}</p>
+                                    <div class="dashboard-card-title">
+                                        Job Openings
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card dashboard-card-3">
+                        <div class="card-content">
+                            <div class="card-bg"></div>
+                            <div class="row">
+                                <div class="col-lg-3 dashboard-item-icon">
+                                    <div class="icon-div">
+                                        <img src="~/Content/images/applications.svg" class="dashboard-icon" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 text-center">
+                                    <p class="info-number"> {{Counts.ApplicantsRegistered}}</p>
+                                    <div class="dashboard-card-title">
+                                        Total Applications
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card dashboard-card-4">
+                        <div class="card-content">
+                            <div class="card-bg"></div>
+                            <div class="row">
+                                <div class="col-lg-3 dashboard-item-icon">
+                                    <div class="icon-div">
+                                        <img src="~/Content/images/hired.svg" class="dashboard-icon" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 text-center">
+                                    <p class="info-number"> {{Counts.ApplicantsHired}}</p>
+                                    <div class="dashboard-card-title">
+                                        Applicants Hired
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card-2">
-                    <div class="card-content">
-                        <div class="card-bg"></div>
-                        <div class="row">
-                            <div class="col-lg-3 dashboard-item-icon">
-                                <div class="icon-div">
-                                <img src="~/Content/images/openings-icon.svg" class="dashboard-icon" />
-                                </div>
-                            </div>
-                            <div class="col-lg-9 text-center">
-                                <p class="info-number"> {{Counts.JobOpenings}}</p>
-                                <div class="dashboard-card-title">
-                                    Job Openings
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="card-box chart-card">
+                        <div id="donut"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card-3">
-                    <div class="card-content">
-                        <div class="card-bg"></div>
-                        <div class="row">
-                            <div class="col-lg-3 dashboard-item-icon">
-                                <div class="icon-div">
-                                <img src="~/Content/images/applications.svg" class="dashboard-icon" />
-                                </div>
-                            </div>
-                            <div class="col-lg-9 text-center">
-                                <p class="info-number"> {{Counts.ApplicantsRegistered}}</p>
-                                <div class="dashboard-card-title">
-                                    Total Applications
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card-4">
-                    <div class="card-content">
-                        <div class="card-bg"></div>
-                        <div class="row">
-                            <div class="col-lg-3 dashboard-item-icon">
-                                <div class="icon-div">
-                                <img src="~/Content/images/hired.svg" class="dashboard-icon" />
-                                </div>
-                            </div>
-                            <div class="col-lg-9 text-center">
-                                <p class="info-number"> {{Counts.ApplicantsHired}}</p>
-                                <div class="dashboard-card-title">
-                                    Applicants Hired
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-5">
-            <div class="card-box bg-light opacity-100">
-                <div id="donut"></div>
             </div>
         </div>
     </div>
 </div>
+
 
 @section scripts {
     @Scripts.Render("~/bundles/Dashboard/Dashboard")

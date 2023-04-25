@@ -59,17 +59,17 @@ namespace System.Web.Mvc
             {
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
                 menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
-                menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
+                menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-clipboard-list", "/ScheduleManagement/Schedule"));
                 menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
                 menuString.Append(GetMainMenu(Resource.ImportApplicant, "fa fa-file-import", "/ImportData/Import"));
                 menuString.Append("<li>");
                 menuString.AppendFormat(GetParentMenu(Resource.Register, "fa fa-gears"));
                 menuString.Append("<ul class='nav child_menu'>");
-                menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa fa-user-plus", "/ApplicantRegister/Registration"));
-                menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-plus", "/InterviewerRegister/Interviewer"));
-                menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus", "/JobPostingMaster/JobPosting"));
-                menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-user-plus", "/PositionMaster/Position"));
-                menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa fa-user-plus", "/CompanyMaster/Company"));
+                menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa-solid fa-user-plus me-2", "/ApplicantRegister/Registration"));
+                menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-tie me-2", "/InterviewerRegister/Interviewer"));
+                menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus me-2", "/JobPostingMaster/JobPosting"));
+                menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-code me-2", "/PositionMaster/Position"));
+                menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa-solid fa-building me-2", "/CompanyMaster/Company"));
                 menuString.Append("</ul></li>");
             }
             menuString.Append("</ul></div></div>");
