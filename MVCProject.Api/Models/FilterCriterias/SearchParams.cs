@@ -10,7 +10,17 @@ namespace MVCProject.Api.Models.FilterCriterias
     {
         [DataMember]
         public int? StatusId { get; set; }
+
+        [DataMember]
+        public int? CompanyId { get; set; }
+
+        [DataMember]
+        public int? PositionId { get; set; }
+
+        [DataMember]
         public DateTime? StartDate { get; set; }
+
+        [DataMember]
         public DateTime? EndDate { get; set; }
     }
 }

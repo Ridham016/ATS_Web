@@ -11,9 +11,9 @@
     }
 
     .colPosition {
-        width: 200px !important;
-        min-width: 200px !important;
-        max-width: 200px !important;
+        width: 550px !important;
+        min-width: 550px !important;
+        max-width: 550px !important;
     }
 
     .colActive {
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-lg-5 col-md-6 offset-lg-4">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Position, Resource.Details)" />
+                                    <input type="text" tabindex="104" ng-model="search" ng-keypress="onEnter($event)" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Position, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>

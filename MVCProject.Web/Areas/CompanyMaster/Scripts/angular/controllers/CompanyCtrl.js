@@ -17,6 +17,14 @@
             IsActive: true
         };
 
+        $scope.onEnter = function (event) {
+            if (event.which === 13) {
+                $scope.isSearchClicked = true;
+                $scope.tableParams.page(1);
+                $scope.tableParams.reload();
+            }
+        }
+
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize,

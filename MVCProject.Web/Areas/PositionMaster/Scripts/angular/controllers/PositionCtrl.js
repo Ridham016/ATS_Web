@@ -45,6 +45,14 @@
             }
         });
 
+        $scope.onEnter = function (event) {
+            if (event.which === 13) {
+                $scope.isSearchClicked = true;
+                $scope.tableParams.page(1);
+                $scope.tableParams.reload();
+            }
+        }
+
         $scope.ClearFormData = function (frmRegister) {
             $scope.positionDetailScope = {
                 PositionId: 0,

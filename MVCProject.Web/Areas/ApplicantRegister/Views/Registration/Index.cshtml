@@ -9,32 +9,32 @@
         table-layout: fixed;
     }
 
-        .frozen-columns tbody td:last-child {
-            position: sticky;
-            right: -2px;
-            z-index: 2;
-            background-color: #f6f7f9 !important;
-        }
+    .frozen-columns tbody td:last-child {
+        position: sticky;
+        right: -2px;
+        z-index: 2;
+        background-color: var(--ats-white) !important;
+    }
 
-        .frozen-columns thead tr th:last-child .th-inner,
-        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: 1;
-            background: var(--primary-color) !important;
-        }
+    .frozen-columns thead tr th:last-child .th-inner,
+    .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        background: var(--primary-color) !important;
+    }
 
-        .frozen-columns thead tr th:nth-last-child(2) .th-inner {
-            right: 70px;
-        }
+    .frozen-columns thead tr th:nth-last-child(2) .th-inner {
+        right: 70px;
+    }
 
-        .frozen-columns tbody td:nth-last-child(2) {
-            position: sticky;
-            right: 70px;
-            z-index: 2;
-            background-color: #f6f7f9 !important;
-        }
+    .frozen-columns tbody td:nth-last-child(2) {
+        position: sticky;
+        right: 68px;
+        z-index: 2;
+        background-color: var(--ats-white) !important;
+    }
 
     .colSrno {
         width: 60px !important;
@@ -564,8 +564,8 @@
                             </div>
                             <div class="col-lg-4 col-md-12">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
-                                    <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
+                                    <input type="text" tabindex="104" ng-model="search" ng-keypress="onEnter($event)" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
+                                    <a class="input-group-addon cursor-pointer" href="#" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>
                                 </div>

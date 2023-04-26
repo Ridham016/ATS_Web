@@ -113,6 +113,8 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     OtherLink = g.OtherLink,
                     ExpectedJoiningDate = g.ExpectedJoiningDate,
                     PostingId = g.PostingId,
+                    PositionName = g.PositionName,
+                    CompanyName = g.CompanyName,
                     StatusId = g.StatusId,
                     StatusName = g.StatusName,
                     ReasonId = g.ReasonId,
@@ -399,10 +401,34 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.HoldReason));
         }
 
-        [HttpPost]
-        public ApiResponse GetApplicantsParam([FromBody]PagingParams applicantDetailParams, int CompanyId, int PositionId)
+        [HttpGet]
+        public ApiResponse GetCompanyDetails()
         {
-            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, CompanyId, PositionId).ToList();
+            var data = this.entities.USP_ATS_GetCompanyDetails().Select(x => new
+            {
+                Id = x.Id,
+                CompanyName = x.CompanyName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
+        [HttpGet]
+        public ApiResponse GetPositionDetails()
+        {
+            var data = this.entities.USP_ATS_GetPositionDetails().Select(x => new
+            {
+                Id = x.Id,
+                PositionName = x.PositionName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
+        [HttpPost]
+        public ApiResponse GetApplicantsParam([FromBody]PagingParams applicantDetailParams, [FromUri]SearchParams searchParams)
+        {
+            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, searchParams.CompanyId, searchParams.PositionId).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {
@@ -434,10 +460,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 StatusId = g.StatusId,
                 IsActive = g.IsActive,
                 StatusName = g.StatusName,
-
                 TotalRecords
             }).AsEnumerable()
-                .AsQueryable().OrderByField(applicantDetailParams.OrderByColumn, applicantDetailParams.IsAscending)
+                .AsQueryable()
                 .Skip((applicantDetailParams.CurrentPageNumber - 1) * applicantDetailParams.PageSize).Take(applicantDetailParams.PageSize);
             return this.Response(MessageTypes.Success, string.Empty, applicantlist);
 

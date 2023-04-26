@@ -37,8 +37,8 @@
 }
 
 :root {
-	--primary-color: #0253cc;
-	--primary-color-rgb: 2, 83, 204;
+	--primary-color: #2674f0;
+	--primary-color-rgb: 38, 116, 240;
 	--primary-color-tint: #00c5fb;
 	--secondary-color: #FF7A30;
 	--ats-left-col-width: 260px;
@@ -67,7 +67,7 @@
 	--ats-menu-item-hover-bg-color: #f7f7ff;
 	--ats-menu-item-active-color: var(--primary-color);
 	--ats-help-box-bg: rgba(255, 255, 255, 0.07);
-	--ats-topbar-bg: var(--ats-white);
+	--ats-topbar-bg: var(--ats-primary);
 	--ats-topbar-item-color: var(--ats-white);
 	--ats-topbar-item-hover-color: var(--ats-white);
 	--ats-topbar-search-bg: rgba(255, 255, 255, 0.1);
@@ -22086,17 +22086,17 @@ a.forgot-password {
 	}
 }
 
-.dashboard-card-1 .card-content{
-  background-color: #f9b234;
+.dashboard-card-1 .card-content {
+	background-color: #b17710;
 }
 .dashboard-card-2 .card-content {
-	background-color: #007bff;
+	background-color: #004084;
 }
 .dashboard-card-3 .card-content {
-	background-color: #e44022;
+	background-color: #b1270d;
 }
 .dashboard-card-4 .card-content {
-	background-color: #3ecd5e;
+	background-color: #087420;
 }
 
 .info-number{

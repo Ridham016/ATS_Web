@@ -557,7 +557,9 @@ namespace MVCProject.Api.Models
         /// <param name="currentStatusId">No Metadata Documentation available.</param>
         /// <param name="startDate">No Metadata Documentation available.</param>
         /// <param name="endDate">No Metadata Documentation available.</param>
-        public ObjectResult<USP_ATS_ActionApplicantSearch_Result> USP_ATS_ActionApplicantSearch(Nullable<global::System.Int32> currentStatusId, Nullable<global::System.DateTime> startDate, Nullable<global::System.DateTime> endDate)
+        /// <param name="companyId">No Metadata Documentation available.</param>
+        /// <param name="positionId">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_ActionApplicantSearch_Result> USP_ATS_ActionApplicantSearch(Nullable<global::System.Int32> currentStatusId, Nullable<global::System.DateTime> startDate, Nullable<global::System.DateTime> endDate, Nullable<global::System.Int32> companyId, Nullable<global::System.Int32> positionId)
         {
             ObjectParameter currentStatusIdParameter;
             if (currentStatusId.HasValue)
@@ -589,7 +591,27 @@ namespace MVCProject.Api.Models
                 endDateParameter = new ObjectParameter("EndDate", typeof(global::System.DateTime));
             }
     
-            return base.ExecuteFunction<USP_ATS_ActionApplicantSearch_Result>("USP_ATS_ActionApplicantSearch", currentStatusIdParameter, startDateParameter, endDateParameter);
+            ObjectParameter companyIdParameter;
+            if (companyId.HasValue)
+            {
+                companyIdParameter = new ObjectParameter("CompanyId", companyId);
+            }
+            else
+            {
+                companyIdParameter = new ObjectParameter("CompanyId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter positionIdParameter;
+            if (positionId.HasValue)
+            {
+                positionIdParameter = new ObjectParameter("PositionId", positionId);
+            }
+            else
+            {
+                positionIdParameter = new ObjectParameter("PositionId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_ActionApplicantSearch_Result>("USP_ATS_ActionApplicantSearch", currentStatusIdParameter, startDateParameter, endDateParameter, companyIdParameter, positionIdParameter);
         }
     
         /// <summary>
@@ -18452,6 +18474,54 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Int32> _PostingId;
         partial void OnPostingIdChanging(Nullable<global::System.Int32> value);
         partial void OnPostingIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PositionName
+        {
+            get
+            {
+                return _PositionName;
+            }
+            set
+            {
+                OnPositionNameChanging(value);
+                ReportPropertyChanging("PositionName");
+                _PositionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PositionName");
+                OnPositionNameChanged();
+            }
+        }
+        private global::System.String _PositionName;
+        partial void OnPositionNameChanging(global::System.String value);
+        partial void OnPositionNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CompanyName
+        {
+            get
+            {
+                return _CompanyName;
+            }
+            set
+            {
+                OnCompanyNameChanging(value);
+                ReportPropertyChanging("CompanyName");
+                _CompanyName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CompanyName");
+                OnCompanyNameChanged();
+            }
+        }
+        private global::System.String _CompanyName;
+        partial void OnCompanyNameChanging(global::System.String value);
+        partial void OnCompanyNameChanged();
 
         #endregion
 

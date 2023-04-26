@@ -11,9 +11,24 @@
         //debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/AdvancedSearch/AdvancedActionSearch?StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,
+            url: $rootScope.apiURL + '/AdvancedSearch/AdvancedActionSearch?StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' +
+                searchDetail.EndDate + '&CompanyId=' + searchDetail.CompanyId + '&PositionId=' + searchDetail.PositionId,
             data: JSON.stringify(searchDetailParams)
         })
+    }
+    list.GetCompanyDetails = function () {
+        //debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/AdvancedSearch/GetCompanyDetails'
+        });
+    }
+    list.GetPositionDetails = function () {
+        //debugger
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/AdvancedSearch/GetPositionDetails'
+        });
     }
     list.GetStatus = function () {
         return $http({
@@ -31,7 +46,8 @@
         debugger
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/AdvancedSearch/ExportToXl?headers=' + headers.join(',') + '&StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,
+            url: $rootScope.apiURL + '/AdvancedSearch/ExportToXl?headers=' + headers.join(',') + '&StatusId=' + searchDetail.StatusId + '&StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate +
+                searchDetail.EndDate + '&CompanyId=' + searchDetail.CompanyId + '&PositionId=' + searchDetail.PositionId,
             data: JSON.stringify(searchDetail)
         });
     }

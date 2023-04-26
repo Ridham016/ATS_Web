@@ -57,6 +57,14 @@
             $scope.applicantDetailScope.PostingId = '';
         }
 
+        $scope.onEnter = function (event) {
+            if (event.which === 13) {
+                $scope.isSearchClicked = true;
+                $scope.tableParams.page(1);
+                $scope.tableParams.reload();
+            }
+        }
+
         $scope.Check = function (textInput, applicantDetailScope) {
             debugger
             if (textInput.disabled == 'fresher') {

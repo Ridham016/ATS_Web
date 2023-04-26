@@ -71,7 +71,7 @@
     }
 </style>
 
-<div ng-controller="AdvancedSearchCtrl" novalidate>
+<div ng-controller="AdvancedSearchCtrl" novalidate ng-init="getCompanyDetails();getPositionDetails()">
     <div class="main-page-title title-icon relative l">
         <i class="fa fa-search icon-position" style="padding-top: 8px;"></i>
         <h4 class="header-title-sub l">@Resource.AdvancedSearch</h4>
@@ -95,8 +95,29 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6 mt-0">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.Company <span class="required-field">*</span>
+                                </label>
+                                <select class="form-select" name="Company" ng-model="searchDetail.CompanyId">
+                                    <option value="" selected >Select Company Name</option>
+                                    <option ng-repeat="h in companyDetails" value="{{h.Id}}">{{h.CompanyName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-0">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.Position <span class="required-field">*</span>
+                                </label>
+                                <select class="form-select" name="Position" ng-model="searchDetail.PositionId">
+                                    <option value="" selected >Select Position Name</option>
+                                    <option ng-repeat="h in PositionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-3">
                             <div class="form-group">
                                 <label>
                                     @MVCProject.Common.Resources.Resource.TimeLine
@@ -106,13 +127,13 @@
                             </div>
                         </div>
                         @*<div class="col-md-4">
-                    <div class="form-group">
-                        <label>
-                            @MVCProject.Common.Resources.Resource.EndDate
-                        </label>
-                        <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" />
-                    </div>
-                </div>*@
+            <div class="form-group">
+                <label>
+                    @MVCProject.Common.Resources.Resource.EndDate
+                </label>
+                <input type="date" class="form-control" name="EndDate" ng-model="searchDetail.EndDate" />
+            </div>
+        </div>*@
                         <div class="row mt-4">
                             <div class="col-md-10">
                                 <div class="form-group">

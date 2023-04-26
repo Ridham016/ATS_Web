@@ -474,6 +474,8 @@
           <Parameter Name="CurrentStatusId" Type="int" Mode="In" />
           <Parameter Name="StartDate" Type="datetime" Mode="In" />
           <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="PositionId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_AllApplicants" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_AllCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1047,6 +1049,8 @@
             <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="PositionId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_AllApplicants" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_AllApplicants_Result)" />
           <FunctionImport Name="USP_ATS_AllInterviewers" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_AllInterviewers_Result)" />
@@ -1557,6 +1561,8 @@
           <Property Type="String" Name="FileName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Reason" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="PostingId" Nullable="true" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_CheckStatusValidity_Result">
           <Property Type="Boolean" Name="Result" Nullable="true" />
@@ -2548,6 +2554,8 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="PostingId" ColumnName="PostingId" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

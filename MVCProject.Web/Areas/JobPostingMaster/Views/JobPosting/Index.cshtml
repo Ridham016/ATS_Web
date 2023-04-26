@@ -27,6 +27,16 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+    .col {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+    }
+    .colStatus {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
 </style>
 
 <div ng-controller="JobPostingCtrl" novalidate>
@@ -48,10 +58,6 @@
                                 <label>
                                     @Resource.Position <span class="required-field">*</span>
                                 </label>
-                                @*<select class="form-select" name="Position" ng-model="jobpostingDetailScope.PositionId" required>
-            <option value="" selected disabled>Select Position</option>
-            <option ng-repeat="h in positionDetails" value="{{h.Id}}">{{h.PositionName}}</option>
-        </select>*@
                                     <div angucomplete-alt
                                          field-tabindex="14"
                                          input-name="Position"
@@ -181,7 +187,7 @@
                             </div>
                             <div class="col-lg-5 col-md-6 offset-lg-4">
                                 <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.JobPosting, Resource.Details)" />
+                                    <input type="text" tabindex="104" ng-model="search" ng-keypress="onEnter($event)" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.JobPosting, Resource.Details)" />
                                     <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -205,13 +211,13 @@
                                                 <td data-title="'@Resource.Company'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.CompanyName}}
                                                 </td>
-                                                <td data-title="'@Resource.Experience'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Experience'" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Experience}}
                                                 </td>
-                                                <td data-title="'@Resource.Salary'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Salary'" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Salary}}
                                                 </td>
-                                                <td data-title="'@Resource.PostingStatus'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.PostingStatus'" header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.PostingStatus}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">

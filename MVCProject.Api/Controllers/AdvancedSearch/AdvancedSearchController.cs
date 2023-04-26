@@ -35,8 +35,8 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
             {
                 searchDetailParams.Search = string.Empty;
             }
-            var advancedsearch = (from g in this.entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate).AsEnumerable().Where(x => x.FirstName.Trim().ToLower().Contains(searchDetailParams.Search.Trim().ToLower()))
-                                  let TotalRecords = this.entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate).AsEnumerable().Where(x => x.FirstName.Trim().ToLower().Contains(searchDetailParams.Search.Trim().ToLower())).Count()
+            var advancedsearch = (from g in this.entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate, searchParams.CompanyId, searchParams.PositionId).AsEnumerable().Where(x => x.FirstName.Trim().ToLower().Contains(searchDetailParams.Search.Trim().ToLower()))
+                                  let TotalRecords = this.entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate, searchParams.CompanyId, searchParams.PositionId).AsEnumerable().Where(x => x.FirstName.Trim().ToLower().Contains(searchDetailParams.Search.Trim().ToLower())).Count()
                                   select new
                                   {
                                       ApplicantId = g.ApplicantId,
@@ -166,10 +166,35 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
             });
             return this.Response(MessageTypes.Success, string.Empty, status);
         }
+
+        [HttpGet]
+        public ApiResponse GetCompanyDetails()
+        {
+            var data = this.entities.USP_ATS_GetCompanyDetails().Select(x => new
+            {
+                Id = x.Id,
+                CompanyName = x.CompanyName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
+        [HttpGet]
+        public ApiResponse GetPositionDetails()
+        {
+            var data = this.entities.USP_ATS_GetPositionDetails().Select(x => new
+            {
+                Id = x.Id,
+                PositionName = x.PositionName,
+                IsActive = x.IsActive
+            }).ToList();
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
         [HttpPost]
         public ApiResponse ExportToXl([FromUri] string[] headers, [FromUri] SearchParams searchParams)
         {
-            var result = entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate).ToList();
+            var result = entities.USP_ATS_ActionApplicantSearch(searchParams.StatusId, searchParams.StartDate, searchParams.EndDate, searchParams.CompanyId, searchParams.PositionId).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {

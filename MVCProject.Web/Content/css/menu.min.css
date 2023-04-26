@@ -789,6 +789,7 @@ table.no-margin .progress {
     color: var(--ats-dark-nav-link-color);
     font-weight: 500;
     border-radius: var(--ats-border-radius);
+    transition: 200ms ease-in-out;
     /*border-bottom: 1px solid #292e46;*/
 }
 
@@ -843,6 +844,7 @@ table.no-margin .progress {
 .nav li li.current-page a {
     /* color: var(--ats-dark-nav-link-color);*/
     /*background-color: var(--primary-color);*/
+    transition: 200ms ease-in-out;
 }
 
 .nav-sm .nav li li.current-page a {
@@ -933,7 +935,7 @@ table.no-margin .progress {
 
         .toggle a i {
             font-size: 20px;
-            color: #2d2d2d;
+            color: var(--ats-white);
             PADDING: 12PX;
             cursor: pointer;
             border-radius: 50%;

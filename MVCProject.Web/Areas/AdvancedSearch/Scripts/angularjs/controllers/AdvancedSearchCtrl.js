@@ -16,6 +16,8 @@
             StatusId: null,
             StartDate: null,
             EndDate: null,
+            CompanyId: null,
+            PositionId: null,
             daterange: { startDate: null, endDate: null }
         };
         angular.extend($scope.searchDetail.daterange, { startDate: null, endDate: null });
@@ -77,6 +79,8 @@
                 StatusId: null,
                 StartDate: null,
                 EndDate: null,
+                CompanyId: null,
+                PositionId: null,
                 daterange: { startDate: null, endDate: null }
             };
             $("#DateRange").val("");
@@ -110,6 +114,20 @@
                 $scope.status = res.data.Result;
             });
         };
+
+
+        $scope.getCompanyDetails = function () {
+            AdvancedSearchService.GetCompanyDetails().then(function (res) {
+                $scope.companyDetails = res.data.Result;
+            })
+        }
+
+        $scope.getPositionDetails = function () {
+            AdvancedSearchService.GetPositionDetails().then(function (res) {
+                $scope.PositionDetails = res.data.Result;
+            })
+        }
+
         $scope.exportData = function (searchDetail) {
             debugger
             AdvancedSearchService.Export($scope.headers, searchDetail)

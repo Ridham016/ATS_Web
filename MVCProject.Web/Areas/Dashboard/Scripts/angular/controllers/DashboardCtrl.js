@@ -2,11 +2,10 @@
     'use strict';
 
     angular.module("MVCApp").controller('DashboardCtrl', [
-        '$scope', 'uiCalendarConfig','$timeout','$rootScope','CommonEnums', 'DashboardService', DashboardCtrl
+        '$scope', 'uiCalendarConfig', '$timeout','$interval','$rootScope','CommonEnums', 'DashboardService', DashboardCtrl
     ]);
-    function DashboardCtrl($scope, uiCalendarConfig, $timeout, $rootScope, CommonEnums, DashboardService) {
-
-        var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c','#ffa21d'];
+    function DashboardCtrl($scope, uiCalendarConfig, $timeout, $interval, $rootScope, CommonEnums, DashboardService) {
+        var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c', '#ffa21d'];
 
         $scope.getCounts = function (time) {
             $scope.timeFrame = time;
@@ -14,6 +13,31 @@
                 if (res) {
                     if (res.data.MessageType = messageTypes.Success) {
                         $scope.Counts = res.data.Result;
+                        $.fn.jQuerySimpleCounter = function (options) {
+                            var settings = $.extend({
+                                start: 0,
+                                end: 100,
+                                easing: 'swing',
+                                duration: 400,
+                                complete: ''
+                            }, options);
+
+                            var thisElement = $(this);
+
+                            $({ count: settings.start }).animate({ count: settings.end }, {
+                                duration: settings.duration,
+                                easing: settings.easing,
+                                step: function () {
+                                    var mathCount = Math.ceil(this.count);
+                                    thisElement.text(mathCount);
+                                },
+                                complete: settings.complete
+                            });
+                        };
+                        $('#number1').jQuerySimpleCounter({ end: $scope.Counts.MeetingsScheduled, duration: 2500 });
+                        $('#number2').jQuerySimpleCounter({ end: $scope.Counts.JobOpenings, duration: 3200 });
+                        $('#number3').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsRegistered, duration: 2500 });
+                        $('#number4').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsHired, duration: 3000 });
 
                         var optionDonut = {
                             chart: {
