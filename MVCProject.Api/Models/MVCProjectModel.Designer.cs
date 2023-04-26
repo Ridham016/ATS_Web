@@ -17677,6 +17677,54 @@ namespace MVCProject.Api.Models
         private global::System.String _ApplicantName;
         partial void OnApplicantNameChanging(global::System.String value);
         partial void OnApplicantNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PositionName
+        {
+            get
+            {
+                return _PositionName;
+            }
+            set
+            {
+                OnPositionNameChanging(value);
+                ReportPropertyChanging("PositionName");
+                _PositionName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PositionName");
+                OnPositionNameChanged();
+            }
+        }
+        private global::System.String _PositionName;
+        partial void OnPositionNameChanging(global::System.String value);
+        partial void OnPositionNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CompanyName
+        {
+            get
+            {
+                return _CompanyName;
+            }
+            set
+            {
+                OnCompanyNameChanging(value);
+                ReportPropertyChanging("CompanyName");
+                _CompanyName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CompanyName");
+                OnCompanyNameChanged();
+            }
+        }
+        private global::System.String _CompanyName;
+        partial void OnCompanyNameChanging(global::System.String value);
+        partial void OnCompanyNameChanged();
 
         #endregion
 

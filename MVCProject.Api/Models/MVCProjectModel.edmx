@@ -1527,6 +1527,8 @@
           <Property Type="Int32" Name="Mode" Nullable="true" />
           <Property Type="String" Name="InterviewerName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="USP_ATS_SingleApplicant_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -2516,6 +2518,8 @@
                 <ScalarProperty Name="Mode" ColumnName="Mode" />
                 <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
                 <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -18,14 +18,16 @@
                                 start: 0,
                                 end: 100,
                                 easing: 'swing',
-                                duration: 400,
+                                baseDuration: 2000, 
+                                minDuration: 500, 
                                 complete: ''
                             }, options);
 
                             var thisElement = $(this);
-
+                            var duration = Math.max(settings.baseDuration / settings.end * (settings.end - settings.start), settings.minDuration);
+                            console.log(duration);
                             $({ count: settings.start }).animate({ count: settings.end }, {
-                                duration: settings.duration,
+                                duration: duration,
                                 easing: settings.easing,
                                 step: function () {
                                     var mathCount = Math.ceil(this.count);
@@ -34,10 +36,10 @@
                                 complete: settings.complete
                             });
                         };
-                        $('#number1').jQuerySimpleCounter({ end: $scope.Counts.MeetingsScheduled, duration: 2500 });
-                        $('#number2').jQuerySimpleCounter({ end: $scope.Counts.JobOpenings, duration: 3200 });
-                        $('#number3').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsRegistered, duration: 2500 });
-                        $('#number4').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsHired, duration: 3000 });
+                        $('#number1').jQuerySimpleCounter({ end: $scope.Counts.MeetingsScheduled });
+                        $('#number2').jQuerySimpleCounter({ end: $scope.Counts.JobOpenings });
+                        $('#number3').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsRegistered });
+                        $('#number4').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsHired });
 
                         var optionDonut = {
                             chart: {

@@ -5784,12 +5784,12 @@ fieldset:disabled .btn {
 	padding-left: var(--ats-breadcrumb-item-padding-x)
 }
 
-	.breadcrumb-item + .breadcrumb-item::before {
+	/*.breadcrumb-item + .breadcrumb-item::before {
 		float: left;
 		padding-right: var(--ats-breadcrumb-item-padding-x);
 		color: var(--ats-breadcrumb-divider-color);
 		content: var(--ats-breadcrumb-divider, "\f0142")
-	}
+	}*/
 
 .breadcrumb-item.active {
 	color: var(--ats-breadcrumb-item-active-color)
@@ -22087,16 +22087,16 @@ a.forgot-password {
 }
 
 .dashboard-card-1 .card-content {
-	background-color: #b17710;
+	background-color: #e09614;
 }
 .dashboard-card-2 .card-content {
-	background-color: #004084;
+	background-color: #0059b7;
 }
 .dashboard-card-3 .card-content {
-	background-color: #b1270d;
+	background-color: #e13110;
 }
 .dashboard-card-4 .card-content {
-	background-color: #087420;
+	background-color: #0ba42d;
 }
 
 .info-number{
