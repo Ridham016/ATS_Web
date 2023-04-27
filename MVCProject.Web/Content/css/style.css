@@ -6149,7 +6149,7 @@ header {
         margin: 100px 0;
     }
 
-    .eternity-form .login-content,
+/*    .eternity-form .login-content,
     .eternity-form .forgot-password-section,
     .eternity-form .reg-content {
         background-color: white;
@@ -6158,7 +6158,7 @@ header {
         -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    }
+    }*/
 
     .eternity-form .section-title {
         padding: 5px 20px;
@@ -7368,4 +7368,21 @@ multilevel-accordion uib-accordion .panel-group {
     .col-expand {
         margin-top: 10px;
     }
+}
+
+
+
+.lb-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 213px;
+}
+
+.rb-img {
+    position: absolute;
+    height: 40%;
+    bottom: 0;
+    right: 0;
+    width: 194px;
 }
