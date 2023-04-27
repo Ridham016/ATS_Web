@@ -7358,6 +7358,10 @@ multilevel-accordion uib-accordion .panel-group {
     max-width: 270px;
 }
 
+.input-group-append{
+    top: 41px;
+    right: 20px;
+}
 
 
 @media (max-width: 999px) {

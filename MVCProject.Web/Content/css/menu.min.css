@@ -457,7 +457,7 @@ body  .right_col {
 .top_nav .nav .open > a,
 .top_nav .nav .open > a:focus,
 .top_nav .nav .open > a:hover {
-    background: #D9DEE4;
+    background: transparent;
 }
 
 .top_nav {

@@ -100,6 +100,26 @@
                 <a id="menu_toggle" ng-click="SetToggleMenu()"><i class="fa fa-bars"></i></a>
             </div>
             <ul class="nav navbar-nav navbar-right top-menu top-right-menu" ng-init="getRoles()">
+                <li class="text-center">
+                    <div class="d-flex align-items-center p-3">
+                        <div class="me-2">
+                            <a class="d-flex align-items-center">
+                                <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg" class="img-circle user-img profile-img rounded-circle thumb-sm" />
+                            </a>
+                        </div>
+                        <div class="d-flex flex-column align-items-start">
+                            <span class="username">{{userContext.User}}</span>
+                            <span class="rolename text-light ms-1" style="font-size:12px;">{{roles[0].RoleName}}</span>
+                        </div>
+                        <div class="ms-4">
+                            <a href="~/Account/Logout" class="text-light">
+                                <i class="fa fa-sign-out ms-2 font-20"></i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            @*<ul class="nav navbar-nav navbar-right top-menu top-right-menu" ng-init="getRoles()">
                 <li class="dropdown text-center">
                     <a data-bs-toggle="dropdown" class="dropdown-toggle waves-effect waves-light profile">
                         <img ng-src="{{userContext.ProfilePicturePath}}" alt="@Resource.ProfilePicture" fallback-src="/Content/images/avatar-1.jpg" src="../../Content/images/avatar-1.jpg"
@@ -107,14 +127,14 @@
                         <span class="username">{{userContext.User}}</span>
                     </a>
                     <ul class="dropdown-menu">
-                        @*
+
                         <li>
                             <a ng-click="SynchronizeReportingData()" ng-href="/Home">
                                 <i class="fa fa-home m-r-5">
                                 </i>
                                 @Resource.BackToHome
                             </a>
-                        </li>*@ @*
+                        </li>
                         <li>
                             <a ng-click="SynchronizeReportingData()" href="javascript:void(0)">
                                 <i class="fa fa-refresh m-r-5">
@@ -128,7 +148,7 @@
                                 </i>
                                 @Resource.NotificationSetting
                             </a>
-                        </li>*@
+                        </li>
                         <li class="dropdown-item">
                             <a href="~/Account/Logout">
                                 <i class="ti-power-off m-r-5"></i>
@@ -137,13 +157,13 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li style="max-width: 200px; margin-top: 13px; margin-right: 5px;">
-                    <select class="form-control" ng-model="userContext.RoleId" @*ng-change="ChangeRole(userContext.RoleId)"*@
-                            ng-options="r.RoleId as r.RoleName for r in roles" >
+                    <select class="form-control" ng-model="userContext.RoleId" ng-change="ChangeRole(userContext.RoleId)"
+                            ng-options="r.RoleId as r.RoleName for r in roles">
                     </select>
                 </li>
-            </ul>
+            </ul>*@
         </div>
     </div>
     <!-- /top navigation -->

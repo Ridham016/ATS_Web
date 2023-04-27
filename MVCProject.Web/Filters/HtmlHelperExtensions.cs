@@ -53,11 +53,13 @@ namespace System.Web.Mvc
             if(userContext.RoleId == 3)
             {
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
+                menuString.Append(GetMainMenu(Resource.Calendar, "fa fa-calendar", "/Calendar/Calendar"));
                 menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             }
             else if(userContext.RoleId == 1 || userContext.RoleId == 2)
             {
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
+                menuString.Append(GetMainMenu(Resource.Calendar, "fa fa-calendar", "/Calendar/Calendar"));
                 menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
                 menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-clipboard-list", "/ScheduleManagement/Schedule"));
                 menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));

@@ -29,20 +29,25 @@
                                                 <div class="form-group mb-3 ">
                                                     <label for="emailaddress" class="form-label">Email address</label>
                                                     <input type="text" id="txtUserName" name="txtUserName" ng-model="loginFormData.Email"
-                                                           autocomplete=off
+                                                           @*autocomplete=off*@
                                                            class="form-control mb-2" ng-class="{'border-color' : frmLogin.txtUserName.$dirty && frmLogin.txtUserName.$invalid}" maxlength="50" required ng-focus="true" tabindex="1" placeholder="@Resource.UserName" />
                                                     <div class="label label-danger" data-ng-show="frmLogin.txtUserName.$dirty && frmLogin.txtUserName.$invalid">
                                                         <span data-ng-show="frmLogin.txtUserName.$error.required">@Resource.UserNameRequired</span>
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3">
+                                                <div class="form-group position-relative mb-3">
                                                     <a class="text-muted float-end forgot-password" tabindex="5" ng-click="OpenResetPasswordModel()">
                                                         <i class="fa fa-lock m-r-5"></i>@Resource.ForgotPassword?
                                                     </a>
                                                     <label for="password" class="form-label">Password</label>
-                                                    <input name="txtPassword" id="txtPassword" type="password" ng-model="loginFormData.Password" autocomplete=off
+                                                    <input name="txtPassword" id="txtPassword" type="{{showPassword ? 'text' : 'password'}}" ng-model="loginFormData.Password" autocomplete=off
                                                            readonly onfocus="$(this).removeAttr('readonly');"
                                                            class="form-control mb-2" ng-class="{'border-color' : frmLogin.txtPassword.$dirty && frmLogin.txtPassword.$invalid}" maxlength="25" required tabindex="2" placeholder="@Resource.Password" />
+                                                    <div class="input-group-append cursor-pointer position-absolute">
+                                                        <span class="input-group" ng-click="showPassword = !showPassword">
+                                                            <i class="fa" ng-class="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i>
+                                                        </span>
+                                                    </div>
                                                     <div class="label label-danger" data-ng-show="frmLogin.txtPassword.$dirty && frmLogin.txtPassword.$invalid">
                                                         <span data-ng-show="frmLogin.txtPassword.$error.required">@Resource.PasswordRequired</span>
                                                     </div>
