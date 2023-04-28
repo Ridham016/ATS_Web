@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ATSMVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="ATSMVCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ATS_ActionHistory">
           <Key>
             <PropertyRef Name="ActionId" />
@@ -652,12 +652,12 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ATSMVCProjectModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="ATSMVCProjectModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityType Name="ATS_ActionHistory">
           <Key>
             <PropertyRef Name="ActionId" />
           </Key>
-          <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ApplicantId" Type="Int32" />
           <Property Name="StatusId" Type="Int32" />
           <Property Name="ReasonId" Type="Int32" />
@@ -676,7 +676,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ButtonId" Type="Int32" />
           <Property Name="NextStatusId" Type="Int32" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -691,7 +691,7 @@
           <Key>
             <PropertyRef Name="ApplicantId" />
           </Key>
-          <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -730,7 +730,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="FileRelativePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -749,7 +749,7 @@
           <Key>
             <PropertyRef Name="AttachmentTypeId" />
           </Key>
-          <Property Name="AttachmentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttachmentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="AttachmentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_Attachment" Relationship="Self.FK__ATS_Attac__Attac__3BFFE745" FromRole="ATS_AttachmentType" ToRole="ATS_Attachment" />
@@ -758,7 +758,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="StatusId" Type="Int32" />
           <Property Name="ButtonId" Type="Int32" />
           <Property Name="EntryBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -773,7 +773,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -789,7 +789,7 @@
           <Key>
             <PropertyRef Name="InterviewerId" />
           </Key>
-          <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterviewerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="InterviewerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="InterviewerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -806,7 +806,7 @@
           <Key>
             <PropertyRef Name="ButtonId" />
           </Key>
-          <Property Name="ButtonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ButtonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ButtonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_ActionStatus" Relationship="Self.FK__ATS_Actio__Butto__4589517F" FromRole="ATS_MasterButton" ToRole="ATS_ActionStatus" />
@@ -816,7 +816,7 @@
           <Key>
             <PropertyRef Name="ReasonId" />
           </Key>
-          <Property Name="ReasonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReasonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Reaso__42ACE4D4" FromRole="ATS_MasterOtherReason" ToRole="ATS_ActionHistory" />
@@ -825,7 +825,7 @@
           <Key>
             <PropertyRef Name="StatusId" />
           </Key>
-          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_ActionHistory" Relationship="Self.FK__ATS_Actio__Statu__41B8C09B" FromRole="ATS_MasterStatus" ToRole="ATS_ActionHistory" />
@@ -836,7 +836,7 @@
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EntryBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
@@ -849,7 +849,7 @@
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -865,7 +865,7 @@
           <Key>
             <PropertyRef Name="DesignationId" />
           </Key>
-          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DesignationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -990,7 +990,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MVCProjectEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ATS_ActionHistory" EntityType="Self.ATS_ActionHistory" />
           <EntitySet Name="ATS_ActionStatus" EntityType="Self.ATS_ActionStatus" />
           <EntitySet Name="ATS_ApplicantRegister" EntityType="Self.ATS_ApplicantRegister" />
@@ -1083,7 +1083,7 @@
           <FunctionImport Name="USP_ATS_GetButton" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetButton_Result)">
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetails_Result)" >
+          <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetails_Result)">
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetInfoForEmail" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetInfoForEmail_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
@@ -1158,7 +1158,7 @@
             <End Role="ATS_PositionMaster" EntitySet="ATS_PositionMaster" />
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
           </AssociationSet>
-          <FunctionImport Name="USP_ATS_CountForDashboard" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForDashboard_Result)" >
+          <FunctionImport Name="USP_ATS_CountForDashboard" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForDashboard_Result)">
           <Parameter Name="timeFrame" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_CountForStackedBar" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForStackedBar_Result)" />
@@ -1579,7 +1579,7 @@
           <Key>
             <PropertyRef Name="PostingId" />
           </Key>
-          <Property Name="PostingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CompanyId" Type="Int32" />
           <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -1673,7 +1673,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ScheduleDateTime" Type="DateTime" Precision="3" />
           <Property Name="ActionId" Type="Int32" />
           <Property Name="InterviewerId" Type="Int32" />
@@ -1725,7 +1725,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Venue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ContactPersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -1769,7 +1769,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PostingStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Posti__68336F3E" FromRole="ATS_MasterPostingStatus" ToRole="ATS_JobPosting" />
@@ -1808,7 +1808,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PositionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EntryBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
@@ -1852,7 +1852,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ATSMVCProjectModelStoreContainer" CdmEntityContainer="MVCProjectEntities">
           <EntitySetMapping Name="ATS_ActionHistory">
             <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_ActionHistory">
@@ -2430,7 +2430,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetLevel" >
+          <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetLevel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetLevel_Result">
                 <ScalarProperty Name="Level" ColumnName="Level" />
@@ -2783,22 +2783,22 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="true" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>

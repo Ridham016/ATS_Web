@@ -1170,7 +1170,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1189,7 +1189,7 @@ namespace MVCProject.Api.Models
                 {
                     OnActionIdChanging(value);
                     ReportPropertyChanging("ActionId");
-                    _ActionId = StructuralObject.SetValidValue(value);
+                    _ActionId = StructuralObject.SetValidValue(value, "ActionId");
                     ReportPropertyChanged("ActionId");
                     OnActionIdChanged();
                 }
@@ -1214,7 +1214,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -1238,7 +1238,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -1262,7 +1262,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -1286,7 +1286,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -1310,7 +1310,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -1334,7 +1334,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -1358,7 +1358,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -1382,7 +1382,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -1406,7 +1406,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -1417,7 +1417,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -1583,7 +1582,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1602,7 +1601,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1627,7 +1626,7 @@ namespace MVCProject.Api.Models
             {
                 OnButtonIdChanging(value);
                 ReportPropertyChanging("ButtonId");
-                _ButtonId = StructuralObject.SetValidValue(value);
+                _ButtonId = StructuralObject.SetValidValue(value, "ButtonId");
                 ReportPropertyChanged("ButtonId");
                 OnButtonIdChanged();
             }
@@ -1651,7 +1650,7 @@ namespace MVCProject.Api.Models
             {
                 OnNextStatusIdChanging(value);
                 ReportPropertyChanging("NextStatusId");
-                _NextStatusId = StructuralObject.SetValidValue(value);
+                _NextStatusId = StructuralObject.SetValidValue(value, "NextStatusId");
                 ReportPropertyChanged("NextStatusId");
                 OnNextStatusIdChanged();
             }
@@ -1675,7 +1674,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -1699,7 +1698,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -1723,7 +1722,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -1747,7 +1746,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -1771,7 +1770,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -1782,7 +1781,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -1888,7 +1886,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1907,7 +1905,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1932,7 +1930,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleDateTimeChanging(value);
                 ReportPropertyChanging("ScheduleDateTime");
-                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                _ScheduleDateTime = StructuralObject.SetValidValue(value, "ScheduleDateTime");
                 ReportPropertyChanged("ScheduleDateTime");
                 OnScheduleDateTimeChanged();
             }
@@ -1956,7 +1954,7 @@ namespace MVCProject.Api.Models
             {
                 OnActionIdChanging(value);
                 ReportPropertyChanging("ActionId");
-                _ActionId = StructuralObject.SetValidValue(value);
+                _ActionId = StructuralObject.SetValidValue(value, "ActionId");
                 ReportPropertyChanged("ActionId");
                 OnActionIdChanged();
             }
@@ -1980,7 +1978,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -2004,7 +2002,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleLinkChanging(value);
                 ReportPropertyChanging("ScheduleLink");
-                _ScheduleLink = StructuralObject.SetValidValue(value, true);
+                _ScheduleLink = StructuralObject.SetValidValue(value, true, "ScheduleLink");
                 ReportPropertyChanged("ScheduleLink");
                 OnScheduleLinkChanged();
             }
@@ -2028,7 +2026,7 @@ namespace MVCProject.Api.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -2052,7 +2050,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -2076,7 +2074,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -2100,7 +2098,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -2124,7 +2122,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -2148,7 +2146,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -2172,7 +2170,7 @@ namespace MVCProject.Api.Models
             {
                 OnModeChanging(value);
                 ReportPropertyChanging("Mode");
-                _Mode = StructuralObject.SetValidValue(value);
+                _Mode = StructuralObject.SetValidValue(value, "Mode");
                 ReportPropertyChanged("Mode");
                 OnModeChanged();
             }
@@ -2196,7 +2194,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -2207,7 +2205,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -2313,7 +2310,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2332,7 +2329,7 @@ namespace MVCProject.Api.Models
                 {
                     OnApplicantIdChanging(value);
                     ReportPropertyChanging("ApplicantId");
-                    _ApplicantId = StructuralObject.SetValidValue(value);
+                    _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                     ReportPropertyChanged("ApplicantId");
                     OnApplicantIdChanged();
                 }
@@ -2357,7 +2354,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -2381,7 +2378,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -2405,7 +2402,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -2429,7 +2426,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -2453,7 +2450,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -2477,7 +2474,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -2501,7 +2498,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -2525,7 +2522,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -2549,7 +2546,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -2573,7 +2570,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -2597,7 +2594,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -2621,7 +2618,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -2645,7 +2642,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -2669,7 +2666,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -2693,7 +2690,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -2717,7 +2714,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -2741,7 +2738,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -2765,7 +2762,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -2789,7 +2786,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -2813,7 +2810,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -2837,7 +2834,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -2861,7 +2858,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdatedByChanging(value);
                 ReportPropertyChanging("UpdatedBy");
-                _UpdatedBy = StructuralObject.SetValidValue(value, true);
+                _UpdatedBy = StructuralObject.SetValidValue(value, true, "UpdatedBy");
                 ReportPropertyChanged("UpdatedBy");
                 OnUpdatedByChanged();
             }
@@ -2885,7 +2882,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -2909,7 +2906,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -2933,7 +2930,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -2957,7 +2954,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -2981,7 +2978,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -3005,7 +3002,7 @@ namespace MVCProject.Api.Models
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -3029,7 +3026,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -3053,7 +3050,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -3064,7 +3061,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -3176,7 +3172,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3195,7 +3191,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -3220,7 +3216,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, true);
+                _FileName = StructuralObject.SetValidValue(value, true, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -3244,7 +3240,7 @@ namespace MVCProject.Api.Models
             {
                 OnFilePathChanging(value);
                 ReportPropertyChanging("FilePath");
-                _FilePath = StructuralObject.SetValidValue(value, true);
+                _FilePath = StructuralObject.SetValidValue(value, true, "FilePath");
                 ReportPropertyChanged("FilePath");
                 OnFilePathChanged();
             }
@@ -3268,7 +3264,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileRelativePathChanging(value);
                 ReportPropertyChanging("FileRelativePath");
-                _FileRelativePath = StructuralObject.SetValidValue(value, true);
+                _FileRelativePath = StructuralObject.SetValidValue(value, true, "FileRelativePath");
                 ReportPropertyChanged("FileRelativePath");
                 OnFileRelativePathChanged();
             }
@@ -3292,7 +3288,7 @@ namespace MVCProject.Api.Models
             {
                 OnOriginalFileNameChanging(value);
                 ReportPropertyChanging("OriginalFileName");
-                _OriginalFileName = StructuralObject.SetValidValue(value, true);
+                _OriginalFileName = StructuralObject.SetValidValue(value, true, "OriginalFileName");
                 ReportPropertyChanged("OriginalFileName");
                 OnOriginalFileNameChanged();
             }
@@ -3316,7 +3312,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -3340,7 +3336,7 @@ namespace MVCProject.Api.Models
             {
                 OnAttachmentTypeIdChanging(value);
                 ReportPropertyChanging("AttachmentTypeId");
-                _AttachmentTypeId = StructuralObject.SetValidValue(value);
+                _AttachmentTypeId = StructuralObject.SetValidValue(value, "AttachmentTypeId");
                 ReportPropertyChanged("AttachmentTypeId");
                 OnAttachmentTypeIdChanged();
             }
@@ -3364,7 +3360,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsDeletedChanging(value);
                 ReportPropertyChanging("IsDeleted");
-                _IsDeleted = StructuralObject.SetValidValue(value);
+                _IsDeleted = StructuralObject.SetValidValue(value, "IsDeleted");
                 ReportPropertyChanged("IsDeleted");
                 OnIsDeletedChanged();
             }
@@ -3388,7 +3384,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -3412,7 +3408,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -3436,7 +3432,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -3460,7 +3456,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -3471,7 +3467,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -3577,7 +3572,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3596,7 +3591,7 @@ namespace MVCProject.Api.Models
                 {
                     OnAttachmentTypeIdChanging(value);
                     ReportPropertyChanging("AttachmentTypeId");
-                    _AttachmentTypeId = StructuralObject.SetValidValue(value);
+                    _AttachmentTypeId = StructuralObject.SetValidValue(value, "AttachmentTypeId");
                     ReportPropertyChanged("AttachmentTypeId");
                     OnAttachmentTypeIdChanged();
                 }
@@ -3621,7 +3616,7 @@ namespace MVCProject.Api.Models
             {
                 OnAttachmentTypeNameChanging(value);
                 ReportPropertyChanging("AttachmentTypeName");
-                _AttachmentTypeName = StructuralObject.SetValidValue(value, true);
+                _AttachmentTypeName = StructuralObject.SetValidValue(value, true, "AttachmentTypeName");
                 ReportPropertyChanged("AttachmentTypeName");
                 OnAttachmentTypeNameChanged();
             }
@@ -3645,7 +3640,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -3656,7 +3651,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -3708,7 +3702,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3727,7 +3721,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -3752,7 +3746,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -3776,7 +3770,7 @@ namespace MVCProject.Api.Models
             {
                 OnButtonIdChanging(value);
                 ReportPropertyChanging("ButtonId");
-                _ButtonId = StructuralObject.SetValidValue(value);
+                _ButtonId = StructuralObject.SetValidValue(value, "ButtonId");
                 ReportPropertyChanged("ButtonId");
                 OnButtonIdChanged();
             }
@@ -3800,7 +3794,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -3824,7 +3818,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -3848,7 +3842,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -3872,7 +3866,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -3896,7 +3890,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -3907,7 +3901,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -4013,7 +4006,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4032,7 +4025,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -4057,7 +4050,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -4081,7 +4074,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -4105,7 +4098,7 @@ namespace MVCProject.Api.Models
             {
                 OnContactPersonNameChanging(value);
                 ReportPropertyChanging("ContactPersonName");
-                _ContactPersonName = StructuralObject.SetValidValue(value, true);
+                _ContactPersonName = StructuralObject.SetValidValue(value, true, "ContactPersonName");
                 ReportPropertyChanged("ContactPersonName");
                 OnContactPersonNameChanged();
             }
@@ -4129,7 +4122,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -4153,7 +4146,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -4177,7 +4170,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -4201,7 +4194,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -4225,7 +4218,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -4236,7 +4229,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -4310,7 +4302,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4329,7 +4321,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -4354,7 +4346,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -4378,7 +4370,7 @@ namespace MVCProject.Api.Models
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, true);
+                _Password = StructuralObject.SetValidValue(value, true, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -4402,7 +4394,7 @@ namespace MVCProject.Api.Models
             {
                 OnHostChanging(value);
                 ReportPropertyChanging("Host");
-                _Host = StructuralObject.SetValidValue(value, true);
+                _Host = StructuralObject.SetValidValue(value, true, "Host");
                 ReportPropertyChanged("Host");
                 OnHostChanged();
             }
@@ -4426,7 +4418,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortChanging(value);
                 ReportPropertyChanging("Port");
-                _Port = StructuralObject.SetValidValue(value);
+                _Port = StructuralObject.SetValidValue(value, "Port");
                 ReportPropertyChanged("Port");
                 OnPortChanged();
             }
@@ -4450,7 +4442,7 @@ namespace MVCProject.Api.Models
             {
                 OnEnableSSLChanging(value);
                 ReportPropertyChanging("EnableSSL");
-                _EnableSSL = StructuralObject.SetValidValue(value);
+                _EnableSSL = StructuralObject.SetValidValue(value, "EnableSSL");
                 ReportPropertyChanged("EnableSSL");
                 OnEnableSSLChanged();
             }
@@ -4474,7 +4466,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -4498,7 +4490,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -4522,7 +4514,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -4546,7 +4538,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -4570,7 +4562,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -4581,7 +4573,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -4607,7 +4598,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4626,7 +4617,7 @@ namespace MVCProject.Api.Models
                 {
                     OnInterviewerIdChanging(value);
                     ReportPropertyChanging("InterviewerId");
-                    _InterviewerId = StructuralObject.SetValidValue(value);
+                    _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                     ReportPropertyChanged("InterviewerId");
                     OnInterviewerIdChanged();
                 }
@@ -4651,7 +4642,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -4675,7 +4666,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerEmailChanging(value);
                 ReportPropertyChanging("InterviewerEmail");
-                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true, "InterviewerEmail");
                 ReportPropertyChanged("InterviewerEmail");
                 OnInterviewerEmailChanged();
             }
@@ -4699,7 +4690,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerPhoneChanging(value);
                 ReportPropertyChanging("InterviewerPhone");
-                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true, "InterviewerPhone");
                 ReportPropertyChanged("InterviewerPhone");
                 OnInterviewerPhoneChanged();
             }
@@ -4723,7 +4714,7 @@ namespace MVCProject.Api.Models
             {
                 OnIs_ActiveChanging(value);
                 ReportPropertyChanging("Is_Active");
-                _Is_Active = StructuralObject.SetValidValue(value);
+                _Is_Active = StructuralObject.SetValidValue(value, "Is_Active");
                 ReportPropertyChanged("Is_Active");
                 OnIs_ActiveChanged();
             }
@@ -4747,7 +4738,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -4771,7 +4762,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -4795,7 +4786,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdatedByChanging(value);
                 ReportPropertyChanging("UpdatedBy");
-                _UpdatedBy = StructuralObject.SetValidValue(value, true);
+                _UpdatedBy = StructuralObject.SetValidValue(value, true, "UpdatedBy");
                 ReportPropertyChanged("UpdatedBy");
                 OnUpdatedByChanged();
             }
@@ -4819,7 +4810,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -4843,7 +4834,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -4854,7 +4845,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -4944,7 +4934,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4963,7 +4953,7 @@ namespace MVCProject.Api.Models
                 {
                     OnPostingIdChanging(value);
                     ReportPropertyChanging("PostingId");
-                    _PostingId = StructuralObject.SetValidValue(value);
+                    _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                     ReportPropertyChanged("PostingId");
                     OnPostingIdChanged();
                 }
@@ -4988,7 +4978,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -5012,7 +5002,7 @@ namespace MVCProject.Api.Models
             {
                 OnExperienceChanging(value);
                 ReportPropertyChanging("Experience");
-                _Experience = StructuralObject.SetValidValue(value, true);
+                _Experience = StructuralObject.SetValidValue(value, true, "Experience");
                 ReportPropertyChanged("Experience");
                 OnExperienceChanged();
             }
@@ -5036,7 +5026,7 @@ namespace MVCProject.Api.Models
             {
                 OnSalaryChanging(value);
                 ReportPropertyChanging("Salary");
-                _Salary = StructuralObject.SetValidValue(value, true);
+                _Salary = StructuralObject.SetValidValue(value, true, "Salary");
                 ReportPropertyChanged("Salary");
                 OnSalaryChanged();
             }
@@ -5060,7 +5050,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -5084,7 +5074,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -5108,7 +5098,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdatedByChanging(value);
                 ReportPropertyChanging("UpdatedBy");
-                _UpdatedBy = StructuralObject.SetValidValue(value, true);
+                _UpdatedBy = StructuralObject.SetValidValue(value, true, "UpdatedBy");
                 ReportPropertyChanged("UpdatedBy");
                 OnUpdatedByChanged();
             }
@@ -5132,7 +5122,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -5156,7 +5146,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -5180,7 +5170,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -5204,7 +5194,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusIdChanging(value);
                 ReportPropertyChanging("PostingStatusId");
-                _PostingStatusId = StructuralObject.SetValidValue(value);
+                _PostingStatusId = StructuralObject.SetValidValue(value, "PostingStatusId");
                 ReportPropertyChanged("PostingStatusId");
                 OnPostingStatusIdChanged();
             }
@@ -5215,7 +5205,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5381,7 +5370,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5400,7 +5389,7 @@ namespace MVCProject.Api.Models
                 {
                     OnButtonIdChanging(value);
                     ReportPropertyChanging("ButtonId");
-                    _ButtonId = StructuralObject.SetValidValue(value);
+                    _ButtonId = StructuralObject.SetValidValue(value, "ButtonId");
                     ReportPropertyChanged("ButtonId");
                     OnButtonIdChanged();
                 }
@@ -5425,7 +5414,7 @@ namespace MVCProject.Api.Models
             {
                 OnButtonNameChanging(value);
                 ReportPropertyChanging("ButtonName");
-                _ButtonName = StructuralObject.SetValidValue(value, true);
+                _ButtonName = StructuralObject.SetValidValue(value, true, "ButtonName");
                 ReportPropertyChanged("ButtonName");
                 OnButtonNameChanged();
             }
@@ -5449,7 +5438,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -5460,7 +5449,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5534,7 +5522,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5553,7 +5541,7 @@ namespace MVCProject.Api.Models
                 {
                     OnReasonIdChanging(value);
                     ReportPropertyChanging("ReasonId");
-                    _ReasonId = StructuralObject.SetValidValue(value);
+                    _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                     ReportPropertyChanged("ReasonId");
                     OnReasonIdChanged();
                 }
@@ -5578,7 +5566,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -5602,7 +5590,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -5613,7 +5601,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5665,7 +5652,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5684,7 +5671,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -5709,7 +5696,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -5733,7 +5720,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -5744,7 +5731,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5796,7 +5782,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5815,7 +5801,7 @@ namespace MVCProject.Api.Models
                 {
                     OnStatusIdChanging(value);
                     ReportPropertyChanging("StatusId");
-                    _StatusId = StructuralObject.SetValidValue(value);
+                    _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                     ReportPropertyChanged("StatusId");
                     OnStatusIdChanged();
                 }
@@ -5840,7 +5826,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -5864,7 +5850,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -5875,7 +5861,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -5971,7 +5956,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5990,7 +5975,7 @@ namespace MVCProject.Api.Models
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -6015,7 +6000,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -6039,7 +6024,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -6063,7 +6048,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -6087,7 +6072,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -6111,7 +6096,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -6135,7 +6120,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -6146,7 +6131,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -6198,7 +6182,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6217,7 +6201,7 @@ namespace MVCProject.Api.Models
                 {
                     OnRoleIdChanging(value);
                     ReportPropertyChanging("RoleId");
-                    _RoleId = StructuralObject.SetValidValue(value);
+                    _RoleId = StructuralObject.SetValidValue(value, "RoleId");
                     ReportPropertyChanged("RoleId");
                     OnRoleIdChanged();
                 }
@@ -6242,7 +6226,7 @@ namespace MVCProject.Api.Models
             {
                 OnRoleNameChanging(value);
                 ReportPropertyChanging("RoleName");
-                _RoleName = StructuralObject.SetValidValue(value, true);
+                _RoleName = StructuralObject.SetValidValue(value, true, "RoleName");
                 ReportPropertyChanged("RoleName");
                 OnRoleNameChanged();
             }
@@ -6266,7 +6250,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -6290,7 +6274,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -6314,7 +6298,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -6338,7 +6322,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -6362,7 +6346,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -6373,7 +6357,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -6425,7 +6408,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6444,7 +6427,7 @@ namespace MVCProject.Api.Models
                 {
                     OnUserIdChanging(value);
                     ReportPropertyChanging("UserId");
-                    _UserId = StructuralObject.SetValidValue(value);
+                    _UserId = StructuralObject.SetValidValue(value, "UserId");
                     ReportPropertyChanged("UserId");
                     OnUserIdChanged();
                 }
@@ -6469,7 +6452,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -6493,7 +6476,7 @@ namespace MVCProject.Api.Models
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, true);
+                _Password = StructuralObject.SetValidValue(value, true, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -6517,7 +6500,7 @@ namespace MVCProject.Api.Models
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, true);
+                _UserName = StructuralObject.SetValidValue(value, true, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -6541,7 +6524,7 @@ namespace MVCProject.Api.Models
             {
                 OnRoleIdChanging(value);
                 ReportPropertyChanging("RoleId");
-                _RoleId = StructuralObject.SetValidValue(value);
+                _RoleId = StructuralObject.SetValidValue(value, "RoleId");
                 ReportPropertyChanged("RoleId");
                 OnRoleIdChanged();
             }
@@ -6565,7 +6548,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -6589,7 +6572,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -6613,7 +6596,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -6637,7 +6620,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -6661,7 +6644,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -6672,7 +6655,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
         #region Navigation Properties
     
         /// <summary>
@@ -6740,7 +6722,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6759,7 +6741,7 @@ namespace MVCProject.Api.Models
                 {
                     OnDesignationIdChanging(value);
                     ReportPropertyChanging("DesignationId");
-                    _DesignationId = StructuralObject.SetValidValue(value);
+                    _DesignationId = StructuralObject.SetValidValue(value, "DesignationId");
                     ReportPropertyChanged("DesignationId");
                     OnDesignationIdChanged();
                 }
@@ -6784,7 +6766,7 @@ namespace MVCProject.Api.Models
             {
                 OnDesignationNameChanging(value);
                 ReportPropertyChanging("DesignationName");
-                _DesignationName = StructuralObject.SetValidValue(value, true);
+                _DesignationName = StructuralObject.SetValidValue(value, true, "DesignationName");
                 ReportPropertyChanged("DesignationName");
                 OnDesignationNameChanged();
             }
@@ -6808,7 +6790,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -6832,7 +6814,7 @@ namespace MVCProject.Api.Models
             {
                 OnRemarksChanging(value);
                 ReportPropertyChanging("Remarks");
-                _Remarks = StructuralObject.SetValidValue(value, true);
+                _Remarks = StructuralObject.SetValidValue(value, true, "Remarks");
                 ReportPropertyChanged("Remarks");
                 OnRemarksChanged();
             }
@@ -6843,7 +6825,6 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-    
     }
 
     #endregion
@@ -6873,7 +6854,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6890,7 +6871,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -6914,7 +6895,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -6938,7 +6919,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -6962,7 +6943,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -6986,7 +6967,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -7010,7 +6991,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -7034,7 +7015,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -7058,7 +7039,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -7082,7 +7063,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -7106,7 +7087,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -7130,7 +7111,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -7154,7 +7135,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -7178,7 +7159,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -7202,7 +7183,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -7226,7 +7207,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -7250,7 +7231,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -7274,7 +7255,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -7298,7 +7279,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -7322,7 +7303,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -7346,7 +7327,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -7370,7 +7351,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -7394,7 +7375,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -7418,7 +7399,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -7442,7 +7423,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -7466,7 +7447,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -7490,7 +7471,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -7514,7 +7495,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -7538,7 +7519,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -7562,7 +7543,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -7586,7 +7567,7 @@ namespace MVCProject.Api.Models
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -7610,7 +7591,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -7634,7 +7615,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -7658,7 +7639,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -7694,7 +7675,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7711,7 +7692,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -7735,7 +7716,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -7759,7 +7740,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -7783,7 +7764,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -7807,7 +7788,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -7831,7 +7812,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -7855,7 +7836,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -7879,7 +7860,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -7903,7 +7884,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -7927,7 +7908,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -7951,7 +7932,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -7975,7 +7956,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -7999,7 +7980,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -8023,7 +8004,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -8047,7 +8028,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -8071,7 +8052,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -8095,7 +8076,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -8119,7 +8100,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -8143,7 +8124,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -8167,7 +8148,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -8191,7 +8172,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -8215,7 +8196,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -8239,7 +8220,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -8263,7 +8244,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -8287,7 +8268,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -8311,7 +8292,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, true);
+                _FileName = StructuralObject.SetValidValue(value, true, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -8335,7 +8316,7 @@ namespace MVCProject.Api.Models
             {
                 OnFilePathChanging(value);
                 ReportPropertyChanging("FilePath");
-                _FilePath = StructuralObject.SetValidValue(value, true);
+                _FilePath = StructuralObject.SetValidValue(value, true, "FilePath");
                 ReportPropertyChanged("FilePath");
                 OnFilePathChanged();
             }
@@ -8359,7 +8340,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileRelativePathChanging(value);
                 ReportPropertyChanging("FileRelativePath");
-                _FileRelativePath = StructuralObject.SetValidValue(value, true);
+                _FileRelativePath = StructuralObject.SetValidValue(value, true, "FileRelativePath");
                 ReportPropertyChanged("FileRelativePath");
                 OnFileRelativePathChanged();
             }
@@ -8383,7 +8364,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -8419,7 +8400,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8436,7 +8417,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -8460,7 +8441,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -8484,7 +8465,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -8508,7 +8489,7 @@ namespace MVCProject.Api.Models
             {
                 OnContactPersonNameChanging(value);
                 ReportPropertyChanging("ContactPersonName");
-                _ContactPersonName = StructuralObject.SetValidValue(value, true);
+                _ContactPersonName = StructuralObject.SetValidValue(value, true, "ContactPersonName");
                 ReportPropertyChanged("ContactPersonName");
                 OnContactPersonNameChanged();
             }
@@ -8532,7 +8513,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -8556,7 +8537,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -8592,7 +8573,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8609,7 +8590,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -8633,7 +8614,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -8657,7 +8638,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerEmailChanging(value);
                 ReportPropertyChanging("InterviewerEmail");
-                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true, "InterviewerEmail");
                 ReportPropertyChanged("InterviewerEmail");
                 OnInterviewerEmailChanged();
             }
@@ -8681,7 +8662,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerPhoneChanging(value);
                 ReportPropertyChanging("InterviewerPhone");
-                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true, "InterviewerPhone");
                 ReportPropertyChanged("InterviewerPhone");
                 OnInterviewerPhoneChanged();
             }
@@ -8705,7 +8686,7 @@ namespace MVCProject.Api.Models
             {
                 OnIs_ActiveChanging(value);
                 ReportPropertyChanging("Is_Active");
-                _Is_Active = StructuralObject.SetValidValue(value);
+                _Is_Active = StructuralObject.SetValidValue(value, "Is_Active");
                 ReportPropertyChanged("Is_Active");
                 OnIs_ActiveChanged();
             }
@@ -8729,7 +8710,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -8753,7 +8734,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -8789,7 +8770,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8806,7 +8787,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -8830,7 +8811,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -8854,7 +8835,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -8878,7 +8859,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -8902,7 +8883,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -8926,7 +8907,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -8950,7 +8931,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -8986,7 +8967,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9003,7 +8984,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -9027,7 +9008,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -9051,7 +9032,7 @@ namespace MVCProject.Api.Models
             {
                 OnExperienceChanging(value);
                 ReportPropertyChanging("Experience");
-                _Experience = StructuralObject.SetValidValue(value, true);
+                _Experience = StructuralObject.SetValidValue(value, true, "Experience");
                 ReportPropertyChanged("Experience");
                 OnExperienceChanged();
             }
@@ -9075,7 +9056,7 @@ namespace MVCProject.Api.Models
             {
                 OnSalaryChanging(value);
                 ReportPropertyChanging("Salary");
-                _Salary = StructuralObject.SetValidValue(value, true);
+                _Salary = StructuralObject.SetValidValue(value, true, "Salary");
                 ReportPropertyChanged("Salary");
                 OnSalaryChanged();
             }
@@ -9099,7 +9080,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -9123,7 +9104,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -9147,7 +9128,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -9171,7 +9152,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -9195,7 +9176,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -9219,7 +9200,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusIdChanging(value);
                 ReportPropertyChanging("PostingStatusId");
-                _PostingStatusId = StructuralObject.SetValidValue(value);
+                _PostingStatusId = StructuralObject.SetValidValue(value, "PostingStatusId");
                 ReportPropertyChanged("PostingStatusId");
                 OnPostingStatusIdChanged();
             }
@@ -9243,7 +9224,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -9279,7 +9260,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9296,7 +9277,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -9320,7 +9301,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -9344,7 +9325,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -9368,7 +9349,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -9392,7 +9373,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -9416,7 +9397,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -9440,7 +9421,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -9464,7 +9445,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -9488,7 +9469,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -9512,7 +9493,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -9536,7 +9517,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -9560,7 +9541,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -9584,7 +9565,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -9608,7 +9589,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -9632,7 +9613,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -9656,7 +9637,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -9680,7 +9661,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -9704,7 +9685,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -9728,7 +9709,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -9752,7 +9733,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -9776,7 +9757,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -9800,7 +9781,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -9824,7 +9805,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -9848,7 +9829,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -9872,7 +9853,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -9896,7 +9877,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -9932,7 +9913,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9949,7 +9930,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -9973,7 +9954,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -9997,7 +9978,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -10021,7 +10002,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -10045,7 +10026,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -10069,7 +10050,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -10093,7 +10074,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -10117,7 +10098,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -10141,7 +10122,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -10165,7 +10146,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -10189,7 +10170,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -10213,7 +10194,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -10237,7 +10218,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -10261,7 +10242,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -10285,7 +10266,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -10309,7 +10290,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -10333,7 +10314,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -10357,7 +10338,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -10381,7 +10362,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -10405,7 +10386,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -10429,7 +10410,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -10453,7 +10434,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -10477,7 +10458,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -10501,7 +10482,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -10525,7 +10506,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -10549,7 +10530,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -10573,7 +10554,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -10597,7 +10578,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -10621,7 +10602,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -10645,7 +10626,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -10681,7 +10662,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10698,7 +10679,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -10722,7 +10703,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -10746,7 +10727,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -10770,7 +10751,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -10794,7 +10775,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -10818,7 +10799,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -10842,7 +10823,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -10866,7 +10847,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -10890,7 +10871,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -10914,7 +10895,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -10938,7 +10919,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -10962,7 +10943,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -10986,7 +10967,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -11010,7 +10991,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -11034,7 +11015,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -11058,7 +11039,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -11082,7 +11063,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -11106,7 +11087,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -11130,7 +11111,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -11154,7 +11135,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -11178,7 +11159,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -11202,7 +11183,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -11226,7 +11207,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -11250,7 +11231,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -11274,7 +11255,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -11298,7 +11279,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -11322,7 +11303,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -11346,7 +11327,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -11370,7 +11351,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -11394,7 +11375,7 @@ namespace MVCProject.Api.Models
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -11418,7 +11399,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -11442,7 +11423,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -11466,7 +11447,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -11502,7 +11483,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11519,7 +11500,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -11543,7 +11524,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -11567,7 +11548,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -11591,7 +11572,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -11615,7 +11596,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -11639,7 +11620,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -11663,7 +11644,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -11687,7 +11668,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -11711,7 +11692,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -11735,7 +11716,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -11759,7 +11740,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -11783,7 +11764,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -11807,7 +11788,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -11831,7 +11812,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -11855,7 +11836,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -11879,7 +11860,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -11903,7 +11884,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -11927,7 +11908,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -11951,7 +11932,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -11975,7 +11956,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -11999,7 +11980,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -12023,7 +12004,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -12047,7 +12028,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -12071,7 +12052,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -12095,7 +12076,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -12119,7 +12100,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -12143,7 +12124,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -12167,7 +12148,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -12191,7 +12172,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -12215,7 +12196,7 @@ namespace MVCProject.Api.Models
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -12239,7 +12220,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -12263,7 +12244,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -12287,7 +12268,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -12323,7 +12304,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12340,7 +12321,7 @@ namespace MVCProject.Api.Models
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value);
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -12364,7 +12345,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -12388,7 +12369,7 @@ namespace MVCProject.Api.Models
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, true);
+                _Password = StructuralObject.SetValidValue(value, true, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -12412,7 +12393,7 @@ namespace MVCProject.Api.Models
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, true);
+                _UserName = StructuralObject.SetValidValue(value, true, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -12436,7 +12417,7 @@ namespace MVCProject.Api.Models
             {
                 OnRoleIdChanging(value);
                 ReportPropertyChanging("RoleId");
-                _RoleId = StructuralObject.SetValidValue(value);
+                _RoleId = StructuralObject.SetValidValue(value, "RoleId");
                 ReportPropertyChanged("RoleId");
                 OnRoleIdChanged();
             }
@@ -12460,7 +12441,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -12484,7 +12465,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -12508,7 +12489,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -12532,7 +12513,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -12556,7 +12537,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -12577,7 +12558,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_CheckStatusValidity_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12594,7 +12575,7 @@ namespace MVCProject.Api.Models
             {
                 OnResultChanging(value);
                 ReportPropertyChanging("Result");
-                _Result = StructuralObject.SetValidValue(value);
+                _Result = StructuralObject.SetValidValue(value, "Result");
                 ReportPropertyChanged("Result");
                 OnResultChanged();
             }
@@ -12630,7 +12611,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12647,7 +12628,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -12671,7 +12652,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -12695,7 +12676,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -12719,7 +12700,7 @@ namespace MVCProject.Api.Models
             {
                 OnContactPersonNameChanging(value);
                 ReportPropertyChanging("ContactPersonName");
-                _ContactPersonName = StructuralObject.SetValidValue(value, true);
+                _ContactPersonName = StructuralObject.SetValidValue(value, true, "ContactPersonName");
                 ReportPropertyChanged("ContactPersonName");
                 OnContactPersonNameChanged();
             }
@@ -12743,7 +12724,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -12767,7 +12748,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -12788,7 +12769,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_CountForDashboard_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12805,7 +12786,7 @@ namespace MVCProject.Api.Models
             {
                 OnMeetingsScheduledChanging(value);
                 ReportPropertyChanging("MeetingsScheduled");
-                _MeetingsScheduled = StructuralObject.SetValidValue(value);
+                _MeetingsScheduled = StructuralObject.SetValidValue(value, "MeetingsScheduled");
                 ReportPropertyChanged("MeetingsScheduled");
                 OnMeetingsScheduledChanged();
             }
@@ -12829,7 +12810,7 @@ namespace MVCProject.Api.Models
             {
                 OnJobOpeningsChanging(value);
                 ReportPropertyChanging("JobOpenings");
-                _JobOpenings = StructuralObject.SetValidValue(value);
+                _JobOpenings = StructuralObject.SetValidValue(value, "JobOpenings");
                 ReportPropertyChanged("JobOpenings");
                 OnJobOpeningsChanged();
             }
@@ -12853,7 +12834,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantsRegisteredChanging(value);
                 ReportPropertyChanging("ApplicantsRegistered");
-                _ApplicantsRegistered = StructuralObject.SetValidValue(value);
+                _ApplicantsRegistered = StructuralObject.SetValidValue(value, "ApplicantsRegistered");
                 ReportPropertyChanged("ApplicantsRegistered");
                 OnApplicantsRegisteredChanged();
             }
@@ -12877,7 +12858,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantsHiredChanging(value);
                 ReportPropertyChanging("ApplicantsHired");
-                _ApplicantsHired = StructuralObject.SetValidValue(value);
+                _ApplicantsHired = StructuralObject.SetValidValue(value, "ApplicantsHired");
                 ReportPropertyChanged("ApplicantsHired");
                 OnApplicantsHiredChanged();
             }
@@ -12901,7 +12882,7 @@ namespace MVCProject.Api.Models
             {
                 OnRegisteredChanging(value);
                 ReportPropertyChanging("Registered");
-                _Registered = StructuralObject.SetValidValue(value);
+                _Registered = StructuralObject.SetValidValue(value, "Registered");
                 ReportPropertyChanged("Registered");
                 OnRegisteredChanged();
             }
@@ -12925,7 +12906,7 @@ namespace MVCProject.Api.Models
             {
                 OnShortlistedChanging(value);
                 ReportPropertyChanging("Shortlisted");
-                _Shortlisted = StructuralObject.SetValidValue(value);
+                _Shortlisted = StructuralObject.SetValidValue(value, "Shortlisted");
                 ReportPropertyChanged("Shortlisted");
                 OnShortlistedChanged();
             }
@@ -12949,7 +12930,7 @@ namespace MVCProject.Api.Models
             {
                 OnDiscardedChanging(value);
                 ReportPropertyChanging("Discarded");
-                _Discarded = StructuralObject.SetValidValue(value);
+                _Discarded = StructuralObject.SetValidValue(value, "Discarded");
                 ReportPropertyChanged("Discarded");
                 OnDiscardedChanged();
             }
@@ -12973,7 +12954,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewScheduledChanging(value);
                 ReportPropertyChanging("InterviewScheduled");
-                _InterviewScheduled = StructuralObject.SetValidValue(value);
+                _InterviewScheduled = StructuralObject.SetValidValue(value, "InterviewScheduled");
                 ReportPropertyChanged("InterviewScheduled");
                 OnInterviewScheduledChanged();
             }
@@ -12997,7 +12978,7 @@ namespace MVCProject.Api.Models
             {
                 OnHoldChanging(value);
                 ReportPropertyChanging("Hold");
-                _Hold = StructuralObject.SetValidValue(value);
+                _Hold = StructuralObject.SetValidValue(value, "Hold");
                 ReportPropertyChanged("Hold");
                 OnHoldChanged();
             }
@@ -13021,7 +13002,7 @@ namespace MVCProject.Api.Models
             {
                 OnRejectedChanging(value);
                 ReportPropertyChanging("Rejected");
-                _Rejected = StructuralObject.SetValidValue(value);
+                _Rejected = StructuralObject.SetValidValue(value, "Rejected");
                 ReportPropertyChanged("Rejected");
                 OnRejectedChanged();
             }
@@ -13045,7 +13026,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewCancelledChanging(value);
                 ReportPropertyChanging("InterviewCancelled");
-                _InterviewCancelled = StructuralObject.SetValidValue(value);
+                _InterviewCancelled = StructuralObject.SetValidValue(value, "InterviewCancelled");
                 ReportPropertyChanged("InterviewCancelled");
                 OnInterviewCancelledChanged();
             }
@@ -13066,7 +13047,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_CountForStackedBar_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13083,7 +13064,7 @@ namespace MVCProject.Api.Models
             {
                 OnMonthsChanging(value);
                 ReportPropertyChanging("Months");
-                _Months = StructuralObject.SetValidValue(value, true);
+                _Months = StructuralObject.SetValidValue(value, true, "Months");
                 ReportPropertyChanged("Months");
                 OnMonthsChanged();
             }
@@ -13107,7 +13088,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantsRegisteredChanging(value);
                 ReportPropertyChanging("ApplicantsRegistered");
-                _ApplicantsRegistered = StructuralObject.SetValidValue(value);
+                _ApplicantsRegistered = StructuralObject.SetValidValue(value, "ApplicantsRegistered");
                 ReportPropertyChanged("ApplicantsRegistered");
                 OnApplicantsRegisteredChanged();
             }
@@ -13131,7 +13112,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantsHiredChanging(value);
                 ReportPropertyChanging("ApplicantsHired");
-                _ApplicantsHired = StructuralObject.SetValidValue(value);
+                _ApplicantsHired = StructuralObject.SetValidValue(value, "ApplicantsHired");
                 ReportPropertyChanged("ApplicantsHired");
                 OnApplicantsHiredChanged();
             }
@@ -13155,7 +13136,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantsRejectedChanging(value);
                 ReportPropertyChanging("ApplicantsRejected");
-                _ApplicantsRejected = StructuralObject.SetValidValue(value);
+                _ApplicantsRejected = StructuralObject.SetValidValue(value, "ApplicantsRejected");
                 ReportPropertyChanged("ApplicantsRejected");
                 OnApplicantsRejectedChanged();
             }
@@ -13191,7 +13172,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13208,7 +13189,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -13232,7 +13213,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, true);
+                _FileName = StructuralObject.SetValidValue(value, true, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -13256,7 +13237,7 @@ namespace MVCProject.Api.Models
             {
                 OnFilePathChanging(value);
                 ReportPropertyChanging("FilePath");
-                _FilePath = StructuralObject.SetValidValue(value, true);
+                _FilePath = StructuralObject.SetValidValue(value, true, "FilePath");
                 ReportPropertyChanged("FilePath");
                 OnFilePathChanged();
             }
@@ -13280,7 +13261,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileRelativePathChanging(value);
                 ReportPropertyChanging("FileRelativePath");
-                _FileRelativePath = StructuralObject.SetValidValue(value, true);
+                _FileRelativePath = StructuralObject.SetValidValue(value, true, "FileRelativePath");
                 ReportPropertyChanged("FileRelativePath");
                 OnFileRelativePathChanged();
             }
@@ -13304,7 +13285,7 @@ namespace MVCProject.Api.Models
             {
                 OnOriginalFileNameChanging(value);
                 ReportPropertyChanging("OriginalFileName");
-                _OriginalFileName = StructuralObject.SetValidValue(value, true);
+                _OriginalFileName = StructuralObject.SetValidValue(value, true, "OriginalFileName");
                 ReportPropertyChanged("OriginalFileName");
                 OnOriginalFileNameChanged();
             }
@@ -13328,7 +13309,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -13352,7 +13333,7 @@ namespace MVCProject.Api.Models
             {
                 OnAttachmentTypeIdChanging(value);
                 ReportPropertyChanging("AttachmentTypeId");
-                _AttachmentTypeId = StructuralObject.SetValidValue(value);
+                _AttachmentTypeId = StructuralObject.SetValidValue(value, "AttachmentTypeId");
                 ReportPropertyChanged("AttachmentTypeId");
                 OnAttachmentTypeIdChanged();
             }
@@ -13376,7 +13357,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsDeletedChanging(value);
                 ReportPropertyChanging("IsDeleted");
-                _IsDeleted = StructuralObject.SetValidValue(value);
+                _IsDeleted = StructuralObject.SetValidValue(value, "IsDeleted");
                 ReportPropertyChanged("IsDeleted");
                 OnIsDeletedChanged();
             }
@@ -13400,7 +13381,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -13424,7 +13405,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -13448,7 +13429,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -13472,7 +13453,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -13493,7 +13474,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_GetApplicantNameAndEmail_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13510,7 +13491,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantEmailChanging(value);
                 ReportPropertyChanging("ApplicantEmail");
-                _ApplicantEmail = StructuralObject.SetValidValue(value, true);
+                _ApplicantEmail = StructuralObject.SetValidValue(value, true, "ApplicantEmail");
                 ReportPropertyChanged("ApplicantEmail");
                 OnApplicantEmailChanged();
             }
@@ -13534,7 +13515,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -13558,7 +13539,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -13582,7 +13563,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -13606,7 +13587,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileLinkChanging(value);
                 ReportPropertyChanging("FileLink");
-                _FileLink = StructuralObject.SetValidValue(value, true);
+                _FileLink = StructuralObject.SetValidValue(value, true, "FileLink");
                 ReportPropertyChanged("FileLink");
                 OnFileLinkChanged();
             }
@@ -13630,7 +13611,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -13654,7 +13635,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -13678,7 +13659,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -13714,7 +13695,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13731,7 +13712,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -13755,7 +13736,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -13779,7 +13760,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -13803,7 +13784,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -13827,7 +13808,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -13851,7 +13832,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -13875,7 +13856,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -13899,7 +13880,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -13923,7 +13904,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -13947,7 +13928,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -13971,7 +13952,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -13995,7 +13976,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -14019,7 +14000,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -14043,7 +14024,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -14067,7 +14048,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -14091,7 +14072,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -14115,7 +14096,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -14139,7 +14120,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -14163,7 +14144,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -14187,7 +14168,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -14211,7 +14192,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -14235,7 +14216,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -14259,7 +14240,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -14283,7 +14264,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -14307,7 +14288,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -14331,7 +14312,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -14355,7 +14336,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -14379,7 +14360,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -14400,7 +14381,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_GetButton_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14417,7 +14398,7 @@ namespace MVCProject.Api.Models
             {
                 OnButtonIdChanging(value);
                 ReportPropertyChanging("ButtonId");
-                _ButtonId = StructuralObject.SetValidValue(value);
+                _ButtonId = StructuralObject.SetValidValue(value, "ButtonId");
                 ReportPropertyChanged("ButtonId");
                 OnButtonIdChanged();
             }
@@ -14441,7 +14422,7 @@ namespace MVCProject.Api.Models
             {
                 OnButtonNameChanging(value);
                 ReportPropertyChanging("ButtonName");
-                _ButtonName = StructuralObject.SetValidValue(value, true);
+                _ButtonName = StructuralObject.SetValidValue(value, true, "ButtonName");
                 ReportPropertyChanged("ButtonName");
                 OnButtonNameChanged();
             }
@@ -14465,7 +14446,7 @@ namespace MVCProject.Api.Models
             {
                 OnNextStatusIdChanging(value);
                 ReportPropertyChanging("NextStatusId");
-                _NextStatusId = StructuralObject.SetValidValue(value);
+                _NextStatusId = StructuralObject.SetValidValue(value, "NextStatusId");
                 ReportPropertyChanged("NextStatusId");
                 OnNextStatusIdChanged();
             }
@@ -14501,7 +14482,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14518,7 +14499,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -14542,7 +14523,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -14566,7 +14547,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -14590,7 +14571,7 @@ namespace MVCProject.Api.Models
             {
                 OnContactPersonNameChanging(value);
                 ReportPropertyChanging("ContactPersonName");
-                _ContactPersonName = StructuralObject.SetValidValue(value, true);
+                _ContactPersonName = StructuralObject.SetValidValue(value, true, "ContactPersonName");
                 ReportPropertyChanged("ContactPersonName");
                 OnContactPersonNameChanged();
             }
@@ -14614,7 +14595,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -14638,7 +14619,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -14662,7 +14643,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -14686,7 +14667,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -14710,7 +14691,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -14746,7 +14727,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14763,7 +14744,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -14787,7 +14768,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -14811,7 +14792,7 @@ namespace MVCProject.Api.Models
             {
                 OnContactPersonNameChanging(value);
                 ReportPropertyChanging("ContactPersonName");
-                _ContactPersonName = StructuralObject.SetValidValue(value, true);
+                _ContactPersonName = StructuralObject.SetValidValue(value, true, "ContactPersonName");
                 ReportPropertyChanged("ContactPersonName");
                 OnContactPersonNameChanged();
             }
@@ -14835,7 +14816,7 @@ namespace MVCProject.Api.Models
             {
                 OnVenueChanging(value);
                 ReportPropertyChanging("Venue");
-                _Venue = StructuralObject.SetValidValue(value, true);
+                _Venue = StructuralObject.SetValidValue(value, true, "Venue");
                 ReportPropertyChanged("Venue");
                 OnVenueChanged();
             }
@@ -14859,7 +14840,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -14883,7 +14864,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -14919,7 +14900,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14936,7 +14917,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleDateTimeChanging(value);
                 ReportPropertyChanging("ScheduleDateTime");
-                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                _ScheduleDateTime = StructuralObject.SetValidValue(value, "ScheduleDateTime");
                 ReportPropertyChanged("ScheduleDateTime");
                 OnScheduleDateTimeChanged();
             }
@@ -14960,7 +14941,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -14984,7 +14965,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerEmailChanging(value);
                 ReportPropertyChanging("InterviewerEmail");
-                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true, "InterviewerEmail");
                 ReportPropertyChanged("InterviewerEmail");
                 OnInterviewerEmailChanged();
             }
@@ -15008,7 +14989,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantNameChanging(value);
                 ReportPropertyChanging("ApplicantName");
-                _ApplicantName = StructuralObject.SetValidValue(value, false);
+                _ApplicantName = StructuralObject.SetValidValue(value, false, "ApplicantName");
                 ReportPropertyChanged("ApplicantName");
                 OnApplicantNameChanged();
             }
@@ -15032,7 +15013,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -15056,7 +15037,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -15080,7 +15061,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -15101,7 +15082,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_GetLevel_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15118,7 +15099,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -15154,7 +15135,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15171,7 +15152,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -15195,7 +15176,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -15219,7 +15200,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -15255,7 +15236,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15272,7 +15253,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -15296,7 +15277,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -15320,7 +15301,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -15344,7 +15325,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -15368,7 +15349,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -15392,7 +15373,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -15416,7 +15397,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -15452,7 +15433,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15469,7 +15450,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -15493,7 +15474,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -15517,7 +15498,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -15553,7 +15534,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15570,7 +15551,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -15594,7 +15575,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleDateTimeChanging(value);
                 ReportPropertyChanging("ScheduleDateTime");
-                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                _ScheduleDateTime = StructuralObject.SetValidValue(value, "ScheduleDateTime");
                 ReportPropertyChanged("ScheduleDateTime");
                 OnScheduleDateTimeChanged();
             }
@@ -15618,7 +15599,7 @@ namespace MVCProject.Api.Models
             {
                 OnActionIdChanging(value);
                 ReportPropertyChanging("ActionId");
-                _ActionId = StructuralObject.SetValidValue(value);
+                _ActionId = StructuralObject.SetValidValue(value, "ActionId");
                 ReportPropertyChanged("ActionId");
                 OnActionIdChanged();
             }
@@ -15642,7 +15623,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -15666,7 +15647,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleLinkChanging(value);
                 ReportPropertyChanging("ScheduleLink");
-                _ScheduleLink = StructuralObject.SetValidValue(value, true);
+                _ScheduleLink = StructuralObject.SetValidValue(value, true, "ScheduleLink");
                 ReportPropertyChanged("ScheduleLink");
                 OnScheduleLinkChanged();
             }
@@ -15690,7 +15671,7 @@ namespace MVCProject.Api.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -15714,7 +15695,7 @@ namespace MVCProject.Api.Models
             {
                 OnModeChanging(value);
                 ReportPropertyChanging("Mode");
-                _Mode = StructuralObject.SetValidValue(value);
+                _Mode = StructuralObject.SetValidValue(value, "Mode");
                 ReportPropertyChanged("Mode");
                 OnModeChanged();
             }
@@ -15738,7 +15719,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -15762,7 +15743,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantNameChanging(value);
                 ReportPropertyChanging("ApplicantName");
-                _ApplicantName = StructuralObject.SetValidValue(value, true);
+                _ApplicantName = StructuralObject.SetValidValue(value, true, "ApplicantName");
                 ReportPropertyChanged("ApplicantName");
                 OnApplicantNameChanged();
             }
@@ -15798,7 +15779,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15815,7 +15796,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -15839,7 +15820,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -15860,7 +15841,7 @@ namespace MVCProject.Api.Models
     [Serializable()]
     public partial class USP_ATS_GetStatusFromApplicant_Result : ComplexObject
     {
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15877,7 +15858,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -15913,7 +15894,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15930,7 +15911,7 @@ namespace MVCProject.Api.Models
             {
                 OnRoleIdChanging(value);
                 ReportPropertyChanging("RoleId");
-                _RoleId = StructuralObject.SetValidValue(value);
+                _RoleId = StructuralObject.SetValidValue(value, "RoleId");
                 ReportPropertyChanged("RoleId");
                 OnRoleIdChanged();
             }
@@ -15954,7 +15935,7 @@ namespace MVCProject.Api.Models
             {
                 OnRoleNameChanging(value);
                 ReportPropertyChanging("RoleName");
-                _RoleName = StructuralObject.SetValidValue(value, true);
+                _RoleName = StructuralObject.SetValidValue(value, true, "RoleName");
                 ReportPropertyChanged("RoleName");
                 OnRoleNameChanged();
             }
@@ -15990,7 +15971,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16007,7 +15988,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -16031,7 +16012,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -16055,7 +16036,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerEmailChanging(value);
                 ReportPropertyChanging("InterviewerEmail");
-                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true, "InterviewerEmail");
                 ReportPropertyChanged("InterviewerEmail");
                 OnInterviewerEmailChanged();
             }
@@ -16079,7 +16060,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerPhoneChanging(value);
                 ReportPropertyChanging("InterviewerPhone");
-                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true, "InterviewerPhone");
                 ReportPropertyChanged("InterviewerPhone");
                 OnInterviewerPhoneChanged();
             }
@@ -16103,7 +16084,7 @@ namespace MVCProject.Api.Models
             {
                 OnIs_ActiveChanging(value);
                 ReportPropertyChanging("Is_Active");
-                _Is_Active = StructuralObject.SetValidValue(value);
+                _Is_Active = StructuralObject.SetValidValue(value, "Is_Active");
                 ReportPropertyChanged("Is_Active");
                 OnIs_ActiveChanged();
             }
@@ -16127,7 +16108,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -16151,7 +16132,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -16187,7 +16168,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16204,7 +16185,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -16228,7 +16209,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -16252,7 +16233,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerEmailChanging(value);
                 ReportPropertyChanging("InterviewerEmail");
-                _InterviewerEmail = StructuralObject.SetValidValue(value, true);
+                _InterviewerEmail = StructuralObject.SetValidValue(value, true, "InterviewerEmail");
                 ReportPropertyChanged("InterviewerEmail");
                 OnInterviewerEmailChanged();
             }
@@ -16276,7 +16257,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerPhoneChanging(value);
                 ReportPropertyChanging("InterviewerPhone");
-                _InterviewerPhone = StructuralObject.SetValidValue(value, true);
+                _InterviewerPhone = StructuralObject.SetValidValue(value, true, "InterviewerPhone");
                 ReportPropertyChanged("InterviewerPhone");
                 OnInterviewerPhoneChanged();
             }
@@ -16300,7 +16281,7 @@ namespace MVCProject.Api.Models
             {
                 OnIs_ActiveChanging(value);
                 ReportPropertyChanging("Is_Active");
-                _Is_Active = StructuralObject.SetValidValue(value);
+                _Is_Active = StructuralObject.SetValidValue(value, "Is_Active");
                 ReportPropertyChanged("Is_Active");
                 OnIs_ActiveChanged();
             }
@@ -16336,7 +16317,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16353,7 +16334,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -16377,7 +16358,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -16401,7 +16382,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -16425,7 +16406,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -16449,7 +16430,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -16473,7 +16454,7 @@ namespace MVCProject.Api.Models
             {
                 OnExperienceChanging(value);
                 ReportPropertyChanging("Experience");
-                _Experience = StructuralObject.SetValidValue(value, true);
+                _Experience = StructuralObject.SetValidValue(value, true, "Experience");
                 ReportPropertyChanged("Experience");
                 OnExperienceChanged();
             }
@@ -16497,7 +16478,7 @@ namespace MVCProject.Api.Models
             {
                 OnSalaryChanging(value);
                 ReportPropertyChanging("Salary");
-                _Salary = StructuralObject.SetValidValue(value, true);
+                _Salary = StructuralObject.SetValidValue(value, true, "Salary");
                 ReportPropertyChanged("Salary");
                 OnSalaryChanged();
             }
@@ -16521,7 +16502,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -16545,7 +16526,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -16569,7 +16550,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusIdChanging(value);
                 ReportPropertyChanging("PostingStatusId");
-                _PostingStatusId = StructuralObject.SetValidValue(value);
+                _PostingStatusId = StructuralObject.SetValidValue(value, "PostingStatusId");
                 ReportPropertyChanged("PostingStatusId");
                 OnPostingStatusIdChanged();
             }
@@ -16593,7 +16574,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -16617,7 +16598,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyVenueChanging(value);
                 ReportPropertyChanging("CompanyVenue");
-                _CompanyVenue = StructuralObject.SetValidValue(value, true);
+                _CompanyVenue = StructuralObject.SetValidValue(value, true, "CompanyVenue");
                 ReportPropertyChanged("CompanyVenue");
                 OnCompanyVenueChanged();
             }
@@ -16641,7 +16622,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostedChanging(value);
                 ReportPropertyChanging("Posted");
-                _Posted = StructuralObject.SetValidValue(value);
+                _Posted = StructuralObject.SetValidValue(value, "Posted");
                 ReportPropertyChanged("Posted");
                 OnPostedChanged();
             }
@@ -16677,7 +16658,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16694,7 +16675,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -16718,7 +16699,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -16742,7 +16723,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryByChanging(value);
                 ReportPropertyChanging("EntryBy");
-                _EntryBy = StructuralObject.SetValidValue(value, true);
+                _EntryBy = StructuralObject.SetValidValue(value, true, "EntryBy");
                 ReportPropertyChanged("EntryBy");
                 OnEntryByChanged();
             }
@@ -16766,7 +16747,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -16790,7 +16771,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateByChanging(value);
                 ReportPropertyChanging("UpdateBy");
-                _UpdateBy = StructuralObject.SetValidValue(value, true);
+                _UpdateBy = StructuralObject.SetValidValue(value, true, "UpdateBy");
                 ReportPropertyChanged("UpdateBy");
                 OnUpdateByChanged();
             }
@@ -16814,7 +16795,7 @@ namespace MVCProject.Api.Models
             {
                 OnUpdateDateChanging(value);
                 ReportPropertyChanging("UpdateDate");
-                _UpdateDate = StructuralObject.SetValidValue(value);
+                _UpdateDate = StructuralObject.SetValidValue(value, "UpdateDate");
                 ReportPropertyChanged("UpdateDate");
                 OnUpdateDateChanged();
             }
@@ -16838,7 +16819,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -16874,7 +16855,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16891,7 +16872,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -16915,7 +16896,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -16939,7 +16920,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -16963,7 +16944,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusIdChanging(value);
                 ReportPropertyChanging("PostingStatusId");
-                _PostingStatusId = StructuralObject.SetValidValue(value);
+                _PostingStatusId = StructuralObject.SetValidValue(value, "PostingStatusId");
                 ReportPropertyChanged("PostingStatusId");
                 OnPostingStatusIdChanged();
             }
@@ -16987,7 +16968,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -17011,7 +16992,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -17035,7 +17016,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -17059,7 +17040,7 @@ namespace MVCProject.Api.Models
             {
                 OnExperienceChanging(value);
                 ReportPropertyChanging("Experience");
-                _Experience = StructuralObject.SetValidValue(value, true);
+                _Experience = StructuralObject.SetValidValue(value, true, "Experience");
                 ReportPropertyChanged("Experience");
                 OnExperienceChanged();
             }
@@ -17083,7 +17064,7 @@ namespace MVCProject.Api.Models
             {
                 OnSalaryChanging(value);
                 ReportPropertyChanging("Salary");
-                _Salary = StructuralObject.SetValidValue(value, true);
+                _Salary = StructuralObject.SetValidValue(value, true, "Salary");
                 ReportPropertyChanged("Salary");
                 OnSalaryChanged();
             }
@@ -17107,7 +17088,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -17131,7 +17112,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -17167,7 +17148,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17184,7 +17165,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -17208,7 +17189,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyIdChanging(value);
                 ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
+                _CompanyId = StructuralObject.SetValidValue(value, "CompanyId");
                 ReportPropertyChanged("CompanyId");
                 OnCompanyIdChanged();
             }
@@ -17232,7 +17213,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionIdChanging(value);
                 ReportPropertyChanging("PositionId");
-                _PositionId = StructuralObject.SetValidValue(value);
+                _PositionId = StructuralObject.SetValidValue(value, "PositionId");
                 ReportPropertyChanged("PositionId");
                 OnPositionIdChanged();
             }
@@ -17256,7 +17237,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -17280,7 +17261,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -17304,7 +17285,7 @@ namespace MVCProject.Api.Models
             {
                 OnExperienceChanging(value);
                 ReportPropertyChanging("Experience");
-                _Experience = StructuralObject.SetValidValue(value, true);
+                _Experience = StructuralObject.SetValidValue(value, true, "Experience");
                 ReportPropertyChanged("Experience");
                 OnExperienceChanged();
             }
@@ -17328,7 +17309,7 @@ namespace MVCProject.Api.Models
             {
                 OnSalaryChanging(value);
                 ReportPropertyChanging("Salary");
-                _Salary = StructuralObject.SetValidValue(value, true);
+                _Salary = StructuralObject.SetValidValue(value, true, "Salary");
                 ReportPropertyChanged("Salary");
                 OnSalaryChanged();
             }
@@ -17352,7 +17333,7 @@ namespace MVCProject.Api.Models
             {
                 OnEntryDateChanging(value);
                 ReportPropertyChanging("EntryDate");
-                _EntryDate = StructuralObject.SetValidValue(value);
+                _EntryDate = StructuralObject.SetValidValue(value, "EntryDate");
                 ReportPropertyChanged("EntryDate");
                 OnEntryDateChanged();
             }
@@ -17376,7 +17357,7 @@ namespace MVCProject.Api.Models
             {
                 OnIsActiveChanging(value);
                 ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
                 ReportPropertyChanged("IsActive");
                 OnIsActiveChanged();
             }
@@ -17400,7 +17381,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusIdChanging(value);
                 ReportPropertyChanging("PostingStatusId");
-                _PostingStatusId = StructuralObject.SetValidValue(value);
+                _PostingStatusId = StructuralObject.SetValidValue(value, "PostingStatusId");
                 ReportPropertyChanged("PostingStatusId");
                 OnPostingStatusIdChanged();
             }
@@ -17424,7 +17405,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingStatusChanging(value);
                 ReportPropertyChanging("PostingStatus");
-                _PostingStatus = StructuralObject.SetValidValue(value, true);
+                _PostingStatus = StructuralObject.SetValidValue(value, true, "PostingStatus");
                 ReportPropertyChanged("PostingStatus");
                 OnPostingStatusChanged();
             }
@@ -17460,7 +17441,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17477,7 +17458,7 @@ namespace MVCProject.Api.Models
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -17501,7 +17482,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleDateTimeChanging(value);
                 ReportPropertyChanging("ScheduleDateTime");
-                _ScheduleDateTime = StructuralObject.SetValidValue(value);
+                _ScheduleDateTime = StructuralObject.SetValidValue(value, "ScheduleDateTime");
                 ReportPropertyChanged("ScheduleDateTime");
                 OnScheduleDateTimeChanged();
             }
@@ -17525,7 +17506,7 @@ namespace MVCProject.Api.Models
             {
                 OnActionIdChanging(value);
                 ReportPropertyChanging("ActionId");
-                _ActionId = StructuralObject.SetValidValue(value);
+                _ActionId = StructuralObject.SetValidValue(value, "ActionId");
                 ReportPropertyChanged("ActionId");
                 OnActionIdChanged();
             }
@@ -17549,7 +17530,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerIdChanging(value);
                 ReportPropertyChanging("InterviewerId");
-                _InterviewerId = StructuralObject.SetValidValue(value);
+                _InterviewerId = StructuralObject.SetValidValue(value, "InterviewerId");
                 ReportPropertyChanged("InterviewerId");
                 OnInterviewerIdChanged();
             }
@@ -17573,7 +17554,7 @@ namespace MVCProject.Api.Models
             {
                 OnScheduleLinkChanging(value);
                 ReportPropertyChanging("ScheduleLink");
-                _ScheduleLink = StructuralObject.SetValidValue(value, true);
+                _ScheduleLink = StructuralObject.SetValidValue(value, true, "ScheduleLink");
                 ReportPropertyChanged("ScheduleLink");
                 OnScheduleLinkChanged();
             }
@@ -17597,7 +17578,7 @@ namespace MVCProject.Api.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -17621,7 +17602,7 @@ namespace MVCProject.Api.Models
             {
                 OnModeChanging(value);
                 ReportPropertyChanging("Mode");
-                _Mode = StructuralObject.SetValidValue(value);
+                _Mode = StructuralObject.SetValidValue(value, "Mode");
                 ReportPropertyChanged("Mode");
                 OnModeChanged();
             }
@@ -17645,7 +17626,7 @@ namespace MVCProject.Api.Models
             {
                 OnInterviewerNameChanging(value);
                 ReportPropertyChanging("InterviewerName");
-                _InterviewerName = StructuralObject.SetValidValue(value, true);
+                _InterviewerName = StructuralObject.SetValidValue(value, true, "InterviewerName");
                 ReportPropertyChanged("InterviewerName");
                 OnInterviewerNameChanged();
             }
@@ -17669,7 +17650,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantNameChanging(value);
                 ReportPropertyChanging("ApplicantName");
-                _ApplicantName = StructuralObject.SetValidValue(value, true);
+                _ApplicantName = StructuralObject.SetValidValue(value, true, "ApplicantName");
                 ReportPropertyChanged("ApplicantName");
                 OnApplicantNameChanged();
             }
@@ -17693,7 +17674,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -17717,7 +17698,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -17753,7 +17734,7 @@ namespace MVCProject.Api.Models
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17770,7 +17751,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantIdChanging(value);
                 ReportPropertyChanging("ApplicantId");
-                _ApplicantId = StructuralObject.SetValidValue(value);
+                _ApplicantId = StructuralObject.SetValidValue(value, "ApplicantId");
                 ReportPropertyChanged("ApplicantId");
                 OnApplicantIdChanged();
             }
@@ -17794,7 +17775,7 @@ namespace MVCProject.Api.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -17818,7 +17799,7 @@ namespace MVCProject.Api.Models
             {
                 OnMiddleNameChanging(value);
                 ReportPropertyChanging("MiddleName");
-                _MiddleName = StructuralObject.SetValidValue(value, true);
+                _MiddleName = StructuralObject.SetValidValue(value, true, "MiddleName");
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
@@ -17842,7 +17823,7 @@ namespace MVCProject.Api.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -17866,7 +17847,7 @@ namespace MVCProject.Api.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -17890,7 +17871,7 @@ namespace MVCProject.Api.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, true);
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -17914,7 +17895,7 @@ namespace MVCProject.Api.Models
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -17938,7 +17919,7 @@ namespace MVCProject.Api.Models
             {
                 OnDateOfBirthChanging(value);
                 ReportPropertyChanging("DateOfBirth");
-                _DateOfBirth = StructuralObject.SetValidValue(value);
+                _DateOfBirth = StructuralObject.SetValidValue(value, "DateOfBirth");
                 ReportPropertyChanged("DateOfBirth");
                 OnDateOfBirthChanged();
             }
@@ -17962,7 +17943,7 @@ namespace MVCProject.Api.Models
             {
                 OnApplicantDateChanging(value);
                 ReportPropertyChanging("ApplicantDate");
-                _ApplicantDate = StructuralObject.SetValidValue(value);
+                _ApplicantDate = StructuralObject.SetValidValue(value, "ApplicantDate");
                 ReportPropertyChanged("ApplicantDate");
                 OnApplicantDateChanged();
             }
@@ -17986,7 +17967,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCompanyChanging(value);
                 ReportPropertyChanging("CurrentCompany");
-                _CurrentCompany = StructuralObject.SetValidValue(value, true);
+                _CurrentCompany = StructuralObject.SetValidValue(value, true, "CurrentCompany");
                 ReportPropertyChanged("CurrentCompany");
                 OnCurrentCompanyChanged();
             }
@@ -18010,7 +17991,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentDesignationChanging(value);
                 ReportPropertyChanging("CurrentDesignation");
-                _CurrentDesignation = StructuralObject.SetValidValue(value, true);
+                _CurrentDesignation = StructuralObject.SetValidValue(value, true, "CurrentDesignation");
                 ReportPropertyChanged("CurrentDesignation");
                 OnCurrentDesignationChanged();
             }
@@ -18034,7 +18015,7 @@ namespace MVCProject.Api.Models
             {
                 OnTotalExperienceChanging(value);
                 ReportPropertyChanging("TotalExperience");
-                _TotalExperience = StructuralObject.SetValidValue(value, true);
+                _TotalExperience = StructuralObject.SetValidValue(value, true, "TotalExperience");
                 ReportPropertyChanged("TotalExperience");
                 OnTotalExperienceChanged();
             }
@@ -18058,7 +18039,7 @@ namespace MVCProject.Api.Models
             {
                 OnDetailedExperienceChanging(value);
                 ReportPropertyChanging("DetailedExperience");
-                _DetailedExperience = StructuralObject.SetValidValue(value, true);
+                _DetailedExperience = StructuralObject.SetValidValue(value, true, "DetailedExperience");
                 ReportPropertyChanged("DetailedExperience");
                 OnDetailedExperienceChanged();
             }
@@ -18082,7 +18063,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentCTCChanging(value);
                 ReportPropertyChanging("CurrentCTC");
-                _CurrentCTC = StructuralObject.SetValidValue(value, true);
+                _CurrentCTC = StructuralObject.SetValidValue(value, true, "CurrentCTC");
                 ReportPropertyChanged("CurrentCTC");
                 OnCurrentCTCChanged();
             }
@@ -18106,7 +18087,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedCTCChanging(value);
                 ReportPropertyChanging("ExpectedCTC");
-                _ExpectedCTC = StructuralObject.SetValidValue(value, true);
+                _ExpectedCTC = StructuralObject.SetValidValue(value, true, "ExpectedCTC");
                 ReportPropertyChanged("ExpectedCTC");
                 OnExpectedCTCChanged();
             }
@@ -18130,7 +18111,7 @@ namespace MVCProject.Api.Models
             {
                 OnNoticePeriodChanging(value);
                 ReportPropertyChanging("NoticePeriod");
-                _NoticePeriod = StructuralObject.SetValidValue(value, true);
+                _NoticePeriod = StructuralObject.SetValidValue(value, true, "NoticePeriod");
                 ReportPropertyChanged("NoticePeriod");
                 OnNoticePeriodChanged();
             }
@@ -18154,7 +18135,7 @@ namespace MVCProject.Api.Models
             {
                 OnCurrentLocationChanging(value);
                 ReportPropertyChanging("CurrentLocation");
-                _CurrentLocation = StructuralObject.SetValidValue(value, true);
+                _CurrentLocation = StructuralObject.SetValidValue(value, true, "CurrentLocation");
                 ReportPropertyChanged("CurrentLocation");
                 OnCurrentLocationChanged();
             }
@@ -18178,7 +18159,7 @@ namespace MVCProject.Api.Models
             {
                 OnPreferedLocationChanging(value);
                 ReportPropertyChanging("PreferedLocation");
-                _PreferedLocation = StructuralObject.SetValidValue(value, true);
+                _PreferedLocation = StructuralObject.SetValidValue(value, true, "PreferedLocation");
                 ReportPropertyChanged("PreferedLocation");
                 OnPreferedLocationChanged();
             }
@@ -18202,7 +18183,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonForChangeChanging(value);
                 ReportPropertyChanging("ReasonForChange");
-                _ReasonForChange = StructuralObject.SetValidValue(value, true);
+                _ReasonForChange = StructuralObject.SetValidValue(value, true, "ReasonForChange");
                 ReportPropertyChanged("ReasonForChange");
                 OnReasonForChangeChanged();
             }
@@ -18226,7 +18207,7 @@ namespace MVCProject.Api.Models
             {
                 OnSkillDescriptionChanging(value);
                 ReportPropertyChanging("SkillDescription");
-                _SkillDescription = StructuralObject.SetValidValue(value, true);
+                _SkillDescription = StructuralObject.SetValidValue(value, true, "SkillDescription");
                 ReportPropertyChanged("SkillDescription");
                 OnSkillDescriptionChanged();
             }
@@ -18250,7 +18231,7 @@ namespace MVCProject.Api.Models
             {
                 OnPortfolioLinkChanging(value);
                 ReportPropertyChanging("PortfolioLink");
-                _PortfolioLink = StructuralObject.SetValidValue(value, true);
+                _PortfolioLink = StructuralObject.SetValidValue(value, true, "PortfolioLink");
                 ReportPropertyChanged("PortfolioLink");
                 OnPortfolioLinkChanged();
             }
@@ -18274,7 +18255,7 @@ namespace MVCProject.Api.Models
             {
                 OnLinkedinLinkChanging(value);
                 ReportPropertyChanging("LinkedinLink");
-                _LinkedinLink = StructuralObject.SetValidValue(value, true);
+                _LinkedinLink = StructuralObject.SetValidValue(value, true, "LinkedinLink");
                 ReportPropertyChanged("LinkedinLink");
                 OnLinkedinLinkChanged();
             }
@@ -18298,7 +18279,7 @@ namespace MVCProject.Api.Models
             {
                 OnOtherLinkChanging(value);
                 ReportPropertyChanging("OtherLink");
-                _OtherLink = StructuralObject.SetValidValue(value, true);
+                _OtherLink = StructuralObject.SetValidValue(value, true, "OtherLink");
                 ReportPropertyChanged("OtherLink");
                 OnOtherLinkChanged();
             }
@@ -18322,7 +18303,7 @@ namespace MVCProject.Api.Models
             {
                 OnExpectedJoiningDateChanging(value);
                 ReportPropertyChanging("ExpectedJoiningDate");
-                _ExpectedJoiningDate = StructuralObject.SetValidValue(value);
+                _ExpectedJoiningDate = StructuralObject.SetValidValue(value, "ExpectedJoiningDate");
                 ReportPropertyChanged("ExpectedJoiningDate");
                 OnExpectedJoiningDateChanged();
             }
@@ -18346,7 +18327,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusIdChanging(value);
                 ReportPropertyChanging("StatusId");
-                _StatusId = StructuralObject.SetValidValue(value);
+                _StatusId = StructuralObject.SetValidValue(value, "StatusId");
                 ReportPropertyChanged("StatusId");
                 OnStatusIdChanged();
             }
@@ -18370,7 +18351,7 @@ namespace MVCProject.Api.Models
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, true);
+                _StatusName = StructuralObject.SetValidValue(value, true, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -18394,7 +18375,7 @@ namespace MVCProject.Api.Models
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -18418,7 +18399,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonIdChanging(value);
                 ReportPropertyChanging("ReasonId");
-                _ReasonId = StructuralObject.SetValidValue(value);
+                _ReasonId = StructuralObject.SetValidValue(value, "ReasonId");
                 ReportPropertyChanged("ReasonId");
                 OnReasonIdChanged();
             }
@@ -18442,7 +18423,7 @@ namespace MVCProject.Api.Models
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -18466,7 +18447,7 @@ namespace MVCProject.Api.Models
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, true);
+                _FileName = StructuralObject.SetValidValue(value, true, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -18490,7 +18471,7 @@ namespace MVCProject.Api.Models
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, true);
+                _Reason = StructuralObject.SetValidValue(value, true, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -18514,7 +18495,7 @@ namespace MVCProject.Api.Models
             {
                 OnPostingIdChanging(value);
                 ReportPropertyChanging("PostingId");
-                _PostingId = StructuralObject.SetValidValue(value);
+                _PostingId = StructuralObject.SetValidValue(value, "PostingId");
                 ReportPropertyChanged("PostingId");
                 OnPostingIdChanged();
             }
@@ -18538,7 +18519,7 @@ namespace MVCProject.Api.Models
             {
                 OnPositionNameChanging(value);
                 ReportPropertyChanging("PositionName");
-                _PositionName = StructuralObject.SetValidValue(value, true);
+                _PositionName = StructuralObject.SetValidValue(value, true, "PositionName");
                 ReportPropertyChanged("PositionName");
                 OnPositionNameChanged();
             }
@@ -18562,7 +18543,7 @@ namespace MVCProject.Api.Models
             {
                 OnCompanyNameChanging(value);
                 ReportPropertyChanging("CompanyName");
-                _CompanyName = StructuralObject.SetValidValue(value, true);
+                _CompanyName = StructuralObject.SetValidValue(value, true, "CompanyName");
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
@@ -18577,5 +18558,4 @@ namespace MVCProject.Api.Models
 
     #endregion
 
-    
 }
