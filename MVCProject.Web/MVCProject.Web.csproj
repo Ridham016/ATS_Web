@@ -616,6 +616,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+      <Content Remove="MVCProject.Api\bin\**" />
+      <Content Remove="MVCProject.Api\obj\Debug\**" />
+      <Content Remove="MVCProject.Common\bin\Debug\**" />
+      <Content Remove="MVCProject.Common\obj\Debug\**" />
+      <Content Remove="MVCProject.Web\bin\**" />
+      <Content Remove="MVCProject.Web\obj\Debug\**" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MVCProject.Common\MVCProject.Common.csproj">
       <Project>{68C3FA16-68B8-4B89-AFBB-997DF46A28DE}</Project>
       <Name>MVCProject.Common</Name>
