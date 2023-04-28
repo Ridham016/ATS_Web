@@ -79,7 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPOI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.Excel.2.1.1\lib\NPOI.dll</HintPath>
@@ -614,14 +614,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-      <Content Remove="MVCProject.Api\bin\**" />
-      <Content Remove="MVCProject.Api\obj\Debug\**" />
-      <Content Remove="MVCProject.Common\bin\Debug\**" />
-      <Content Remove="MVCProject.Common\obj\Debug\**" />
-      <Content Remove="MVCProject.Web\bin\**" />
-      <Content Remove="MVCProject.Web\obj\Debug\**" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVCProject.Common\MVCProject.Common.csproj">

@@ -344,14 +344,6 @@
       <Name>MVCProject.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-      <Content Remove="MVCProject.Api\bin\**" />
-      <Content Remove="MVCProject.Api\obj\Debug\**" />
-      <Content Remove="MVCProject.Common\bin\Debug\**" />
-      <Content Remove="MVCProject.Common\obj\Debug\**" />
-      <Content Remove="MVCProject.Web\bin\**" />
-      <Content Remove="MVCProject.Web\obj\Debug\**" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
