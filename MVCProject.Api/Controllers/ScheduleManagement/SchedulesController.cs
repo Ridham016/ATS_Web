@@ -6,25 +6,18 @@
 
 namespace MVCProject.Api.Controllers.ScheduleManagement
 {
-    using iTextSharp.text.log;
     using MVCProject.Api.Models;
     using MVCProject.Api.Models.FilterCriterias;
     using MVCProject.Api.Utilities;
     using MVCProject.Api.ViewModel;
     using MVCProject.Common.Resources;
     //using Newtonsoft.Json;
-    using NPOI.HSSF.Record;
     #region Namespaces
     using System;
-    using System.Collections.Generic;
-    using System.Dynamic;
     using System.IO;
     using System.Linq;
-    using System.Net;
     using System.Net.Http;
-    using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
-    using System.Web;
     //using System.Text;
     using System.Web.Http;
     #endregion
@@ -63,7 +56,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 CurrentLocation = g.CurrentLocation,
                 PreferedLocation = g.PreferedLocation,
                 ReasonForChange = g.ReasonForChange,
-                Level= g.Level,
+                Level = g.Level,
                 SkillDescription = g.SkillDescription,
                 PortfolioLink = g.PortfolioLink,
                 LinkedinLink = g.LinkedinLink,
@@ -143,7 +136,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId,int CurrentStatusId, HttpRequestMessage httpRequest)
+        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId, int CurrentStatusId, HttpRequestMessage httpRequest)
         {
             var status = this.entities.USP_ATS_SingleApplicant(ApplicantId)
               .Select(g => new
@@ -194,7 +187,8 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             string Useremail = UserContext.UserName;
             if (StatusId == 2 || StatusId == 7)
             {
-                await Task.Run(() =>
+                Console.WriteLine("Before executing Task.Run");
+                await Task.Run(async() =>
                 {
                     var Data = entities.USP_ATS_GetInfoForEmail(ApplicantId).FirstOrDefault();
                     if (Data != null)
@@ -205,21 +199,22 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                         if (StatusId == 2)
                         {
                             Message = "Shortlisted for Next round of interview";
-                            this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
+                            await this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
                         }
                         if (StatusId == 7)
                         {
                             Message = "Rejected";
-                            this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
+                            await this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
                         }
                     }
                 });
+                Console.WriteLine("After executing Task.Run");
             }
 
             int[] Result;
             Result = new int[] { StatusId, addtoaction.ActionId };
 
-            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.StatusName),Result);
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.StatusName), Result);
         }
         [HttpGet]
         public ApiResponse GetInterviewers()
@@ -234,7 +229,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> ScheduleInterview([FromBody]ATS_AdditionalInformation data, HttpRequestMessage httpRequest)
+        public async Task<ApiResponse> ScheduleInterview([FromBody] ATS_AdditionalInformation data, HttpRequestMessage httpRequest)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
@@ -246,19 +241,20 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 Venue = data.Venue,
                 Mode = data.Mode,
                 IsActive = true,
-                EntryBy= "1",
+                EntryBy = "1",
                 EntryDate = DateTime.Now
             });
             if (!(this.entities.SaveChanges() > 0))
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
-            
+
             string User = UserContext.User;
             int? RoleId = UserContext.RoleId;
             var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
             string RoleName = Role.RoleName;
-            await Task.Run(() =>
+            Console.WriteLine("Before executing Task.Run");
+            await Task.Run(async () =>
             {
                 var applicant = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
                 string[] emails = { applicant.ApplicantEmail };
@@ -299,7 +295,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                         g.ContactPersonName
                     }).FirstOrDefault();
                     //Task.Run(() => );
-                    SendEmailToApplicantOffline(User,RoleName,emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName);
+                    await SendEmailToApplicantOffline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName);
 
                 }
                 else
@@ -313,15 +309,15 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                         g.ContactPersonName
                     }).FirstOrDefault();
                     //Task.Run(() => );
-                    SendEmailToApplicantOnline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
+                    await SendEmailToApplicantOnline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
 
                 }
                 string[] intervieweremail = { Interviewer.InterviewerEmail };
                 //Task.Run(() => );
-                SendEmailToInterviewer(User, RoleName, intervieweremail, ScheduleDatetime, Mode, ApplicantName, linkLabelvenueLabel, linkvenue, FileLink, Position.PositionName,
+                await SendEmailToInterviewer(User, RoleName, intervieweremail, ScheduleDatetime, Mode, ApplicantName, linkLabelvenueLabel, linkvenue, FileLink, Position.PositionName,
                     data.ScheduleLink, Interviewer.InterviewerName);
             });
-
+            Console.WriteLine("After executing Task.Run");
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
 
@@ -349,9 +345,9 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse UpdateReason([FromBody]ReasonParams Reason, [FromUri]int ActionId)
+        public ApiResponse UpdateReason([FromBody] ReasonParams Reason, [FromUri] int ActionId)
         {
-            if(Reason.Reason != null)
+            if (Reason.Reason != null)
             {
                 entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
                 {
@@ -362,7 +358,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     IsActive = true
                 });
             }
-            if(Reason.ReasonId != null)
+            if (Reason.ReasonId != null)
             {
                 var Action = this.entities.ATS_ActionHistory.FirstOrDefault(x => x.ActionId == ActionId);
                 if (Action != null)
@@ -383,15 +379,15 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse Comment([FromBody] ATS_AdditionalInformation data, [FromUri]int ActionId)
+        public ApiResponse Comment([FromBody] ATS_AdditionalInformation data, [FromUri] int ActionId)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
                 ActionId = ActionId,
                 Description = data.Description,
-                EntryDate= DateTime.Now,
-                EntryBy="1",
-                IsActive= true
+                EntryDate = DateTime.Now,
+                EntryBy = "1",
+                IsActive = true
             });
             if (!(this.entities.SaveChanges() > 0))
             {
@@ -426,7 +422,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse GetApplicantsParam([FromBody]PagingParams applicantDetailParams, [FromUri]SearchParams searchParams)
+        public ApiResponse GetApplicantsParam([FromBody] PagingParams applicantDetailParams, [FromUri] SearchParams searchParams)
         {
             var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, searchParams.CompanyId, searchParams.PositionId).ToList();
             var TotalRecords = result.Count();
@@ -469,11 +465,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public ApiResponse GetEncrptData([FromBody]string ciphertext)
+        public ApiResponse GetEncrptData([FromBody] string ciphertext)
         {
             var encryptData = SecurityUtility.Encrypt(ciphertext);
             var decryptData = SecurityUtility.Decrypt(encryptData);
-            var data = new {
+            var data = new
+            {
                 encryptData,
                 decryptData
             };
@@ -481,13 +478,13 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         }
 
-        public ApiResponse SendEmailToApplicantOffline(string User,string Role,string[] emailIdTo,string companyName, string FirstName,string PositionName, string Venue, string ContactPersonName)
+        public async Task<ApiResponse> SendEmailToApplicantOffline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName, string Venue, string ContactPersonName)
         {
             string file = "Templates/EmailForApplicantOffline.html";
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
             string htmlBody = File.ReadAllText(filepath);
             htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Venue}}", Venue)
-                .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{User}}",User).Replace("{{Role}}",Role);
+                .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{User}}", User).Replace("{{Role}}", Role);
             string subject = "Interview Invitation for " + PositionName + " with " + companyName;
             EmailParams emailParams = new EmailParams();
             string[] emails = emailIdTo;
@@ -502,15 +499,24 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            if (!IsSent)
+            try
             {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail");
+                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
+                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
             }
-            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
+            catch (Exception ex)
+            {
+                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
+            }
+            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            //if (!IsSent)
+            //{
+            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
+            //}
+            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
-        public ApiResponse SendEmailToApplicantOnline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName,string Link, string Interviewer)
+        public async Task<ApiResponse> SendEmailToApplicantOnline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName, string Link, string Interviewer)
         {
             string file = "Templates/EmailForApplicantOnline.html";
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
@@ -531,16 +537,25 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            if (!IsSent)
+            try
             {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail");
+                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
+                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
             }
-            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
+            catch (Exception ex)
+            {
+                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
+            }
+            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            //if (!IsSent)
+            //{
+            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
+            //}
+            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
-        public ApiResponse SendEmailToInterviewer(string User, string Role, string[] emailIdTo, string DateTime,string Mode, string ApplicantName,string linkLabelvenueLabel,
-            string linkvenue,string Resume, string PositionName, string Link, string Interviewer)
+        public async Task<ApiResponse> SendEmailToInterviewer(string User, string Role, string[] emailIdTo, string DateTime, string Mode, string ApplicantName, string linkLabelvenueLabel,
+            string linkvenue, string Resume, string PositionName, string Link, string Interviewer)
         {
             string file = "Templates/EmailForInterviewer.html";
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
@@ -560,15 +575,24 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            if (!IsSent)
+            try
             {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail");
+                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
+                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
             }
-            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
+            catch (Exception ex)
+            {
+                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
+            }
+            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            //if (!IsSent)
+            //{
+            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
+            //}
+            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
-        public ApiResponse SendEmailForStatus(string User, string Role, string[] emailIdTo, string Date, string Level, string Applicant, string Position, string Message, string Company)
+        public async Task<ApiResponse> SendEmailForStatus(string User, string Role, string[] emailIdTo, string Date, string Level, string Applicant, string Position, string Message, string Company)
         {
             string file = "Templates/EmailForStatus.html";
             string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
@@ -590,12 +614,21 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             emailParams.Host = UserDetails.Host;
             emailParams.Port = UserDetails.Port;
             emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            if (!IsSent)
+            try
             {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail");
+                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
+                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
             }
-            return this.Response(MessageTypes.Success, "Mail Sent Successfully");
+            catch (Exception ex)
+            {
+                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
+            }
+            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
+            //if (!IsSent)
+            //{
+            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
+            //}
+            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
     }

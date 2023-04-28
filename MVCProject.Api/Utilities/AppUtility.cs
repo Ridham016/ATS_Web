@@ -33,7 +33,7 @@ namespace MVCProject.Api.Utilities
     /// </summary>
     public static class AppUtility 
     {
-        readonly static string USP_ConfigLevel_Advance_Search = "USP_ConfigLevel_Advance_Search";
+        //readonly static string USP_ConfigLevel_Advance_Search = "USP_ConfigLevel_Advance_Search";
 
         /// <summary>
         /// Divides list in chunks. 
@@ -150,10 +150,10 @@ namespace MVCProject.Api.Utilities
                     root = HttpContext.Current.Server.MapPath("~");
                 }
             }
-            else
-            {
-                root = FileURL + @"\";
-            }
+            //else
+            //{
+            //    root = FileURL + @"\";
+            //}
 
             return string.Format("{0}{1}", root, directory);
         }
