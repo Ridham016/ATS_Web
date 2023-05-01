@@ -133,6 +133,7 @@
           <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
           <Property Name="Venue" Type="nvarchar" MaxLength="200" />
           <Property Name="ContactPersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyDetail" Type="nvarchar" MaxLength="2000" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="100" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
@@ -178,13 +179,17 @@
           <Property Name="CompanyId" Type="int" />
           <Property Name="Experience" Type="nvarchar" MaxLength="100" />
           <Property Name="Salary" Type="nvarchar" MaxLength="100" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="PostingStatusId" Type="int" />
+          <Property Name="JobDetail" Type="nvarchar" MaxLength="2000" />
+          <Property Name="EmploymentType" Type="nvarchar" MaxLength="200" />
+          <Property Name="Education_UG" Type="nvarchar" MaxLength="200" />
+          <Property Name="Education_PG" Type="nvarchar" MaxLength="200" />
           <Property Name="EntryBy" Type="nvarchar" MaxLength="50" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="PositionId" Type="int" />
-          <Property Name="PostingStatusId" Type="int" />
         </EntityType>
         <EntityType Name="ATS_MasterButton">
           <Key>
@@ -549,6 +554,9 @@
           <Parameter Name="InterviewerId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_InterviewerList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_JobDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PostingId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_JobListing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_PositionById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PositionId" Type="int" Mode="In" />
@@ -1162,6 +1170,9 @@
           <Parameter Name="timeFrame" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_CountForStackedBar" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CountForStackedBar_Result)" />
+          <FunctionImport Name="USP_ATS_JobDescription" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_JobDescription_Result)">
+            <Parameter Name="PostingId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1250,6 +1261,10 @@
           <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="PostingStatusId" Nullable="true" />
           <Property Type="String" Name="PostingStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="JobDetail" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="Education_UG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Education_PG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmploymentType" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_ApplicantById_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1594,6 +1609,10 @@
           <Property Name="PostingStatusId" Type="Int32" />
           <NavigationProperty Name="ATS_MasterPostingStatus" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Posti__68336F3E" FromRole="ATS_JobPosting" ToRole="ATS_MasterPostingStatus" />
           <NavigationProperty Name="ATS_PositionMaster" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Posit__2FEF161B" FromRole="ATS_JobPosting" ToRole="ATS_PositionMaster" />
+          <Property Name="JobDetail" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="EmploymentType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Education_UG" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Education_PG" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="USP_ATS_PostingById_Result">
           <Property Type="Int32" Name="PostingId" Nullable="false" />
@@ -1607,6 +1626,10 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="Int32" Name="PostingStatusId" Nullable="true" />
           <Property Type="String" Name="PostingStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="JobDetail" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="Education_UG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Education_PG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmploymentType" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="USP_ATS_AllPositions_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1633,6 +1656,7 @@
           <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="CompanyDetail" Nullable="true" MaxLength="2000" />
         </ComplexType>
         <ComplexType Name="USP_ATS_CompanyById_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1641,6 +1665,7 @@
           <Property Type="String" Name="ContactPersonName" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="CompanyDetail" Nullable="true" MaxLength="2000" />
         </ComplexType>
         <ComplexType Name="USP_ATS_JobListing_Result">
           <Property Type="Int32" Name="PostingId" Nullable="false" />
@@ -1736,6 +1761,7 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_Interviewer" Relationship="ATSMVCProjectModel.FK__ATS_Inter__Compa__3E3D3572" FromRole="ATS_CompanyMaster" ToRole="ATS_Interviewer" />
           <NavigationProperty Name="ATS_JobPosting" Relationship="ATSMVCProjectModel.FK__ATS_JobPo__Compa__2EFAF1E2" FromRole="ATS_CompanyMaster" ToRole="ATS_JobPosting" />
+          <Property Name="CompanyDetail" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__ATS_Inter__Compa__3E3D3572">
           <End Type="ATSMVCProjectModel.ATS_CompanyMaster" Role="ATS_CompanyMaster" Multiplicity="0..1" />
@@ -1847,6 +1873,26 @@
           <Property Type="Int32" Name="ApplicantsRegistered" Nullable="true" />
           <Property Type="Int32" Name="ApplicantsHired" Nullable="true" />
           <Property Type="Int32" Name="ApplicantsRejected" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_JobDescription_Result">
+          <Property Type="Int32" Name="PostingId" Nullable="false" />
+          <Property Type="Int32" Name="CompanyId" Nullable="true" />
+          <Property Type="Int32" Name="PositionId" Nullable="true" />
+          <Property Type="Int32" Name="PostingStatusId" Nullable="true" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CompanyVenue" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PostingStatus" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Experience" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Education_UG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Education_PG" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmploymentType" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="JobDetail" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="CompanyDetail" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="Salary" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Posted" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2162,6 +2208,10 @@
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="PostingStatusId" ColumnName="PostingStatusId" />
                 <ScalarProperty Name="PostingStatus" ColumnName="PostingStatus" />
+                <ScalarProperty Name="JobDetail" ColumnName="JobDetail" />
+                <ScalarProperty Name="Education_UG" ColumnName="Education_UG" />
+                <ScalarProperty Name="Education_PG" ColumnName="Education_PG" />
+                <ScalarProperty Name="EmploymentType" ColumnName="EmploymentType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2566,6 +2616,10 @@
           <EntitySetMapping Name="ATS_JobPosting">
             <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_JobPosting">
               <MappingFragment StoreEntitySet="ATS_JobPosting">
+                <ScalarProperty Name="Education_PG" ColumnName="Education_PG" />
+                <ScalarProperty Name="Education_UG" ColumnName="Education_UG" />
+                <ScalarProperty Name="EmploymentType" ColumnName="EmploymentType" />
+                <ScalarProperty Name="JobDetail" ColumnName="JobDetail" />
                 <ScalarProperty Name="PostingStatusId" ColumnName="PostingStatusId" />
                 <ScalarProperty Name="PositionId" ColumnName="PositionId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -2594,6 +2648,10 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="PostingStatusId" ColumnName="PostingStatusId" />
                 <ScalarProperty Name="PostingStatus" ColumnName="PostingStatus" />
+                <ScalarProperty Name="JobDetail" ColumnName="JobDetail" />
+                <ScalarProperty Name="Education_UG" ColumnName="Education_UG" />
+                <ScalarProperty Name="Education_PG" ColumnName="Education_PG" />
+                <ScalarProperty Name="EmploymentType" ColumnName="EmploymentType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2632,6 +2690,7 @@
                 <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2644,6 +2703,7 @@
                 <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2700,6 +2760,7 @@
           <EntitySetMapping Name="ATS_CompanyMaster">
             <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_CompanyMaster">
               <MappingFragment StoreEntitySet="ATS_CompanyMaster">
+                <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
@@ -2775,6 +2836,30 @@
                 <ScalarProperty Name="ApplicantsRegistered" ColumnName="ApplicantsRegistered" />
                 <ScalarProperty Name="ApplicantsHired" ColumnName="ApplicantsHired" />
                 <ScalarProperty Name="ApplicantsRejected" ColumnName="ApplicantsRejected" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_JobDescription" FunctionName="ATSMVCProjectModel.Store.USP_ATS_JobDescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_JobDescription_Result">
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="PostingStatusId" ColumnName="PostingStatusId" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyVenue" ColumnName="CompanyVenue" />
+                <ScalarProperty Name="PostingStatus" ColumnName="PostingStatus" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Education_UG" ColumnName="Education_UG" />
+                <ScalarProperty Name="Education_PG" ColumnName="Education_PG" />
+                <ScalarProperty Name="EmploymentType" ColumnName="EmploymentType" />
+                <ScalarProperty Name="JobDetail" ColumnName="JobDetail" />
+                <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Posted" ColumnName="Posted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -93,6 +93,10 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                 postingData.Experience = data.Experience;
                 postingData.Salary = data.Salary;
                 postingData.PostingStatusId = data.PostingStatusId;
+                postingData.JobDetail = data.JobDetail;
+                postingData.Education_UG = data.Education_UG;
+                postingData.Education_PG = data.Education_PG;
+                postingData.EmploymentType = data.EmploymentType;
                 postingData.IsActive = data.IsActive;
                 postingData.EntryDate = DateTime.Now;
                 postingData.UpdateDate = DateTime.Now;
@@ -128,6 +132,10 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                     PositionName = g.PositionName,
                     Experience = g.Experience,
                     Salary = g.Salary,
+                    JobDetail = g.JobDetail,
+                    Education_UG = g.Education_UG,
+                    Education_PG = g.Education_PG,
+                    EmploymentType = g.EmploymentType,
                     EntryDate = g.EntryDate,
                     IsActive = g.IsActive,
                     TotalRecords

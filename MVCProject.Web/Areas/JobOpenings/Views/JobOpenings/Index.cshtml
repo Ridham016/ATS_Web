@@ -29,7 +29,7 @@
     }
 </style>
 
-<div ng-controller="JobListingCtrl" ng-init="getJobPostingList();" novalidate>
+<div ng-controller="JobListingCtrl" ng-init="getJobPostingList();">
     <div class="main-page-title title-icon relative l">
         <i class="fa fa-list-ul icon-position" style="padding-top: 8px;"></i>
         <h3 class="header-title-sub l">@Resource.JobOpenings</h3>
@@ -69,6 +69,7 @@
                                 </div>
                                 <div class="group">
                                     <a href="~/ApplicantRegister/Registration#?PostingId={{h.PostingId}}" class="btn shadow-none btn-xs btn-success">Register</a>
+                                    <a href="~/JobOpenings/JobOpenings/Description#?PostingId={{h.PostingId}}" class="ms-2 btn btn-xs btn-outline-success">View Details</a>
                                 </div>
                             </div>
                         </div>

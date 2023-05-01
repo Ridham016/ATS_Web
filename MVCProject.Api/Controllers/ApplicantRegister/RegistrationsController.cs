@@ -284,7 +284,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 directoryPath = AppUtility.GetDirectoryPath(enumDirectoryPath, databaseName, false, FileURL);
             }
             File.Copy(Path.Combine(directoryPath, data.FileName), Path.Combine(AppUtility.GetDirectoryPath(DirectoryPath.Attachment, databaseName, false, FileURL), data.FileName), true);
-            int days = 10; // number of days to keep files
+            int days = 10; 
 
             DateTime thresholdDate = DateTime.Now.AddDays(-days);
             string[] files = Directory.GetFiles(directoryPath);

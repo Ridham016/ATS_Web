@@ -18,7 +18,6 @@ namespace MVCProject.Controllers
     public class AccountController : BaseController
     {
         // GET: /Account/Login
-        private string url = "http://localhost:56563/ScheduleManagement/Schedule/Details";
         /// <summary>
         /// Redirect to login page
         /// </summary>
@@ -65,10 +64,6 @@ namespace MVCProject.Controllers
                     if (lastUrl.Contains("InternalAudit"))
                     {
                         lastUrl = lastUrl.Split('#')[0].Replace("InternalAudit", "MyAudit");
-                    }
-                    if (lastUrl == url)
-                    {
-                        lastUrl = "http://localhost:56563/ScheduleManagement/Schedule/";
                     }
                     this.Session["LastUrl"] = lastUrl;
                     return this.RedirectToAction("Login", new { noSession = "y" });

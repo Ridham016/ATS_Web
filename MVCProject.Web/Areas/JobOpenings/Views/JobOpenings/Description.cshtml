@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = @Resource.JobDescription;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="JobListingCtrl" ng-init="getDescription();">
+    <div class="main-page-title title-icon relative l">
+        <i class="fa fa-list-ul icon-position" style="padding-top: 8px;"></i>
+        <h3 class="header-title-sub l">@Resource.JobDescription</h3>
+        <div class="pull-right">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb p-0 m-0">
+                    <li class="breadcrumb-item"><a href="~/Dashboard/Dashboard/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="~/JobOpenings/JobOpenings/">Job Openings</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Job Description</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="card-box">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-12">
+                        <div class="card job-description p-4">
+                            <h4 class="card-title">{{jd.PositionName}}</h4>
+                            <p class="card-subtitle text-success">{{jd.CompanyName}}</p>
+                            <div class="d-flex mt-3">
+                                <div class="group">
+                                    <i class="fa fa-briefcase me-2"></i>
+                                    <span class="">{{jd.Experience}}</span>
+                                </div>
+                                <span class="me-3 ms-3 border-end"></span>
+                                <div class="group">
+                                    <i class="fa fa-indian-rupee-sign me-2"></i>
+                                    <span class="">{{jd.Salary}}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-lg-12">
+                                    <i class="fa fa-location-dot me-2"></i>
+                                    <span class="">{{jd.CompanyVenue}}</span>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="mt-0 d-flex justify-content-between">
+                                <div class="group">
+                                    Posted :
+                                    <span class="ms-1"><b>{{jd.Posted}}</b> days ago</span>
+                                </div>
+                                <div class="group">
+                                    <a href="~/ApplicantRegister/Registration#?PostingId={{jd.PostingId}}" class="btn shadow-none btn-success">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card job-description p-4" ng-if="jd.JobDetail != null">
+                            <h4 class="card-title">@Resource.JobDescription</h4>
+                            <p align="justify" class="text-black-50">{{jd.JobDetail}}</p>
+                            <p>
+                                <label class="text-black">
+                                    @Resource.EmploymentType :
+                                </label>
+                                <span class="text-black-50">{{jd.EmploymentType}}</span>
+                            </p>
+                            <h5 class="text-black mt-1">
+                                Education
+                            </h5>
+                            <p class="mb-0 mt-1">
+                                <label class="text-black">
+                                    UG :
+                                </label>
+                                <span class="text-black-50">{{jd.Education_UG}}</span>
+                            </p>
+                            <p>
+                                <label class="text-black">
+                                    PG :
+                                </label>
+                                <span class="text-black-50">{{jd.Education_PG}}</span>
+                            </p>
+                        </div>
+                        <div class="card job-description p-4">
+                            <h4 class="card-title">About Company</h4>
+                            <p align="justify" class="text-black-50">{{jd.CompanyDetail}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/bundles/JobListing/JobListing")
+}

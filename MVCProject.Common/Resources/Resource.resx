@@ -1284,4 +1284,22 @@
   <data name="Calendar" xml:space="preserve">
     <value>Calendar</value>
   </data>
+  <data name="CompanyDetail" xml:space="preserve">
+    <value>Company Detail</value>
+  </data>
+  <data name="EducationPG" xml:space="preserve">
+    <value>Postgraduate Education</value>
+  </data>
+  <data name="EducationUG" xml:space="preserve">
+    <value>Undergraduate Education</value>
+  </data>
+  <data name="EmploymentType" xml:space="preserve">
+    <value>Employment Type</value>
+  </data>
+  <data name="JobDescription" xml:space="preserve">
+    <value>Job Description</value>
+  </data>
+  <data name="JobDetail" xml:space="preserve">
+    <value>Job Detail</value>
+  </data>
 </root>

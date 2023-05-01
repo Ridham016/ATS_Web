@@ -563,12 +563,14 @@
                                 </button>
                             </div>
                             <div class="col-lg-4 col-md-12">
-                                <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" ng-keypress="onEnter($event)" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.ApplicantRegister, Resource.Details)" />
-                                    <a class="input-group-addon cursor-pointer" href="#" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </div>
+                                <form id="frmSearch" ng-submit="isSearchClicked = true;tableParams.page(1);tableParams.reload();" novalidate>
+                                    <div class="input-group">
+                                        <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.AdvancedSearch, Resource.Details)" />
+                                        <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

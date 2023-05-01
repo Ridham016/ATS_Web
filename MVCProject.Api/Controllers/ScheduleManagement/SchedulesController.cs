@@ -424,7 +424,12 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         [HttpPost]
         public ApiResponse GetApplicantsParam([FromBody] PagingParams applicantDetailParams, [FromUri] SearchParams searchParams)
         {
-            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, searchParams.CompanyId, searchParams.PositionId).ToList();
+            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
+            {
+                applicantDetailParams.Search = string.Empty;
+            }
+            var result = entities.USP_ATS_GetApplicantWithStatus(applicantDetailParams.StatusId, searchParams.CompanyId, searchParams.PositionId)
+                .Where(x => x.FirstName.Trim().ToLower().Contains(applicantDetailParams.Search.Trim().ToLower())).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {

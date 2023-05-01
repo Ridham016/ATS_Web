@@ -538,6 +538,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Detail.
+        /// </summary>
+        public static string CompanyDetail {
+            get {
+                return ResourceManager.GetString("CompanyDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name.
         /// </summary>
         public static string CompanyName {
@@ -1069,6 +1078,24 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Postgraduate Education.
+        /// </summary>
+        public static string EducationPG {
+            get {
+                return ResourceManager.GetString("EducationPG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undergraduate Education.
+        /// </summary>
+        public static string EducationUG {
+            get {
+                return ResourceManager.GetString("EducationUG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Configuration.
         /// </summary>
         public static string EmailConfiguration {
@@ -1128,6 +1155,15 @@ namespace MVCProject.Common.Resources {
         public static string Employee {
             get {
                 return ResourceManager.GetString("Employee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employment Type.
+        /// </summary>
+        public static string EmploymentType {
+            get {
+                return ResourceManager.GetString("EmploymentType", resourceCulture);
             }
         }
         
@@ -1686,6 +1722,24 @@ namespace MVCProject.Common.Resources {
         public static string Job {
             get {
                 return ResourceManager.GetString("Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job Description.
+        /// </summary>
+        public static string JobDescription {
+            get {
+                return ResourceManager.GetString("JobDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job Detail.
+        /// </summary>
+        public static string JobDetail {
+            get {
+                return ResourceManager.GetString("JobDetail", resourceCulture);
             }
         }
         

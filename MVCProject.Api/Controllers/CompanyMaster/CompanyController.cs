@@ -45,6 +45,7 @@ namespace MVCProject.Api.Controllers.CompanyMaster
                 companyData.Id = data.Id;
                 companyData.CompanyName = data.CompanyName;
                 companyData.Venue = data.Venue;
+                companyData.CompanyDetail = data.CompanyDetail;
                 companyData.ContactPersonName = data.ContactPersonName;
                 companyData.IsActive = data.IsActive;
                 companyData.EntryDate = DateTime.Now;
@@ -75,6 +76,7 @@ namespace MVCProject.Api.Controllers.CompanyMaster
                     Id = g.Id,
                     CompanyName = g.CompanyName,
                     Venue = g.Venue,
+                    CompanyDetail = g.CompanyDetail,
                     ContactPersonName = g.ContactPersonName,
                     EntryDate = g.EntryDate,
                     IsActive = g.IsActive,

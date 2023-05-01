@@ -46,5 +46,16 @@ namespace MVCProject.Api.Controllers.JobListing
             return this.Response(MessageTypes.Success, string.Empty, data);
         }
 
+        [HttpGet]
+        public ApiResponse GetDescription([FromUri]int PostingId)
+        {
+            var data = this.entities.USP_ATS_JobDescription(PostingId).SingleOrDefault();
+            if(data == null)
+            {
+                return this.Response(MessageTypes.Error, string.Empty);
+            }
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
     }
 }

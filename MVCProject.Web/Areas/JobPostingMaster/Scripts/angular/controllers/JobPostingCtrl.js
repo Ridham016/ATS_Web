@@ -13,6 +13,10 @@
             CompanyId: '',
             Experience: '',
             PostingStatusId: '',
+            JobDetail: '',
+            Education_UG: '',
+            Education_PG: '',
+            EmploymentType: '',
             Salary: '',
             IsActive: true
         };
@@ -60,14 +64,6 @@
             })
         }
 
-        $scope.onEnter = function (event) {
-            if (event.which === 13) {
-                $scope.isSearchClicked = true;
-                $scope.tableParams.page(1);
-                $scope.tableParams.reload();
-            }
-        }
-
         //$scope.getPositionDetails = JobPostingService.GetPositionDetails();
 
         //$scope.$watch('Position', function (newValue, oldValue) {
@@ -113,6 +109,10 @@
                 CompanyId: '',
                 Experience: '',
                 PostingStatusId: '',
+                JobDetail: '',
+                Education_UG: '',
+                Education_PG: '',
+                EmploymentType: '',
                 Salary: '',
                 IsActive: true
             };

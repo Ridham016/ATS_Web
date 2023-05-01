@@ -577,6 +577,7 @@
     <Content Include="Content\fonts\fa-solid-900.woff2" />
     <Content Include="Content\fonts\fa-v4compatibility.ttf" />
     <Content Include="Content\fonts\fa-v4compatibility.woff2" />
+    <Content Include="Areas\JobOpenings\Views\JobOpenings\Description.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

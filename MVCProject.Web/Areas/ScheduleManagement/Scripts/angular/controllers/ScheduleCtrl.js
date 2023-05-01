@@ -70,6 +70,9 @@
         $scope.GetData = function () {
             //debugger
             var param = $location.search();
+            if (param.ApplicantId == null) {
+                $window.location.href = "../../ScheduleManagement/Schedule/"
+            }
             $scope.applicantId = param.ApplicantId;
             ScheduleService.GetApplicant($scope.applicantId).then(function (res) {
                 //debugger

@@ -16,5 +16,10 @@ namespace MVCProject.Areas.JobOpenings.Controllers
             return View();
         }
 
+        public ActionResult Description()
+        {
+            return View();
+        }
+
     }
 }

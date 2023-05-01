@@ -27,6 +27,16 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+    .colCompany {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+    }
+    .colContactPerson {
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+    }
 </style>
 
 <div ng-controller="CompanyCtrl" novalidate>
@@ -74,12 +84,20 @@
                                 <label>
                                     @Resource.ContactPersonName<span class="required-field">*</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Enter Contact Person Name" name="ContactPersonName" ng-model="companyDetailScope.ContactPersonName" required/>
+                                <input type="text" class="form-control" placeholder="Enter Contact Person Name" name="ContactPersonName" ng-model="companyDetailScope.ContactPersonName" required />
                                 <div class="c">
                                 </div>
                                 <div class="label label-danger" data-ng-show="frmRegister.ContactPersonName.$dirty && frmRegister.ContactPersonName.$invalid">
                                     <span data-ng-show="frmRegister.ContactPersonName.$error.required">@Resource.ContactPersonNameRequired</span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-lg-3 mt-md-0 mt-sm-3">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.CompanyDetail
+                                </label>
+                                <textarea rows="5" class="form-control" placeholder="Enter Company Detail" name="CompanyDetail" ng-model="companyDetailScope.CompanyDetail"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4 mt-lg-3 mt-md-0 mt-sm-3">
@@ -125,12 +143,14 @@
                                 </label>
                             </div>
                             <div class="col-lg-5 col-md-6 offset-lg-4">
-                                <div class="input-group">
-                                    <input type="text" tabindex="104" ng-model="search" ng-keypress="onEnter($event)" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Company, Resource.Details)" />
-                                    <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </div>
+                                <form id="frmSearch" ng-submit="isSearchClicked = true;tableParams.page(1);tableParams.reload();" novalidate>
+                                    <div class="input-group">
+                                        <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Company, Resource.Details)" />
+                                        <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -144,13 +164,16 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.CompanyName'" sortable="'CompanyName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CompanyName'" ng-attr-title="{{h.CompanyName}}" sortable="'CompanyName'" header-class="'colCompany'" ng-class="'colCompany breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.CompanyName}}
                                                 </td>
-                                                <td data-title="'@Resource.Venue'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Venue'" ng-attr-title="{{h.Venue}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Venue}}
                                                 </td>
-                                                <td data-title="'@Resource.ContactPersonName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CompanyDetail'" ng-attr-title="{{h.CompanyDetail}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.CompanyDetail}}
+                                                </td>
+                                                <td data-title="'@Resource.ContactPersonName'" ng-attr-title="{{h.ContactPersonName}}" header-class="'colContactPerson'" ng-class="'colContactPerson breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.ContactPersonName}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">
