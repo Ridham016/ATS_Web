@@ -6,8 +6,32 @@
     ]);
 
     function JobListingCtrl($scope, ngTableParams, CommonFunctions, CommonService, $rootScope, $location, $window, JobListingService) {
-        $scope.getJobPostingList = function () {
-            JobListingService.GetJobPostingList().then(function (res) {
+        $scope.SortBy = 'date';
+        $scope.jobDetailParams = {
+            OrderByColumn: 'EntryDate',
+            IsAscending: false
+        };
+        $scope.sortBy = function (SortBy) {
+            if (SortBy == 'date') {
+                $scope.jobDetailParams = {
+                    OrderByColumn: 'EntryDate',
+                    IsAscending: false
+                };
+            }
+            else if (SortBy == 'a-z') {
+                $scope.jobDetailParams = {
+                    OrderByColumn: 'PositionName',
+                    IsAscending: true
+                };
+            }
+            else if (SortBy == 'z-a') {
+                $scope.jobDetailParams = {
+                    OrderByColumn: 'PositionName',
+                    IsAscending: false
+                };
+            }
+
+            JobListingService.GetJobPostingList($scope.jobDetailParams).then(function (res) {
                 if (res) {
                     if (res.data.MessageType == messageTypes.Success) {
                         $scope.JobList = res.data.Result;
@@ -20,11 +44,15 @@
             })
         }
 
+        $scope.options = [
+            { id: 1, name: 'Option 1', html: 'Option <span class="highlight">1</span>' },
+            { id: 2, name: 'Option 2', html: 'Option <span class="highlight">2</span>' },
+            { id: 3, name: 'Option 3', html: 'Option <span class="highlight">3</span>' }
+        ];
+
         $scope.getDescription = function () {
             var params = $location.search();
-            debugger
             if (params.PostingId == null) {
-                debugger
                 $window.location.href = "../../JobOpenings/JobOpenings"
             }
             $scope.PostingId = params.PostingId;

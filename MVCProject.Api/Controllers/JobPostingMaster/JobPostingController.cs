@@ -97,6 +97,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                 postingData.Education_UG = data.Education_UG;
                 postingData.Education_PG = data.Education_PG;
                 postingData.EmploymentType = data.EmploymentType;
+                postingData.Skills = data.Skills;
                 postingData.IsActive = data.IsActive;
                 postingData.EntryDate = DateTime.Now;
                 postingData.UpdateDate = DateTime.Now;
@@ -136,6 +137,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                     Education_UG = g.Education_UG,
                     Education_PG = g.Education_PG,
                     EmploymentType = g.EmploymentType,
+                    Skills = g.Skills,
                     EntryDate = g.EntryDate,
                     IsActive = g.IsActive,
                     TotalRecords

@@ -24,8 +24,8 @@ namespace MVCProject.Api.Controllers.JobListing
             this.entities = new MVCProjectEntities();
         }
 
-        [HttpGet]
-        public ApiResponse GetJobPostingList()
+        [HttpPost]
+        public ApiResponse GetJobPostingList(PagingParams paging)
         {
             var data = this.entities.USP_ATS_JobListing().Select(g => new
             {
@@ -42,7 +42,8 @@ namespace MVCProject.Api.Controllers.JobListing
                 EntryDate = g.EntryDate,
                 Posted = g.Posted,
                 IsActive = g.IsActive,
-            }).ToList();
+            }).AsEnumerable()
+                .AsQueryable().OrderByField(paging.OrderByColumn, paging.IsAscending);
             return this.Response(MessageTypes.Success, string.Empty, data);
         }
 

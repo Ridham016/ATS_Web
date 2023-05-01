@@ -27,11 +27,13 @@
         min-width: 50px !important;
         max-width: 50px !important;
     }
+
     .col {
         width: 120px !important;
         min-width: 120px !important;
         max-width: 120px !important;
     }
+
     .colStatus {
         width: 100px !important;
         min-width: 100px !important;
@@ -163,7 +165,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <h4 class="my-3">
-                                 @Resource.JobDescription
+                                @Resource.JobDescription
                             </h4>
                         </div>
                     </div>
@@ -171,9 +173,9 @@
                         <div class="col-lg-12 col-md-6 mt-3">
                             <div class="form-group">
                                 <label>
-                                    @Resource.JobDetail 
+                                    @Resource.JobDetail
                                 </label>
-                                <textarea rows="7" type="text" class="form-control" placeholder="Enter Job Detail" name="JobDetail" ng-model="jobpostingDetailScope.JobDetail"></textarea>
+                                <textarea rows="7" type="text" spellcheck="false" class="form-control" placeholder="Enter Job Detail" name="JobDetail" ng-model="jobpostingDetailScope.JobDetail"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mt-3">
@@ -181,7 +183,7 @@
                                 <label>
                                     @Resource.EducationUG
                                 </label>
-                                <textarea rows="3" type="text" class="form-control" placeholder="Eg.  BCA in Computers" name="Education_UG" ng-model="jobpostingDetailScope.Education_UG" ></textarea>
+                                <textarea rows="3" type="text" spellcheck="false" class="form-control" placeholder="Eg.  BCA in Computers" name="Education_UG" ng-model="jobpostingDetailScope.Education_UG"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mt-3">
@@ -189,7 +191,7 @@
                                 <label>
                                     @Resource.EducationPG
                                 </label>
-                                <textarea rows="3" type="text" class="form-control" placeholder="Eg. MCA in Computers" name="Education_PG" ng-model="jobpostingDetailScope.Education_PG" ></textarea>
+                                <textarea rows="3" type="text" spellcheck="false" class="form-control" placeholder="Eg. MCA in Computers" name="Education_PG" ng-model="jobpostingDetailScope.Education_PG"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mt-3">
@@ -197,7 +199,15 @@
                                 <label>
                                     @Resource.EmploymentType
                                 </label>
-                                <textarea rows="3" type="text" class="form-control" placeholder="Eg. Full Time, Part Time" name="EmploymentType" ng-model="jobpostingDetailScope.EmploymentType" ></textarea>
+                                <textarea rows="3" type="text" class="form-control" placeholder="Eg. Full Time, Part Time" name="EmploymentType" ng-model="jobpostingDetailScope.EmploymentType"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-3">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.Skills
+                                </label>
+                                <textarea rows="3" spellcheck="false" type="text" class="form-control" placeholder="Eg. jQuery, Frontend" name="Skills" ng-model="jobpostingDetailScope.Skills"></textarea>
                             </div>
                         </div>
                     </div>
@@ -248,19 +258,19 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.Position'" sortable="'PositionName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Position'" ng-attr-title="{{h.PositionName}}" sortable="'PositionName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.PositionName}}
                                                 </td>
-                                                <td data-title="'@Resource.Company'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Company'" ng-attr-title="{{h.CompanyName}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.CompanyName}}
                                                 </td>
-                                                <td data-title="'@Resource.Experience'" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Experience'" ng-attr-title="{{h.Experience}}" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Experience}}
                                                 </td>
-                                                <td data-title="'@Resource.Salary'" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Salary'" ng-attr-title="{{h.Salary}}" header-class="'col'" ng-class="'col breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Salary}}
                                                 </td>
-                                                <td data-title="'@Resource.PostingStatus'" header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.PostingStatus'" header-class="'colStatus'" ng-attr-title="{{h.PostingStatus}}" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.PostingStatus}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">

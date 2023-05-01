@@ -1302,4 +1302,7 @@
   <data name="JobDetail" xml:space="preserve">
     <value>Job Detail</value>
   </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Key Skills</value>
+  </data>
 </root>

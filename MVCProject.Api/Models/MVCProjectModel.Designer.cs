@@ -5341,6 +5341,30 @@ namespace MVCProject.Api.Models
         private global::System.String _Education_PG;
         partial void OnEducation_PGChanging(global::System.String value);
         partial void OnEducation_PGChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Skills
+        {
+            get
+            {
+                return _Skills;
+            }
+            set
+            {
+                OnSkillsChanging(value);
+                ReportPropertyChanging("Skills");
+                _Skills = StructuralObject.SetValidValue(value, true, "Skills");
+                ReportPropertyChanged("Skills");
+                OnSkillsChanged();
+            }
+        }
+        private global::System.String _Skills;
+        partial void OnSkillsChanging(global::System.String value);
+        partial void OnSkillsChanged();
 
         #endregion
 
@@ -9491,6 +9515,30 @@ namespace MVCProject.Api.Models
         private global::System.String _EmploymentType;
         partial void OnEmploymentTypeChanging(global::System.String value);
         partial void OnEmploymentTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Skills
+        {
+            get
+            {
+                return _Skills;
+            }
+            set
+            {
+                OnSkillsChanging(value);
+                ReportPropertyChanging("Skills");
+                _Skills = StructuralObject.SetValidValue(value, true, "Skills");
+                ReportPropertyChanged("Skills");
+                OnSkillsChanged();
+            }
+        }
+        private global::System.String _Skills;
+        partial void OnSkillsChanging(global::System.String value);
+        partial void OnSkillsChanged();
 
         #endregion
 
@@ -17033,6 +17081,30 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Boolean> _IsActive;
         partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Skills
+        {
+            get
+            {
+                return _Skills;
+            }
+            set
+            {
+                OnSkillsChanging(value);
+                ReportPropertyChanging("Skills");
+                _Skills = StructuralObject.SetValidValue(value, true, "Skills");
+                ReportPropertyChanged("Skills");
+                OnSkillsChanged();
+            }
+        }
+        private global::System.String _Skills;
+        partial void OnSkillsChanging(global::System.String value);
+        partial void OnSkillsChanged();
 
         #endregion
 
@@ -18253,6 +18325,30 @@ namespace MVCProject.Api.Models
         private global::System.String _EmploymentType;
         partial void OnEmploymentTypeChanging(global::System.String value);
         partial void OnEmploymentTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Skills
+        {
+            get
+            {
+                return _Skills;
+            }
+            set
+            {
+                OnSkillsChanging(value);
+                ReportPropertyChanging("Skills");
+                _Skills = StructuralObject.SetValidValue(value, true, "Skills");
+                ReportPropertyChanged("Skills");
+                OnSkillsChanged();
+            }
+        }
+        private global::System.String _Skills;
+        partial void OnSkillsChanging(global::System.String value);
+        partial void OnSkillsChanged();
 
         #endregion
 

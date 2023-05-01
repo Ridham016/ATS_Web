@@ -17,6 +17,7 @@
             Education_UG: '',
             Education_PG: '',
             EmploymentType: '',
+            Skills: '',
             Salary: '',
             IsActive: true
         };
@@ -113,6 +114,7 @@
                 Education_UG: '',
                 Education_PG: '',
                 EmploymentType: '',
+                Skills:'',
                 Salary: '',
                 IsActive: true
             };
@@ -210,5 +212,6 @@
                 $rootScope.isAjaxLoadingChild = false;
             })
         }
+      
     }
 })();
