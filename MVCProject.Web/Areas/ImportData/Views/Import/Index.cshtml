@@ -76,16 +76,16 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno'">
                                                     {{($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantName'" ng-attr-title="{{h.FirstName}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.FirstName}} {{h.MiddleName}} {{h.LastName}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantEmail'" ng-attr-title="{{h.Email}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Email}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantPhone'" ng-attr-title="{{h.Phone}}" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td class="error-text" data-title="'@Resource.Error'" style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td class="error-text" ng-attr-title="{{h.Error}}" data-title="'@Resource.Error'"  style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Error}}
                                                 </td>
                                             </tr>

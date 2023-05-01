@@ -120,7 +120,7 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.Position'" sortable="'PositionName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Position'" ng-attr-title="{{h.PositionName}}" sortable="'PositionName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.PositionName}}
                                                 </td>
                                                 <td data-title="'@Resource.Active'" header-class="'colActive'" ng-class="'colActive text-center'">

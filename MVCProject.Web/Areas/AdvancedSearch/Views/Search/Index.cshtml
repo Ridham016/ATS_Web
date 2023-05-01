@@ -189,13 +189,13 @@
                                                 <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
                                                     {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantName'" header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantName'"  ng-attr-title="{{applicant.FirstName}}" header-class="'colName'" ng-class="'colName breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantEmail'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantEmail'"  ng-attr-title="{{applicant.Email}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.Email}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantPhone'" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantPhone'" ng-attr-title="{{applicant.Phone}}" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.Phone}}
                                                 </td>
                                                 <td data-title="'@Resource.StatusName'" header-class="'colStatus'" ng-class="'colStatus breakword overflow-ellipsis cursor-pointer'">
@@ -211,61 +211,61 @@
 
                                                     </span>
                                                 </td>
-                                                <td data-title="'@Resource.EntryDate'" header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.EntryDate'" ng-attr-title="{{applicant.EntryDate}}" header-class="'colEntry'" ng-class="'colEntry breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.EntryDate | date : 'MMM d, y h:mm a'}}
                                                 </td>
-                                                <td data-title="'@Resource.Comments'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.Comments'" ng-attr-title="{{applicant.Comment}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.Comment}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantAddress'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantAddress'" ng-attr-title="{{applicant.Address}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.Address}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantDate'" sortable="'ApplicantDate'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDate'" ng-attr-title="{{applicant.ApplicantDate}}" sortable="'ApplicantDate'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.ApplicantDate | date}}
                                                 </td>
-                                                <td data-title="'@Resource.ApplicantDOB'" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ApplicantDOB'" ng-attr-title="{{applicant.DateOfBirth}}" header-class="'colDate'" ng-class="'colDate breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.DateOfBirth | date}}
                                                 </td>
-                                                <td data-title="'@Resource.CurrentCompany'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CurrentCompany'" ng-attr-title="{{applicant.CurrentCompany}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.CurrentCompany}}
                                                 </td>
-                                                <td data-title="'@Resource.CurrentDesignations'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CurrentDesignations'" ng-attr-title="{{applicant.CurrentDesignation}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.CurrentDesignation}}
                                                 </td>
-                                                <td data-title="'@Resource.TotalExperience'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.TotalExperience'" ng-attr-title="{{applicant.TotalExperience}}" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.TotalExperience}}
                                                 </td>
-                                                <td data-title="'@Resource.DetailedExperince'" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.DetailedExperince'" ng-attr-title="{{applicant.DetailedExperience}}" header-class="'colExperience'" ng-class="'colExperience breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.DetailedExperience}}
                                                 </td>
-                                                <td data-title="'@Resource.CurrentCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CurrentCTC'" ng-attr-title="{{applicant.CurrentCTC}}" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.CurrentCTC}}
                                                 </td>
-                                                <td data-title="'@Resource.ExpectedCTC'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ExpectedCTC'" ng-attr-title="{{applicant.ExpectedCTC}}" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.ExpectedCTC}}
                                                 </td>
-                                                <td data-title="'@Resource.NoticePeriod'" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.NoticePeriod'" ng-attr-title="{{applicant.NoticePeriod}}" header-class="'colNum'" ng-class="'colNum breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.NoticePeriod}}
                                                 </td>
-                                                <td data-title="'@Resource.CurrentLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.CurrentLocation'" ng-attr-title="{{applicant.Email}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.CurrentLocation}}
                                                 </td>
-                                                <td data-title="'@Resource.PreferedLocation'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.PreferedLocation'" ng-attr-title="{{applicant.PreferedLocation}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.PreferedLocation}}
                                                 </td>
-                                                <td data-title="'@Resource.ReasonForChange'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.ReasonForChange'" ng-attr-title="{{applicant.ReasonForChange}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.ReasonForChange}}
                                                 </td>
-                                                <td data-title="'@Resource.SkillDescription'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.SkillDescription'" ng-attr-title="{{applicant.SkillDescription}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.SkillDescription}}
                                                 </td>
-                                                <td data-title="'@Resource.PortfolioLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.PortfolioLink'" ng-attr-title="{{applicant.PortfolioLink}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.PortfolioLink}}
                                                 </td>
-                                                <td data-title="'@Resource.LinkedinLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.LinkedinLink'" ng-attr-title="{{applicant.LinkedinLink}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.LinkedinLink}}
                                                 </td>
-                                                <td data-title="'@Resource.OtherLink'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td data-title="'@Resource.OtherLink'" ng-attr-title="{{applicant.OtherLink}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{applicant.OtherLink}}
                                                 </td>
                                             </tr>
