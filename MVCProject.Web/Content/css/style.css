@@ -2570,7 +2570,7 @@ a.editable-click:hover {
 /* =============
    Timeline
 ============= */
-.timeline {
+/*.timeline {
     border-collapse: collapse;
     border-spacing: 0;
     display: table;
@@ -2773,7 +2773,7 @@ h3.timeline-title {
         background: none repeat scroll 0 0 #ffffff;
         margin-top: 20px;
         padding: 8px;
-    }
+    }*/
 /* =============
    Gallery
 ============= */
