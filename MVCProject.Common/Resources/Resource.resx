@@ -265,7 +265,7 @@
     <value>Password is required</value>
   </data>
   <data name="PasswordResetSuccess" xml:space="preserve">
-    <value>Password has been reset successfully. Please login with new password.</value>
+    <value>Password has been reset successfully. </value>
   </data>
   <data name="PDFFooterText" xml:space="preserve">
     <value>Note: This is electronic system generated report.</value>
@@ -1304,5 +1304,17 @@
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Key Skills</value>
+  </data>
+  <data name="OtpSentSuccessfully" xml:space="preserve">
+    <value>Otp Sent Successfully</value>
+  </data>
+  <data name="ResendCode" xml:space="preserve">
+    <value>Resend Code</value>
+  </data>
+  <data name="SendOtp" xml:space="preserve">
+    <value>Send OTP</value>
+  </data>
+  <data name="ValidOtp" xml:space="preserve">
+    <value>Valid Otp. You can reset Password Now.</value>
   </data>
 </root>

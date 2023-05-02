@@ -26,6 +26,30 @@
         });
     }
 
+    list.GenerateCode = function (user) {
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/Account/GenerateCode',
+            data: JSON.stringify(user)
+        });
+    }
+
+    list.ValidateOtp = function (otp) {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Account/IsCodeValid?code=' + otp
+        });
+    }
+
+    list.ResetPassword = function (model) {
+        return $http({
+            method: 'POST',
+            url: $rootScope.apiURL + '/Account/ResetPassword',
+            data: JSON.stringify(model)
+        });
+    };
+
+
     // Change current role of user
     list.ChangeRole = function (roleId) {
         return $http({

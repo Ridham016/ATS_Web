@@ -311,5 +311,60 @@ namespace MVCProject.Api
 
             return result;
         }
+
+        /// <summary>
+        /// Generate a Secret Code (OTP).
+        /// </summary>
+        /// <returns>Returns a 6 digit code.</returns>
+        public static string GenerateCode()
+        {
+            var currentTime = DateTime.UtcNow;
+            var epochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var timeSinceEpoch = currentTime - epochTime;
+            var seconds = (long)timeSinceEpoch.TotalSeconds;
+
+            var data = Encoding.UTF8.GetBytes(Salt + seconds);
+
+            using (var shaAlgorithm = new SHA1Managed())
+            {
+                var hash = shaAlgorithm.ComputeHash(data);
+                var code = BitConverter.ToUInt32(hash, 0) & 0x7FFFFFFF;
+                var sixDigitCode = (code % 1000000).ToString("D6");
+                return sixDigitCode;
+            }
+        }
+
+
+        /// <summary>
+        /// Check if code(OTP) is valid or not.
+        /// </summary>
+        /// <returns>Returns true if code is valid else false.</returns>
+        public static bool IsCodeValid(string code)
+        {
+            var currentTime = DateTime.UtcNow;
+            var epochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var timeSinceEpoch = currentTime - epochTime;
+            var currentSeconds = (long)timeSinceEpoch.TotalSeconds;
+
+            var windowSizeInSeconds = 120;
+            for (int i = 0; i <= windowSizeInSeconds; i++)
+            {
+                var data = Encoding.UTF8.GetBytes(Salt + (currentSeconds - i));
+
+                using (var shaAlgorithm = new SHA1Managed())
+                {
+                    var hash = shaAlgorithm.ComputeHash(data);
+                    var currentCode = BitConverter.ToUInt32(hash, 0) & 0x7FFFFFFF;
+                    var sixDigitCode = (currentCode % 1000000).ToString("D6");
+                    if (code == sixDigitCode)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
     }
 }

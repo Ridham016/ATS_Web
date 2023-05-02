@@ -2329,6 +2329,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Otp Sent Successfully.
+        /// </summary>
+        public static string OtpSentSuccessfully {
+            get {
+                return ResourceManager.GetString("OtpSentSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string Page {
@@ -2383,7 +2392,7 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password has been reset successfully. Please login with new password..
+        ///   Looks up a localized string similar to Password has been reset successfully. .
         /// </summary>
         public static string PasswordResetSuccess {
             get {
@@ -2734,6 +2743,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resend Code.
+        /// </summary>
+        public static string ResendCode {
+            get {
+                return ResourceManager.GetString("ResendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string Reset {
@@ -3018,6 +3036,15 @@ namespace MVCProject.Common.Resources {
         public static string SelectStatus {
             get {
                 return ResourceManager.GetString("SelectStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send OTP.
+        /// </summary>
+        public static string SendOtp {
+            get {
+                return ResourceManager.GetString("SendOtp", resourceCulture);
             }
         }
         
@@ -3540,6 +3567,15 @@ namespace MVCProject.Common.Resources {
         public static string ValidExpectedDate {
             get {
                 return ResourceManager.GetString("ValidExpectedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid Otp. You can reset Password Now..
+        /// </summary>
+        public static string ValidOtp {
+            get {
+                return ResourceManager.GetString("ValidOtp", resourceCulture);
             }
         }
         

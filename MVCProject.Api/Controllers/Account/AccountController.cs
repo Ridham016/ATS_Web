@@ -25,6 +25,9 @@ namespace MVCProject.Api.Controllers.Account
     using Newtonsoft.Json;
     using System.Text;
     using System.Web;
+    using System.Security.Cryptography;
+    using System.Threading.Tasks;
+    using System.IO;
     #endregion
     public class AccountController : BaseController
     {
@@ -71,6 +74,73 @@ namespace MVCProject.Api.Controllers.Account
             }
             return this.Response(MessageTypes.Success,string.Empty,role);
         }
+
+        [HttpPost]
+        public ApiResponse GenerateCode([FromBody] ATS_Users user)
+        {
+            var emailCheck = this.entities.ATS_Users.Where(x => x.Email == user.Email).SingleOrDefault();
+            if (emailCheck == null)
+            {
+                return this.Response(MessageTypes.Error, Resource.UserNotExists);
+            }
+            string code = SecurityUtility.GenerateCode();
+            if (code == null)
+            {
+                return this.Response(MessageTypes.Error, Resource.Error);
+            }
+            Task.Run(() => {
+                string file = "Templates/EmailforOtp.html";
+                string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+                string htmlBody = File.ReadAllText(filepath);
+                htmlBody = htmlBody.Replace("[User Name]", emailCheck.UserName).Replace("[OTP]", code).Replace(" [Email Address]", user.Email);
+                string[] emailIdTo = { user.Email };
+                EmailParams emailParams = new EmailParams();
+                string[] emails = emailIdTo;
+                var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
+                UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
+                UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
+                emailParams.emailIdTO = emails;
+                emailParams.subject = "One Time Password (OTP) for Forgot Password recovery";
+                emailParams.body = htmlBody;
+                emailParams.emailIdFrom = UserDetails.Email;
+                emailParams.emailPassword = UserDetails.Password;
+                emailParams.Host = UserDetails.Host;
+                emailParams.Port = UserDetails.Port;
+                emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
+                ApiHttpUtility.SendMail(emailParams);
+            });
+            return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.OtpSentSuccessfully),emailCheck.UserId);
+        }
+
+        [HttpGet]
+        public ApiResponse IsCodeValid(string code)
+        {
+            bool IsValid = SecurityUtility.IsCodeValid(code);
+            if (!IsValid)
+            {
+                return this.Response(MessageTypes.Error, Resource.Error);
+            }
+            return this.Response(MessageTypes.Success, Resource.ValidOtp);
+        }
+
+        [HttpPost]
+        public ApiResponse ResetPassword([FromBody]ATS_Users user)
+        {
+            var userPassword = this.entities.ATS_Users.Where(x => x.UserId == user.UserId).FirstOrDefault();
+            if (userPassword != null)
+            {
+                userPassword.Password = user.Password;
+                entities.ATS_Users.ApplyCurrentValues(userPassword);
+                if (!(this.entities.SaveChanges() > 0))
+                {
+                    return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Password));
+                }
+
+                return this.Response(Utilities.MessageTypes.Success, Resource.PasswordResetSuccess);
+            }
+            return this.Response(MessageTypes.Error, Resource.UserNotExists);
+        }
+
 
     }
 }

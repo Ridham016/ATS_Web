@@ -35,6 +35,12 @@
                 $scope.scheduleDetailScope.Venue = ''
             }
         }
+        $scope.Init = function () {
+            if (sessionStorage.getItem("JobPostingErrorMessage")) {
+                toastr.error(sessionStorage.getItem("JobPostingErrorMessage"), errorTitle);
+                sessionStorage.removeItem("JobPostingErrorMessage");
+            }
+        }();
 
         $scope.tableParams = new ngTableParams({
             page: 1,
@@ -98,11 +104,9 @@
                     }
                     else if (res.data.MessageType == messageTypes.Error) {// Error
                         debugger
+                        sessionStorage.setItem("JobPostingErrorMessage", res.data.Message);
                         toastr.error(res.data.Message, errorTitle);
-                        $timeout(function () {
-                        }, 1000).then(function () {
-                            $window.location.href = '../../ScheduleManagement/Schedule';
-                        })
+                        $window.location.href = '../../ScheduleManagement/Schedule';
                     }
                     $rootScope.isAjaxLoadingChild = false;
                     CommonFunctions.SetFixHeader();

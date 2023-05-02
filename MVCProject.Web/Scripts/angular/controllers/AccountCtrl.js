@@ -2,14 +2,23 @@
     'use strict';
 
     angular.module("MVCApp").controller('AccountCtrl', [
-            '$scope', '$rootScope', '$uibModal', 'AccountService', 'CommonFunctions', 'CommonService', AccountCtrl
+        '$scope', '$rootScope', '$uibModal', '$timeout', '$window','$interval', 'AccountService', 'CommonFunctions', 'CommonService', AccountCtrl
         ]);
 
     //BEGIN AccountCtrl
-    function AccountCtrl($scope, $rootScope, $uibModal, AccountService, CommonFunctions, CommonService) {
+    function AccountCtrl($scope, $rootScope, $uibModal, $timeout, $window, $interval, AccountService, CommonFunctions, CommonService) {
 
         $scope.applicationLogo = "/Content/images/company-logo.png";
         $scope.isLogoLoaded = true;
+        $scope.showForgotPassword = true;
+        $scope.showOtp = false;
+        $scope.showResetPassword = false;
+
+
+        $scope.user = {
+            Email: ''
+        };
+        $scope.otp = {};
 
         //BEGIN Check login
         $scope.CheckLogin = function (isSessionExpired) {
@@ -82,14 +91,125 @@
         };
         //END Do Login
 
+
+        //Forgot Password
+
+        $scope.passwordModel = {
+            NewPassword: "",
+            ConfirmPassword: ""
+        };
+        $scope.showResend = false;
+
+        $scope.SendResetPasswordMail = function (frmForgotPassword,user) {
+            if (frmForgotPassword.$valid) {
+                AccountService.GenerateCode(user).then(function (res) {
+                    if (res) {
+                        var data = res.data;
+                        if (data.MessageType == messageTypes.Success) {
+                            toastr.success(data.Message, successTitle);
+                            $scope.showForgotPassword = false;
+                            $scope.showOtp = true;
+                            $scope.UserId = res.data.Result;
+                            $scope.CountDown($scope.showOtp);
+                        } else {
+                            toastr.error(data.Message, errorTitle);
+                        }
+                    }
+                });
+            }
+        };
+
+        $scope.ResendCode = function () {
+            AccountService.GenerateCode($scope.user).then(function (res) {
+                if (res) {
+                    var data = res.data;
+                    if (data.MessageType == messageTypes.Success) {
+                        toastr.success(data.Message, successTitle);
+                        $scope.showForgotPassword = false;
+                        $scope.showOtp = true;
+                        $scope.UserId = res.data.Result;
+                        $scope.CountDown($scope.showOtp);
+                        $scope.showOtp = false;
+                    } else {
+                        toastr.error(data.Message, errorTitle);
+                    }
+                }
+            });
+        }
+
+        $scope.validateOtp = function (otp) {
+            var otpFull = otp.first + otp.second + otp.third + otp.fourth + otp.fifth + otp.sixth;
+            AccountService.ValidateOtp(otpFull).then(function (res) {
+                if (res) {
+                    var data = res.data;
+                    if (data.MessageType == messageTypes.Success) {
+                        toastr.success(data.Message, successTitle);
+                        $scope.showForgotPassword = false;
+                        $scope.showOtp = false;
+                        $scope.showResetPassword = true;
+                    } else {
+                        toastr.error(data.Message, errorTitle);
+                    }
+                }
+            });
+        }
+
+        $scope.ResetPassword = function (frmResetPassword) {
+            if (frmResetPassword.$valid) {
+                $scope.passwordModel.NewPassword = CommonFunctions.EncryptData($scope.passwordModel.NewPassword);
+                var model = {
+                    UserId: $scope.UserId,
+                    Password: $scope.passwordModel.NewPassword
+                };
+
+                AccountService.ResetPassword(model).then(function (res) {
+                    var data = res.data;
+                    if (data.MessageType == messageTypes.Success) {
+                        sessionStorage.setItem("resetPasswordSuccessMessage", data.Message);
+                        window.location.href = "/account/login";
+                    } else {
+                        toastr.error(data.Message, errorTitle);
+                    }
+                });
+            }
+        };
+        $scope.CountDown = function (showOtp) {
+            if (showOtp == true) {
+                debugger
+                $scope.countdown = "01:00";
+
+                var totalSeconds = 60;
+                var intervalPromise = $interval(function () {
+                    totalSeconds--;
+                    $scope.countdown = formatTime(totalSeconds);
+                    if (totalSeconds === 0) {
+                        $interval.cancel(intervalPromise);
+                        $scope.showResend = true;
+                    }
+                }, 1000);
+
+                function formatTime(totalSeconds) {
+                    var minutes = Math.floor(totalSeconds / 60);
+                    var seconds = totalSeconds % 60;
+                    return padZero(minutes) + ":" + padZero(seconds);
+                }
+
+                function padZero(num) {
+                    return (num < 10 ? "0" : "") + num;
+                }
+            }
+        }
+
+        //End Forgot Password
         $scope.OpenResetPasswordModel = function () {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'template/ResetPasswordModel.html',
                 controller: "ResetPasswordModel",
-                size: 'sm',
+                size: 'md',
                 keyboard: true,
                 backdrop: 'static',
+                windowTopClass: "modal-center-override",
                 resolve: {}
             });
         };
@@ -97,7 +217,7 @@
         // Init
         $scope.Init = function () {
             if (sessionStorage.getItem("resetPasswordSuccessMessage")) {
-                toastr.success(sessionStorage.getItem("resetPasswordSuccessMessage"));
+                toastr.success(sessionStorage.getItem("resetPasswordSuccessMessage"), successTitle);
                 sessionStorage.removeItem("resetPasswordSuccessMessage");
             }
         } ();

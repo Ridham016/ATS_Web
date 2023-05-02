@@ -75,13 +75,18 @@ namespace MVCProject.Controllers
         /// Reset Password
         /// </summary>
         /// <param name="userId">user Id</param>
-        /// <param name="resetPasswordToken">reset password token</param>
         /// <returns>ActionResult object</returns>
-        public ActionResult ResetPassword(int userId, string resetPasswordToken)
+        public ActionResult ResetPassword(int userId)
         {
-            ViewBag.userId = userId;
-            ViewBag.resetPasswordToken = resetPasswordToken;
-
+            ViewBag.UserId = userId;
+            return this.View();
+        }
+        /// <summary>
+        /// Forget Password
+        /// </summary>
+        /// <returns>ActionResult object</returns>
+        public ActionResult ForgotPassword()
+        {
             return this.View();
         }
 

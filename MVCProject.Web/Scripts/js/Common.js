@@ -365,8 +365,37 @@ $(document).ready(function () {
 
 $(window).bind('storage', function (e) {
     if (e.originalEvent.key == "logout" && window.location.pathname.toLowerCase().indexOf("/account/login") == -1) {
-        //localStorage.removeItem("logout");
-        //window.location = "/Account/Login";
+        localStorage.removeItem("logout");
+        window.location = "/Account/Login";
     }
 }); 
 
+// Otp for forgot password
+
+document.addEventListener("DOMContentLoaded", function (event) {
+
+    function OTPInput() {
+        const inputs = document.querySelectorAll('#otp > *[id]');
+
+        for (let i = 0; i < inputs.length; i++) {
+
+            inputs[i].addEventListener('input', function () {
+                if (this.value.length === this.maxLength) {
+                    if (i !== inputs.length - 1) {
+                        inputs[i + 1].focus();
+                    }
+                }
+            });
+
+            inputs[i].addEventListener('keydown', function (event) {
+                if (event.key === "Backspace") {
+                    if (this.value.length === 0 && i !== 0) {
+                        inputs[i - 1].focus();
+                    }
+                }
+            });
+        }
+    }
+
+    OTPInput();
+});

@@ -36,7 +36,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group position-relative mb-3">
-                                                    <a class="text-muted float-end forgot-password" tabindex="5" ng-click="OpenResetPasswordModel()">
+                                                    <a href="~/Account/ForgotPassword/" class="text-muted float-end forgot-password" tabindex="5">
                                                         <i class="fa fa-lock m-r-5"></i>@Resource.ForgotPassword?
                                                     </a>
                                                     <label for="password" class="form-label">Password</label>
@@ -273,9 +273,9 @@
                     <h4 class="modal-title" id="myLargeModalLabel">@Resource.ForgotPassword</h4>
                 </div>
                 <div class="modal-body">
+                    <p>Enter your Email for verification process, a 6-digit verification code will be send to your email.</p>
                     <div class="form-group mb-3">
-                        <label for="txtUserName">@Resource.UserName</label>
-                        <input type="text" class="form-control" id="txtUserName" name="txtUserName" ng-model="user.Email" required />
+                        <input type="text" class="form-control" id="txtUserName" name="txtUserName" placeholder="Enter your Email" ng-model="user.Email" required />
                         <div class="c">
                         </div>
                         <div class="label label-danger" data-ng-show="frmResetPassword.txtUserName.$dirty && frmResetPassword.txtUserName.$invalid">
@@ -284,10 +284,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 ">
-                            <button type="submit" class="btn btn-success waves-effect mb-3" ng-disabled="frmResetPassword.$invalid">
-                                @Resource.GetResetPasswordLink
+                            <button type="submit" class="btn btn-primary waves-effect" ng-disabled="frmResetPassword.$invalid">
+                                @Resource.SendOtp
                             </button>
-                            <button type="button" class="btn btn-danger waves-effect" ng-click="cancelActionToPerform()">
+                            <button type="button" class="btn btn-danger waves-effect ms-2" ng-click="cancelActionToPerform()">
                                 @Resource.Close
                             </button>
                         </div>

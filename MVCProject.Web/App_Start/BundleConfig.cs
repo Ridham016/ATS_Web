@@ -62,6 +62,7 @@ namespace MVCProject
                .Include(BundlePath.angular.customFilters)
                .Include(BundlePath.angular.customFilters)
                .Include(BundlePath.angular.customFilters)
+               .Include(BundlePath.angular.directive.validationDirectives)
                .Include("~/Scripts/angular/services/CommonService.js")
                .Include("~/Scripts/angular/services/AccountService.js"));
         }
