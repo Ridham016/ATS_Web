@@ -1317,4 +1317,7 @@
   <data name="ValidOtp" xml:space="preserve">
     <value>Valid Otp. You can reset Password Now.</value>
   </data>
+  <data name="InvalidOtp" xml:space="preserve">
+    <value>Invalid Otp</value>
+  </data>
 </root>

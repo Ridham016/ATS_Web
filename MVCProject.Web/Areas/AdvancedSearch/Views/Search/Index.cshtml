@@ -270,7 +270,7 @@
                                                 </td>
                                             </tr>
                                             <tr ng-show="applicant.expanded" ng-repeat-end="" class="timeline-search-expanded-detail">
-                                                <td colspan="8" class="py-5 px-3 timeline-td">
+                                                <td colspan="{{isSmallMenu ? '9' : '8'}}" class="py-5 px-3 timeline-td">
                                                     @*<div class="container">
                                                                                                             <div class="row">
                                                                                                                 <div class="col">
@@ -322,16 +322,16 @@
                                                         <ul class="timeline-ul">
                                                             <li ng-repeat="applicant in applicantDetail">
                                                                 <div class="content-search card-box">
-                                                                    <h4><i class="fa fa-user me-2"></i>{{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}</h4>
+                                                                    <h4><i class="fa fa-user me-2"></i>{{applicant.UserName}}</h4>
                                                                     <p>
                                                                         <span ng-class="{'status-hold': applicant.StatusId == 5,
-                        'status-registered': applicant.StatusId == 1,
-                        'status-shortlist': applicant.StatusId == 2,
-                        'status-pass': applicant.StatusId == 6,
-                        'status-reject': applicant.StatusId == 7,
-                        'status-not-match': applicant.StatusId == 3,
-                        'status-call-schedule': applicant.StatusId == 4,
-                        'status-other-reason': applicant.StatusId == 8,}">
+                                                                            'status-registered': applicant.StatusId == 1,
+                                                                            'status-shortlist': applicant.StatusId == 2,
+                                                                            'status-pass': applicant.StatusId == 6,
+                                                                            'status-reject': applicant.StatusId == 7,
+                                                                            'status-not-match': applicant.StatusId == 3,
+                                                                            'status-call-schedule': applicant.StatusId == 4,
+                                                                            'status-other-reason': applicant.StatusId == 8,}">
                                                                             <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> L{{applicant.Level+1}}</span>
                                                                             <span ng-show="applicant.StatusId == 4">L{{applicant.Level}}</span> {{applicant.StatusName}}
                                                                         </span>

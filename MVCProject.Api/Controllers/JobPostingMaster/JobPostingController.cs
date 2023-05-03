@@ -76,7 +76,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
             if (postingData == null)
             {
                 data.EntryDate = DateTime.Now;
-                data.EntryBy = "1";
+                data.EntryBy = UserContext.UserId;
                 entities.ATS_JobPosting.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
@@ -101,6 +101,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                 postingData.IsActive = data.IsActive;
                 postingData.EntryDate = DateTime.Now;
                 postingData.UpdateDate = DateTime.Now;
+                postingData.UpdatedBy = UserContext.UserId;
                 this.entities.ATS_JobPosting.ApplyCurrentValues(postingData);
                 if (!(this.entities.SaveChanges() > 0))
                 {

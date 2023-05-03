@@ -37,26 +37,26 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-4 mb-4">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary m-b-5 me-2" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
+                        Get Sample Excel
+                    </button>
+                    <button type="submit" class="btn btn-success waves-effect w-md me-2 waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0 || er>0">
+                        <i class="fa fa-plus me-2"></i>
+                        Add Applicants
+                    </button>
+                    <button type="submit" class="btn btn-danger waves-effect w-md waves-light m-b-5" ng-click="reset()">
+                        @Resource.Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr class="section-divider" />
         <div class="row">
             <div class="col-md-12">
-                <div class="row mt-3 mb-4">
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary m-b-5 me-2" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
-                                Get Sample Excel
-                            </button>
-                            <button type="submit" class="btn btn-success waves-effect w-md me-2 waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0 || er>0">
-                                <i class="fa fa-plus me-2"></i>
-                                Add Applicants
-                            </button>
-                            <button type="submit" class="btn btn-danger waves-effect w-md waves-light m-b-5" ng-click="reset()">
-                                @Resource.Clear
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <hr class="section-divider" />
-                <div class="row mt-4">
+                <div class="row mt-2">
                     <div class="col-md-12">
                         <div class="row mb-3 align-items-baseline">
                             <div class="col-md-5">
@@ -85,7 +85,7 @@
                                                 <td data-title="'@Resource.ApplicantPhone'" ng-attr-title="{{h.Phone}}" header-class="'colPhone'" ng-class="'colPhone breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Phone}}
                                                 </td>
-                                                <td class="error-text" ng-attr-title="{{h.Error}}" data-title="'@Resource.Error'"  style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                <td class="error-text" ng-attr-title="{{h.Error}}" data-title="'@Resource.Error'" style="color: red;" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
                                                     {{h.Error}}
                                                 </td>
                                             </tr>

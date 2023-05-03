@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Content/images/favicon.ico">
     <title>@ViewBag.Title</title>
     @Html.Partial("~/Views/Shared/_CommonScriptOuter.cshtml")
     @{BundleTable.EnableOptimizations = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["IsJsCssMinified"]);}
-    @Styles.Render("~/css/outer")    
+    @Styles.Render("~/css/outer")
 </head>
 <body id="LayoutBody" class="colorBg1 colorBg hide-backtotop" ng-cloak>
     @Html.Partial("~/Views/Shared/_Loader.cshtml")

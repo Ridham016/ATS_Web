@@ -112,6 +112,8 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PostingId = g.PostingId,
                 Reason = g.Reason,
                 EntryDate = g.EntryDate,
+                EntryBy = g.EntryBy,
+                UserName = g.UserName,
             }).AsEnumerable();
             return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
         }
@@ -151,7 +153,8 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 PostingId = g.PostingId,
                 Comment = g.Comment,
                 Reason = g.Reason,
-                EntryDate = g.EntryDate,
+                EntryBy = g.EntryBy,
+                UserName = g.UserName,
             }).AsEnumerable();
             return this.Response(MessageTypes.Success, string.Empty, advancedsearch);
         }

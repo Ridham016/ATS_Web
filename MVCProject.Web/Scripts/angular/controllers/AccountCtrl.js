@@ -111,6 +111,7 @@
                             $scope.showOtp = true;
                             $scope.UserId = res.data.Result;
                             $scope.CountDown($scope.showOtp);
+                            document.getElementById('first').focus();
                         } else {
                             toastr.error(data.Message, errorTitle);
                         }
@@ -118,6 +119,22 @@
                 });
             }
         };
+
+        $scope.onPaste = function (event, index) {
+            event.preventDefault();
+            console.log(event);
+            const pastedText = (event.originalEvent || event).clipboardData.getData('text').trim();
+            console.log(pastedText);
+            $scope.otp.first = pastedText[0];
+            $scope.otp.second = pastedText[1];
+            $scope.otp.third = pastedText[2];
+            $scope.otp.fourth = pastedText[3];
+            $scope.otp.fifth = pastedText[4];
+            $scope.otp.sixth = pastedText[5];
+            $scope.validateOtp($scope.otp);
+            document.getElementById('sixth').focus();
+        };
+
 
         $scope.ResendCode = function () {
             AccountService.GenerateCode($scope.user).then(function (res) {
@@ -129,7 +146,8 @@
                         $scope.showOtp = true;
                         $scope.UserId = res.data.Result;
                         $scope.CountDown($scope.showOtp);
-                        $scope.showOtp = false;
+                        $scope.showResend = false;
+                        document.getElementById('first').focus();
                     } else {
                         toastr.error(data.Message, errorTitle);
                     }
@@ -138,20 +156,22 @@
         }
 
         $scope.validateOtp = function (otp) {
-            var otpFull = otp.first + otp.second + otp.third + otp.fourth + otp.fifth + otp.sixth;
-            AccountService.ValidateOtp(otpFull).then(function (res) {
-                if (res) {
-                    var data = res.data;
-                    if (data.MessageType == messageTypes.Success) {
-                        toastr.success(data.Message, successTitle);
-                        $scope.showForgotPassword = false;
-                        $scope.showOtp = false;
-                        $scope.showResetPassword = true;
-                    } else {
-                        toastr.error(data.Message, errorTitle);
+            if (otp.sixth != null) {
+                var otpFull = otp.first + otp.second + otp.third + otp.fourth + otp.fifth + otp.sixth;
+                AccountService.ValidateOtp(otpFull).then(function (res) {
+                    if (res) {
+                        var data = res.data;
+                        if (data.MessageType == messageTypes.Success) {
+                            toastr.success(data.Message, successTitle);
+                            $scope.showForgotPassword = false;
+                            $scope.showOtp = false;
+                            $scope.showResetPassword = true;
+                        } else {
+                            toastr.error(data.Message, errorTitle);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         $scope.ResetPassword = function (frmResetPassword) {
@@ -175,7 +195,6 @@
         };
         $scope.CountDown = function (showOtp) {
             if (showOtp == true) {
-                debugger
                 $scope.countdown = "01:00";
 
                 var totalSeconds = 60;

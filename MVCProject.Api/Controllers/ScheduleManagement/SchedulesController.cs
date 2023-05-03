@@ -172,7 +172,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 StatusId = StatusId,
                 IsActive = true,
                 Level = level,
-                EntryBy = "1",
+                EntryBy = UserContext.UserId,
                 EntryDate = DateTime.Now
             };
             entities.ATS_ActionHistory.AddObject(addtoaction);
@@ -241,7 +241,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 Venue = data.Venue,
                 Mode = data.Mode,
                 IsActive = true,
-                EntryBy = "1",
+                EntryBy = UserContext.UserId,
                 EntryDate = DateTime.Now
             });
             if (!(this.entities.SaveChanges() > 0))
@@ -354,7 +354,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                     ActionId = ActionId,
                     Description = Reason.Reason,
                     EntryDate = DateTime.Now,
-                    EntryBy = "1",
+                    EntryBy = UserContext.UserId,
                     IsActive = true
                 });
             }
@@ -386,7 +386,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 ActionId = ActionId,
                 Description = data.Description,
                 EntryDate = DateTime.Now,
-                EntryBy = "1",
+                EntryBy = UserContext.UserId,
                 IsActive = true
             });
             if (!(this.entities.SaveChanges() > 0))

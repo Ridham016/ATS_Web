@@ -31,7 +31,7 @@ namespace MVCProject.Api.Controllers.CompanyMaster
             if (companyData == null)
             {
                 data.EntryDate = DateTime.Now;
-                data.EntryBy = "1";
+                data.EntryBy = UserContext.UserId;
                 entities.ATS_CompanyMaster.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
@@ -50,6 +50,7 @@ namespace MVCProject.Api.Controllers.CompanyMaster
                 companyData.IsActive = data.IsActive;
                 companyData.EntryDate = DateTime.Now;
                 companyData.UpdateDate = DateTime.Now;
+                companyData.UpdateBy = UserContext.UserId;
                 this.entities.ATS_CompanyMaster.ApplyCurrentValues(companyData);
                 if (!(this.entities.SaveChanges() > 0))
                 {

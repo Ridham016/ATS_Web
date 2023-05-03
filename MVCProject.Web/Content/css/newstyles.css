@@ -133,7 +133,7 @@
 	--ats-border-radius-pill: 50rem;
 	--ats-link-color: #6D6D6D;
 	--ats-dark-nav-link-color: #53455e;
-	--ats-link-hover-color: var(--secondary-color);
+	--ats-link-hover-color: var(--primary-color);
 	--ats-code-color: #39afd1;
 	--ats-highlight-bg: #fcf8e3;
 	--ats-dark-side-nav: #161d2b;
@@ -14400,16 +14400,16 @@ span.event-detail {
 
 .side-nav-second-level a::before, .side-nav-third-level a::before, .side-nav-forth-level a::before{
 	content: "";
-    height: 0.125rem;
-    width: 0.375rem;
-    background: var(--primary-color);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    transition: all 0.5s;
+	height: 0.125rem;
+	width: 0.375rem;
+	background: var(--primary-color);
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	transition: all 0.5s;
 }
 
 .side-nav-second-level a:hover:before, .side-nav-third-level a:hover:before, .side-nav-forth-level a:hover:before{
@@ -14514,9 +14514,9 @@ span.event-detail {
 }
 
 .side-nav .side-nav-second-level .menuitem-active>a {
-    color: var(--ats-menu-item-active-color);
-    font-weight: 400;
-    background-color: var(--ats-menu-item-hover-bg-color);
+	color: var(--ats-menu-item-active-color);
+	font-weight: 400;
+	background-color: var(--ats-menu-item-hover-bg-color);
 	border: none;
 
 }
@@ -22267,36 +22267,36 @@ a.forgot-password {
 
 @media only screen and (max-width: 979px) {
   .ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
+	-ms-flex-preferred-size: calc(50% - 30px);
+	flex-basis: calc(50% - 30px);
   }
   .ag-courses-item_title {
-    font-size: 24px;
+	font-size: 24px;
   }
 }
 
 @media only screen and (max-width: 767px) {
   .ag-format-container {
-    width: 96%;
+	width: 96%;
   }
 
 }
 @media only screen and (max-width: 639px) {
   .ag-courses_item {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%;
   }
   .ag-courses-item_title {
-    min-height: 72px;
-    line-height: 1;
+	min-height: 72px;
+	line-height: 1;
 
-    font-size: 24px;
+	font-size: 24px;
   }
   .card-content {
-    padding: 22px 40px;
+	padding: 22px 40px;
   }
   .ag-courses-item_date-box {
-    font-size: 16px;
+	font-size: 16px;
   }
 }*/
 

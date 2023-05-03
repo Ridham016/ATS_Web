@@ -1690,6 +1690,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Otp.
+        /// </summary>
+        public static string InvalidOtp {
+            get {
+                return ResourceManager.GetString("InvalidOtp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory.
         /// </summary>
         public static string Inventory {

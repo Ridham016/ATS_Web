@@ -118,7 +118,7 @@ namespace MVCProject.Api.Controllers.Account
             bool IsValid = SecurityUtility.IsCodeValid(code);
             if (!IsValid)
             {
-                return this.Response(MessageTypes.Error, Resource.Error);
+                return this.Response(MessageTypes.Error, Resource.InvalidOtp);
             }
             return this.Response(MessageTypes.Success, Resource.ValidOtp);
         }

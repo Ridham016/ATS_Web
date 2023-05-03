@@ -152,7 +152,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             {
                 data.EntryDate = DateTime.Now;
                 data.ApplicantDate = DateTime.Now;
-                data.EntryBy = "1";
+                data.EntryBy = UserContext.UserId;
                 entities.ATS_ApplicantRegister.AddObject(data);
                 this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
                 {
@@ -160,7 +160,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                     StatusId = 1,
                     Level = 0,
                     IsActive = true,
-                    EntryBy = "1",
+                    EntryBy = UserContext.UserId,
                     EntryDate = DateTime.Now
                 });
                 if (!(this.entities.SaveChanges() > 0))
@@ -197,6 +197,7 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 applicantData.IsActive = data.IsActive;
                 applicantData.PostingId = data.PostingId;
                 applicantData.ExpectedJoiningDate = data.ExpectedJoiningDate;
+                applicantData.UpdatedBy = UserContext.UserId;
                 applicantData.UpdateDate = DateTime.Now;
                 this.entities.ATS_ApplicantRegister.ApplyCurrentValues(applicantData);
                 if (!(this.entities.SaveChanges() > 0))

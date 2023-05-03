@@ -341,6 +341,7 @@
     <Content Include="Content\images\company-logo.png" />
     <Content Include="Content\images\download.svg" />
     <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\Forgot-Password.svg" />
     <Content Include="Content\images\ghost.png" />
     <Content Include="Content\images\hired.svg" />
     <Content Include="Content\images\hp.png" />
@@ -360,8 +361,10 @@
     <Content Include="Content\images\nothumb.png" />
     <Content Include="Content\images\openhand.cur" />
     <Content Include="Content\images\openings-icon.svg" />
+    <Content Include="Content\images\OTP.svg" />
     <Content Include="Content\images\PDFBG.jpg" />
     <Content Include="Content\images\reload.gif" />
+    <Content Include="Content\images\Reset-Password.svg" />
     <Content Include="Content\images\ringLoading.gif" />
     <Content Include="Content\images\safe-logo.png" />
     <Content Include="Content\images\Safty1.jpg" />

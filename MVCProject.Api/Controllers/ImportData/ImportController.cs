@@ -76,9 +76,9 @@ namespace MVCProject.Api.Controllers.ImportData
                     var CurrentLocation = row.GetCell(16)?.StringCellValue?.Trim();
                     var PreferedLocation = row.GetCell(17)?.StringCellValue?.Trim();
                     var IsActive = row.GetCell(18)?.BooleanCellValue;
-                    var EntryBy = row.GetCell(19)?.StringCellValue?.Trim();
+                    var EntryBy = row.GetCell(19)?.NumericCellValue;
                     var EntryDate = row.GetCell(20)?.DateCellValue;
-                    var UpdatedBy = row.GetCell(21)?.StringCellValue?.Trim();
+                    var UpdatedBy = row.GetCell(21)?.NumericCellValue;
                     var UpdateDate = row.GetCell(22)?.DateCellValue;
                     var SkillDescription = row.GetCell(23)?.StringCellValue?.Trim();
                     var PortfolioLink = row.GetCell(24)?.StringCellValue?.Trim();
@@ -106,9 +106,9 @@ namespace MVCProject.Api.Controllers.ImportData
                         CurrentCTC = CurrentCTC,
                         ExpectedCTC = ExpectedCTC,
                         NoticePeriod = NoticePeriod,
-                        EntryBy = EntryBy,
+                        EntryBy = (int?)EntryBy,
                         EntryDate = (DateTime)EntryDate,
-                        UpdatedBy = UpdatedBy,
+                        UpdatedBy = (int?)UpdatedBy,
                         UpdateDate = (DateTime)UpdateDate,
                         CurrentLocation = CurrentLocation,
                         PreferedLocation = PreferedLocation,
@@ -315,7 +315,7 @@ namespace MVCProject.Api.Controllers.ImportData
                 {
                     applicant.EntryDate = DateTime.Now;
                     applicant.ApplicantDate = DateTime.Now;
-                    applicant.EntryBy = "1";
+                    applicant.EntryBy = UserContext.UserId;
                     entities.ATS_ApplicantRegister.AddObject(applicant);
                     this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
                     {
@@ -323,7 +323,7 @@ namespace MVCProject.Api.Controllers.ImportData
                         StatusId = 1,
                         Level = 0,
                         IsActive = true,
-                        EntryBy = "1",
+                        EntryBy = UserContext.UserId,
                         EntryDate = DateTime.Now
                     });
                     if (!(this.entities.SaveChanges() > 0))

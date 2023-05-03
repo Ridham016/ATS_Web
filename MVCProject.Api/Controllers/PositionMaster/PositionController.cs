@@ -31,7 +31,7 @@ namespace MVCProject.Api.Controllers.PositionMaster
             if (positionData == null)
             {
                 data.EntryDate = DateTime.Now;
-                data.EntryBy = "1";
+                data.EntryBy = UserContext.UserId;
                 entities.ATS_PositionMaster.AddObject(data);
                 if (!(this.entities.SaveChanges() > 0))
                 {
@@ -47,6 +47,7 @@ namespace MVCProject.Api.Controllers.PositionMaster
                 positionData.IsActive = data.IsActive;
                 positionData.EntryDate = DateTime.Now;
                 positionData.UpdateDate = DateTime.Now;
+                positionData.UpdateBy = UserContext.UserId;
                 this.entities.ATS_PositionMaster.ApplyCurrentValues(positionData);
                 if (!(this.entities.SaveChanges() > 0))
                 {

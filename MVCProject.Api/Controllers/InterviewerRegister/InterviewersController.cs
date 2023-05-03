@@ -104,6 +104,7 @@ namespace MVCProject.Api.Controllers.Interviewers
                 InterviewerData.InterviewerPhone = data.InterviewerPhone;
                 InterviewerData.CompanyId = data.CompanyId;
                 InterviewerData.Is_Active = data.Is_Active;
+                InterviewerData.UpdatedBy = UserContext.UserId;
                 InterviewerData.UpdateDate = DateTime.Now;
 
                 this.entities.ATS_Interviewer.ApplyCurrentValues(InterviewerData);
