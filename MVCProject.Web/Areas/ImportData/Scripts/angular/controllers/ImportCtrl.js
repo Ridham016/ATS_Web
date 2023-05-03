@@ -68,6 +68,8 @@
                     else if (response.data.MessageType == messageTypes.Error) {
                         $scope.applicant = response.data.Result.Data;
                         $scope.errors = response.data.Result.Errors;
+                        $scope.er = response.data.Result;
+                        console.log($scope.er);
                         if ($scope.errors) {
                             for (var i = 0; i < $scope.errors.length; i++) {
                                 var errorRow = parseInt($scope.errors[i].split(":")[0]);
@@ -85,9 +87,9 @@
                 else {
                     toastr.error("No Response", errorTitle);
                 }
-                
+
             });
-           
+
 
         };
         $scope.submitApplicants = function (applicant) {

@@ -45,7 +45,7 @@
                             <button type="submit" class="btn btn-primary m-b-5 me-2" ng-click="getSampleExcel()" @*ng-disabled="frmRegister.$invalid"*@>
                                 Get Sample Excel
                             </button>
-                            <button type="submit" class="btn btn-success waves-effect w-md me-2 waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0">
+                            <button type="submit" class="btn btn-success waves-effect w-md me-2 waves-light m-b-5" ng-click="submitApplicants(applicantDetailScope)" ng-disabled="errors.length>0 || er>0">
                                 <i class="fa fa-plus me-2"></i>
                                 Add Applicants
                             </button>

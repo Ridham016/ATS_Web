@@ -438,15 +438,33 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
             ISheet sheet = workbook.CreateSheet("Sheet1");
             IRow headerRow = sheet.CreateRow(0);
             string[] h = headers[0].Split(',');
+            ICellStyle headerStyle = workbook.CreateCellStyle();
+            headerStyle.FillForegroundColor = IndexedColors.LightOrange.Index;
+            headerStyle.FillPattern = FillPattern.SolidForeground;
+            headerStyle.BorderBottom = BorderStyle.Medium;
+            headerStyle.BottomBorderColor = IndexedColors.Black.Index;
+            headerStyle.BorderLeft = BorderStyle.Medium;
+            headerStyle.LeftBorderColor = IndexedColors.Black.Index;
+            headerStyle.BorderRight = BorderStyle.Medium;
+            headerStyle.RightBorderColor = IndexedColors.Black.Index;
+            headerStyle.BorderTop = BorderStyle.Medium;
+            headerStyle.TopBorderColor = IndexedColors.Black.Index;
+            headerStyle.Alignment = HorizontalAlignment.Center;
+            headerStyle.VerticalAlignment = VerticalAlignment.Center;
+            headerStyle.WrapText = true;
             for (int i = 0; i < h.Length; i++)
             {
-                headerRow.CreateCell(i).SetCellValue(h[i]);
+                ICell cell = headerRow.CreateCell(i);
+                cell.SetCellValue(h[i]);
+                cell.CellStyle = headerStyle;
             }
             //AddHeaderRow(sheet);
             int rowNum = 1;
 
             foreach (var applicant in applicantlist)
             {
+                var dob = applicant.DateOfBirth ?? DateTime.MinValue;
+                var appldate = applicant.ApplicantDate ?? DateTime.MinValue;
                 IRow row = sheet.CreateRow(rowNum++);
                 row.CreateCell(0).SetCellValue(applicant.ApplicantId);
                 row.CreateCell(1).SetCellValue(applicant.FirstName);
@@ -455,10 +473,10 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 row.CreateCell(4).SetCellValue(applicant.Email);
                 row.CreateCell(5).SetCellValue(applicant.Phone);
                 row.CreateCell(6).SetCellValue(applicant.Address);
-                row.CreateCell(7).SetCellValue((DateTime)applicant.DateOfBirth);
+                row.CreateCell(7).SetCellValue(dob.ToString("dd/MM/yyyy"));
                 row.CreateCell(8).SetCellValue(applicant.CurrentCompany);
                 row.CreateCell(9).SetCellValue(applicant.CurrentDesignation);
-                row.CreateCell(10).SetCellValue((DateTime)applicant.ApplicantDate);
+                row.CreateCell(10).SetCellValue(appldate.ToString("dd/MM/yyyy"));
                 if (applicant.TotalExperience != null)
                 {
                     row.CreateCell(11).SetCellValue(applicant.TotalExperience);
@@ -471,7 +489,6 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 {
                     row.CreateCell(13).SetCellValue(applicant.CurrentCTC);
                 }
-                //row.CreateCell(13).SetCellValue()=;
                 if (applicant.ExpectedCTC != null)
                 {
                     row.CreateCell(14).SetCellValue(applicant.ExpectedCTC);
@@ -499,7 +516,10 @@ namespace MVCProject.Api.Controllers.ApplicantRegister
                 row.CreateCell(25).SetCellValue(applicant.FilePath);
                 row.CreateCell(26).SetCellValue(applicant.FileRelativePath);
             }
-
+            for (int i = 0; i < 27; i++)
+            {
+                sheet.AutoSizeColumn(i);
+            }
             string filePath = HttpContext.Current.Server.MapPath("~/Attachments/Temp/ApplicantSheet.xlsx");
             string fileName = Path.GetFileName("ApplicantSheet.xlsx");
             if (File.Exists(filePath))

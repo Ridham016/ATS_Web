@@ -372,9 +372,9 @@
             })
         }
 
-        $scope.Export = function (headers) {
+        $scope.Export = function () {
             debugger
-            RegistrationService.Export(headers).then(function (res) {
+            RegistrationService.Export($scope.headers).then(function (res) {
                 //var blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
                 //var filename = 'data.xlsx';
                 ////(blob, filename);

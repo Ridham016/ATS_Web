@@ -12,6 +12,7 @@ using System.Security.Policy;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
+using System.Web.WebPages;
 using Elmah;
 using iTextSharp.text;
 using MVCProject.Api.Models;
@@ -30,6 +31,7 @@ namespace MVCProject.Api.Controllers.ImportData
         //[Route("importData")]
         public ApiResponse ImportData()
         {
+            int flag = 0;
             try
             {
                 var httpRequest = HttpContext.Current.Request;
@@ -44,7 +46,7 @@ namespace MVCProject.Api.Controllers.ImportData
                 var workbook = new XSSFWorkbook(stream);
                 var sheet = workbook.GetSheetAt(0);
                 var validationErrors = new List<string>();
-                int flag = 0;
+                //int flag = 0;
 
                 var list = new List<ATS_ApplicantRegister>();
                 for (int i = 1; i <= sheet.LastRowNum; i++)
@@ -53,6 +55,7 @@ namespace MVCProject.Api.Controllers.ImportData
                     if (row == null || row.Cells.Count < 27)
                     {
                         flag++;
+                        return this.Response(Utilities.MessageTypes.Error, "Invalid Excel Formate", flag);
                     }
                     var FirstName = row.GetCell(0)?.StringCellValue?.Trim();
                     var MiddleName = row.GetCell(1)?.StringCellValue?.Trim();
@@ -158,7 +161,9 @@ namespace MVCProject.Api.Controllers.ImportData
             }
             catch (Exception)
             {
-                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel");
+                flag++;
+                //var er = "Error occurred while importing data: Invalid Data in Excel";
+                return this.Response(Utilities.MessageTypes.Error, "Error occurred while importing data: Invalid Data in Excel", flag);
             }
 
         }
@@ -170,7 +175,6 @@ namespace MVCProject.Api.Controllers.ImportData
             if (applicant.FirstName != null && applicant.FirstName.Any(char.IsDigit))
             {
                 validationErrors.Add("First Name is required.");
-                //validationErrors.Add(new KeyValuePair<int, string>(applicant.Id, "Name should not contain digits."));
             }
             if (applicant.LastName != null && applicant.LastName.Any(char.IsDigit))
             {
@@ -184,14 +188,27 @@ namespace MVCProject.Api.Controllers.ImportData
             {
                 validationErrors.Add("Invalid phone number.");
             }
-            if (applicant.DateOfBirth > DateTime.Now && applicant.DateOfBirth > DateTime.Now.AddYears(-18))
+            if (applicant.DateOfBirth > DateTime.Now || applicant.DateOfBirth > DateTime.Now.AddYears(-18) || applicant.DateOfBirth == null)
             {
-                validationErrors.Add("Invalid DOB.");
+                validationErrors.Add("Invalid Date Of Birth.");
+            }
+            if (applicant.PreferedLocation == null)
+            {
+                validationErrors.Add("Add Prefered Location.");
+            }
+            if (applicant.SkillDescription == null)
+            {
+                validationErrors.Add("Add Skill Description");
+            }
+            if (applicant.ExpectedCTC == null)
+            {
+                validationErrors.Add("Add Expected CTC");
+            }
+            if (applicant.NoticePeriod == null)
+            {
+                validationErrors.Add("Notice Period is required");
             }
             return string.Join(",", validationErrors);
-
-            //}
-
         }
 
         [HttpGet]
@@ -219,18 +236,47 @@ namespace MVCProject.Api.Controllers.ImportData
                 {
                     var property = properties.ElementAt(i);
                     var value = "";
-                    if (property.PropertyType == typeof(string))
+                    if (property.Name == "Phone")
                     {
-                        value = "John";
+                        value = "1234567890";
                     }
-                    else if (property.PropertyType == typeof(int))
+                    else if (property.Name == "Email")
                     {
-                        value = "30";
+                        value = "John@mail.com";
                     }
-                    else if (property.PropertyType == typeof(bool))
+                    else if (property.Name == "ExpectedCTC")
                     {
-                        value = "True";
+                        value = "10 LPA";
                     }
+                    else if (property.Name == "NoticePeriod")
+                    {
+                        value = "15 Days (Comments)";
+                    }
+                    else if (property.PropertyType == typeof(string) && property.Name != "NoticePeriod")
+                    {
+                        value = "Text Value";
+                    }
+                    else if (property.Name == "DateOfBirth")
+                    {
+                        value = DateTime.Now.ToString();
+                    }
+                    else if (property.Name == "Phone")
+                    {
+                        value = "1234567890";
+                    }
+                    else if (property.Name == "Email")
+                    {
+                        value = "John@mail.com";
+                    }
+                    else if (property.Name == "IsActive")
+                    {
+                        value = "TRUE";
+                    }
+                    else if (property.Name == "Address")
+                    {
+                        value = "A Valid Address";
+                    }
+
                     dataRow.CreateCell(i).SetCellValue(value);
                 }
 
