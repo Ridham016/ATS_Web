@@ -131,7 +131,6 @@
                 <div class="card-foot mt-3">
                     <button class="btn me-sm-2"
                             ng-repeat="h in buttons"
-                            data-bs-toggle="modal"
                             ng-click="showModal(h.ButtonId)"
                             ng-class="{'btn-shortlist' : h.ButtonId == 1,
                                        'btn-not-match' : h.ButtonId == 2,
@@ -144,7 +143,7 @@
                     </button>
 
 
-                    <div class="modal fade" id="Modal3" tabindex="-1" ng-init="getCompanyDetails()" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="Modal3" data-bs-backdrop="static" tabindex="-1" ng-init="getCompanyDetails()" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -270,7 +269,7 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="Modal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="Modal7" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -298,7 +297,7 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="Modal4" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -325,7 +324,7 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="Modal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">

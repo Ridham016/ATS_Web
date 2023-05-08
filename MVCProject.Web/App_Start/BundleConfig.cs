@@ -211,6 +211,7 @@ namespace MVCProject
                .Include(BundlePath.js.fullcalendarMin)
                .Include(BundlePath.js.calendar)
                .Include(BundlePath.js.gcal)
+               .Include(BundlePath.js.select2)
                .Include(BundlePath.js.uibootstraptpls));
         }
 

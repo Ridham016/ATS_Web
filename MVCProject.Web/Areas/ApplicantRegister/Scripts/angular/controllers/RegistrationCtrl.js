@@ -10,10 +10,10 @@
             }
         };
     }).controller('RegistrationCtrl', [
-        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonService','$location', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
+        '$scope', 'ngTableParams', 'CommonFunctions', 'CommonService', '$location','$window', '$rootScope','FileService', 'RegistrationService', RegistrationCtrl
     ]);
 
-    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonService, $location, $rootScope, FileService, RegistrationService) {
+    function RegistrationCtrl($scope, ngTableParams, CommonFunctions, CommonService, $location, $window, $rootScope, FileService, RegistrationService) {
         var applicantDetailParams = {};
         $scope.files = [];
         $scope.headers = ["ApplicantId", "FirstName", "MiddleName", "LastName", "Email", "Phone", "Address", "DateOfBirth", "CurrentCompany", "CurrentDesignation", "ApplicantDate", "TotalExperience", "DetailedExperience", "CurrentCTC", "ExpectedCTC", "NoticePeriod", "ReasonForChange", "CurrentLocation", "PreferedLocation", "IsActive", "SkillDescription", "PortfolioLink", "LinkedinLink", "OtherLink", "FileName", "FilePath", "FileRelativePath", "Comment", "EntryBy", "EntryDate", "UpdatedBy", "UpdateDate"];
@@ -47,16 +47,35 @@
             PostingId: '',
             IsActive: true
         };
+        $scope.jobpostingDetailScope = {
+            PostingId: 0,
+            PositionId: '',
+            CompanyId: '',
+            PostingStatusId: 1,
+            Salary: '',
+            IsActive: true
+        };
+        $scope.jobpostingDetail = {};
 
         var params = $location.search();
         if (params.PostingId != null) {
-            $scope.applicantDetailScope.PostingId = JSON.parse(params.PostingId);
+            $scope.applicantDetailScope.PostingId = params.PostingId.toString();
             console.log($scope.applicantDetailScope);
         }
         else {
             $scope.applicantDetailScope.PostingId = '';
         }
 
+        $scope.Init = function () {
+            if (sessionStorage.getItem("JobPostingErrorMessage")) {
+                toastr.error(sessionStorage.getItem("JobPostingErrorMessage"), errorTitle);
+                sessionStorage.removeItem("JobPostingErrorMessage");
+            }
+            if (sessionStorage.getItem("JobPostingSuccessMessage")) {
+                toastr.success(sessionStorage.getItem("JobPostingSuccessMessage"), successTitle);
+                sessionStorage.removeItem("JobPostingSuccessMessage");
+            }
+        }();
 
         $scope.Check = function (textInput, applicantDetailScope) {
             debugger
@@ -302,6 +321,7 @@
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         $scope.applicantDetailScope.ExpectedJoiningDate = new Date($scope.applicantDetailScope.ExpectedJoiningDate);
+                        $scope.applicantDetailScope.PostingId = JSON.stringify($scope.applicantDetailScope.PostingId);
                         $scope.frmRegister.$setSubmitted();
                         angular.forEach($scope.frmRegister.$error, function (controls) {
                             angular.forEach(controls, function (control) {
@@ -417,6 +437,135 @@
 
             });
         }
+
+        $scope.getCompanyDetails = function () {
+            RegistrationService.GetCompanyDetails().then(function (res) {
+                $scope.companyDetails = res.data.Result;
+            })
+        }
+
+        $scope.getPostingStatus = function () {
+            RegistrationService.GetPostingStatus().then(function (res) {
+                $scope.postingStatusDetails = res.data.Result;
+            })
+        }
+
+        //$scope.getPositionDetails = JobPostingService.GetPositionDetails();
+
+        //$scope.$watch('Position', function (newValue, oldValue) {
+        //    if (newValue !== oldValue && newValue != null) {
+        //        debugger
+        //        $scope.jobpostingDetailScope.PositionId = newValue.description.Id;
+        //        console.log($scope.jobpostingDetailScope);
+        //        console.log($scope.jobpostingDetail);
+        //    }
+        //});
+
+        $scope.Position = function (selected) {
+            if (selected) {
+                if (selected.originalObject.Id) {
+                    $scope.jobpostingDetailScope.PositionId = selected.originalObject.Id;
+                    console.log($scope.jobpostingDetailScope);
+                }
+                else {
+                    $scope.positionDetail = {
+                        Id: '',
+                        PositionName: selected.originalObject,
+                        IsActive: true
+                    };
+                }
+            }
+        };
+
+        $scope.getPositionDetails = function () {
+            RegistrationService.GetPositionDetails().then(function (res) {
+                if (res) {
+                    $scope.jobpostingDetail = res.data.Result.map(function (item) {
+                        return {
+                            Id: item.Id,
+                            PositionName: item.PositionName
+                        };
+                    });
+                }
+            })
+        }
+
+        $scope.onSearchCompletedCallback = function (str) {
+            if ($scope.jobpostingDetail.findIndex(x => x.PositionName === str) === -1) {
+                $scope.positionDetail.push({
+                    Id: '',
+                    PositionName: str
+                });
+            }
+        };
+
+
+        $scope.SavePostingDetails = function (jobpostingDetailScope) {
+            if (jobpostingDetailScope.Id == null && $scope.positionDetail != null) {
+                RegistrationService.PositionRegister($scope.positionDetail).then(function (res) {
+                    jobpostingDetailScope.PositionId = res.data.Result;
+                    RegistrationService.Register(jobpostingDetailScope).then(function (res) {
+                        if (res) {
+                            if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
+                                sessionStorage.setItem("JobPostingSuccessMessage", res.data.Message);
+                                window.location.href = '../../ApplicantRegister/Registration#?PostingId=' + res.data.Result;
+                                location.reload();
+                            } else if (res.data.MessageType == messageTypes.Error) {
+                                sessionStorage.setItem("JobPostingErrorMessage", res.data.Message);
+                            } else if (res.data.MessageType == messageTypes.Warning) {
+                                toastr.warning(res.data.Message, warningTitle);
+                            }
+                        }
+
+                    });
+                })
+            }
+            else {
+                RegistrationService.Register(jobpostingDetailScope).then(function (res) {
+                    if (res) {
+                        if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
+                            sessionStorage.setItem("JobPostingSuccessMessage", res.data.Message);
+                            window.location.href = '../../ApplicantRegister/Registration#?PostingId=' + res.data.Result;
+                            location.reload();
+                        } else if (res.data.MessageType == messageTypes.Error) {
+                            sessionStorage.setItem("JobPostingErrorMessage", res.data.Message);
+                        } else if (res.data.MessageType == messageTypes.Warning) {
+                            toastr.warning(res.data.Message, warningTitle);
+                        }
+                    }
+
+                });
+            }
+
+        }
     }
 })();
 
+
+
+const optionFormat = (item) => {
+    if (!item.id) {
+        return item.text;
+    }
+
+    var span = document.createElement('span');
+    var template = '';
+
+    template += '<div class="d-flex align-items-center">';
+    template += '<div class="d-flex flex-column">'
+    template += '<span class="font-16 fw-bold lh-1">' + item.text + '</span>';
+    template += '<span class="text-muted font-12">' + item.element.getAttribute('data-kt-rich-content-subcontent') + '</span>';
+    template += '</div>';
+    template += '</div>';
+
+    span.innerHTML = template;
+
+    return $(span);
+}
+
+// Init Select2 --- more info: https://select2.org/
+$('#kt_docs_select2_rich_content').select2({
+    minimumResultsForSearch: Infinity,
+    templateSelection: optionFormat,
+    templateResult: optionFormat
+});

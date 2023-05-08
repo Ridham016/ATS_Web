@@ -6,6 +6,66 @@
     ]);
     function DashboardCtrl($scope, uiCalendarConfig, $timeout, $interval, $rootScope, CommonEnums, DashboardService) {
         var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c', '#ffa21d'];
+        var data = [0,0,0,0,0,0,0,0];
+        var optionDonut = {
+            chart: {
+                type: 'donut',
+                width: '100%',
+                height: 400
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            plotOptions: {
+                pie: {
+                    customScale: 0.8,
+                    donut: {
+                        size: '60%',
+                    },
+                    offsetY: 20,
+                },
+                stroke: {
+                    colors: undefined
+                }
+            },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 800,
+                animateGradually: {
+                    enabled: true,
+                    delay: 150
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 350
+                }
+            },
+            colors: colorPalette,
+            title: {
+                text: 'Applicant Status',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    color: '#000'
+                },
+            },
+            series: data,
+            labels: ['Registered', 'Shortlisted', 'Discarded', 'Interview Scheduled', 'Hold', 'Hired', 'Rejected', 'Interview Cancelled'],
+            legend: {
+                position: 'bottom'
+            }
+        }
+        var donut = new ApexCharts(
+            document.querySelector("#donut"),
+            optionDonut
+        )
+
+            donut.render();
+        $timeout(function () {
+        }, 200).then(function () {
+        })
 
         $scope.getCounts = function (time) {
             $scope.timeFrame = time;
@@ -13,6 +73,17 @@
                 if (res) {
                     if (res.data.MessageType = messageTypes.Success) {
                         $scope.Counts = res.data.Result;
+                        if (data) {
+                            data = [];
+                        }
+                        data.push($scope.Counts.Registered);
+                        data.push($scope.Counts.Shortlisted);
+                        data.push($scope.Counts.Discarded);
+                        data.push($scope.Counts.InterviewScheduled);
+                        data.push($scope.Counts.Hold);
+                        data.push($scope.Counts.ApplicantsHired);
+                        data.push($scope.Counts.Rejected);
+                        data.push($scope.Counts.InterviewCancelled);
                         $.fn.jQuerySimpleCounter = function (options) {
                             var settings = $.extend({
                                 start: 0,
@@ -40,53 +111,8 @@
                         $('#number2').jQuerySimpleCounter({ end: $scope.Counts.JobOpenings });
                         $('#number3').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsRegistered });
                         $('#number4').jQuerySimpleCounter({ end: $scope.Counts.ApplicantsHired });
-
-                        var optionDonut = {
-                            chart: {
-                                type: 'donut',
-                                width: '100%',
-                                height: 400
-                            },
-                            dataLabels: {
-                                enabled: false,
-                            },
-                            plotOptions: {
-                                pie: {
-                                    customScale: 0.8,
-                                    donut: {
-                                        size: '60%',
-                                    },
-                                    offsetY: 20,
-                                },
-                                stroke: {
-                                    colors: undefined
-                                }
-                            },
-                            colors: colorPalette,
-                            title: {
-                                text: 'Applicant Status',
-                                align: 'center',
-                                style: {
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    color: '#000'
-                                },
-                            },
-                            series: [$scope.Counts.Registered, $scope.Counts.Shortlisted, $scope.Counts.Discarded, $scope.Counts.InterviewScheduled, $scope.Counts.Hold, $scope.Counts.ApplicantsHired, $scope.Counts.Rejected, $scope.Counts.InterviewCancelled],
-                            labels: ['Registered', 'Shortlisted', 'Discarded', 'Interview Scheduled', 'Hold', 'Hired', 'Rejected', 'Interview Cancelled'],
-                            legend: {
-                                position: 'bottom'
-                            }
-                        }
-                        var donut = new ApexCharts(
-                            document.querySelector("#donut"),
-                            optionDonut
-                        )
-
-                        $timeout(function () {
-                        }, 200).then(function () {
-                            donut.render();
-                        })
+                        console.log(data);
+                        donut.updateSeries(data);
                         //donut.render();
                         //window.dispatchEvent(new Event('resize'));
                     } else if (res.data.MessageType == messageTypes.Error) {

@@ -178,11 +178,8 @@
                     }
                     else if (res.data.MessageType == messageTypes.Error) {// Error
                         debugger
-                        toastr.error(res.data.Message, errorTitle);
-                        $timeout(function () {
-                        }, 1000).then(function () {
-                            $window.location.href = '../../ScheduleManagement/Schedule';
-                        })
+                        sessionStorage.setItem("JobPostingErrorMessage", res.data.Message);
+                        $window.location.href = '../../ScheduleManagement/Schedule';
                     }
                     $rootScope.isAjaxLoadingChild = false;
                     CommonFunctions.SetFixHeader();

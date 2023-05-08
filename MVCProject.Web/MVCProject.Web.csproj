@@ -480,6 +480,7 @@
     <Content Include="Scripts\js\jquery.nicescroll.js" />
     <Content Include="Scripts\js\jquery.sliding-tabs.js" />
     <Content Include="Scripts\js\modernizr.min.js" />
+    <Content Include="Scripts\js\select2.min.js" />
     <Content Include="Scripts\js\spectrum.min.js" />
     <Content Include="Scripts\js\switchery.min.js" />
     <Content Include="Scripts\js\ui-bootstrap-tpls.min.js" />

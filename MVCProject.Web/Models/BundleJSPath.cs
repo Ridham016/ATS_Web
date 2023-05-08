@@ -115,6 +115,11 @@ namespace MVCProject.Models
         /// </summary>
         public string fullcalendarMin = jsPath + "fullcalendar.min.js";
 
+        /// <summary>
+        /// select2 JS
+        /// </summary>
+        public string select2 = jsPath + "select2.min.js";
+
 
     }
 }

@@ -20137,7 +20137,7 @@ span.flatpickr-weekday {
 	border-color: var(--ats-gray-300) !important
 }
 
-.select2-container {
+/*.select2-container {
 	width: 100% !important
 }
 
@@ -20312,7 +20312,7 @@ span.flatpickr-weekday {
 .select2-container .select2-search textarea::placeholder {
 	color: var(--ats-gray-500)
 }
-
+*/
 
 [data-simplebar] {
 	position: relative;

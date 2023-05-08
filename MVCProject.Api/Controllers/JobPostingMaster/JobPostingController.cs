@@ -83,7 +83,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Job));
                 }
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Job));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Job), data.PostingId);
             }
             else
             {
@@ -108,7 +108,7 @@ namespace MVCProject.Api.Controllers.JobPostingMaster
                     return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Job);
                 }
 
-                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.Job));
+                return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.UpdatedSuccessfully, Resource.Job), data.PostingId);
             }
         }
 
