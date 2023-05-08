@@ -10,6 +10,7 @@ namespace MVCProject.Controllers
     using System.Net;
     using System.Web.Configuration;
     using System.Web.Mvc;
+    using MVCProject.Utilities;
     using MVCProject.ViewModel;
 
     /// <summary>
@@ -108,7 +109,7 @@ namespace MVCProject.Controllers
             if (this.Session["UserContext"] == null)
             {
                 // No session, redirect to login                
-                this.LogoutUser();
+                this.Logout();
                 return this.RedirectToAction("Login", "Account", new { noSession = "y" });
             }
             else
@@ -120,22 +121,19 @@ namespace MVCProject.Controllers
                     Response.Redirect(url);
                 }
 
-                //    UserContext userContext = (UserContext)this.Session["UserContext"];
-                //UserContext.PagePermission generalPermission = userContext.PageAccess.Where(p => p.PageId == Pages.General.Designation || p.PageId == Pages.General.CommonConfiguartion).FirstOrDefault();
-                //bool hasGeneralAccess = generalPermission.CanWrite || generalPermission.CanRead;
+                UserContext userContext = (UserContext)this.Session["UserContext"];
+                UserContext.PagePermission generalPermission = userContext.PageAccess.Where(p => p.PageId == (int)PageAccess.Dashboard).FirstOrDefault();
+                bool hasGeneralAccess = generalPermission.CanWrite || generalPermission.CanRead;
 
-                //if (hasGeneralAccess)
-                //{
-                //    return RedirectToAction("Index", "Designation", new { area = "Configuration" });
-                //}
-                //else
-                //{
-                //    return this.RedirectToAction("ServerError", "Error", new { id = 404 });
-                //}
-                //}
+                if (hasGeneralAccess)
+                {
+                    return RedirectToAction("Index", "Dashboard", new { area = "Dashboard" });
+                }
+                else
+                {
+                    return this.RedirectToAction("ServerError", "Error", new { id = 404 });
+                }
             }
-
-            return RedirectToAction("Index", "Dashboard", new { area = "Dashboard" });
         }
 
         /// <summary>

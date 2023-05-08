@@ -224,6 +224,17 @@
           <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="ATS_PageAccess">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PageId" Type="int" Nullable="false" />
+          <Property Name="CanRead" Type="bit" Nullable="false" />
+          <Property Name="CanWrite" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="ATS_PositionMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -440,6 +451,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ATS_PageA__RoleI__13DCE752">
+          <End Role="ATS_Roles" Type="Self.ATS_Roles" Multiplicity="1" />
+          <End Role="ATS_PageAccess" Type="Self.ATS_PageAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ATS_PageAccess">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ATS_Sched__Actio__50FB042B">
           <End Role="ATS_ActionHistory" Type="Self.ATS_ActionHistory" Multiplicity="0..1" />
           <End Role="ATS_AdditionalInformation" Type="Self.ATS_AdditionalInformation" Multiplicity="*" />
@@ -559,6 +582,9 @@
           <Parameter Name="PostingId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_JobListing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_PageAccessByRoleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_PositionById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PositionId" Type="int" Mode="In" />
         </Function>
@@ -585,6 +611,7 @@
           <EntitySet Name="ATS_MasterOtherReason" EntityType="Self.ATS_MasterOtherReason" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterPostingStatus" EntityType="Self.ATS_MasterPostingStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_MasterStatus" EntityType="Self.ATS_MasterStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATS_PageAccess" EntityType="Self.ATS_PageAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_PositionMaster" EntityType="Self.ATS_PositionMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_Roles" EntityType="Self.ATS_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATS_Users" EntityType="Self.ATS_Users" Schema="dbo" store:Type="Tables" />
@@ -644,6 +671,10 @@
           <AssociationSet Name="FK__ATS_JobPo__Posti__68336F3E" Association="Self.FK__ATS_JobPo__Posti__68336F3E">
             <End Role="ATS_MasterPostingStatus" EntitySet="ATS_MasterPostingStatus" />
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATS_PageA__RoleI__13DCE752" Association="Self.FK__ATS_PageA__RoleI__13DCE752">
+            <End Role="ATS_Roles" EntitySet="ATS_Roles" />
+            <End Role="ATS_PageAccess" EntitySet="ATS_PageAccess" />
           </AssociationSet>
           <AssociationSet Name="FK__ATS_Sched__Actio__50FB042B" Association="Self.FK__ATS_Sched__Actio__50FB042B">
             <End Role="ATS_ActionHistory" EntitySet="ATS_ActionHistory" />
@@ -713,6 +744,7 @@
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="ATS_Users" Relationship="Self.FK__ATS_Users__RoleI__07E124C1" FromRole="ATS_Roles" ToRole="ATS_Users" />
+          <NavigationProperty Name="ATS_PageAccess" Relationship="ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752" FromRole="ATS_Roles" ToRole="ATS_PageAccess" />
         </EntityType>
         <EntityType Name="ATS_Users">
           <Key>
@@ -926,6 +958,14 @@
             <End Role="ATS_MasterPostingStatus" EntitySet="ATS_MasterPostingStatus" />
             <End Role="ATS_JobPosting" EntitySet="ATS_JobPosting" />
           </AssociationSet>
+          <EntitySet Name="ATS_PageAccess" EntityType="ATSMVCProjectModel.ATS_PageAccess" />
+          <AssociationSet Name="FK__ATS_PageA__RoleI__13DCE752" Association="ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752">
+            <End Role="ATS_Roles" EntitySet="ATS_Roles" />
+            <End Role="ATS_PageAccess" EntitySet="ATS_PageAccess" />
+          </AssociationSet>
+          <FunctionImport Name="USP_ATS_PageAccessByRoleId" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_PageAccessByRoleId_Result)">
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
           <Property Type="Int32" Name="ApplicantId" Nullable="false" />
@@ -1901,6 +1941,38 @@
             </Principal>
             <Dependent Role="ATS_JobPosting">
               <PropertyRef Name="PostingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="USP_ATS_PageAccessByRoleId_Result">
+          <Property Type="Int32" Name="AccessId" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="Int32" Name="PageId" Nullable="false" />
+          <Property Type="Boolean" Name="CanRead" Nullable="false" />
+          <Property Type="Boolean" Name="CanWrite" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ATS_PageAccess">
+          <Key>
+            <PropertyRef Name="AccessId" />
+          </Key>
+          <Property Name="AccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="PageId" Type="Int32" Nullable="false" />
+          <Property Name="CanRead" Type="Boolean" Nullable="false" />
+          <Property Name="CanWrite" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ATS_Roles" Relationship="ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752" FromRole="ATS_PageAccess" ToRole="ATS_Roles" />
+        </EntityType>
+        <Association Name="FK__ATS_PageA__RoleI__13DCE752">
+          <End Type="ATSMVCProjectModel.ATS_Roles" Role="ATS_Roles" Multiplicity="1" />
+          <End Type="ATSMVCProjectModel.ATS_PageAccess" Role="ATS_PageAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ATS_PageAccess">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2882,6 +2954,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ATS_PageAccess">
+            <EntityTypeMapping TypeName="ATSMVCProjectModel.ATS_PageAccess">
+              <MappingFragment StoreEntitySet="ATS_PageAccess">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CanWrite" ColumnName="CanWrite" />
+                <ScalarProperty Name="CanRead" ColumnName="CanRead" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_PageAccessByRoleId" FunctionName="ATSMVCProjectModel.Store.USP_ATS_PageAccessByRoleId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_PageAccessByRoleId_Result">
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="CanRead" ColumnName="CanRead" />
+                <ScalarProperty Name="CanWrite" ColumnName="CanWrite" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

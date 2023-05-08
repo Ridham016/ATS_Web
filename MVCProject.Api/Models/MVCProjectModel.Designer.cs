@@ -36,6 +36,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Compa__2EFAF1E2", "ATS_CompanyMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_CompanyMaster), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Posit__2FEF161B", "ATS_PositionMaster", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_PositionMaster), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
 [assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_JobPo__Posti__68336F3E", "ATS_MasterPostingStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCProject.Api.Models.ATS_MasterPostingStatus), "ATS_JobPosting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_JobPosting), true)]
+[assembly: EdmRelationshipAttribute("ATSMVCProjectModel", "FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCProject.Api.Models.ATS_Roles), "ATS_PageAccess", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCProject.Api.Models.ATS_PageAccess), true)]
 
 #endregion
 
@@ -390,6 +391,22 @@ namespace MVCProject.Api.Models
             }
         }
         private ObjectSet<ATS_PositionMaster> _ATS_PositionMaster;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ATS_PageAccess> ATS_PageAccess
+        {
+            get
+            {
+                if ((_ATS_PageAccess == null))
+                {
+                    _ATS_PageAccess = base.CreateObjectSet<ATS_PageAccess>("ATS_PageAccess");
+                }
+                return _ATS_PageAccess;
+            }
+        }
+        private ObjectSet<ATS_PageAccess> _ATS_PageAccess;
 
         #endregion
 
@@ -545,6 +562,14 @@ namespace MVCProject.Api.Models
         public void AddToATS_PositionMaster(ATS_PositionMaster aTS_PositionMaster)
         {
             base.AddObject("ATS_PositionMaster", aTS_PositionMaster);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ATS_PageAccess EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToATS_PageAccess(ATS_PageAccess aTS_PageAccess)
+        {
+            base.AddObject("ATS_PageAccess", aTS_PageAccess);
         }
 
         #endregion
@@ -1156,6 +1181,25 @@ namespace MVCProject.Api.Models
             }
     
             return base.ExecuteFunction<USP_ATS_JobDescription_Result>("USP_ATS_JobDescription", postingIdParameter);
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="roleId">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_PageAccessByRoleId_Result> USP_ATS_PageAccessByRoleId(Nullable<global::System.Int32> roleId)
+        {
+            ObjectParameter roleIdParameter;
+            if (roleId.HasValue)
+            {
+                roleIdParameter = new ObjectParameter("RoleId", roleId);
+            }
+            else
+            {
+                roleIdParameter = new ObjectParameter("RoleId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_PageAccessByRoleId_Result>("USP_ATS_PageAccessByRoleId", roleIdParameter);
         }
 
         #endregion
@@ -6099,6 +6143,232 @@ namespace MVCProject.Api.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="ATS_PageAccess")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ATS_PageAccess : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ATS_PageAccess object.
+        /// </summary>
+        /// <param name="accessId">Initial value of the AccessId property.</param>
+        /// <param name="roleId">Initial value of the RoleId property.</param>
+        /// <param name="pageId">Initial value of the PageId property.</param>
+        /// <param name="canRead">Initial value of the CanRead property.</param>
+        /// <param name="canWrite">Initial value of the CanWrite property.</param>
+        public static ATS_PageAccess CreateATS_PageAccess(global::System.Int32 accessId, global::System.Int32 roleId, global::System.Int32 pageId, global::System.Boolean canRead, global::System.Boolean canWrite)
+        {
+            ATS_PageAccess aTS_PageAccess = new ATS_PageAccess();
+            aTS_PageAccess.AccessId = accessId;
+            aTS_PageAccess.RoleId = roleId;
+            aTS_PageAccess.PageId = pageId;
+            aTS_PageAccess.CanRead = canRead;
+            aTS_PageAccess.CanWrite = canWrite;
+            return aTS_PageAccess;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AccessId
+        {
+            get
+            {
+                return _AccessId;
+            }
+            set
+            {
+                if (_AccessId != value)
+                {
+                    OnAccessIdChanging(value);
+                    ReportPropertyChanging("AccessId");
+                    _AccessId = StructuralObject.SetValidValue(value, "AccessId");
+                    ReportPropertyChanged("AccessId");
+                    OnAccessIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _AccessId;
+        partial void OnAccessIdChanging(global::System.Int32 value);
+        partial void OnAccessIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value, "RoleId");
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private global::System.Int32 _RoleId;
+        partial void OnRoleIdChanging(global::System.Int32 value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PageId
+        {
+            get
+            {
+                return _PageId;
+            }
+            set
+            {
+                OnPageIdChanging(value);
+                ReportPropertyChanging("PageId");
+                _PageId = StructuralObject.SetValidValue(value, "PageId");
+                ReportPropertyChanged("PageId");
+                OnPageIdChanged();
+            }
+        }
+        private global::System.Int32 _PageId;
+        partial void OnPageIdChanging(global::System.Int32 value);
+        partial void OnPageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean CanRead
+        {
+            get
+            {
+                return _CanRead;
+            }
+            set
+            {
+                OnCanReadChanging(value);
+                ReportPropertyChanging("CanRead");
+                _CanRead = StructuralObject.SetValidValue(value, "CanRead");
+                ReportPropertyChanged("CanRead");
+                OnCanReadChanged();
+            }
+        }
+        private global::System.Boolean _CanRead;
+        partial void OnCanReadChanging(global::System.Boolean value);
+        partial void OnCanReadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean CanWrite
+        {
+            get
+            {
+                return _CanWrite;
+            }
+            set
+            {
+                OnCanWriteChanging(value);
+                ReportPropertyChanging("CanWrite");
+                _CanWrite = StructuralObject.SetValidValue(value, "CanWrite");
+                ReportPropertyChanged("CanWrite");
+                OnCanWriteChanged();
+            }
+        }
+        private global::System.Boolean _CanWrite;
+        partial void OnCanWriteChanging(global::System.Boolean value);
+        partial void OnCanWriteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles")]
+        public ATS_Roles ATS_Roles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ATS_Roles> ATS_RolesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ATS_Roles>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ATS_Roles>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_Roles", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="ATS_PositionMaster")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -6540,6 +6810,28 @@ namespace MVCProject.Api.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_Users>("ATSMVCProjectModel.FK__ATS_Users__RoleI__07E124C1", "ATS_Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ATSMVCProjectModel", "FK__ATS_PageA__RoleI__13DCE752", "ATS_PageAccess")]
+        public EntityCollection<ATS_PageAccess> ATS_PageAccess
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ATS_PageAccess>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_PageAccess");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ATS_PageAccess>("ATSMVCProjectModel.FK__ATS_PageA__RoleI__13DCE752", "ATS_PageAccess", value);
                 }
             }
         }
@@ -17566,6 +17858,187 @@ namespace MVCProject.Api.Models
         private Nullable<global::System.Int32> _Posted;
         partial void OnPostedChanging(Nullable<global::System.Int32> value);
         partial void OnPostedChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="USP_ATS_PageAccessByRoleId_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_PageAccessByRoleId_Result : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new USP_ATS_PageAccessByRoleId_Result object.
+        /// </summary>
+        /// <param name="accessId">Initial value of the AccessId property.</param>
+        /// <param name="roleId">Initial value of the RoleId property.</param>
+        /// <param name="pageId">Initial value of the PageId property.</param>
+        /// <param name="canRead">Initial value of the CanRead property.</param>
+        /// <param name="canWrite">Initial value of the CanWrite property.</param>
+        public static USP_ATS_PageAccessByRoleId_Result CreateUSP_ATS_PageAccessByRoleId_Result(global::System.Int32 accessId, global::System.Int32 roleId, global::System.Int32 pageId, global::System.Boolean canRead, global::System.Boolean canWrite)
+        {
+            USP_ATS_PageAccessByRoleId_Result uSP_ATS_PageAccessByRoleId_Result = new USP_ATS_PageAccessByRoleId_Result();
+            uSP_ATS_PageAccessByRoleId_Result.AccessId = accessId;
+            uSP_ATS_PageAccessByRoleId_Result.RoleId = roleId;
+            uSP_ATS_PageAccessByRoleId_Result.PageId = pageId;
+            uSP_ATS_PageAccessByRoleId_Result.CanRead = canRead;
+            uSP_ATS_PageAccessByRoleId_Result.CanWrite = canWrite;
+            return uSP_ATS_PageAccessByRoleId_Result;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AccessId
+        {
+            get
+            {
+                return _AccessId;
+            }
+            set
+            {
+                OnAccessIdChanging(value);
+                ReportPropertyChanging("AccessId");
+                _AccessId = StructuralObject.SetValidValue(value, "AccessId");
+                ReportPropertyChanged("AccessId");
+                OnAccessIdChanged();
+            }
+        }
+        private global::System.Int32 _AccessId;
+        partial void OnAccessIdChanging(global::System.Int32 value);
+        partial void OnAccessIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value, "RoleId");
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private global::System.Int32 _RoleId;
+        partial void OnRoleIdChanging(global::System.Int32 value);
+        partial void OnRoleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PageId
+        {
+            get
+            {
+                return _PageId;
+            }
+            set
+            {
+                OnPageIdChanging(value);
+                ReportPropertyChanging("PageId");
+                _PageId = StructuralObject.SetValidValue(value, "PageId");
+                ReportPropertyChanged("PageId");
+                OnPageIdChanged();
+            }
+        }
+        private global::System.Int32 _PageId;
+        partial void OnPageIdChanging(global::System.Int32 value);
+        partial void OnPageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean CanRead
+        {
+            get
+            {
+                return _CanRead;
+            }
+            set
+            {
+                OnCanReadChanging(value);
+                ReportPropertyChanging("CanRead");
+                _CanRead = StructuralObject.SetValidValue(value, "CanRead");
+                ReportPropertyChanged("CanRead");
+                OnCanReadChanged();
+            }
+        }
+        private global::System.Boolean _CanRead;
+        partial void OnCanReadChanging(global::System.Boolean value);
+        partial void OnCanReadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean CanWrite
+        {
+            get
+            {
+                return _CanWrite;
+            }
+            set
+            {
+                OnCanWriteChanging(value);
+                ReportPropertyChanging("CanWrite");
+                _CanWrite = StructuralObject.SetValidValue(value, "CanWrite");
+                ReportPropertyChanged("CanWrite");
+                OnCanWriteChanged();
+            }
+        }
+        private global::System.Boolean _CanWrite;
+        partial void OnCanWriteChanging(global::System.Boolean value);
+        partial void OnCanWriteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
 
         #endregion
 

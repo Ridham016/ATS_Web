@@ -28,6 +28,7 @@ namespace MVCProject.Api.Controllers.Account
     using System.Security.Cryptography;
     using System.Threading.Tasks;
     using System.IO;
+    using System.Web.UI;
     #endregion
     public class AccountController : BaseController
     {
@@ -48,12 +49,27 @@ namespace MVCProject.Api.Controllers.Account
             }
             else
             {
+                var pageAccess = this.entities.USP_ATS_PageAccessByRoleId(user.RoleId).ToList();
+                List<UserContext.PagePermission> pagePermissionList = new List<UserContext.PagePermission>();
+                foreach(var page in pageAccess)
+                {
+                    bool canRead = page.CanRead;
+                    bool canWrite = page.CanWrite;
+                    var pagePermission = new UserContext.PagePermission
+                    {
+                        PageId = (int)page.PageId,
+                        CanRead = canRead,
+                        CanWrite = canWrite
+                    };
+                    pagePermissionList.Add(pagePermission);
+                }
                 UserContext userContext = new UserContext();
                 userContext.UserId = user.UserId;
                 userContext.UserName = user.Email;
                 userContext.User = user.UserName;
                 userContext.RoleId = user.RoleId;
                 userContext.Ticks = DateTime.Now.Ticks;
+                userContext.PageAccess = pagePermissionList;
                 userContext.Token = SecurityUtility.GetToken(userContext);
                 userContext.TimeZoneMinutes = 330;
                 return this.Response(MessageTypes.Success,string.Empty, userContext);
