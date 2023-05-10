@@ -86,7 +86,7 @@
         })
     }
 
-    list.Register = function (jobpostingDetailScope) {
+    list.PostingRegister = function (jobpostingDetailScope) {
         return $http({
             method: 'POST',
             url: $rootScope.apiURL + '/JobPosting/Register',

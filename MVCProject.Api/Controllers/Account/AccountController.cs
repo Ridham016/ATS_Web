@@ -157,6 +157,46 @@ namespace MVCProject.Api.Controllers.Account
             return this.Response(MessageTypes.Error, Resource.UserNotExists);
         }
 
+        [HttpPut]
+        public ApiResponse ChangeRole([FromUri]int roleId, HttpRequestMessage httpRequestMessage)
+        {
+            var request = HttpContext.Current.Request;
+            UserContext user = SecurityUtility.ExtractUserContext(request);
+            
+            var pageAccess = this.entities.USP_ATS_PageAccessByRoleId(roleId).ToList();
+            List<UserContext.PagePermission> pagePermissionList = new List<UserContext.PagePermission>();
+            foreach (var page in pageAccess)
+            {
+                bool canRead = page.CanRead;
+                bool canWrite = page.CanWrite;
+                var pagePermission = new UserContext.PagePermission
+                {
+                    PageId = (int)page.PageId,
+                    CanRead = canRead,
+                    CanWrite = canWrite
+                };
+                pagePermissionList.Add(pagePermission);
+            }
+
+            UserContext userContext = new UserContext();
+            userContext.UserId = user.UserId;
+            userContext.UserName = user.UserName;
+            userContext.User = user.User;
+            userContext.RoleId = roleId;
+            userContext.Ticks = DateTime.Now.Ticks;
+            userContext.PageAccess = pagePermissionList;
+            userContext.Token = SecurityUtility.GetToken(userContext);
+            userContext.TimeZoneMinutes = 330;
+            return this.Response(MessageTypes.Success, Resource.RoleChanged, userContext);
+        }
+
+        [HttpGet]
+        public ApiResponse GetCurrentRole([FromUri]int RoleId)
+        {
+            var Role = this.entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
+            return this.Response(MessageTypes.Success, string.Empty, Role);
+        }
+
 
     }
 }

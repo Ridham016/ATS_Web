@@ -65,7 +65,7 @@
         else {
             $scope.applicantDetailScope.PostingId = '';
         }
-
+        console.log($scope.applicantDetailScope.PostingId);
         $scope.Init = function () {
             if (sessionStorage.getItem("JobPostingErrorMessage")) {
                 toastr.error(sessionStorage.getItem("JobPostingErrorMessage"), errorTitle);
@@ -321,7 +321,7 @@
                         //$scope.applicantDetailScope.DateOfBirth = angular.copy(moment($scope.applicantDetailScope.DateOfBirth).format($rootScope.apiDateFormat));
                         $scope.applicantDetailScope.DateOfBirth = new Date($scope.applicantDetailScope.DateOfBirth);
                         $scope.applicantDetailScope.ExpectedJoiningDate = new Date($scope.applicantDetailScope.ExpectedJoiningDate);
-                        $scope.applicantDetailScope.PostingId = JSON.stringify($scope.applicantDetailScope.PostingId);
+                        $scope.applicantDetailScope.PostingId = JSON.parse($scope.applicantDetailScope.PostingId);
                         $scope.frmRegister.$setSubmitted();
                         angular.forEach($scope.frmRegister.$error, function (controls) {
                             angular.forEach(controls, function (control) {
@@ -501,10 +501,11 @@
 
 
         $scope.SavePostingDetails = function (jobpostingDetailScope) {
+            debugger
             if (jobpostingDetailScope.Id == null && $scope.positionDetail != null) {
                 RegistrationService.PositionRegister($scope.positionDetail).then(function (res) {
                     jobpostingDetailScope.PositionId = res.data.Result;
-                    RegistrationService.Register(jobpostingDetailScope).then(function (res) {
+                    RegistrationService.PostingRegister(jobpostingDetailScope).then(function (res) {
                         if (res) {
                             if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
                                 sessionStorage.setItem("JobPostingSuccessMessage", res.data.Message);
@@ -521,7 +522,7 @@
                 })
             }
             else {
-                RegistrationService.Register(jobpostingDetailScope).then(function (res) {
+                RegistrationService.PostingRegister(jobpostingDetailScope).then(function (res) {
                     if (res) {
                         if (res.data.MessageType == messageTypes.Success && res.data.IsAuthenticated) {
                             sessionStorage.setItem("JobPostingSuccessMessage", res.data.Message);

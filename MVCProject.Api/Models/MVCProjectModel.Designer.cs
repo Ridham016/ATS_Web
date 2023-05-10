@@ -1201,6 +1201,58 @@ namespace MVCProject.Api.Models
     
             return base.ExecuteFunction<USP_ATS_PageAccessByRoleId_Result>("USP_ATS_PageAccessByRoleId", roleIdParameter);
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="emailType">No Metadata Documentation available.</param>
+        /// <param name="actionId">No Metadata Documentation available.</param>
+        /// <param name="userId">No Metadata Documentation available.</param>
+        /// <param name="mode">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_SendEmailData_Result> USP_ATS_SendEmailData(Nullable<global::System.Int32> emailType, Nullable<global::System.Int32> actionId, Nullable<global::System.Int32> userId, Nullable<global::System.Int32> mode)
+        {
+            ObjectParameter emailTypeParameter;
+            if (emailType.HasValue)
+            {
+                emailTypeParameter = new ObjectParameter("EmailType", emailType);
+            }
+            else
+            {
+                emailTypeParameter = new ObjectParameter("EmailType", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter actionIdParameter;
+            if (actionId.HasValue)
+            {
+                actionIdParameter = new ObjectParameter("ActionId", actionId);
+            }
+            else
+            {
+                actionIdParameter = new ObjectParameter("ActionId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter userIdParameter;
+            if (userId.HasValue)
+            {
+                userIdParameter = new ObjectParameter("UserId", userId);
+            }
+            else
+            {
+                userIdParameter = new ObjectParameter("UserId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter modeParameter;
+            if (mode.HasValue)
+            {
+                modeParameter = new ObjectParameter("Mode", mode);
+            }
+            else
+            {
+                modeParameter = new ObjectParameter("Mode", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_SendEmailData_Result>("USP_ATS_SendEmailData", emailTypeParameter, actionIdParameter, userIdParameter, modeParameter);
+        }
 
         #endregion
 
@@ -19235,6 +19287,212 @@ namespace MVCProject.Api.Models
         private global::System.String _CompanyName;
         partial void OnCompanyNameChanging(global::System.String value);
         partial void OnCompanyNameChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="ATSMVCProjectModel", Name="USP_ATS_SendEmailData_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class USP_ATS_SendEmailData_Result : ComplexObject
+    {
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TemplateContent
+        {
+            get
+            {
+                return _TemplateContent;
+            }
+            set
+            {
+                OnTemplateContentChanging(value);
+                ReportPropertyChanging("TemplateContent");
+                _TemplateContent = StructuralObject.SetValidValue(value, true, "TemplateContent");
+                ReportPropertyChanged("TemplateContent");
+                OnTemplateContentChanged();
+            }
+        }
+        private global::System.String _TemplateContent;
+        partial void OnTemplateContentChanging(global::System.String value);
+        partial void OnTemplateContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TemplateSubject
+        {
+            get
+            {
+                return _TemplateSubject;
+            }
+            set
+            {
+                OnTemplateSubjectChanging(value);
+                ReportPropertyChanging("TemplateSubject");
+                _TemplateSubject = StructuralObject.SetValidValue(value, true, "TemplateSubject");
+                ReportPropertyChanged("TemplateSubject");
+                OnTemplateSubjectChanged();
+            }
+        }
+        private global::System.String _TemplateSubject;
+        partial void OnTemplateSubjectChanging(global::System.String value);
+        partial void OnTemplateSubjectChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true, "Password");
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Host
+        {
+            get
+            {
+                return _Host;
+            }
+            set
+            {
+                OnHostChanging(value);
+                ReportPropertyChanging("Host");
+                _Host = StructuralObject.SetValidValue(value, true, "Host");
+                ReportPropertyChanged("Host");
+                OnHostChanged();
+            }
+        }
+        private global::System.String _Host;
+        partial void OnHostChanging(global::System.String value);
+        partial void OnHostChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Port
+        {
+            get
+            {
+                return _Port;
+            }
+            set
+            {
+                OnPortChanging(value);
+                ReportPropertyChanging("Port");
+                _Port = StructuralObject.SetValidValue(value, "Port");
+                ReportPropertyChanged("Port");
+                OnPortChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Port;
+        partial void OnPortChanging(Nullable<global::System.Int32> value);
+        partial void OnPortChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> EnableSSL
+        {
+            get
+            {
+                return _EnableSSL;
+            }
+            set
+            {
+                OnEnableSSLChanging(value);
+                ReportPropertyChanging("EnableSSL");
+                _EnableSSL = StructuralObject.SetValidValue(value, "EnableSSL");
+                ReportPropertyChanged("EnableSSL");
+                OnEnableSSLChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _EnableSSL;
+        partial void OnEnableSSLChanging(Nullable<global::System.Boolean> value);
+        partial void OnEnableSSLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmailTO
+        {
+            get
+            {
+                return _EmailTO;
+            }
+            set
+            {
+                OnEmailTOChanging(value);
+                ReportPropertyChanging("EmailTO");
+                _EmailTO = StructuralObject.SetValidValue(value, true, "EmailTO");
+                ReportPropertyChanged("EmailTO");
+                OnEmailTOChanged();
+            }
+        }
+        private global::System.String _EmailTO;
+        partial void OnEmailTOChanging(global::System.String value);
+        partial void OnEmailTOChanged();
 
         #endregion
 

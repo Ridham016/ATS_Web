@@ -136,7 +136,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> UpdateStatus(int StatusId, int ApplicantId, int CurrentStatusId, HttpRequestMessage httpRequest)
+        public ApiResponse UpdateStatus(int StatusId, int ApplicantId, int CurrentStatusId, HttpRequestMessage httpRequest)
         {
             var status = this.entities.USP_ATS_SingleApplicant(ApplicantId)
               .Select(g => new
@@ -180,35 +180,29 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.StatusName));
             }
-            string User = UserContext.User;
-            int? RoleId = UserContext.RoleId;
-            var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
-            string RoleName = Role.RoleName;
-            string Useremail = UserContext.UserName;
-            if (StatusId == 2 || StatusId == 7)
+            int UserId = UserContext.UserId;
+            if(StatusId == 2 || StatusId == 7)
             {
-                Console.WriteLine("Before executing Task.Run");
-                await Task.Run(async() =>
+                Task.Run(() =>
                 {
-                    var Data = entities.USP_ATS_GetInfoForEmail(ApplicantId).FirstOrDefault();
-                    if (Data != null)
-                    {
-                        string Date = Data.ScheduleDateTime.Value.ToString("MMM, dd yyyy");
-                        string Message;
-                        string[] emails = { Useremail };
-                        if (StatusId == 2)
-                        {
-                            Message = "Shortlisted for Next round of interview";
-                            await this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
-                        }
-                        if (StatusId == 7)
-                        {
-                            Message = "Rejected";
-                            await this.SendEmailForStatus(User, RoleName, emails, Date, Data.Level.ToString(), Data.ApplicantName, Data.PositionName, Message, Data.CompanyName);
-                        }
-                    }
+                    var emailData = this.entities.USP_ATS_SendEmailData(2, addtoaction.ActionId, UserId, null).FirstOrDefault();
+                    string htmlBody = emailData.TemplateContent;
+                    string subject = emailData.TemplateSubject;
+                    EmailParams emailParams = new EmailParams();
+                    string[] emails = { emailData.EmailTO };
+                    emailData.Email = SecurityUtility.Decrypt(emailData.Email);
+                    emailData.Password = SecurityUtility.Decrypt(emailData.Password);
+                    emailParams.emailIdTO = emails;
+                    emailParams.subject = subject;
+                    emailParams.body = htmlBody;
+                    emailParams.emailIdFrom = emailData.Email;
+                    emailParams.emailPassword = emailData.Password;
+                    emailParams.Host = emailData.Host;
+                    emailParams.Port = emailData.Port;
+                    emailParams.EnableSSL = (bool)emailData.EnableSSL;
+                    ApiHttpUtility.SendMail(emailParams);
+
                 });
-                Console.WriteLine("After executing Task.Run");
             }
 
             int[] Result;
@@ -229,7 +223,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         }
 
         [HttpPost]
-        public async Task<ApiResponse> ScheduleInterview([FromBody] ATS_AdditionalInformation data, HttpRequestMessage httpRequest)
+        public ApiResponse ScheduleInterview([FromBody] ATS_AdditionalInformation data)
         {
             entities.ATS_AdditionalInformation.AddObject(new ATS_AdditionalInformation
             {
@@ -248,76 +242,43 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError, Resource.Schedule));
             }
-
-            string User = UserContext.User;
-            int? RoleId = UserContext.RoleId;
-            var Role = entities.ATS_Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
-            string RoleName = Role.RoleName;
-            Console.WriteLine("Before executing Task.Run");
-            await Task.Run(async () =>
+            int UserId = UserContext.UserId;
+            Task.Run(() =>
             {
-                var applicant = entities.USP_ATS_GetApplicantNameAndEmail(data.ActionId).FirstOrDefault();
-                string[] emails = { applicant.ApplicantEmail };
-                string FirstName = applicant.FirstName;
-                string MiddleName = applicant.MiddleName;
-                string LastName = applicant.LastName;
-                string ApplicantName;
-                if (MiddleName != "")
-                {
-                    ApplicantName = FirstName + " " + MiddleName + " " + LastName;
-                }
-                ApplicantName = FirstName + " " + LastName;
-                string FileLink = applicant.FileLink;
-                string linkLabelvenueLabel = "";
-                string linkvenue = "";
-                string Mode = "";
+                var emailData = this.entities.USP_ATS_SendEmailData(0, data.ActionId, UserId, data.Mode).FirstOrDefault();
+                string htmlBody = emailData.TemplateContent;
+                string subject = emailData.TemplateSubject;
+                EmailParams emailParams = new EmailParams();
+                string[] emails = { emailData.EmailTO};
+                emailData.Email = SecurityUtility.Decrypt(emailData.Email);
+                emailData.Password = SecurityUtility.Decrypt(emailData.Password);
+                emailParams.emailIdTO = emails;
+                emailParams.subject = subject;
+                emailParams.body = htmlBody;
+                emailParams.emailIdFrom = emailData.Email;
+                emailParams.emailPassword = emailData.Password;
+                emailParams.Host = emailData.Host;
+                emailParams.Port = emailData.Port;
+                emailParams.EnableSSL = (bool)emailData.EnableSSL;
+                ApiHttpUtility.SendMail(emailParams);
 
-                string ScheduleDatetime = data.ScheduleDateTime.Value.ToString("MMM, dd yyyy HH:MM tt");
-
-                var Interviewer = entities.ATS_Interviewer.Where(x => x.InterviewerId == data.InterviewerId).Select(g => new
-                {
-                    g.InterviewerName,
-                    g.InterviewerEmail
-                }).FirstOrDefault();
-                var Position = entities.ATS_PositionMaster.Where(x => x.Id == applicant.PositionId).Select(g => new
-                {
-                    g.PositionName
-                }).FirstOrDefault();
-
-                if (data.Mode == 0)
-                {
-                    linkLabelvenueLabel = "Venue";
-                    linkvenue = data.Venue;
-                    Mode = "Offline";
-                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
-                    {
-                        g.CompanyName,
-                        g.ContactPersonName
-                    }).FirstOrDefault();
-                    //Task.Run(() => );
-                    await SendEmailToApplicantOffline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.Venue, Company.ContactPersonName);
-
-                }
-                else
-                {
-                    linkLabelvenueLabel = "Interview link";
-                    linkvenue = data.ScheduleLink;
-                    Mode = "Online";
-                    var Company = entities.ATS_CompanyMaster.Where(x => x.Id == applicant.CompanyId).Select(g => new
-                    {
-                        g.CompanyName,
-                        g.ContactPersonName
-                    }).FirstOrDefault();
-                    //Task.Run(() => );
-                    await SendEmailToApplicantOnline(User, RoleName, emails, Company.CompanyName, FirstName, Position.PositionName, data.ScheduleLink, Interviewer.InterviewerName);
-
-                }
-                string[] intervieweremail = { Interviewer.InterviewerEmail };
-                //Task.Run(() => );
-                await SendEmailToInterviewer(User, RoleName, intervieweremail, ScheduleDatetime, Mode, ApplicantName, linkLabelvenueLabel, linkvenue, FileLink, Position.PositionName,
-                    data.ScheduleLink, Interviewer.InterviewerName);
+                var emailInterviewer = this.entities.USP_ATS_SendEmailData(1, data.ActionId, UserId, data.Mode).FirstOrDefault();
+                string htmlBodyInterviewer = emailInterviewer.TemplateContent;
+                string subjectInterviewer = emailInterviewer.TemplateSubject;
+                EmailParams emailInterviewerParams = new EmailParams();
+                string[] emailsInterviewer = { emailInterviewer.EmailTO };
+                emailInterviewer.Email = SecurityUtility.Decrypt(emailInterviewer.Email);
+                emailInterviewer.Password = SecurityUtility.Decrypt(emailInterviewer.Password);
+                emailInterviewerParams.emailIdTO = emailsInterviewer;
+                emailInterviewerParams.subject = subjectInterviewer;
+                emailInterviewerParams.body = htmlBodyInterviewer;
+                emailInterviewerParams.emailIdFrom = emailInterviewer.Email;
+                emailInterviewerParams.emailPassword = emailInterviewer.Password;
+                emailInterviewerParams.Host = emailInterviewer.Host;
+                emailInterviewerParams.Port = emailInterviewer.Port;
+                emailInterviewerParams.EnableSSL = (bool)emailInterviewer.EnableSSL;
+                ApiHttpUtility.SendMail(emailInterviewerParams);
             });
-            Console.WriteLine("After executing Task.Run");
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
 
@@ -481,159 +442,6 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             };
             return this.Response(Utilities.MessageTypes.Success, string.Empty, data);
 
-        }
-
-        public async Task<ApiResponse> SendEmailToApplicantOffline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName, string Venue, string ContactPersonName)
-        {
-            string file = "Templates/EmailForApplicantOffline.html";
-            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
-            string htmlBody = File.ReadAllText(filepath);
-            htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Venue}}", Venue)
-                .Replace("{{ContactPersonName}}", ContactPersonName).Replace("{{User}}", User).Replace("{{Role}}", Role);
-            string subject = "Interview Invitation for " + PositionName + " with " + companyName;
-            EmailParams emailParams = new EmailParams();
-            string[] emails = emailIdTo;
-            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
-            UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
-            UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
-            emailParams.emailIdTO = emails;
-            emailParams.subject = subject;
-            emailParams.body = htmlBody;
-            emailParams.emailIdFrom = UserDetails.Email;
-            emailParams.emailPassword = UserDetails.Password;
-            emailParams.Host = UserDetails.Host;
-            emailParams.Port = UserDetails.Port;
-            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            try
-            {
-                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
-                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-            }
-            catch (Exception ex)
-            {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
-            }
-            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            //if (!IsSent)
-            //{
-            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
-            //}
-            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-        }
-
-        public async Task<ApiResponse> SendEmailToApplicantOnline(string User, string Role, string[] emailIdTo, string companyName, string FirstName, string PositionName, string Link, string Interviewer)
-        {
-            string file = "Templates/EmailForApplicantOnline.html";
-            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
-            string htmlBody = File.ReadAllText(filepath);
-            htmlBody = htmlBody.Replace("{{FirstName}}", FirstName).Replace("{{PositionName}}", PositionName).Replace("{{Link}}", Link)
-                .Replace("{{Interviewer}}", Interviewer).Replace("{{User}}", User).Replace("{{Role}}", Role);
-            string subject = "Interview Invitation for " + PositionName + " with " + companyName;
-            EmailParams emailParams = new EmailParams();
-            string[] emails = emailIdTo;
-            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
-            UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
-            UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
-            emailParams.emailIdTO = emails;
-            emailParams.subject = subject;
-            emailParams.body = htmlBody;
-            emailParams.emailIdFrom = UserDetails.Email;
-            emailParams.emailPassword = UserDetails.Password;
-            emailParams.Host = UserDetails.Host;
-            emailParams.Port = UserDetails.Port;
-            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            try
-            {
-                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
-                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-            }
-            catch (Exception ex)
-            {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
-            }
-            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            //if (!IsSent)
-            //{
-            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
-            //}
-            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-        }
-
-        public async Task<ApiResponse> SendEmailToInterviewer(string User, string Role, string[] emailIdTo, string DateTime, string Mode, string ApplicantName, string linkLabelvenueLabel,
-            string linkvenue, string Resume, string PositionName, string Link, string Interviewer)
-        {
-            string file = "Templates/EmailForInterviewer.html";
-            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
-            string htmlBody = File.ReadAllText(filepath);
-            htmlBody = htmlBody.Replace("{{Applicant}}", ApplicantName).Replace("{{DateTime}}", DateTime).Replace("{{Position}}", PositionName).
-                Replace("{{Link}}", Link).Replace("{{Mode}}", Mode).Replace("{{linkLabelvenueLabel}}", linkLabelvenueLabel).Replace("{{linkvenue}}", linkvenue)
-                .Replace("{{Interviewer}}", Interviewer).Replace("{{Resume}}", Resume).Replace("{{User}}", User).Replace("{{Role}}", Role);
-            string subject = "Interview Invitation for " + PositionName;
-            EmailParams emailParams = new EmailParams();
-            string[] emails = emailIdTo;
-            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
-            emailParams.emailIdTO = emails;
-            emailParams.subject = subject;
-            emailParams.body = htmlBody;
-            emailParams.emailIdFrom = UserDetails.Email;
-            emailParams.emailPassword = UserDetails.Password;
-            emailParams.Host = UserDetails.Host;
-            emailParams.Port = UserDetails.Port;
-            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            try
-            {
-                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
-                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-            }
-            catch (Exception ex)
-            {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
-            }
-            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            //if (!IsSent)
-            //{
-            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
-            //}
-            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-        }
-
-        public async Task<ApiResponse> SendEmailForStatus(string User, string Role, string[] emailIdTo, string Date, string Level, string Applicant, string Position, string Message, string Company)
-        {
-            string file = "Templates/EmailForStatus.html";
-            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
-            string htmlBody = File.ReadAllText(filepath);
-            htmlBody = htmlBody.Replace("{{Applicant}}", Applicant).Replace("{{Date}}", Date).Replace("{{Position}}", Position).
-                Replace("{{Company}}", Company).Replace("{{Level}}", Level)
-                .Replace("{{Message}}", Message).Replace("{{User}}", User).Replace("{{Role}}", Role);
-            string subject = "Status Update For " + Position;
-            EmailParams emailParams = new EmailParams();
-            string[] emails = emailIdTo;
-            var UserDetails = entities.ATS_EmailConfiguration.Where(x => x.Id == 1).FirstOrDefault();
-            UserDetails.Email = SecurityUtility.Decrypt(UserDetails.Email);
-            UserDetails.Password = SecurityUtility.Decrypt(UserDetails.Password);
-            emailParams.emailIdTO = emails;
-            emailParams.subject = subject;
-            emailParams.body = htmlBody;
-            emailParams.emailIdFrom = UserDetails.Email;
-            emailParams.emailPassword = UserDetails.Password;
-            emailParams.Host = UserDetails.Host;
-            emailParams.Port = UserDetails.Port;
-            emailParams.EnableSSL = (bool)UserDetails.EnableSSL;
-            try
-            {
-                await Task.Run(() => ApiHttpUtility.SendMail(emailParams));
-                return this.Response(MessageTypes.Success, "Mail Sent Successfully");
-            }
-            catch (Exception ex)
-            {
-                return this.Response(MessageTypes.Error, "Error in Sending Mail: " + ex.Message);
-            }
-            //bool IsSent = ApiHttpUtility.SendMail(emailParams);
-            //if (!IsSent)
-            //{
-            //    return this.Response(MessageTypes.Error, "Error in Sending Mail");
-            //}
-            //return this.Response(MessageTypes.Success, "Mail Sent Successfully");
         }
 
     }

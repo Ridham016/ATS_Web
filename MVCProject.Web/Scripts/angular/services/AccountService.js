@@ -65,5 +65,12 @@
         });
     }
 
+    list.GetCurrentRole = function (roleId) {
+        return $http({
+            method: 'GET',
+            url: $rootScope.apiURL + '/Account/GetCurrentRole?RoleId=' + roleId
+        });
+    }
+
     return list;
 } ]);

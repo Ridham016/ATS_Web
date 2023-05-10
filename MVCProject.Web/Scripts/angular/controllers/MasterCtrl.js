@@ -67,6 +67,20 @@
 			})
 		}
 
+		$scope.getCurrentRole = function () {
+			console.log(userContext);
+			AccountService.GetCurrentRole(userContext.RoleId).then(function (res) {
+				if (res) {
+					if (res.data.MessageType == messageTypes.Success) {
+						$scope.role = res.data.Result;
+					}
+					else if (res.data.MessageType == messageTypes.Error) {
+						toastr.error(res.data.Message, errorTitle);
+					}
+				}
+			})
+		}
+
 		//Open  Comments Popup
 		$scope.OpenCommentsPopup = function (moduleId, referenceId, isReadOnly) {
 			var modalInstance = $uibModal.open({

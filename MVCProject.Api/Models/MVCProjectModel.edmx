@@ -592,6 +592,12 @@
           <Parameter Name="PostingId" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_ATS_ScheduleInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_SendEmailData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailType" Type="int" Mode="In" />
+          <Parameter Name="ActionId" Type="int" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="Mode" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_SingleApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
@@ -964,7 +970,13 @@
             <End Role="ATS_PageAccess" EntitySet="ATS_PageAccess" />
           </AssociationSet>
           <FunctionImport Name="USP_ATS_PageAccessByRoleId" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_PageAccessByRoleId_Result)">
-            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+          <Parameter Name="RoleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_SendEmailData" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_SendEmailData_Result)">
+            <Parameter Name="EmailType" Mode="In" Type="Int32" />
+            <Parameter Name="ActionId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="Mode" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
@@ -1976,6 +1988,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="USP_ATS_SendEmailData_Result">
+          <Property Type="String" Name="TemplateContent" Nullable="true" />
+          <Property Type="String" Name="TemplateSubject" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Host" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Port" Nullable="true" />
+          <Property Type="Boolean" Name="EnableSSL" Nullable="true" />
+          <Property Type="String" Name="EmailTO" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2975,6 +2997,20 @@
                 <ScalarProperty Name="CanRead" ColumnName="CanRead" />
                 <ScalarProperty Name="CanWrite" ColumnName="CanWrite" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_SendEmailData" FunctionName="ATSMVCProjectModel.Store.USP_ATS_SendEmailData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_SendEmailData_Result">
+                <ScalarProperty Name="TemplateContent" ColumnName="TemplateContent" />
+                <ScalarProperty Name="TemplateSubject" ColumnName="TemplateSubject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
+                <ScalarProperty Name="EmailTO" ColumnName="EmailTO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

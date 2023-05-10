@@ -2824,6 +2824,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Role Changed Successfully.
+        /// </summary>
+        public static string RoleChanged {
+            get {
+                return ResourceManager.GetString("RoleChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role Name already exists.
         /// </summary>
         public static string RoleExists {

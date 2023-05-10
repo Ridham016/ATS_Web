@@ -1320,4 +1320,7 @@
   <data name="InvalidOtp" xml:space="preserve">
     <value>Invalid Otp</value>
   </data>
+  <data name="RoleChanged" xml:space="preserve">
+    <value>Role Changed Successfully</value>
+  </data>
 </root>

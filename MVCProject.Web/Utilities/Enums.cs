@@ -16,7 +16,17 @@ namespace MVCProject.Utilities
         /// Admin level
         /// </summary>
         Admin = 1,
-       
+
+        /// <summary>
+        /// HR level
+        /// </summary>
+        HR = 2,
+
+        /// <summary>
+        /// Recruiter level
+        /// </summary>
+        Recruiter = 3,
+
     }
 
     /// <summary>
