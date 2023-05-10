@@ -115,13 +115,14 @@
                 </select>
             </div>*@
 
-            <select class="form-select" name="postingid"
-                    ng-class="{'border-color' : frmregister1.postingid.$dirty && frmregister1.postingid.$invalid}" ng-model="applicantdetailscope.postingid" ng-options="h.postingid as h.positionname for h in joblist">
-                <option value="" disabled>select job posting</option>
+            <select class="form-select" name="PostingId"
+                    ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}"
+                    ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList">
+                <option value="" disabled>Select Job Posting</option>
             </select>
             <button class="btn btn-sm btn-primary text-nowrap ms-2" data-bs-toggle="modal" data-bs-target="#AddNewModal">
                 <i class="fa fa-plus me-1"></i>
-                Add New Posting
+                Add New
             </button>
 
             <!-- #region Modal -->

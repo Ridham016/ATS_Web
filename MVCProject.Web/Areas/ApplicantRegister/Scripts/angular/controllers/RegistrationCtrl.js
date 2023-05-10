@@ -59,7 +59,7 @@
 
         var params = $location.search();
         if (params.PostingId != null) {
-            $scope.applicantDetailScope.PostingId = params.PostingId.toString();
+            $scope.applicantDetailScope.PostingId = JSON.parse(params.PostingId);
             console.log($scope.applicantDetailScope);
         }
         else {
