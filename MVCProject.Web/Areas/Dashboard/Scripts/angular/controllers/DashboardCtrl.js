@@ -6,7 +6,7 @@
     ]);
     function DashboardCtrl($scope, uiCalendarConfig, $timeout, $interval, $rootScope, CommonEnums, DashboardService) {
         var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c', '#ffa21d'];
-        var data = [0,0,0,0,0,0,0,0];
+        var data = [55,5,55,55,555,55,50,0];
         var optionDonut = {
             chart: {
                 type: 'donut',
@@ -62,10 +62,7 @@
             optionDonut
         )
 
-            donut.render();
-        $timeout(function () {
-        }, 200).then(function () {
-        })
+        donut.render();
 
         $scope.getCounts = function (time) {
             $scope.timeFrame = time;

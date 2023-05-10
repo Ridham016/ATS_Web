@@ -40,12 +40,19 @@
             console.log(applicant.expanded);
 
         }
+
+        $scope.dateRangeOptions = {
+            opens: 'left',
+            showDropdowns: true
+            // ... other options
+        };
+
         $scope.tableParams = new ngTableParams({
             page: 1,
             count: $rootScope.pageSize
         }, {
             getData: function ($defer, params) {
-                debugger
+                //debugger
                 if (searchDetailParams == null) {
                     searchDetailParams = {};
                 }
@@ -81,7 +88,7 @@
                 EndDate: null,
                 CompanyId: null,
                 PositionId: null,
-                daterange: { startDate: null, endDate: null }
+                daterange: { startDate: moment(), endDate: moment() }
             };
             $("#DateRange").val("");
             frmRegister.$setPristine();

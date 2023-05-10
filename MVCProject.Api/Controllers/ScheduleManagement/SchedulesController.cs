@@ -186,21 +186,7 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
                 Task.Run(() =>
                 {
                     var emailData = this.entities.USP_ATS_SendEmailData(2, addtoaction.ActionId, UserId, null).FirstOrDefault();
-                    string htmlBody = emailData.TemplateContent;
-                    string subject = emailData.TemplateSubject;
-                    EmailParams emailParams = new EmailParams();
-                    string[] emails = { emailData.EmailTO };
-                    emailData.Email = SecurityUtility.Decrypt(emailData.Email);
-                    emailData.Password = SecurityUtility.Decrypt(emailData.Password);
-                    emailParams.emailIdTO = emails;
-                    emailParams.subject = subject;
-                    emailParams.body = htmlBody;
-                    emailParams.emailIdFrom = emailData.Email;
-                    emailParams.emailPassword = emailData.Password;
-                    emailParams.Host = emailData.Host;
-                    emailParams.Port = emailData.Port;
-                    emailParams.EnableSSL = (bool)emailData.EnableSSL;
-                    ApiHttpUtility.SendMail(emailParams);
+                    SendEmail(emailData);
 
                 });
             }
@@ -246,38 +232,10 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
             Task.Run(() =>
             {
                 var emailData = this.entities.USP_ATS_SendEmailData(0, data.ActionId, UserId, data.Mode).FirstOrDefault();
-                string htmlBody = emailData.TemplateContent;
-                string subject = emailData.TemplateSubject;
-                EmailParams emailParams = new EmailParams();
-                string[] emails = { emailData.EmailTO};
-                emailData.Email = SecurityUtility.Decrypt(emailData.Email);
-                emailData.Password = SecurityUtility.Decrypt(emailData.Password);
-                emailParams.emailIdTO = emails;
-                emailParams.subject = subject;
-                emailParams.body = htmlBody;
-                emailParams.emailIdFrom = emailData.Email;
-                emailParams.emailPassword = emailData.Password;
-                emailParams.Host = emailData.Host;
-                emailParams.Port = emailData.Port;
-                emailParams.EnableSSL = (bool)emailData.EnableSSL;
-                ApiHttpUtility.SendMail(emailParams);
+                SendEmail(emailData);
 
                 var emailInterviewer = this.entities.USP_ATS_SendEmailData(1, data.ActionId, UserId, data.Mode).FirstOrDefault();
-                string htmlBodyInterviewer = emailInterviewer.TemplateContent;
-                string subjectInterviewer = emailInterviewer.TemplateSubject;
-                EmailParams emailInterviewerParams = new EmailParams();
-                string[] emailsInterviewer = { emailInterviewer.EmailTO };
-                emailInterviewer.Email = SecurityUtility.Decrypt(emailInterviewer.Email);
-                emailInterviewer.Password = SecurityUtility.Decrypt(emailInterviewer.Password);
-                emailInterviewerParams.emailIdTO = emailsInterviewer;
-                emailInterviewerParams.subject = subjectInterviewer;
-                emailInterviewerParams.body = htmlBodyInterviewer;
-                emailInterviewerParams.emailIdFrom = emailInterviewer.Email;
-                emailInterviewerParams.emailPassword = emailInterviewer.Password;
-                emailInterviewerParams.Host = emailInterviewer.Host;
-                emailInterviewerParams.Port = emailInterviewer.Port;
-                emailInterviewerParams.EnableSSL = (bool)emailInterviewer.EnableSSL;
-                ApiHttpUtility.SendMail(emailInterviewerParams);
+                SendEmail(emailInterviewer);
             });
             return this.Response(Utilities.MessageTypes.Success, string.Format(Resource.CreatedSuccessfully, Resource.Schedule));
         }
@@ -444,5 +402,23 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
 
         }
 
+        public void SendEmail(USP_ATS_SendEmailData_Result emailData)
+        {
+            string htmlBody = emailData.TemplateContent;
+            string subject = emailData.TemplateSubject;
+            EmailParams emailParams = new EmailParams();
+            string[] emails = { emailData.EmailTO };
+            emailData.Email = SecurityUtility.Decrypt(emailData.Email);
+            emailData.Password = SecurityUtility.Decrypt(emailData.Password);
+            emailParams.emailIdTO = emails;
+            emailParams.subject = subject;
+            emailParams.body = htmlBody;
+            emailParams.emailIdFrom = emailData.Email;
+            emailParams.emailPassword = emailData.Password;
+            emailParams.Host = emailData.Host;
+            emailParams.Port = emailData.Port;
+            emailParams.EnableSSL = (bool)emailData.EnableSSL;
+            ApiHttpUtility.SendMail(emailParams);
+        }
     }
 }
