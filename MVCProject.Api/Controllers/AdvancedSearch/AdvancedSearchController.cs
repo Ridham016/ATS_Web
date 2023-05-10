@@ -154,6 +154,7 @@ namespace MVCProject.Api.Controllers.AdvancedSearch
                 Comment = g.Comment,
                 Reason = g.Reason,
                 EntryBy = g.EntryBy,
+                EntryDate = g.EntryDate,
                 UserName = g.UserName,
             }).AsEnumerable();
             return this.Response(MessageTypes.Success, string.Empty, advancedsearch);

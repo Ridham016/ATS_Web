@@ -271,53 +271,6 @@
                                             </tr>
                                             <tr ng-show="applicant.expanded" ng-repeat-end="" class="timeline-search-expanded-detail">
                                                 <td colspan="{{isSmallMenu ? '9' : '8'}}" class="py-5 px-3 timeline-td">
-                                                    @*<div class="container">
-                                                                                                            <div class="row">
-                                                                                                                <div class="col">
-                                                                                                                    <div class="main-timeline">
-                                                                                                                        <div class="timeline" ng-repeat="applicant in applicantDetail">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-12">
-                                                                                                                                    <a href="#" class="timeline-content">
-                                                                                                                                        <div class="row">
-                                                                                                                                            <div class="col-12">
-                                                                                                                                                <div class="row">
-                                                                                                                                                    <div class="col-lg-4 col-md-4 col-12">
-                                                                                                                                                        <span class="timeline-year">{{applicant.EntryDate | date : 'MMM d, y h:mm a'}}</span>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="col-2 col-md-2 col-12">
-                                                                                                                                                        <div class="timeline-icon">
-                                                                                                                                                            <span ng-class="{'status-hold': applicant.StatusId == 5,
-                                                        'status-registered': applicant.StatusId == 1,
-                                                        'status-shortlist': applicant.StatusId == 2,
-                                                        'status-pass': applicant.StatusId == 6,
-                                                        'status-reject': applicant.StatusId == 7,
-                                                        'status-not-match': applicant.StatusId == 3,
-                                                        'status-call-schedule': applicant.StatusId == 4,
-                                                        'status-other-reason': applicant.StatusId == 8,}">
-                                                                                                                                                                <span ng-show="applicant.StatusId == 2 || applicant.StatusId == 8"> L{{applicant.Level+1}}</span>
-                                                                                                                                                                <span ng-show="applicant.StatusId == 4">L{{applicant.Level}}</span> {{applicant.StatusName}}
-                                                                                                                                                            </span>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="col-6 col-md-4 col-12 pe-3">
-                                                                                                                                                        <div class="content m-0">
-                                                                                                                                                            <h3 class="title">{{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.LastName}}</h3>
-                                                                                                                                                            <p class="description"><i class="fa-regular fa-commenting-o me-3"></i>{{applicant.Comment}}
-                                                                                                                                                            </p>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </a>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>*@
                                                     <div class="timeline-search">
                                                         <ul class="timeline-ul">
                                                             <li ng-repeat="applicant in applicantDetail">
