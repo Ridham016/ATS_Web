@@ -15,6 +15,7 @@ namespace System.Web.Mvc
     using MVCProject.ViewModel;
     using System.Web.Routing;
     using MVCProject.Common.Resources;
+    using MVCProject.Utilities;
 
     /// <summary>
     /// Html Helper Extensions
@@ -50,13 +51,13 @@ namespace System.Web.Mvc
             //menuString.Append("<ul class='nav child_menu'>");
             //menuString.Append(GetSubMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             //menuString.Append("</ul></li>");
-            if(userContext.RoleId == 3)
+            if(userContext.RoleId == (int)PermissionLevel.Recruiter)
             {
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
                 menuString.Append(GetMainMenu(Resource.Calendar, "fa fa-calendar", "/Calendar/Calendar"));
                 menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-calendar", "/ScheduleManagement/Schedule"));
             }
-            else if(userContext.RoleId == 1 || userContext.RoleId == 2)
+            else if(userContext.RoleId == (int)PermissionLevel.Admin || userContext.RoleId == (int)PermissionLevel.HR)
             {
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
                 menuString.Append(GetMainMenu(Resource.Calendar, "fa fa-calendar", "/Calendar/Calendar"));
@@ -70,8 +71,10 @@ namespace System.Web.Mvc
                 menuString.Append(GetSubMenu(Resource.ApplicantRegister, "fa-solid fa-user-plus me-2", "/ApplicantRegister/Registration"));
                 menuString.Append(GetSubMenu(Resource.Interviewer, "fa fa-user-tie me-2", "/InterviewerRegister/Interviewer"));
                 menuString.Append(GetSubMenu(Resource.JobPostingRegister, "fa fa-user-plus me-2", "/JobPostingMaster/JobPosting"));
-                menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-code me-2", "/PositionMaster/Position"));
-                menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa-solid fa-building me-2", "/CompanyMaster/Company"));
+                if(userContext.RoleId == (int)PermissionLevel.Admin) {
+                    menuString.Append(GetSubMenu(Resource.PositionRegister, "fa fa-code me-2", "/PositionMaster/Position"));
+                    menuString.Append(GetSubMenu(Resource.CompanyRegister, "fa-solid fa-building me-2", "/CompanyMaster/Company"));
+                }
                 menuString.Append("</ul></li>");
             }
             menuString.Append("</ul></div></div>");
