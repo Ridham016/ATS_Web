@@ -72,7 +72,7 @@
                         <div class="row mt-4">
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <button type="submit" ng-disabled="!applicantDetailScope.PostingId > 0" class="btn btn-success waves-effect w-md waves-light me-2 mb-5">
+                                    <button type="submit" ng-disabled="!applicantDetailScope.PostingId > 0  || applicantDetailScope.ApplicantName == ''" class="btn btn-success waves-effect w-md waves-light me-2 mb-5">
                                         @Resource.Submit
                                     </button>
                                     <button type="reset" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light me-2  mb-5"
