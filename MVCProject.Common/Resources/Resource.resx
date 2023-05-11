@@ -1323,4 +1323,10 @@
   <data name="RoleChanged" xml:space="preserve">
     <value>Role Changed Successfully</value>
   </data>
+  <data name="Posting" xml:space="preserve">
+    <value>Posting</value>
+  </data>
+  <data name="PostingManagement" xml:space="preserve">
+    <value>Posting Management</value>
+  </data>
 </root>

@@ -213,6 +213,7 @@
     <Compile Include="Controllers\JobListing\JobListingController.cs" />
     <Compile Include="Controllers\JobPostingMaster\JobPostingController.cs" />
     <Compile Include="Controllers\PositionMaster\PositionController.cs" />
+    <Compile Include="Controllers\PostingManagement\PostingController.cs" />
     <Compile Include="Controllers\ScheduleManagement\SchedulesController.cs" />
     <Compile Include="Filters\CompressContentAttribute.cs" />
     <Compile Include="Filters\ContactNumberAnnotation.cs" />

@@ -2491,6 +2491,15 @@ namespace MVCProject.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Posting.
+        /// </summary>
+        public static string Posting {
+            get {
+                return ResourceManager.GetString("Posting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Required Experience.
         /// </summary>
         public static string PostingExperience {
@@ -2505,6 +2514,15 @@ namespace MVCProject.Common.Resources {
         public static string PostingExperienceRequired {
             get {
                 return ResourceManager.GetString("PostingExperienceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posting Management.
+        /// </summary>
+        public static string PostingManagement {
+            get {
+                return ResourceManager.GetString("PostingManagement", resourceCulture);
             }
         }
         

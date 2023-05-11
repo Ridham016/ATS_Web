@@ -1,0 +1,274 @@
+﻿@{
+    ViewBag.Title = @Resource.PostingManagement;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .colSrno {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+    }
+
+    .colPosition {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+
+    .colActive {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+
+    .colAction {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+    .angucomplete-dropdown {
+        z-index: 10000;
+    }
+</style>
+
+<div ng-controller="PostingCtrl" novalidate ng-init="getStatus();getJobPostingList()">
+    <div class="main-page-title title-icon relative l">
+        <i class="fa fa-clipboard-list icon-position" style="padding-top: 8px;"></i>
+        <h4 class="header-title-sub l">@Resource.PostingManagement</h4>
+        <div class="pull-right">
+        </div>
+    </div>
+    <div class="card-box">
+        <div class="row">
+            <div class="col-md-12">
+                <form name="frmRegister" ng-submit="SaveApplicantDetails(applicantDetailScope)"
+                      novalidate>
+                    <div class="row mb-3">
+                        <div class="col-md-4 mt-lg-0 mt-md-0 mt-sm-0">
+                            <div class="form-group">
+                                <label>
+                                    @MVCProject.Common.Resources.Resource.ApplicantName
+                                </label>
+                                <input type="text"
+                                       readonly
+                                       disabled
+                                       class="form-control" id="ApplicantName" name="FirstName" ng-model="applicantDetailScope.ApplicantName"
+                                       required placeholder="Applicant Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mt-0">
+                            <div class="form-group">
+                                <label>
+                                    @Resource.JobPosting
+                                </label>
+                                <select class="form-select" name="PostingId"
+                                        ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}"
+                                        ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList">
+                                    <option value="" disabled>Select Job Posting</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <button type="submit" ng-disabled="!applicantDetailScope.PostingId > 0" class="btn btn-success waves-effect w-md waves-light me-2 mb-5">
+                                        @Resource.Submit
+                                    </button>
+                                    <button type="reset" ng-click="ClearFormData(frmRegister)" class="btn btn-danger waves-effect w-md waves-light me-2  mb-5"
+                                            tabindex="4">
+                                        @Resource.Clear
+                                    </button>
+                                    <button type="button" class="btn btn-primary text-nowrap waves-effect w-md waves-light me-2  mb-5" data-bs-toggle="modal" data-bs-target="#AddNewModal">
+                                        <i class="fa fa-plus me-1"></i>
+                                        Add New Posting
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+               
+
+                <!-- #region Modal -->
+                <div class="modal fade" id="AddNewModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Job Posting</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="frmPosting" ng-init="getCompanyDetails();getPositionDetails();getPostingStatus();"
+                                      novalidate>
+                                    <div class="row mb-3">
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.Position <span class="required-field">*</span>
+                                                </label>
+                                                <div angucomplete-alt
+                                                     field-tabindex="14"
+                                                     input-name="Position"
+                                                     id="Position"
+                                                     placeholder="Enter Position"
+                                                     input-class="form-control"
+                                                     pause="400"
+                                                     minlength="1"
+                                                     maxlength="255"
+                                                     selected-object="Position"
+                                                     local-data="jobpostingDetail"
+                                                     initial-value="selectedPosition"
+                                                     match-class="blue"
+                                                     search-fields="PositionName"
+                                                     title-field="PositionName"
+                                                     override-suggestions="true"
+                                                     on-select="Position()"
+                                                     text-searching="@Resource.AutocompleteSearching"
+                                                     text-no-results="@Resource.NoRecordFound">
+                                                </div>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmPosting.Position.$dirty && frmPosting.Position.$invalid">
+                                                    <span data-ng-show="frmPosting.Position.$error.required">@Resource.PosiitonRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.Company <span class="required-field">*</span>
+                                                </label>
+                                                <select class="form-select" name="Company" ng-model="jobpostingDetailScope.CompanyId" required>
+                                                    <option value="" selected disabled>Select Company Name</option>
+                                                    <option ng-repeat="h in companyDetails" value="{{h.Id}}">{{h.CompanyName}}</option>
+                                                </select>
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmPosting.Company.$dirty && frmPosting.Company.$invalid">
+                                                    <span data-ng-show="frmPosting.Company.$error.required">@Resource.CompanyRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.PostingExperience<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Experience" name="Experience" ng-model="jobpostingDetailScope.Experience" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmPosting.Experience.$dirty && frmPosting.Experience.$invalid">
+                                                    <span data-ng-show="frmPosting.Experience.$error.required">@Resource.PostingExperienceRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <div class="form-group">
+                                                <label>
+                                                    @Resource.PostingSalary<span class="required-field">*</span>
+                                                </label>
+                                                <input type="text" class="form-control" placeholder="Enter Salary" name="Salary" ng-model="jobpostingDetailScope.Salary" required />
+                                                <div class="c">
+                                                </div>
+                                                <div class="label label-danger" data-ng-show="frmPosting.Salary.$dirty && frmPosting.Salary.$invalid">
+                                                    <span data-ng-show="frmPosting.Salary.$error.required">@Resource.PostingSalaryRequired</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" ng-disabled="frmPosting.$invalid" ng-click="SavePostingDetails(jobpostingDetailScope)">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- #endregion -->
+
+
+                <hr class="section-divider" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row mb-3 align-items-baseline">
+                            <div class="col-md-4">
+                                <label class="table-title">
+                                    @Resource.PostingManagement
+                                </label>
+                            </div>
+                            <div class="col-md-3 mt-lg-0 mt-md-0 mt-sm-0">
+                                <div class="form-group">
+                                    <select class="form-select" name="StatusId" id="StatusId" ng-change="tableParams.page(1);tableParams.reload();" ng-init="GetStatus()" ng-model="StatusId">
+                                        <option value="" selected>Status</option>
+                                        <option ng-repeat="s in status" value="{{s.StatusId}}">{{s.StatusName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <form id="frmSearch" ng-submit="isSearchClicked = true;tableParams.page(1);tableParams.reload();" novalidate>
+                                    <div class="input-group">
+                                        <input type="text" tabindex="104" ng-model="search" class="form-control" ng-change="isSearchClicked = false;" placeholder="@string.Format(" {0} {1} {2}", Resource.Search, Resource.Posting, Resource.Details)" />
+                                        <a class="input-group-addon cursor-pointer" tabindex="105" ng-click="isSearchClicked = true;tableParams.page(1);tableParams.reload();">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group ng-cloak">
+                            <div class="form-control-static">
+                                <scrollable-table scroll-height="500">
+                                    <table ng-table="tableParams" id="datatable" class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr ng-repeat="h in applicants">
+                                                <td data-title="'@Resource.SrNo'" header-class="'colSrno'" ng-class="'colSrno text-right'">
+                                                    {{(tableParams.$params.page-1)*tableParams.$params.count+($index + 1)}}
+                                                </td>
+                                                <td data-title="'@Resource.ApplicantName'" ng-attr-title="{{h.ApplicantName}}" sortable="'ApplicantName'" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.ApplicantName}}
+                                                </td>
+                                                <td data-title="'@Resource.ApplicantEmail'" ng-attr-title="{{h.Email}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.Email}}
+                                                </td>
+                                                <td data-title="'@Resource.ApplicantPhone'" ng-attr-title="{{h.Phone}}" header-class="'colPosition'" ng-class="'colPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    {{h.Phone}}
+                                                </td>
+                                                <td data-title="'@Resource.StatusName'" header-class="'colPosition'" ng-class="'olPosition breakword overflow-ellipsis cursor-pointer'">
+                                                    <span ng-class="{'status-registered': h.StatusId == 1,
+                                                                    'status-not-match': h.StatusId == 3,
+                                                                    'status-reject': h.StatusId == 7}">
+                                                        <span ng-show="h.StatusId == 8">L{{h.Level+1}} </span>
+                                                        <span ng-show="h.StatusId == 4">L{{h.Level}} </span>
+                                                        {{h.StatusName}}
+                                                        <span ng-show="h.StatusId == 2"> for L{{h.Level+1}}</span>
+
+                                                    </span>
+                                                </td>
+                                                <td data-title="'@Resource.Action'" header-class="'colAction'" ng-class="'colAction text-center'">
+                                                    <a class="btn btn-icon btn-white btn-xs waves-effect waves-light m-r-5 btn-edit" title="Edit"
+                                                       ng-click="EditApplicantDetails(h.ApplicantId)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </scrollable-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end Registration details list -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/PostingManagement/Posting")
+}

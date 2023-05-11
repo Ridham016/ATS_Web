@@ -514,6 +514,12 @@
         <Function Name="USP_ATS_ApplicantById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
         </Function>
+        <Function Name="USP_ATS_ApplicantPostingById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicantId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_ATS_ApplicantPostingList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StatusId" Type="int" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_ApplicantsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="USP_ATS_ApplicantTimeLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ApplicantId" Type="int" Mode="In" />
@@ -977,6 +983,12 @@
             <Parameter Name="ActionId" Mode="In" Type="Int32" />
             <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="Mode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_ApplicantPostingList" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_ApplicantPostingList_Result)" >
+          <Parameter Name="StatusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_ATS_ApplicantPostingById" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_ApplicantPostingById_Result)">
+            <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">
@@ -1998,6 +2010,30 @@
           <Property Type="Boolean" Name="EnableSSL" Nullable="true" />
           <Property Type="String" Name="EmailTO" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <ComplexType Name="USP_ATS_ApplicantPostingList_Result">
+          <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="152" />
+        </ComplexType>
+        <ComplexType Name="USP_ATS_ApplicantPostingById_Result">
+          <Property Type="Int32" Name="ApplicantId" Nullable="false" />
+          <Property Type="String" Name="ApplicantName" Nullable="true" MaxLength="152" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PostingId" Nullable="true" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Int32" Name="StatusId" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3011,6 +3047,38 @@
                 <ScalarProperty Name="Port" ColumnName="Port" />
                 <ScalarProperty Name="EnableSSL" ColumnName="EnableSSL" />
                 <ScalarProperty Name="EmailTO" ColumnName="EmailTO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantPostingList" FunctionName="ATSMVCProjectModel.Store.USP_ATS_ApplicantPostingList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_ApplicantPostingList_Result">
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_ATS_ApplicantPostingById" FunctionName="ATSMVCProjectModel.Store.USP_ATS_ApplicantPostingById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_ApplicantPostingById_Result">
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

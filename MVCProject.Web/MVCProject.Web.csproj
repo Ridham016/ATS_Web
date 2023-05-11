@@ -197,6 +197,8 @@
     <Compile Include="Areas\JobPostingMaster\JobPostingAreaRegistration.cs" />
     <Compile Include="Areas\PositionMaster\Controllers\PositionController.cs" />
     <Compile Include="Areas\PositionMaster\PositionAreaRegistration.cs" />
+    <Compile Include="Areas\PostingManagement\Controllers\PostingController.cs" />
+    <Compile Include="Areas\PostingManagement\PostingManagementAreaRegistration.cs" />
     <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
     <Compile Include="Areas\ScheduleManagement\Controllers\ScheduleController.cs" />
     <Compile Include="Areas\ScheduleManagement\ScheduleManagementAreaRegistration.cs" />
@@ -269,6 +271,8 @@
     <Content Include="Areas\JobPostingMaster\Scripts\angular\services\JobPostingService.js" />
     <Content Include="Areas\PositionMaster\Scripts\angular\controllers\PositionCtrl.js" />
     <Content Include="Areas\PositionMaster\Scripts\angular\services\PositionService.js" />
+    <Content Include="Areas\PostingManagement\Scripts\angular\controllers\PostingCtrl.js" />
+    <Content Include="Areas\PostingManagement\Scripts\angular\services\PostingService.js" />
     <Content Include="Areas\Public\Content\css\css\blank.gif" />
     <Content Include="Areas\Public\Content\css\HomePageStyle.css" />
     <Content Include="Areas\Public\Content\css\skins\fullwidth\loading.gif" />
@@ -512,6 +516,8 @@
     <Folder Include="Areas\JobPostingMaster\Views\Shared\" />
     <Folder Include="Areas\PositionMaster\Models\" />
     <Folder Include="Areas\PositionMaster\Views\Shared\" />
+    <Folder Include="Areas\PostingManagement\Models\" />
+    <Folder Include="Areas\PostingManagement\Views\Shared\" />
     <Folder Include="Areas\Public\Controllers\" />
     <Folder Include="Areas\Public\Models\" />
     <Folder Include="Areas\Public\Scripts\angular\controllers\" />
@@ -582,6 +588,8 @@
     <Content Include="Content\fonts\fa-v4compatibility.ttf" />
     <Content Include="Content\fonts\fa-v4compatibility.woff2" />
     <Content Include="Areas\JobOpenings\Views\JobOpenings\Description.cshtml" />
+    <Content Include="Areas\PostingManagement\Views\Web.config" />
+    <Content Include="Areas\PostingManagement\Views\Posting\Index.cshtml" />
     <None Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Content\fonts\fontawesome-webfont.ttf" />
     <None Include="Content\fonts\fontawesome-webfont.woff" />

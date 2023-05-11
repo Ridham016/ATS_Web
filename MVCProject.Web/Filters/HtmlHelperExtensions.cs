@@ -62,6 +62,7 @@ namespace System.Web.Mvc
                 menuString.Append(GetMainMenu(Resource.Dashboard, "fa fa-home", "/Dashboard/Dashboard"));
                 menuString.Append(GetMainMenu(Resource.Calendar, "fa fa-calendar", "/Calendar/Calendar"));
                 menuString.Append(GetMainMenu(Resource.JobOpenings, "fa fa-list-ul", "/JobOpenings/JobOpenings"));
+                menuString.Append(GetMainMenu(Resource.PostingManagement, "fa fa-clipboard-list", "/PostingManagement/Posting"));
                 menuString.Append(GetMainMenu(Resource.ScheduleManagement, "fa fa-clipboard-list", "/ScheduleManagement/Schedule"));
                 menuString.Append(GetMainMenu(Resource.AdvancedSearch, "fa fa-search", "/AdvancedSearch/Search"));
                 menuString.Append(GetMainMenu(Resource.ImportApplicant, "fa fa-file-import", "/ImportData/Import"));
