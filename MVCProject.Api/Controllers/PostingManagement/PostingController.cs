@@ -116,11 +116,23 @@ namespace MVCProject.Api.Controllers.PostingManagement
 
 
         [HttpPost]
-        public ApiResponse Register([FromBody]ATS_ApplicantRegister data)
+        public ApiResponse Register([FromBody]USP_ATS_ApplicantPostingList_Result data)
         {
             var Applicant = this.entities.ATS_ApplicantRegister.Where(x => x.ApplicantId == data.ApplicantId).FirstOrDefault();
             Applicant.PostingId = data.PostingId;
             this.entities.ATS_ApplicantRegister.ApplyCurrentValues(Applicant);
+            if(data.StatusId == 7 || data.StatusId == 3)
+            {
+                this.entities.ATS_ActionHistory.AddObject(new ATS_ActionHistory()
+                {
+                    ApplicantId = data.ApplicantId,
+                    StatusId = 1,
+                    Level = 0,
+                    IsActive = true,
+                    EntryBy = UserContext.UserId,
+                    EntryDate = DateTime.Now
+                });
+            }
             if (!(this.entities.SaveChanges() > 0))
             {
                 return this.Response(Utilities.MessageTypes.Error, string.Format(Resource.SaveError), Resource.Posting);

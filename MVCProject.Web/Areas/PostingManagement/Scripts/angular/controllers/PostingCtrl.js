@@ -11,7 +11,8 @@
         $scope.applicantDetailScope = {
             ApplicantId: 0,
             ApplicantName: '',
-            PostingId: ''
+            PostingId: '',
+            StatusId: ''
         };
 
         $scope.jobpostingDetailScope = {
@@ -37,7 +38,8 @@
             $scope.applicantDetailScope = {
                 ApplicantId: 0,
                 ApplicantName: '',
-                PostingId: ''
+                PostingId: '',
+                StatusId: ''
             };
             $scope.frmRegister.$setPristine();
         };

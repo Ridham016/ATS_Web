@@ -173,7 +173,7 @@ namespace MVCProject.Controllers
         /// </summary>
         private void LogoutUser()
         {
-            /*
+
             try
             {
                 if (Request.Cookies["SAFEZydusSESSION" + Request.Url.Port] != null && Request.Cookies["SAFEZydusSESSION" + Request.Url.Port].Value.ToString() != string.Empty)
@@ -193,7 +193,7 @@ namespace MVCProject.Controllers
             catch
             {
             }
-              */
+
         }
     }
 }
