@@ -34,13 +34,6 @@
             data: JSON.stringify(applicantDetailScope)
         });
     }
-    //list.uploadFileToUrl = function (fd) {
-    //    debugger
-    //    return $http.post('http://localhost:56562/api/Registrations/Upload', fd, {
-    //        transformRequest: angular.identity,
-    //        headers: { 'Content-Type': undefined }
-    //    })
-    //}
     list.AddFile = function (filedata, Id) {
         //debugger
         return $http({

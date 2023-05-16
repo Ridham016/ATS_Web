@@ -79,7 +79,7 @@
                                             tabindex="4">
                                         @Resource.Clear
                                     </button>
-                                    <button type="button" class="btn btn-primary text-nowrap waves-effect w-md waves-light me-2  mb-5" data-bs-toggle="modal" data-bs-target="#AddNewModal">
+                                    <button type="button" ng-disabled="!applicantDetailScope.PostingId > 0  || applicantDetailScope.ApplicantName == ''" class="btn btn-primary text-nowrap waves-effect w-md waves-light me-2  mb-5" data-bs-toggle="modal" data-bs-target="#AddNewModal">
                                         <i class="fa fa-plus me-1"></i>
                                         Add New Posting
                                     </button>
