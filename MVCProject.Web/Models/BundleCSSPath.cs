@@ -116,5 +116,15 @@ namespace MVCProject.Models
         /// Apexcharts CSS
         /// </summary>
         public string apexcharts = cssPath + "apexcharts.css";
+
+        /// <summary>
+        /// select CSS
+        /// </summary>
+        public string select = cssPath + "select.min.css";
+
+        /// <summary>
+        /// select2 CSS
+        /// </summary>
+        public string select2 = cssPath + "select2.css";
     }
 }

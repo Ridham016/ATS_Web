@@ -1662,7 +1662,7 @@ a.editable-click:hover {
         padding: 5px 10px;
     }
 /* Select 2 */
-.select2-container .select2-choice {
+/*.select2-container .select2-choice {
     background-image: none !important;
     border: none !important;
     height: auto !important;
@@ -1736,7 +1736,7 @@ a.editable-click:hover {
     height: 34px;
     line-height: 34px;
     padding-left: 15px;
-}
+}*/
 /* Bootstrap-select */
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 100% !important;

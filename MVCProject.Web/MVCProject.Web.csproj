@@ -317,6 +317,8 @@
     <Content Include="Content\css\responsive.bootstrap.min.css" />
     <Content Include="Content\css\scrollable-table.css" />
     <Content Include="Content\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\css\select.min.css" />
+    <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\slidingtabpanel.css" />
     <Content Include="Content\css\spectrum.min.css" />
     <Content Include="Content\css\style.css" />
@@ -374,6 +376,7 @@
     <Content Include="Content\images\Safty1.jpg" />
     <Content Include="Content\images\Safty2.jpg" />
     <Content Include="Content\images\Safty3.jpg" />
+    <Content Include="Content\images\select2.png" />
     <Content Include="Content\images\selectimage.png" />
     <Content Include="Content\images\skin.png" />
     <Content Include="Content\images\sprit.png" />
@@ -484,6 +487,7 @@
     <Content Include="Scripts\js\jquery.nicescroll.js" />
     <Content Include="Scripts\js\jquery.sliding-tabs.js" />
     <Content Include="Scripts\js\modernizr.min.js" />
+    <Content Include="Scripts\js\select.min.js" />
     <Content Include="Scripts\js\select2.min.js" />
     <Content Include="Scripts\js\spectrum.min.js" />
     <Content Include="Scripts\js\switchery.min.js" />

@@ -24,7 +24,7 @@ namespace MVCProject
             routes.MapRoute(
                 name: "Default_Area",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional });
+                defaults: new { controller = "account", action = "login", id = UrlParameter.Optional });
         }
     }
 }

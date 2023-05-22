@@ -61,12 +61,19 @@
                             <div class="form-group">
                                 <label>
                                     @Resource.JobPosting
-                                </label>
-                                <select class="form-select" name="PostingId"
-                                        ng-class="{'border-color' : frmRegister1.PostingId.$dirty && frmRegister1.PostingId.$invalid}"
-                                        ng-model="applicantDetailScope.PostingId" ng-options="h.PostingId as h.PositionName for h in JobList">
-                                    <option value="" disabled>Select Job Posting</option>
-                                </select>
+                                </label><br />
+                                <ui-select selectize ng-model="applicantDetailScope.PostingId" theme="select2">
+                                    <ui-select-match placeholder="Select or search Job Posting">{{$select.selected.PositionName}}</ui-select-match>
+                                    <ui-select-choices repeat="item.PostingId as item in JobList | filter: $select.search">
+                                        <div ng-bind-html="item.PositionName | highlight: $select.search"></div>
+                                        <small ng-bind-html="item.CompanyName | highlight: $select.search"></small>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="input-group-btn">
+                                    <button type="button" ng-click="applicantDetailScope.PostingId = undefined" class="btn btn-default">
+                                        <span class="fa fa-trash"></span>
+                                    </button>
+                                </span>
                             </div>
                         </div>
                         <div class="row mt-4">

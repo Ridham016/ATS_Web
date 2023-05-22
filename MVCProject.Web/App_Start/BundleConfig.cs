@@ -133,6 +133,8 @@ namespace MVCProject
                 .Include(BundlePath.css.tooltipster)
                 .Include(BundlePath.css.fullCalendarMin)
                 .Include(BundlePath.css.apexcharts)
+                .Include(BundlePath.css.select)
+                .Include(BundlePath.css.select2)
                 //.Include(BundlePath.css.fullCalendarPrint)
                 .Include(BundlePath.css.newstyles));
 
@@ -211,7 +213,7 @@ namespace MVCProject
                .Include(BundlePath.js.fullcalendarMin)
                .Include(BundlePath.js.calendar)
                .Include(BundlePath.js.gcal)
-               .Include(BundlePath.js.select2)
+               .Include(BundlePath.js.select)
                .Include(BundlePath.js.uibootstraptpls));
         }
 

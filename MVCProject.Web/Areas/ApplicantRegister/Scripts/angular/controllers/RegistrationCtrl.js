@@ -541,32 +541,3 @@
         }
     }
 })();
-
-
-
-const optionFormat = (item) => {
-    if (!item.id) {
-        return item.text;
-    }
-
-    var span = document.createElement('span');
-    var template = '';
-
-    template += '<div class="d-flex align-items-center">';
-    template += '<div class="d-flex flex-column">'
-    template += '<span class="font-16 fw-bold lh-1">' + item.text + '</span>';
-    template += '<span class="text-muted font-12">' + item.element.getAttribute('data-kt-rich-content-subcontent') + '</span>';
-    template += '</div>';
-    template += '</div>';
-
-    span.innerHTML = template;
-
-    return $(span);
-}
-
-// Init Select2 --- more info: https://select2.org/
-$('#kt_docs_select2_rich_content').select2({
-    minimumResultsForSearch: Infinity,
-    templateSelection: optionFormat,
-    templateResult: optionFormat
-});
