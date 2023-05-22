@@ -33,7 +33,11 @@ namespace MVCProject.Api.Controllers.ScheduleManagement
         [HttpPost]
         public ApiResponse GetApplicantList(PagingParams applicantDetailParams)
         {
-            var result = entities.USP_ATS_ApplicantsList().ToList();
+            if (string.IsNullOrWhiteSpace(applicantDetailParams.Search))
+            {
+                applicantDetailParams.Search = string.Empty;
+            }
+            var result = entities.USP_ATS_ApplicantsList().Where(x => x.FirstName.Trim().ToLower().Contains(applicantDetailParams.Search.Trim().ToLower())).ToList();
             var TotalRecords = result.Count();
             var applicantlist = result.Select(g => new
             {

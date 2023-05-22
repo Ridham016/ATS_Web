@@ -6,7 +6,7 @@
     ]);
     function DashboardCtrl($scope, uiCalendarConfig, $timeout, $interval, $rootScope, CommonEnums, DashboardService) {
         var colorPalette = ['#007bff', '#008a9b', '#a66b55', '#4680ff', '#6c757d', '#0e9e4a', '#ff2c2c', '#ffa21d'];
-        var data = [55,5,55,55,555,55,50,0];
+        var data = [55,5,55,55,555,55,50,55];
         var optionDonut = {
             chart: {
                 type: 'donut',
@@ -111,7 +111,7 @@
                         console.log(data);
                         donut.updateSeries(data);
                         //donut.render();
-                        //window.dispatchEvent(new Event('resize'));
+                        window.dispatchEvent(new Event('resize'));
                     } else if (res.data.MessageType == messageTypes.Error) {
                         toastr.error(res.data.Message, errorTitle);
                     } else if (res.data.MessageType == messageTypes.Warning) {

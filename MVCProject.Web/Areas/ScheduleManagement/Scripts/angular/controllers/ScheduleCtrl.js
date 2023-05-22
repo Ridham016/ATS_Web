@@ -52,7 +52,7 @@
                     applicantDetailParams = {};
                 }
                 applicantDetailParams.Paging = CommonFunctions.GetPagingParams(params);
-                //designationDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
+                applicantDetailParams.Paging.Search = $scope.isSearchClicked ? $scope.search : '';
                 //Load Employee List
                 ScheduleService.GetApplicantList(applicantDetailParams.Paging).then(function (res) {
                     //debugger
