@@ -531,10 +531,6 @@
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="USP_ATS_CheckStatusValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="CurrentStatus" Type="int" Mode="In" />
-          <Parameter Name="NextStatus" Type="int" Mode="In" />
-        </Function>
         <Function Name="USP_ATS_CompanyById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CompanyId" Type="int" Mode="In" />
         </Function>
@@ -834,9 +830,6 @@
           <FunctionImport Name="USP_ATS_FilesOfApplicant" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_FilesOfApplicant_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_GetApplicantNameAndEmail" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetApplicantNameAndEmail_Result)">
-          <Parameter Name="ActionId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="USP_ATS_GetApplicantWithStatus" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetApplicantWithStatus_Result)">
             <Parameter Name="CurrentStatusId" Mode="In" Type="Int32" />
             <Parameter Name="CompanyId" Mode="In" Type="Int32" />
@@ -846,9 +839,6 @@
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetCompanyDetails" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetails_Result)">
-          </FunctionImport>
-          <FunctionImport Name="USP_ATS_GetInfoForEmail" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetInfoForEmail_Result)">
-          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_GetLevel" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetLevel_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
@@ -2408,20 +2398,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_GetApplicantNameAndEmail" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetApplicantNameAndEmail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetApplicantNameAndEmail_Result">
-                <ScalarProperty Name="ApplicantEmail" ColumnName="ApplicantEmail" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FileLink" ColumnName="FileLink" />
-                <ScalarProperty Name="PostingId" ColumnName="PostingId" />
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_GetApplicantWithStatus" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetApplicantWithStatus">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetApplicantWithStatus_Result">
@@ -2479,19 +2455,6 @@
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
                 </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_ATS_GetInfoForEmail" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetInfoForEmail">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ATSMVCProjectModel.USP_ATS_GetInfoForEmail_Result">
-                <ScalarProperty Name="ScheduleDateTime" ColumnName="ScheduleDateTime" />
-                <ScalarProperty Name="InterviewerName" ColumnName="InterviewerName" />
-                <ScalarProperty Name="InterviewerEmail" ColumnName="InterviewerEmail" />
-                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-              </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_ATS_GetLevel" FunctionName="ATSMVCProjectModel.Store.USP_ATS_GetLevel">
