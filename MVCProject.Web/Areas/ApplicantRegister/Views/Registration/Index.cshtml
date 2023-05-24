@@ -115,18 +115,18 @@
             </select>
         </div>*@
 
-            <ui-select selectize ng-model="applicantDetailScope.PostingId" theme="select2">
+            <ui-select selectize ng-model="applicantDetailScope.PostingId" theme="select2" class="w-100">
                 <ui-select-match placeholder="Select or search Job Posting">{{$select.selected.PositionName}}</ui-select-match>
                 <ui-select-choices repeat="item.PostingId as item in JobList | filter: $select.search">
                     <div ng-bind-html="item.PositionName | highlight: $select.search"></div>
                     <small ng-bind-html="item.CompanyName | highlight: $select.search"></small>
                 </ui-select-choices>
             </ui-select>
-            <span class="input-group-btn">
+            @*<span class="input-group-btn">
                 <button type="button" ng-click="applicantDetailScope.PostingId = undefined" class="btn btn-default">
                     <span class="fa fa-trash"></span>
                 </button>
-            </span>
+            </span>*@
             <button class="btn btn-sm btn-primary text-nowrap ms-2" data-bs-toggle="modal" data-bs-target="#AddNewModal">
                 <i class="fa fa-plus me-1"></i>
                 Add New Posting

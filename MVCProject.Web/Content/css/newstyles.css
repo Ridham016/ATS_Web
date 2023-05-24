@@ -22318,3 +22318,9 @@ a.forgot-password {
 .job-description {
     box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.1);
 }
+
+.delete-icon{
+    color: var(--ats-white);
+    border-radius: 5px;
+
+}
