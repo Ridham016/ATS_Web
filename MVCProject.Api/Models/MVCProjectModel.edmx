@@ -583,7 +583,10 @@
         <Function Name="USP_ATS_JobDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PostingId" Type="int" Mode="In" />
         </Function>
-        <Function Name="USP_ATS_JobListing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_ATS_JobListing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="USP_ATS_PageAccessByRoleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoleId" Type="int" Mode="In" />
         </Function>
@@ -869,7 +872,10 @@
           <FunctionImport Name="USP_ATS_CompanyById" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_CompanyById_Result)">
           <Parameter Name="CompanyId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="USP_ATS_JobListing" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_JobListing_Result)" />
+          <FunctionImport Name="USP_ATS_JobListing" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_JobListing_Result)" >
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="USP_ATS_GetCompanyDetailsFromApplicant" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_GetCompanyDetailsFromApplicant_Result)">
           <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -978,7 +984,7 @@
           <Parameter Name="StatusId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_ATS_ApplicantPostingById" ReturnType="Collection(ATSMVCProjectModel.USP_ATS_ApplicantPostingById_Result)">
-            <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
+          <Parameter Name="ApplicantId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="USP_ATS_ActionApplicantSearch_Result">

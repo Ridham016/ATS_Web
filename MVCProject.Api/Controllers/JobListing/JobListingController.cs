@@ -1,4 +1,5 @@
 ﻿using MVCProject.Api.Models;
+using MVCProject.Api.Models.FilterCriterias;
 using MVCProject.Api.Utilities;
 using MVCProject.Api.ViewModel;
 using MVCProject.Common.Resources;
@@ -27,7 +28,30 @@ namespace MVCProject.Api.Controllers.JobListing
         [HttpPost]
         public ApiResponse GetJobPostingList(PagingParams paging)
         {
-            var data = this.entities.USP_ATS_JobListing().Select(g => new
+            var data = this.entities.USP_ATS_JobListing(null,null).Select(g => new
+            {
+                PostingId = g.PostingId,
+                CompanyId = g.CompanyId,
+                PositionId = g.PositionId,
+                PostingStatusId = g.PostingStatusId,
+                PostingStatus = g.PostingStatus,
+                CompanyName = g.CompanyName,
+                CompanyVenue = g.CompanyVenue,
+                PositionName = g.PositionName,
+                Experience = g.Experience,
+                Salary = g.Salary,
+                EntryDate = g.EntryDate,
+                Posted = g.Posted,
+                IsActive = g.IsActive,
+            }).AsEnumerable()
+                .AsQueryable().OrderByField(paging.OrderByColumn, paging.IsAscending);
+            return this.Response(MessageTypes.Success, string.Empty, data);
+        }
+
+        [HttpPost]
+        public ApiResponse GetJobPostingList_WEB([FromBody]PagingParams paging, [FromUri] SearchParams searchParams)
+        {
+            var data = this.entities.USP_ATS_JobListing(searchParams.StartDate, searchParams.EndDate).Select(g => new
             {
                 PostingId = g.PostingId,
                 CompanyId = g.CompanyId,

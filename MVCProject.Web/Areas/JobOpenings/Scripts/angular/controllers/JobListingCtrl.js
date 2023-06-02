@@ -11,7 +11,14 @@
             OrderByColumn: 'EntryDate',
             IsAscending: false
         };
-        $scope.sortBy = function (SortBy) {
+
+        $scope.searchDetail = {
+            StartDate: null,
+            EndDate: null,
+            daterange: { startDate: null, endDate: null }
+        };
+
+        $scope.sortBy = function (SortBy,searchDetail) {
             if (SortBy == 'date') {
                 $scope.jobDetailParams = {
                     OrderByColumn: 'EntryDate',
@@ -30,8 +37,21 @@
                     IsAscending: false
                 };
             }
+            if (searchDetail.daterange.startDate && searchDetail.daterange.endDate) {
+                if (moment.isMoment(searchDetail.daterange.startDate) && moment.isMoment(searchDetail.daterange.endDate)) {
+                    searchDetail.daterange.startDate = null;
+                    searchDetail.daterange.endDate = null;
+                } else {
+                    searchDetail.StartDate = angular.copy(moment(searchDetail.daterange.startDate).format($rootScope.apiDateFormat));
+                    searchDetail.EndDate = angular.copy(moment(searchDetail.daterange.endDate).format($rootScope.apiDateFormat));
+                }
+            } else {
+                searchDetail.StartDate = null;
+                searchDetail.EndDate = null;
+            }
+            $scope.searchDetail = searchDetail;
 
-            JobListingService.GetJobPostingList($scope.jobDetailParams).then(function (res) {
+            JobListingService.GetJobPostingList($scope.jobDetailParams, $scope.searchDetail).then(function (res) {
                 if (res) {
                     if (res.data.MessageType == messageTypes.Success) {
                         $scope.JobList = res.data.Result;
@@ -44,11 +64,16 @@
             })
         }
 
-        $scope.options = [
-            { id: 1, name: 'Option 1', html: 'Option <span class="highlight">1</span>' },
-            { id: 2, name: 'Option 2', html: 'Option <span class="highlight">2</span>' },
-            { id: 3, name: 'Option 3', html: 'Option <span class="highlight">3</span>' }
-        ];
+
+        $scope.ClearFormData = function () {
+            $scope.searchDetail = {
+                StartDate: null,
+                EndDate: null,
+                daterange: { startDate: moment(), endDate: moment() }
+            };
+            $("#DateRange").val("");
+        };
+
 
         $scope.getDescription = function () {
             var params = $location.search();

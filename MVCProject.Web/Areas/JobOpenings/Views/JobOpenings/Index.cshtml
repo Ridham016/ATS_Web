@@ -29,7 +29,7 @@
     }
 </style>
 
-<div ng-controller="JobListingCtrl" ng-init="sortBy(SortBy);">
+<div ng-controller="JobListingCtrl" ng-init="sortBy(SortBy,searchDetail);">
     <div class="main-page-title title-icon relative l">
         <i class="fa fa-list-ul icon-position" style="padding-top: 8px;"></i>
         <h3 class="header-title-sub l">@Resource.JobOpenings</h3>
@@ -40,13 +40,29 @@
         <div class="row ">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="mb-3 col-lg-2 col-md-4 col-6 offset-lg-10 offset-md-8 offset-6">
-                        <select class="form-select" name="SortBy" ng-change="sortBy(SortBy)" ng-model="SortBy">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="daterange" class="form-control" autocomplete="off"
+                                   placeholder="Select Date Range" max-date="{{CurrentDate}}" id="DateRange" name="DateRange" ng-model="searchDetail.daterange" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="btn-sm btn btn-primary waves-effect w-md waves-light me-2" ng-click="sortBy(SortBy,searchDetail)">
+                                Search
+                            </button>
+                            <button type="reset" ng-click="ClearFormData()" class="btn btn-sm btn-danger waves-effect w-md waves-light"
+                                    tabindex="4">
+                                @MVCProject.Common.Resources.Resource.Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-2 offset-3 col-md-4 col-6">
+                        <select class="form-select" name="SortBy" ng-change="sortBy(SortBy,searchDetail)" ng-model="SortBy">
                             <option value="date" selected>Sort By: Date</option>
-                            <option value="a-z" >Sort By: A-Z</option>
+                            <option value="a-z">Sort By: A-Z</option>
                             <option value="z-a">Sort By: Z-A</option>
                         </select>
-
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12" ng-repeat="h in JobList">
                         <div class="card joblist p-3">

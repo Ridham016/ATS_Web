@@ -780,25 +780,6 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        /// <param name="actionId">No Metadata Documentation available.</param>
-        public ObjectResult<USP_ATS_GetApplicantNameAndEmail_Result> USP_ATS_GetApplicantNameAndEmail(Nullable<global::System.Int32> actionId)
-        {
-            ObjectParameter actionIdParameter;
-            if (actionId.HasValue)
-            {
-                actionIdParameter = new ObjectParameter("ActionId", actionId);
-            }
-            else
-            {
-                actionIdParameter = new ObjectParameter("ActionId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<USP_ATS_GetApplicantNameAndEmail_Result>("USP_ATS_GetApplicantNameAndEmail", actionIdParameter);
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         /// <param name="currentStatusId">No Metadata Documentation available.</param>
         /// <param name="companyId">No Metadata Documentation available.</param>
         /// <param name="positionId">No Metadata Documentation available.</param>
@@ -862,25 +843,6 @@ namespace MVCProject.Api.Models
         public ObjectResult<USP_ATS_GetCompanyDetails_Result> USP_ATS_GetCompanyDetails()
         {
             return base.ExecuteFunction<USP_ATS_GetCompanyDetails_Result>("USP_ATS_GetCompanyDetails");
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        /// <param name="applicantId">No Metadata Documentation available.</param>
-        public ObjectResult<USP_ATS_GetInfoForEmail_Result> USP_ATS_GetInfoForEmail(Nullable<global::System.Int32> applicantId)
-        {
-            ObjectParameter applicantIdParameter;
-            if (applicantId.HasValue)
-            {
-                applicantIdParameter = new ObjectParameter("ApplicantId", applicantId);
-            }
-            else
-            {
-                applicantIdParameter = new ObjectParameter("ApplicantId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<USP_ATS_GetInfoForEmail_Result>("USP_ATS_GetInfoForEmail", applicantIdParameter);
         }
     
         /// <summary>
@@ -1086,9 +1048,31 @@ namespace MVCProject.Api.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectResult<USP_ATS_JobListing_Result> USP_ATS_JobListing()
+        /// <param name="startDate">No Metadata Documentation available.</param>
+        /// <param name="endDate">No Metadata Documentation available.</param>
+        public ObjectResult<USP_ATS_JobListing_Result> USP_ATS_JobListing(Nullable<global::System.DateTime> startDate, Nullable<global::System.DateTime> endDate)
         {
-            return base.ExecuteFunction<USP_ATS_JobListing_Result>("USP_ATS_JobListing");
+            ObjectParameter startDateParameter;
+            if (startDate.HasValue)
+            {
+                startDateParameter = new ObjectParameter("StartDate", startDate);
+            }
+            else
+            {
+                startDateParameter = new ObjectParameter("StartDate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter endDateParameter;
+            if (endDate.HasValue)
+            {
+                endDateParameter = new ObjectParameter("EndDate", endDate);
+            }
+            else
+            {
+                endDateParameter = new ObjectParameter("EndDate", typeof(global::System.DateTime));
+            }
+    
+            return base.ExecuteFunction<USP_ATS_JobListing_Result>("USP_ATS_JobListing", startDateParameter, endDateParameter);
         }
     
         /// <summary>

@@ -97,7 +97,7 @@ namespace MVCProject.Api.Controllers.PostingManagement
          [HttpGet]
         public ApiResponse GetJobPostingList()
         {
-            var data = this.entities.USP_ATS_JobListing().Select(g => new
+            var data = this.entities.USP_ATS_JobListing(null, null).Select(g => new
             {
                 PostingId = g.PostingId,
                 CompanyId = g.CompanyId,

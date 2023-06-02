@@ -95,7 +95,6 @@
         };
 
         $scope.advancedsearch = function (searchDetail) {
-            debugger
             if (searchDetail.daterange.startDate && searchDetail.daterange.endDate) {
                 if (moment.isMoment(searchDetail.daterange.startDate) && moment.isMoment(searchDetail.daterange.endDate)) {
                     searchDetail.daterange.startDate = null;

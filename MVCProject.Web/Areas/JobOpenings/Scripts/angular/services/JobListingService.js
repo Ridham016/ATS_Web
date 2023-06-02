@@ -1,9 +1,9 @@
 ﻿angular.module("MVCApp").service('JobListingService', ['$rootScope', '$http', function ($rootScope, $http) {
     var list = [];
-    list.GetJobPostingList = function (jobDetailParams) {
+    list.GetJobPostingList = function (jobDetailParams,searchDetail) {
         return $http({
             method: 'POST',
-            url: $rootScope.apiURL + '/JobListing/GetJobPostingList',
+            url: $rootScope.apiURL + '/JobListing/GetJobPostingList_WEB?StartDate=' + searchDetail.StartDate + '&EndDate=' + searchDetail.EndDate,
             data: JSON.stringify(jobDetailParams)
         })
     }
